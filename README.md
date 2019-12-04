@@ -9,7 +9,7 @@ This is yet another implementation of an old concept. It is heavily inspired by 
 ### As a standalone script
 
 ```html
-<script src="<unpkg or your own site>/wikipedia-preview.js"></script>
+<script src="<unpkg or your own site>/wikipedia-preview.production.js"></script>
 <script type="text/javascript">
   wikipediaPreview.init()
 </script>
@@ -70,4 +70,3 @@ To use a language different than the language specified in the options, use the 
 ### TODO
 * rtl
 * mobile
-* i18n
