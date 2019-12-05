@@ -1,21 +1,32 @@
-# Wikipedia Preview
+# Wikipedia Previews
 
-This is a small Javascript component that allows showing a Wikipedia article preview on any website. It doesn't have any dependencies and should be compatible with most browsers.
+Wikipedia previews allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
 
-This is yet another implementation of an old concept. It is heavily inspired by [jquery.wikilookup](https://github.com/mooeypoo/jquery.wikilookup) and [Page Previews](https://www.mediawiki.org/wiki/Page_Previews). 
+<img src="/screenshot.png" height="200" alt="Chat"/>
 
-## How to use
+## Build with
 
-### As a standalone script
+It is a small Javascript component that does not have any dependencies (other than a `fetch` polyfill for IE) and should be compatible with most browsers.
+
+## Features
+
+* Works with any link that has an article on Wikipedia
+* Works for LTR languages
+* Works for articles with or without a lead image
+
+## Getting Started
+
+### Standalone Script
 
 ```html
-<script src="<unpkg or your own site>/wikipedia-preview.production.js"></script>
+<script src="wikipedia-preview.production.js"></script>
 <script type="text/javascript">
   wikipediaPreview.init()
 </script>
 ```
+Note: You can serve the file yourself or include it from unpkg.
 
-### As an npm dependency
+### NPM
 ```bash
 $ npm install wikipedia-preview --save
 ```
@@ -61,7 +72,7 @@ To indicate that a word or expression should bring up the article preview popup,
 
 By default, nodes with the `data-wikipedia-preview` attribute don't have any special visual treatment. You should style them in a way that makes sense for your context.
 
-For example:
+Example
 
 ```lang=css
 [data-wikipedia-preview] {
@@ -77,6 +88,7 @@ When the article title is not the same as the node's `textContent` property, use
 
 To use a language different than the language specified in the options, use the `data-wp-lang` attribute.
 
-### TODO
-* rtl
-* mobile
+## Acknowledgements/Contributors
+
+This is heavily inspired by [jquery.wikilookup](https://github.com/mooeypoo/jquery.wikilookup) and [Page Previews](https://www.mediawiki.org/wiki/Page_Previews). 
+
