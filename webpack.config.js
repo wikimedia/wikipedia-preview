@@ -35,7 +35,7 @@ const config = {
                   '@babel/preset-env',
                   {
                     targets: 'defaults',
-                    useBuiltIns: 'entry',
+                    useBuiltIns: 'usage',
                     corejs: 3
                   }
                 ]
