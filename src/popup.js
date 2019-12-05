@@ -26,7 +26,7 @@ const createPopup = (container, win=window) => {
 	popup.setAttribute('dir', 'ltr')
 	popup.classList.add('wp-popup')
 	popup.style.visibility = 'hidden'
-	container.append(popup)
+	container.appendChild(popup)
 
 	const onMouseLeave = ({toElement}) => {
 		if ( toElement !== currentTargetElement && !popup.contains(toElement) ) {
