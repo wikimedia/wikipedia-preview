@@ -10,7 +10,7 @@ const renderPreview = (lang, data) => {
 			<div class="wp-text-content">
 				<div class="wp-title">${data.title}</div>
 				<div class="wp-preview">${data.extractHtml}</div>
-				<a href="${data.pageUrl}" target="_blank">${wp}</a>
+				<a class="wp-link" href="${data.pageUrl}" target="_blank">${wp}</a>
 			</div>
 			${image}
 		</div>
