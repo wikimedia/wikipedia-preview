@@ -20,13 +20,17 @@ const withPx = (value) => {
 	return value ? (value + 'px') : value
 }
 
+let popup
+
 const createPopup = (container, win=window) => {
-	const popup = win.document.createElement('div')
 	let currentTargetElement
-	popup.setAttribute('dir', 'ltr')
-	popup.classList.add('wp-popup')
-	popup.style.visibility = 'hidden'
-	container.appendChild(popup)
+	if (!popup) {
+		popup = win.document.createElement('div')
+		popup.setAttribute('dir', 'ltr')
+		popup.classList.add('wp-popup')
+		popup.style.visibility = 'hidden'
+		container.appendChild(popup)
+	}
 
 	const onMouseLeave = ({toElement}) => {
 		if ( toElement !== currentTargetElement && !popup.contains(toElement) ) {
