@@ -15,7 +15,7 @@ describe('renderPreview', () => {
 		it('renders something', () => assert(output))
 
 		it('contains the title', () => 
-			assert(output.includes('<div class="title">Cat</div>')))
+			assert(output.includes('<div class="wp-title">Cat</div>')))
 
 		it('contains the extract HTML', () => 
 			assert(output.includes('<p>A small domesticated feline</p>')))

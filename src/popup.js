@@ -24,7 +24,7 @@ const createPopup = (container, win=window) => {
 	const popup = win.document.createElement('div')
 	let currentTargetElement
 	popup.setAttribute('dir', 'ltr')
-	popup.classList.add('popup')
+	popup.classList.add('wp-popup')
 	popup.style.visibility = 'hidden'
 	container.append(popup)
 

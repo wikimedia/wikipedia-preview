@@ -198,7 +198,7 @@ describe('createPopup', () => {
 		`)
 		const doc = dom.window.document
 		popup = createPopup(doc.querySelector('.popup-container'), dom.window)
-		popupElement = doc.querySelector('.popup')
+		popupElement = doc.querySelector('.wp-popup')
 	})
 
 	it('adds a hidden popup to the dom', () => {
