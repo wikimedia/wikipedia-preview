@@ -59,6 +59,16 @@ wikipediaPreview.init({
 
 To indicate that a word or expression should bring up the article preview popup, mark it with the `data-wikipedia-preview` attribute (or anything else as long as you're using the `selector` option described above).
 
+By default, nodes with the `data-wikipedia-preview` attribute don't have any special visual treatment. You should style them in a way that makes sense for your context.
+
+For example:
+
+```lang=css
+[data-wikipedia-preview] {
+	background-color: yellow;
+}
+```
+
 #### data-wp-title
 
 When the article title is not the same as the node's `textContent` property, use the `data-wp-title` attribute to specify the article title.
