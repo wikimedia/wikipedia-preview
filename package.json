@@ -33,6 +33,7 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "core-js": "^3.4.7",
     "unfetch": "^4.1.0"
   }
 }
