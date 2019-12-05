@@ -131,6 +131,18 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 
 /***/ }),
 
+/***/ "./node_modules/unfetch/dist/unfetch.mjs":
+/*!***********************************************!*\
+  !*** ./node_modules/unfetch/dist/unfetch.mjs ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function(e,n){return n=n||{},new Promise(function(t,r){var s=new XMLHttpRequest,o=[],u=[],i={},a=function(){return{ok:2==(s.status/100|0),statusText:s.statusText,status:s.status,url:s.responseURL,text:function(){return Promise.resolve(s.responseText)},json:function(){return Promise.resolve(JSON.parse(s.responseText))},blob:function(){return Promise.resolve(new Blob([s.response]))},clone:a,headers:{keys:function(){return o},entries:function(){return u},get:function(e){return i[e.toLowerCase()]},has:function(e){return e.toLowerCase()in i}}}};for(var l in s.open(n.method||\"get\",e,!0),s.onload=function(){s.getAllResponseHeaders().replace(/^(.*?):[^\\S\\n]*([\\s\\S]*?)$/gm,function(e,n,t){o.push(n=n.toLowerCase()),u.push([n,t]),i[n]=i[n]?i[n]+\",\"+t:t}),t(a())},s.onerror=r,s.withCredentials=\"include\"==n.credentials,n.headers)s.setRequestHeader(l,n.headers[l]);s.send(n.body||null)})});\n//# sourceMappingURL=unfetch.mjs.map\n\n\n//# sourceURL=webpack://wikipediaPreview/./node_modules/unfetch/dist/unfetch.mjs?");
+
+/***/ }),
+
 /***/ "./src/api.js":
 /*!********************!*\
   !*** ./src/api.js ***!
@@ -151,7 +163,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cachedFetch\", function() { return cachedFetch; });\nvar dataCache = {};\nvar requestCache = {};\n\nvar cachedFetch = function cachedFetch(url, transformFn) {\n  var fetch = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window.fetch;\n\n  if (typeof dataCache[url] !== 'undefined') {\n    return Promise.resolve(dataCache[url]);\n  }\n\n  if (requestCache[url]) {\n    return requestCache[url];\n  } // todo: figure out how to sent client-specific analytics tracking\n  // const headers = { 'X-Analytics': 'wikipedia-preview-' + clientId };\n\n\n  return requestCache[url] = fetch(url).then(function (response) {\n    return response.json();\n  }).then(function (data) {\n    return transformFn(data);\n  }).then(function (data) {\n    dataCache[url] = data;\n    return data;\n  });\n};\n\n\n\n//# sourceURL=webpack://wikipediaPreview/./src/cachedFetch.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cachedFetch\", function() { return cachedFetch; });\n/* harmony import */ var unfetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! unfetch */ \"./node_modules/unfetch/dist/unfetch.mjs\");\n\nvar dataCache = {};\nvar requestCache = {};\n\nvar cachedFetch = function cachedFetch(url, transformFn) {\n  var f = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : unfetch__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\n\n  if (typeof dataCache[url] !== 'undefined') {\n    return Promise.resolve(dataCache[url]);\n  }\n\n  if (requestCache[url]) {\n    return requestCache[url];\n  } // todo: figure out how to sent client-specific analytics tracking\n  // const headers = { 'X-Analytics': 'wikipedia-preview-' + clientId };\n\n\n  return requestCache[url] = f(url).then(function (response) {\n    return response.json();\n  }).then(function (data) {\n    return transformFn(data);\n  }).then(function (data) {\n    dataCache[url] = data;\n    return data;\n  });\n};\n\n\n\n//# sourceURL=webpack://wikipediaPreview/./src/cachedFetch.js?");
 
 /***/ }),
 
