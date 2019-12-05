@@ -1,6 +1,8 @@
+import fetch from 'unfetch'
+
 const dataCache = {}
 const requestCache = {}
-const cachedFetch = (url, transformFn, fetch=window.fetch) => {
+const cachedFetch = (url, transformFn, f=fetch) => {
 	if (typeof dataCache[url] !== 'undefined') {
 		return Promise.resolve(dataCache[url])
 	}
@@ -9,7 +11,7 @@ const cachedFetch = (url, transformFn, fetch=window.fetch) => {
 	}
 	// todo: figure out how to sent client-specific analytics tracking
 	// const headers = { 'X-Analytics': 'wikipedia-preview-' + clientId };
-	return requestCache[url] = fetch(url)
+	return requestCache[url] = f(url)
 		.then(response => response.json())
 		.then(data => transformFn(data))
 		.then(data => {
