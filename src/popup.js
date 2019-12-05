@@ -43,12 +43,20 @@ const createPopup = (container, win=window) => {
 	popup.addEventListener('mouseleave', onMouseLeave);
 
 	const show = (content, nextTo) => {
-		popup.innerHTML = content	
+		popup.innerHTML = content
+		const scrollX = (win.pageXOffset !== undefined)
+			? win.pageXOffset
+			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
+
+		const scrollY = (win.pageYOffset !== undefined)
+			? win.pageYOffset
+			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollTop
+
 		const position = computePopupPosition(
 			nextTo.getBoundingClientRect(),
 			popup.offsetWidth,
-			win.scrollX,
-			win.scrollY,
+			scrollX,
+			scrollY,
 			win.innerWidth,
 			win.innerHeight
 		);
