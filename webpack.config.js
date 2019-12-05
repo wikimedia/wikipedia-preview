@@ -32,9 +32,9 @@ const config = {
           options: {
             presets: [
                 [
-                  "@babel/preset-env",
+                  '@babel/preset-env',
                   {
-                    targets: "firefox 37"
+                    targets: 'defaults'
                   }
                 ]
               ]
