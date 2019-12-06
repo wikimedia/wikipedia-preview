@@ -29,7 +29,7 @@ You can serve the file yourself or include it from unpkg.
 Note: If you need to support Internet Explorer, please include a `Promise` polyfill.
 
 Example
-```lang=html
+```html
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
 ```
 
@@ -81,7 +81,7 @@ By default, nodes with the `data-wikipedia-preview` attribute don't have any spe
 
 Example
 
-```lang=css
+```css
 [data-wikipedia-preview] {
 	background-color: yellow;
 }
