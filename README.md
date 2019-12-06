@@ -24,7 +24,14 @@ It is a small Javascript component that does not have any dependencies (other th
   wikipediaPreview.init()
 </script>
 ```
-Note: You can serve the file yourself or include it from unpkg.
+You can serve the file yourself or include it from unpkg.
+
+Note: If you need to support Internet Explorer, please include a `Promise` polyfill.
+
+Example
+```lang=html
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+```
 
 ### NPM
 ```bash
