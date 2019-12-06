@@ -6,7 +6,7 @@ Wikipedia previews allows you to provide context from Wikipedia about words or p
 
 ## Built with
 
-It is a small Javascript component that does not have any dependencies (other than a `fetch` polyfill for IE) and should be compatible with most browsers.
+It is a small Javascript component that does not have any dependencies (other than a `fetch` polyfill) and should be compatible with most browsers.
 
 ## Features
 
