@@ -24,7 +24,7 @@ It is a small Javascript component that does not have any dependencies (other th
   wikipediaPreviews.init()
 </script>
 ```
-You can serve the file yourself or include it from unpkg.
+You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-previews@1.0.0/dist/wikipedia-previews.production.js).
 
 Note: If you need to support Internet Explorer, please include a `Promise` polyfill.
 
