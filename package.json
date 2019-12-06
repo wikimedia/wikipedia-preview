@@ -1,8 +1,8 @@
 {
-  "name": "wikipedia-preview",
+  "name": "wikipedia-previews",
   "version": "1.0.0",
   "description": "Shows Wikipedia article preview in a popup",
-  "main": "dist/wikipedia-preview.production.js",
+  "main": "dist/wikipedia-previews.production.js",
   "scripts": {
     "test": "mocha --require @babel/register",
     "test:watch": "mocha --require @babel/register -w",

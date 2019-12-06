@@ -3,8 +3,8 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'wikipedia-preview.js',
-    library: 'wikipediaPreview',
+    filename: '(SET AT THE BOTTOM OF THIS FILE)',
+    library: 'wikipediaPreviews',
     libraryTarget: 'umd',
   },
   devServer: {
@@ -53,6 +53,6 @@ const config = {
   }
 };
 module.exports = (env, argv) => {
-  config.output.filename = 'wikipedia-preview.' + argv.mode + '.js';
+  config.output.filename = 'wikipedia-previews.' + argv.mode + '.js';
   return config;
 };

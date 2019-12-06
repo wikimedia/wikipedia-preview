@@ -19,9 +19,9 @@ It is a small Javascript component that does not have any dependencies (other th
 ### Standalone Script
 
 ```html
-<script src="wikipedia-preview.production.js"></script>
+<script src="wikipedia-previews.production.js"></script>
 <script type="text/javascript">
-  wikipediaPreview.init()
+  wikipediaPreviews.init()
 </script>
 ```
 You can serve the file yourself or include it from unpkg.
@@ -35,12 +35,12 @@ Example
 
 ### NPM
 ```bash
-$ npm install wikipedia-preview --save
+$ npm install wikipedia-previews --save
 ```
 
 ```javascript
-const wikipediaPreview = require('wikipedia-preview')
-wikipediaPreview.init()
+const wikipediaPreviews = require('wikipedia-previews')
+wikipediaPreviews.init()
 ```
 
 ### Options of the init function
@@ -63,7 +63,7 @@ Example
 ```
 
 ```javascript
-wikipediaPreview.init({
+wikipediaPreviews.init({
 	root: document.querySelector('.content'),
 	selector: '.wiki',
 	popupContainer: '.popup-container',
