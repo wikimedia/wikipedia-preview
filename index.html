@@ -56,21 +56,21 @@
     </div>
     <!-- Promise polyfill for IE -->
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
-    <script src="dist/wikipedia-preview.production.js"></script>
+    <script src="dist/wikipedia-previews.production.js"></script>
     <script type="text/javascript">
-      wikipediaPreview.init({
+      wikipediaPreviews.init({
         lang: 'en',
         root: document.querySelector('.content-en')
       });
-      wikipediaPreview.init({
+      wikipediaPreviews.init({
         lang: 'fr',
         root: document.querySelector('.content-fr')
       });
-      wikipediaPreview.init({
+      wikipediaPreviews.init({
         lang: 'es',
         root: document.querySelector('.content-es')
       });
-      wikipediaPreview.init({
+      wikipediaPreviews.init({
         lang: 'zh',
         root: document.querySelector('.content-zh')
       });
