@@ -6,6 +6,7 @@ const config = {
     filename: '(SET AT THE BOTTOM OF THIS FILE)',
     library: 'wikipediaPreviews',
     libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   devServer: {
     publicPath: '/dist/',
