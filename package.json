@@ -1,6 +1,6 @@
 {
   "name": "wikipedia-previews",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-previews.production.js",
   "scripts": {
