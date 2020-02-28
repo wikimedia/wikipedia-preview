@@ -1,4 +1,4 @@
-import { fetchPagePreview } from './api'
+import { requestPagePreview } from './api'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
 import '../style/popup.less'
@@ -14,10 +14,10 @@ function init({root, selector, lang, popupContainer}={}) {
 	const mouseEnter = ({ target }) => {
 		const title = target.getAttribute('data-wp-title') || target.textContent
 		const lang = target.getAttribute('data-wp-lang') || globalLang
-		fetchPagePreview(lang, title).then(data => {
-				if (data) {
-					popup.show(renderPreview(lang, data), target)
-				}
+		requestPagePreview(lang, title, data => {
+			if (data) {
+				popup.show(renderPreview(lang, data), target)
+			}
 		})
 	}
 
