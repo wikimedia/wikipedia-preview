@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-previews/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-previews/tree/master)
+
 # Wikipedia Previews
 
 Wikipedia previews allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
