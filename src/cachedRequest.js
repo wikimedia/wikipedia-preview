@@ -7,6 +7,9 @@ const request = (url, callback) => {
 	xhr.addEventListener('load', () => {
 		callback(xhr.response)
 	})
+	xhr.addEventListener('error', () => {
+		callback(null, xhr.status)
+	})
 }
 
 const dataCache = {}
@@ -17,7 +20,9 @@ const cachedRequest = (url, transformFn, callback, r=request) => {
 		return
 	}
 	r(url, data => {
-		callback(dataCache[url] = transformFn(data))
+		if (data) {
+			callback(dataCache[url] = transformFn(data))
+		}
 	})
 }
 
