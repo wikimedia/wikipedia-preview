@@ -33,10 +33,12 @@ const createPopup = (container, win=window) => {
 	}
 
 	const onMouseLeave = ({toElement}) => {
-		if ( toElement !== currentTargetElement && !popup.contains(toElement) ) {
+		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
 			popup.style.visibility = 'hidden'
-			currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
-			currentTargetElement = null
+			if (currentTargetElement) {
+				currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
+				currentTargetElement = null
+			}
 		}
 	}
 
@@ -64,7 +66,7 @@ const createPopup = (container, win=window) => {
 		popup.style.right = withPx(position.right);
 		popup.style.top = withPx(position.top);
 		popup.style.bottom = withPx(position.bottom);
-		
+
 		currentTargetElement = nextTo
 		currentTargetElement.addEventListener('mouseleave', onMouseLeave);
 
