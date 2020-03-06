@@ -19,7 +19,7 @@ describe('cachedRequest', () => {
 			cachedRequest('url-2', d => 't-2', data => {
 				assert.equal(data, 't-1')
 				done()
-			}, requestMock())
-		}, requestMock())
+			}, requestMock('data-2'))
+		}, requestMock('data-1'))
 	})
 })
