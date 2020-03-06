@@ -12,7 +12,7 @@ const request = (url, callback) => {
 const dataCache = {}
 
 const cachedRequest = (url, transformFn, callback, r=request) => {
-	if (dataCache[url]) {
+	if (dataCache[url] !== undefined) {
 		callback(dataCache[url])
 		return
 	}
