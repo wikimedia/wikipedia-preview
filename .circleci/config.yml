@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:12.0-browsers
+      - image: circleci/python:jessie-node-browsers
     steps:
       - checkout
       - run:
@@ -11,9 +12,6 @@ jobs:
             npm install
             npm run build
             npm run coverage
-    docker:
-      - image: circleci/python:jessie-node-browsers
-    steps:
       - run: mkdir test-reports
       - run: sudo pip install selenium
       - run: sudo pip install requests
@@ -23,4 +21,3 @@ jobs:
           command: python tests/test_selenium_firefox.py
           command: python tests/test_selenium_IE.py
           command: python tests/test_selenium_safari.py
-          
