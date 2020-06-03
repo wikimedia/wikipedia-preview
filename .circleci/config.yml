@@ -50,4 +50,4 @@ workflows:
             - build
           filters:
             branches:
-              only: T240012-ci-demo
+              only: master
