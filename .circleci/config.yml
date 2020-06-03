@@ -32,8 +32,9 @@ workflows:
   build:
     jobs:
       - build
-      - deploy-gh-pages
-          requires: build
+      - deploy-gh-pages:
+          requires:
+            - build
           filters:
             branches:
               only: T240012-ci-demo
