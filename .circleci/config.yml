@@ -16,7 +16,7 @@ jobs:
           paths: wikipedia-previews.production.js
   deploy-gh-pages:
     docker:
-      - image: circleci/node:12.0-browsers
+      - image: node:8.10.0
     steps:
       - attach_workspace:
           at: dist
@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            npm install gh-pages
+            npm install -g --silent gh-pages
             git config user.email "ci-build@wikimedia.org"
             git config user.name "ci-build"
       - run:
