@@ -6,16 +6,21 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test
-          command: |
-            npm install
-            npm run build
-            npm run coverage
-            ./scripts/demo.sh
+          name: Prepare
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Unit Test (with coverage)
+          command: npm run coverage
+      - run:
+          name: Prepare demo
+          command: ./scripts/demo.sh
       - persist_to_workspace:
           root: .
           paths: ./demo
-  update-demo-page:
+  update-demo:
     docker:
       - image: node:8.10.0
     steps:
@@ -26,13 +31,13 @@ jobs:
           fingerprints:
               - "c3:03:93:79:5d:c7:23:b8:4a:4d:5d:41:e3:38:3f:84"
       - run:
-          name: Install dependencies
+          name: Prepare
           command: |
             npm install -g --silent gh-pages
             git config user.email "ci-build@wikimedia.org"
             git config user.name "ci-build"
       - run:
-          name: Deploy to gh-pages
+          name: Deploy demo
           command: |
             gh-pages --dist demo
 workflows:
@@ -40,7 +45,7 @@ workflows:
   build:
     jobs:
       - build
-      - update-demo-page:
+      - update-demo:
           requires:
             - build
           filters:
