@@ -34,8 +34,7 @@ jobs:
       - run:
           name: Deploy to gh-pages
           command: |
-            cd demo
-            gh-pages --dist .
+            gh-pages --dist demo
 workflows:
   version: 2
   build:
