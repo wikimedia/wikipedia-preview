@@ -18,6 +18,7 @@ jobs:
     docker:
       - image: node:8.10.0
     steps:
+      - checkout
       - attach_workspace:
           at: dist
       - add_ssh_keys:
