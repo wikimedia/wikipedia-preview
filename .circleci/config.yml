@@ -20,12 +20,18 @@ jobs:
     steps:
       - attach_workspace:
           at: dist
+      - add_ssh_keys:
+          fingerprints:
+              - "c3:03:93:79:5d:c7:23:b8:4a:4d:5d:41:e3:38:3f:84"
       - run:
-          name: Update demo page on gh-pages
+          name: Install dependencies
           command: |
-            npm install -g --silent gh-pages@2.0.1
+            npm install -g --silent gh-pages@3.0.0
             git config user.email "ci-build@wikimedia.org"
             git config user.name "ci-build"
+      - run:
+          name: Deploy script to gh-pages
+          command: |
             gh-pages --dist dist/wikipedia-previews.production.js
 workflows:
   version: 2
