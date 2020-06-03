@@ -15,7 +15,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: ./demo
-  deploy-gh-pages:
+  update-demo-page:
     docker:
       - image: node:8.10.0
     steps:
@@ -32,7 +32,7 @@ jobs:
             git config user.email "ci-build@wikimedia.org"
             git config user.name "ci-build"
       - run:
-          name: Deploy script to gh-pages
+          name: Deploy to gh-pages
           command: |
             gh-pages --dist ./demo
 workflows:
@@ -40,7 +40,7 @@ workflows:
   build:
     jobs:
       - build
-      - deploy-gh-pages:
+      - update-demo-page:
           requires:
             - build
           filters:
