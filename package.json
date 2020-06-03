@@ -1,0 +1,41 @@
+{
+  "name": "wikipedia-previews",
+  "version": "1.0.3",
+  "description": "Shows Wikipedia article preview in a popup",
+  "main": "dist/wikipedia-previews.production.js",
+  "scripts": {
+    "test": "mocha --require @babel/register",
+    "test:watch": "mocha --require @babel/register -w",
+    "coverage": "nyc npm test",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "build": "npm run build:dev && npm run build:prod",
+    "dev": "webpack-dev-server --mode development"
+  },
+  "author": "Wikimedia Foundation",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "bufferutil": "^4.0.1",
+    "canvas": "^2.6.1",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "jsdom": "^16.0.1",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "style-loader": "^1.1.3",
+    "utf-8-validate": "^5.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  },
+  "dependencies": {
+    "unfetch": "^4.1.0"
+  }
+}
