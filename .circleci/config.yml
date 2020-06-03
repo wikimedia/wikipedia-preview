@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Deploy script to gh-pages
           command: |
-            gh-pages --dist dist/wikipedia-previews.production.js
+            gh-pages --dist .
 workflows:
   version: 2
   build:
