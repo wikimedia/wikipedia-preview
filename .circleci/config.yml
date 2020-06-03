@@ -11,3 +11,30 @@ jobs:
             npm install
             npm run build
             npm run coverage
+      - persist_to_workspace:
+          root: dist
+          paths: wikipedia-previews.production.js
+  deploy-gh-pages:
+    docker:
+      - image: circleci/node:12.0-browsers
+    steps:
+      - attach_workspace:
+          at: dist
+      - run:
+          name: Update demo page on gh-pages
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@wikimedia.org"
+            git config user.name "ci-build"
+            gh-pages --dist dist/wikipedia-previews.production.js
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - deploy-gh-pages
+          requires:
+            - build
+          filters:
+            branches:
+              only: T240012-ci-demo
