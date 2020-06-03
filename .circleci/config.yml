@@ -27,8 +27,6 @@ jobs:
           name: Install dependencies
           command: |
             npm install -g --silent gh-pages@3.0.0
-            git config user.email "ci-build@wikimedia.org"
-            git config user.name "ci-build"
       - run:
           name: Deploy script to gh-pages
           command: |
