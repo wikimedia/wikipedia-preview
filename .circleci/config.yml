@@ -15,8 +15,8 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
-        name: Run Selenium tests
-        command: npm run dev & npm run selenium
+          name: Run Selenium tests
+          command: npm run dev & npm run selenium
       - run:
           name: Prepare demo
           command: ./scripts/demo.sh
