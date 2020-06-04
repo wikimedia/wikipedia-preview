@@ -11,7 +11,7 @@
     "build:prod": "webpack --mode production",
     "build": "npm run build:dev && npm run build:prod",
     "dev": "webpack-dev-server --mode development",
-    "selenium": "npm wdio wdio.conf.js"
+    "selenium": "wdio wdio.conf.js"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
