@@ -16,7 +16,7 @@ jobs:
           command: npm run coverage
       - run:
           name: Start app locally
-          command: npm run dev
+          command: npm run dev &
       - run:
           name: Run Chrome tests
           command: npm run selenium-chrome
