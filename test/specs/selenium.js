@@ -1,11 +1,12 @@
-describe('webdriver.io page', () => {
+const assert = require('assert')
 
-    beforeEach(async ()=>{
-        await browser.url('http://localhost:8080/')
-        const title = await browser.getTitle()
+describe('wikipedia preview - ', () => {
+
+    beforeEach( async ()=>{
+        await browser.url('http://localhost:8080')
     })
 
-    it.only('should open article on another tab', async () => {
+    it('should open article on another tab', async (done) => {
         el = await $('div.content-en span:nth-child(1)')
         await el.click()
         el=await $('div.wp-text-content > div.wp-title')
@@ -15,5 +16,6 @@ describe('webdriver.io page', () => {
         el=await $('a.wp-link')
         await el.click()
         await browser.switchWindow("en.wikipedia.org/wiki/Cat")
+        assert.strictEqual(await browser.getTitle(), 'Cat - Wikipedia')
     })
 })
