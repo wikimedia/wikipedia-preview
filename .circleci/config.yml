@@ -15,23 +15,20 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
-          name: Start app locally
-          command: npm run dev &
-      - run:
           name: Run Chrome tests
-          command: npm run selenium-chrome
+          command: npm run dev & npm run selenium-chrome
       - run:
           name: Run Firefox tests
-          command: npm run selenium-firefox
+          command: npm run dev & npm run selenium-firefox
       - run:
           name: Run IE tests
-          command: npm run selenium-ie
+          command: npm run dev & npm run selenium-ie
       - run:
           name: Run Safari tests
-          command: npm run selenium-safari
+          command: npm run dev & npm run selenium-safari
       - run:
           name: Run Edge tests
-          command: npm run selenium-edge
+          command: npm run dev & npm run selenium-edge
       - run:
           name: Prepare demo
           command: ./scripts/demo.sh
