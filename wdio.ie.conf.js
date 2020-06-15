@@ -16,7 +16,7 @@ exports.config = {
     capabilities: [{
         name: 'wikipedia preview internet explorer',
         build: '1.0',
-        // platform: "windows",          // Gets latest version by default
+        platform: "windows 10",          // Gets latest version by default
         browserName: 'internet explorer',     // To specify version, add version: "desired version"
         record_video: 'true',
         record_network: 'false'
