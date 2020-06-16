@@ -1,22 +1,18 @@
-import { cachedFetch } from './cachedFetch'
+import { cachedRequest } from './cachedRequest'
 
-const fetchPagePreview = (lang, title, fetch=cachedFetch) => {
+const requestPagePreview = (lang, title, callback, request=cachedRequest) => {
 	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
-	return fetch(url, (data) => {
-		if (data.type !== 'standard') {
-			// don't show popup for disambiguation or redirect
-			return false
+	request(url, data => {
+		if (data.type === 'standard' && data.dir === 'ltr') {
+			return {
+				title: data.displaytitle,
+				extractHtml: data.extract_html,
+				pageUrl: data.content_urls.desktop.page,
+				imgUrl: data.thumbnail ? data.thumbnail.source : null
+			}
 		}
-		if (data.dir !== 'ltr') {
-			return false
-		}
-		return {
-			title: data.displaytitle,
-			extractHtml: data.extract_html,
-			pageUrl: data.content_urls.desktop.page,
-			imgUrl: data.thumbnail ? data.thumbnail.source : null
-		}
-	})
+		return false
+	}, callback)
 }
 
-export { fetchPagePreview }
+export { requestPagePreview }
