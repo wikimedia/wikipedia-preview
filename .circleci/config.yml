@@ -15,16 +15,16 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
-          name: Run Chrome tests
+          name: Run Chrome test
           command: npm run dev & npm run selenium-chrome
       - run:
-          name: Run Firefox tests
+          name: Run Firefox test
           command: npm run dev & npm run selenium-firefox
       - run:
-          name: Run IE tests
+          name: Run IE test
           command: npm run dev & npm run selenium-ie
       - run:
-          name: Run Safari tests
+          name: Run Safari test
           command: npm run dev & npm run selenium-safari
       - run:
           name: Run Edge tests
