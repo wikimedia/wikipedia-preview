@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { fetchPagePreview } = require('../src/api')
+const { fetchPagePreview } = require('../../src/api')
 
 const fetchMock = (data) => {
 	return (url, transformFn) => {
