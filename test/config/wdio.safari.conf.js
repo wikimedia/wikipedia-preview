@@ -3,7 +3,7 @@ exports.config = {
     hostname: "hub.crossbrowsertesting.com",
     port: 80,
     services: ['crossbrowsertesting'],
-    user: 'jpita-ctr@wikimedia.org',// the email address associated with your CBT account
+    user: process.env.CBT_USERNAME,// the email address associated with your CBT account
     key: process.env.CBTKEY,// find this under the "Manage Account page of our app"
     cbtTunnel: true,
     specs: [
