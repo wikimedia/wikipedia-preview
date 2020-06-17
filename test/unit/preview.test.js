@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { renderPreview } = require('../src/preview')
+const { renderPreview } = require('../../src/preview')
 
 describe('renderPreview', () => {
 	describe('with image (in english)', () => {

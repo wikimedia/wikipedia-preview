@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { msg } = require('../src/i18n')
+const { msg } = require('../../src/i18n')
 
 describe('msg', () => {
 	it('returns the localized key', () => {
