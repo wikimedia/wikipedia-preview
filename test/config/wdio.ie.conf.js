@@ -14,9 +14,9 @@ exports.config = {
         timeout: 20000
     },
     capabilities: [{
-        name: 'wikipedia preview internet explorer',
+        name: 'wikipedia preview internet explorer on: '+process.env.ENVIRONMENT,
         build: '1.0',
-        platform: "windows 10",          // Gets latest version by default
+        platform: "Windows 10",          // Gets latest version by default
         browserName: 'internet explorer',     // To specify version, add version: "desired version"
         record_video: 'true',
         record_network: 'false'

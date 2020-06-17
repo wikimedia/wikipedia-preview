@@ -14,7 +14,7 @@ exports.config = {
         timeout: 20000
     },
     capabilities: [{
-        name: 'wikipedia preview firefox',
+        name: 'wikipedia preview firefox on: '+process.env.ENVIRONMENT,
         build: '1.0',
         platform: "Windows 10",          // Gets latest version by default
         browserName: 'firefox',     // To specify version, add version: "desired version"

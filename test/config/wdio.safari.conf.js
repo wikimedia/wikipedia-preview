@@ -14,7 +14,7 @@ exports.config = {
         timeout: 20000
     },
     capabilities: [{
-        name: 'wikipedia preview safari',
+        name: 'wikipedia preview safari on: '+process.env.ENVIRONMENT,
         build: '1.0',
         platform: "Mac OSX 10.14",          // Gets latest version by default
         browserName: 'safari',     // To specify version, add version: "desired version"
