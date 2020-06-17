@@ -7,7 +7,7 @@ module.exports = {
     key: process.env.CBTKEY,// find this under the "Manage Account page of our app"
     cbtTunnel: true,
     specs: [
-        './test/specs/**/*.js'
+        './test/e2e/specs/**/*.js'
     ],
     framework: 'mocha',
     mochaOpts: {
