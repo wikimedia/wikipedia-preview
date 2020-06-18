@@ -54,7 +54,7 @@ jobs:
       - run:
           name: Deploy demo
           command: |
-            gh-pages --dist demo
+            gh-pages --dist demo -m "Update demo [ci skip]"
 workflows:
   version: 2
   build:

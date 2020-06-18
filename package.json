@@ -51,8 +51,5 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1"
-  },
-  "dependencies": {
-    "unfetch": "^4.1.0"
   }
 }
