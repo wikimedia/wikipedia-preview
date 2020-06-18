@@ -1,23 +1,23 @@
 const assert = require('assert')
-const { requestPagePreview } = require('../src/api')
+const { fetchPagePreview } = require('../../src/api')
 
-const requestMock = (data) => {
-	return (url, transformFn, callback) => {
-		callback(transformFn(data))
+const fetchMock = (data) => {
+	return (url, transformFn) => {
+		return Promise.resolve(transformFn(data))
 	}
 }
 
-describe('requestPagePreview', () => {
+describe('fetchPagePreview', () => {
 	it('accepts standard articles only', () => {
-		requestPagePreview('lang', 'title', data => {
+		fetchPagePreview('lang', 'title', fetchMock({type: 'disambiguation'})).then((data) => {
 			assert.equal(data, false)
-		}, requestMock({type: 'disambiguation'}))
+		})
 	})
 
 	it ('accepts ltr articles only', () => {
-		requestPagePreview('lang', 'title', data => {
+		return fetchPagePreview('lang', 'title', fetchMock({type: 'standard', dir: 'rtl'})).then((data) => {
 			assert.equal(data, false)
-		}, requestMock({type: 'standard', dir: 'rtl'}))
+		})
 	})
 
 	it ('transforms the API output', () => {
@@ -35,9 +35,9 @@ describe('requestPagePreview', () => {
 			pageUrl: 'page-url',
 			imgUrl: 'image-url'
 		}
-		requestPagePreview('lang', 'title', data => {
+		return fetchPagePreview('lang', 'title', fetchMock(apiOutput)).then((data) => {
 			assert.deepEqual(data, transformedOutput)
-		}, requestMock(apiOutput))
+		})
 	})
 
 	it ('transforms the API output (without image)', () => {
@@ -54,19 +54,19 @@ describe('requestPagePreview', () => {
 			pageUrl: 'page-url',
 			imgUrl: null
 		}
-		requestPagePreview('lang', 'title', data => {
+		return fetchPagePreview('lang', 'title', fetchMock(apiOutput)).then((data) => {
 			assert.deepEqual(data, transformedOutput)
-		}, requestMock(apiOutput))
+		})
 	})
 
 	it ('uses the specified language in the URL', () => {
-		requestPagePreview('fr', 'title', () => {}, url => {
+		return fetchPagePreview('fr', 'title', (url) => {
 			assert(url.startsWith('https://fr.wikipedia.org/'))
 		})
 	})
 
 	it ('encodes the page title in the URL', () => {
-		requestPagePreview('fr', "L'Époque des Châteaux", () => {}, url => {
+		return fetchPagePreview('fr', "L'Époque des Châteaux", (url) => {
 			assert(url.endsWith("L'%C3%89poque%20des%20Ch%C3%A2teaux"))
 		})
 	})
