@@ -1,14 +1,10 @@
 const assert = require('assert')
-const axios = require("axios");
+const axios = require('axios');
 
 describe('wikipedia preview - ', () => {
 
-    beforeEach( async ()=>{
-        await browser.url('http://localhost:8080')
-    })
-
     it('should open article on another tab', async (done) => {
-        console.log("GETSESSION+  "+browser.sessionId)
+        await browser.url('http://localhost:8080')
         el = await $('div.content-en span:nth-child(1)')
         await el.click()
         el=await $('div.wp-text-content > div.wp-title')
@@ -34,7 +30,7 @@ describe('wikipedia preview - ', () => {
                 }
         )
           } catch (error) {
-            console.error("ERRROOOORRR"+error);
+            console.error("Error on afterEach: "+error);
           }
     });
 })
