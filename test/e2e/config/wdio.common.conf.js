@@ -11,6 +11,6 @@ module.exports = {
     ],
     framework: 'mocha',
     mochaOpts: {
-        timeout: 20000
+        timeout: 30000
     }
 }
