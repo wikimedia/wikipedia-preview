@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { cachedFetch } = require('../../src/cachedFetch')
+const { cachedFetch } = require('../../src/cachedRequest')
 
 const fetchMock = (data) => {
 	return () => {
