@@ -11,7 +11,7 @@ const messages = {
 }
 
 const msg = (lang, key) => {
-	return (messages[lang] || messages.en)[key]
+	return (messages[lang] || messages.en)[key] || key
 }
 
 export { msg }

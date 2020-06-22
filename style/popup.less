@@ -1,3 +1,103 @@
+.wikipediapreviews {
+	width: 350px;
+	display: flex;
+	flex-direction: column;
+
+	* {
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	&-header {
+		display: flex;
+		height: 62px;
+		line-height: 62px;
+		&-image {
+			background-position: center;
+			background-size: 65px auto;
+			height: 100%;
+			width: 65px;
+		}
+
+		&-wordmark {
+			background-color: #eaf3ff;
+			height: 100%;
+			flex-grow: 1;
+			font-size: 24px;
+			padding-left: 13px;
+			color: #72777d;
+			font-family: 'Linux Libertine','Georgia','Times',serif;
+		}
+
+		&-closebtn {
+			cursor: pointer;
+			background-color: #eaf3ff;
+			height: 100%;
+			text-align: center;
+			width: 65px;
+			color: #72777d;
+			font-family: 'Linux Libertine','Georgia','Times',serif;
+		}
+	}
+
+	&-body {
+		background-color: white;
+		height: 248px;
+		overflow: hidden;
+
+		padding: 10px 20px;
+		p {
+			font-family: Lato, sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #202122;
+			line-height: 1.6;
+			font-size: 18px;
+		}
+	}
+
+	&-footer {
+		&-cta {
+			width: 100%;
+			height: 50px;
+			text-decoration: none;
+			text-align: center;
+			padding: 16px;
+			font-size: 18px;
+			color: #3366cc;
+
+			&-readmore {
+				cursor: pointer;
+				display: block;
+			}
+
+			&-readonwiki {
+				display: none;
+			}
+		}
+	}
+
+	&.expanded {
+		.wikipediapreviews-body {
+			height: unset;
+			overflow: unset;
+		}
+
+		.wikipediapreviews-footer-cta {
+			&-readmore {
+				display: none;
+			}
+
+			&-readonwiki {
+				display: block;
+			}
+		}
+	}
+}
+
+
+
+
 .wp-popup {
 	box-sizing: border-box;
 	padding: 0;
@@ -6,66 +106,66 @@
 	border-radius: 2px;
 	background-color: white;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
-	height: 200px;
-	width: auto;
+	// height: 200px;
+	// width: auto;
 	z-index: 110;
 
-	* {
-		box-sizing: border-box;
-	}
+	// * {
+	// 	box-sizing: border-box;
+	// }
 
-	.wp-article-preview {
-		display: flex;
+	// .wp-article-preview {
+	// 	display: flex;
 
-		.wp-text-content {
-			width: 200px;
-			height: 200px;
-			padding: 10px;
-			display: flex;
-			flex-direction: column;
+	// 	.wp-text-content {
+	// 		width: 200px;
+	// 		height: 200px;
+	// 		padding: 10px;
+	// 		display: flex;
+	// 		flex-direction: column;
 
-			.wp-title {
-				font-size: 20px;
-				font-family: 'Linux Libertine','Georgia','Times',serif;
-			}
+	// 		.wp-title {
+	// 			font-size: 20px;
+	// 			font-family: 'Linux Libertine','Georgia','Times',serif;
+	// 		}
 
-			.wp-preview {
-				font-size: 14px;
-				flex-grow: 1;
-				font-family: sans-serif;
+	// 		.wp-preview {
+	// 			font-size: 14px;
+	// 			flex-grow: 1;
+	// 			font-family: sans-serif;
 
-				p {
-					padding: 0;
-					margin: 0;
-					overflow: hidden;
-					line-height: 20px;
-					max-height: 140px;
+	// 			p {
+	// 				padding: 0;
+	// 				margin: 0;
+	// 				overflow: hidden;
+	// 				line-height: 20px;
+	// 				max-height: 140px;
 
-					&:after {
-						content: ' ';
-						position: absolute;
-						bottom: 25px;
-						left: 10px;
-						right: 200px;
-						top: 160px;
-						background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-						background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-						background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-					}
-				}
+	// 				&:after {
+	// 					content: ' ';
+	// 					position: absolute;
+	// 					bottom: 25px;
+	// 					left: 10px;
+	// 					right: 200px;
+	// 					top: 160px;
+	// 					background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	// 					background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	// 					background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	// 					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	// 				}
+	// 			}
 
-				.wp-link {
-					font-family: 'Linux Libertine';
-				}
-			}
-		}
+	// 			.wp-link {
+	// 				font-family: 'Linux Libertine';
+	// 			}
+	// 		}
+	// 	}
 
-		.wp-image {
-			width: 200px;
-			height: 200px;
-			background-size: cover;
-		    background-position: center;
-		}
-	}
+	// 	.wp-image {
+	// 		width: 200px;
+	// 		height: 200px;
+	// 		background-size: cover;
+	// 	    background-position: center;
+	// 	}
+	// }
 }

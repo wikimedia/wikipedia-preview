@@ -1,18 +1,17 @@
-import { msg } from './i18n'
-
 const renderPreview = (lang, data) => {
-	const image = data.imgUrl ?
-		`<div class="wp-image" style="background-image: url('${data.imgUrl}');" />` :
-		'';
-	const wp = msg(lang, 'wikipedia')
+	const imageUrl = data.imgUrl || 'w-icon-url'
 	return `
-		<div class="wp-article-preview">
-			<div class="wp-text-content">
-				<div class="wp-title">${data.title}</div>
-				<div class="wp-preview">${data.extractHtml}</div>
-				<a class="wp-link" href="${data.pageUrl}" target="_blank">${wp}</a>
+		<div class="wikipediapreviews">
+			<div class="wikipediapreviews-header">
+				<div class="wikipediapreviews-header-image" style="background-image:url('${imageUrl}')"></div>
+				<div class="wikipediapreviews-header-wordmark">WikipediA</div>
+				<div class="wikipediapreviews-header-closebtn">X</div>
 			</div>
-			${image}
+			<div class="wikipediapreviews-body">${data.extractHtml}</div>
+			<div class="wikipediapreviews-footer">
+				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">Continue Reading</span>
+				<a href="${data.pageUrl}" class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readonwiki">Read more on Wikipedia<a>
+			</div>
 		</div>
 	`.trim()
 }
