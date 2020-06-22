@@ -1,11 +1,10 @@
 
 const request = (url, callback) => {
 	const xhr = new XMLHttpRequest()
-	xhr.responseType = 'json'
 	xhr.open('GET', url)
 	xhr.send()
 	xhr.addEventListener('load', () => {
-		callback(xhr.response)
+		callback(JSON.parse(xhr.responseText))
 	})
 	xhr.addEventListener('error', () => {
 		callback(null, xhr.status)
