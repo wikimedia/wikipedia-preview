@@ -92,5 +92,5 @@ To use a language different than the language specified in the options, use the 
 
 ## Acknowledgements/Contributors
 
-This is heavily inspired by [jquery.wikilookup](https://github.com/mooeypoo/jquery.wikilookup) and [Page Preview](https://www.mediawiki.org/wiki/Page_Previews).
+This is heavily inspired by [jquery.wikilookup](https://github.com/mooeypoo/jquery.wikilookup) and [Page Previews](https://www.mediawiki.org/wiki/Page_Previews).
 
