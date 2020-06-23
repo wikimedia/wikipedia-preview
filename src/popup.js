@@ -21,18 +21,20 @@ const withPx = (value) => {
 }
 
 let popup
+// @todo detect whether mobile or desktop browser
+const isMobile = false
 
 const createPopup = (container, win=window) => {
 	let currentTargetElement
 	if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
-		popup.classList.add('wp-popup')
+		popup.classList.add('wp-popup', isMobile ? 'mobile' : 'desktop')
 		popup.style.visibility = 'hidden'
 		container.appendChild(popup)
 	}
 
-	const onMouseLeave = e => {
+	const destroyPopup = e => {
 		const toElement = e.toElement || e.relatedTarget
 		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
 			close()
@@ -49,16 +51,29 @@ const createPopup = (container, win=window) => {
 	}
 
 	const closeAllEvents = () => {
-		if (currentTargetElement) {
-			currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
+		if (currentTargetElement) {	
+			if ( !isMobile ) {
+				currentTargetElement.removeEventListener('mouseleave', destroyPopup)
+			}	
 			currentTargetElement = null
 		}
 
 		popup.element.closeBtn.removeEventListener('click', close)
 		popup.element.readMore.removeEventListener('click', onExpand)
+
+		if ( isMobile ) {
+			// do something 
+		} else {
+			popup.removeEventListener('mouseleave', destroyPopup)	
+		}
 	}
 
-	popup.addEventListener('mouseleave', onMouseLeave)
+	if ( isMobile ) {
+		// do something
+		window.removeEventListener('click', destroyPopup)
+	} else {
+		popup.addEventListener('mouseleave', destroyPopup)
+	}
 
 	const show = (content, nextTo) => {
 		popup.innerHTML = content
@@ -68,34 +83,46 @@ const createPopup = (container, win=window) => {
 			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore')
 		}
 
-		const scrollX = (win.pageXOffset !== undefined)
+		if ( !isMobile ) {
+			const scrollX = (win.pageXOffset !== undefined)
 			? win.pageXOffset
 			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
 
-		const scrollY = (win.pageYOffset !== undefined)
-			? win.pageYOffset
-			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollTop
+			const scrollY = (win.pageYOffset !== undefined)
+				? win.pageYOffset
+				: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollTop
 
-		const position = computePopupPosition(
-			nextTo.getBoundingClientRect(),
-			popup.offsetWidth,
-			scrollX,
-			scrollY,
-			win.innerWidth,
-			win.innerHeight
-		);
-		popup.style.left = withPx(position.left)
-		popup.style.right = withPx(position.right)
-		popup.style.top = withPx(position.top)
-		popup.style.bottom = withPx(position.bottom)
+			const position = computePopupPosition(
+				nextTo.getBoundingClientRect(),
+				popup.offsetWidth,
+				scrollX,
+				scrollY,
+				win.innerWidth,
+				win.innerHeight
+			);
+			popup.style.left = withPx(position.left)
+			popup.style.right = withPx(position.right)
+			popup.style.top = withPx(position.top)
+			popup.style.bottom = withPx(position.bottom)
+		}
+		
 
 		currentTargetElement = nextTo
-		currentTargetElement.addEventListener('mouseleave', onMouseLeave)
+
+		if ( isMobile ) {
+			// do someting
+		} else {
+			currentTargetElement.addEventListener('mouseleave', destroyPopup)
+		}
+		
 
 		popup.style.visibility = 'visible'
 	
 		popup.element.closeBtn.addEventListener('click', close)
 		popup.element.readMore.addEventListener('click', onExpand)
+		if ( isMobile ) {
+			window.addEventListener('click', destroyPopup)
+		}
 	}
 
 	return { show, close }

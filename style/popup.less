@@ -1,5 +1,4 @@
 .wikipediapreviews {
-	width: 350px;
 	display: flex;
 	flex-direction: column;
 
@@ -114,6 +113,20 @@
 	// height: 200px;
 	// width: auto;
 	z-index: 110;
+
+	&.desktop {
+		.wikipediapreviews {
+			width: 350px;
+		}
+	}
+	&.mobile {
+		bottom: 0px;
+		width: calc(100vw);
+
+		.wikipediapreviews {
+			// empty
+		}
+	}
 
 	// * {
 	// 	box-sizing: border-box;
