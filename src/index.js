@@ -1,6 +1,8 @@
 import { requestPagePreview } from './api'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
+import { isMobileDevice } from './const'
+
 import '../style/popup.less'
 
 function init({
@@ -10,9 +12,6 @@ function init({
 	popupContainer = document.body }) {
 	const globalLang = lang
 	const popup 	 = createPopup(popupContainer)
-
-	// @todo detect whether mobile or desktop browser
-	const isMobile = false
 
 	const showPopup = ({ target }) => {
 		const title = target.getAttribute('data-wp-title') || target.textContent
@@ -27,7 +26,7 @@ function init({
 	Array.prototype.forEach.call(
 		root.querySelectorAll(selector),
 		node => {
-			if ( isMobile ) {
+			if ( isMobileDevice ) {
 				node.addEventListener('click', showPopup)
 			} else {
 				node.addEventListener('mouseenter', showPopup)
@@ -38,7 +37,7 @@ function init({
 	// debug purpose :
 	// I use the following line to open the popup
 	// on the first link during testing
-	// mouseEnter({target: popupContainer.querySelector(selector)})
+	// showPopup({target: popupContainer.querySelector(selector)})
 }
 
 export { init }

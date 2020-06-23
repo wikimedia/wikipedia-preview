@@ -105,7 +105,6 @@
 .wp-popup {
 	box-sizing: border-box;
 	padding: 0;
-	position: absolute;
 	border: solid rgba( 0, 0, 0, 0.05 ) 1px;
 	border-radius: 2px;
 	background-color: white;
@@ -114,13 +113,19 @@
 	// width: auto;
 	z-index: 110;
 
+	// @todo use import desktop less
 	&.desktop {
+		position: absolute;
 		.wikipediapreviews {
 			width: 350px;
 		}
 	}
+
+	// @todo use import mobile less
 	&.mobile {
+		position: fixed;
 		bottom: 0px;
+		left: 0px;
 		width: calc(100vw);
 
 		.wikipediapreviews {

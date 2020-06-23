@@ -1,4 +1,6 @@
 
+import { isMobileDevice } from './const'
+
 const computePopupPosition = (
 	targetRect, popupWidth, scrollX, scrollY, innerWidth, innerHeight
 ) => {
@@ -21,15 +23,13 @@ const withPx = (value) => {
 }
 
 let popup
-// @todo detect whether mobile or desktop browser
-const isMobile = false
 
 const createPopup = (container, win=window) => {
 	let currentTargetElement
 	if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
-		popup.classList.add('wp-popup', isMobile ? 'mobile' : 'desktop')
+		popup.classList.add('wp-popup', isMobileDevice ? 'mobile' : 'desktop')
 		popup.style.visibility = 'hidden'
 		container.appendChild(popup)
 	}
@@ -51,28 +51,17 @@ const createPopup = (container, win=window) => {
 	}
 
 	const closeAllEvents = () => {
-		if (currentTargetElement) {	
-			if ( !isMobile ) {
-				currentTargetElement.removeEventListener('mouseleave', destroyPopup)
-			}	
-			currentTargetElement = null
-		}
-
 		popup.element.closeBtn.removeEventListener('click', close)
 		popup.element.readMore.removeEventListener('click', onExpand)
 
-		if ( isMobile ) {
-			// do something 
+		if ( isMobileDevice ) {
+			window.removeEventListener('click', destroyPopup)
 		} else {
 			popup.removeEventListener('mouseleave', destroyPopup)	
+			currentTargetElement.removeEventListener('mouseleave', destroyPopup)
 		}
-	}
 
-	if ( isMobile ) {
-		// do something
-		window.removeEventListener('click', destroyPopup)
-	} else {
-		popup.addEventListener('mouseleave', destroyPopup)
+		currentTargetElement = null
 	}
 
 	const show = (content, nextTo) => {
@@ -83,7 +72,7 @@ const createPopup = (container, win=window) => {
 			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore')
 		}
 
-		if ( !isMobile ) {
+		if ( !isMobileDevice ) {
 			const scrollX = (win.pageXOffset !== undefined)
 			? win.pageXOffset
 			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
@@ -105,23 +94,18 @@ const createPopup = (container, win=window) => {
 			popup.style.top = withPx(position.top)
 			popup.style.bottom = withPx(position.bottom)
 		}
-		
 
 		currentTargetElement = nextTo
-
-		if ( isMobile ) {
-			// do someting
-		} else {
-			currentTargetElement.addEventListener('mouseleave', destroyPopup)
-		}
-		
-
 		popup.style.visibility = 'visible'
 	
 		popup.element.closeBtn.addEventListener('click', close)
 		popup.element.readMore.addEventListener('click', onExpand)
-		if ( isMobile ) {
+
+		if ( isMobileDevice ) {
 			window.addEventListener('click', destroyPopup)
+		} else {
+			popup.addEventListener('mouseleave', destroyPopup)
+			currentTargetElement.addEventListener('mouseleave', destroyPopup)
 		}
 	}
 
