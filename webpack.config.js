@@ -4,7 +4,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '(SET AT THE BOTTOM OF THIS FILE)',
-    library: 'wikipediaPreviews',
+    library: 'wikipediaPreview',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
