@@ -54,6 +54,6 @@ const config = {
   }
 };
 module.exports = (env, argv) => {
-  config.output.filename = 'wikipedia-previews.' + argv.mode + '.js';
+  config.output.filename = 'wikipedia-preview.' + argv.mode + '.js';
   return config;
 };
