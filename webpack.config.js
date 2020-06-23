@@ -4,7 +4,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '(SET AT THE BOTTOM OF THIS FILE)',
-    library: 'wikipediaPreviews',
+    library: 'wikipediaPreview',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -54,6 +54,6 @@ const config = {
   }
 };
 module.exports = (env, argv) => {
-  config.output.filename = 'wikipedia-previews.' + argv.mode + '.js';
+  config.output.filename = 'wikipedia-preview.' + argv.mode + '.js';
   return config;
 };
