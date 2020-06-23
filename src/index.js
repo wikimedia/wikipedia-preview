@@ -24,7 +24,7 @@ function init({root, selector, lang, popupContainer}={}) {
 	Array.prototype.forEach.call(
 		root.querySelectorAll(selector),
 		function (node) {
-			node.className += " wikipedia-preview-style"
+			node.className += " wp-style"
 			node.addEventListener('mouseenter', mouseEnter)
 		}
 	)
