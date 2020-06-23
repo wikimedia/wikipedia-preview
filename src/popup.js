@@ -39,18 +39,35 @@ const createPopup = (container, win=window) => {
 		}
 	}
 
+	const onExpand = () => {
+		popup.element.wikipediapreviews.classList.add('expanded')
+	}
+
 	const close = () => {
 		popup.style.visibility = 'hidden'
+		closeAllEvents()
+	}
+
+	const closeAllEvents = () => {
 		if (currentTargetElement) {
 			currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
 			currentTargetElement = null
 		}
+
+		popup.element.closeBtn.removeEventListener('click', close)
+		popup.element.readMore.removeEventListener('click', onExpand)
 	}
 
 	popup.addEventListener('mouseleave', onMouseLeave)
 
 	const show = (content, nextTo) => {
 		popup.innerHTML = content
+		popup.element = {
+			wikipediapreviews: popup.querySelector('.wikipediapreviews'),
+			closeBtn: popup.querySelector('.wikipediapreviews-header-closebtn'),
+			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore')
+		}
+
 		const scrollX = (win.pageXOffset !== undefined)
 			? win.pageXOffset
 			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
@@ -76,9 +93,12 @@ const createPopup = (container, win=window) => {
 		currentTargetElement.addEventListener('mouseleave', onMouseLeave)
 
 		popup.style.visibility = 'visible'
+	
+		popup.element.closeBtn.addEventListener('click', close)
+		popup.element.readMore.addEventListener('click', onExpand)
 	}
 
-	return { show, close, element: popup }
+	return { show, close }
 }
 
 export { createPopup, computePopupPosition }
