@@ -5,7 +5,7 @@ module.exports = {
     services: ['crossbrowsertesting'],
     user: process.env.CBT_USERNAME,// the email address associated with your CBT account
     key: process.env.CBTKEY,// find this under the "Manage Account page of our app"
-    cbtTunnel: true,
+    // cbtTunnel: true,
     specs: [
         './test/e2e/specs/**/*.js'
     ],

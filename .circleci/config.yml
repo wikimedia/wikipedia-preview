@@ -15,26 +15,26 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
-          name: Run Chrome test
-          command: npm run dev & npm run selenium-chrome
-      - run:
-          name: Run Firefox test
-          command: npm run dev & npm run selenium-firefox
-      - run:
-          name: Run IE test
-          command: npm run dev & npm run selenium-ie
-      - run:
-          name: Run Safari test
-          command: npm run dev & npm run selenium-safari
-      - run:
-          name: Run Edge tests
-          command: npm run dev & npm run selenium-edge
-      - run:
           name: Prepare demo
           command: ./scripts/demo.sh
       - persist_to_workspace:
           root: .
           paths: ./demo
+      - run:
+          name: Run Chrome test
+          command: npm run selenium-chrome
+      - run:
+          name: Run Firefox test
+          command: npm run selenium-firefox
+      - run:
+          name: Run IE test
+          command: npm run selenium-ie
+      - run:
+          name: Run Safari test
+          command: npm run selenium-safari
+      - run:
+          name: Run Edge tests
+          command: npm run selenium-edge
   update-demo:
     docker:
       - image: node:8.10.0
