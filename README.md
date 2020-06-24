@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-previews/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-previews/tree/master)
+[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master)
 
-# Wikipedia Previews
+# Wikipedia Preview
 
-Wikipedia previews allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
+Wikipedia preview allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
 
 <img src="/screenshot.png" height="200" alt="Chat"/>
 
@@ -21,12 +21,12 @@ It is a small Javascript component that does not have any dependencies (other th
 ### Standalone Script
 
 ```html
-<script src="wikipedia-previews.production.js"></script>
+<script src="wikipedia-preview.production.js"></script>
 <script type="text/javascript">
-  wikipediaPreviews.init()
+  wikipediaPreview.init()
 </script>
 ```
-You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-previews@1.0.0/dist/wikipedia-previews.production.js).
+You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@1.0.0/dist/wikipedia-preview.production.js).
 
 Note: If you need to support Internet Explorer, please include a `Promise` polyfill.
 
@@ -37,12 +37,12 @@ Example
 
 ### NPM
 ```bash
-$ npm install wikipedia-previews --save
+$ npm install wikipedia-preview --save
 ```
 
 ```javascript
-const wikipediaPreviews = require('wikipedia-previews')
-wikipediaPreviews.init()
+const wikipediaPreview = require('wikipedia-preview')
+wikipediaPreview.init()
 ```
 
 ### Options of the init function
@@ -65,7 +65,7 @@ Example
 ```
 
 ```javascript
-wikipediaPreviews.init({
+wikipediaPreview.init({
 	root: document.querySelector('.content'),
 	selector: '.wiki',
 	popupContainer: '.popup-container',

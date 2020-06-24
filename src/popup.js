@@ -32,7 +32,8 @@ const createPopup = (container, win=window) => {
 		container.appendChild(popup)
 	}
 
-	const onMouseLeave = ({toElement}) => {
+	const onMouseLeave = e => {
+		const toElement = e.toElement || e.relatedTarget
 		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
 			popup.style.visibility = 'hidden'
 			if (currentTargetElement) {
