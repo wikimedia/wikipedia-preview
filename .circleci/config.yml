@@ -20,21 +20,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: ./demo
-      - run:
-          name: Run Chrome test
-          command: npm run selenium-chrome
-      - run:
-          name: Run IE test
-          command: npm run selenium-ie
-      - run:
-          name: Run Edge tests
-          command: npm run selenium-edge
-      - run:
-          name: Run Firefox test
-          command: npm run selenium-firefox
-      - run:
-          name: Run Safari test
-          command: npm run selenium-safari
   update-demo:
     docker:
       - image: node:8.10.0
@@ -54,12 +39,33 @@ jobs:
       - run:
           name: Deploy demo
           command: |
-            gh-pages --dist demo -m "Update demo [ci skip]"
+            gh-pages --dist demo
+  selenium: 
+    docker: 
+      - image: circleci/node:12.0-browsers
+    parallelism: 5
+    steps:
+      - run:
+          name: Run Chrome test
+          command: npm run selenium-chrome
+      - run:
+          name: Run Edge tests
+          command: npm run selenium-edge
+      - run:
+          name: Run Firefox test
+          command: npm run selenium-firefox
+      - run:
+          name: Run IE test
+          command: npm run selenium-ie
+      - run:
+          name: Run Safari test
+          command: npm run selenium-safari
 workflows:
   version: 2
   build:
     jobs:
       - build
+      - selenium
       - update-demo:
           requires:
             - build
