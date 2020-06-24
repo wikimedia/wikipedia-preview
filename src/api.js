@@ -1,6 +1,6 @@
-import { cachedFetch } from './cachedFetch'
+import { cachedRequest } from './cachedRequest'
 
-const fetchPagePreview = (lang, title, fetch=cachedFetch) => {
+const fetchPagePreview = (lang, title, fetch=cachedRequest) => {
 	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
 	return fetch(url, (data) => {
 		if (data.type !== 'standard') {
