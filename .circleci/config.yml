@@ -47,6 +47,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Prepare
+          command: npm install
+      - run:
           name: Run Selenium tests
           command: wdio $(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split)
 workflows:
