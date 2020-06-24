@@ -45,6 +45,10 @@ jobs:
       - image: circleci/node:12.0-browsers
     parallelism: 4
     steps:
+      - checkout
+      - run:
+          name: Prepare
+          command: npm install
       - run:
           name: Run Chrome test
           command: npm run selenium-chrome
