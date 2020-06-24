@@ -25,15 +25,15 @@ const withPx = (value) => {
 let popup
 
 const createPopup = (container, win=window) => {
-	// if (!popup) {
+	if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
 		popup.classList.add('wp-popup', isMobileDevice ? 'mobile' : 'desktop')
 		popup.style.visibility = 'hidden'
 		container.appendChild(popup)
-	// }
+	}
 
-	const popupEvents = { /* onShow, onHide */}
+	const popupEvents = {/* onShow, onHide */}
 
 	const destroy = (e, force = false)  => {
 		const toElement = e.toElement || e.relatedTarget || e.target
