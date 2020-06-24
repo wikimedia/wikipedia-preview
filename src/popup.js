@@ -25,53 +25,29 @@ const withPx = (value) => {
 let popup
 
 const createPopup = (container, win=window) => {
-	let currentTargetElement
-	if (!popup) {
+	// if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
 		popup.classList.add('wp-popup', isMobileDevice ? 'mobile' : 'desktop')
 		popup.style.visibility = 'hidden'
 		container.appendChild(popup)
-	}
+	// }
 
-	const destroyPopup = e => {
+	const popupEvents = { /* onShow, onHide */}
+
+	const destroy = (e, force = false)  => {
 		const toElement = e.toElement || e.relatedTarget || e.target
-		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
-			close()
+		if (force || ( toElement !== popup.currentTargetElement && !popup.contains(toElement))) {
+			if ( popupEvents.onhide ) {
+				popupEvents.onHide(popup)
+			}
+			popup.style.visibility = 'hidden'
+			popup.currentTargetElement = null
 		}
-	}
-
-	const onExpand = () => {
-		popup.element.wikipediapreviews.classList.add('expanded')
-	}
-
-	const close = () => {
-		popup.style.visibility = 'hidden'
-		closeAllEvents()
-	}
-
-	const closeAllEvents = () => {
-		popup.element.closeBtn.removeEventListener('click', close)
-		popup.element.readMore.removeEventListener('click', onExpand)
-
-		if ( isMobileDevice ) {
-			window.removeEventListener('click', destroyPopup)
-		} else {
-			popup.removeEventListener('mouseleave', destroyPopup)	
-			currentTargetElement.removeEventListener('mouseleave', destroyPopup)
-		}
-
-		currentTargetElement = null
 	}
 
 	const show = (content, nextTo) => {
 		popup.innerHTML = content
-		popup.element = {
-			wikipediapreviews: popup.querySelector('.wikipediapreviews'),
-			closeBtn: popup.querySelector('.wikipediapreviews-header-closebtn'),
-			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore'),
-			content: popup.querySelector('.wikipediapreviews-body > p')
-		}
 
 		if ( !isMobileDevice ) {
 			const scrollX = (win.pageXOffset !== undefined)
@@ -96,26 +72,24 @@ const createPopup = (container, win=window) => {
 			popup.style.bottom = withPx(position.bottom)
 		}
 
-		// @todo update the magic number 248
-		if ( popup.element.content.getBoundingClientRect().height < 248) {
-			onExpand()
-		}
-
-		currentTargetElement = nextTo
+		popup.currentTargetElement = nextTo
 		popup.style.visibility = 'visible'
 	
-		popup.element.closeBtn.addEventListener('click', close)
-		popup.element.readMore.addEventListener('click', onExpand)
-
-		if ( isMobileDevice ) {
-			window.addEventListener('click', destroyPopup)
-		} else {
-			popup.addEventListener('mouseleave', destroyPopup)
-			currentTargetElement.addEventListener('mouseleave', destroyPopup)
+		if ( popupEvents.onShow ) {
+			popupEvents.onShow( popup )
 		}
 	}
 
-	return { show, close }
+	const subscribe = ( events = {} ) => {
+		if ( events.onShow ) {
+			popupEvents.onShow = events.onShow
+		}
+		if ( events.onHide ) {
+			popupEvents.onHide = events.onHide
+		}
+	}
+
+	return { show, destroy, subscribe }
 }
 
 export { createPopup, computePopupPosition }

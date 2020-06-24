@@ -14,9 +14,6 @@ describe('renderPreview', () => {
 		})
 		it('renders something', () => assert(output))
 
-		it('contains the title', () => 
-			assert(output.includes('<div class="wp-title">Cat</div>')))
-
 		it('contains the extract HTML', () => 
 			assert(output.includes('<p>A small domesticated feline</p>')))
 
@@ -24,7 +21,7 @@ describe('renderPreview', () => {
 			assert(output.includes('https://en.wikipedia.org/cat.png')))
 
 		it('contains a link to the article', () => 
-			assert(output.includes('<a class="wp-link" href="https://en.wikipedia.org/wiki/Cat"')))
+			assert(output.includes('<a href="https://en.wikipedia.org/wiki/Cat"')))
 	})
 
 	describe('without image (in french)', () => {
@@ -38,8 +35,5 @@ describe('renderPreview', () => {
 			})
 		})
 		it('renders something', () => assert(output))
-
-		it('contains the localized name of Wikipedia', () => 
-			assert(output.includes('Wikipédia')))
 	})
 })

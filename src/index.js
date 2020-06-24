@@ -1,7 +1,8 @@
 import { requestPagePreview } from './api'
+import { isMobileDevice } from './const'
+import { customEvents } from './event'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
-import { isMobileDevice } from './const'
 
 import '../style/popup.less'
 
@@ -11,7 +12,9 @@ function init({
 	lang = 'en', 
 	popupContainer = document.body }) {
 	const globalLang = lang
-	const popup 	 = createPopup(popupContainer)
+	const popup      = createPopup(popupContainer)
+	const events     = customEvents(popup)
+	popup.subscribe(events)
 
 	const showPopup = ({ target }) => {
 		const title = target.getAttribute('data-wp-title') || target.textContent
