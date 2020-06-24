@@ -35,7 +35,7 @@ const createPopup = (container, win=window) => {
 	}
 
 	const destroyPopup = e => {
-		const toElement = e.toElement || e.relatedTarget
+		const toElement = e.toElement || e.relatedTarget || e.target
 		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
 			close()
 		}
@@ -94,11 +94,11 @@ const createPopup = (container, win=window) => {
 			popup.style.right = withPx(position.right)
 			popup.style.top = withPx(position.top)
 			popup.style.bottom = withPx(position.bottom)
+		}
 
-			// @todo update the magic number 248
-			if ( popup.element.content.getBoundingClientRect().height < 248) {
-				onExpand()
-			}
+		// @todo update the magic number 248
+		if ( popup.element.content.getBoundingClientRect().height < 248) {
+			onExpand()
 		}
 
 		currentTargetElement = nextTo
