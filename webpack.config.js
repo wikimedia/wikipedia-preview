@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const LessPluginInlineSvg = require('less-plugin-inline-svg');
 
 const path = require('path');
 const config = {
@@ -60,7 +61,21 @@ const config = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            { 
+              loader: 'less-loader', options: { 
+                sourceMap: true, 
+                plugins:
+                [ 
+                  new LessPluginInlineSvg({
+                    base64: true
+                  }) 
+                ] 
+              } 
+            },
+          ],
       },
     ]
   }
