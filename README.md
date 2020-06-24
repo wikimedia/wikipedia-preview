@@ -8,7 +8,7 @@ Wikipedia preview allows you to provide context from Wikipedia about words or ph
 
 ## Built with
 
-It is a small Javascript component that does not have any dependencies (other than a `fetch` polyfill) and should be compatible with most browsers.
+It is a small Javascript component that does not have any dependencies and should be compatible with most browsers.
 
 ## Features
 
@@ -27,8 +27,6 @@ It is a small Javascript component that does not have any dependencies (other th
 </script>
 ```
 You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@1.0.0/dist/wikipedia-preview.production.js).
-
-Note: If you need to support Internet Explorer, please include a `Promise` polyfill.
 
 Example
 ```html
