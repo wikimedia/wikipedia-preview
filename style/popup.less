@@ -44,8 +44,8 @@
 			height: 62px;
 			line-height: 62px;
 			&-image {
-				// background-image: url('../images/wikipedia-logo.svg');
-				// background-size: cover;
+				background-image: inline-svg('../images/wikipedia-logo.svg');
+				background-size: auto;
 				background-position: center;
 				background-repeat: no-repeat;
 				height: 100%;
@@ -53,7 +53,7 @@
 			}
 	
 			&-wordmark {
-				// background-image: url('../images/wikipedia-wordmark.svg');
+				background-image: inline-svg('../images/wikipedia-wordmark.svg');
 				background-repeat: no-repeat;
 				background-color: #eaf3ff;
 				background-position: left;
@@ -67,7 +67,7 @@
 			}
 	
 			&-closebtn {
-				// background-image: url('../images/close.svg');
+				background-image: inline-svg('../images/close.svg');
 				background-repeat: no-repeat;
 				background-position: center;
 				cursor: pointer;
@@ -140,17 +140,25 @@
 		}
 
 		&-cc {
+			background-image: inline-svg('../images/cc-attribution.svg');
+			background-repeat: no-repeat;
 			position: absolute;
 			bottom: 0px;
 			right: 30px;
 			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
 		}
 
 		&-author {
+			background-image: inline-svg('../images/author-attribution.svg');
+			background-repeat: no-repeat;
 			position: absolute;
 			bottom: 0px;
 			right: 14px;
 			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
 		}
 	}
 }

@@ -1,4 +1,5 @@
 const path = require('path');
+const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const config = {
   entry: './src/index.js',
   output: {
@@ -47,7 +48,17 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
-          { loader: 'less-loader', options: { sourceMap: true } },
+          { 
+            loader: 'less-loader', options: { 
+              sourceMap: true, 
+              plugins:
+              [ 
+                new LessPluginInlineSvg({
+                  base64: true
+                }) 
+              ] 
+            } 
+          },
         ]
       }
     ]

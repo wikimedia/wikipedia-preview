@@ -1,13 +1,11 @@
-// @todo change the inline background image to stylesheets
-
 const renderPreview = (lang, data) => {
-	const imageUrl = data.imgUrl || '../images/wikipedia-logo.svg'
+	const imageUrl = data.imgUrl
 	return `
 		<div class="wikipediapreviews">
 			<div class="wikipediapreviews-header">
-				<div class="wikipediapreviews-header-image" style="background-image:url('${imageUrl}');background-size:${data.imgUrl ? 'cover' : 'auto'};"></div>
-				<div class="wikipediapreviews-header-wordmark" style="background-image:url('../images/wikipedia-trademark.svg')"></div>
-				<div class="wikipediapreviews-header-closebtn" style="background-image:url('../images/close.svg')"></div>
+				<div class="wikipediapreviews-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
+				<div class="wikipediapreviews-header-wordmark"></div>
+				<div class="wikipediapreviews-header-closebtn"></div>
 			</div>
 			<div class="wikipediapreviews-body">
 				${data.extractHtml}
@@ -18,9 +16,9 @@ const renderPreview = (lang, data) => {
 			<div class="wikipediapreviews-footer">
 				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">Continue Reading</span>
 				<a href="${data.pageUrl}" class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readonwiki" target="_blank">Read more on Wikipedia</a>
+				<div class="wikipediapreviews-cc"></div>
+				<div class="wikipediapreviews-author"></div>
 			</div>
-			<div class="wikipediapreviews-cc"><img src="../images/cc-attribution.svg"/></div>
-			<div class="wikipediapreviews-author"><img src="../images/author-attribution.svg"/></div>
 		</div>
 	`.trim()
 }
