@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { computePopupPosition, createPopup } = require('../src/popup')
+const { computePopupPosition, createPopup } = require('../../src/popup')
 const { JSDOM } = require("jsdom");
 
 describe('computePopupPosition', () => {

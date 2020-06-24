@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { cachedRequest } = require('../src/cachedRequest')
+const { cachedRequest } = require('../../src/cachedRequest')
 
 const requestMock = (data) => {
 	return (url, callback) => {
