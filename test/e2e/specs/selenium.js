@@ -4,9 +4,10 @@ const axios = require('axios');
 describe('wikipedia preview - ', () => {
 
     it('should open article on another tab', async (done) => {
+        await browser.maximizeWindow()
         await browser.url('https://wikimedia.github.io/wikipedia-preview')
-        el = await $('div.content-en span:nth-child(1)')
-        await el.waitForClickable({ timeout: 3000 });
+        el = await $('.content-en > p:nth-child(2) > span:nth-child(2)')
+        await el.moveTo()
         await el.click()
         el=await $('div.wp-text-content > div.wp-title')
         await el.waitForDisplayed({ timeout: 3000 });
@@ -15,8 +16,8 @@ describe('wikipedia preview - ', () => {
         await el.click()
         el=await $('a.wp-link')
         await el.click()
-        await browser.switchWindow("Cat - Wikipedia")
-        assert.strictEqual(await browser.getTitle(), 'Cat - Wikipedia')
+        await browser.switchWindow("Carnivore - Wikipedia")
+        assert.strictEqual(await browser.getTitle(), 'Carnivore - Wikipedia')
     })
     
     afterEach(async function(){
