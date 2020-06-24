@@ -1,4 +1,4 @@
-const common = require('./wdio.common.conf')
+const common = require('./common.wdio.conf')
 
 exports.config = {
     ...common,

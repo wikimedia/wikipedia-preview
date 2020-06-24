@@ -47,23 +47,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Prepare
-          command: npm install
-      - run:
-          name: Run Chrome test
-          command: npm run selenium-chrome
-      - run:
-          name: Run Edge tests
-          command: npm run selenium-edge
-      - run:
-          name: Run Firefox test
-          command: npm run selenium-firefox
-      - run:
-          name: Run IE test
-          command: npm run selenium-ie
-      - run:
-          name: Run Safari test
-          command: npm run selenium-safari
+          name: Run Selenium tests
+          command: wdio $(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split)
 workflows:
   version: 2
   build:
