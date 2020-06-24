@@ -1,11 +1,11 @@
 const renderPreview = (lang, data) => {
-	const imageUrl = data.imgUrl || 'w-icon-url'
+	const imageUrl = data.imgUrl || '../images/wikipedia-logo.svg'
 	return `
 		<div class="wikipediapreviews">
 			<div class="wikipediapreviews-header">
-				<div class="wikipediapreviews-header-image" style="background-image:url('${imageUrl}')"></div>
-				<div class="wikipediapreviews-header-wordmark">WikipediA</div>
-				<div class="wikipediapreviews-header-closebtn">X</div>
+				<div class="wikipediapreviews-header-image" style="background-image:url('${imageUrl}');"></div>
+				<div class="wikipediapreviews-header-wordmark" style="background-image:url('../images/wikipedia-trademark.svg')"></div>
+				<div class="wikipediapreviews-header-closebtn" style="background-image:url('../images/close.svg')"></div>
 			</div>
 			<div class="wikipediapreviews-body">
 				${data.extractHtml}

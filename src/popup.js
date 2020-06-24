@@ -69,7 +69,8 @@ const createPopup = (container, win=window) => {
 		popup.element = {
 			wikipediapreviews: popup.querySelector('.wikipediapreviews'),
 			closeBtn: popup.querySelector('.wikipediapreviews-header-closebtn'),
-			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore')
+			readMore: popup.querySelector('.wikipediapreviews-footer-cta-readmore'),
+			content: popup.querySelector('.wikipediapreviews-body > p')
 		}
 
 		if ( !isMobileDevice ) {
@@ -93,6 +94,11 @@ const createPopup = (container, win=window) => {
 			popup.style.right = withPx(position.right)
 			popup.style.top = withPx(position.top)
 			popup.style.bottom = withPx(position.bottom)
+
+			// @todo update the magic number 248
+			if ( popup.element.content.getBoundingClientRect().height < 248) {
+				onExpand()
+			}
 		}
 
 		currentTargetElement = nextTo
