@@ -35,15 +35,12 @@ const createPopup = (container, win=window) => {
 
 	const popupEvents = {/* onShow, onHide */}
 
-	const destroy = (e, force = false)  => {
-		const toElement = e.toElement || e.relatedTarget || e.target
-		if (force || ( toElement !== popup.currentTargetElement && !popup.contains(toElement))) {
-			if ( popupEvents.onhide ) {
-				popupEvents.onHide(popup)
-			}
-			popup.style.visibility = 'hidden'
-			popup.currentTargetElement = null
+	const hide = () => {
+		if ( popupEvents.onhide ) {
+			popupEvents.onHide(popup)
 		}
+		popup.style.visibility = 'hidden'
+		popup.currentTargetElement = null
 	}
 
 	const show = (content, nextTo) => {
@@ -89,7 +86,7 @@ const createPopup = (container, win=window) => {
 		}
 	}
 
-	return { show, destroy, subscribe }
+	return { show, hide, subscribe, element : popup }
 }
 
 export { createPopup, computePopupPosition }

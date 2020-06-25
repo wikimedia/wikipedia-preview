@@ -3,45 +3,52 @@ import { isMobileDevice } from './const'
 // @todo connection between popup and preview
 export const customEvents = popup => {
     
-    const onHide = instance => { 
-        instance.element.closeBtn.removeEventListener('click', e => popup.destroy(e, true) )
-        instance.element.readMore.removeEventListener('click', onExpand.bind(null, instance))
+    const onHide = element => { 
+        element.component.closeBtn.removeEventListener('click', popup.hide )
+        element.component.readMore.removeEventListener('click', onExpand )
 
         if ( isMobileDevice ) {
-            window.removeEventListener('click', popup.destroy)
+            window.removeEventListener('click', onMouseLeave)
         } else {
-            instance.removeEventListener('mouseleave', popup.destroy)	
-            instance.currentTargetElement.removeEventListener('mouseleave', popup.destroy)
+            element.removeEventListener('mouseleave', onMouseLeave)	
+            element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
         }
     }
     
-    const onShow = instance => { 
-        instance.element = {
-            wikipediapreviews: instance.querySelector('.wikipediapreviews'),
-            closeBtn: instance.querySelector('.wikipediapreviews-header-closebtn'),
-            readMore: instance.querySelector('.wikipediapreviews-footer-cta-readmore'),
-            content: instance.querySelector('.wikipediapreviews-body > p')
+    const onShow = element => { 
+        element.component = {
+            wikipediapreviews: element.querySelector('.wikipediapreviews'),
+            closeBtn: element.querySelector('.wikipediapreviews-header-closebtn'),
+            readMore: element.querySelector('.wikipediapreviews-footer-cta-readmore'),
+            content: element.querySelector('.wikipediapreviews-body > p')
         }
 
         // @todo update the magic number
-        if ( instance.element.content.getBoundingClientRect().height < 248) {
-            onExpand(instance)
+        if ( element.component.content.getBoundingClientRect().height < 248) {
+            onExpand(element)
         }
         
-        instance.element.closeBtn.addEventListener('click', e => popup.destroy(e, true) )
-        instance.element.readMore.addEventListener('click', onExpand.bind(null, instance))
+        element.component.closeBtn.addEventListener('click', popup.hide )
+        element.component.readMore.addEventListener('click', onExpand )
 
         if ( isMobileDevice ) {
-            window.addEventListener('click', popup.destroy)
+            window.addEventListener('click', onMouseLeave)
         } else {
-            instance.addEventListener('mouseleave', popup.destroy)
-            instance.currentTargetElement.addEventListener('mouseleave', popup.destroy)
+            element.addEventListener('mouseleave', onMouseLeave)
+            element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
         }
     }
     
-    const onExpand = instance => {
-        instance.element.wikipediapreviews.classList.add('expanded')
+    const onMouseLeave = e  => {
+		const toElement = e.toElement || e.relatedTarget || e.target
+		if ( toElement !== popup.element.currentTargetElement && !popup.element.contains(toElement)) {
+			popup.hide()
+		}
     }
 
-    return { onHide, onShow, onExpand}
+    const onExpand = () => {
+        popup.element.component.wikipediapreviews.classList.add('expanded')
+    }
+
+    return { onHide, onShow, onExpand }
 }
