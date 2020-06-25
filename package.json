@@ -30,6 +30,7 @@
     "less-plugin-inline-svg": "^2.0.1",
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
+    "sinon": "^9.0.2",
     "style-loader": "^1.1.3",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.41.5",

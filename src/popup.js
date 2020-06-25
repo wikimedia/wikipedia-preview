@@ -36,7 +36,7 @@ const createPopup = (container, win=window) => {
 	const popupEvents = {/* onShow, onHide */}
 
 	const hide = () => {
-		if ( popupEvents.onhide ) {
+		if ( popupEvents.onHide ) {
 			popupEvents.onHide(popup)
 		}
 		popup.style.visibility = 'hidden'
