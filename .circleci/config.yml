@@ -56,7 +56,7 @@ jobs:
             export PACKAGE_NAMES=$(echo $PACKAGES | tr -d '\n')
             echo "Testing the following config files:"
             echo $PACKAGE_NAMES
-            npx wdio $PACKAGE_NAMES
+            ./runwdio.sh
 workflows:
   version: 2
   build:
