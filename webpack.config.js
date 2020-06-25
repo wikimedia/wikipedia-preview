@@ -23,7 +23,7 @@ const config = {
   },
   plugins: [
       new MiniCssExtractPlugin({
-        filename: 'wikipediaPreview.css'
+        filename: 'wikipedia-preview.css'
       }),
       new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js'])
     ],
