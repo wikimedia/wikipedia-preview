@@ -51,7 +51,12 @@ jobs:
           command: npm install
       - run:
           name: Run Selenium tests
-          command: npx wdio $(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split --split-by=timings)
+          command: |
+            PACKAGES="$(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split)"
+            export PACKAGE_NAMES=$(echo $PACKAGES | tr -d '\n')
+            echo "Testing the following config files:"
+            echo $PACKAGE_NAMES
+            npx wdio $PACKAGE_NAMES
 workflows:
   version: 2
   build:
