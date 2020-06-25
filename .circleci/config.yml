@@ -56,10 +56,13 @@ workflows:
   build:
     jobs:
       - build
-      - selenium
       - update-demo:
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - selenium:
           filters:
             branches:
               only: master
