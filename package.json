@@ -11,11 +11,7 @@
     "build:prod": "webpack --mode production",
     "build": "npm run build:dev && npm run build:prod",
     "dev": "webpack-dev-server --mode development",
-    "selenium-safari": "wdio test/e2e/config/wdio.safari.conf.js",
-    "selenium-edge": "wdio test/e2e/config/wdio.edge.conf.js",
-    "selenium-chrome": "wdio test/e2e/config/wdio.chrome.conf.js",
-    "selenium-ie": "wdio test/e2e/config/wdio.ie.conf.js",
-    "selenium-firefox": "wdio test/e2e/config/wdio.ff.conf.js"
+    "selenium": "wdio test/e2e/config/wdio.conf.js"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
