@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 
 const path = require('path');
 const config = {
@@ -20,9 +21,12 @@ const config = {
       ignored: ['dist', 'node_modules']
     }
   },
-  plugins: [new MiniCssExtractPlugin({
-    filename: 'wikipediaPreview.css'
-  })],
+  plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'wikipediaPreview.css'
+      }),
+      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js'])
+    ],
   module: {
     rules: [
       {
