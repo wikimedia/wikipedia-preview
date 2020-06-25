@@ -51,7 +51,7 @@ jobs:
           command: npm install
       - run:
           name: Run Selenium tests
-          command: npx wdio $(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split)
+          command: npx wdio $(circleci tests glob "test/e2e/config/wdio.*.conf.js" | circleci tests split --split-by=timings)
 workflows:
   version: 2
   build:
