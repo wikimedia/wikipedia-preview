@@ -21,7 +21,7 @@ It is a small Javascript component that does not have any dependencies and shoul
 ### Standalone Script
 
 ```html
-<script src="wikipedia-preview.index.production.js"></script>
+<script src="wikipedia-preview.production.js"></script>
 <script type="text/javascript">
   wikipediaPreview.init()
 </script>

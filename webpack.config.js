@@ -4,8 +4,8 @@ const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const path = require('path');
 const config = {
   entry: {
-    index: './src/index.js',
-    css: './src/css.js'
+    'wikipedia-preview': './src/index.js',
+    'default-link-style': './src/linkStyle.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -81,6 +81,6 @@ const config = {
   }
 };
 module.exports = (env, argv) => {
-  config.output.filename = 'wikipedia-preview.[name].' + argv.mode + '.js';
+  config.output.filename = '[name].' + argv.mode + '.js';
   return config;
 };
