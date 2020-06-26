@@ -1,7 +1,13 @@
-const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
+const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+
+const path = require('path');
 const config = {
-  entry: './src/index.js',
+  entry: {
+    'wikipedia-preview': './src/index.js',
+    'default-link-style': './src/linkStyle.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '(SET AT THE BOTTOM OF THIS FILE)',
@@ -15,6 +21,12 @@ const config = {
       ignored: ['dist', 'node_modules']
     }
   },
+  plugins: [
+      new MiniCssExtractPlugin({
+        filename: 'wikipedia-preview.css'
+      }),
+      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js'])
+    ],
   module: {
     rules: [
       {
@@ -60,11 +72,29 @@ const config = {
             } 
           },
         ]
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            { 
+              loader: 'less-loader', options: { 
+                sourceMap: true, 
+                plugins:
+                [ 
+                  new LessPluginInlineSvg({
+                    base64: true
+                  }) 
+                ] 
+              } 
+            },
+          ],
+      },
     ]
   }
 };
 module.exports = (env, argv) => {
-  config.output.filename = 'wikipedia-preview.' + argv.mode + '.js';
+  config.output.filename = '[name].' + argv.mode + '.js';
   return config;
 };

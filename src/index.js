@@ -2,8 +2,7 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
-
-import '../style/popup.less'
+import '../style/index.less'
 
 function init({
 	root = document, 
