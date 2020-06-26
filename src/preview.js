@@ -16,8 +16,8 @@ const renderPreview = (lang, data) => {
 			<div class="wikipediapreviews-footer">
 				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">Continue Reading</span>
 				<a href="${data.pageUrl}" class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readonwiki" target="_blank">Read more on Wikipedia</a>
-				<div class="wikipediapreviews-cc"></div>
-				<div class="wikipediapreviews-author"></div>
+				<div class="wikipediapreviews-footer-cc"></div>
+				<div class="wikipediapreviews-footer-author"></div>
 			</div>
 		</div>
 	`.trim()
