@@ -1,6 +1,4 @@
 
-import { isMobileDevice } from './const'
-
 const computePopupPosition = (
 	targetRect, popupWidth, scrollX, scrollY, innerWidth, innerHeight
 ) => {
@@ -28,7 +26,7 @@ const createPopup = (container, win=window) => {
 	if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
-		popup.classList.add('wp-popup', isMobileDevice ? 'mobile' : 'desktop')
+		popup.classList.add('wp-popup')
 		popup.style.visibility = 'hidden'
 		container.appendChild(popup)
 	}
@@ -46,28 +44,26 @@ const createPopup = (container, win=window) => {
 	const show = (content, nextTo) => {
 		popup.innerHTML = content
 
-		if ( !isMobileDevice ) {
-			const scrollX = (win.pageXOffset !== undefined)
-			? win.pageXOffset
-			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
+		const scrollX = (win.pageXOffset !== undefined)
+		? win.pageXOffset
+		: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
 
-			const scrollY = (win.pageYOffset !== undefined)
-				? win.pageYOffset
-				: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollTop
+		const scrollY = (win.pageYOffset !== undefined)
+			? win.pageYOffset
+			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollTop
 
-			const position = computePopupPosition(
-				nextTo.getBoundingClientRect(),
-				popup.offsetWidth,
-				scrollX,
-				scrollY,
-				win.innerWidth,
-				win.innerHeight
-			);
-			popup.style.left = withPx(position.left)
-			popup.style.right = withPx(position.right)
-			popup.style.top = withPx(position.top)
-			popup.style.bottom = withPx(position.bottom)
-		}
+		const position = computePopupPosition(
+			nextTo.getBoundingClientRect(),
+			popup.offsetWidth,
+			scrollX,
+			scrollY,
+			win.innerWidth,
+			win.innerHeight
+		);
+		popup.style.left = withPx(position.left)
+		popup.style.right = withPx(position.right)
+		popup.style.top = withPx(position.top)
+		popup.style.bottom = withPx(position.bottom)
 
 		popup.currentTargetElement = nextTo
 		popup.style.visibility = 'visible'

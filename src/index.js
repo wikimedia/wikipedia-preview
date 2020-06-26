@@ -1,5 +1,4 @@
 import { requestPagePreview } from './api'
-import { isMobileDevice } from './const'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
@@ -12,8 +11,8 @@ function init({
 	lang = 'en', 
 	popupContainer = document.body }) {
 	const globalLang = lang
-	const popup      = createPopup(popupContainer)
-	const events     = customEvents(popup)
+	const popup = createPopup(popupContainer)
+	const events = customEvents(popup)
 	popup.subscribe(events)
 
 	const showPopup = ({ target }) => {
@@ -29,11 +28,7 @@ function init({
 	Array.prototype.forEach.call(
 		root.querySelectorAll(selector),
 		node => {
-			if ( isMobileDevice ) {
-				node.addEventListener('click', showPopup)
-			} else {
-				node.addEventListener('mouseenter', showPopup)
-			}
+			node.addEventListener('mouseenter', showPopup)
 		}
 	)
 

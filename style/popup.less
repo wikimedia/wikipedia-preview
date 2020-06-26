@@ -9,31 +9,13 @@
 	// width: auto;
 	z-index: 110;
 	overflow: hidden;
-
-	// @todo use import desktop less
-	&.desktop {
-		position: absolute;
-		.wikipediapreviews {
-			width: 350px;
-		}
-	}
-
-	// @todo use import mobile less
-	&.mobile {
-		position: fixed;
-		bottom: 0px;
-		left: 0px;
-		width: calc(100vw);
-
-		.wikipediapreviews {
-			// empty
-		}
-	}
+	position: absolute;
 
 	.wikipediapreviews {
 		display: flex;
 		flex-direction: column;
-	
+		width: 350px;
+
 		* {
 			padding: 0;
 			box-sizing: border-box;

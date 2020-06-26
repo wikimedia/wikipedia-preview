@@ -1,18 +1,11 @@
-import { isMobileDevice } from './const'
-
-// @todo connection between popup and preview
 export const customEvents = popup => {
     
     const onHide = element => { 
         element.component.closeBtn.removeEventListener('click', popup.hide )
         element.component.readMore.removeEventListener('click', onExpand )
 
-        if ( isMobileDevice ) {
-            window.removeEventListener('click', onMouseLeave)
-        } else {
-            element.removeEventListener('mouseleave', onMouseLeave)	
-            element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
-        }
+        element.removeEventListener('mouseleave', onMouseLeave)	
+        element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
     }
     
     const onShow = element => { 
@@ -31,12 +24,8 @@ export const customEvents = popup => {
         element.component.closeBtn.addEventListener('click', popup.hide )
         element.component.readMore.addEventListener('click', onExpand )
 
-        if ( isMobileDevice ) {
-            window.addEventListener('click', onMouseLeave)
-        } else {
-            element.addEventListener('mouseleave', onMouseLeave)
-            element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
-        }
+        element.addEventListener('mouseleave', onMouseLeave)
+        element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
     }
     
     const onMouseLeave = e  => {
