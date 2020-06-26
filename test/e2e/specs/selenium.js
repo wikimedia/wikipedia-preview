@@ -3,7 +3,7 @@ const axios = require('axios');
 
 describe('wikipedia preview - ', () => {
 
-    it('should open article on another tab', async (done) => {
+    it('should open article on another tab', async () => {
         await browser.maximizeWindow()
         await browser.url('https://wikimedia.github.io/wikipedia-preview')
         el = await $('.content-en > p:nth-child(2) > span:nth-child(2)')

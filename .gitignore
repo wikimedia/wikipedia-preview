@@ -1,6 +1,7 @@
 dist/
 node_modules/
 .nyc_output/
+.DS_Store
 demo/
 tunnel.log
 process.yml

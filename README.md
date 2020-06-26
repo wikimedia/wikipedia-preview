@@ -2,9 +2,9 @@
 
 # Wikipedia Preview
 
-Wikipedia preview allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
+Wikipedia Preview allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
 
-<img src="/screenshot.png" height="200" alt="Chat"/>
+<img src="./screenshot.png" height="200" alt="Chat"/>
 
 ## Built with
 
@@ -72,16 +72,6 @@ wikipediaPreview.init({
 
 To indicate that a word or expression should bring up the article preview popup, mark it with the `data-wikipedia-preview` attribute (or anything else as long as you're using the `selector` option described above).
 
-By default, nodes with the `data-wikipedia-preview` attribute don't have any special visual treatment. You should style them in a way that makes sense for your context.
-
-Example
-
-```css
-[data-wikipedia-preview] {
-	background-color: yellow;
-}
-```
-
 #### data-wp-title
 
 When the article title is not the same as the node's `textContent` property, use the `data-wp-title` attribute to specify the article title.
@@ -89,6 +79,30 @@ When the article title is not the same as the node's `textContent` property, use
 #### data-wp-lang
 
 To use a language different than the language specified in the options, use the `data-wp-lang` attribute.
+
+#### .wmf-wp-with-preview
+
+To use the default trigger link styling:
+
+* Add the following link to the page header:
+```html
+<link href="wikipedia-preview.css" rel="stylesheet">
+```
+* Add the class `wmf-wp-with-preview` to the node
+
+If you prefer to style them in a way that makes more sense for you context, simply don't include the `wikipediaPreview.css` link in header and add your own class to the node. Both of these are valid ways:
+
+```css
+[data-wikipedia-preview] {
+	background-color: yellow;
+}
+```
+
+```css
+.my-own-css-style {
+	background-color: yellow;
+}
+```
 
 ## Acknowledgements/Contributors
 

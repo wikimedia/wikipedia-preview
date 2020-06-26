@@ -1,7 +1,7 @@
 import { requestPagePreview } from './api'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
-import '../style/popup.less'
+import '../style/index.less'
 
 function init({root, selector, lang, popupContainer}={}) {
 	const globalLang = lang || 'en'
