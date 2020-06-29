@@ -8,7 +8,8 @@
 }
 .wmf-wp-with-preview::after {
   content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTAgMEwyMCAwIDIwIDIwIDAgMjB6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iIzM2QyIgZmlsbC1vcGFjaXR5PSIuNyIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNMTAuNTU2IDEuMTExYy00LjYgMC04LjMzNCAzLjczMy04LjMzNCA4LjMzM3MzLjczNCA4LjMzNCA4LjMzNCA4LjMzNCA4LjMzMy0zLjczNCA4LjMzMy04LjMzNC0zLjczMy04LjMzMy04LjMzMy04LjMzM3ptLjgzMyAxMi41SDkuNzIydi01aDEuNjY3djV6bTAtNi42NjdIOS43MjJWNS4yNzhoMS42Njd2MS42NjZ6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=");
-  vertical-align: top;
+  display: inline-block;
+  vertical-align: middle;
   margin-left: 1px;
 }
 
