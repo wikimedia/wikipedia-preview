@@ -9,6 +9,7 @@
 
 .wmf-wp-with-preview::after {
   content: inline-svg('../images/info_24_px.svg');
-  vertical-align: top;
+  display: inline-block;
+  vertical-align: middle;
   margin-left: 1px;
 }
