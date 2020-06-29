@@ -30,11 +30,6 @@ function init({
 			node.addEventListener('mouseenter', showPopup)
 		}
 	)
-
-	// debug purpose :
-	// I use the following line to open the popup
-	// on the first link during testing
-	// showPopup({target: popupContainer.querySelector(selector)})
 }
 
 export { init }

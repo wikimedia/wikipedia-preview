@@ -45,8 +45,8 @@ const createPopup = (container, win=window) => {
 		popup.innerHTML = content
 
 		const scrollX = (win.pageXOffset !== undefined)
-		? win.pageXOffset
-		: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
+			? win.pageXOffset
+			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
 
 		const scrollY = (win.pageYOffset !== undefined)
 			? win.pageYOffset

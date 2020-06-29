@@ -9,9 +9,6 @@ const renderPreview = (lang, data) => {
 			</div>
 			<div class="wikipediapreviews-body">
 				${data.extractHtml}
-				<div class="wikipediapreviews-body-gallery">
-					<p> Gallery Placeholder </p>
-				</div>
 			</div>
 			<div class="wikipediapreviews-footer">
 				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">Continue Reading</span>
