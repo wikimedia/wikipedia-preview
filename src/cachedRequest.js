@@ -1,27 +1,28 @@
-const request = ( url, callback ) => {
-		const xhr = new XMLHttpRequest();
-		xhr.open( 'GET', url );
-		xhr.send();
-		xhr.addEventListener( 'load', () => {
-			callback( JSON.parse( xhr.responseText ) );
-		} );
-		xhr.addEventListener( 'error', () => {
-			callback( null, xhr.status );
-		} );
-	},
 
-	dataCache = {},
+const request = (url, callback) => {
+	const xhr = new XMLHttpRequest()
+	xhr.open('GET', url)
+	xhr.send()
+	xhr.addEventListener('load', () => {
+		callback(JSON.parse(xhr.responseText))
+	})
+	xhr.addEventListener('error', () => {
+		callback(null, xhr.status)
+	})
+}
 
-	cachedRequest = ( url, transformFn, callback, r = request ) => {
-		if ( dataCache[ url ] !== undefined ) {
-			callback( dataCache[ url ] );
-			return;
+const dataCache = {}
+
+const cachedRequest = (url, transformFn, callback, r=request) => {
+	if (dataCache[url] !== undefined) {
+		callback(dataCache[url])
+		return
+	}
+	r(url, data => {
+		if (data) {
+			callback(dataCache[url] = transformFn(data))
 		}
-		r( url, data => {
-			if ( data ) {
-				callback( dataCache[ url ] = transformFn( data ) );
-			}
-		} );
-	};
+	})
+}
 
-export { cachedRequest };
+export { cachedRequest }
