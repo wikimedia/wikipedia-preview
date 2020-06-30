@@ -1,3 +1,4 @@
+'use strict';
 const request = ( url, callback ) => {
 		const xhr = new XMLHttpRequest();
 		xhr.open( 'GET', url );
