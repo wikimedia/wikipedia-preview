@@ -1,4 +1,6 @@
 
+import '../style/popup.less'
+
 const computePopupPosition = (
 	targetRect, popupWidth, scrollX, scrollY, innerWidth, innerHeight
 ) => {

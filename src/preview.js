@@ -1,3 +1,5 @@
+import '../style/preview.less'
+
 const renderPreview = (lang, data) => {
 	const imageUrl = data.imgUrl
 	return `
