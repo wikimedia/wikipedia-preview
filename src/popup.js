@@ -1,4 +1,6 @@
 
+import '../style/popup.less'
+
 const computePopupPosition = (
 	targetRect, popupWidth, scrollX, scrollY, innerWidth, innerHeight
 ) => {
@@ -23,7 +25,6 @@ const withPx = (value) => {
 let popup
 
 const createPopup = (container, win=window) => {
-	let currentTargetElement
 	if (!popup) {
 		popup = win.document.createElement('div')
 		popup.setAttribute('dir', 'ltr')
@@ -32,21 +33,19 @@ const createPopup = (container, win=window) => {
 		container.appendChild(popup)
 	}
 
-	const onMouseLeave = e => {
-		const toElement = e.toElement || e.relatedTarget
-		if (toElement !== currentTargetElement && !popup.contains(toElement)) {
-			popup.style.visibility = 'hidden'
-			if (currentTargetElement) {
-				currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
-				currentTargetElement = null
-			}
-		}
-	}
+	const popupEvents = {/* onShow, onHide */}
 
-	popup.addEventListener('mouseleave', onMouseLeave);
+	const hide = () => {
+		if ( popupEvents.onHide ) {
+			popupEvents.onHide(popup)
+		}
+		popup.style.visibility = 'hidden'
+		popup.currentTargetElement = null
+	}
 
 	const show = (content, nextTo) => {
 		popup.innerHTML = content
+
 		const scrollX = (win.pageXOffset !== undefined)
 			? win.pageXOffset
 			: (win.document.documentElement || win.document.body.parentNode || win.document.body).scrollLeft
@@ -63,18 +62,29 @@ const createPopup = (container, win=window) => {
 			win.innerWidth,
 			win.innerHeight
 		);
-		popup.style.left = withPx(position.left);
-		popup.style.right = withPx(position.right);
-		popup.style.top = withPx(position.top);
-		popup.style.bottom = withPx(position.bottom);
+		popup.style.left = withPx(position.left)
+		popup.style.right = withPx(position.right)
+		popup.style.top = withPx(position.top)
+		popup.style.bottom = withPx(position.bottom)
 
-		currentTargetElement = nextTo
-		currentTargetElement.addEventListener('mouseleave', onMouseLeave);
-
+		popup.currentTargetElement = nextTo
 		popup.style.visibility = 'visible'
+	
+		if ( popupEvents.onShow ) {
+			popupEvents.onShow( popup )
+		}
 	}
 
-	return { show }
+	const subscribe = ( events = {} ) => {
+		if ( events.onShow ) {
+			popupEvents.onShow = events.onShow
+		}
+		if ( events.onHide ) {
+			popupEvents.onHide = events.onHide
+		}
+	}
+
+	return { show, hide, subscribe, element : popup }
 }
 
 export { createPopup, computePopupPosition }

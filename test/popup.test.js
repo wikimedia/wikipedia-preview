@@ -1,4 +1,5 @@
 const assert = require('assert')
+const sinon = require('sinon')
 const { computePopupPosition, createPopup } = require('../src/popup')
 const { JSDOM } = require("jsdom");
 
@@ -185,7 +186,9 @@ describe('computePopupPosition', () => {
 describe('createPopup', () => {
 	let dom,
 		popup,
-		popupElement
+		popupElement,
+		onShowCallback = sinon.spy(),
+		onHideCallback = sinon.spy()
 
 	before(() => {
 		dom = new JSDOM(`
@@ -198,6 +201,7 @@ describe('createPopup', () => {
 		`)
 		const doc = dom.window.document
 		popup = createPopup(doc.querySelector('.popup-container'), dom.window)
+		popup.subscribe({ onShow: onShowCallback, onHide: onHideCallback })
 		popupElement = doc.querySelector('.wp-popup')
 	})
 
@@ -210,5 +214,12 @@ describe('createPopup', () => {
 		popup.show('Hello World', target)
 		assert.equal(popupElement.style.visibility, 'visible')
 		assert.equal(popupElement.innerHTML, 'Hello World')
+		assert(onShowCallback.called)
+	})
+
+	it('hides the popup when trigger the hide event', () => {
+		popup.hide()
+		assert.equal(popupElement.style.visibility, 'hidden')
+		assert(onHideCallback.called)
 	})
 })

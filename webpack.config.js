@@ -60,7 +60,17 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
-          { loader: 'less-loader', options: { sourceMap: true } },
+          { 
+            loader: 'less-loader', options: { 
+              sourceMap: true, 
+              plugins:
+              [ 
+                new LessPluginInlineSvg({
+                  base64: true
+                }) 
+              ] 
+            } 
+          },
         ]
       },
       {
