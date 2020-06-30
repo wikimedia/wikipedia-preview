@@ -4,7 +4,8 @@ module.exports = {
     es6: true
   },
   extends: [
-    'eslint:recommended'
+    'eslint:recommended',
+    "wikimedia/client"
   ],
   globals: {
     Atomics: 'readonly',

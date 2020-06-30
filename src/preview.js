@@ -1,5 +1,5 @@
-const renderPreview = (lang, data) => {
-	const imageUrl = data.imgUrl
+const renderPreview = ( lang, data ) => {
+	const imageUrl = data.imgUrl;
 	return `
 		<div class="wikipediapreviews">
 			<div class="wikipediapreviews-header">
@@ -17,7 +17,7 @@ const renderPreview = (lang, data) => {
 				<div class="wikipediapreviews-footer-author"></div>
 			</div>
 		</div>
-	`.trim()
-}
+	`.trim();
+};
 
-export { renderPreview }
+export { renderPreview };
