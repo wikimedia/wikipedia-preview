@@ -1,14 +1,23 @@
+import { isTouch } from './utils'
+
 export const customEvents = popup => {
     
     const onHide = element => { 
         element.component.closeBtn.removeEventListener('click', popup.hide )
         element.component.readMore.removeEventListener('click', onExpand )
 
-        element.removeEventListener('mouseleave', onMouseLeave)	
-        element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
+        if (isTouch()) {
+            // TODO remove event listener
+            console.log('remove event listener');
+        } else {
+            element.removeEventListener('mouseleave', onMouseLeave)	
+            element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
+        }
     }
     
     const onShow = element => { 
+        console.log('event.js - onShow - isTouch...', isTouch());
+        console.log('event.js - onShow - element...', element);
         element.component = {
             wikipediapreviews: element.querySelector('.wikipediapreviews'),
             closeBtn: element.querySelector('.wikipediapreviews-header-closebtn'),
@@ -24,8 +33,13 @@ export const customEvents = popup => {
         element.component.closeBtn.addEventListener('click', popup.hide )
         element.component.readMore.addEventListener('click', onExpand )
 
-        element.addEventListener('mouseleave', onMouseLeave)
-        element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
+        if (isTouch()) {
+            // TODO add event listener to handler touch outside preview
+            console.log('add event listener to handler touch outside preview');
+        } else {
+            element.addEventListener('mouseleave', onMouseLeave)
+            element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
+        }
     }
     
     const onMouseLeave = e  => {

@@ -1,7 +1,10 @@
 import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
+import { createTouchPopup } from './touchPopup'
 import { renderPreview } from './preview'
+import { isTouch } from './utils'
+
 
 function init({
 	root = document, 
@@ -9,7 +12,7 @@ function init({
 	lang = 'en', 
 	popupContainer = document.body }) {
 	const globalLang = lang
-	const popup = createPopup(popupContainer)
+	const popup = isTouch() ? createTouchPopup(popupContainer) : createPopup(popupContainer)
 	const events = customEvents(popup)
 	popup.subscribe(events)
 
@@ -26,7 +29,12 @@ function init({
 	Array.prototype.forEach.call(
 		root.querySelectorAll(selector),
 		node => {
-			node.addEventListener('mouseenter', showPopup)
+			if (isTouch()) {
+				node.addEventListener('touchstart', showPopup)
+			} else {
+				node.addEventListener('mouseenter', showPopup)
+			}
+			
 		}
 	)
 }
