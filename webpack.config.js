@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin')
 
 const path = require('path');
 const config = {
@@ -22,6 +23,11 @@ const config = {
     }
   },
   plugins: [
+      new StylelintPlugin({
+        context: './style/',
+        files: '*.less',
+        fix: true
+      }),
       new MiniCssExtractPlugin({
         filename: 'wikipedia-preview.css'
       }),
