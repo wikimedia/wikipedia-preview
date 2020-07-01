@@ -1,7 +1,7 @@
-import { cachedRequest } from './cachedRequest';
+import { cachedRequest } from './cachedRequest'
 
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
-	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`;
+	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
 	request( url, data => {
 		if ( data.type === 'standard' && data.dir === 'ltr' ) {
 			return {
@@ -9,10 +9,10 @@ const requestPagePreview = ( lang, title, callback, request = cachedRequest ) =>
 				extractHtml: data.extract_html,
 				pageUrl: data.content_urls.desktop.page,
 				imgUrl: data.thumbnail ? data.thumbnail.source : null
-			};
+			}
 		}
-		return false;
-	}, callback );
-};
+		return false
+	}, callback )
+}
 
-export { requestPagePreview };
+export { requestPagePreview }

@@ -1,7 +1,7 @@
-import '../style/preview.less';
+import '../style/preview.less'
 
 const renderPreview = ( lang, data ) => {
-	const imageUrl = data.imgUrl;
+	const imageUrl = data.imgUrl
 	return `
 		<div class="wikipediapreviews">
 			<div class="wikipediapreviews-header">
@@ -19,7 +19,7 @@ const renderPreview = ( lang, data ) => {
 				<div class="wikipediapreviews-footer-author"></div>
 			</div>
 		</div>
-	`.trim();
-};
+	`.trim()
+}
 
-export { renderPreview };
+export { renderPreview }
