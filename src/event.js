@@ -7,8 +7,7 @@ export const customEvents = popup => {
         element.component.readMore.removeEventListener('click', onExpand )
 
         if (isTouch()) {
-            // TODO remove event listener
-            console.log('remove event listener');
+            document.removeEventListener('touchstart', onTouchStart, true)
         } else {
             element.removeEventListener('mouseleave', onMouseLeave)	
             element.currentTargetElement.removeEventListener('mouseleave', onMouseLeave)
@@ -16,8 +15,6 @@ export const customEvents = popup => {
     }
     
     const onShow = element => { 
-        console.log('event.js - onShow - isTouch...', isTouch());
-        console.log('event.js - onShow - element...', element);
         element.component = {
             wikipediapreviews: element.querySelector('.wikipediapreviews'),
             closeBtn: element.querySelector('.wikipediapreviews-header-closebtn'),
@@ -34,8 +31,7 @@ export const customEvents = popup => {
         element.component.readMore.addEventListener('click', onExpand )
 
         if (isTouch()) {
-            // TODO add event listener to handler touch outside preview
-            console.log('add event listener to handler touch outside preview');
+            document.addEventListener('touchstart', onTouchStart, true)
         } else {
             element.addEventListener('mouseleave', onMouseLeave)
             element.currentTargetElement.addEventListener('mouseleave', onMouseLeave)
@@ -47,6 +43,13 @@ export const customEvents = popup => {
 		if ( toElement !== popup.element.currentTargetElement && !popup.element.contains(toElement)) {
 			popup.hide()
 		}
+    }
+
+    const onTouchStart = (e) => {
+        const targetClassName = e.target.parentElement.className
+        if (!targetClassName.includes('wikipediapreviews-')) {
+            popup.hide()
+        }
     }
 
     const onExpand = () => {

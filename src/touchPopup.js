@@ -39,7 +39,7 @@ const createTouchPopup = (container, win=window) => {
 		}
 	}
 
-	return { show, hide, subscribe }
+	return { show, hide, subscribe, element: popup }
 }
 
 export { createTouchPopup }
