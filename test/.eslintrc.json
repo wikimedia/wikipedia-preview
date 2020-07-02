@@ -1,0 +1,10 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/server",
+		"wikimedia/mocha"
+	],
+	"rules": {
+		"semi": [2, "never"]
+	}
+}

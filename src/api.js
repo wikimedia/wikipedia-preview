@@ -1,9 +1,9 @@
 import { cachedRequest } from './cachedRequest'
 
-const requestPagePreview = (lang, title, callback, request=cachedRequest) => {
-	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
-	request(url, data => {
-		if (data.type === 'standard' && data.dir === 'ltr') {
+const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
+	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
+	request( url, data => {
+		if ( data.type === 'standard' && data.dir === 'ltr' ) {
 			return {
 				title: data.displaytitle,
 				extractHtml: data.extract_html,
@@ -12,7 +12,7 @@ const requestPagePreview = (lang, title, callback, request=cachedRequest) => {
 			}
 		}
 		return false
-	}, callback)
+	}, callback )
 }
 
 export { requestPagePreview }

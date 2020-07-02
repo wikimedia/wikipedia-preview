@@ -4,7 +4,8 @@ module.exports = {
     es6: true
   },
   extends: [
-    'eslint:recommended'
+    'eslint:recommended',
+    'wikimedia/client'
   ],
   globals: {
     Atomics: 'readonly',
@@ -13,5 +14,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module'
+  },
+  rules: {
+    semi: [2, "never"]
   }
 }
