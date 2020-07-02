@@ -2,6 +2,17 @@ import '../style/touchpopup.less'
 
 let popup
 
+const addBackgroundScreen = () => {
+	const screen = window.document.createElement('div')
+	screen.classList.add('wp-dark-screen')
+	document.body.appendChild(screen)
+}
+
+const removeBackgroundScreen = () => {
+	const screen = window.document.getElementsByClassName('wp-dark-screen')
+	document.body.removeChild(screen[0])
+}
+
 const createTouchPopup = (container, win=window) => {
 	if (!popup) {
 		popup = win.document.createElement('div')
@@ -16,6 +27,7 @@ const createTouchPopup = (container, win=window) => {
 	const show = (content) => {
 		popup.innerHTML = content
     popup.style.visibility = 'visible'
+		addBackgroundScreen()
     
     if ( popupEvents.onShow ) {
 			popupEvents.onShow( popup )
@@ -28,6 +40,7 @@ const createTouchPopup = (container, win=window) => {
     }
     
 		popup.style.visibility = 'hidden'
+		removeBackgroundScreen()
   }
   
   const subscribe = ( events = {} ) => {
