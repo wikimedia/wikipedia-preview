@@ -1,149 +1,149 @@
 .wikipediapreviews {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
+	display: flex;
+	flex-direction: column;
+	width: 350px;
 
-    * {
-        padding: 0;
-        box-sizing: border-box;
+	* {
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	&-header {
+		display: flex;
+		height: 62px;
+		line-height: 62px;
+
+		&-image {
+			background-image: inline-svg( '../images/wikipedia-logo.svg' );
+			background-size: auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			height: 100%;
+			width: 65px;
+		}
+
+		&-wordmark {
+			background-image: inline-svg( '../images/wikipedia-wordmark.svg' );
+			background-repeat: no-repeat;
+			background-color: #eaf3ff;
+			background-position: left;
+			background-position-x: 11px;
+			height: 100%;
+			flex-grow: 1;
+			font-size: 24px;
+			padding-left: 13px;
+			color: #72777d;
+			font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		}
+
+		&-closebtn {
+			background-image: inline-svg( '../images/close.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+			background-color: #eaf3ff;
+			height: 100%;
+			text-align: center;
+			width: 50px;
+			color: #72777d;
+			font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		}
+	}
+
+	&-body {
+		background-color: #fff;
+		max-height: 248px;
+		overflow: hidden;
+		padding: 10px 20px;
+
+		:after {
+			content: ' ';
+			position: absolute;
+			width: 100%;
+			bottom: 35px;
+			left: 0;
+			right: 200px;
+			top: 280px;
+			background: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
+		}
+
+		p {
+			font-family: 'Lato', sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #202122;
+			line-height: 1.6;
+			font-size: 18px;
+		}
+	}
+
+	&-footer {
+		&-cta {
+			width: 100%;
+			height: 50px;
+			text-decoration: none;
+			text-align: center;
+			padding: 16px;
+			font-size: 18px;
+			color: #36c;
+
+			&-readmore {
+				cursor: pointer;
+				display: block;
+			}
+
+			&-readonwiki {
+				display: none;
+			}
+		}
+
+		&-cc {
+			background-image: inline-svg( '../images/cc-attribution.svg' );
+			background-repeat: no-repeat;
+			position: absolute;
+			bottom: 0;
+			right: 30px;
+			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
+		}
+
+		&-author {
+			background-image: inline-svg( '../images/author-attribution.svg' );
+			background-repeat: no-repeat;
+			position: absolute;
+			bottom: 0;
+			right: 14px;
+			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
+		}
+	}
+
+	&.expanded {
+		.wikipediapreviews-body {
+			max-height: 496px;
+			overflow: hidden;
+
+			:after {
+				content: unset;
+			}
+		}
+
+		.wikipediapreviews-footer-cta {
+			&-readmore {
+				display: none;
+			}
+
+			&-readonwiki {
+				display: block;
+			}
+		}
     }
-
-    &-header {
-        display: flex;
-        height: 62px;
-        line-height: 62px;
-
-        &-image {
-            background-image: inline-svg('../images/wikipedia-logo.svg');
-            background-size: auto;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 65px;
-        }
-
-        &-wordmark {
-            background-image: inline-svg('../images/wikipedia-wordmark.svg');
-            background-repeat: no-repeat;
-            background-color: #eaf3ff;
-            background-position: left;
-            background-position-x: 11px;
-            height: 100%;
-            flex-grow: 1;
-            font-size: 24px;
-            padding-left: 13px;
-            color: #72777d;
-            font-family: 'Linux Libertine','Georgia','Times',serif;
-        }
-
-        &-closebtn {
-            background-image: inline-svg('../images/close.svg');
-            background-repeat: no-repeat;
-            background-position: center;
-            cursor: pointer;
-            background-color: #eaf3ff;
-            height: 100%;
-            text-align: center;
-            width: 50px;
-            color: #72777d;
-            font-family: 'Linux Libertine','Georgia','Times',serif;
-        }
-    }
-
-    &-body {
-        background-color: white;
-        max-height: 248px;
-        overflow: hidden;
-        padding: 10px 20px;
-
-        :after {
-            content: ' ';
-            position: absolute;
-            width: 100%;
-            bottom: 35px;
-            left: 0px;
-            right: 200px;
-            top: 280px;
-            background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-            background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
-        }
-
-        p {
-            font-family: Lato, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #202122;
-            line-height: 1.6;
-            font-size: 18px;
-        }
-    }
-
-    &-footer {
-        &-cta {
-            width: 100%;
-            height: 50px;
-            text-decoration: none;
-            text-align: center;
-            padding: 16px;
-            font-size: 18px;
-            color: #3366cc;
-
-            &-readmore {
-                cursor: pointer;
-                display: block;
-            }
-
-            &-readonwiki {
-                display: none;
-            }
-        }
-
-        &-cc {
-            background-image: inline-svg('../images/cc-attribution.svg');
-            background-repeat: no-repeat;
-            position: absolute;
-            bottom: 0px;
-            right: 30px;
-            padding-bottom: 10px;
-            width: 15px;
-            height: 30px;
-        }
-
-        &-author {
-            background-image: inline-svg('../images/author-attribution.svg');
-            background-repeat: no-repeat;
-            position: absolute;
-            bottom: 0px;
-            right: 14px;
-            padding-bottom: 10px;
-            width: 15px;
-            height: 30px;
-        }
-    }
-
-    &.expanded {
-        .wikipediapreviews-body {
-            max-height: 496px;
-            overflow: hidden;
-
-            :after {
-                content: unset;
-            }
-        }
-
-        .wikipediapreviews-footer-cta {
-            &-readmore {
-                display: none;
-            }
-
-            &-readonwiki {
-                display: block;
-            }
-        }
-    }
-
+    
     &.mobile {
         width: 100%;
     }
