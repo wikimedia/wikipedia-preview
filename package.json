@@ -10,7 +10,7 @@
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "build": "npm run build:dev && npm run build:prod",
-    "dev": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development --host=0.0.0.0"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
