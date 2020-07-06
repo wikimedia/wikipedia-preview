@@ -1,4 +1,4 @@
-import '../style/touchpopup.less'
+import '../style/popup.less'
 
 let popup
 
