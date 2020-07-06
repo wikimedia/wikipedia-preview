@@ -7,6 +7,7 @@ function init( {
 	root = document,
 	selector = '[data-wikipedia-preview]',
 	lang = 'en',
+	detectLinks = false,
 	popupContainer = document.body } ) {
 	const globalLang = lang,
 		popup = createPopup( popupContainer ),
@@ -29,6 +30,24 @@ function init( {
 			node.addEventListener( 'mouseenter', showPopup )
 		}
 	)
+
+	if ( detectLinks ) {
+		Array.prototype.forEach.call(
+			root.querySelectorAll( 'a' ),
+			node => {
+				if ( node.hasAttribute( 'href' ) ) {
+					const href = node.getAttribute( 'href' ),
+						matches = /^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/(\w+)/.exec( href )
+					if ( matches ) {
+						const [ , lang,, title ] = matches
+						node.setAttribute( 'data-wp-title', title )
+						node.setAttribute( 'data-wp-lang', lang )
+						node.addEventListener( 'mouseenter', showPopup )
+					}
+				}
+			}
+		)
+	}
 }
 
 export { init }
