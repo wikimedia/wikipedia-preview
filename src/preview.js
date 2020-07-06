@@ -1,7 +1,6 @@
 import '../style/preview.less'
-import { isTouch } from './utils'
 
-const renderPreview = ( lang, data ) => {
+const renderPreview = ( lang, data, isTouch ) => {
 	const imageUrl = data.imgUrl
 	return `
 		<div class="wikipediapreviews ${isTouch ? 'mobile' : ''}">
