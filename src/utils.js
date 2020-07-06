@@ -1,4 +1,2 @@
-export const isTouch = () => {
-  // TODO - add IE support
-  return 'ontouchstart' in window
-}
+export const isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
+( navigator.msMaxTouchPoints > 0 )

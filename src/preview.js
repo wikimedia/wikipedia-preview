@@ -4,7 +4,7 @@ import { isTouch } from './utils'
 const renderPreview = ( lang, data ) => {
 	const imageUrl = data.imgUrl
 	return `
-		<div class="wikipediapreviews ${isTouch() ? 'mobile' : ''}">
+		<div class="wikipediapreviews ${isTouch ? 'mobile' : ''}">
 			<div class="wikipediapreviews-header">
 				<div class="wikipediapreviews-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
 				<div class="wikipediapreviews-header-wordmark"></div>

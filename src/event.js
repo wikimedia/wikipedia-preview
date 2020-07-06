@@ -24,7 +24,7 @@ export const customEvents = popup => {
 			element.component.closeBtn.removeEventListener( 'click', popup.hide )
 			element.component.readMore.removeEventListener( 'click', onExpand )
 
-			if ( isTouch() ) {
+			if ( isTouch ) {
 				document.removeEventListener( 'touchstart', onTouchStart, true )
 			} else {
 				element.removeEventListener( 'mouseleave', onMouseLeave )
@@ -48,7 +48,7 @@ export const customEvents = popup => {
 			element.component.closeBtn.addEventListener( 'click', popup.hide )
 			element.component.readMore.addEventListener( 'click', onExpand )
 
-			if ( isTouch() ) {
+			if ( isTouch ) {
 				document.addEventListener( 'touchstart', onTouchStart, true )
 			} else {
 				element.addEventListener( 'mouseleave', onMouseLeave )

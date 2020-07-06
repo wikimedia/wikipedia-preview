@@ -11,7 +11,9 @@ function init( {
 	lang = 'en',
 	popupContainer = document.body } ) {
 	const globalLang = lang,
-		popup = isTouch() ? createTouchPopup( popupContainer ) : createPopup( popupContainer ),
+		popup = isTouch ?
+			createTouchPopup( popupContainer ) :
+			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		showPopup = ( { target } ) => {
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
@@ -28,7 +30,7 @@ function init( {
 	Array.prototype.forEach.call(
 		root.querySelectorAll( selector ),
 		node => {
-			if ( isTouch() ) {
+			if ( isTouch ) {
 				node.addEventListener( 'touchstart', showPopup )
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
