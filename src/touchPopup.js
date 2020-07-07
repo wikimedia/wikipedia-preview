@@ -2,14 +2,14 @@ import '../style/popup.less'
 
 let popup
 
-const addBackgroundScreen = () => {
-		const screen = window.document.createElement( 'div' )
+const addBackgroundScreen = ( document ) => {
+		const screen = document.createElement( 'div' )
 		screen.classList.add( 'wp-dark-screen' )
 		document.body.appendChild( screen )
 	},
 
-	removeBackgroundScreen = () => {
-		const screen = window.document.getElementsByClassName( 'wp-dark-screen' )
+	removeBackgroundScreen = ( document ) => {
+		const screen = document.getElementsByClassName( 'wp-dark-screen' )
 		document.body.removeChild( screen[ 0 ] )
 	},
 
@@ -27,7 +27,7 @@ const addBackgroundScreen = () => {
 			show = ( content ) => {
 				popup.innerHTML = content
 				popup.style.visibility = 'visible'
-				addBackgroundScreen()
+				addBackgroundScreen( win.document )
 
 				if ( popupEvents.onShow ) {
 					popupEvents.onShow( popup )
@@ -40,7 +40,7 @@ const addBackgroundScreen = () => {
 				}
 
 				popup.style.visibility = 'hidden'
-				removeBackgroundScreen()
+				removeBackgroundScreen( win.document )
 			},
 
 			subscribe = ( events = {} ) => {
