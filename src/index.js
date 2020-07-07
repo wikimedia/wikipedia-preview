@@ -2,6 +2,7 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { renderPreview } from './preview'
+import { getWikipediaAttrFromUrl } from './utils'
 
 function init( {
 	root = document,
@@ -35,15 +36,11 @@ function init( {
 		Array.prototype.forEach.call(
 			root.querySelectorAll( 'a' ),
 			node => {
-				if ( node.hasAttribute( 'href' ) ) {
-					const href = node.getAttribute( 'href' ),
-						matches = /^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/(\w+)/.exec( href )
-					if ( matches ) {
-						const [ , lang,, title ] = matches
-						node.setAttribute( 'data-wp-title', title )
-						node.setAttribute( 'data-wp-lang', lang )
-						node.addEventListener( 'mouseenter', showPopup )
-					}
+				const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
+				if ( matches.title ) {
+					node.setAttribute( 'data-wp-title', matches.title )
+					node.setAttribute( 'data-wp-lang', matches.lang )
+					node.addEventListener( 'mouseenter', showPopup )
 				}
 			}
 		)
