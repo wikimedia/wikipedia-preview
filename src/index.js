@@ -37,7 +37,7 @@ function init( {
 			root.querySelectorAll( 'a' ),
 			node => {
 				const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
-				if ( matches.title ) {
+				if ( matches ) {
 					node.setAttribute( 'data-wp-title', matches.title )
 					node.setAttribute( 'data-wp-lang', matches.lang )
 					node.addEventListener( 'mouseenter', showPopup )
