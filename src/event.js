@@ -14,8 +14,8 @@ export const customEvents = popup => {
 		},
 
 		onTouchStart = e => {
-			const targetClassName = e.target.parentNode.className
-			if ( targetClassName.indexOf( 'wikipediapreviews-' ) === -1 ) {
+			const toElement = e.target
+			if ( !popup.element.contains( toElement ) ) {
 				popup.hide()
 			}
 		},
