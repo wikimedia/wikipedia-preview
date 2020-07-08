@@ -1,4 +1,5 @@
 import { cachedRequest } from './cachedRequest'
+import { isTouch } from './utils'
 
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
 	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
@@ -7,7 +8,7 @@ const requestPagePreview = ( lang, title, callback, request = cachedRequest ) =>
 			return {
 				title: data.displaytitle,
 				extractHtml: data.extract_html,
-				pageUrl: data.content_urls.desktop.page,
+				pageUrl: isTouch ? data.content_urls.mobile.page : data.content_urls.desktop.page,
 				imgUrl: data.thumbnail ? data.thumbnail.source : null
 			}
 		}
