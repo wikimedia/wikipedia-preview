@@ -55,7 +55,7 @@ root | DOM Element | `document` | Where to look for elements that should have th
 selector | string | `'[data-wikipedia-preview]'` | How nodes that should have the popup are identified
 lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
-detectLinks | Boolean | `false` | Allow Wikipedia hyperlink to have the popup
+detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
 
 Example (custom selector)
 ```html
@@ -74,7 +74,7 @@ wikipediaPreview.init({
 });
 ```
 
-Example (detect wikipedia link)
+Example (detect Wikipedia links)
 ```html
 <p class="content">
 	You can learn about <a href="https://en.wikipedia.org/wiki/Chat">Chat</a> and <a href="https://en.wikipedia.org/wiki/Chien">Chien</a> from Wikipedia.
