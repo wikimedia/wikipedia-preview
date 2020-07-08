@@ -55,8 +55,9 @@ root | DOM Element | `document` | Where to look for elements that should have th
 selector | string | `'[data-wikipedia-preview]'` | How nodes that should have the popup are identified
 lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
+detectLinks | Boolean | `false` | Allow Wikipedia hyperlink to have the popup
 
-Example
+Example (custom selector)
 ```html
 <p class="content">
 	You can learn about <span class="wiki">Chat</span> and <span class="wiki">Chien</span> from Wikipedia.
@@ -70,6 +71,19 @@ wikipediaPreview.init({
 	selector: '.wiki',
 	popupContainer: '.popup-container',
 	lang: 'fr'
+});
+```
+
+Example (detect wikipedia link)
+```html
+<p class="content">
+	You can learn about <a href="https://en.wikipedia.org/wiki/Chat">Chat</a> and <a href="https://en.wikipedia.org/wiki/Chien">Chien</a> from Wikipedia.
+</p>
+```
+
+```javascript
+wikipediaPreview.init({
+	detectLinks: true
 });
 ```
 
