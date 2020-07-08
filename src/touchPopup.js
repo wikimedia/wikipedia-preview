@@ -6,11 +6,13 @@ const addBackgroundScreen = ( document ) => {
 		const screen = document.createElement( 'div' )
 		screen.classList.add( 'wp-dark-screen' )
 		document.body.appendChild( screen )
+		document.body.style.overflow = 'hidden'
 	},
 
 	removeBackgroundScreen = ( document ) => {
 		const screen = document.getElementsByClassName( 'wp-dark-screen' )
 		document.body.removeChild( screen[ 0 ] )
+		document.body.style.overflow = 'scroll'
 	},
 
 	createTouchPopup = ( container, win = window ) => {
