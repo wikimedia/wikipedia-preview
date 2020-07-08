@@ -47,6 +47,10 @@ function init( {
 				if ( matches ) {
 					node.setAttribute( 'data-wp-title', matches.title )
 					node.setAttribute( 'data-wp-lang', matches.lang )
+					if ( isTouch ) {
+						// eslint-disable-next-line no-script-url
+						node.setAttribute( 'href', 'javascript:;' )
+					}
 					node.addEventListener( 'mouseenter', showPopup )
 				}
 			}
