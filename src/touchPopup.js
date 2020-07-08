@@ -1,18 +1,20 @@
 import '../style/popup.less'
 
-let popup
+let popup,
+	originalOverflow
 
 const addBackgroundScreen = ( document ) => {
 		const screen = document.createElement( 'div' )
 		screen.classList.add( 'wp-dark-screen' )
 		document.body.appendChild( screen )
+		originalOverflow = document.body.style.overflow
 		document.body.style.overflow = 'hidden'
 	},
 
 	removeBackgroundScreen = ( document ) => {
 		const screen = document.getElementsByClassName( 'wp-dark-screen' )
 		document.body.removeChild( screen[ 0 ] )
-		document.body.style.overflow = 'scroll'
+		document.body.style.overflow = originalOverflow
 	},
 
 	createTouchPopup = ( container, win = window ) => {
