@@ -1,7 +1,6 @@
 import { cachedRequest } from './cachedRequest'
-import { isTouch } from './utils'
 
-const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
+const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 	var url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
 	request( url, data => {
 		if ( data.type === 'standard' && data.dir === 'ltr' ) {

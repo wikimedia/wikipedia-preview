@@ -10,13 +10,13 @@ const requestMock = ( data ) => {
 
 describe( 'requestPagePreview', () => {
 	it( 'accepts standard articles only', () => {
-		requestPagePreview( 'lang', 'title', ( data ) => {
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.equal( data, false )
 		}, requestMock( { type: 'disambiguation' } ) )
 	} )
 
 	it( 'accepts ltr articles only', () => {
-		requestPagePreview( 'lang', 'title', ( data ) => {
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.equal( data, false )
 		}, requestMock( { type: 'standard', dir: 'rtl' } ) )
 	} )
@@ -38,7 +38,7 @@ describe( 'requestPagePreview', () => {
 			pageUrl: 'page-url',
 			imgUrl: 'image-url'
 		}
-		requestPagePreview( 'lang', 'title', ( data ) => {
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -59,19 +59,19 @@ describe( 'requestPagePreview', () => {
 			pageUrl: 'page-url',
 			imgUrl: null
 		}
-		requestPagePreview( 'lang', 'title', ( data ) => {
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
 
 	it( 'uses the specified language in the URL', () => {
-		requestPagePreview( 'fr', 'title', () => {}, ( url ) => {
+		requestPagePreview( 'fr', 'title', false, () => {}, ( url ) => {
 			assert( url.startsWith( 'https://fr.wikipedia.org/' ) )
 		} )
 	} )
 
 	it( 'encodes the page title in the URL', () => {
-		requestPagePreview( 'fr', "L'Époque des Châteaux", () => {}, ( url ) => {
+		requestPagePreview( 'fr', "L'Époque des Châteaux", false, () => {}, ( url ) => {
 			assert( url.endsWith( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
 		} )
 	} )
