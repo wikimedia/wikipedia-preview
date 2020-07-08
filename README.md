@@ -4,7 +4,9 @@
 
 Wikipedia Preview is a JavaScript component that allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
 
-<img src="./screenshot.png" height="200" alt="Chat"/>
+Desktop | Mobile 
+--- | ---
+<img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
 
 ## Compatibility
 

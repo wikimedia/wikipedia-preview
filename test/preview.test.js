@@ -11,7 +11,7 @@ describe( 'renderPreview', () => {
 				extractHtml: '<p>A small domesticated feline</p>',
 				pageUrl: 'https://en.wikipedia.org/wiki/Cat',
 				imgUrl: 'https://en.wikipedia.org/cat.png'
-			} )
+			}, false )
 		} )
 		it( 'renders something', () => assert( output ) )
 
@@ -33,7 +33,7 @@ describe( 'renderPreview', () => {
 				extractHtml: '<p>Un petit félin domestique</p>',
 				pageUrl: 'https://fr.wikipedia.org/wiki/Chat',
 				imgUrl: null
-			} )
+			}, false )
 		} )
 		it( 'renders something', () => assert( output ) )
 	} )

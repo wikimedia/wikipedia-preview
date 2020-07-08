@@ -1,5 +1,6 @@
-export const customEvents = popup => {
+import { isTouch } from './utils'
 
+export const customEvents = popup => {
 	const onMouseLeave = e => {
 			const toElement = e.toElement || e.relatedTarget || e.target
 			if ( toElement !== popup.element.currentTargetElement &&
@@ -11,12 +12,24 @@ export const customEvents = popup => {
 		onExpand = () => {
 			popup.element.component.wikipediapreviews.classList.add( 'expanded' )
 		},
+
+		onTouchStart = e => {
+			const toElement = e.target
+			if ( !popup.element.contains( toElement ) ) {
+				popup.hide()
+			}
+		},
+
 		onHide = element => {
 			element.component.closeBtn.removeEventListener( 'click', popup.hide )
 			element.component.readMore.removeEventListener( 'click', onExpand )
 
-			element.removeEventListener( 'mouseleave', onMouseLeave )
-			element.currentTargetElement.removeEventListener( 'mouseleave', onMouseLeave )
+			if ( isTouch ) {
+				document.removeEventListener( 'touchstart', onTouchStart, true )
+			} else {
+				element.removeEventListener( 'mouseleave', onMouseLeave )
+				element.currentTargetElement.removeEventListener( 'mouseleave', onMouseLeave )
+			}
 		},
 
 		onShow = element => {
@@ -35,8 +48,12 @@ export const customEvents = popup => {
 			element.component.closeBtn.addEventListener( 'click', popup.hide )
 			element.component.readMore.addEventListener( 'click', onExpand )
 
-			element.addEventListener( 'mouseleave', onMouseLeave )
-			element.currentTargetElement.addEventListener( 'mouseleave', onMouseLeave )
+			if ( isTouch ) {
+				document.addEventListener( 'touchstart', onTouchStart, true )
+			} else {
+				element.addEventListener( 'mouseleave', onMouseLeave )
+				element.currentTargetElement.addEventListener( 'mouseleave', onMouseLeave )
+			}
 		}
 
 	return { onHide, onShow, onExpand }
