@@ -5,7 +5,7 @@ export const customEvents = popup => {
 			const toElement = e.toElement || e.relatedTarget || e.target
 			if ( toElement !== popup.element.currentTargetElement &&
 			!popup.element.contains( toElement ) ) {
-				popup.hide()
+				setTimeout( popup.hide, 300 )
 			}
 		},
 
