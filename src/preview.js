@@ -3,20 +3,20 @@ import '../style/preview.less'
 const renderPreview = ( lang, data, isTouch ) => {
 	const imageUrl = data.imgUrl
 	return `
-		<div class="wikipediapreviews ${isTouch ? 'mobile' : ''}">
-			<div class="wikipediapreviews-header">
-				<div class="wikipediapreviews-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
-				<div class="wikipediapreviews-header-wordmark"></div>
-				<div class="wikipediapreviews-header-closebtn"></div>
+		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
+			<div class="wikipediapreview-header">
+				<div class="wikipediapreview-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
+				<div class="wikipediapreview-header-wordmark"></div>
+				<div class="wikipediapreview-header-closebtn"></div>
 			</div>
-			<div class="wikipediapreviews-body">
+			<div class="wikipediapreview-body">
 				${data.extractHtml}
 			</div>
-			<div class="wikipediapreviews-footer">
-				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">Continue Reading</span>
-				<a href="${data.pageUrl}" class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readonwiki" target="_blank">Read more on Wikipedia</a>
-				<div class="wikipediapreviews-footer-cc"></div>
-				<div class="wikipediapreviews-footer-author"></div>
+			<div class="wikipediapreview-footer">
+				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">Continue Reading</span>
+				<a href="${data.pageUrl}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">Read more on Wikipedia</a>
+				<div class="wikipediapreview-footer-cc"></div>
+				<div class="wikipediapreview-footer-author"></div>
 			</div>
 		</div>
 	`.trim()

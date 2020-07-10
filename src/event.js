@@ -10,7 +10,7 @@ export const customEvents = popup => {
 		},
 
 		onExpand = () => {
-			popup.element.component.wikipediapreviews.classList.add( 'expanded' )
+			popup.element.component.wikipediapreview.classList.add( 'expanded' )
 		},
 
 		onTouchStart = e => {
@@ -34,10 +34,10 @@ export const customEvents = popup => {
 
 		onShow = element => {
 			element.component = {
-				wikipediapreviews: element.querySelector( '.wikipediapreviews' ),
-				closeBtn: element.querySelector( '.wikipediapreviews-header-closebtn' ),
-				readMore: element.querySelector( '.wikipediapreviews-footer-cta-readmore' ),
-				content: element.querySelector( '.wikipediapreviews-body > p' )
+				wikipediapreview: element.querySelector( '.wikipediapreview' ),
+				closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
+				readMore: element.querySelector( '.wikipediapreview-footer-cta-readmore' ),
+				content: element.querySelector( '.wikipediapreview-body > p' )
 			}
 
 			// @todo update the magic number
