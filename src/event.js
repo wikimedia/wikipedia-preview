@@ -5,7 +5,22 @@ export const customEvents = popup => {
 			const toElement = e.toElement || e.relatedTarget || e.target
 			if ( toElement !== popup.element.currentTargetElement &&
 			!popup.element.contains( toElement ) ) {
-				setTimeout( popup.hide, 300 )
+				let timeoutId
+				const previewElement = popup.element.currentTargetElement,
+
+					persistPopup = () => {
+						clearTimeout( timeoutId )
+					},
+
+					hidePopup = () => {
+						popup.element.removeEventListener( 'mouseenter', persistPopup )
+						previewElement.removeEventListener( 'mouseenter', persistPopup )
+						popup.hide()
+					}
+
+				timeoutId = setTimeout( hidePopup, 300 )
+				popup.element.addEventListener( 'mouseenter', persistPopup )
+				previewElement.addEventListener( 'mouseenter', persistPopup )
 			}
 		},
 
