@@ -2,13 +2,12 @@ import { isTouch } from './utils'
 
 export const customEvents = popup => {
 	const onMouseLeave = e => {
-			const toElement = e.toElement || e.relatedTarget || e.target
-			if ( toElement !== popup.element.currentTargetElement &&
-			!popup.element.contains( toElement ) ) {
-				let timeoutId
-				const previewElement = popup.element.currentTargetElement,
+			const toElement = e.toElement || e.relatedTarget || e.target,
+				previewElement = popup.element.currentTargetElement
 
-					persistPopup = () => {
+			if ( toElement !== previewElement && !popup.element.contains( toElement ) ) {
+				let timeoutId
+				const persistPopup = () => {
 						clearTimeout( timeoutId )
 					},
 
