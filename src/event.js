@@ -8,18 +8,20 @@ export const customEvents = popup => {
 			if ( toElement !== previewElement && !popup.element.contains( toElement ) ) {
 				let timeoutId
 				const persistPopup = () => {
+						popup.element.removeEventListener( 'mouseenter', persistPopup )
+						popup.timeoutId = null
 						clearTimeout( timeoutId )
 					},
 
 					hidePopup = () => {
 						popup.element.removeEventListener( 'mouseenter', persistPopup )
-						previewElement.removeEventListener( 'mouseenter', persistPopup )
+						popup.timeoutId = null
 						popup.hide()
 					}
 
 				timeoutId = setTimeout( hidePopup, 300 )
 				popup.element.addEventListener( 'mouseenter', persistPopup )
-				previewElement.addEventListener( 'mouseenter', persistPopup )
+				popup.timeoutId = timeoutId
 			}
 		},
 
