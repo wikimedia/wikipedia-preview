@@ -1,4 +1,5 @@
 import { isTouch } from './utils'
+import { showFullscreenGallery } from './gallery'
 
 export const customEvents = popup => {
 	const onMouseLeave = e => {
@@ -14,15 +15,28 @@ export const customEvents = popup => {
 		},
 
 		onTouchStart = e => {
-			const toElement = e.target
-			if ( !popup.element.contains( toElement ) ) {
+			const toElement = e.target,
+				fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
+
+			if ( !popup.element.contains( toElement ) && !fullscreenGallery ) {
 				popup.hide()
 			}
+		},
+
+		onImageClick = e => {
+			showFullscreenGallery( e, popup.media )
 		},
 
 		onHide = element => {
 			element.component.closeBtn.removeEventListener( 'click', popup.hide )
 			element.component.readMore.removeEventListener( 'click', onExpand )
+
+			Array.prototype.forEach.call(
+				element.component.wikipediapreviewGallery.children,
+				image => {
+					image.removeEventListener( 'click', onImageClick )
+				}
+			)
 
 			if ( isTouch ) {
 				document.removeEventListener( 'touchstart', onTouchStart, true )
@@ -35,6 +49,7 @@ export const customEvents = popup => {
 		onShow = element => {
 			element.component = {
 				wikipediapreview: element.querySelector( '.wikipediapreview' ),
+				wikipediapreviewGallery: element.querySelector( '.wikipediapreview-gallery' ),
 				closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
 				readMore: element.querySelector( '.wikipediapreview-footer-cta-readmore' ),
 				content: element.querySelector( '.wikipediapreview-body > p' )
@@ -47,6 +62,13 @@ export const customEvents = popup => {
 
 			element.component.closeBtn.addEventListener( 'click', popup.hide )
 			element.component.readMore.addEventListener( 'click', onExpand )
+
+			Array.prototype.forEach.call(
+				element.component.wikipediapreviewGallery.children,
+				image => {
+					image.addEventListener( 'click', onImageClick )
+				}
+			)
 
 			if ( isTouch ) {
 				document.addEventListener( 'touchstart', onTouchStart, true )

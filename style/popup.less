@@ -25,6 +25,69 @@
 	overflow: hidden;
 }
 
+.wp-gallery-popup {
+	display: flex;
+	align-items: center;
+	background-color: #222;
+	z-index: @popup-z-index + 10;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+
+	// @todo - simplify here to button-* to keep it DRY
+	&-closebtn {
+		background-image: inline-svg( '../images/close.svg' );
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		height: 24px;
+		width: 24px;
+		color: #72777d;
+		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		top: 40px;
+		position: absolute;
+		right: 16px;
+	}
+
+	&-previousbtn {
+		background-image: inline-svg( '../images/close.svg' );
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		height: 24px;
+		width: 24px;
+		color: #72777d;
+		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		top: 320px;
+		position: absolute;
+		left: 16px;
+	}
+
+	&-nextbtn {
+		background-image: inline-svg( '../images/close.svg' );
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		height: 24px;
+		width: 24px;
+		color: #72777d;
+		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		top: 320px;
+		position: absolute;
+		right: 16px;
+	}
+
+	&-image {
+		width: 100%;
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
 .wp-dark-screen {
 	background-color: rgba( 0, 0, 0, 0.7 );
 	z-index: @popup-z-index - 10;

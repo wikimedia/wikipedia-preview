@@ -10,7 +10,7 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 						const source = item && item.srcset && `https:${item.srcset[ 0 ].src}`,
 							media = {
 								caption: item.caption && item.caption.text.trim(),
-								thumbnail: source,
+								src: source,
 								title: item.title
 							}
 

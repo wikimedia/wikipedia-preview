@@ -1,17 +1,9 @@
 import '../style/preview.less'
+import { getGalleryRow } from './gallery'
 
-const getGalleryRow = ( mediaItems ) => {
-		let galleryRow = ''
-		mediaItems.forEach( item => {
-			// TODO - add click/touch handler to display fullscreen gallery popup
-			galleryRow += `<img class="wikipediapreview-gallery-image" src=${item.thumbnail}>`
-		} )
-		return galleryRow
-	},
-
-	renderPreview = ( lang, data, isTouch ) => {
-		const imageUrl = data.summary.imgUrl
-		return `
+const renderPreview = ( lang, data, isTouch ) => {
+	const imageUrl = data.summary.imgUrl
+	return `
 		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
 			<div class="wikipediapreview-header">
 				<div class="wikipediapreview-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
@@ -32,6 +24,6 @@ const getGalleryRow = ( mediaItems ) => {
 			</div>
 		</div>
 	`.trim()
-	}
+}
 
 export { renderPreview }

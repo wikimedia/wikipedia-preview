@@ -20,6 +20,7 @@ function init( {
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data ) {
+					popup.media = data.media
 					popup.show( renderPreview( lang, data, isTouch ), target )
 				}
 			} )
