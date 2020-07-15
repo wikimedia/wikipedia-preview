@@ -37,9 +37,7 @@
 	left: 0;
 	top: 0;
 
-	// @todo - simplify here to button-* to keep it DRY
-	&-closebtn {
-		background-image: inline-svg( '../images/close-white.svg' );
+	&-button {
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
@@ -47,37 +45,27 @@
 		width: 24px;
 		color: #72777d;
 		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
-		top: 40px;
-		position: absolute;
-		right: 16px;
-	}
 
-	&-previousbtn {
-		background-image: inline-svg( '../images/arrow-previous.svg' );
-		background-repeat: no-repeat;
-		background-position: center;
-		cursor: pointer;
-		height: 24px;
-		width: 24px;
-		color: #72777d;
-		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
-		top: 320px;
-		position: absolute;
-		left: 16px;
-	}
+		&.close {
+			background-image: inline-svg( '../images/close-white.svg' );
+			top: 40px;
+			position: absolute;
+			right: 16px;
+		}
 
-	&-nextbtn {
-		background-image: inline-svg( '../images/arrow-next.svg' );
-		background-repeat: no-repeat;
-		background-position: center;
-		cursor: pointer;
-		height: 24px;
-		width: 24px;
-		color: #72777d;
-		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
-		top: 320px;
-		position: absolute;
-		right: 16px;
+		&.previous {
+			background-image: inline-svg( '../images/arrow-previous.svg' );
+			top: 320px;
+			position: absolute;
+			left: 16px;
+		}
+
+		&.next {
+			background-image: inline-svg( '../images/arrow-next.svg' );
+			top: 320px;
+			position: absolute;
+			right: 16px;
+		}
 	}
 
 	&-image {
@@ -85,6 +73,7 @@
 
 		img {
 			width: 100%;
+			background-color: #fff;
 		}
 	}
 

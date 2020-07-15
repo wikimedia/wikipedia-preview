@@ -3,7 +3,6 @@ let gallery = [],
 
 const hideFullscreenGallery = () => {
 		const fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
-		// @todo - remove event listeners?
 		document.body.removeChild( fullscreenGallery )
 	},
 
@@ -57,11 +56,11 @@ const hideFullscreenGallery = () => {
 		caption.innerHTML = gallery[ current ].caption ? gallery[ current ].caption : ''
 		caption.classList.add( 'wp-gallery-popup-caption' )
 
-		closeButton.classList.add( 'wp-gallery-popup-closebtn' )
+		closeButton.classList.add( 'wp-gallery-popup-button', 'close' )
 		closeButton.addEventListener( 'click', hideFullscreenGallery )
-		nextButton.classList.add( 'wp-gallery-popup-nextbtn' )
+		nextButton.classList.add( 'wp-gallery-popup-button', 'next' )
 		nextButton.addEventListener( 'click', renderNext )
-		previousButton.classList.add( 'wp-gallery-popup-previousbtn' )
+		previousButton.classList.add( 'wp-gallery-popup-button', 'previous' )
 		previousButton.addEventListener( 'click', renderPrevious )
 
 		Array.prototype.forEach.call(

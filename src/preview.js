@@ -12,9 +12,9 @@ const renderPreview = ( lang, data, isTouch ) => {
 			</div>
 			<div class="wikipediapreview-body">
 				${data.summary.extractHtml}
-			</div>
-			<div class="wikipediapreview-gallery">
-				${getGalleryRow( data.media )}
+				<div class="wikipediapreview-gallery">
+					${getGalleryRow( data.media )}
+				</div>
 			</div>
 			<div class="wikipediapreview-footer">
 				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">Continue Reading</span>
