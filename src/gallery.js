@@ -8,31 +8,38 @@ const hideFullscreenGallery = () => {
 	},
 
 	renderNext = () => {
-		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild
-		if ( gallery[ current + 1 ] ) {
-			image.src = gallery[ current + 1 ].src
+		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
+			caption = document.querySelector( '.wp-gallery-popup-caption' ),
+			next = current + 1
+
+		if ( gallery[ next ] ) {
+			image.src = gallery[ next ].src
+			caption.innerHTML = gallery[ next ].caption ? gallery[ next ].caption : ''
 			current += 1
 		}
-
 	},
 
 	renderPrevious = () => {
-		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild
-		if ( gallery[ current - 1 ] ) {
-			image.src = gallery[ current - 1 ].src
+		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
+			caption = document.querySelector( '.wp-gallery-popup-caption' ),
+			previous = current - 1
+
+		if ( gallery[ previous ] ) {
+			image.src = gallery[ previous ].src
+			caption.innerHTML = gallery[ previous ].caption ? gallery[ previous ].caption : ''
 			current -= 1
 		}
-
 	},
 
-	showFullscreenGallery = ( target, mediaItems ) => {
+	showFullscreenGallery = ( event, mediaItems ) => {
 		const fullscreenGallery = document.createElement( 'div' ),
 			closeButton = document.createElement( 'div' ),
 			nextButton = document.createElement( 'div' ),
 			previousButton = document.createElement( 'div' ),
 			imageContainer = document.createElement( 'div' ),
 			image = document.createElement( 'img' ),
-			src = target.originalTarget.src
+			caption = document.createElement( 'p' ),
+			src = event.target.src
 
 		gallery = mediaItems
 		gallery.forEach( ( image, index ) => {
@@ -47,6 +54,9 @@ const hideFullscreenGallery = () => {
 		imageContainer.appendChild( image )
 		imageContainer.classList.add( 'wp-gallery-popup-image' )
 
+		caption.innerHTML = gallery[ current ].caption ? gallery[ current ].caption : ''
+		caption.classList.add( 'wp-gallery-popup-caption' )
+
 		closeButton.classList.add( 'wp-gallery-popup-closebtn' )
 		closeButton.addEventListener( 'click', hideFullscreenGallery )
 		nextButton.classList.add( 'wp-gallery-popup-nextbtn' )
@@ -55,7 +65,7 @@ const hideFullscreenGallery = () => {
 		previousButton.addEventListener( 'click', renderPrevious )
 
 		Array.prototype.forEach.call(
-			[ closeButton, nextButton, previousButton, imageContainer ],
+			[ closeButton, nextButton, previousButton, imageContainer, caption ],
 			element => {
 				fullscreenGallery.appendChild( element )
 			}
