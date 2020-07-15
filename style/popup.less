@@ -27,7 +27,8 @@
 
 .wp-gallery-popup {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	justify-content: center;
 	background-color: #222;
 	z-index: @popup-z-index + 10;
 	position: fixed;
@@ -38,7 +39,7 @@
 
 	// @todo - simplify here to button-* to keep it DRY
 	&-closebtn {
-		background-image: inline-svg( '../images/close.svg' );
+		background-image: inline-svg( '../images/close-white.svg' );
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
@@ -52,7 +53,7 @@
 	}
 
 	&-previousbtn {
-		background-image: inline-svg( '../images/close.svg' );
+		background-image: inline-svg( '../images/arrow-previous.svg' );
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
@@ -66,7 +67,7 @@
 	}
 
 	&-nextbtn {
-		background-image: inline-svg( '../images/close.svg' );
+		background-image: inline-svg( '../images/arrow-next.svg' );
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
