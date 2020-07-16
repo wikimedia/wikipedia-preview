@@ -1,6 +1,6 @@
 'use strict'
 const assert = require( 'assert' )
-const { requestPagePreview } = require( '../src/api' )
+const { requestPagePreview, requestPageMedia } = require( '../src/api' )
 
 const requestMock = ( data ) => {
 	return ( url, transformFn, callback ) => {
@@ -76,3 +76,137 @@ describe( 'requestPagePreview', () => {
 		} )
 	} )
 } )
+
+describe( 'requestPageMedia', () => {
+	it( 'transforms the API output', () => {
+		const apiOutput = {
+			items: [
+				{
+					section_id: 0,
+					showInGallery: true,
+					srcset: [
+						{
+							src: "//wikimedia.org/thumb/640px-cat.jpg",
+							scale: '1x'
+						},
+						{
+							src: "//wikimedia.org/thumb/1280px-cat.jpg",
+							scale: '2x'
+						}
+					],
+					title: 'File:Cat_poster_1.jpg',
+					type: 'image',
+					caption: {
+						html: 'Cats are popular within internet culture for some reason',
+						text: 'Cats are popular within internet culture for some reason'
+					}
+				},
+				{
+					section_id: 1,
+					showInGallery: true,
+					srcset: [
+						{
+							src: "//wikimedia.org/thumb/640px-cat-skull.jpg",
+							scale: '1x'
+						},
+						{
+							src: "//wikimedia.org/thumb/1280px-cat-skull.jpg",
+							scale: '2x'
+						}
+					],
+					title: 'File:Cat_skull_1.jpg',
+					type: 'image',
+					caption: {
+						html: 'Skulls of a wildcat (top left) and a housecat (top right)',
+						text: 'Skulls of a wildcat (top left) and a housecat (top right)'
+					}
+				}
+			],
+			revision: '1234',
+			tid: '1234-abcd'
+		}
+		const transformedOutput = [
+			{
+				caption: 'Cats are popular within internet culture for some reason',
+				src: 'https://wikimedia.org/thumb/640px-cat.jpg',
+				title: 'File:Cat_poster_1.jpg'
+			},
+			{
+				caption: 'Skulls of a wildcat (top left) and a housecat (top right)',
+				src: 'https://wikimedia.org/thumb/640px-cat-skull.jpg',
+				title: 'File:Cat_skull_1.jpg'
+			}
+		]
+		requestPageMedia( 'en', 'title', ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output (without captions)', () => {
+		const apiOutput = {
+			items: [
+				{
+					section_id: 0,
+					showInGallery: true,
+					srcset: [
+						{
+							src: "//wikimedia.org/thumb/640px-cat.jpg",
+							scale: '1x'
+						},
+						{
+							src: "//wikimedia.org/thumb/1280px-cat.jpg",
+							scale: '2x'
+						}
+					],
+					title: 'File:Cat_poster_1.jpg',
+					type: 'image'
+				},
+				{
+					section_id: 1,
+					showInGallery: true,
+					srcset: [
+						{
+							src: "//wikimedia.org/thumb/640px-cat-skull.jpg",
+							scale: '1x'
+						},
+						{
+							src: "//wikimedia.org/thumb/1280px-cat-skull.jpg",
+							scale: '2x'
+						}
+					],
+					title: 'File:Cat_skull_1.jpg',
+					type: 'image'
+				}
+			],
+			revision: '1234',
+			tid: '1234-abcd'
+		}
+		const transformedOutput = [
+			{
+				caption: undefined,
+				src: 'https://wikimedia.org/thumb/640px-cat.jpg',
+				title: 'File:Cat_poster_1.jpg'
+			},
+			{
+				caption: undefined,
+				src: 'https://wikimedia.org/thumb/640px-cat-skull.jpg',
+				title: 'File:Cat_skull_1.jpg'
+			}
+		]
+		requestPageMedia( 'en', 'title', ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'uses the specified language in the URL', () => {
+		requestPageMedia( 'es', 'title', () => {}, ( url ) => {
+			assert( url.startsWith( 'https://es.wikipedia.org/' ) )
+		} )
+	} )
+
+	it( 'encodes the page title in the URL', () => {
+		requestPageMedia( 'zh', "貓", () => {}, ( url ) => {
+			assert( url.endsWith( "%E8%B2%93" ) )
+		} )
+	} )
+})
