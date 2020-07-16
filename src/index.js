@@ -1,8 +1,8 @@
-import { requestPagePreview } from './api'
+import { requestPagePreview, requestPageMedia } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview } from './preview'
+import { renderPreview, renderPreviewMedia } from './preview'
 import { isTouch } from './utils'
 
 function init( {
@@ -18,10 +18,19 @@ function init( {
 		showPopup = ( { target } ) => {
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
+
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data ) {
-					popup.media = data.media
 					popup.show( renderPreview( lang, data, isTouch ), target )
+				}
+
+				popup.lang = lang
+				popup.title = title
+				const expanded = document.querySelector( '.wikipediapreview.expanded.mobile' )
+				if ( expanded ) {
+					requestPageMedia( lang, title, mediaData => {
+						renderPreviewMedia( document, mediaData )
+					} )
 				}
 			} )
 		}

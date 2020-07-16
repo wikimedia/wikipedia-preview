@@ -1,5 +1,7 @@
 import { isTouch } from './utils'
 import { showFullscreenGallery } from './gallery'
+import { requestPageMedia } from './api'
+import { renderPreviewMedia } from './preview'
 
 export const customEvents = popup => {
 	const onMouseLeave = e => {
@@ -12,9 +14,18 @@ export const customEvents = popup => {
 
 		onExpand = () => {
 			popup.element.component.wikipediapreview.classList.add( 'expanded' )
+
+			const lang = popup.lang,
+				title = popup.title
+
+			if ( lang && title ) {
+				requestPageMedia( lang, title, mediaData => {
+					renderPreviewMedia( document, mediaData )
+				} )
+			}
 		},
 
-		onTouchStart = e => {
+		onTouchOutsidePreview = e => {
 			const toElement = e.target,
 				fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
 
@@ -23,23 +34,23 @@ export const customEvents = popup => {
 			}
 		},
 
-		onImageClick = e => {
-			showFullscreenGallery( e, popup.media )
-		},
-
 		onHide = element => {
 			element.component.closeBtn.removeEventListener( 'click', popup.hide )
 			element.component.readMore.removeEventListener( 'click', onExpand )
 
+			popup.element.component.wikipediapreview.classList.remove( 'expanded' )
+			popup.lang = null
+			popup.title = null
+
 			Array.prototype.forEach.call(
 				element.component.wikipediapreviewGallery.children,
 				image => {
-					image.removeEventListener( 'click', onImageClick )
+					image.removeEventListener( 'click', showFullscreenGallery )
 				}
 			)
 
 			if ( isTouch ) {
-				document.removeEventListener( 'touchstart', onTouchStart, true )
+				document.removeEventListener( 'touchstart', onTouchOutsidePreview, true )
 			} else {
 				element.removeEventListener( 'mouseleave', onMouseLeave )
 				element.currentTargetElement.removeEventListener( 'mouseleave', onMouseLeave )
@@ -63,15 +74,8 @@ export const customEvents = popup => {
 			element.component.closeBtn.addEventListener( 'click', popup.hide )
 			element.component.readMore.addEventListener( 'click', onExpand )
 
-			Array.prototype.forEach.call(
-				element.component.wikipediapreviewGallery.children,
-				image => {
-					image.addEventListener( 'click', onImageClick )
-				}
-			)
-
 			if ( isTouch ) {
-				document.addEventListener( 'touchstart', onTouchStart, true )
+				document.addEventListener( 'touchstart', onTouchOutsidePreview, true )
 			} else {
 				element.addEventListener( 'mouseleave', onMouseLeave )
 				element.currentTargetElement.addEventListener( 'mouseleave', onMouseLeave )

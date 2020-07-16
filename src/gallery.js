@@ -75,10 +75,18 @@ const hideFullscreenGallery = () => {
 	},
 
 	getGalleryRow = ( mediaItems ) => {
-		let galleryRow = ''
+		const galleryRow = document.createElement( 'div' )
+		galleryRow.classList.add( 'wikipediapreview-gallery-row' )
+
 		mediaItems.forEach( item => {
-			galleryRow += `<img class="wikipediapreview-gallery-image" src=${item.src}>`
+			const image = document.createElement( 'img' )
+
+			image.classList.add( 'wikipediapreview-gallery-image' )
+			image.src = item.src
+			image.addEventListener( 'click', ( e ) => { showFullscreenGallery( e, mediaItems ) } )
+			galleryRow.appendChild( image )
 		} )
+
 		return galleryRow
 	}
 
