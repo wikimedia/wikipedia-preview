@@ -9,11 +9,15 @@ const hideFullscreenGallery = () => {
 	renderNext = () => {
 		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
 			caption = document.querySelector( '.wp-gallery-popup-caption' ),
+			nextButton = document.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
+			previousButton = document.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
 			next = current + 1
 
 		if ( gallery[ next ] ) {
 			image.src = gallery[ next ].src
 			caption.innerHTML = gallery[ next ].caption ? gallery[ next ].caption : ''
+			nextButton.style.opacity = gallery[ next + 1 ] ? '1' : '0.5'
+			previousButton.style.opacity = current === 0 ? '1' : null
 			current += 1
 		}
 	},
@@ -21,11 +25,15 @@ const hideFullscreenGallery = () => {
 	renderPrevious = () => {
 		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
 			caption = document.querySelector( '.wp-gallery-popup-caption' ),
+			previousButton = document.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
+			nextButton = document.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
 			previous = current - 1
 
 		if ( gallery[ previous ] ) {
 			image.src = gallery[ previous ].src
 			caption.innerHTML = gallery[ previous ].caption ? gallery[ previous ].caption : ''
+			previousButton.style.opacity = gallery[ previous - 1 ] ? '1' : '0.5'
+			nextButton.style.opacity = current === gallery.leght - 1 ? '1' : null
 			current -= 1
 		}
 	},
@@ -59,8 +67,10 @@ const hideFullscreenGallery = () => {
 		closeButton.classList.add( 'wp-gallery-popup-button', 'close' )
 		closeButton.addEventListener( 'click', hideFullscreenGallery )
 		nextButton.classList.add( 'wp-gallery-popup-button', 'next' )
+		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 		nextButton.addEventListener( 'click', renderNext )
 		previousButton.classList.add( 'wp-gallery-popup-button', 'previous' )
+		previousButton.style.opacity = current === 0 ? '0.5' : '1'
 		previousButton.addEventListener( 'click', renderPrevious )
 
 		Array.prototype.forEach.call(
