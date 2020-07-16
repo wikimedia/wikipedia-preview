@@ -3,12 +3,13 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderPreviewMedia } from './preview'
-import { isTouch } from './utils'
+import { getWikipediaAttrFromUrl, isTouch } from './utils'
 
 function init( {
 	root = document,
 	selector = '[data-wikipedia-preview]',
 	lang = 'en',
+	detectLinks = false,
 	popupContainer = document.body } ) {
 	const globalLang = lang,
 		popup = isTouch ?
@@ -47,6 +48,24 @@ function init( {
 			}
 		}
 	)
+
+	if ( detectLinks ) {
+		Array.prototype.forEach.call(
+			root.querySelectorAll( 'a' ),
+			node => {
+				const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
+				if ( matches ) {
+					node.setAttribute( 'data-wp-title', matches.title )
+					node.setAttribute( 'data-wp-lang', matches.lang )
+					if ( isTouch ) {
+						// eslint-disable-next-line no-script-url
+						node.setAttribute( 'href', 'javascript:;' )
+					}
+					node.addEventListener( 'mouseenter', showPopup )
+				}
+			}
+		)
+	}
 }
 
 export { init }

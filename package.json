@@ -4,8 +4,8 @@
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.production.js",
   "scripts": {
-    "test": "mocha --require ignore-styles,@babel/register",
-    "test:watch": "mocha --require ignore-styles,@babel/register -w",
+    "test": "mocha --require ignore-styles,@babel/register,jsdom-global/register",
+    "test:watch": "mocha --require ignore-styles,@babel/register,jsdom-global/register -w",
     "test:fix-lint": "eslint test --fix",
     "coverage": "nyc npm test",
     "build:dev": "webpack --mode development",
@@ -29,6 +29,7 @@
     "ignore-emit-webpack-plugin": "^2.0.2",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.0.1",
+    "jsdom-global": "^3.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "less-plugin-inline-svg": "^2.0.1",
