@@ -55,15 +55,6 @@ export const customEvents = popup => {
 		onHide = () => {
 			clearEventListener()
 			clearAllTimeout()
-			// element.component.closeBtn.removeEventListener( 'click', popup.hide )
-			// element.component.readMore.removeEventListener( 'click', onExpand )
-
-			// if ( isTouch ) {
-			// document.removeEventListener( 'touchstart', onTouchStart, true )
-			// } else {
-			// element.removeEventListener( 'mouseleave', onMouseLeave )
-			// element.currentTargetElement.removeEventListener( 'mouseleave', onMouseLeave )
-			// }
 		},
 
 		onShow = element => {
@@ -81,18 +72,12 @@ export const customEvents = popup => {
 
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
 			addEventListener( element.component.readMore, 'click', onExpand )
-			// element.component.closeBtn.addEventListener( 'click', popup.hide )
-			// element.component.readMore.addEventListener( 'click', onExpand )
 
 			if ( isTouch ) {
-				// document.addEventListener( 'touchstart', onTouchStart, true )
 				addEventListener( document, 'touchstart', onTouchStart, true )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
-				// element.addEventListener( 'mouseleave', onMouseLeave )
-				// element.currentTargetElement.addEventListener( 'mouseleave', onMouseLeave )
-
 			}
 		}
 
