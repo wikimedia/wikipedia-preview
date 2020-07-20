@@ -1,9 +1,9 @@
-import { requestPagePreview, requestPageMedia } from './api'
+import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderPreviewMedia } from './preview'
-import { getWikipediaAttrFromUrl, isTouch } from './utils'
+import { renderPreview } from './preview'
+import { getWikipediaAttrFromUrl, isTouch, addMiniGalleryRow } from './utils'
 
 function init( {
 	root = document,
@@ -29,9 +29,7 @@ function init( {
 				popup.title = title
 				const expanded = document.querySelector( '.wikipediapreview.expanded.mobile' )
 				if ( expanded ) {
-					requestPageMedia( lang, title, mediaData => {
-						renderPreviewMedia( document, mediaData )
-					} )
+					addMiniGalleryRow( lang, title )
 				}
 			} )
 		}

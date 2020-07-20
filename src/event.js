@@ -1,7 +1,5 @@
-import { isTouch } from './utils'
+import { isTouch, addMiniGalleryRow } from './utils'
 import { showFullscreenGallery } from './gallery'
-import { requestPageMedia } from './api'
-import { renderPreviewMedia } from './preview'
 
 export const customEvents = popup => {
 	const onMouseLeave = e => {
@@ -19,9 +17,7 @@ export const customEvents = popup => {
 				title = popup.title
 
 			if ( lang && title ) {
-				requestPageMedia( lang, title, mediaData => {
-					renderPreviewMedia( document, mediaData )
-				} )
+				addMiniGalleryRow( lang, title )
 			}
 		},
 
