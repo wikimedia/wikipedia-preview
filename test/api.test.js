@@ -82,15 +82,17 @@ describe( 'requestPageMedia', () => {
 		const apiOutput = {
 			items: [
 				{
+					/* eslint-disable camelcase */
 					section_id: 0,
+					/* eslint-enable camelcase */
 					showInGallery: true,
 					srcset: [
 						{
-							src: "//wikimedia.org/thumb/640px-cat.jpg",
+							src: '//wikimedia.org/thumb/640px-cat.jpg',
 							scale: '1x'
 						},
 						{
-							src: "//wikimedia.org/thumb/1280px-cat.jpg",
+							src: '//wikimedia.org/thumb/1280px-cat.jpg',
 							scale: '2x'
 						}
 					],
@@ -102,15 +104,17 @@ describe( 'requestPageMedia', () => {
 					}
 				},
 				{
+					/* eslint-disable camelcase */
 					section_id: 1,
+					/* eslint-enable camelcase */
 					showInGallery: true,
 					srcset: [
 						{
-							src: "//wikimedia.org/thumb/640px-cat-skull.jpg",
+							src: '//wikimedia.org/thumb/640px-cat-skull.jpg',
 							scale: '1x'
 						},
 						{
-							src: "//wikimedia.org/thumb/1280px-cat-skull.jpg",
+							src: '//wikimedia.org/thumb/1280px-cat-skull.jpg',
 							scale: '2x'
 						}
 					],
@@ -146,15 +150,17 @@ describe( 'requestPageMedia', () => {
 		const apiOutput = {
 			items: [
 				{
+					/* eslint-disable camelcase */
 					section_id: 0,
+					/* eslint-enable camelcase */
 					showInGallery: true,
 					srcset: [
 						{
-							src: "//wikimedia.org/thumb/640px-cat.jpg",
+							src: '//wikimedia.org/thumb/640px-cat.jpg',
 							scale: '1x'
 						},
 						{
-							src: "//wikimedia.org/thumb/1280px-cat.jpg",
+							src: '//wikimedia.org/thumb/1280px-cat.jpg',
 							scale: '2x'
 						}
 					],
@@ -162,15 +168,17 @@ describe( 'requestPageMedia', () => {
 					type: 'image'
 				},
 				{
+					/* eslint-disable camelcase */
 					section_id: 1,
+					/* eslint-enable camelcase */
 					showInGallery: true,
 					srcset: [
 						{
-							src: "//wikimedia.org/thumb/640px-cat-skull.jpg",
+							src: '//wikimedia.org/thumb/640px-cat-skull.jpg',
 							scale: '1x'
 						},
 						{
-							src: "//wikimedia.org/thumb/1280px-cat-skull.jpg",
+							src: '//wikimedia.org/thumb/1280px-cat-skull.jpg',
 							scale: '2x'
 						}
 					],
@@ -205,8 +213,8 @@ describe( 'requestPageMedia', () => {
 	} )
 
 	it( 'encodes the page title in the URL', () => {
-		requestPageMedia( 'zh', "貓", () => {}, ( url ) => {
-			assert( url.endsWith( "%E8%B2%93" ) )
+		requestPageMedia( 'zh', '貓', () => {}, ( url ) => {
+			assert( url.endsWith( '%E8%B2%93' ) )
 		} )
 	} )
-})
+} )
