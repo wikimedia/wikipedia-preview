@@ -46,7 +46,7 @@ const hideFullscreenGallery = () => {
 			imageContainer = document.createElement( 'div' ),
 			image = document.createElement( 'img' ),
 			caption = document.createElement( 'p' ),
-			src = event.target.src
+			src = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
 
 		gallery = mediaItems
 		gallery.forEach( ( image, index ) => {
@@ -89,10 +89,10 @@ const hideFullscreenGallery = () => {
 		galleryRow.classList.add( 'wikipediapreview-gallery-row' )
 
 		mediaItems.forEach( item => {
-			const image = document.createElement( 'img' )
+			const image = document.createElement( 'div' )
 
 			image.classList.add( 'wikipediapreview-gallery-image' )
-			image.src = item.src
+			image.style.backgroundImage = `url(${item.src})`
 			image.addEventListener( 'click', ( e ) => {
 				showFullscreenGallery( e, mediaItems )
 			} )
