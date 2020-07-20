@@ -93,7 +93,10 @@ const hideFullscreenGallery = () => {
 
 			image.classList.add( 'wikipediapreview-gallery-image' )
 			image.src = item.src
-			image.addEventListener( 'click', ( e ) => { showFullscreenGallery( e, mediaItems ) } )
+			image.addEventListener( 'click', ( e ) => {
+				showFullscreenGallery( e, mediaItems )
+			} )
+
 			galleryRow.appendChild( image )
 		} )
 
