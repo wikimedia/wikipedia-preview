@@ -19,7 +19,7 @@ export const customEvents = popup => {
 			target.addEventListener( type, listener, options )
 			eventListenerStack.push( [ target, type, listener, options ] )
 		},
-		clearEventListener = () => {
+		clearAllEventListener = () => {
 			eventListenerStack.forEach( eventListener => {
 				const [ target, type, listener, options ] = eventListener
 				target.removeEventListener( type, listener, options )
@@ -53,7 +53,7 @@ export const customEvents = popup => {
 		},
 
 		onHide = () => {
-			clearEventListener()
+			clearAllEventListener()
 			clearAllTimeout()
 		},
 
