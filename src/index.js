@@ -16,10 +16,7 @@ function init( {
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		showPopup = ( { target } ) => {
-			if ( popup.timeoutId ) {
-				clearTimeout( popup.timeoutId )
-				popup.timeoutId = null
-			}
+			popup.hide()
 
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
