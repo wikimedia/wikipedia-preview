@@ -2,7 +2,7 @@ import { isTouch } from './utils'
 
 export const customEvents = popup => {
 
-	var eventListenerStack = [],
+	let eventListenerStack = [],
 		timeoutStack = []
 	const addTimeout = ( func, timeout ) => {
 			const id = setTimeout( func, timeout )
