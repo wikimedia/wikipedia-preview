@@ -45,35 +45,35 @@
 		width: 24px;
 		color: #72777d;
 		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		position: absolute;
 
 		&.close {
 			background-image: inline-svg( '../images/close-white.svg' );
 			top: 40px;
-			position: absolute;
 			right: 16px;
 		}
 
 		&.previous {
 			background-image: inline-svg( '../images/arrow-previous.svg' );
-			top: 320px;
-			position: absolute;
 			left: 16px;
+			align-self: center;
 		}
 
 		&.next {
 			background-image: inline-svg( '../images/arrow-next.svg' );
-			top: 320px;
-			position: absolute;
 			right: 16px;
+			align-self: center;
 		}
 	}
 
 	&-image {
 		width: 100%;
+		display: flex;
 
 		img {
 			width: 100%;
 			background-color: #fff;
+			align-self: center;
 		}
 	}
 

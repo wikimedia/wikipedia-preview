@@ -80,7 +80,14 @@ const hideFullscreenGallery = ( doc = document ) => {
 		} )
 
 		Array.prototype.forEach.call(
-			[ closeButton, nextButton, previousButton, imageContainer, caption ],
+			[ previousButton, nextButton ],
+			element => {
+				imageContainer.appendChild( element )
+			}
+		)
+
+		Array.prototype.forEach.call(
+			[ closeButton, imageContainer, caption ],
 			element => {
 				fullscreenGallery.appendChild( element )
 			}
