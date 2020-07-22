@@ -32,7 +32,7 @@ function init( {
 		root.querySelectorAll( selector ),
 		node => {
 			if ( isTouch ) {
-				node.addEventListener( 'touchstart', showPopup )
+				node.addEventListener( 'touchend', showPopup )
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
 			}
