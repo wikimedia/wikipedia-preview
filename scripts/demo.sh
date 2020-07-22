@@ -1,10 +1,8 @@
 #!/bin/bash
 
-rm -rf demo
-mkdir demo
+mkdir -p demo/script
 
-cp index.html demo/
-cp dist/wikipedia-preview.production.js demo/
-cp dist/wikipedia-preview.css demo/
-sed -i -e 's/dist\/wikipedia-preview\.development\.js/wikipedia-preview\.production\.js/g' demo/index.html
-sed -i -e 's/dist\/wikipedia-preview\.css/wikipedia-preview\.css/g' demo/index.html
+cp dist/wikipedia-preview.production.js demo/script/
+cp dist/wikipedia-preview.css demo/css
+sed -i -e 's/\.\.\/wikipedia-preview\.development\.js/\.\.\/script\/wikipedia-preview\.production\.js/g' demo/articles/*.html
+sed -i -e 's/\.\.\/wikipedia-preview\.css/\.\.\/css\/wikipedia-preview\.css/g' demo/articles/*.html
