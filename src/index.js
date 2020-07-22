@@ -50,8 +50,10 @@ function init( {
 					if ( isTouch ) {
 						// eslint-disable-next-line no-script-url
 						node.setAttribute( 'href', 'javascript:;' )
+						node.addEventListener( 'touchend', showPopup )
+					} else {
+						node.addEventListener( 'mouseenter', showPopup )
 					}
-					node.addEventListener( 'mouseenter', showPopup )
 				}
 			}
 		)
