@@ -1,16 +1,16 @@
 let gallery = [],
 	current = 0
 
-const hideFullscreenGallery = () => {
-		const fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
-		document.body.removeChild( fullscreenGallery )
+const hideFullscreenGallery = ( doc = document ) => {
+		const fullscreenGallery = doc.querySelector( '.wp-gallery-popup' )
+		doc.body.removeChild( fullscreenGallery )
 	},
 
-	renderNext = () => {
-		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
-			caption = document.querySelector( '.wp-gallery-popup-caption' ),
-			nextButton = document.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
-			previousButton = document.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
+	renderNext = ( doc = document ) => {
+		const image = doc.querySelector( '.wp-gallery-popup-image' ).firstChild,
+			caption = doc.querySelector( '.wp-gallery-popup-caption' ),
+			nextButton = doc.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
+			previousButton = doc.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
 			next = current + 1
 
 		if ( gallery[ next ] ) {
@@ -22,11 +22,11 @@ const hideFullscreenGallery = () => {
 		}
 	},
 
-	renderPrevious = () => {
-		const image = document.querySelector( '.wp-gallery-popup-image' ).firstChild,
-			caption = document.querySelector( '.wp-gallery-popup-caption' ),
-			previousButton = document.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
-			nextButton = document.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
+	renderPrevious = ( doc = document ) => {
+		const image = doc.querySelector( '.wp-gallery-popup-image' ).firstChild,
+			caption = doc.querySelector( '.wp-gallery-popup-caption' ),
+			previousButton = doc.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
+			nextButton = doc.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
 			previous = current - 1
 
 		if ( gallery[ previous ] ) {
@@ -38,14 +38,14 @@ const hideFullscreenGallery = () => {
 		}
 	},
 
-	showFullscreenGallery = ( event, mediaItems ) => {
-		const fullscreenGallery = document.createElement( 'div' ),
-			closeButton = document.createElement( 'div' ),
-			nextButton = document.createElement( 'div' ),
-			previousButton = document.createElement( 'div' ),
-			imageContainer = document.createElement( 'div' ),
-			image = document.createElement( 'img' ),
-			caption = document.createElement( 'p' ),
+	showFullscreenGallery = ( event, mediaItems, doc = document ) => {
+		const fullscreenGallery = doc.createElement( 'div' ),
+			closeButton = doc.createElement( 'div' ),
+			nextButton = doc.createElement( 'div' ),
+			previousButton = doc.createElement( 'div' ),
+			imageContainer = doc.createElement( 'div' ),
+			image = doc.createElement( 'img' ),
+			caption = doc.createElement( 'p' ),
 			src = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
 
 		gallery = mediaItems
@@ -65,13 +65,19 @@ const hideFullscreenGallery = () => {
 		caption.classList.add( 'wp-gallery-popup-caption' )
 
 		closeButton.classList.add( 'wp-gallery-popup-button', 'close' )
-		closeButton.addEventListener( 'click', hideFullscreenGallery )
+		closeButton.addEventListener( 'click', () => {
+			hideFullscreenGallery( doc )
+		} )
 		nextButton.classList.add( 'wp-gallery-popup-button', 'next' )
 		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
-		nextButton.addEventListener( 'click', renderNext )
+		nextButton.addEventListener( 'click', () => {
+			renderNext( doc )
+		} )
 		previousButton.classList.add( 'wp-gallery-popup-button', 'previous' )
 		previousButton.style.opacity = current === 0 ? '0.5' : '1'
-		previousButton.addEventListener( 'click', renderPrevious )
+		previousButton.addEventListener( 'click', () => {
+			renderPrevious( doc )
+		} )
 
 		Array.prototype.forEach.call(
 			[ closeButton, nextButton, previousButton, imageContainer, caption ],
@@ -80,7 +86,7 @@ const hideFullscreenGallery = () => {
 			}
 		)
 
-		document.body.appendChild( fullscreenGallery )
+		doc.body.appendChild( fullscreenGallery )
 
 	},
 
