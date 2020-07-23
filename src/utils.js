@@ -24,6 +24,8 @@ export const getWikipediaAttrFromUrl = url => {
 
 	addMiniGalleryRow = ( lang, title ) => {
 		requestPageMedia( lang, title, mediaData => {
-			renderPreviewMedia( document, mediaData )
+			if ( mediaData ) {
+				renderPreviewMedia( document, mediaData )
+			}
 		} )
 	}
