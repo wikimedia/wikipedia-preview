@@ -41,7 +41,6 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
-		height: 100px;
 		width: 40px;
 		color: #72777d;
 		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
@@ -51,24 +50,29 @@
 			background-image: inline-svg( '../images/close-white.svg' );
 			top: 40px;
 			right: 16px;
+			height: 100px;
+			z-index: @popup-z-index + 20;
 		}
 
 		&.previous {
 			background-image: inline-svg( '../images/arrow-previous.svg' );
 			left: 10px;
 			align-self: center;
+			height: 100%;
 		}
 
 		&.next {
 			background-image: inline-svg( '../images/arrow-next.svg' );
 			right: 10px;
 			align-self: center;
+			height: 100%;
 		}
 	}
 
 	&-image {
 		width: 100%;
 		display: flex;
+		position: relative;
 
 		img {
 			width: 100%;
