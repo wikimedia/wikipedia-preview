@@ -17,8 +17,13 @@ function init( {
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		showPopup = ( { target } ) => {
+			if ( popup.element.style.visibility === 'visible' ) {
+				popup.hide()
+			}
+
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
+
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data ) {
 					popup.show( renderPreview( lang, data, isTouch ), target )
