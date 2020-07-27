@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="yes" name="mobile-web-app-capable"/>
+        <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+        <link href="../css/header.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/footer.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/article.css" rel="stylesheet" type="text/css"/>
+        <link href="../wikipedia-preview.css" rel="stylesheet" type="text/css"/>
+        <style>
+            @media screen and (max-width: 650px) {
+                .customize-background-position {    
+                    background-position-y: -30px !important;
+                    }
+                }
+            @media screen and (min-width: 650px) {
+                .customize-background-position {
+                    background-position-y: -230px !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <a href="../index.html">
+            <div class="header">Wikipedia preview demo</div>
+        </a>
+        <div class="container">
+            <div class="cover customize-background-position" style="background-image: url('../img/spanish-pic.png');">
+                <a href="../index.html">
+                    <div class="close-btn">
+                        <div class="outer">
+                            <img alt="Image/" src="../img/oval.png" class="oval" />
+                        </div>
+                        <div class="inner">
+                            <img alt="Image/" src="../img/fill1.png" class="fill1" />
+                            <img alt="Image/" src="../img/fill2.png" class="fill2" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="title">
+                <p>Nikola Tesla</p>
+            </div>
+            <div class="content">
+                <p>
+                    Nikola Tesla fue un inventor, ingeniero eléctrico, ingeniero mecánico y físico estadounidense de origen serbocroata.​ Se le conoce sobre todo por sus numerosas invenciones en el campo del electromagnetismo, desarrolladas a finales del siglo XIX y principios del siglo XX. Las patentes de Tesla y su trabajo teórico ayudaron a forjar las bases de los sistemas modernos para el uso de la energía eléctrica por corriente alterna (CA), incluyendo el sistema polifásico de distribución eléctrica y el <span class="wmf-wp-with-preview" data-wikipedia-preview>motor de corriente alterna</span>, que contribuyeron al surgimiento de la Segunda Revolución Industrial.
+                </p>
+                <p>
+                    Su carácter, su enfrentamiento con <span class="wmf-wp-with-preview" data-wp-title="Thomas_Alva_Edison" data-wikipedia-preview>Edison</span> y el halo de misterio que rodea a algunos de sus descubrimientos, hicieron que Tesla se convirtiera en un científico muy popular a partir de la década de 1990, con una abundante bibliografía disponible acerca de su vida y de su obra.
+                </p>
+                <p>
+                    Nikola Tesla, de etnia serbia, nació en el pueblo de <span class="wmf-wp-with-preview" data-wikipedia-preview>Smiljan</span> (actualmente en Croacia), en el entonces Imperio austrohúngaro, y tiempo después se nacionalizaría estadounidense
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                This article uses material from the Wikipedia article “<a href="https://es.m.wikipedia.org/wiki/Nikola_Tesla" target="_blank">Nikola Tesla</a>”,<br />which is released under the Creative Commons Attribution-Share-Alike License 3.0.
+                <br/><br/>
+                <a href="https://github.com/wikimedia/wikipedia-preview" target="_blank"> View Source </a>
+            </p>
+        </div>
+        <!-- Scripts -->
+        <script src="../wikipedia-preview.development.js"></script>
+        <script>
+            wikipediaPreview.init({
+                lang: 'es'
+            });
+        </script>
+        <!-- End of Scripts -->
+    </body>
+</html>

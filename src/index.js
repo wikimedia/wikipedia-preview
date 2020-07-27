@@ -17,6 +17,10 @@ function init( {
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		showPopup = ( { target } ) => {
+			if ( popup.element.style.visibility === 'visible' ) {
+				popup.hide()
+			}
+
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
 
@@ -40,7 +44,7 @@ function init( {
 		root.querySelectorAll( selector ),
 		node => {
 			if ( isTouch ) {
-				node.addEventListener( 'touchstart', showPopup )
+				node.addEventListener( 'touchend', showPopup )
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
 			}
@@ -58,8 +62,10 @@ function init( {
 					if ( isTouch ) {
 						// eslint-disable-next-line no-script-url
 						node.setAttribute( 'href', 'javascript:;' )
+						node.addEventListener( 'touchend', showPopup )
+					} else {
+						node.addEventListener( 'mouseenter', showPopup )
 					}
-					node.addEventListener( 'mouseenter', showPopup )
 				}
 			}
 		)

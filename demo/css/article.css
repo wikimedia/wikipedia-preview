@@ -1,0 +1,137 @@
+a {
+    text-decoration: none;
+  }
+  body {
+    margin: 0;
+  }
+  .container {
+    width               : 100%;
+    max-width           : 786px;
+    position            : relative;
+    overflow            : hidden;
+    margin              : 0 auto;
+  }
+  @media screen and (max-width: 650px) {
+    .container {
+      top: 0px;
+    }
+    .header {
+      box-shadow          : unset;
+      border-bottom       : unset;
+    }
+  }
+  @media screen and (min-width: 650px) {
+    .container {
+      margin: 20px auto;
+    }
+  }
+  .container .cover {
+    width               : 100%;
+    position            : relative;
+    margin              : 0;
+    height              : 272px;
+    left                : 0px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+    overflow            : hidden;
+    background-size     : cover;
+    background-position : center center;
+  }
+  .container .cover .close-btn {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 24px;
+    height              : 23px;
+    width               : 24px;
+    position            : absolute;
+    margin              : 0;
+    right               : 24px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  @media screen and (min-width: 650px) {
+    .container .cover .close-btn{
+      visibility: hidden;
+    }
+  }
+  .container .cover .close-btn .outer {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 0px;
+    height              : 23px;
+    width               : 24px;
+    position            : relative;
+    margin              : 0;
+    left                : 0px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  .container .cover .close-btn .outer .oval {
+    background-color    : rgba(255,255,255,0.0);
+    position            : absolute;
+    top                 : 0px;
+    left                : 0px;
+    margin              : 0;
+    width               : 100%;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  .container .cover .close-btn .inner {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 6px;
+    height              : 12px;
+    width               : 12px;
+    position            : absolute;
+    margin              : 0;
+    left                : 6px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  .container .cover .close-btn .inner .fill1 {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 0px;
+    height              : 12px;
+    width               : 12px;
+    position            : absolute;
+    margin              : 0;
+    left                : 0px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  .container .cover .close-btn .inner .fill2 {
+    background-color    : rgba(255,255,255,0.0);
+    top                 : 0px;
+    height              : 12px;
+    width               : 12px;
+    position            : absolute;
+    margin              : 0;
+    left                : 0px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+  }
+  .container .title {
+    background-color    : rgba(255,255,255,0.0);
+    height              : auto;
+    width               : calc(100.00% - 83px);
+    position            : relative;
+    left                : 16px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+    line-height: 22px;
+    font-style          : normal;
+    font-size           : 20px;
+    color               : rgba(32,33,34,1.0);
+  }
+  .container .content {
+    background-color    : rgba(255,255,255,0.0);
+    height              : auto;
+    width               : calc(100.00% - 32px);
+    position            : relative;
+    left                : 16px;
+    transform           : rotate(0deg);
+    opacity             : 1.0;
+    font-weight         : 400;
+    font-style          : normal;
+    font-size           : 16.0px;
+    color               : rgba(32,33,34,1.0);
+    text-align          : left;
+    line-height         : 24.0px;
+  }
