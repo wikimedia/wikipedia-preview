@@ -17,7 +17,7 @@ const config = {
     umdNamedDefine: true
   },
   devServer: {
-    publicPath: '/dist/',
+    contentBase: [ path.join(__dirname, 'demo'), path.join(__dirname, 'dist') ],
     watchOptions: {
       ignored: ['dist', 'node_modules']
     }
