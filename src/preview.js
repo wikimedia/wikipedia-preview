@@ -11,7 +11,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 				<div class="wikipediapreviews-header-closebtn"></div>
 			</div>
 			<div class="wikipediapreviews-body">
-				${data.extractHtml} ${msg}
+				${data.extractHtml}
 			</div>
 			<div class="wikipediapreviews-footer">
 				<span class="wikipediapreviews-footer-cta wikipediapreviews-footer-cta-readmore">${msg( lang, 'continue-reading' )}</span>
