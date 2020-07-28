@@ -1,5 +1,4 @@
 export const getWikipediaAttrFromUrl = url => {
-
 		const regexList = [
 		// https://en.wikipedia.org/wiki/Charles_Darwin
 			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/(\w+)/,
@@ -16,5 +15,6 @@ export const getWikipediaAttrFromUrl = url => {
 
 		return null
 	},
+
 	isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
 		( navigator.msMaxTouchPoints > 0 )

@@ -22,7 +22,75 @@
 	background-color: #fff;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	z-index: @popup-z-index;
-	overflow: hidden;
+}
+
+.wp-gallery-popup {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #222;
+	z-index: @popup-z-index + 10;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+
+	&-button {
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: pointer;
+		width: 40px;
+		color: #72777d;
+		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+		position: absolute;
+
+		&.close {
+			background-image: inline-svg( '../images/close-white.svg' );
+			top: 40px;
+			right: 16px;
+			height: 100px;
+			z-index: @popup-z-index + 20;
+		}
+
+		&.previous {
+			background-image: inline-svg( '../images/arrow-previous.svg' );
+			left: 10px;
+			align-self: center;
+			height: 100%;
+		}
+
+		&.next {
+			background-image: inline-svg( '../images/arrow-next.svg' );
+			right: 10px;
+			align-self: center;
+			height: 100%;
+		}
+	}
+
+	&-image {
+		width: 100%;
+		display: flex;
+		position: relative;
+
+		img {
+			width: 100%;
+			background-color: #fff;
+			align-self: center;
+		}
+	}
+
+	&-caption {
+		font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+		font-size: 18px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: 1.56;
+		letter-spacing: normal;
+		color: #f8f9fa;
+		padding: 0 16px 0 16px;
+	}
 }
 
 .wp-dark-screen {

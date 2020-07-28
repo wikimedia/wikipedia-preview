@@ -28,6 +28,14 @@ function init( {
 				if ( data ) {
 					popup.show( renderPreview( lang, data, isTouch ), target )
 				}
+
+				popup.lang = lang
+				popup.title = title
+				const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
+
+				if ( expanded && popup.expand ) {
+					popup.expand()
+				}
 			} )
 		}
 

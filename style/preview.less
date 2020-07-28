@@ -1,4 +1,4 @@
-.wikipediapreviews {
+.wikipediapreview {
 	display: flex;
 	flex-direction: column;
 	width: 350px;
@@ -80,6 +80,25 @@
 		}
 	}
 
+	&-gallery {
+		display: flex;
+		height: 62px;
+		margin-top: 5px;
+
+		&-row {
+			display: flex;
+			overflow: scroll;
+		}
+
+		&-image {
+			height: 100%;
+			min-width: 65px;
+			background-size: cover;
+			background-position: center;
+			margin: 0 2px 0 2px;
+		}
+	}
+
 	&-footer {
 		&-cta {
 			width: 100%;
@@ -124,7 +143,7 @@
 	}
 
 	&.expanded {
-		.wikipediapreviews-body {
+		.wikipediapreview-body {
 			max-height: 496px;
 			overflow: hidden;
 
@@ -133,7 +152,7 @@
 			}
 		}
 
-		.wikipediapreviews-footer-cta {
+		.wikipediapreview-footer-cta {
 			&-readmore {
 				display: none;
 			}
@@ -149,7 +168,7 @@
 	}
 
 	&.mobile.expanded {
-		.wikipediapreviews-body {
+		.wikipediapreview-body {
 			max-height: calc( 70vh );
 			overflow: scroll;
 		}
