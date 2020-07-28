@@ -25,9 +25,6 @@
 }
 
 .wp-gallery-popup {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	background-color: #222;
 	z-index: @popup-z-index + 10;
 	position: fixed;
@@ -36,11 +33,25 @@
 	left: 0;
 	top: 0;
 
+	&-top {
+		height: 10vh;
+	}
+
+	&-main {
+		display: flex;
+		max-width: 100%;
+		height: 70vh;
+	}
+
+	&-bottom {
+		height: 20vh;
+	}
+
 	&-button {
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
-		width: 40px;
+		width: 24px;
 		color: #72777d;
 		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
 		position: absolute;
@@ -49,32 +60,38 @@
 			background-image: inline-svg( '../images/close-white.svg' );
 			top: 40px;
 			right: 16px;
-			height: 100px;
+			height: 24px;
 			z-index: @popup-z-index + 20;
 		}
 
 		&.previous {
 			background-image: inline-svg( '../images/arrow-previous.svg' );
-			left: 10px;
+			left: 16px;
 			align-self: center;
 			height: 100%;
+			-webkit-tap-highlight-color: transparent;
 		}
 
 		&.next {
 			background-image: inline-svg( '../images/arrow-next.svg' );
-			right: 10px;
+			right: 16px;
 			align-self: center;
 			height: 100%;
+			-webkit-tap-highlight-color: transparent;
 		}
 	}
 
 	&-image {
 		width: 100%;
+		height: 100%;
 		display: flex;
-		position: relative;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 
 		img {
-			width: 100%;
+			max-height: 100%;
+			max-width: 100%;
 			background-color: #fff;
 			align-self: center;
 		}
@@ -89,7 +106,7 @@
 		line-height: 1.56;
 		letter-spacing: normal;
 		color: #f8f9fa;
-		padding: 0 16px 0 16px;
+		margin: 2px 16px 0 16px;
 	}
 }
 

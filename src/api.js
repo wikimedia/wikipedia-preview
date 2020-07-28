@@ -23,10 +23,12 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 		request( url, mediaListData => {
 			const pageMedia = mediaListData.items.reduce( ( mediaArray, item ) => {
 				if ( item.showInGallery && item.type === 'image' ) {
-					const source = item && item.srcset && `https:${item.srcset[ 0 ].src}`,
+					const thumbnail = item && item.srcset && `https:${item.srcset[ 0 ].src}`,
+						source = thumbnail.slice( 0, thumbnail.lastIndexOf( '/' ) ).replace( '/thumb', '' ),
 						media = {
 							caption: item.caption && item.caption.text.trim(),
 							src: source,
+							thumb: thumbnail,
 							title: item.title
 						}
 
