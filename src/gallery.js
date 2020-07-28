@@ -81,20 +81,14 @@ const hideFullscreenGallery = ( galleryContainer ) => {
 		} )
 
 		if ( gallery.length > 1 ) {
-			Array.prototype.forEach.call(
-				[ previousButton, nextButton ],
-				element => {
-					imageContainer.appendChild( element )
-				}
-			)
+			[ previousButton, nextButton ].forEach( element => {
+				imageContainer.appendChild( element )
+			} )
 		}
 
-		Array.prototype.forEach.call(
-			[ closeButton, imageContainer, caption ],
-			element => {
-				fullscreenGallery.appendChild( element )
-			}
-		)
+		[ closeButton, imageContainer, caption ].forEach( element => {
+			fullscreenGallery.appendChild( element )
+		} )
 
 		galleryContainer.appendChild( fullscreenGallery )
 
