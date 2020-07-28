@@ -1,14 +1,20 @@
 import fallbackMessage from '../i18n/en.json'
-const msg = ( lang, key ) => {
-	let messages
 
-	try {
-		messages = require( `../i18n/${lang}.json` )
-	} catch ( error ) {
-		// Translation not available, discard
+const messages = {
+		en: fallbackMessage
+	},
+
+	msg = ( lang, key ) => {
+		try {
+			if ( !messages[ lang ] ) {
+				messages[ lang ] = require( `../i18n/${lang}.json` )
+			}
+		} catch ( error ) {
+			// Translation not available
+		}
+
+		let message = messages[ lang ]
+		return ( message && message[ key ] ) || fallbackMessage[ key ] || key
 	}
-
-	return ( messages && messages[ key ] ) || fallbackMessage[ key ] || key
-}
 
 export { msg }
