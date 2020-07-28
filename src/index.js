@@ -36,7 +36,7 @@ function init( {
 
 				if ( expanded ) {
 					requestPageMedia( lang, title, mediaData => {
-						if ( mediaData && mediaData.length > 1 ) {
+						if ( mediaData && mediaData.length > 0 ) {
 							const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
 							galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
 						}

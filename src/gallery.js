@@ -80,12 +80,14 @@ const hideFullscreenGallery = ( galleryContainer ) => {
 			renderPrevious( galleryContainer )
 		} )
 
-		Array.prototype.forEach.call(
-			[ previousButton, nextButton ],
-			element => {
-				imageContainer.appendChild( element )
-			}
-		)
+		if ( gallery.length > 1 ) {
+			Array.prototype.forEach.call(
+				[ previousButton, nextButton ],
+				element => {
+					imageContainer.appendChild( element )
+				}
+			)
+		}
 
 		Array.prototype.forEach.call(
 			[ closeButton, imageContainer, caption ],
