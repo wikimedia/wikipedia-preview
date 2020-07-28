@@ -1,6 +1,3 @@
-import { requestPageMedia } from './api'
-import { renderPreviewMedia } from './preview'
-
 export const getWikipediaAttrFromUrl = url => {
 		const regexList = [
 		// https://en.wikipedia.org/wiki/Charles_Darwin
@@ -20,12 +17,4 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
-		( navigator.msMaxTouchPoints > 0 ),
-
-	addMiniGalleryRow = ( lang, title ) => {
-		requestPageMedia( lang, title, mediaData => {
-			if ( mediaData && mediaData.length > 1 ) {
-				renderPreviewMedia( document, mediaData )
-			}
-		} )
-	}
+		( navigator.msMaxTouchPoints > 0 )

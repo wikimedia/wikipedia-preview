@@ -1,4 +1,6 @@
-import { isTouch, addMiniGalleryRow } from './utils'
+import { isTouch } from './utils'
+import { getGalleryRow } from './gallery'
+import { requestPageMedia } from './api'
 
 export const customEvents = popup => {
 
@@ -53,13 +55,18 @@ export const customEvents = popup => {
 				title = popup.title
 
 			if ( lang && title ) {
-				addMiniGalleryRow( lang, title )
+				requestPageMedia( lang, title, mediaData => {
+					if ( mediaData && mediaData.length > 1 ) {
+						const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
+						galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
+					}
+				} )
 			}
 		},
 
 		onTouchOutsidePreview = e => {
 			const toElement = e.target,
-				fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
+				fullscreenGallery = popup.element.querySelector( '.wp-gallery-popup' )
 
 			if ( !popup.element.contains( toElement ) && !fullscreenGallery ) {
 				popup.hide()
@@ -93,7 +100,6 @@ export const customEvents = popup => {
 			addEventListener( element.component.readMore, 'click', onExpand )
 
 			if ( isTouch ) {
-				// document.addEventListener( 'touchstart', onTouchOutsidePreview, true )
 				addEventListener( document, 'touchstart', onTouchOutsidePreview, true )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )

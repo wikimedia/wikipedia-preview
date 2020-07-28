@@ -23,25 +23,34 @@ describe( 'showFullscreenGallery', () => {
 				src: 'https://upload.wikimedia.org/640px-Cat_3.jpg',
 				title: 'File:Cat_3.jpg'
 			}
-    ],
-    
+		],
+
 		mockEvent = {
 			target: {
 				style: {
 					backgroundImage: 'url("https://upload.wikimedia.org/640px-Cat_2.jpg")'
 				}
 			}
+		},
+
+		mockPopup = {
+			element: null
 		}
 
 	before( () => {
 		dom = new JSDOM( `
 			<html>
-        <body></body>
+				<body>
+					<div class="mock-popup">
+						<div class="wikipediapreview-gallery"></div>
+					</div>
+				</body>
 			</html>
 		` )
 
 		doc = dom.window.document
-		showFullscreenGallery( mockEvent, mediaItems, doc )
+		mockPopup.element = doc.querySelector( '.mock-popup' )
+		showFullscreenGallery( mockEvent, mediaItems, mockPopup, doc )
 	} )
 
 	it( 'renders full screen gallery with selected image', () => {
@@ -49,7 +58,6 @@ describe( 'showFullscreenGallery', () => {
 			image = doc.querySelector( '.wp-gallery-popup-image' )
 
 		assert.ok( fullscreenGallery )
-		assert.equal( doc.body.children[ 0 ].className, fullscreenGallery.className )
 		assert.equal( image.children[ 0 ].src, mediaItems[ 1 ].src )
 	} )
 
@@ -71,10 +79,11 @@ describe( 'showFullscreenGallery', () => {
 	} )
 
 	it( 'closes full screen gallery when close button is clicked', () => {
-		const closeButton = doc.querySelectorAll( '.wp-gallery-popup-button.close' )[ 0 ]
+		const closeButton = doc.querySelectorAll( '.wp-gallery-popup-button.close' )[ 0 ],
+			galleryContainer = doc.querySelector( '.wikipediapreview-gallery' )
 
 		closeButton.click()
-		assert.ifError( doc.body.children[ 0 ] )
+		assert.ifError( galleryContainer.children[ 0 ] )
 	} )
 } )
 

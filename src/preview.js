@@ -1,9 +1,8 @@
 import '../style/preview.less'
-import { getGalleryRow } from './gallery'
 
 const renderPreview = ( lang, data, isTouch ) => {
-		const imageUrl = data.imgUrl
-		return `
+	const imageUrl = data.imgUrl
+	return `
 		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
 			<div class="wikipediapreview-header">
 				<div class="wikipediapreview-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
@@ -23,13 +22,6 @@ const renderPreview = ( lang, data, isTouch ) => {
 			</div>
 		</div>
 	`.trim()
-	},
+}
 
-	renderPreviewMedia = ( document, mediaList ) => {
-		const gallery = document.body.querySelector( '.wikipediapreview-gallery' ),
-			imagesRow = getGalleryRow( mediaList )
-
-		gallery.appendChild( imagesRow )
-	}
-
-export { renderPreview, renderPreviewMedia }
+export { renderPreview }
