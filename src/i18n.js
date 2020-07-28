@@ -1,7 +1,7 @@
-import fallbackMessage from '../i18n/en.json'
+import en from '../i18n/en.json'
 
 const messages = {
-		en: fallbackMessage
+		en
 	},
 
 	msg = ( lang, key ) => {
@@ -14,7 +14,7 @@ const messages = {
 		}
 
 		let message = messages[ lang ]
-		return ( message && message[ key ] ) || fallbackMessage[ key ] || key
+		return ( message && message[ key ] ) || messages.en[ key ] || key
 	}
 
 export { msg }
