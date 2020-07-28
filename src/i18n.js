@@ -5,16 +5,14 @@ const messages = {
 	},
 
 	msg = ( lang, key ) => {
-		try {
-			if ( !messages[ lang ] ) {
+		if ( !messages[ lang ] ) {
+			try {
 				messages[ lang ] = require( `../i18n/${lang}.json` )
+			} catch ( error ) {
+				messages[ lang ] = {}
 			}
-		} catch ( error ) {
-			// Translation not available
 		}
-
-		let message = messages[ lang ]
-		return ( message && message[ key ] ) || messages.en[ key ] || key
+		return messages[ lang ][ key ] || messages.en[ key ] || key
 	}
 
 export { msg }
