@@ -1,3 +1,4 @@
+import { msg } from './i18n'
 import '../style/preview.less'
 
 const renderPreview = ( lang, data, isTouch ) => {
@@ -15,8 +16,8 @@ const renderPreview = ( lang, data, isTouch ) => {
 				</div>
 			</div>
 			<div class="wikipediapreview-footer">
-				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">Continue Reading</span>
-				<a href="${data.pageUrl}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">Read more on Wikipedia</a>
+				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${msg( lang, 'continue-reading' )}</span>
+				<a href="${data.pageUrl}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${msg( lang, 'read-more' )}</a>
 				<div class="wikipediapreview-footer-cc"></div>
 				<div class="wikipediapreview-footer-author"></div>
 			</div>

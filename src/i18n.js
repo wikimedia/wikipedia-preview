@@ -1,17 +1,18 @@
-const messages = {
-	en: {
-		'wikipedia': 'Wikipedia'
-	},
-	fr: {
-		'wikipedia': 'Wikipédia'
-	},
-	es: {
-		'wikipedia': 'Wikipedia'
-	}
-}
+import en from '../i18n/en.json'
 
-const msg = (lang, key) => {
-	return (messages[lang] || messages.en)[key] || key
-}
+const messages = {
+		en
+	},
+
+	msg = ( lang, key ) => {
+		if ( !messages[ lang ] ) {
+			try {
+				messages[ lang ] = require( `../i18n/${lang}.json` )
+			} catch ( error ) {
+				messages[ lang ] = {}
+			}
+		}
+		return messages[ lang ][ key ] || messages.en[ key ] || key
+	}
 
 export { msg }
