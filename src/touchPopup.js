@@ -47,6 +47,12 @@ const addBackgroundScreen = ( document ) => {
 				removeBackgroundScreen( win.document )
 			},
 
+			expand = () => {
+				if ( popupEvents.onExpand ) {
+					popupEvents.onExpand()
+				}
+			},
+
 			subscribe = ( events = {} ) => {
 				if ( events.onShow ) {
 					popupEvents.onShow = events.onShow
@@ -54,9 +60,12 @@ const addBackgroundScreen = ( document ) => {
 				if ( events.onHide ) {
 					popupEvents.onHide = events.onHide
 				}
+				if ( events.onExpand ) {
+					popupEvents.onExpand = events.onExpand
+				}
 			}
 
-		return { show, hide, subscribe, element: popup }
+		return { show, hide, expand, subscribe, element: popup }
 	}
 
 export { createTouchPopup }

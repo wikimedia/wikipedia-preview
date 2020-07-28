@@ -1,9 +1,8 @@
-import { requestPagePreview, requestPageMedia } from './api'
+import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview } from './preview'
-import { getGalleryRow } from './gallery'
 import { getWikipediaAttrFromUrl, isTouch } from './utils'
 
 function init( {
@@ -34,13 +33,8 @@ function init( {
 				popup.title = title
 				const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
-				if ( expanded ) {
-					requestPageMedia( lang, title, mediaData => {
-						if ( mediaData && mediaData.length > 0 ) {
-							const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
-							galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
-						}
-					} )
+				if ( expanded && popup.expand ) {
+					popup.expand()
 				}
 			} )
 		}
