@@ -1,17 +1,14 @@
-const messages = {
-	en: {
-		'wikipedia': 'Wikipedia'
-	},
-	fr: {
-		'wikipedia': 'Wikipédia'
-	},
-	es: {
-		'wikipedia': 'Wikipedia'
-	}
-}
+import fallbackMessage from '../i18n/en.json'
+const msg = ( lang, key ) => {
+	let messages
 
-const msg = (lang, key) => {
-	return (messages[lang] || messages.en)[key] || key
+	try {
+		messages = require( `../i18n/${lang}.json` )
+	} catch ( error ) {
+		// Translation not available, discard
+	}
+
+	return ( messages && messages[ key ] ) || fallbackMessage[ key ] || key
 }
 
 export { msg }
