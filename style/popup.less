@@ -22,6 +22,10 @@
 	background-color: #fff;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	z-index: @popup-z-index;
+
+	@media ( orientation: landscape ) {
+		margin: 0 106px;
+	}
 }
 
 .wp-gallery-popup {
@@ -73,10 +77,20 @@
 		display: flex;
 		position: relative;
 
+		@media ( orientation: landscape ) {
+			height: 100%;
+		}
+
 		img {
 			width: 100%;
 			background-color: #fff;
 			align-self: center;
+
+			@media ( orientation: landscape ) {
+				width: unset;
+				height: 100%;
+				margin: 0 auto;
+			}
 		}
 	}
 
