@@ -1,4 +1,5 @@
 {
     "continue-reading": "The message shown in the footer part of the preview popup that allows user to continue reading the summary",
-    "read-more": "The message shown in the footer part of the preview popup that brings user to the wikipedia page to read more about the article"
+    "read-more": "The message shown in the footer part of the preview popup that brings user to the wikipedia page to read more about the article",
+    "wikipedia-wordmark": "The official wikipedia wordmark shown as the title of the preview popup."
 }

@@ -7,7 +7,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
 			<div class="wikipediapreview-header">
 				<div class="wikipediapreview-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
-				<div class="wikipediapreview-header-wordmark"></div>
+				<div class="wikipediapreview-header-wordmark">${msg( lang, 'wikipedia-wordmark' )}</div>
 				<div class="wikipediapreview-header-closebtn"></div>
 			</div>
 			<div class="wikipediapreview-body">
