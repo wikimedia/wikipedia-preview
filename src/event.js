@@ -93,7 +93,8 @@ export const customEvents = popup => {
 			}
 
 			// @todo update the magic number
-			if ( element.component.content && element.component.content.getBoundingClientRect().height < 248 ) {
+			if ( element.component.content &&
+				element.component.content.getBoundingClientRect().height < 248 ) {
 				onExpand( element )
 			}
 

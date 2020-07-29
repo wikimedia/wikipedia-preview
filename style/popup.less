@@ -122,6 +122,78 @@
 		color: #f8f9fa;
 		margin: 2px 16px 0 16px;
 	}
+
+	&-loading {
+		position: absolute;
+		height: 112px;
+
+		&-spinner {
+			margin: 50px auto 0;
+			width: 70px;
+			opacity: 0.8;
+			display: inline-block;
+			white-space: nowrap;
+		}
+
+		&-spinner,
+		&-bounce,
+		&-spinner:before,
+		&-spinner:after {
+			content: '';
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			background-color: #c8ccd1;
+			border-radius: 100%;
+			-webkit-animation: bouncedelay 1s infinite ease-in-out;
+			animation: bouncedelay 1s infinite ease-in-out;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+			-webkit-animation-delay: -0.16s;
+			animation-delay: -0.16s;
+		}
+
+		&-spinner:before {
+			-webkit-animation-delay: -0.33s;
+			animation-delay: -0.33s;
+		}
+
+		&-spinner:after {
+			-webkit-animation-delay: 0;
+			animation-delay: 0;
+		}
+
+		@-webkit-keyframes bouncedelay {
+			0%,
+			100%,
+			80% {
+				-webkit-transform: scale( 0.6 );
+				transform: scale( 0.6 );
+			}
+
+			40% {
+				-webkit-transform: scale( 1 );
+				transform: scale( 1 );
+				background-color: #bbb;
+			}
+		}
+
+		@keyframes bouncedelay {
+			0%,
+			100%,
+			80% {
+				-webkit-transform: scale( 0.6 );
+				-ms-transform: scale( 0.6 );
+				transform: scale( 0.6 );
+			}
+
+			40% {
+				-webkit-transform: scale( 1 );
+				-ms-transform: scale( 1 );
+				transform: scale( 1 );
+			}
+		}
+	}
 }
 
 .wp-dark-screen {
