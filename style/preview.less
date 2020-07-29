@@ -12,6 +12,7 @@
 		display: flex;
 		height: 62px;
 		line-height: 62px;
+		background-color: #eaf3ff;
 
 		&-image {
 			background-image: inline-svg( '../images/wikipedia-logo.svg' );
@@ -23,17 +24,23 @@
 		}
 
 		&-wordmark {
-			background-image: inline-svg( '../images/wikipedia-wordmark.svg' );
+			background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
 			background-repeat: no-repeat;
-			background-color: #eaf3ff;
 			background-position: left;
 			background-position-x: 11px;
 			height: 100%;
 			flex-grow: 1;
 			font-size: 24px;
-			padding-left: 13px;
+			margin-left: 13px;
 			color: #72777d;
 			font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+
+			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, ur, uz, zh-c;
+			each(@wordmark-languages, {
+				&-@{value} {
+					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
+				}
+			});
 		}
 
 		&-closebtn {
