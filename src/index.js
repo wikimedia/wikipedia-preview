@@ -4,6 +4,7 @@ import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview } from './preview'
 import { getWikipediaAttrFromUrl, isTouch } from './utils'
+import { renderLoading } from './loading'
 
 function init( {
 	root = document,
@@ -21,11 +22,14 @@ function init( {
 				popup.hide()
 			}
 
+			popup.loading = true
+			popup.show( renderLoading( isTouch ), target )
+
 			const title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
 
 			requestPagePreview( lang, title, isTouch, data => {
-				if ( data ) {
+				if ( data && popup.loading ) {
 					popup.show( renderPreview( lang, data, isTouch ), target )
 				}
 

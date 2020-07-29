@@ -77,6 +77,7 @@ export const customEvents = popup => {
 			popup.element.component.wikipediapreview.classList.remove( 'expanded' )
 			popup.lang = null
 			popup.title = null
+			popup.loading = false
 
 			clearAllEventListener()
 			clearAllTimeout()
@@ -92,12 +93,14 @@ export const customEvents = popup => {
 			}
 
 			// @todo update the magic number
-			if ( element.component.content.getBoundingClientRect().height < 248 ) {
+			if ( element.component.content && element.component.content.getBoundingClientRect().height < 248 ) {
 				onExpand( element )
 			}
 
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
-			addEventListener( element.component.readMore, 'click', onExpand )
+			if ( element.component.readMore ) {
+				addEventListener( element.component.readMore, 'click', onExpand )
+			}
 
 			if ( isTouch ) {
 				addEventListener( document, 'touchstart', onTouchOutsidePreview, true )
