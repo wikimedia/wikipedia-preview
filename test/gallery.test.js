@@ -10,16 +10,19 @@ describe( 'showFullscreenGallery', () => {
 	const mediaItems = [
 			{
 				caption: 'The first cat',
+				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_1.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_1.jpg',
 				title: 'File:Cat_1.jpg'
 			},
 			{
 				caption: 'The second cat',
+				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_2.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_2.jpg',
 				title: 'File:Cat_2.jpg'
 			},
 			{
 				caption: 'The third cat',
+				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_3.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_3.jpg',
 				title: 'File:Cat_3.jpg'
 			}
@@ -58,7 +61,7 @@ describe( 'showFullscreenGallery', () => {
 			image = doc.querySelector( '.wp-gallery-popup-image' )
 
 		assert.ok( fullscreenGallery )
-		assert.equal( image.children[ 0 ].src, mediaItems[ 1 ].src )
+		assert.equal( image.children[ 0 ].src, mediaItems[ 0 ].src )
 	} )
 
 	it( 'renders next image when next button is clicked', () => {
@@ -66,7 +69,7 @@ describe( 'showFullscreenGallery', () => {
 			image = doc.querySelector( '.wp-gallery-popup-image' )
 
 		nextButton.click()
-		assert.equal( image.children[ 0 ].src, mediaItems[ 2 ].src )
+		assert.equal( image.children[ 0 ].src, mediaItems[ 1 ].src )
 	} )
 
 	it( 'renders previous image when previous button is clicked', () => {
@@ -74,7 +77,7 @@ describe( 'showFullscreenGallery', () => {
 			image = doc.querySelector( '.wp-gallery-popup-image' )
 
 		previousButton.click()
-		assert.equal( image.children[ 0 ].src, mediaItems[ 1 ].src )
+		assert.equal( image.children[ 0 ].src, mediaItems[ 0 ].src )
 
 	} )
 
@@ -91,16 +94,19 @@ describe( 'getGalleryRow', () => {
 	const mediaItems = [
 		{
 			caption: 'The first cat',
+			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_1.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_1.jpg',
 			title: 'File:Cat_1.jpg'
 		},
 		{
 			caption: 'The second cat',
+			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_2.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_2.jpg',
 			title: 'File:Cat_2.jpg'
 		},
 		{
 			caption: 'The third cat',
+			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_3.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_3.jpg',
 			title: 'File:Cat_3.jpg'
 		}
@@ -110,8 +116,8 @@ describe( 'getGalleryRow', () => {
 		const galleryRow = getGalleryRow( mediaItems )
 
 		Array.from( galleryRow.children ).forEach( ( image, index ) => {
-			const src = image.style[ 'background-image' ].slice( 4, -1 )
-			assert.equal( src, mediaItems[ index ].src )
+			const thumb = image.style[ 'background-image' ].slice( 4, -1 )
+			assert.equal( thumb, mediaItems[ index ].thumb )
 			assert.equal( image.className, 'wikipediapreview-gallery-image' )
 		} )
 	} )

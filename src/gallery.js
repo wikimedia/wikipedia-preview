@@ -40,35 +40,44 @@ const hideFullscreenGallery = ( galleryContainer ) => {
 
 	showFullscreenGallery = ( event, mediaItems, popup, doc = document ) => {
 		const fullscreenGallery = doc.createElement( 'div' ),
+			top = doc.createElement( 'div' ),
+			main = doc.createElement( 'div' ),
+			bottom = doc.createElement( 'div' ),
 			closeButton = doc.createElement( 'div' ),
 			nextButton = doc.createElement( 'div' ),
 			previousButton = doc.createElement( 'div' ),
 			imageContainer = doc.createElement( 'div' ),
 			image = doc.createElement( 'img' ),
-			caption = doc.createElement( 'p' ),
-			src = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' ),
+			caption = doc.createElement( 'div' ),
+			selected = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' ),
 			galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
 
 		gallery = mediaItems
 		gallery.forEach( ( image, index ) => {
-			if ( image.src === src ) {
+			if ( image.thumb === selected ) {
 				current = index
 			}
 		} )
 
 		fullscreenGallery.classList.add( 'wp-gallery-popup' )
+		top.classList.add( 'wp-gallery-popup-top' )
+		main.classList.add( 'wp-gallery-popup-main' )
+		bottom.classList.add( 'wp-gallery-popup-bottom' )
 
-		image.src = src
+		image.src = gallery[ current ].src
 		imageContainer.appendChild( image )
 		imageContainer.classList.add( 'wp-gallery-popup-image' )
 
 		caption.innerHTML = gallery[ current ].caption ? gallery[ current ].caption : ''
 		caption.classList.add( 'wp-gallery-popup-caption' )
+		bottom.appendChild( caption )
 
 		closeButton.classList.add( 'wp-gallery-popup-button', 'close' )
 		closeButton.addEventListener( 'click', () => {
 			hideFullscreenGallery( galleryContainer )
 		} )
+		top.appendChild( closeButton )
+
 		nextButton.classList.add( 'wp-gallery-popup-button', 'next' )
 		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 		nextButton.addEventListener( 'click', () => {
@@ -81,12 +90,14 @@ const hideFullscreenGallery = ( galleryContainer ) => {
 		} )
 
 		if ( gallery.length > 1 ) {
-			[ previousButton, nextButton ].forEach( element => {
-				imageContainer.appendChild( element )
+			[ previousButton, imageContainer, nextButton ].forEach( element => {
+				main.appendChild( element )
 			} )
+		} else {
+			main.appendChild( imageContainer )
 		}
 
-		[ closeButton, imageContainer, caption ].forEach( element => {
+		[ top, main, bottom ].forEach( element => {
 			fullscreenGallery.appendChild( element )
 		} )
 
@@ -102,7 +113,7 @@ const hideFullscreenGallery = ( galleryContainer ) => {
 			const image = document.createElement( 'div' )
 
 			image.classList.add( 'wikipediapreview-gallery-image' )
-			image.style.backgroundImage = `url(${item.src})`
+			image.style.backgroundImage = `url(${item.thumb})`
 			image.addEventListener( 'click', ( e ) => {
 				showFullscreenGallery( e, mediaItems, popup )
 			} )
