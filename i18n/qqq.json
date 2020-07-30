@@ -1,4 +1,7 @@
 {
-    "continue-reading": "The message shown in the footer part of the preview popup that allows user to continue reading the summary",
-    "read-more": "The message shown in the footer part of the preview popup that brings user to the wikipedia page to read more about the article"
+	"@metadata": {
+		"authors": []
+	},
+	"continue-reading": "The message shown in the footer part of the preview popup that allows user to continue reading the summary",
+	"read-more": "The message shown in the footer part of the preview popup that brings user to the wikipedia page to read more about the article"
 }
