@@ -9,7 +9,8 @@ const getLoadingContainer = ( doc ) => {
 			spinner = doc.createElement( 'div' ),
 			bounceBegin = doc.createElement( 'div' ),
 			bounceEnd = doc.createElement( 'div' ),
-			error = doc.createElement( 'div' )
+			error = doc.createElement( 'div' ),
+			refresh = doc.createElement( 'div' )
 
 		component.classList.add( 'wp-gallery-popup-loading' )
 		spinnerContainer.classList.add( 'wp-gallery-popup-loading-spinner-container' )
@@ -19,6 +20,7 @@ const getLoadingContainer = ( doc ) => {
 		iconContainer.classList.add( 'wp-gallery-popup-loading-icons' )
 		textContainer.classList.add( 'wp-gallery-popup-loading-text' )
 		error.classList.add( 'wp-gallery-popup-loading-error' )
+		refresh.classList.add( 'wp-gallery-popup-loading-error-refresh' )
 
 		spinner.appendChild( bounceBegin )
 		spinner.appendChild( bounceEnd )
@@ -27,6 +29,7 @@ const getLoadingContainer = ( doc ) => {
 		iconContainer.appendChild( error )
 		component.appendChild( iconContainer )
 		component.appendChild( textContainer )
+		component.appendChild( refresh )
 
 		return component
 	},
@@ -34,6 +37,7 @@ const getLoadingContainer = ( doc ) => {
 	toggleLoading = ( loading, image ) => {
 		const text = loading.querySelector( '.wp-gallery-popup-loading-text' ),
 			error = loading.querySelector( '.wp-gallery-popup-loading-error' ),
+			refresh = loading.querySelector( '.wp-gallery-popup-loading-error-refresh' ),
 			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner-container' ),
 
 			timeoutId = setTimeout( () => {
@@ -49,6 +53,12 @@ const getLoadingContainer = ( doc ) => {
 				image.removeEventListener( 'load', onLoad )
 			},
 
+			onRefresh = () => {
+				toggleLoading( loading, image )
+				image.src = gallery[ current ].src
+				refresh.removeEventListener( 'click', onRefresh )
+			},
+
 			onError = () => {
 				clearTimeout( timeoutId )
 				error.style.visibility = 'visible'
@@ -56,13 +66,17 @@ const getLoadingContainer = ( doc ) => {
 				text.innerHTML = 'There was an error loading this image'
 				text.style[ 'font-size' ] = '16px'
 				text.style.visibility = 'visible'
+				refresh.innerHTML = 'Refresh'
+				refresh.style.visibility = 'visible'
+				refresh.addEventListener( 'click', onRefresh )
 				image.removeEventListener( 'error', onError )
 			}
 
-		image.style.visibility = 'hidden'
 		loading.style.visibility = 'visible'
+		image.style.visibility = 'hidden'
 		text.style.visibility = 'hidden'
 		error.style.visibility = 'hidden'
+		refresh.style.visibility = 'hidden'
 
 		image.addEventListener( 'load', onLoad )
 		image.addEventListener( 'error', onError )
