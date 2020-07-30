@@ -3,56 +3,66 @@ let gallery = [],
 
 const getLoadingContainer = ( doc ) => {
 		const component = doc.createElement( 'div' ),
+			iconContainer = doc.createElement( 'div' ),
+			textContainer = doc.createElement( 'div' ),
 			spinnerContainer = doc.createElement( 'div' ),
 			spinner = doc.createElement( 'div' ),
 			bounceBegin = doc.createElement( 'div' ),
 			bounceEnd = doc.createElement( 'div' ),
-			stillLoading = doc.createElement( 'div' )
+			error = doc.createElement( 'div' )
 
 		component.classList.add( 'wp-gallery-popup-loading' )
 		spinnerContainer.classList.add( 'wp-gallery-popup-loading-spinner-container' )
 		spinner.classList.add( 'wp-gallery-popup-loading-spinner' )
 		bounceBegin.classList.add( 'wp-gallery-popup-loading-bounce' )
 		bounceEnd.classList.add( 'wp-gallery-popup-loading-bounce' )
-		stillLoading.classList.add( 'wp-gallery-popup-loading-still' )
-		stillLoading.innerHTML = 'Still loading'
+		iconContainer.classList.add( 'wp-gallery-popup-loading-icons' )
+		textContainer.classList.add( 'wp-gallery-popup-loading-text' )
+		error.classList.add( 'wp-gallery-popup-loading-error' )
 
 		spinner.appendChild( bounceBegin )
 		spinner.appendChild( bounceEnd )
 		spinnerContainer.appendChild( spinner )
-		component.appendChild( spinnerContainer )
-		component.appendChild( stillLoading )
+		iconContainer.appendChild( spinnerContainer )
+		iconContainer.appendChild( error )
+		component.appendChild( iconContainer )
+		component.appendChild( textContainer )
 
 		return component
 	},
 
 	toggleLoading = ( loading, image ) => {
-		const still = loading.querySelector( '.wp-gallery-popup-loading-still' ),
+		const text = loading.querySelector( '.wp-gallery-popup-loading-text' ),
+			error = loading.querySelector( '.wp-gallery-popup-loading-error' ),
+			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner-container' ),
 
 			timeoutId = setTimeout( () => {
-				still.style.visibility = 'visible'
+				text.innerHTML = 'Still loading'
+				text.style.visibility = 'visible'
 			}, 5000 ),
 
 			onLoad = () => {
 				clearTimeout( timeoutId )
 				loading.style.visibility = 'hidden'
-				still.style.visibility = 'hidden'
+				text.style.visibility = 'hidden'
 				image.style.visibility = 'visible'
 				image.removeEventListener( 'load', onLoad )
 			},
 
 			onError = () => {
 				clearTimeout( timeoutId )
-				loading.style.visibility = 'hidden'
-				image.style.visibility = 'visible'
-				// TODO
-				// * add error message
-				// * remove event listener
+				error.style.visibility = 'visible'
+				spinner.style.visibility = 'hidden'
+				text.innerHTML = 'There was an error loading this image'
+				text.style[ 'font-size' ] = '16px'
+				text.style.visibility = 'visible'
+				image.removeEventListener( 'error', onError )
 			}
 
 		image.style.visibility = 'hidden'
 		loading.style.visibility = 'visible'
-		still.style.visibility = 'hidden'
+		text.style.visibility = 'hidden'
+		error.style.visibility = 'hidden'
 
 		image.addEventListener( 'load', onLoad )
 		image.addEventListener( 'error', onError )

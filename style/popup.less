@@ -126,8 +126,17 @@
 	&-loading {
 		position: absolute;
 		height: 112px;
+		width: 270px;
 
-		&-still {
+		&-icons {
+			margin-left: 105px;
+		}
+
+		&-text {
+			position: absolute;
+			bottom: 12px;
+			width: 270px;
+			text-align: center;
 			font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 			font-size: 12px;
 			font-weight: normal;
@@ -138,8 +147,20 @@
 			color: #f8f9fa;
 		}
 
+		&-error {
+			background-image: inline-svg( '../images/error.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+			top: 45px;
+			left: 125px;
+		}
+
 		&-spinner-container {
 			margin-left: 8px;
+			position: absolute;
 		}
 
 		&-spinner {
