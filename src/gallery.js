@@ -2,30 +2,60 @@ let gallery = [],
 	current = 0
 
 const getLoadingContainer = ( doc ) => {
-		const container = doc.createElement( 'div' ),
+		const component = doc.createElement( 'div' ),
+			spinnerContainer = doc.createElement( 'div' ),
 			spinner = doc.createElement( 'div' ),
 			bounceBegin = doc.createElement( 'div' ),
-			bounceEnd = doc.createElement( 'div' )
+			bounceEnd = doc.createElement( 'div' ),
+			stillLoading = doc.createElement( 'div' )
 
-		container.classList.add( 'wp-gallery-popup-loading' )
+		component.classList.add( 'wp-gallery-popup-loading' )
+		spinnerContainer.classList.add( 'wp-gallery-popup-loading-spinner-container' )
 		spinner.classList.add( 'wp-gallery-popup-loading-spinner' )
 		bounceBegin.classList.add( 'wp-gallery-popup-loading-bounce' )
 		bounceEnd.classList.add( 'wp-gallery-popup-loading-bounce' )
+		stillLoading.classList.add( 'wp-gallery-popup-loading-still' )
+		stillLoading.innerHTML = 'Still loading'
 
 		spinner.appendChild( bounceBegin )
 		spinner.appendChild( bounceEnd )
-		container.appendChild( spinner )
+		spinnerContainer.appendChild( spinner )
+		component.appendChild( spinnerContainer )
+		component.appendChild( stillLoading )
 
-		return container
+		return component
 	},
 
 	toggleLoading = ( loading, image ) => {
+		const still = loading.querySelector( '.wp-gallery-popup-loading-still' ),
+
+			timeoutId = setTimeout( () => {
+				still.style.visibility = 'visible'
+			}, 5000 ),
+
+			onLoad = () => {
+				clearTimeout( timeoutId )
+				loading.style.visibility = 'hidden'
+				still.style.visibility = 'hidden'
+				image.style.visibility = 'visible'
+				image.removeEventListener( 'load', onLoad )
+			},
+
+			onError = () => {
+				clearTimeout( timeoutId )
+				loading.style.visibility = 'hidden'
+				image.style.visibility = 'visible'
+				// TODO
+				// * add error message
+				// * remove event listener
+			}
+
 		image.style.visibility = 'hidden'
 		loading.style.visibility = 'visible'
-		image.addEventListener( 'load', () => {
-			loading.style.visibility = 'hidden'
-			image.style.visibility = 'visible'
-		} )
+		still.style.visibility = 'hidden'
+
+		image.addEventListener( 'load', onLoad )
+		image.addEventListener( 'error', onError )
 	},
 
 	hideFullscreenGallery = ( galleryContainer ) => {
