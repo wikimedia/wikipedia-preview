@@ -1,4 +1,7 @@
 {
+    "@metadata": {
+		"authors": []
+	},
     "continue-reading": "The message shown in the footer part of the preview popup that allows user to continue reading the summary",
     "gallery-loading-error": "Message shown with fullscreen gallery loading error",
     "gallery-loading-error-refresh": "Message shown with fullscreen gallery loading error",

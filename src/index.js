@@ -50,7 +50,7 @@ function init( {
 		root.querySelectorAll( selector ),
 		node => {
 			if ( isTouch ) {
-				node.addEventListener( 'touchend', showPopup )
+				node.addEventListener( 'click', showPopup )
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
 			}
@@ -68,7 +68,7 @@ function init( {
 					if ( isTouch ) {
 						// eslint-disable-next-line no-script-url
 						node.setAttribute( 'href', 'javascript:;' )
-						node.addEventListener( 'touchend', showPopup )
+						node.addEventListener( 'click', showPopup )
 					} else {
 						node.addEventListener( 'mouseenter', showPopup )
 					}
