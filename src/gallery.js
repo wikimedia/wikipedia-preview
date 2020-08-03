@@ -1,37 +1,37 @@
 let gallery = [],
 	current = 0
 
-const getLoadingContainer = ( doc ) => {
-		const component = doc.createElement( 'div' ),
-			iconContainer = doc.createElement( 'div' ),
-			textContainer = doc.createElement( 'div' ),
-			spinnerContainer = doc.createElement( 'div' ),
-			spinner = doc.createElement( 'div' ),
-			bounceBegin = doc.createElement( 'div' ),
-			bounceEnd = doc.createElement( 'div' ),
-			error = doc.createElement( 'div' ),
-			refresh = doc.createElement( 'div' )
-
-		component.classList.add( 'wp-gallery-popup-loading' )
-		spinnerContainer.classList.add( 'wp-gallery-popup-loading-spinner-container' )
-		spinner.classList.add( 'wp-gallery-popup-loading-spinner' )
-		bounceBegin.classList.add( 'wp-gallery-popup-loading-bounce' )
-		bounceEnd.classList.add( 'wp-gallery-popup-loading-bounce' )
-		iconContainer.classList.add( 'wp-gallery-popup-loading-icons' )
-		textContainer.classList.add( 'wp-gallery-popup-loading-text' )
-		error.classList.add( 'wp-gallery-popup-loading-error' )
-		refresh.classList.add( 'wp-gallery-popup-loading-error-refresh' )
-
-		spinner.appendChild( bounceBegin )
-		spinner.appendChild( bounceEnd )
-		spinnerContainer.appendChild( spinner )
-		iconContainer.appendChild( spinnerContainer )
-		iconContainer.appendChild( error )
-		component.appendChild( iconContainer )
-		component.appendChild( textContainer )
-		component.appendChild( refresh )
-
-		return component
+const getFullScreenGallery = () => {
+		return `
+			<div class="wp-gallery-popup">
+				<div class="wp-gallery-popup-top">
+					<div class="wp-gallery-popup-button close"></div>
+				</div>
+				<div class="wp-gallery-popup-main">
+					<div class="wp-gallery-popup-button previous"></div>
+					<div class="wp-gallery-popup-image">
+						<img src="">
+						<div class="wp-gallery-popup-loading">
+							<div class="wp-gallery-popup-loading-icons">
+								<div class="wp-gallery-popup-loading-spinner-container">
+									<div class="wp-gallery-popup-loading-spinner">
+										<div class="wp-gallery-popup-loading-bounce"></div>
+										<div class="wp-gallery-popup-loading-bounce"></div>
+									</div>
+								</div>
+								<div class="wp-gallery-popup-loading-error"></div>
+							</div>
+							<div class="wp-gallery-popup-loading-text"></div>
+							<div class="wp-gallery-popup-loading-error-refresh"></div>
+						</div>
+					</div>
+					<div class="wp-gallery-popup-button next"></div>
+				</div>
+				<div class="wp-gallery-popup-bottom">
+					<div class="wp-gallery-popup-caption"></div>
+				</div>
+			</div>
+		`.trim()
 	},
 
 	toggleLoading = ( loading, image ) => {
@@ -88,7 +88,7 @@ const getLoadingContainer = ( doc ) => {
 	},
 
 	renderNext = ( galleryContainer ) => {
-		const image = galleryContainer.querySelector( '.wp-gallery-popup-image' ).firstChild,
+		const image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			nextButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
 			previousButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
@@ -106,7 +106,7 @@ const getLoadingContainer = ( doc ) => {
 	},
 
 	renderPrevious = ( galleryContainer ) => {
-		const image = galleryContainer.querySelector( '.wp-gallery-popup-image' ).firstChild,
+		const image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			previousButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
 			nextButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
@@ -123,18 +123,8 @@ const getLoadingContainer = ( doc ) => {
 		}
 	},
 
-	showFullscreenGallery = ( event, mediaItems, popup, doc = document ) => {
-		const fullscreenGallery = doc.createElement( 'div' ),
-			top = doc.createElement( 'div' ),
-			main = doc.createElement( 'div' ),
-			bottom = doc.createElement( 'div' ),
-			closeButton = doc.createElement( 'div' ),
-			nextButton = doc.createElement( 'div' ),
-			previousButton = doc.createElement( 'div' ),
-			imageContainer = doc.createElement( 'div' ),
-			image = doc.createElement( 'img' ),
-			caption = doc.createElement( 'div' ),
-			loading = getLoadingContainer( doc ),
+	showFullscreenGallery = ( event, mediaItems, popup ) => {
+		const fullscreenGallery = getFullScreenGallery(),
 			selected = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' ),
 			galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
 
@@ -144,53 +134,40 @@ const getLoadingContainer = ( doc ) => {
 				current = index
 			}
 		} )
+
+		galleryContainer.insertAdjacentHTML( 'beforeend', fullscreenGallery )
+
+		let image = galleryContainer.querySelector( 'img' ),
+			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
+			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
+			nextButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
+			previousButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
+			closeButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.close' )[ 0 ]
+
 		toggleLoading( loading, image )
 
-		fullscreenGallery.classList.add( 'wp-gallery-popup' )
-		top.classList.add( 'wp-gallery-popup-top' )
-		main.classList.add( 'wp-gallery-popup-main' )
-		bottom.classList.add( 'wp-gallery-popup-bottom' )
-
 		image.src = gallery[ current ].src
-		imageContainer.appendChild( image )
-		imageContainer.appendChild( loading )
-		imageContainer.classList.add( 'wp-gallery-popup-image' )
 
 		caption.innerHTML = gallery[ current ].caption ? gallery[ current ].caption : ''
-		caption.classList.add( 'wp-gallery-popup-caption' )
-		bottom.appendChild( caption )
 
-		closeButton.classList.add( 'wp-gallery-popup-button', 'close' )
 		closeButton.addEventListener( 'click', () => {
 			hideFullscreenGallery( galleryContainer )
 		} )
-		top.appendChild( closeButton )
 
-		nextButton.classList.add( 'wp-gallery-popup-button', 'next' )
 		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 		nextButton.addEventListener( 'click', () => {
 			renderNext( galleryContainer )
 		} )
-		previousButton.classList.add( 'wp-gallery-popup-button', 'previous' )
+
 		previousButton.style.opacity = current === 0 ? '0.5' : '1'
 		previousButton.addEventListener( 'click', () => {
 			renderPrevious( galleryContainer )
 		} )
 
-		if ( gallery.length > 1 ) {
-			[ previousButton, imageContainer, nextButton ].forEach( element => {
-				main.appendChild( element )
-			} )
-		} else {
-			main.appendChild( imageContainer )
+		if ( gallery.length === 1 ) {
+			previousButton.style.visibility = 'hidden'
+			nextButton.style.visibility = 'hidden'
 		}
-
-		[ top, main, bottom ].forEach( element => {
-			fullscreenGallery.appendChild( element )
-		} )
-
-		galleryContainer.appendChild( fullscreenGallery )
-
 	},
 
 	getGalleryRow = ( mediaItems, popup ) => {
