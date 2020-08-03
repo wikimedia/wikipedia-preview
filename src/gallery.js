@@ -1,3 +1,5 @@
+import { msg } from './i18n'
+
 let gallery = [],
 	current = 0
 
@@ -34,14 +36,14 @@ const getFullScreenGallery = () => {
 		`.trim()
 	},
 
-	toggleLoading = ( loading, image ) => {
+	toggleLoading = ( loading, image, lang ) => {
 		const text = loading.querySelector( '.wp-gallery-popup-loading-text' ),
 			error = loading.querySelector( '.wp-gallery-popup-loading-error' ),
 			refresh = loading.querySelector( '.wp-gallery-popup-loading-error-refresh' ),
 			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner-container' ),
 
 			timeoutId = setTimeout( () => {
-				text.innerHTML = 'Still loading'
+				text.innerHTML = msg( lang, 'gallery-loading-still' )
 				text.style.visibility = 'visible'
 			}, 5000 ),
 
@@ -63,10 +65,10 @@ const getFullScreenGallery = () => {
 				clearTimeout( timeoutId )
 				error.style.visibility = 'visible'
 				spinner.style.visibility = 'hidden'
-				text.innerHTML = 'There was an error loading this image'
+				text.innerHTML = msg( lang, 'gallery-loading-error' )
 				text.style[ 'font-size' ] = '16px'
 				text.style.visibility = 'visible'
-				refresh.innerHTML = 'Refresh'
+				refresh.innerHTML = msg( lang, 'gallery-loading-error-refresh' )
 				refresh.style.visibility = 'visible'
 				refresh.addEventListener( 'click', onRefresh )
 				image.removeEventListener( 'error', onError )
@@ -87,7 +89,7 @@ const getFullScreenGallery = () => {
 		galleryContainer.removeChild( fullscreenGallery )
 	},
 
-	renderNext = ( galleryContainer ) => {
+	renderNext = ( galleryContainer, lang ) => {
 		const image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			nextButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.next' )[ 0 ],
@@ -96,7 +98,7 @@ const getFullScreenGallery = () => {
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
 
 		if ( gallery[ next ] ) {
-			toggleLoading( loading, image )
+			toggleLoading( loading, image, lang )
 			image.src = gallery[ next ].src
 			caption.innerHTML = gallery[ next ].caption ? gallery[ next ].caption : ''
 			nextButton.style.opacity = gallery[ next + 1 ] ? '1' : '0.5'
@@ -105,7 +107,7 @@ const getFullScreenGallery = () => {
 		}
 	},
 
-	renderPrevious = ( galleryContainer ) => {
+	renderPrevious = ( galleryContainer, lang ) => {
 		const image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			previousButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
@@ -114,7 +116,7 @@ const getFullScreenGallery = () => {
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
 
 		if ( gallery[ previous ] ) {
-			toggleLoading( loading, image )
+			toggleLoading( loading, image, lang )
 			image.src = gallery[ previous ].src
 			caption.innerHTML = gallery[ previous ].caption ? gallery[ previous ].caption : ''
 			previousButton.style.opacity = gallery[ previous - 1 ] ? '1' : '0.5'
@@ -126,7 +128,8 @@ const getFullScreenGallery = () => {
 	showFullscreenGallery = ( event, mediaItems, popup ) => {
 		const fullscreenGallery = getFullScreenGallery(),
 			selected = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' ),
-			galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
+			galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' ),
+			lang = popup.lang
 
 		gallery = mediaItems
 		gallery.forEach( ( image, index ) => {
@@ -144,7 +147,7 @@ const getFullScreenGallery = () => {
 			previousButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.previous' )[ 0 ],
 			closeButton = galleryContainer.querySelectorAll( '.wp-gallery-popup-button.close' )[ 0 ]
 
-		toggleLoading( loading, image )
+		toggleLoading( loading, image, lang )
 
 		image.src = gallery[ current ].src
 
@@ -156,12 +159,12 @@ const getFullScreenGallery = () => {
 
 		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 		nextButton.addEventListener( 'click', () => {
-			renderNext( galleryContainer )
+			renderNext( galleryContainer, lang )
 		} )
 
 		previousButton.style.opacity = current === 0 ? '0.5' : '1'
 		previousButton.addEventListener( 'click', () => {
-			renderPrevious( galleryContainer )
+			renderPrevious( galleryContainer, lang )
 		} )
 
 		if ( gallery.length === 1 ) {
