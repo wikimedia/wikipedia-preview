@@ -2,9 +2,8 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview } from './preview'
+import { renderPreview, renderLoading } from './preview'
 import { getWikipediaAttrFromUrl, isTouch } from './utils'
-import { renderLoading } from './loading'
 
 function init( {
 	root = document,
