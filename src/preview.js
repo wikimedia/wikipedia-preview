@@ -4,7 +4,7 @@ import '../style/preview.less'
 const renderPreview = ( lang, data, isTouch ) => {
 	const imageUrl = data.imgUrl
 	return `
-		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
+		<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${data.dir}">
 			<div class="wikipediapreview-header">
 				<div class="wikipediapreview-header-image" style="${imageUrl && `background-image:url('${imageUrl}');background-size:cover;`}"></div>
 				<div class="wikipediapreview-header-wordmark"></div>
