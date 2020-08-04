@@ -81,48 +81,6 @@
 		}
 	}
 
-	&-loading {
-		height: 300px;
-
-		&-header-image {
-			background-image: inline-svg( '../images/loading-thumb.svg' );
-			background-size: auto;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-color: #eaecf0;
-			height: 100%;
-			width: 65px;
-		}
-
-		&-body {
-			background-image: url( ../images/loading.png );
-			background-repeat: no-repeat;
-			height: 100%;
-			background-size: cover;
-		}
-	}
-
-	&-gallery {
-		display: flex;
-		height: 80px;
-		margin-top: 5px;
-
-		&-row {
-			display: flex;
-			overflow: scroll;
-		}
-
-		&-image {
-			height: 100%;
-			min-width: 100px;
-			background-size: cover;
-			background-position: center;
-			background-color: #eaecf0;
-			border-radius: 2px;
-			margin: 0 2px 0 2px;
-		}
-	}
-
 	&-footer {
 		&-cta {
 			width: 100%;
@@ -163,6 +121,118 @@
 			padding-bottom: 10px;
 			width: 15px;
 			height: 30px;
+		}
+	}
+
+	&-loading {
+		height: 250px;
+
+		&-header-image {
+			background-image: inline-svg( '../images/loading-thumb.svg' );
+			background-size: auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #eaecf0;
+			height: 100%;
+			width: 65px;
+		}
+
+		&-body {
+			height: 100%;
+			margin-top: 25px;
+			padding-left: 13px;
+			padding-right: 13px;
+
+			&-line {
+				height: 10px;
+				margin-top: 12px;
+				border-radius: 1px;
+				background: linear-gradient( 130deg, #b4b4b4, #d6d3d3, #eaecf0 );
+				background-size: 200% 200%;
+				-webkit-animation: animate-load 2s ease infinite;
+				-moz-animation: animate-load 2s ease infinite;
+				animation: animate-load 2s ease infinite;
+			}
+
+			&-line.larger {
+				width: 100%;
+			}
+
+			&-line.medium {
+				width: 80%;
+			}
+
+			&-line.smaller {
+				width: 60%;
+			}
+
+			@-webkit-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@-moz-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+		}
+
+		&-footer {
+			height: 30px;
+			background-color: #eaecf0;
+		}
+	}
+
+	&-gallery {
+		display: flex;
+		height: 80px;
+		margin-top: 5px;
+
+		&-row {
+			display: flex;
+			overflow: scroll;
+		}
+
+		&-image {
+			height: 100%;
+			min-width: 100px;
+			background-size: cover;
+			background-position: center;
+			background-color: #eaecf0;
+			border-radius: 2px;
+			margin: 0 2px 0 2px;
 		}
 	}
 
