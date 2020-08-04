@@ -15,11 +15,8 @@ const getFullScreenGallery = () => {
 						<img src="">
 						<div class="wp-gallery-popup-loading">
 							<div class="wp-gallery-popup-loading-icons">
-								<div class="wp-gallery-popup-loading-spinner-container">
-									<div class="wp-gallery-popup-loading-spinner">
-										<div class="wp-gallery-popup-loading-bounce"></div>
-										<div class="wp-gallery-popup-loading-bounce"></div>
-									</div>
+								<div class="wp-gallery-popup-loading-spinner">
+									<div class="wp-gallery-popup-loading-spinner-animation"></div>
 								</div>
 								<div class="wp-gallery-popup-loading-error"></div>
 							</div>
@@ -40,7 +37,7 @@ const getFullScreenGallery = () => {
 		const text = loading.querySelector( '.wp-gallery-popup-loading-text' ),
 			error = loading.querySelector( '.wp-gallery-popup-loading-error' ),
 			refresh = loading.querySelector( '.wp-gallery-popup-loading-error-refresh' ),
-			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner-container' ),
+			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner' ),
 
 			timeoutId = setTimeout( () => {
 				text.innerHTML = msg( lang, 'gallery-loading-still' )
