@@ -53,7 +53,7 @@ describe( 'showFullscreenGallery', () => {
 
 		doc = dom.window.document
 		mockPopup.element = doc.querySelector( '.mock-popup' )
-		showFullscreenGallery( mockEvent, mediaItems, mockPopup, doc )
+		showFullscreenGallery( mockEvent, mediaItems, mockPopup )
 	} )
 
 	it( 'renders full screen gallery with selected image', () => {

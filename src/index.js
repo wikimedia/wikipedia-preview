@@ -2,7 +2,7 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview } from './preview'
+import { renderPreview, renderLoading } from './preview'
 import { getWikipediaAttrFromUrl, isTouch } from './utils'
 
 function init( {
@@ -25,8 +25,11 @@ function init( {
 				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
 
+			popup.loading = true
+			popup.show( renderLoading( isTouch ), target )
+
 			requestPagePreview( lang, title, isTouch, data => {
-				if ( data ) {
+				if ( data && popup.loading ) {
 					popup.show( renderPreview( lang, data, isTouch ), target )
 				}
 

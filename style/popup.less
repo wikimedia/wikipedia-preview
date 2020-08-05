@@ -122,6 +122,138 @@
 		color: #f8f9fa;
 		margin: 2px 16px 0 16px;
 	}
+
+	&-loading {
+		position: absolute;
+		height: 112px;
+		width: 270px;
+
+		&-icons {
+			margin-left: 105px;
+		}
+
+		&-text {
+			position: absolute;
+			bottom: 18px;
+			width: 270px;
+			text-align: center;
+			font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+			font-size: 12px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			color: #f8f9fa;
+		}
+
+		&-error {
+			background-image: inline-svg( '../images/error.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+			top: 45px;
+			left: 125px;
+
+			&-refresh {
+				position: absolute;
+				bottom: -15px;
+				left: 105px;
+				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+			}
+		}
+
+		&-spinner {
+			margin-left: 25px;
+			position: absolute;
+			top: -55px;
+
+			&-animation {
+				border-radius: 50%;
+				width: 1.5em;
+				height: 1.5em;
+				color: #f8f9fa;
+				font-size: 10px;
+				margin: 80px auto;
+				position: relative;
+				text-indent: -9999em;
+				transform: translateZ( 0 );
+				animation: bounce 1.8s infinite ease-in-out;
+				animation-delay: -0.16s;
+				animation-fill-mode: both;
+				-webkit-animation: bounce 1.8s infinite ease-in-out;
+				-webkit-animation-fill-mode: both;
+				-webkit-transform: translateZ( 0 );
+				-ms-transform: translateZ( 0 );
+				-webkit-animation-delay: -0.16s;
+			}
+
+			&-animation:before {
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: -3.5em;
+				border-radius: 50%;
+				width: 1.5em;
+				height: 1.5em;
+				animation: bounce 1.8s infinite ease-in-out;
+				animation-delay: -0.32s;
+				animation-fill-mode: both;
+				-webkit-animation: bounce 1.8s infinite ease-in-out;
+				-webkit-animation-delay: -0.32s;
+				-webkit-animation-fill-mode: both;
+			}
+
+			&-animation:after {
+				content: '';
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 3.5em;
+				border-radius: 50%;
+				width: 1.5em;
+				height: 1.5em;
+				animation: bounce 1.8s infinite ease-in-out;
+				animation-fill-mode: both;
+				-webkit-animation: bounce 1.8s infinite ease-in-out;
+				-webkit-animation-fill-mode: both;
+			}
+
+			@-webkit-keyframes bounce {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 2.5em 0 -1.3em;
+				}
+
+				40% {
+					box-shadow: 0 2.5em 0 0;
+				}
+			}
+
+			@keyframes bounce {
+				0%,
+				80%,
+				100% {
+					box-shadow: 0 2.5em 0 -1.3em;
+				}
+
+				40% {
+					box-shadow: 0 2.5em 0 0;
+				}
+			}
+		}
+	}
 }
 
 .wp-dark-screen {
