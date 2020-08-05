@@ -17,4 +17,9 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
-		( navigator.msMaxTouchPoints > 0 )
+		( navigator.msMaxTouchPoints > 0 ),
+
+	getDir = lang => {
+		const rtl = [ 'ar', 'arc', 'arz', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi', 'pnb', 'ckb', 'mzn', 'glk', 'ug', 'sd', 'azb', 'lrc' ]
+		return rtl.indexOf( lang ) === -1 ? 'ltr' : 'rtl'
+	}
