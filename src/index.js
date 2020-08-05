@@ -16,21 +16,22 @@ function init( {
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
-		showPopup = ( e ) => {
+		showPopup = e => {
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
 			}
 			const { target } = e,
 				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
-				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
+				lang = target.getAttribute( 'data-wp-lang' ) || globalLang,
+				pointerPosition = { x: e.clientX, y: e.clientY }
 
 			popup.loading = true
-			popup.show( renderLoading( isTouch ), target )
+			popup.show( renderLoading( isTouch ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data && popup.loading ) {
-					popup.show( renderPreview( lang, data, isTouch ), target )
+					popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
 				}
 
 				popup.lang = lang

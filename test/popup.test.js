@@ -215,7 +215,7 @@ describe( 'createPopup', () => {
 
 	it( 'shows content next to a target', () => {
 		const target = dom.window.document.querySelector( '.target' )
-		popup.show( 'Hello World', target )
+		popup.show( 'Hello World', target, {x: 1, y: 1} )
 		assert.equal( popupElement.style.visibility, 'visible' )
 		assert.equal( popupElement.innerHTML, 'Hello World' )
 		assert( onShowCallback.called )
