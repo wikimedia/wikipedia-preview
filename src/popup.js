@@ -26,7 +26,6 @@ const computePopupPosition = (
 	createPopup = ( container, win = window ) => {
 		if ( !popup ) {
 			popup = win.document.createElement( 'div' )
-			popup.setAttribute( 'dir', 'ltr' )
 			popup.classList.add( 'wp-popup' )
 			popup.style.visibility = 'hidden'
 			container.appendChild( popup )
