@@ -32,12 +32,11 @@ div {
   font-weight         : bold;
   font-style          : normal;
   font-size           : 16.0px;
-  text-align          : left;
   line-height         : 21.6px;
   color: rgba(32,33,34,1.0);
 }
 @media screen and (min-width: 650px) {
-  .container .listview .item .title{
+  .container .listview .item .title {
     font-size : 18px;
   }
 }
@@ -46,6 +45,10 @@ div {
   position: absolute;
   right: 20px;
   top: 27px;
+}
+.container .listview .item[dir="rtl"] .image {
+  left: 20px;
+  right: unset;
 }
 .container .listview .item .image .cover {
   height: 80px;

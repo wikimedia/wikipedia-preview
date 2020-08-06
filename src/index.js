@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading } from './preview'
-import { getWikipediaAttrFromUrl, isTouch } from './utils'
+import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
 
 function init( {
 	root = document,
@@ -27,7 +27,7 @@ function init( {
 				pointerPosition = { x: e.clientX, y: e.clientY }
 
 			popup.loading = true
-			popup.show( renderLoading( isTouch ), target, pointerPosition )
+			popup.show( renderLoading( isTouch, lang, getDir( lang ) ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data && popup.loading ) {
