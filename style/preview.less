@@ -229,7 +229,6 @@
 				display: flex;
 				margin-left: 8%;
 				margin-right: 8%;
-				font-family: 'Lato', sans-serif;
 				font-size: 16px;
 				font-weight: normal;
 				font-stretch: normal;
@@ -237,6 +236,10 @@
 				line-height: 1.4;
 				letter-spacing: normal;
 				color: #000;
+
+				@media ( min-device-width: 768px ) {
+					margin-left: 5%;
+				}
 			}
 
 			&-icon {
@@ -251,7 +254,6 @@
 			&-readon {
 				margin-left: 17%;
 				margin-top: 12px;
-				font-family: 'Lato', sans-serif;
 				font-size: 16px;
 				font-weight: bold;
 				font-stretch: normal;
@@ -260,6 +262,10 @@
 				letter-spacing: normal;
 				color: #36c;
 				cursor: pointer;
+
+				@media ( min-device-width: 768px ) {
+					margin-left: 9%;
+				}
 			}
 		}
 	}
