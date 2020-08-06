@@ -19,8 +19,34 @@ const computePopupPosition = (
 		return { left, right, top, bottom }
 	},
 
-	withPx = ( value ) => {
+	withPx = value => {
 		return value ? ( value + 'px' ) : value
+	},
+
+	// Strangely, mouseenter often fires with the pointer slightly
+	// outside any element rect. Making the rects bigger by a few pixel
+	// ensures the pointer will be inside one of them.
+	expandRect = rect => {
+		const delta = 3
+		return {
+			left: rect.left - delta,
+			right: rect.right + delta,
+			top: rect.top - delta,
+			bottom: rect.bottom + delta
+		}
+	},
+
+	getTargetRect = ( element, { x, y } ) => {
+		const rects = element.getClientRects()
+		for ( let i = 0; i < rects.length; i++ ) {
+			const rect = expandRect( rects[ i ] )
+			if ( x >= rect.left && x <= rect.right &&
+				y >= rect.top && y <= rect.bottom ) {
+				return rects[ i ]
+			}
+		}
+		// fallback for unit tests
+		return rects[ 0 ] || element.getBoundingClientRect()
 	},
 
 	createPopup = ( container, win = window ) => {
@@ -41,7 +67,7 @@ const computePopupPosition = (
 				popup.currentTargetElement = null
 			},
 
-			show = ( content, nextTo ) => {
+			show = ( content, nextTo, pointerPosition ) => {
 				popup.innerHTML = content
 
 				const scrollX = ( win.pageXOffset !== undefined ) ?
@@ -60,7 +86,7 @@ const computePopupPosition = (
 							win.document.body
 						).scrollTop,
 					position = computePopupPosition(
-						nextTo.getBoundingClientRect(),
+						getTargetRect( nextTo, pointerPosition ),
 						popup.offsetWidth,
 						scrollX,
 						scrollY,
