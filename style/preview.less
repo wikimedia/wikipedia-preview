@@ -251,7 +251,7 @@
 			}
 
 			&-readon {
-				margin-left: 17%;
+				margin-left: 14%;
 				margin-top: 12px;
 				font-size: 16px;
 				font-weight: bold;
@@ -261,10 +261,6 @@
 				letter-spacing: normal;
 				color: #36c;
 				cursor: pointer;
-
-				@media ( min-device-width: 768px ) {
-					margin-left: 9%;
-				}
 			}
 		}
 	}
@@ -313,6 +309,14 @@
 
 	&.mobile {
 		width: 100%;
+
+		.wikipediapreview-error-body-readon {
+			margin-left: 17%;
+
+			@media ( min-device-width: 768px ) {
+				margin-left: 9%;
+			}
+		}
 	}
 
 	&.mobile.expanded {
