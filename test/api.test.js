@@ -15,12 +15,6 @@ describe( 'requestPagePreview', () => {
 		}, requestMock( { type: 'disambiguation' } ) )
 	} )
 
-	it( 'accepts ltr articles only', () => {
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
-			assert.equal( data, false )
-		}, requestMock( { type: 'standard', dir: 'rtl' } ) )
-	} )
-
 	it( 'transforms the API output', () => {
 		const apiOutput = {
 			type: 'standard',
@@ -36,17 +30,18 @@ describe( 'requestPagePreview', () => {
 			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
 			pageUrl: 'page-url',
-			imgUrl: 'image-url'
+			imgUrl: 'image-url',
+			dir: 'ltr'
 		}
 		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
 
-	it( 'transforms the API output (without image)', () => {
+	it( 'transforms the API output (without image, RTL)', () => {
 		const apiOutput = {
 			type: 'standard',
-			dir: 'ltr',
+			dir: 'rtl',
 			displaytitle: 'Dog',
 			/* eslint-disable camelcase */
 			extract_html: '<p>A good boy</p>',
@@ -57,7 +52,8 @@ describe( 'requestPagePreview', () => {
 			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
 			pageUrl: 'page-url',
-			imgUrl: null
+			imgUrl: null,
+			dir: 'rtl'
 		}
 		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
