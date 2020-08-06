@@ -67,7 +67,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 								${msg( lang, 'preview-loading-error' )}
 							</div>
 							<div class="wikipediapreview-error-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`}>${msg( lang, 'preview-loading-error-read' )}</a>
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'preview-loading-error-read' )}</a>
 							</div>
 						</div>
 					</div>
