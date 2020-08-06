@@ -42,7 +42,7 @@ const computePopupPosition = (
 			const rect = expandRect( rects[ i ] )
 			if ( x >= rect.left && x <= rect.right &&
 				y >= rect.top && y <= rect.bottom ) {
-				return rect
+				return rects[ i ]
 			}
 		}
 		// fallback for unit tests
