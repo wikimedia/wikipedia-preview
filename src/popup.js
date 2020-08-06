@@ -7,11 +7,11 @@ const computePopupPosition = (
 	) => {
 		let left, right = '', top = '', bottom = ''
 
-		left = targetRect.x > ( innerWidth / 2 ) ?
+		left = targetRect.left > ( innerWidth / 2 ) ?
 			( scrollX + targetRect.right - popupWidth ) :
 			( scrollX + targetRect.left )
 
-		if ( targetRect.y > ( innerHeight / 2 ) ) {
+		if ( targetRect.top > ( innerHeight / 2 ) ) {
 			bottom = ( innerHeight - targetRect.top - scrollY )
 		} else {
 			top = ( scrollY + targetRect.bottom )
