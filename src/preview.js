@@ -52,9 +52,9 @@ const renderPreview = ( lang, data, isTouch ) => {
   `.trim()
 	},
 
-	renderError = ( isTouch, lang, title ) => {
+	renderError = ( isTouch, lang, title, dir ) => {
 		return `
-			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}">
+			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					<div class="wikipediapreview-header">
 						<div class="wikipediapreview-loading-header-image"></div>
 						<div class="wikipediapreview-header-wordmark"></div>

@@ -24,10 +24,11 @@ function init( {
 			const { target } = e,
 				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang,
-				pointerPosition = { x: e.clientX, y: e.clientY }
+				pointerPosition = { x: e.clientX, y: e.clientY },
+				dir = getDir( lang )
 
 			popup.loading = true
-			popup.show( renderLoading( isTouch, lang, getDir( lang ) ), target, pointerPosition )
+			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( data && popup.loading ) {
@@ -41,7 +42,7 @@ function init( {
 						popup.expand()
 					}
 				} else {
-					popup.show( renderError( isTouch, lang, title ), target, pointerPosition )
+					popup.show( renderError( isTouch, lang, title, dir ), target, pointerPosition )
 				}
 
 			} )

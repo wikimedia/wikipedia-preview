@@ -339,22 +339,44 @@
 			}
 		}
 
-		.wp-gallery-popup-button {
-			&.close {
-				right: unset;
-				left: 16px;
+		.wp-gallery-popup {
+			&-button {
+				&.close {
+					right: unset;
+					left: 16px;
+				}
+
+				&.previous {
+					background-image: inline-svg( '../images/arrow-right.svg' );
+					left: unset;
+					right: 16px;
+				}
+
+				&.next {
+					background-image: inline-svg( '../images/arrow-left.svg' );
+					left: 16px;
+					right: unset;
+				}
 			}
 
-			&.previous {
-				background-image: inline-svg( '../images/arrow-right.svg' );
-				left: unset;
-				right: 16px;
+			&-loading-spinner {
+				margin-right: 118px;
+			}
+		}
+
+		.wikipediapreview-error-body {
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
 			}
 
-			&.next {
-				background-image: inline-svg( '../images/arrow-left.svg' );
-				left: 16px;
-				right: unset;
+			&-readon {
+				margin-left: 0%;
+				margin-right: 17%;
+
+				@media ( min-device-width: 768px ) {
+					margin-right: 12%;
+				}
 			}
 		}
 	}
