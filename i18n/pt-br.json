@@ -5,5 +5,8 @@
 		]
 	},
 	"continue-reading": "Continuar lendo",
+	"gallery-loading-error": "Ocorreu um erro ao carregar esta imagem",
+	"gallery-loading-error-refresh": "Atualizar",
+	"gallery-loading-still": "Ainda carregando",
 	"read-more": "Leia mais na Wikipédia"
 }
