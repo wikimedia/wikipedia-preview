@@ -46,7 +46,7 @@ const getFullScreenGallery = () => {
 
 			onLoad = () => {
 				clearTimeout( timeoutId )
-				loading.style.visibility = 'hidden'
+				spinner.style.visibility = 'hidden'
 				text.style.visibility = 'hidden'
 				image.style.visibility = 'visible'
 				image.removeEventListener( 'load', onLoad )
@@ -71,7 +71,7 @@ const getFullScreenGallery = () => {
 				image.removeEventListener( 'error', onError )
 			}
 
-		loading.style.visibility = 'visible'
+		spinner.style.visibility = 'visible'
 		image.style.visibility = 'hidden'
 		text.style.visibility = 'hidden'
 		error.style.visibility = 'hidden'
