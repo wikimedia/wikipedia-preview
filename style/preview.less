@@ -226,8 +226,7 @@
 
 			&-message {
 				display: flex;
-				margin-left: 8%;
-				margin-right: 8%;
+				margin-left: 23px;
 				font-size: 16px;
 				font-weight: normal;
 				font-stretch: normal;
@@ -235,10 +234,6 @@
 				line-height: 1.4;
 				letter-spacing: normal;
 				color: #000;
-
-				@media ( min-device-width: 768px ) {
-					margin-left: 5%;
-				}
 			}
 
 			&-icon {
@@ -251,7 +246,7 @@
 			}
 
 			&-readon {
-				margin-left: 14%;
+				margin-left: 55px;
 				margin-top: 12px;
 				font-size: 16px;
 				font-weight: bold;
@@ -309,14 +304,6 @@
 
 	&.mobile {
 		width: 100%;
-
-		.wikipediapreview-error-body-readon {
-			margin-left: 17%;
-
-			@media ( min-device-width: 768px ) {
-				margin-left: 9%;
-			}
-		}
 	}
 
 	&.mobile.expanded {
@@ -369,18 +356,19 @@
 		}
 
 		.wikipediapreview-error-body {
+			&-message {
+				margin-left: 0;
+				margin-right: 23px;
+			}
+
 			&-icon {
 				margin-right: 0;
 				margin-left: 12px;
 			}
 
 			&-readon {
-				margin-left: 0%;
-				margin-right: 17%;
-
-				@media ( min-device-width: 768px ) {
-					margin-right: 12%;
-				}
+				margin-left: 0;
+				margin-right: 55px;
 			}
 		}
 	}
