@@ -1,9 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
+			"PhilW",
 			"Wladek92"
 		]
 	},
 	"continue-reading": "Continuer à lire",
+	"gallery-loading-error": "Il y a eu une erreur au chargement de cette image",
+	"gallery-loading-error-refresh": "Rafraîchir",
+	"gallery-loading-still": "Chargement en cours",
 	"read-more": "Lire davantage sur Wikipédia"
 }
