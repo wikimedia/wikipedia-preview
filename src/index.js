@@ -31,20 +31,21 @@ function init( {
 			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
-				if ( data && popup.loading ) {
-					popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
+				if ( popup.loading ) {
+					if ( data ) {
+						popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
 
-					popup.lang = lang
-					popup.title = title
-					const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
+						popup.lang = lang
+						popup.title = title
+						const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
-					if ( expanded && popup.expand ) {
-						popup.expand()
+						if ( expanded && popup.expand ) {
+							popup.expand()
+						}
+					} else {
+						popup.show( renderError( isTouch, lang, title, dir ), target, pointerPosition )
 					}
-				} else {
-					popup.show( renderError( isTouch, lang, title, dir ), target, pointerPosition )
 				}
-
 			} )
 		}
 
