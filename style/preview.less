@@ -30,14 +30,21 @@
 			background-position: left;
 			height: 100%;
 			flex-grow: 1;
+			margin: 0 13px;
 
-			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, ur, uz, zh-c;
+			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh-c;
 			each(@wordmark-languages, {
 				&-@{value} {
 					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
 				}
 			});
-			margin: 0 13px;
+
+			@wordmark-languages-no-margin: ar, bn, fa, he, ps, sd, uz, zh-c;
+			each(@wordmark-languages-no-margin, {
+				&-@{value} {
+					margin: 0 -13px;
+				}
+			});
 		}
 
 		&-closebtn {
