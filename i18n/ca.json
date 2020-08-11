@@ -5,5 +5,8 @@
 		]
 	},
 	"continue-reading": "Continua llegint",
+	"gallery-loading-error": "S'ha produït un error en carregar aquesta imatge",
+	"gallery-loading-error-refresh": "Actualitzar",
+	"gallery-loading-still": "carregant-se",
 	"read-more": "Llegeixi més en Viquipèdia"
 }

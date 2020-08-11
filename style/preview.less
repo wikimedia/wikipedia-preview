@@ -19,6 +19,7 @@
 			background-size: auto;
 			background-position: center;
 			background-repeat: no-repeat;
+			background-color: #eaecf0;
 			height: 100%;
 			width: 65px;
 		}
@@ -27,7 +28,6 @@
 			background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
 			background-repeat: no-repeat;
 			background-position: left;
-			background-position-x: 13px;
 			height: 100%;
 			flex-grow: 1;
 
@@ -37,6 +37,7 @@
 					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
 				}
 			});
+			margin: 0 13px;
 		}
 
 		&-closebtn {
@@ -56,7 +57,7 @@
 		overflow: hidden;
 		padding: 10px 20px;
 
-		:after {
+		&:after {
 			content: ' ';
 			position: absolute;
 			width: 100%;
@@ -77,25 +78,6 @@
 			color: #202122;
 			line-height: 1.6;
 			font-size: 18px;
-		}
-	}
-
-	&-gallery {
-		display: flex;
-		height: 80px;
-		margin-top: 5px;
-
-		&-row {
-			display: flex;
-			overflow: scroll;
-		}
-
-		&-image {
-			height: 100%;
-			min-width: 100px;
-			background-size: cover;
-			background-position: center;
-			margin: 0 2px 0 2px;
 		}
 	}
 
@@ -142,13 +124,171 @@
 		}
 	}
 
+	&-loading {
+		height: 250px;
+
+		&-header-image {
+			background-image: inline-svg( '../images/loading-thumb.svg' );
+			background-size: auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #eaecf0;
+			height: 100%;
+			width: 65px;
+		}
+
+		&-body {
+			height: 100%;
+			margin-top: 25px;
+			padding-left: 13px;
+			padding-right: 13px;
+
+			&-line {
+				height: 10px;
+				margin-top: 12px;
+				border-radius: 1px;
+				background: linear-gradient( 130deg, #b4b4b4, #d6d3d3, #eaecf0 );
+				background-size: 200% 200%;
+				-webkit-animation: animate-load 2s ease infinite;
+				-moz-animation: animate-load 2s ease infinite;
+				animation: animate-load 2s ease infinite;
+			}
+
+			&-line.larger {
+				width: 100%;
+			}
+
+			&-line.medium {
+				width: 80%;
+			}
+
+			&-line.smaller {
+				width: 60%;
+			}
+
+			@-webkit-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@-moz-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+		}
+
+		&-footer {
+			height: 30px;
+			background-color: #eaecf0;
+		}
+	}
+
+	&-error {
+		height: 285px;
+
+		&-body {
+			background-color: #f8f9fa;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 23px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/error-preview.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-readon {
+				margin-left: 55px;
+				margin-top: 12px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
+	&-gallery {
+		display: flex;
+		height: 80px;
+		margin-top: 5px;
+
+		&-row {
+			display: flex;
+			overflow: scroll;
+		}
+
+		&-image {
+			height: 100%;
+			min-width: 100px;
+			background-size: cover;
+			background-position: center;
+			background-color: #eaecf0;
+			border-radius: 2px;
+			margin: 0 2px 0 2px;
+		}
+	}
+
 	&.expanded {
 		.wikipediapreview-body {
 			max-height: 496px;
 			overflow: hidden;
 
-			:after {
-				content: unset;
+			&:after {
+				content: none;
 			}
 		}
 
@@ -171,6 +311,66 @@
 		.wikipediapreview-body {
 			max-height: calc( 70vh );
 			overflow: scroll;
+		}
+	}
+
+	&[ dir='rtl' ] {
+		.wikipediapreview-header-wordmark {
+			background-position: right;
+		}
+
+		.wikipediapreview-footer {
+			&-cc {
+				left: 30px;
+				right: unset;
+			}
+
+			&-author {
+				left: 14px;
+				right: unset;
+			}
+		}
+
+		.wp-gallery-popup {
+			&-button {
+				&.close {
+					right: unset;
+					left: 16px;
+				}
+
+				&.previous {
+					background-image: inline-svg( '../images/arrow-right.svg' );
+					left: unset;
+					right: 16px;
+				}
+
+				&.next {
+					background-image: inline-svg( '../images/arrow-left.svg' );
+					left: 16px;
+					right: unset;
+				}
+			}
+
+			&-loading-spinner {
+				margin-right: 118px;
+			}
+		}
+
+		.wikipediapreview-error-body {
+			&-message {
+				margin-left: 0;
+				margin-right: 23px;
+			}
+
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
+			}
+
+			&-readon {
+				margin-left: 0;
+				margin-right: 55px;
+			}
 		}
 	}
 }

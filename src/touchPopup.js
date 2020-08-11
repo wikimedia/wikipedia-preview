@@ -4,11 +4,13 @@ let popup,
 	originalOverflow
 
 const addBackgroundScreen = ( document ) => {
-		const screen = document.createElement( 'div' )
-		screen.classList.add( 'wp-dark-screen' )
-		document.body.appendChild( screen )
-		originalOverflow = document.body.style.overflow
-		document.body.style.overflow = 'hidden'
+		if ( !document.querySelector( '.wp-dark-screen' ) ) {
+			const screen = document.createElement( 'div' )
+			screen.classList.add( 'wp-dark-screen' )
+			document.body.appendChild( screen )
+			originalOverflow = document.body.style.overflow
+			document.body.style.overflow = 'hidden'
+		}
 	},
 
 	removeBackgroundScreen = ( document ) => {
@@ -20,7 +22,6 @@ const addBackgroundScreen = ( document ) => {
 	createTouchPopup = ( container, win = window ) => {
 		if ( !popup ) {
 			popup = win.document.createElement( 'div' )
-			popup.setAttribute( 'dir', 'ltr' )
 			popup.classList.add( 'wp-touch-popup' )
 			popup.style.visibility = 'hidden'
 			container.appendChild( popup )
