@@ -43,7 +43,11 @@ function init( {
 							popup.expand()
 						}
 					} else {
-						popup.show( renderError( isTouch, lang, title, dir ), target, pointerPosition )
+						popup.show(
+							renderError( isTouch, lang, title, dir ),
+							target,
+							pointerPosition
+						)
 					}
 				}
 			} )
