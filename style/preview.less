@@ -214,6 +214,52 @@
 		}
 	}
 
+	&-error {
+		height: 285px;
+
+		&-body {
+			background-color: #f8f9fa;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 23px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/error-preview.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-readon {
+				margin-left: 55px;
+				margin-top: 12px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
 	&-gallery {
 		display: flex;
 		height: 80px;
@@ -284,22 +330,45 @@
 			}
 		}
 
-		.wp-gallery-popup-button {
-			&.close {
-				right: unset;
-				left: 16px;
+		.wp-gallery-popup {
+			&-button {
+				&.close {
+					right: unset;
+					left: 16px;
+				}
+
+				&.previous {
+					background-image: inline-svg( '../images/arrow-right.svg' );
+					left: unset;
+					right: 16px;
+				}
+
+				&.next {
+					background-image: inline-svg( '../images/arrow-left.svg' );
+					left: 16px;
+					right: unset;
+				}
 			}
 
-			&.previous {
-				background-image: inline-svg( '../images/arrow-right.svg' );
-				left: unset;
-				right: 16px;
+			&-loading-spinner {
+				margin-right: 118px;
+			}
+		}
+
+		.wikipediapreview-error-body {
+			&-message {
+				margin-left: 0;
+				margin-right: 23px;
 			}
 
-			&.next {
-				background-image: inline-svg( '../images/arrow-left.svg' );
-				left: 16px;
-				right: unset;
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
+			}
+
+			&-readon {
+				margin-left: 0;
+				margin-right: 55px;
 			}
 		}
 	}

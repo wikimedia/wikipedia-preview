@@ -2,7 +2,7 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading } from './preview'
+import { renderPreview, renderLoading, renderError } from './preview'
 import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
 
 function init( {
@@ -24,22 +24,27 @@ function init( {
 			const { target } = e,
 				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = target.getAttribute( 'data-wp-lang' ) || globalLang,
-				pointerPosition = { x: e.clientX, y: e.clientY }
+				pointerPosition = { x: e.clientX, y: e.clientY },
+				dir = getDir( lang )
 
 			popup.loading = true
-			popup.show( renderLoading( isTouch, lang, getDir( lang ) ), target, pointerPosition )
+			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
-				if ( data && popup.loading ) {
-					popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
-				}
+				if ( popup.loading ) {
+					if ( data ) {
+						popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
 
-				popup.lang = lang
-				popup.title = title
-				const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
+						popup.lang = lang
+						popup.title = title
+						const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
-				if ( expanded && popup.expand ) {
-					popup.expand()
+						if ( expanded && popup.expand ) {
+							popup.expand()
+						}
+					} else {
+						popup.show( renderError( isTouch, lang, title, dir ), target, pointerPosition )
+					}
 				}
 			} )
 		}

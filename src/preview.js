@@ -50,6 +50,29 @@ const renderPreview = ( lang, data, isTouch ) => {
 					<div class="wikipediapreview-loading-footer"></div>
 			</div>
   `.trim()
+	},
+
+	renderError = ( isTouch, lang, title, dir ) => {
+		return `
+			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+					<div class="wikipediapreview-header">
+						<div class="wikipediapreview-loading-header-image"></div>
+						<div class="wikipediapreview-header-wordmark"></div>
+						<div class="wikipediapreview-header-closebtn"></div>
+					</div>
+					<div class="wikipediapreview-error">
+						<div class="wikipediapreview-error-body">
+							<div class="wikipediapreview-error-body-message">
+								<div class="wikipediapreview-error-body-icon"></div>
+								${msg( lang, 'preview-loading-error' )}
+							</div>
+							<div class="wikipediapreview-error-body-readon">
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'preview-loading-error-read' )}</a>
+							</div>
+						</div>
+					</div>
+			</div>
+	`.trim()
 	}
 
-export { renderPreview, renderLoading }
+export { renderPreview, renderLoading, renderError }
