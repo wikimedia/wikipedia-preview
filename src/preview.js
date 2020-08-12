@@ -73,6 +73,29 @@ const renderPreview = ( lang, data, isTouch ) => {
 					</div>
 			</div>
 	`.trim()
+	},
+
+	renderDisambiguation = ( isTouch, lang, title, dir ) => {
+		return `
+			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+					<div class="wikipediapreview-header">
+						<div class="wikipediapreview-loading-header-image"></div>
+						<div class="wikipediapreview-header-wordmark"></div>
+						<div class="wikipediapreview-header-closebtn"></div>
+					</div>
+					<div class="wikipediapreview-disambiguation">
+						<div class="wikipediapreview-disambiguation-body">
+							<div class="wikipediapreview-disambiguation-body-message">
+								<div class="wikipediapreview-disambiguation-body-icon"></div>
+								<span>${msg( lang, 'preview-disambiguation-message', title )}</span>
+							</div>
+							<div class="wikipediapreview-disambiguation-body-readon">
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-more' )}</a>
+							</div>
+						</div>
+					</div>
+			</div>
+	`.trim()
 	}
 
-export { renderPreview, renderLoading, renderError }
+export { renderPreview, renderLoading, renderError, renderDisambiguation }

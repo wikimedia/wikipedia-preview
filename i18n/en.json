@@ -5,5 +5,6 @@
     "gallery-loading-still": "Still loading",
     "preview-loading-error": "There was an issue displaying this preview.",
     "preview-loading-error-read": "Read on Wikipedia",
-    "read-more": "Read more on Wikipedia"
+    "read-more": "Read more on Wikipedia",
+    "preview-disambiguation-message": "Title <strong>$1</strong> is related to more than one article on Wikipedia."
 }
