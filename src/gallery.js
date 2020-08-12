@@ -16,7 +16,9 @@ const getFullScreenGallery = () => {
 						<div class="wp-gallery-popup-loading">
 							<div class="wp-gallery-popup-loading-icons">
 								<div class="wp-gallery-popup-loading-spinner">
-									<div class="wp-gallery-popup-loading-spinner-animation"></div>
+									<div class="wp-gallery-popup-loading-spinner-animation">
+										<div class="wp-gallery-popup-loading-spinner-animation-bounce"></div>
+									</div>
 								</div>
 								<div class="wp-gallery-popup-loading-error"></div>
 							</div>
