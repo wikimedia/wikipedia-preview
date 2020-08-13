@@ -1,7 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin')
+const StylelintPlugin = require('stylelint-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+
 
 const path = require('path');
 const config = {
@@ -31,7 +33,8 @@ const config = {
       new MiniCssExtractPlugin({
         filename: 'wikipedia-preview.css'
       }),
-      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js'])
+      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js']),
+      new CompressionPlugin()
     ],
   module: {
     rules: [
@@ -66,16 +69,16 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
-          { 
-            loader: 'less-loader', options: { 
-              sourceMap: true, 
+          {
+            loader: 'less-loader', options: {
+              sourceMap: true,
               plugins:
-              [ 
+              [
                 new LessPluginInlineSvg({
                   base64: true
-                }) 
-              ] 
-            } 
+                })
+              ]
+            }
           },
         ]
       },
@@ -84,16 +87,16 @@ const config = {
         use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            { 
-              loader: 'less-loader', options: { 
-                sourceMap: true, 
+            {
+              loader: 'less-loader', options: {
+                sourceMap: true,
                 plugins:
-                [ 
+                [
                   new LessPluginInlineSvg({
                     base64: true
-                  }) 
-                ] 
-              } 
+                  })
+                ]
+              }
             },
           ],
       },
