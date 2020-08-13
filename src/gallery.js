@@ -1,4 +1,5 @@
 import { msg } from './i18n'
+import { requestPageMediaInfo } from './api'
 
 let gallery = [],
 	current = 0
@@ -142,9 +143,16 @@ const getFullScreenGallery = () => {
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
-			closeButton = galleryContainer.querySelector( '.close' )
+			closeButton = galleryContainer.querySelector( '.close' ),
+			title = gallery[ current ].title,
+			fromCommon = gallery[ current ].fromCommon
 
 		toggleLoading( loading, image, lang )
+
+		requestPageMediaInfo( lang, title, fromCommon, mediaInfo => {
+			// TODO
+			console.log( 'gallery.js - request callback - mediaInfo...', mediaInfo )
+		} )
 
 		image.src = gallery[ current ].src
 
