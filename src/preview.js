@@ -67,7 +67,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 								${msg( lang, 'preview-loading-error' )}
 							</div>
 							<div class="wikipediapreview-error-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'preview-loading-error-read' )}</a>
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki' )}</a>
 							</div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 								<span>${msg( lang, 'preview-disambiguation-message', title )}</span>
 							</div>
 							<div class="wikipediapreview-disambiguation-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-more' )}</a>
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki' )}</a>
 							</div>
 						</div>
 					</div>
