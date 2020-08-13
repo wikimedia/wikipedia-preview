@@ -5,6 +5,10 @@
 		]
 	},
 	"continue-reading": "Jatka lukemista",
+	"gallery-loading-error": "Virhe kuvan lataamisessa",
 	"gallery-loading-error-refresh": "Päivitä",
+	"gallery-loading-still": "Vielä lataa",
+	"preview-loading-error": "Virheen vuoksi esikatselua ei voida näyttää.",
+	"preview-loading-error-read": "Lue Wikipediassa",
 	"read-more": "Lue lisää Wikipediassa"
 }
