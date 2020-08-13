@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga",
+			"WikiPhoenix"
+		]
+	},
+	"continue-reading": "Fortsätt läsa",
+	"gallery-loading-error": "Ett fel inträffade när sidan laddades in.",
+	"gallery-loading-error-refresh": "Uppdatera",
+	"gallery-loading-still": "Läser fortfarande in",
+	"preview-loading-error": "Det uppstod ett problem med att visa förhandsvisningen.",
+	"preview-loading-error-read": "Läs på Wikipedia",
+	"read-more": "Läs mer på Wikipedia"
+}

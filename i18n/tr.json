@@ -9,5 +9,7 @@
 	"gallery-loading-error": "Bu görsel yüklenirken bir hata oluştu",
 	"gallery-loading-error-refresh": "Yenile",
 	"gallery-loading-still": "Hâlâ yükleniyor",
+	"preview-loading-error": "Bu önizlemeyi görüntülemede bir sorun oluştu.",
+	"preview-loading-error-read": "Vikipedi'de oku",
 	"read-more": "Vikipedi'de daha fazla okuyun"
 }

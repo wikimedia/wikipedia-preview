@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Norhorn"
+		]
+	},
+	"continue-reading": "Συνέχεια ανάγνωσης",
+	"gallery-loading-error": "Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτής της εικόνας",
+	"gallery-loading-error-refresh": "Ανανέωση"
+}
