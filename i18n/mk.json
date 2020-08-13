@@ -5,5 +5,10 @@
 		]
 	},
 	"continue-reading": "Продолжете со читање",
+	"gallery-loading-error": "Се јави грешка при вчитувањето на сликава.",
+	"gallery-loading-error-refresh": "Превчитај",
+	"gallery-loading-still": "Сè уште се вчитува",
+	"preview-loading-error": "Се јави проблем при приказот на прегледот.",
+	"preview-loading-error-read": "Прочитајте на Википедија",
 	"read-more": "Прочитајте повеќе на Википедија"
 }

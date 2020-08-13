@@ -5,5 +5,7 @@
 		]
 	},
 	"continue-reading": "계속 읽기",
+	"gallery-loading-error": "이 이미지를 불러오는 동안 오류가 발생했습니다",
+	"gallery-loading-error-refresh": "새로 고침",
 	"read-more": "위키백과에서 추가 내용 읽기"
 }

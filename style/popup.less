@@ -12,16 +12,11 @@
 }
 
 .wp-touch-popup {
+	&:extend( .wp-popup );
 	position: fixed;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	box-sizing: border-box;
-	padding: 0;
-	border-radius: 8px 8px 0 0;
-	background-color: #fff;
-	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
-	z-index: @popup-z-index;
 
 	@media ( orientation: landscape ) {
 		margin: 0 106px;
@@ -129,13 +124,14 @@
 		width: 270px;
 
 		&-icons {
-			margin-left: 105px;
+			margin-left: 116px;
 		}
 
 		&-text {
 			position: absolute;
-			bottom: 18px;
-			width: 270px;
+			bottom: 14px;
+			left: -8px;
+			width: 292px;
 			text-align: center;
 			font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 			font-size: 12px;
@@ -159,7 +155,7 @@
 
 			&-refresh {
 				position: absolute;
-				bottom: -15px;
+				bottom: -20px;
 				left: 105px;
 				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 				font-size: 16px;
@@ -173,83 +169,69 @@
 		}
 
 		&-spinner {
-			margin-left: 25px;
-			position: absolute;
-			top: -55px;
-
 			&-animation {
-				border-radius: 50%;
-				width: 1.5em;
-				height: 1.5em;
-				color: #f8f9fa;
-				font-size: 10px;
-				margin: 80px auto;
-				position: relative;
-				text-indent: -9999em;
-				transform: translateZ( 0 );
-				animation: bounce 1.8s infinite ease-in-out;
-				animation-delay: -0.16s;
-				animation-fill-mode: both;
-				-webkit-animation: bounce 1.8s infinite ease-in-out;
+				margin: 50px auto 0;
+				width: 70px;
+				opacity: 0.8;
+				display: inline-block;
+				white-space: nowrap;
+			}
+
+			&-animation &-animation-bounce,
+			&-animation:before,
+			&-animation:after {
+				content: '';
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background-color: #c8ccd1;
+				border-radius: 100%;
+				-webkit-animation: bounce 1.4s infinite ease-in-out;
+				animation: bounce 1.4s infinite ease-in-out;
 				-webkit-animation-fill-mode: both;
-				-webkit-transform: translateZ( 0 );
-				-ms-transform: translateZ( 0 );
+				animation-fill-mode: both;
 				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
 			}
 
 			&-animation:before {
-				content: '';
-				position: absolute;
-				display: block;
-				top: 0;
-				left: -3.5em;
-				border-radius: 50%;
-				width: 1.5em;
-				height: 1.5em;
-				animation: bounce 1.8s infinite ease-in-out;
-				animation-delay: -0.32s;
-				animation-fill-mode: both;
-				-webkit-animation: bounce 1.8s infinite ease-in-out;
-				-webkit-animation-delay: -0.32s;
-				-webkit-animation-fill-mode: both;
+				-webkit-animation-delay: -0.33s;
+				animation-delay: -0.33s;
 			}
 
 			&-animation:after {
-				content: '';
-				position: absolute;
-				display: block;
-				top: 0;
-				left: 3.5em;
-				border-radius: 50%;
-				width: 1.5em;
-				height: 1.5em;
-				animation: bounce 1.8s infinite ease-in-out;
-				animation-fill-mode: both;
-				-webkit-animation: bounce 1.8s infinite ease-in-out;
-				-webkit-animation-fill-mode: both;
+				-webkit-animation-delay: -0.01s;
+				animation-delay: -0.01s;
 			}
 
 			@-webkit-keyframes bounce {
 				0%,
-				80%,
-				100% {
-					box-shadow: 0 2.5em 0 -1.3em;
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					transform: scale( 0.6 );
 				}
 
 				40% {
-					box-shadow: 0 2.5em 0 0;
+					-webkit-transform: scale( 1 );
+					transform: scale( 1 );
+					background-color: #bbb;
 				}
 			}
 
 			@keyframes bounce {
 				0%,
-				80%,
-				100% {
-					box-shadow: 0 2.5em 0 -1.3em;
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					-ms-transform: scale( 0.6 );
+					transform: scale( 0.6 );
 				}
 
 				40% {
-					box-shadow: 0 2.5em 0 0;
+					-webkit-transform: scale( 1 );
+					-ms-transform: scale( 1 );
+					transform: scale( 1 );
 				}
 			}
 		}

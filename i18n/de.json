@@ -1,7 +1,11 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"BPX-web"
+		]
 	},
 	"continue-reading": "Mit dem Lesen fortfahren",
+	"gallery-loading-error": "Beim Laden dieses Bildes gab es einen Fehler.",
+	"gallery-loading-error-refresh": "Aktualisieren",
 	"read-more": "Mehr in Wikipedia"
 }
