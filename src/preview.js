@@ -30,7 +30,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 			<div class="wikipediapreview${isTouch ? ' mobile' : ''}" lang="${lang}" dir="${dir}">
 					<div class="wikipediapreview-header">
 						<div class="wikipediapreview-loading-header-image"></div>
-						<div class="wikipediapreview-header-wordmark"></div>
+						<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${lang}"></div>
 						<div class="wikipediapreview-header-closebtn"></div>
 					</div>
 					<div class="wikipediapreview-loading">
@@ -57,7 +57,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					<div class="wikipediapreview-header">
 						<div class="wikipediapreview-loading-header-image"></div>
-						<div class="wikipediapreview-header-wordmark"></div>
+						<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${lang}"></div>
 						<div class="wikipediapreview-header-closebtn"></div>
 					</div>
 					<div class="wikipediapreview-error">
