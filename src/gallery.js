@@ -16,7 +16,9 @@ const getFullScreenGallery = () => {
 						<div class="wp-gallery-popup-loading">
 							<div class="wp-gallery-popup-loading-icons">
 								<div class="wp-gallery-popup-loading-spinner">
-									<div class="wp-gallery-popup-loading-spinner-animation"></div>
+									<div class="wp-gallery-popup-loading-spinner-animation">
+										<div class="wp-gallery-popup-loading-spinner-animation-bounce"></div>
+									</div>
 								</div>
 								<div class="wp-gallery-popup-loading-error"></div>
 							</div>
@@ -46,7 +48,7 @@ const getFullScreenGallery = () => {
 
 			onLoad = () => {
 				clearTimeout( timeoutId )
-				loading.style.visibility = 'hidden'
+				spinner.style.visibility = 'hidden'
 				text.style.visibility = 'hidden'
 				image.style.visibility = 'visible'
 				image.removeEventListener( 'load', onLoad )
@@ -71,7 +73,7 @@ const getFullScreenGallery = () => {
 				image.removeEventListener( 'error', onError )
 			}
 
-		loading.style.visibility = 'visible'
+		spinner.style.visibility = 'visible'
 		image.style.visibility = 'hidden'
 		text.style.visibility = 'hidden'
 		error.style.visibility = 'hidden'
