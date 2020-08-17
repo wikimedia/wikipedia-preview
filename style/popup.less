@@ -12,11 +12,16 @@
 }
 
 .wp-touch-popup {
-	&:extend( .wp-popup );
 	position: fixed;
 	left: 0;
 	right: 0;
 	bottom: 0;
+	box-sizing: border-box;
+	padding: 0;
+	border-radius: 8px 8px 0 0;
+	background-color: #fff;
+	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
+	z-index: @popup-z-index;
 
 	@media ( orientation: landscape ) {
 		margin: 0 106px;
@@ -53,16 +58,16 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		cursor: pointer;
-		width: 24px;
+		width: 44px;
+		height: 44px;
 		color: #72777d;
 		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
 		position: absolute;
 
 		&.close {
 			background-image: inline-svg( '../images/close-white.svg' );
-			top: 40px;
+			top: 16px;
 			right: 16px;
-			height: 24px;
 			z-index: @popup-z-index + 20;
 		}
 
@@ -70,7 +75,6 @@
 			background-image: inline-svg( '../images/arrow-left.svg' );
 			left: 16px;
 			align-self: center;
-			height: 100%;
 			-webkit-tap-highlight-color: transparent;
 		}
 
@@ -78,7 +82,6 @@
 			background-image: inline-svg( '../images/arrow-right.svg' );
 			right: 16px;
 			align-self: center;
-			height: 100%;
 			-webkit-tap-highlight-color: transparent;
 		}
 	}
@@ -119,6 +122,7 @@
 		letter-spacing: normal;
 		color: #f8f9fa;
 		margin: 2px 16px 0 16px;
+		overflow: scroll;
 	}
 
 	&-loading {
@@ -271,6 +275,15 @@
 
 			&-sa {
 				background-image: inline-svg( '../images/attribution-icon-share-a-like.svg' );
+				background-repeat: no-repeat;
+				padding-bottom: 10px;
+				width: 14px;
+				height: 14px;
+				margin-right: 4px;
+			}
+
+			&-fair {
+				background-image: inline-svg( '../images/attribution-license-generic-gnu-free.svg' );
 				background-repeat: no-repeat;
 				padding-bottom: 10px;
 				width: 14px;

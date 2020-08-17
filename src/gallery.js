@@ -36,10 +36,20 @@ const getFullScreenGallery = () => {
 
 	getImageInfo = ( mediaInfo, container ) => {
 		container.innerText = ''
-		const license = mediaInfo.license,
+		const getImageDescription = () => {
+				if ( mediaInfo.description ) {
+					return mediaInfo.description
+				} else if ( gallery[ current ].caption ) {
+					return gallery[ current ].caption
+				} else {
+					return ''
+				}
+			},
+
+			license = mediaInfo.license,
 			author = mediaInfo.author,
 			link = mediaInfo.filePage,
-			description = mediaInfo.description // TODO - choose between both options
+			description = getImageDescription()
 
 		return `
 			<div class="wp-gallery-popup-caption">${description}</div>
@@ -48,6 +58,7 @@ const getFullScreenGallery = () => {
 					${ license.indexOf( 'CC' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-cc"></div>' : ''}
 					${ license.indexOf( 'BY' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-by"></div>' : ''}
 					${ license.indexOf( 'SA' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-sa"></div>' : ''}
+					${ license.indexOf( 'Fair use' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-fair"></div>' : ''}
 					${ license.indexOf( 'Public domain' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-public"></div>' : ''}
 					${ author ? `<div class="wp-gallery-popup-attribution-info-author">${author}</div>` : ''}
 				</div>
