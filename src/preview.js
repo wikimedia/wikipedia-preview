@@ -18,8 +18,6 @@ const renderPreview = ( lang, data, isTouch ) => {
 				<div class="wikipediapreview-footer">
 					<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${msg( lang, 'continue-reading' )}</span>
 					<a href="${data.pageUrl}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${msg( lang, 'read-more' )}</a>
-					<div class="wikipediapreview-footer-cc"></div>
-					<div class="wikipediapreview-footer-author"></div>
 				</div>
 			</div>
 	`.trim()

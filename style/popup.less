@@ -49,6 +49,9 @@
 
 	&-bottom {
 		height: 20vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	&-button {
@@ -251,6 +254,88 @@
 				40% {
 					box-shadow: 0 2.5em 0 0;
 				}
+			}
+		}
+	}
+
+	&-attribution {
+		border: #f8f9fa;
+		height: 44px;
+		display: flex;
+		justify-content: space-between;
+
+		&-info {
+			display: flex;
+			align-items: center;
+			margin-left: 9px;
+
+			&-cc {
+				background-image: inline-svg( '../images/attribution-cc.svg' );
+				background-repeat: no-repeat;
+				padding-bottom: 10px;
+				width: 14px;
+				height: 14px;
+				margin-right: 4px;
+			}
+
+			&-by {
+				background-image: inline-svg( '../images/attribution-author.svg' );
+				background-repeat: no-repeat;
+				padding-bottom: 10px;
+				width: 14px;
+				height: 14px;
+				margin-right: 4px;
+			}
+
+			&-sa {
+				background-image: inline-svg( '../images/attribution-icon-share-a-like.svg' );
+				background-repeat: no-repeat;
+				padding-bottom: 10px;
+				width: 14px;
+				height: 14px;
+				margin-right: 4px;
+			}
+
+			&-public {
+				background-image: inline-svg( '../images/attribution-license-public-domain.svg' );
+				background-repeat: no-repeat;
+				padding-bottom: 10px;
+				width: 14px;
+				height: 14px;
+				margin-right: 4px;
+			}
+
+			&-author {
+				padding-bottom: 10px;
+				width: 250px;
+				height: 14px;
+				margin-right: 4px;
+				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+				font-size: 12px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #fff;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+
+		&-more-info {
+			padding-bottom: 10px;
+			margin-right: 4px;
+			-webkit-tap-highlight-color: transparent;
+
+			&-link {
+				border: #f8f9fa;
+				background-image: inline-svg( '../images/attribution-icon-information.svg' );
+				background-repeat: no-repeat;
+				height: 44px;
+				width: 44px;
+				display: block;
 			}
 		}
 	}

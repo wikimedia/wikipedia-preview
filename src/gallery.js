@@ -27,8 +27,30 @@ const getFullScreenGallery = () => {
 					</div>
 					<div class="wp-gallery-popup-button next"></div>
 				</div>
-				<div class="wp-gallery-popup-bottom">
-					<div class="wp-gallery-popup-caption"></div>
+				<div class="wp-gallery-popup-bottom"></div>
+			</div>
+		`.trim()
+	},
+
+	getImageInfo = ( mediaInfo, container ) => {
+		container.innerText = ''
+		const license = mediaInfo.license,
+			author = mediaInfo.author,
+			link = mediaInfo.filePage,
+			description = mediaInfo.description // TODO - choose between both options
+
+		return `
+			<div class="wp-gallery-popup-caption">${description}</div>
+			<div class="wp-gallery-popup-attribution">
+				<div class="wp-gallery-popup-attribution-info">
+					${ license.indexOf( 'CC' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-cc"></div>' : ''}
+					${ license.indexOf( 'BY' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-by"></div>' : ''}
+					${ license.indexOf( 'SA' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-sa"></div>' : ''}
+					${ license.indexOf( 'Public domain' ) !== -1 ? '<div class="wp-gallery-popup-attribution-info-public"></div>' : ''}
+					${ author ? `<div class="wp-gallery-popup-attribution-info-author">${author}</div>` : ''}
+				</div>
+				<div class="wp-gallery-popup-attribution-more-info">
+					<a href="${link}" class="wp-gallery-popup-attribution-more-info-link" target="_blank"></a>
 				</div>
 			</div>
 		`.trim()
@@ -89,16 +111,22 @@ const getFullScreenGallery = () => {
 
 	renderNext = ( galleryContainer, lang ) => {
 		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			next = current + 1,
-			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
+			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
+			bottom = galleryContainer.querySelector( '.wp-gallery-popup-bottom' )
 
 		if ( gallery[ next ] ) {
 			toggleLoading( loading, image, lang )
+			requestPageMediaInfo(
+				lang,
+				gallery[ next ].title,
+				gallery[ next ].fromCommon,
+				mediaInfo => {
+					bottom.insertAdjacentHTML( 'beforeend', getImageInfo( mediaInfo, bottom ) )
+				} )
 			image.src = gallery[ next ].src
-			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
 			nextButton.style.opacity = gallery[ next + 1 ] ? '1' : '0.5'
 			previousButton.style.opacity = current === 0 ? '1' : null
 			current += 1
@@ -107,16 +135,22 @@ const getFullScreenGallery = () => {
 
 	renderPrevious = ( galleryContainer, lang ) => {
 		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previous = current - 1,
-			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
+			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
+			bottom = galleryContainer.querySelector( '.wp-gallery-popup-bottom' )
 
 		if ( gallery[ previous ] ) {
 			toggleLoading( loading, image, lang )
+			requestPageMediaInfo(
+				lang,
+				gallery[ previous ].title,
+				gallery[ previous ].fromCommon,
+				mediaInfo => {
+					bottom.insertAdjacentHTML( 'beforeend', getImageInfo( mediaInfo, bottom ) )
+				} )
 			image.src = gallery[ previous ].src
-			caption.innerText = gallery[ previous ].caption ? gallery[ previous ].caption : ''
 			previousButton.style.opacity = gallery[ previous - 1 ] ? '1' : '0.5'
 			nextButton.style.opacity = current === gallery.leght - 1 ? '1' : null
 			current -= 1
@@ -139,24 +173,23 @@ const getFullScreenGallery = () => {
 		galleryContainer.insertAdjacentHTML( 'beforeend', fullscreenGallery )
 
 		let image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
+			bottom = galleryContainer.querySelector( '.wp-gallery-popup-bottom' ),
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
-			closeButton = galleryContainer.querySelector( '.close' ),
-			title = gallery[ current ].title,
-			fromCommon = gallery[ current ].fromCommon
+			closeButton = galleryContainer.querySelector( '.close' )
 
 		toggleLoading( loading, image, lang )
 
-		requestPageMediaInfo( lang, title, fromCommon, mediaInfo => {
-			// TODO
-			console.log( 'gallery.js - request callback - mediaInfo...', mediaInfo )
-		} )
+		requestPageMediaInfo(
+			lang,
+			gallery[ current ].title,
+			gallery[ current ].fromCommon,
+			mediaInfo => {
+				bottom.insertAdjacentHTML( 'beforeend', getImageInfo( mediaInfo, bottom ) )
+			} )
 
 		image.src = gallery[ current ].src
-
-		caption.innerText = gallery[ current ].caption ? gallery[ current ].caption : ''
 
 		closeButton.addEventListener( 'click', () => {
 			hideFullscreenGallery( galleryContainer )
