@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1917 Ekim Devrimi",
 			"Orbot707"
 		]
 	},
@@ -8,5 +9,7 @@
 	"gallery-loading-error": "No asange bar kerdış de xeta veciye",
 	"gallery-loading-error-refresh": "Anewe kerê",
 	"gallery-loading-still": "Hewna beno bar",
+	"preview-loading-error": "No verqayt mocnayış de xırabey veciyê",
+	"preview-loading-error-read": "Wikipediya de bıwanê",
 	"read-more": "Wikipedia sero tayna bıwanê"
 }
