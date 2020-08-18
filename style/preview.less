@@ -299,6 +299,52 @@
 		}
 	}
 
+	&-disambiguation {
+		height: 285px;
+
+		&-body {
+			background-color: #f8f9fa;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 23px;
+				margin-right: 23px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/articles.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-readon {
+				margin: 12px 55px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
 	&.expanded {
 		.wikipediapreview-body {
 			max-height: 496px;
@@ -387,6 +433,13 @@
 			&-readon {
 				margin-left: 0;
 				margin-right: 55px;
+			}
+		}
+
+		.wikipediapreview-disambiguation-body {
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
 			}
 		}
 	}
