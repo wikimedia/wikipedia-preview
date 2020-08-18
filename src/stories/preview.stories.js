@@ -1,4 +1,4 @@
-import { renderPreview, renderLoading, renderError } from '../preview'
+import { renderPreview, renderLoading, renderError, renderDisambiguation } from '../preview'
 
 export default {
 	title: 'Previews',
@@ -43,4 +43,8 @@ export const Loading = ( { touch, lang, dir } ) => {
 
 export const Error = ( { touch, lang, title, dir } ) => {
 	return renderError( touch, lang, title, dir )
+}
+
+export const Disambiguation = ( { touch, lang, title, dir } ) => {
+	return renderDisambiguation( touch, lang, title, dir )
 }
