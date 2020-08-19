@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"continue-reading": "繼續閱讀",
+	"gallery-loading-error": "載入此圖片時發生錯誤",
+	"gallery-loading-error-refresh": "重新整理",
+	"gallery-loading-still": "繼續載入",
+	"preview-loading-error": "顯示此預覽時出現問題。",
+	"preview-loading-error-read": "在維基百科上閱讀",
+	"read-more": "在維基百科閱讀更多條目"
+}

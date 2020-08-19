@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Akmaie Ajam"
+		]
+	},
+	"gallery-loading-error": "Terjadi kesalahan saat memuat gambar ini.",
+	"gallery-loading-error-refresh": "Muat ulang",
+	"gallery-loading-still": "Masih memuat"
+}

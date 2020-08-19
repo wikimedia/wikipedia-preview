@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"MuratTheTurkish",
+			"Sayginer"
+		]
+	},
+	"continue-reading": "Okumaya Devam Et",
+	"gallery-loading-error": "Bu görsel yüklenirken bir hata oluştu",
+	"gallery-loading-error-refresh": "Yenile",
+	"gallery-loading-still": "Hâlâ yükleniyor",
+	"preview-loading-error": "Bu önizlemeyi görüntülerken bir sorun oluştu.",
+	"preview-loading-error-read": "Vikipedi'de oku",
+	"read-more": "Vikipedi'de daha fazla okuyun"
+}

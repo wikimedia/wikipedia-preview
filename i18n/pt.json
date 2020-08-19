@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dvpita",
+			"Hamilton Abreu"
+		]
+	},
+	"continue-reading": "Continuar a ler",
+	"gallery-loading-error": "Ocorreu um erro ao carregar esta imagem",
+	"gallery-loading-error-refresh": "Atualizar",
+	"gallery-loading-still": "Carregamento em curso",
+	"preview-loading-error": "Ocorreu um erro na apresentação desta antevisão.",
+	"preview-loading-error-read": "Ler na Wikipédia",
+	"read-more": "Leia mais na Wikipédia"
+}

@@ -1,0 +1,451 @@
+.wikipediapreview {
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
+	border-radius: 8px 8px 0 0;
+	background-color: #fff;
+
+	* {
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	&-header {
+		display: flex;
+		height: 62px;
+		line-height: 62px;
+		background-color: #eaf3ff;
+
+		&-image {
+			background-size: auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #eaecf0;
+			height: 100%;
+			width: 65px;
+
+			&-wikipedia {
+				height: 100%;
+				width: 65px;
+				background-image: inline-svg( '../images/wikipedia-logo.svg' );
+				background-color: #fff;
+				background-size: auto;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+		}
+
+		&-wordmark {
+			background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
+			background-repeat: no-repeat;
+			background-position: left;
+			height: 100%;
+			flex-grow: 1;
+			margin: 0 13px;
+
+			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh-c;
+			each(@wordmark-languages, {
+				&-@{value} {
+					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
+				}
+			});
+
+			@wordmark-languages-no-margin: ar, bn, fa, he, ps, sd, uz, zh-c;
+			each(@wordmark-languages-no-margin, {
+				&-@{value} {
+					margin: 0 -13px;
+				}
+			});
+		}
+
+		&-closebtn {
+			background-image: inline-svg( '../images/close.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+			height: 100%;
+			text-align: center;
+			width: 50px;
+		}
+	}
+
+	&-body {
+		background-color: #fff;
+		max-height: 248px;
+		overflow: hidden;
+		padding: 10px 20px;
+
+		&:after {
+			content: ' ';
+			position: absolute;
+			width: 100%;
+			bottom: 35px;
+			left: 0;
+			right: 200px;
+			top: 280px;
+			background: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
+		}
+
+		p {
+			font-family: 'Lato', sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #202122;
+			line-height: 1.6;
+			font-size: 18px;
+		}
+	}
+
+	&-footer {
+		position: relative;
+
+		&-cta {
+			width: 100%;
+			height: 50px;
+			text-decoration: none;
+			text-align: center;
+			padding: 16px;
+			font-size: 18px;
+			color: #36c;
+
+			&-readmore {
+				cursor: pointer;
+				display: block;
+			}
+
+			&-readonwiki {
+				display: none;
+			}
+		}
+
+		&-cc {
+			background-image: inline-svg( '../images/cc-attribution.svg' );
+			background-repeat: no-repeat;
+			position: absolute;
+			bottom: 0;
+			right: 30px;
+			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
+		}
+
+		&-author {
+			background-image: inline-svg( '../images/author-attribution.svg' );
+			background-repeat: no-repeat;
+			position: absolute;
+			bottom: 0;
+			right: 14px;
+			padding-bottom: 10px;
+			width: 15px;
+			height: 30px;
+		}
+	}
+
+	&-loading {
+		height: 250px;
+
+		&-header-image {
+			background-image: inline-svg( '../images/loading-thumb.svg' );
+			background-size: auto;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #eaecf0;
+			height: 100%;
+			width: 65px;
+		}
+
+		&-body {
+			height: 100%;
+			margin-top: 25px;
+			padding-left: 13px;
+			padding-right: 13px;
+
+			&-line {
+				height: 10px;
+				margin-top: 12px;
+				border-radius: 1px;
+				background: linear-gradient( to right, #ebe9e9, #d6d3d3, #eaecf0 );
+				background-size: 200% 200%;
+				-webkit-animation: animate-load 2s ease infinite;
+				-moz-animation: animate-load 2s ease infinite;
+				animation: animate-load 2s ease infinite;
+			}
+
+			&-line.larger {
+				width: 100%;
+			}
+
+			&-line.medium {
+				width: 80%;
+			}
+
+			&-line.smaller {
+				width: 60%;
+			}
+
+			@-webkit-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@-moz-keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+
+			@keyframes animate-load {
+				0% {
+					background-position: 10% 0%;
+				}
+
+				50% {
+					background-position: 91% 100%;
+				}
+
+				100% {
+					background-position: 10% 0%;
+				}
+			}
+		}
+
+		&-footer {
+			height: 30px;
+			background-color: #eaecf0;
+		}
+	}
+
+	&-error {
+		height: 285px;
+
+		&-body {
+			background-color: #f8f9fa;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 23px;
+				margin-right: 23px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/error-preview.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-readon {
+				margin-left: 55px;
+				margin-top: 12px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
+	&-gallery {
+		display: flex;
+		height: 80px;
+		margin-top: 5px;
+
+		&-row {
+			display: flex;
+			overflow: scroll;
+		}
+
+		&-image {
+			height: 100%;
+			min-width: 100px;
+			background-size: cover;
+			background-position: center;
+			background-color: #eaecf0;
+			border-radius: 2px;
+			margin: 0 2px 0 2px;
+		}
+	}
+
+	&-disambiguation {
+		height: 285px;
+
+		&-body {
+			background-color: #f8f9fa;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 23px;
+				margin-right: 23px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/articles.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-readon {
+				margin: 12px 55px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
+	&.expanded {
+		.wikipediapreview-body {
+			max-height: 496px;
+			overflow: hidden;
+
+			&:after {
+				content: none;
+			}
+		}
+
+		.wikipediapreview-footer-cta {
+			&-readmore {
+				display: none;
+			}
+
+			&-readonwiki {
+				display: block;
+			}
+		}
+	}
+
+	&.mobile {
+		width: 100%;
+	}
+
+	&.mobile.expanded {
+		.wikipediapreview-body {
+			max-height: calc( 70vh );
+			overflow: scroll;
+		}
+	}
+
+	&[ dir='rtl' ] {
+		.wikipediapreview-header-wordmark {
+			background-position: right;
+		}
+
+		.wikipediapreview-footer {
+			&-cc {
+				left: 30px;
+				right: unset;
+			}
+
+			&-author {
+				left: 14px;
+				right: unset;
+			}
+		}
+
+		.wp-gallery-popup {
+			&-button {
+				&.close {
+					right: unset;
+					left: 16px;
+				}
+
+				&.previous {
+					background-image: inline-svg( '../images/arrow-right.svg' );
+					left: unset;
+					right: 16px;
+				}
+
+				&.next {
+					background-image: inline-svg( '../images/arrow-left.svg' );
+					left: 16px;
+					right: unset;
+				}
+			}
+
+			&-loading-spinner {
+				margin-right: 118px;
+			}
+		}
+
+		.wikipediapreview-error-body {
+			&-message {
+				margin-left: 0;
+				margin-right: 23px;
+			}
+
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
+			}
+
+			&-readon {
+				margin-left: 0;
+				margin-right: 55px;
+			}
+		}
+
+		.wikipediapreview-disambiguation-body {
+			&-icon {
+				margin-right: 0;
+				margin-left: 12px;
+			}
+		}
+	}
+}

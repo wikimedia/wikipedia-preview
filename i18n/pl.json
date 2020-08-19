@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"continue-reading": "Czytaj dalej",
+	"gallery-loading-error": "Podczas ładowania tego obrazu wystąpił błąd",
+	"gallery-loading-error-refresh": "Odśwież",
+	"gallery-loading-still": "Wciąż wczytuję",
+	"preview-loading-error": "Wystąpił problem podczas wyświetlania podglądu.",
+	"preview-loading-error-read": "Przeczytaj na Wikipedii",
+	"read-more": "Przeczytaj więcej na Wikipedii"
+}
