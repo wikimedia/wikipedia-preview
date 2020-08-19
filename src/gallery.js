@@ -12,8 +12,9 @@ const getFullScreenGallery = () => {
 				<div class="wp-gallery-popup-main">
 					<div class="wp-gallery-popup-button previous"></div>
 					<div class="wp-gallery-popup-image">
-						<img src="">
+						<div class="wp-gallery-popup-image-slider"></div>
 						<div class="wp-gallery-popup-loading">
+						<img src="">
 							<div class="wp-gallery-popup-loading-icons">
 								<div class="wp-gallery-popup-loading-spinner">
 									<div class="wp-gallery-popup-loading-spinner-animation">
@@ -50,7 +51,7 @@ const getFullScreenGallery = () => {
 				clearTimeout( timeoutId )
 				spinner.style.visibility = 'hidden'
 				text.style.visibility = 'hidden'
-				image.style.visibility = 'visible'
+				// image.style.visibility = 'visible'
 				image.removeEventListener( 'load', onLoad )
 			},
 
@@ -140,16 +141,22 @@ const getFullScreenGallery = () => {
 		galleryContainer.insertAdjacentHTML( 'beforeend', fullscreenGallery )
 
 		let image = galleryContainer.querySelector( 'img' ),
+			slider = galleryContainer.querySelector( '.wp-gallery-popup-image-slider' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
-			closeButton = galleryContainer.querySelector( '.close' )
-
+			closeButton = galleryContainer.querySelector( '.close' ),
+			html = ''
 		toggleLoading( loading, image, lang )
 
 		image.src = gallery[ current ].src
 
+		gallery.forEach( ( item, index ) => {
+			html += `<div id="slide-${index}"><img src="${item.src}" loading="lazy"/></div>`
+		} )
+
+		slider.innerHTML = `<div class="slides">${html}</div>`
 		caption.innerText = gallery[ current ].caption ? gallery[ current ].caption : ''
 
 		closeButton.addEventListener( 'click', () => {

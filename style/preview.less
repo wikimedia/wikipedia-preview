@@ -47,13 +47,6 @@
 					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
 				}
 			});
-
-			@wordmark-languages-no-margin: ar, bn, fa, he, ps, sd, uz, zh-c;
-			each(@wordmark-languages-no-margin, {
-				&-@{value} {
-					margin: 0 -13px;
-				}
-			});
 		}
 
 		&-closebtn {
