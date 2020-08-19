@@ -22,4 +22,38 @@ export const getWikipediaAttrFromUrl = url => {
 	getDir = lang => {
 		const rtl = [ 'ar', 'arc', 'arz', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi', 'pnb', 'ckb', 'mzn', 'glk', 'ug', 'sd', 'azb', 'lrc' ]
 		return rtl.indexOf( lang ) === -1 ? 'ltr' : 'rtl'
+	},
+
+	defaultParams = {
+		format: 'json',
+		formatversion: 2,
+		origin: '*'
+	},
+
+	buildMwApiUrl = ( lang, params ) => {
+		// TODO - spread or Object.assign?
+		// params = Object.assign( {}, defaultParams, params )
+		params = { ...defaultParams, ...params }
+		const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
+		return baseUrl + '?' + Object.keys( params ).map( p => {
+			return `${p}=${encodeURIComponent( params[ p ] )}`
+		} ).join( '&' )
+	},
+
+	buildCommonsApiUrl = params => {
+		// params = Object.assign( {}, defaultParams, params )
+		params = { ...defaultParams, ...params }
+		const baseUrl = 'https://commons.wikimedia.org/w/api.php'
+		return baseUrl + '?' + Object.keys( params ).map( p => {
+			return `${p}=${encodeURIComponent( params[ p ] )}`
+		} ).join( '&' )
+	},
+
+	convertUrlToMobile = url => {
+		return url.replace( /https:\/\/(.*?)\./, subDomain => subDomain + 'm.' )
+	},
+
+	strip = html => {
+		const doc = new DOMParser().parseFromString( html, 'text/html' )
+		return doc.body.textContent || ''
 	}

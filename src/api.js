@@ -1,4 +1,5 @@
 import { cachedRequest } from './cachedRequest'
+import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip } from './utils'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
@@ -42,40 +43,6 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			return pageMedia
 
 		}, callback )
-	},
-
-	// TODO - these non-request methods could go in utils
-	defaultParams = {
-		format: 'json',
-		formatversion: 2,
-		origin: '*'
-	},
-
-	buildMwApiUrl = ( lang, params ) => {
-		// params = Object.assign( {}, defaultParams, params )
-		params = { ...defaultParams, ...params }
-		const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
-		return baseUrl + '?' + Object.keys( params ).map( p => {
-			return `${p}=${encodeURIComponent( params[ p ] )}`
-		} ).join( '&' )
-	},
-
-	buildCommonsApiUrl = params => {
-		// params = Object.assign( {}, defaultParams, params )
-		params = { ...defaultParams, ...params }
-		const baseUrl = 'https://commons.wikimedia.org/w/api.php'
-		return baseUrl + '?' + Object.keys( params ).map( p => {
-			return `${p}=${encodeURIComponent( params[ p ] )}`
-		} ).join( '&' )
-	},
-
-	convertUrlToMobile = url => {
-		return url.replace( /https:\/\/(.*?)\./, subDomain => subDomain + 'm.' )
-	},
-
-	strip = html => {
-		const doc = new DOMParser().parseFromString( html, 'text/html' )
-		return doc.body.textContent || ''
 	},
 
 	requestPageMediaInfo = ( lang, title, fromCommon, callback, request = cachedRequest ) => {
