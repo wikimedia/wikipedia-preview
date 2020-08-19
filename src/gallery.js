@@ -55,7 +55,7 @@ const getFullScreenGallery = () => {
 			},
 
 			onRefresh = () => {
-				toggleLoading( loading, image )
+				toggleLoading( loading, image, lang )
 				image.src = gallery[ current ].src
 				refresh.removeEventListener( 'click', onRefresh )
 			},
