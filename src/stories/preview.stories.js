@@ -1,14 +1,14 @@
 import { renderPreview, renderLoading, renderError, renderDisambiguation } from '../preview'
 
 export default {
-	title: 'Previews',
+	title: 'Wikipedia Preview',
 	argTypes: {
 		touch: { defaultValue: false, control: 'boolean' },
 		lang: {
 			defaultValue: 'en',
 			control: {
 				type: 'select',
-				options: [ 'en', 'fr', 'hi', 'ks' ]
+				options: [ 'en', 'fr', 'hi', 'ks', 'he' ]
 			}
 		},
 		dir: {
