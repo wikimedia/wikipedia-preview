@@ -55,4 +55,4 @@ workflows:
             - build
           filters:
             branches:
-              only: storybook
+              only: master
