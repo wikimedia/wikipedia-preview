@@ -64,15 +64,6 @@ export const customEvents = popup => {
 			}
 		},
 
-		onTouchOutsidePreview = e => {
-			const toElement = e.target,
-				fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
-
-			if ( !popup.element.contains( toElement ) && !fullscreenGallery ) {
-				popup.hide()
-			}
-		},
-
 		onHide = () => {
 			popup.element.component.wikipediapreview.classList.remove( 'expanded' )
 			popup.lang = null
@@ -104,7 +95,8 @@ export const customEvents = popup => {
 			}
 
 			if ( isTouch ) {
-				addEventListener( document, 'touchstart', onTouchOutsidePreview, true )
+				const darkScreen = document.querySelector( '.wp-dark-screen' )
+				addEventListener( darkScreen, 'touchstart', popup.hide, true )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
