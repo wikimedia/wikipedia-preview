@@ -16,4 +16,10 @@ describe( 'msg', () => {
 		const nonExistedKey = 'i-do-not-think-this-existed'
 		assert.equal( msg( 'en', nonExistedKey ), nonExistedKey )
 	} )
+	it( 'replaces parameters', () => {
+		assert.equal(
+			msg( 'en', 'preview-disambiguation-message', 'Cat' ),
+			'Title <strong>Cat</strong> is related to more than one article on Wikipedia.'
+		)
+	} )
 } )

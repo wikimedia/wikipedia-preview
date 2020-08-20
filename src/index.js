@@ -2,7 +2,7 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading, renderError } from './preview'
+import { renderPreview, renderLoading, renderError, renderDisambiguation } from './preview'
 import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
 
 function init( {
@@ -28,19 +28,32 @@ function init( {
 				dir = getDir( lang )
 
 			popup.loading = true
+			popup.dir = dir
 			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( popup.loading ) {
 					if ( data ) {
-						popup.show( renderPreview( lang, data, isTouch ), target, pointerPosition )
+						if ( data.type === 'standard' ) {
+							popup.show(
+								renderPreview( lang, data, isTouch ),
+								target,
+								pointerPosition
+							)
 
-						popup.lang = lang
-						popup.title = title
-						const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
+							popup.lang = lang
+							popup.title = title
+							const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
-						if ( expanded && popup.expand ) {
-							popup.expand()
+							if ( expanded && popup.expand ) {
+								popup.expand()
+							}
+						} else if ( data.type === 'disambiguation' ) {
+							popup.show(
+								renderDisambiguation( isTouch, lang, data.title, data.dir ),
+								target,
+								pointerPosition
+							)
 						}
 					} else {
 						popup.show(

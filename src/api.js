@@ -4,7 +4,8 @@ import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip } from './
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
 		request( url, data => {
-			if ( data.type === 'standard' ) {
+			const allowedTypes = [ 'standard', 'disambiguation' ]
+			if ( allowedTypes.indexOf( data.type ) !== -1 ) {
 				return {
 					title: data.displaytitle,
 					extractHtml: data.extract_html,
@@ -12,7 +13,8 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 						data.content_urls.mobile.page :
 						data.content_urls.desktop.page,
 					imgUrl: data.thumbnail ? data.thumbnail.source : null,
-					dir: data.dir
+					dir: data.dir,
+					type: data.type
 				}
 			}
 			return false

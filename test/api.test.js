@@ -9,12 +9,6 @@ const requestMock = ( data ) => {
 }
 
 describe( 'requestPagePreview', () => {
-	it( 'accepts standard articles only', () => {
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
-			assert.equal( data, false )
-		}, requestMock( { type: 'disambiguation' } ) )
-	} )
-
 	it( 'transforms the API output', () => {
 		const apiOutput = {
 			type: 'standard',
@@ -31,7 +25,8 @@ describe( 'requestPagePreview', () => {
 			extractHtml: '<p>A good boy</p>',
 			pageUrl: 'page-url',
 			imgUrl: 'image-url',
-			dir: 'ltr'
+			dir: 'ltr',
+			type: 'standard'
 		}
 		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
@@ -53,7 +48,8 @@ describe( 'requestPagePreview', () => {
 			extractHtml: '<p>A good boy</p>',
 			pageUrl: 'page-url',
 			imgUrl: null,
-			dir: 'rtl'
+			dir: 'rtl',
+			type: 'standard'
 		}
 		requestPagePreview( 'lang', 'title', false, ( data ) => {
 			assert.deepEqual( data, transformedOutput )
