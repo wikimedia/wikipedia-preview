@@ -29,7 +29,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 					</div>
 					<div class="wp-gallery-popup-button next"></div>
 				</div>
-				<div class="wp-gallery-popup-bottom" onclick="alert('hey')">
+				<div class="wp-gallery-popup-bottom">
 					<div class="wp-gallery-popup-caption"></div>
 				</div>
 			</div>
@@ -87,6 +87,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	hideFullscreenGallery = () => {
 		const fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
 		document.body.removeChild( fullscreenGallery )
+		current = 0
 	},
 
 	renderNext = ( galleryContainer, lang, offset = 1 ) => {
@@ -116,43 +117,35 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 
 		const galleryContainer = document.querySelector( '.wp-gallery-popup' ),
-			image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
-			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
 
+		let selectedThumbIndex = 0
 		gallery = mediaItems
-		gallery.forEach( ( image, index ) => {
+		gallery.some( ( image, index ) => {
 			if ( image.thumb === selectedThumb ) {
-				current = index
+				selectedThumbIndex = index
+				return true
 			}
+			return false
 		} )
 
-		toggleLoading( loading, image, lang )
+		renderNext( galleryContainer, lang, selectedThumbIndex )
 
-		image.src = gallery[ current ].src
-
-		caption.innerText = gallery[ current ].caption ? gallery[ current ].caption : ''
-
-		closeButton.addEventListener( 'click', () => {
-			hideFullscreenGallery( galleryContainer )
-		} )
-
-		nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
-		nextButton.addEventListener( 'click', () => {
-			renderNext( galleryContainer, lang )
-		} )
-
-		previousButton.style.opacity = current === 0 ? '0.5' : '1'
-		previousButton.addEventListener( 'click', () => {
-			renderPrevious( galleryContainer, lang )
-		} )
+		closeButton.addEventListener( 'click', hideFullscreenGallery )
 
 		if ( gallery.length === 1 ) {
 			previousButton.style.visibility = 'hidden'
 			nextButton.style.visibility = 'hidden'
+		} else {
+			nextButton.addEventListener( 'click', () => {
+				renderNext( galleryContainer, lang )
+			} )
+
+			previousButton.addEventListener( 'click', () => {
+				renderPrevious( galleryContainer, lang )
+			} )
 		}
 	}
 
