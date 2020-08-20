@@ -28,6 +28,7 @@ function init( {
 				dir = getDir( lang )
 
 			popup.loading = true
+			popup.dir = dir
 			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {

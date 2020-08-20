@@ -1,11 +1,12 @@
-import { msg } from './i18n'
+import '../../style/galleryPopup.less'
+import { msg } from '../i18n'
 
 let gallery = [],
 	current = 0
 
-const getFullScreenGallery = () => {
+const renderFullScreenGallery = ( lang, dir ) => {
 		return `
-			<div class="wp-gallery-popup">
+			<div class="wp-gallery-popup" lang="${lang}" dir="${dir}">
 				<div class="wp-gallery-popup-top">
 					<div class="wp-gallery-popup-button close"></div>
 				</div>
@@ -28,7 +29,7 @@ const getFullScreenGallery = () => {
 					</div>
 					<div class="wp-gallery-popup-button next"></div>
 				</div>
-				<div class="wp-gallery-popup-bottom">
+				<div class="wp-gallery-popup-bottom" onclick="alert('hey')">
 					<div class="wp-gallery-popup-caption"></div>
 				</div>
 			</div>
@@ -83,68 +84,51 @@ const getFullScreenGallery = () => {
 		image.addEventListener( 'error', onError )
 	},
 
-	hideFullscreenGallery = ( galleryContainer ) => {
-		const fullscreenGallery = galleryContainer.querySelector( '.wp-gallery-popup' )
-		galleryContainer.removeChild( fullscreenGallery )
+	hideFullscreenGallery = () => {
+		const fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
+		document.body.removeChild( fullscreenGallery )
 	},
 
-	renderNext = ( galleryContainer, lang ) => {
+	renderNext = ( galleryContainer, lang, offset = 1 ) => {
 		const image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
-			next = current + 1,
+			next = current + offset,
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
 
 		if ( gallery[ next ] ) {
 			toggleLoading( loading, image, lang )
 			image.src = gallery[ next ].src
 			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
-			nextButton.style.opacity = gallery[ next + 1 ] ? '1' : '0.5'
-			previousButton.style.opacity = current === 0 ? '1' : null
-			current += 1
+			current += offset
+			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
+			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 		}
 	},
 
 	renderPrevious = ( galleryContainer, lang ) => {
-		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
-			previousButton = galleryContainer.querySelector( '.previous' ),
-			nextButton = galleryContainer.querySelector( '.next' ),
-			previous = current - 1,
-			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
-
-		if ( gallery[ previous ] ) {
-			toggleLoading( loading, image, lang )
-			image.src = gallery[ previous ].src
-			caption.innerText = gallery[ previous ].caption ? gallery[ previous ].caption : ''
-			previousButton.style.opacity = gallery[ previous - 1 ] ? '1' : '0.5'
-			nextButton.style.opacity = current === gallery.leght - 1 ? '1' : null
-			current -= 1
-		}
+		renderNext( galleryContainer, lang, -1 )
 	},
 
-	showFullscreenGallery = ( event, mediaItems, popup ) => {
-		const fullscreenGallery = getFullScreenGallery(),
-			selected = event.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' ),
-			galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' ),
-			lang = popup.lang
+	showFullscreenGallery = ( mediaItems, selectedThumb, lang, dir, container = document.body ) => {
 
-		gallery = mediaItems
-		gallery.forEach( ( image, index ) => {
-			if ( image.thumb === selected ) {
-				current = index
-			}
-		} )
+		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 
-		galleryContainer.insertAdjacentHTML( 'beforeend', fullscreenGallery )
-
-		let image = galleryContainer.querySelector( 'img' ),
+		const galleryContainer = document.querySelector( '.wp-gallery-popup' ),
+			image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
 			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
+
+		gallery = mediaItems
+		gallery.forEach( ( image, index ) => {
+			if ( image.thumb === selectedThumb ) {
+				current = index
+			}
+		} )
 
 		toggleLoading( loading, image, lang )
 
@@ -170,25 +154,6 @@ const getFullScreenGallery = () => {
 			previousButton.style.visibility = 'hidden'
 			nextButton.style.visibility = 'hidden'
 		}
-	},
-
-	getGalleryRow = ( mediaItems, popup ) => {
-		const galleryRow = document.createElement( 'div' )
-		galleryRow.classList.add( 'wikipediapreview-gallery-row' )
-
-		mediaItems.forEach( item => {
-			const image = document.createElement( 'div' )
-
-			image.classList.add( 'wikipediapreview-gallery-image' )
-			image.style.backgroundImage = `url(${item.thumb})`
-			image.addEventListener( 'click', ( e ) => {
-				showFullscreenGallery( e, mediaItems, popup )
-			} )
-
-			galleryRow.appendChild( image )
-		} )
-
-		return galleryRow
 	}
 
-export { getGalleryRow, showFullscreenGallery }
+export { showFullscreenGallery }

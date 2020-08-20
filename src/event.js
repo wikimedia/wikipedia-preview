@@ -66,7 +66,7 @@ export const customEvents = popup => {
 
 		onTouchOutsidePreview = e => {
 			const toElement = e.target,
-				fullscreenGallery = popup.element.querySelector( '.wp-gallery-popup' )
+				fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
 
 			if ( !popup.element.contains( toElement ) && !fullscreenGallery ) {
 				popup.hide()
