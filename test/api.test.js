@@ -124,12 +124,14 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: 'Cats are popular within internet culture for some reason',
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				src: 'https://wikimedia.org/cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: 'Skulls of a wildcat (top left) and a housecat (top right)',
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				src: 'https://wikimedia.org/cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'
@@ -186,12 +188,14 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: undefined,
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				src: 'https://wikimedia.org/cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: undefined,
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				src: 'https://wikimedia.org/cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'

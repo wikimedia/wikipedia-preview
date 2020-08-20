@@ -54,6 +54,6 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	strip = html => {
-		const doc = new DOMParser().parseFromString( html, 'text/html' )
+		const doc = new window.DOMParser().parseFromString( html, 'text/html' )
 		return doc.body.textContent || ''
 	}
