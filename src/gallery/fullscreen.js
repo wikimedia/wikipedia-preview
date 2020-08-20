@@ -1,4 +1,3 @@
-import '../../style/galleryPopup.less'
 import { msg } from '../i18n'
 
 let gallery = [],
@@ -6,41 +5,41 @@ let gallery = [],
 
 const renderFullScreenGallery = ( lang, dir ) => {
 		return `
-			<div class="wp-gallery-popup" lang="${lang}" dir="${dir}">
-				<div class="wp-gallery-popup-top">
-					<div class="wp-gallery-popup-button close"></div>
+			<div class="wp-gallery-fullscreen" lang="${lang}" dir="${dir}">
+				<div class="wp-gallery-fullscreen-top">
+					<div class="wp-gallery-fullscreen-button close"></div>
 				</div>
-				<div class="wp-gallery-popup-main">
-					<div class="wp-gallery-popup-button previous"></div>
-					<div class="wp-gallery-popup-image">
+				<div class="wp-gallery-fullscreen-main">
+					<div class="wp-gallery-fullscreen-button previous"></div>
+					<div class="wp-gallery-fullscreen-image">
 						<img src="">
-						<div class="wp-gallery-popup-loading">
-							<div class="wp-gallery-popup-loading-icons">
-								<div class="wp-gallery-popup-loading-spinner">
-									<div class="wp-gallery-popup-loading-spinner-animation">
-										<div class="wp-gallery-popup-loading-spinner-animation-bounce"></div>
+						<div class="wp-gallery-fullscreen-loading">
+							<div class="wp-gallery-fullscreen-loading-icons">
+								<div class="wp-gallery-fullscreen-loading-spinner">
+									<div class="wp-gallery-fullscreen-loading-spinner-animation">
+										<div class="wp-gallery-fullscreen-loading-spinner-animation-bounce"></div>
 									</div>
 								</div>
-								<div class="wp-gallery-popup-loading-error"></div>
+								<div class="wp-gallery-fullscreen-loading-error"></div>
 							</div>
-							<div class="wp-gallery-popup-loading-text"></div>
-							<div class="wp-gallery-popup-loading-error-refresh"></div>
+							<div class="wp-gallery-fullscreen-loading-text"></div>
+							<div class="wp-gallery-fullscreen-loading-error-refresh"></div>
 						</div>
 					</div>
-					<div class="wp-gallery-popup-button next"></div>
+					<div class="wp-gallery-fullscreen-button next"></div>
 				</div>
-				<div class="wp-gallery-popup-bottom">
-					<div class="wp-gallery-popup-caption"></div>
+				<div class="wp-gallery-fullscreen-bottom">
+					<div class="wp-gallery-fullscreen-caption"></div>
 				</div>
 			</div>
 		`.trim()
 	},
 
 	toggleLoading = ( loading, image, lang ) => {
-		const text = loading.querySelector( '.wp-gallery-popup-loading-text' ),
-			error = loading.querySelector( '.wp-gallery-popup-loading-error' ),
-			refresh = loading.querySelector( '.wp-gallery-popup-loading-error-refresh' ),
-			spinner = loading.querySelector( '.wp-gallery-popup-loading-spinner' ),
+		const text = loading.querySelector( '.wp-gallery-fullscreen-loading-text' ),
+			error = loading.querySelector( '.wp-gallery-fullscreen-loading-error' ),
+			refresh = loading.querySelector( '.wp-gallery-fullscreen-loading-error-refresh' ),
+			spinner = loading.querySelector( '.wp-gallery-fullscreen-loading-spinner' ),
 
 			timeoutId = setTimeout( () => {
 				text.innerText = msg( lang, 'gallery-loading-still' )
@@ -85,18 +84,18 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	},
 
 	hideFullscreenGallery = container => {
-		const fullscreenGallery = container.querySelector( '.wp-gallery-popup' )
+		const fullscreenGallery = container.querySelector( '.wp-gallery-fullscreen' )
 		container.removeChild( fullscreenGallery )
 		current = 0
 	},
 
 	renderNext = ( galleryContainer, lang, offset = 1 ) => {
 		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-popup-caption' ),
+			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			next = current + offset,
-			loading = galleryContainer.querySelector( '.wp-gallery-popup-loading' )
+			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' )
 
 		if ( gallery[ next ] ) {
 			toggleLoading( loading, image, lang )
@@ -116,7 +115,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 
-		const galleryContainer = container.querySelector( '.wp-gallery-popup' ),
+		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
