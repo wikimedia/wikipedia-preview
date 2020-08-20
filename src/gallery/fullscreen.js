@@ -84,9 +84,9 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		image.addEventListener( 'error', onError )
 	},
 
-	hideFullscreenGallery = () => {
-		const fullscreenGallery = document.querySelector( '.wp-gallery-popup' )
-		document.body.removeChild( fullscreenGallery )
+	hideFullscreenGallery = container => {
+		const fullscreenGallery = container.querySelector( '.wp-gallery-popup' )
+		container.removeChild( fullscreenGallery )
 		current = 0
 	},
 
@@ -116,7 +116,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 
-		const galleryContainer = document.querySelector( '.wp-gallery-popup' ),
+		const galleryContainer = container.querySelector( '.wp-gallery-popup' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
@@ -133,7 +133,9 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		renderNext( galleryContainer, lang, selectedThumbIndex )
 
-		closeButton.addEventListener( 'click', hideFullscreenGallery )
+		closeButton.addEventListener( 'click', () => {
+			hideFullscreenGallery( container )
+		} )
 
 		if ( gallery.length === 1 ) {
 			previousButton.style.visibility = 'hidden'

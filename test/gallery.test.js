@@ -28,16 +28,10 @@ describe( 'showFullscreenGallery', () => {
 			}
 		],
 
-		mockEvent = {
-			target: {
-				style: {
-					backgroundImage: 'url("https://upload.wikimedia.org/640px-Cat_2.jpg")'
-				}
-			}
-		},
-
 		mockPopup = {
-			element: null
+			element: null,
+			lang: 'en',
+			dir: 'ltr'
 		}
 
 	before( () => {
@@ -53,13 +47,14 @@ describe( 'showFullscreenGallery', () => {
 
 		doc = dom.window.document
 		mockPopup.element = doc.querySelector( '.mock-popup' )
-		showFullscreenGallery( mockEvent, mediaItems, mockPopup )
+		showFullscreenGallery(
+			mediaItems, mediaItems[ 0 ].thumb, mockPopup.lang, mockPopup.dir, doc.body
+		)
 	} )
 
 	it( 'renders full screen gallery with selected image', () => {
 		const fullscreenGallery = doc.querySelector( '.wp-gallery-popup' ),
 			image = doc.querySelector( '.wp-gallery-popup-image' )
-
 		assert.ok( fullscreenGallery )
 		assert.equal( image.children[ 0 ].src, mediaItems[ 0 ].src )
 	} )
