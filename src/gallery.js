@@ -37,10 +37,10 @@ const getFullScreenGallery = () => {
 	getImageInfo = ( mediaInfo, container ) => {
 		container.innerText = ''
 		const getImageDescription = () => {
-				if ( mediaInfo.description ) {
-					return mediaInfo.description
-				} else if ( gallery[ current ].caption ) {
+				if ( gallery[ current ].caption ) {
 					return gallery[ current ].caption
+				} else if ( mediaInfo.description ) {
+					return mediaInfo.description
 				} else {
 					return ''
 				}
