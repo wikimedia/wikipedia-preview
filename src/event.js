@@ -96,7 +96,7 @@ export const customEvents = popup => {
 
 			if ( isTouch ) {
 				const darkScreen = document.querySelector( '.wp-dark-screen' )
-				addEventListener( darkScreen, 'touchstart', popup.hide, true )
+				addEventListener( darkScreen, 'click', popup.hide, true )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
