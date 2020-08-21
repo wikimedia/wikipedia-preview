@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Akmaie Ajam"
+			"Akmaie Ajam",
+			"Sonic Speedy"
 		]
 	},
+	"continue-reading": "Lanjutkan Membaca",
 	"gallery-loading-error": "Terjadi kesalahan saat memuat gambar ini.",
 	"gallery-loading-error-refresh": "Muat ulang",
-	"gallery-loading-still": "Masih memuat"
+	"gallery-loading-still": "Masih memuat",
+	"preview-loading-error": "Ada masalah ketika menampilkan pratayang ini.",
+	"read-on-wiki": "Baca di Wikipedia",
+	"read-more": "Baca lebih lanjut tentang Wikipedia",
+	"preview-disambiguation-message": "Judul <strong>$1</strong> terkait dengan lebih dari satu artikel di Wikipedia."
 }

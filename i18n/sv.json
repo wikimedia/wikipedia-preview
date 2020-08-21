@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Sabelöga",
 			"WikiPhoenix"
 		]
@@ -10,6 +11,7 @@
 	"gallery-loading-error-refresh": "Uppdatera",
 	"gallery-loading-still": "Läser fortfarande in",
 	"preview-loading-error": "Det uppstod ett problem när förhandsvisningen skulle visas.",
-	"preview-loading-error-read": "Läs på Wikipedia",
-	"read-more": "Läs mer på Wikipedia"
+	"read-on-wiki": "Läs på Wikipedia",
+	"read-more": "Läs mer på Wikipedia",
+	"preview-disambiguation-message": "Titeln <strong>$1</strong> är relaterad till fler än en artikel på Wikipedia."
 }

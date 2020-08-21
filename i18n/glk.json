@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"شیخ"
 		]
 	},
@@ -9,6 +10,6 @@
 	"gallery-loading-error-refresh": "جؤنأگيتن",
 	"gallery-loading-still": "هلئه جؤر أردره",
 	"preview-loading-error": "مۊشکيل دأنه پيش-نمايشˇ نۊشؤن دأن ئبه.",
-	"preview-loading-error-read": "ويکيپديا مئنه خؤندن",
+	"read-on-wiki": "ويکيپديا مئنه خؤندن",
 	"read-more": "ويکيپديا مئنه ويشته خؤندن"
 }

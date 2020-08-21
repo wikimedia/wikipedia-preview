@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Saederup92"
 		]
 	},
 	"continue-reading": "Fortsæt læsning",
-	"preview-loading-error-read": "Læs på Wikipedia",
+	"read-on-wiki": "Læs på Wikipedia",
 	"read-more": "Læs mere på Wikipedia"
 }
