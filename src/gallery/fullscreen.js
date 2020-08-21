@@ -34,11 +34,11 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		`.trim()
 	},
 
-	renderImageInfo = ( mediaInfo, container ) => {
+	renderImageInfo = ( mediaInfo, container, image ) => {
 		container.innerText = ''
 		const getImageDescription = () => {
-				if ( gallery[ current ].caption ) {
-					return gallery[ current ].caption
+				if ( image.caption ) {
+					return image.caption
 				} else if ( mediaInfo.description ) {
 					return mediaInfo.description
 				} else {
@@ -138,7 +138,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				gallery[ next ].title,
 				gallery[ next ].fromCommon,
 				mediaInfo => {
-					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom ) )
+					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom, gallery[ next ] ) )
 				} )
 			image.src = gallery[ next ].src
 			current += offset
