@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Mguix"
 		]
 	},
@@ -9,6 +10,6 @@
 	"gallery-loading-error-refresh": "Actualitzar",
 	"gallery-loading-still": "carregant-se",
 	"preview-loading-error": "S'ha produït un problema en mostrar aquesta previsualització.",
-	"preview-loading-error-read": "Llegiu a la Viquipèdia",
+	"read-on-wiki": "Llegiu a la Viquipèdia",
 	"read-more": "Llegeixi més en Viquipèdia"
 }

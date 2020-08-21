@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"MuratTheTurkish",
 			"Sayginer"
 		]
@@ -10,6 +11,6 @@
 	"gallery-loading-error-refresh": "Yenile",
 	"gallery-loading-still": "Hâlâ yükleniyor",
 	"preview-loading-error": "Bu önizlemeyi görüntülerken bir sorun oluştu.",
-	"preview-loading-error-read": "Vikipedi'de oku",
+	"read-on-wiki": "Vikipedi'de oku",
 	"read-more": "Vikipedi'de daha fazla okuyun"
 }

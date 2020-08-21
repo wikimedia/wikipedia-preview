@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Rail"
 		]
 	},
@@ -9,6 +10,7 @@
 	"gallery-loading-error-refresh": "Odśwież",
 	"gallery-loading-still": "Wciąż wczytuję",
 	"preview-loading-error": "Wystąpił problem podczas wyświetlania podglądu.",
-	"preview-loading-error-read": "Przeczytaj na Wikipedii",
-	"read-more": "Przeczytaj więcej na Wikipedii"
+	"read-on-wiki": "Przeczytaj na Wikipedii",
+	"read-more": "Przeczytaj więcej na Wikipedii",
+	"preview-disambiguation-message": "Tytuł <strong>$1</strong> jest związany z więcej niż jednym artykułem na Wikipedii."
 }
