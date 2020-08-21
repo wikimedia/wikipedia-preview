@@ -1,6 +1,6 @@
 'use strict'
 const assert = require( 'assert' )
-const { requestPagePreview, requestPageMedia } = require( '../src/api' )
+const { requestPagePreview, requestPageMedia, requestPageMediaInfo } = require( '../src/api' )
 
 const requestMock = ( data ) => {
 	return ( url, transformFn, callback ) => {
@@ -216,5 +216,70 @@ describe( 'requestPageMedia', () => {
 		requestPageMedia( 'zh', '貓', () => {}, ( url ) => {
 			assert( url.endsWith( '%E8%B2%93' ) )
 		} )
+	} )
+} )
+
+describe( 'requestPageMediaInfo', () => {
+	it( 'transforms the API output', () => {
+		const apiOutput = {
+			batchcomplete: true,
+			query: {
+				normalized: [
+					{
+						fromencoded: false,
+						from: "File:Horn_Louvre_OA4069.jpg",
+						to: "File:Horn Louvre OA4069.jpg"
+					}
+				],
+				pages: [
+					{
+						pageid: 916963,
+						ns: 6,
+						title: "File:Horn Louvre OA4069.jpg",
+						imagerepository: "local",
+						imageinfo: [
+							{
+								url: "https://upload.wikimedia.org/wikipedia/commons/0/08/Horn_Louvre_OA4069.jpg",
+								descriptionurl: "https://commons.wikimedia.org/wiki/File:Horn_Louvre_OA4069.jpg",
+								descriptionshorturl: "https://commons.wikimedia.org/w/index.php?curid=916963",
+								extmetadata: {
+									Artist: {
+										value: "<div class=\"fn value\">\n<span lang=\"en\">Unknown artist</span>\n</div>",
+										source: "commons-desc-page"
+									},
+									ImageDescription: {
+										value: {
+											en: "Olifant. Ivory, southern Italy, late 11th century.",
+											fr: "Olifant. Ivoire, Italie du Sud, fin du XIe siècle.",
+											_type: "lang"
+										},
+										source: "commons-desc-page"
+									},
+									LicenseShortName: {
+										value: "Public domain",
+										source: "commons-desc-page",
+										hidden: ""
+									},
+									License: {
+										value: "pd",
+										source: "commons-templates",
+										hidden: ""
+									}
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+		const transformedOutput = {
+			author: "\nUnknown artist\n",
+			description: "Olifant. Ivory, southern Italy, late 11th century.",
+			filePage: "https://commons.m.wikimedia.org/w/index.php?curid=916963",
+			license: "Public domain"
+		}
+		requestPageMediaInfo( 'en', 'title', true, ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
 	} )
 } )
