@@ -34,7 +34,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		`.trim()
 	},
 
-	getImageInfo = ( mediaInfo, container ) => {
+	renderImageInfo = ( mediaInfo, container ) => {
 		container.innerText = ''
 		const getImageDescription = () => {
 				if ( gallery[ current ].caption ) {
@@ -138,7 +138,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				gallery[ next ].title,
 				gallery[ next ].fromCommon,
 				mediaInfo => {
-					bottom.insertAdjacentHTML( 'beforeend', getImageInfo( mediaInfo, bottom ) )
+					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom ) )
 				} )
 			image.src = gallery[ next ].src
 			current += offset

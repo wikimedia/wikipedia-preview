@@ -31,8 +31,6 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	buildMwApiUrl = ( lang, params ) => {
-		// TODO - spread or Object.assign?
-		// params = Object.assign( {}, defaultParams, params )
 		params = { ...defaultParams, ...params }
 		const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
 		return baseUrl + '?' + Object.keys( params ).map( p => {
@@ -41,7 +39,6 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	buildCommonsApiUrl = params => {
-		// params = Object.assign( {}, defaultParams, params )
 		params = { ...defaultParams, ...params }
 		const baseUrl = 'https://commons.wikimedia.org/w/api.php'
 		return baseUrl + '?' + Object.keys( params ).map( p => {
