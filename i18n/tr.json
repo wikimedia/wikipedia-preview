@@ -12,5 +12,6 @@
 	"gallery-loading-still": "Hâlâ yükleniyor",
 	"preview-loading-error": "Bu önizlemeyi görüntülerken bir sorun oluştu.",
 	"read-on-wiki": "Vikipedi'de oku",
-	"read-more": "Vikipedi'de daha fazla okuyun"
+	"read-more": "Vikipedi'de daha fazla okuyun",
+	"preview-disambiguation-message": "<strong>$1</strong> başlığı, Vikipedi'deki birden fazla madde ile ilgilidir."
 }

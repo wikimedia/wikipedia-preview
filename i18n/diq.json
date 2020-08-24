@@ -10,7 +10,8 @@
 	"gallery-loading-error": "No asange bar kerdış de xeta veciye",
 	"gallery-loading-error-refresh": "Anewe kerê",
 	"gallery-loading-still": "Hewna beno bar",
-	"preview-loading-error": "No verqayt mocnayış de xırabey veciyê",
+	"preview-loading-error": "No verqayt mocnayış de xırabey tede esta",
 	"read-on-wiki": "Wikipediya de bıwanê",
-	"read-more": "Wikipedia sero tayna bıwanê"
+	"read-more": "Wikipedia sero tayna bıwanê",
+	"preview-disambiguation-message": "Serey <strong>$1</strong> yew ra zêde meqaleyê Wikipedia ya eleqeyıno."
 }
