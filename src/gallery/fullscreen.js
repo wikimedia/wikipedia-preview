@@ -34,7 +34,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		`.trim()
 	},
 
-	renderImageInfo = ( mediaInfo, container, image ) => {
+	renderImageInfo = ( mediaInfo, container, image, lang ) => {
 		container.innerText = ''
 		const getImageDescription = () => {
 				if ( image.caption ) {
@@ -47,7 +47,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 			},
 
 			license = mediaInfo.license,
-			author = mediaInfo.author,
+			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
 			link = mediaInfo.filePage,
 			description = getImageDescription()
 
@@ -138,7 +138,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				gallery[ next ].title,
 				gallery[ next ].fromCommon,
 				mediaInfo => {
-					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom, gallery[ next ] ) )
+					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom, gallery[ next ], lang ) )
 				} )
 			image.src = gallery[ next ].src
 			current += offset
