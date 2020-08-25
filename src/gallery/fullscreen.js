@@ -146,14 +146,16 @@ const clientWidth = window.innerWidth,
 			screenX: null,
 			targetScreenX: null,
 			originalMarginLeft: null,
-			currentMarginLeft: null
+			currentMarginLeft: null,
+			originalTransition: null
 		}
 		galleryContainer.addEventListener( 'touchstart', e => {
 			temp.screenX = e.touches[ 0 ].clientX
 			temp.targetScreenX = null
-			slider.style.transition = ''
 			temp.originalMarginLeft = +window.getComputedStyle( slider ).marginLeft.slice( 0, -2 )
 			temp.currentMarginLeft = +window.getComputedStyle( slider ).marginLeft.slice( 0, -2 )
+			temp.originalTransition = window.getComputedStyle( slider ).transition
+			slider.style.transition = 'unset'
 		} )
 		galleryContainer.addEventListener( 'touchmove', e => {
 			const clientX = e.touches[ 0 ].clientX,
@@ -163,7 +165,7 @@ const clientWidth = window.innerWidth,
 			slider.style.marginLeft = temp.currentMarginLeft + 'px'
 		} )
 		galleryContainer.addEventListener( 'touchend', () => {
-			slider.style.transition = 'margin-left 0.25s ease-in-out'
+			slider.style.transition = temp.originalTransition
 			const diff = temp.originalMarginLeft - temp.currentMarginLeft
 
 			if ( Math.abs( diff / clientWidth ) > 0.4 ) {
