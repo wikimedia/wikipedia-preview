@@ -1,12 +1,12 @@
-import { msg } from '../i18n'
+// import { msg } from '../i18n'
 
 let gallery = [],
 	current = 0
-const clientWidth = document.body.clientWidth,
+const clientWidth = window.innerWidth,
 	renderImageSlider = ( images, index ) => {
 		return `<div class="wp-gallery-fullscreen-slider" style="margin-left:-${index * clientWidth}px">
 			${images.map( image => {
-		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}" loading="lazy"/></div>`
+		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}"/></div>`
 	} ).join( '' )}
 		</div>`.trim()
 	}, renderFullScreenGallery = ( images, index, lang, dir ) => {
@@ -42,12 +42,13 @@ const clientWidth = document.body.clientWidth,
 		`.trim()
 	},
 
-	toggleLoading = ( loading, image, lang ) => {
+	toggleLoading = ( loading ) => {
 		const text = loading.querySelector( '.wp-gallery-fullscreen-loading-text' ),
 			error = loading.querySelector( '.wp-gallery-fullscreen-loading-error' ),
 			refresh = loading.querySelector( '.wp-gallery-fullscreen-loading-error-refresh' ),
-			spinner = loading.querySelector( '.wp-gallery-fullscreen-loading-spinner' ),
+			spinner = loading.querySelector( '.wp-gallery-fullscreen-loading-spinner' )
 
+		/*
 			timeoutId = setTimeout( () => {
 				text.innerText = msg( lang, 'gallery-loading-still' )
 				text.style.visibility = 'visible'
@@ -57,13 +58,11 @@ const clientWidth = document.body.clientWidth,
 				clearTimeout( timeoutId )
 				spinner.style.visibility = 'hidden'
 				text.style.visibility = 'hidden'
-				// image.style.visibility = 'visible'
-				image.removeEventListener( 'load', onLoad )
 			},
 
+			/*
 			onRefresh = () => {
-				toggleLoading( loading, image, lang )
-				image.src = gallery[ current ].src
+				toggleLoading( loading, lang )
 				refresh.removeEventListener( 'click', onRefresh )
 			},
 
@@ -77,17 +76,18 @@ const clientWidth = document.body.clientWidth,
 				refresh.innerText = msg( lang, 'gallery-loading-error-refresh' )
 				refresh.style.visibility = 'visible'
 				refresh.addEventListener( 'click', onRefresh )
-				image.removeEventListener( 'error', onError )
 			}
+			*/
 
 		spinner.style.visibility = 'visible'
-		// image.style.visibility = 'hidden'
 		text.style.visibility = 'hidden'
 		error.style.visibility = 'hidden'
 		refresh.style.visibility = 'hidden'
 
+		/*
 		image.addEventListener( 'load', onLoad )
 		image.addEventListener( 'error', onError )
+		*/
 	},
 
 	hideFullscreenGallery = container => {
@@ -98,7 +98,6 @@ const clientWidth = document.body.clientWidth,
 
 	renderNext = ( galleryContainer, lang, offset = 1 ) => {
 		const slider = galleryContainer.querySelector( '.wp-gallery-fullscreen-slider' ),
-			image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
@@ -106,13 +105,13 @@ const clientWidth = document.body.clientWidth,
 			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' )
 
 		if ( gallery[ next ] ) {
-			toggleLoading( loading, image, lang )
-			image.src = gallery[ next ].src
+			toggleLoading( loading, lang )
 			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
 			current += offset
 			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
+			console.log( `${current} index, clientWidth ${clientWidth}, marginLeft ${slider.style.marginLeft}` ) // eslint-disable-line
 			slider.style.marginLeft = -clientWidth * current + 'px'
 		}
 	},
