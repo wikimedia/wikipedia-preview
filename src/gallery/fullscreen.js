@@ -134,10 +134,45 @@ const clientWidth = window.innerWidth,
 
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( mediaItems, selectedThumbIndex, lang, dir ) )
 
-		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
+		const slider = container.querySelector( '.wp-gallery-fullscreen-slider' ),
+			galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
+
+		// @todo encapsulate this
+		// bind swiping event
+		let temp = { // eslint-disable-line
+			screenX: null,
+			targetScreenX: null,
+			originalMarginLeft: null,
+			currentMarginLeft: null
+		}
+		galleryContainer.addEventListener( 'touchstart', e => {
+			temp.screenX = e.touches[ 0 ].clientX
+			temp.targetScreenX = null
+			slider.style.transition = ''
+			temp.originalMarginLeft = +window.getComputedStyle( slider ).marginLeft.slice( 0, -2 )
+			temp.currentMarginLeft = +window.getComputedStyle( slider ).marginLeft.slice( 0, -2 )
+		} )
+		galleryContainer.addEventListener( 'touchmove', e => {
+			const clientX = e.touches[ 0 ].clientX,
+				offset = clientX - temp.screenX
+			temp.targetScreenX = clientX
+			temp.currentMarginLeft = temp.originalMarginLeft + offset
+			slider.style.marginLeft = temp.currentMarginLeft + 'px'
+		} )
+		galleryContainer.addEventListener( 'touchend', () => {
+			slider.style.transition = 'margin-left 0.25s ease-in-out'
+			const diff = temp.originalMarginLeft - temp.currentMarginLeft
+
+			if ( Math.abs( diff / clientWidth ) > 0.4 ) {
+				renderNext( galleryContainer, lang, diff > 0 ? 1 : -1 )
+			} else {
+				slider.style.marginLeft = temp.originalMarginLeft + 'px'
+			}
+		} )
+		// end of the binding event
 
 		renderNext( galleryContainer, lang, selectedThumbIndex )
 
