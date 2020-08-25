@@ -2,8 +2,14 @@ import { msg } from '../i18n'
 
 let gallery = [],
 	current = 0
-
-const renderFullScreenGallery = ( lang, dir ) => {
+const clientWidth = document.body.clientWidth,
+	renderImageSlider = ( images ) => {
+		return `<div class="wp-gallery-fullscreen-slider">
+			${images.map( image => {
+		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}" loading="lazy"/></div>`
+	} ).join( '' )}
+		</div>`.trim()
+	}, renderFullScreenGallery = ( images, lang, dir ) => {
 		return `
 			<div class="wp-gallery-fullscreen" lang="${lang}" dir="${dir}">
 				<div class="wp-gallery-fullscreen-top">
@@ -11,6 +17,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				</div>
 				<div class="wp-gallery-fullscreen-main">
 					<div class="wp-gallery-fullscreen-button previous"></div>
+					${renderImageSlider( images )}
 					<div class="wp-gallery-fullscreen-image">
 						<img src="">
 						<div class="wp-gallery-fullscreen-loading">
@@ -50,7 +57,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				clearTimeout( timeoutId )
 				spinner.style.visibility = 'hidden'
 				text.style.visibility = 'hidden'
-				image.style.visibility = 'visible'
+				// image.style.visibility = 'visible'
 				image.removeEventListener( 'load', onLoad )
 			},
 
@@ -90,7 +97,8 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	},
 
 	renderNext = ( galleryContainer, lang, offset = 1 ) => {
-		const image = galleryContainer.querySelector( 'img' ),
+		const slider = galleryContainer.querySelector( '.wp-gallery-fullscreen-slider' ),
+			image = galleryContainer.querySelector( 'img' ),
 			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
@@ -104,6 +112,8 @@ const renderFullScreenGallery = ( lang, dir ) => {
 			current += offset
 			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
+
+			slider.scrollLeft += clientWidth * offset
 		}
 	},
 
@@ -112,13 +122,6 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	},
 
 	showFullscreenGallery = ( mediaItems, selectedThumb, lang, dir, container = document.body ) => {
-
-		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
-
-		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
-			nextButton = galleryContainer.querySelector( '.next' ),
-			previousButton = galleryContainer.querySelector( '.previous' ),
-			closeButton = galleryContainer.querySelector( '.close' )
 
 		let selectedThumbIndex = 0
 		gallery = mediaItems
@@ -130,7 +133,14 @@ const renderFullScreenGallery = ( lang, dir ) => {
 			return false
 		} )
 
-		renderNext( galleryContainer, lang, selectedThumbIndex )
+		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( mediaItems, selectedThumbIndex, lang, dir ) )
+
+		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
+			nextButton = galleryContainer.querySelector( '.next' ),
+			previousButton = galleryContainer.querySelector( '.previous' ),
+			closeButton = galleryContainer.querySelector( '.close' )
+
+		// renderNext( galleryContainer, lang, selectedThumbIndex )
 
 		closeButton.addEventListener( 'click', () => {
 			hideFullscreenGallery( container )
