@@ -59,10 +59,7 @@
 
 	&-slider {
 		display: inline-flex;
-		overflow: scroll;
-		scroll-snap-type: x mandatory;
-		scroll-behavior: smooth;
-		-webkit-overflow-scrolling: touch;
+		transition: margin-left 0.25s ease-in-out;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -70,19 +67,16 @@
 
 		&-item {
 			width: 100%;
-
 			// @todo update
 			max-height: 500px;
 			display: flex;
-			flex-direction: column;
-			scroll-snap-align: start;
-			flex-shrink: 0;
+			align-items: center;
+			justify-content: center;
 
 			img {
 				max-height: 100%;
 				max-width: calc( 100vw );
 				background-color: #fff;
-				align-self: center;
 			}
 		}
 	}

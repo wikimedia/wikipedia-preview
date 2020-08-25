@@ -3,13 +3,13 @@ import { msg } from '../i18n'
 let gallery = [],
 	current = 0
 const clientWidth = document.body.clientWidth,
-	renderImageSlider = ( images ) => {
-		return `<div class="wp-gallery-fullscreen-slider">
+	renderImageSlider = ( images, index ) => {
+		return `<div class="wp-gallery-fullscreen-slider" style="margin-left:-${index * clientWidth}px">
 			${images.map( image => {
 		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}" loading="lazy"/></div>`
 	} ).join( '' )}
 		</div>`.trim()
-	}, renderFullScreenGallery = ( images, lang, dir ) => {
+	}, renderFullScreenGallery = ( images, index, lang, dir ) => {
 		return `
 			<div class="wp-gallery-fullscreen" lang="${lang}" dir="${dir}">
 				<div class="wp-gallery-fullscreen-top">
@@ -17,7 +17,7 @@ const clientWidth = document.body.clientWidth,
 				</div>
 				<div class="wp-gallery-fullscreen-main">
 					<div class="wp-gallery-fullscreen-button previous"></div>
-					${renderImageSlider( images )}
+					${renderImageSlider( images, index )}
 					<div class="wp-gallery-fullscreen-image">
 						<img src="">
 						<div class="wp-gallery-fullscreen-loading">
@@ -81,7 +81,7 @@ const clientWidth = document.body.clientWidth,
 			}
 
 		spinner.style.visibility = 'visible'
-		image.style.visibility = 'hidden'
+		// image.style.visibility = 'hidden'
 		text.style.visibility = 'hidden'
 		error.style.visibility = 'hidden'
 		refresh.style.visibility = 'hidden'
@@ -113,7 +113,7 @@ const clientWidth = document.body.clientWidth,
 			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
-			slider.scrollLeft += clientWidth * offset
+			slider.style.marginLeft = -clientWidth * current + 'px'
 		}
 	},
 
@@ -140,7 +140,7 @@ const clientWidth = document.body.clientWidth,
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			closeButton = galleryContainer.querySelector( '.close' )
 
-		// renderNext( galleryContainer, lang, selectedThumbIndex )
+		renderNext( galleryContainer, lang, selectedThumbIndex )
 
 		closeButton.addEventListener( 'click', () => {
 			hideFullscreenGallery( container )
