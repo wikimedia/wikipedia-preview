@@ -55,11 +55,11 @@ const renderFullScreenGallery = ( lang, dir ) => {
 			<div class="wp-gallery-fullscreen-caption">${description}</div>
 			<div class="wp-gallery-fullscreen-attribution">
 				<div class="wp-gallery-fullscreen-attribution-info">
-					${ license.indexOf( 'CC' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-cc"></div>' : ''}
-					${ license.indexOf( 'BY' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-by"></div>' : ''}
-					${ license.indexOf( 'SA' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-sa"></div>' : ''}
-					${ license.indexOf( 'Fair use' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-fair"></div>' : ''}
-					${ license.indexOf( 'Public domain' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-public"></div>' : ''}
+					${ license && license.indexOf( 'CC' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-cc"></div>' : ''}
+					${ license && license.indexOf( 'BY' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-by"></div>' : ''}
+					${ license && license.indexOf( 'SA' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-sa"></div>' : ''}
+					${ license && license.indexOf( 'Fair use' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-fair"></div>' : ''}
+					${ license && license.indexOf( 'Public domain' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-public"></div>' : ''}
 					${ author ? `<div class="wp-gallery-fullscreen-attribution-info-author">${author}</div>` : ''}
 				</div>
 				<div class="wp-gallery-fullscreen-attribution-more-info">
