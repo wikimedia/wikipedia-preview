@@ -2,8 +2,8 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading } from './preview'
-import { getWikipediaAttrFromUrl, isTouch } from './utils'
+import { renderPreview, renderLoading, renderError, renderDisambiguation } from './preview'
+import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
 
 function init( {
 	root = document,
@@ -16,29 +16,52 @@ function init( {
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
-		showPopup = ( e ) => {
+		showPopup = e => {
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
 			}
 			const { target } = e,
 				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
-				lang = target.getAttribute( 'data-wp-lang' ) || globalLang
+				lang = target.getAttribute( 'data-wp-lang' ) || globalLang,
+				pointerPosition = { x: e.clientX, y: e.clientY },
+				dir = getDir( lang )
 
 			popup.loading = true
-			popup.show( renderLoading( isTouch ), target )
+			popup.dir = dir
+			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
-				if ( data && popup.loading ) {
-					popup.show( renderPreview( lang, data, isTouch ), target )
-				}
+				if ( popup.loading ) {
+					if ( data ) {
+						if ( data.type === 'standard' ) {
+							popup.show(
+								renderPreview( lang, data, isTouch ),
+								target,
+								pointerPosition
+							)
 
-				popup.lang = lang
-				popup.title = title
-				const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
+							popup.lang = lang
+							popup.title = title
+							const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
-				if ( expanded && popup.expand ) {
-					popup.expand()
+							if ( expanded && popup.expand ) {
+								popup.expand()
+							}
+						} else if ( data.type === 'disambiguation' ) {
+							popup.show(
+								renderDisambiguation( isTouch, lang, data.title, data.dir ),
+								target,
+								pointerPosition
+							)
+						}
+					} else {
+						popup.show(
+							renderError( isTouch, lang, title, dir ),
+							target,
+							pointerPosition
+						)
+					}
 				}
 			} )
 		}

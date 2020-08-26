@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
+			"Meno25",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"continue-reading": "مواصلة القراءة",
+	"gallery-loading-error": "حدث خطأ أثناء تحميل هذه الصورة",
+	"gallery-loading-error-refresh": "تحديث",
+	"gallery-loading-still": "جاري التحميل",
+	"read-on-wiki": "اقرأ على ويكيبيديا",
 	"read-more": "اقرأ المزيد عن ويكيبيديا"
 }

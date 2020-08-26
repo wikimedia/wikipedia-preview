@@ -3,5 +3,8 @@
     "gallery-loading-error": "There was an error loading this image",
     "gallery-loading-error-refresh": "Refresh",
     "gallery-loading-still": "Still loading",
-    "read-more": "Read more on Wikipedia"
+    "preview-loading-error": "There was an issue while displaying this preview.",
+    "read-on-wiki": "Read on Wikipedia",
+    "read-more": "Read more on Wikipedia",
+    "preview-disambiguation-message": "Title <strong>$1</strong> is related to more than one article on Wikipedia."
 }

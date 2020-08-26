@@ -15,12 +15,17 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
+          name: Build Storybook
+          command: npm run build-storybook
+      - run:
           name: Prepare demo
           command: ./scripts/demo.sh
       - persist_to_workspace:
           root: .
-          paths: ./demo
-  update-demo:
+          paths:
+            - ./demo
+            - ./storybook-static
+  update-demos:
     docker:
       - image: node:8.10.0
     steps:
@@ -29,7 +34,7 @@ jobs:
           at: .
       - add_ssh_keys:
           fingerprints:
-              - "c3:03:93:79:5d:c7:23:b8:4a:4d:5d:41:e3:38:3f:84"
+              - "73:c0:27:e4:c9:d4:af:dd:0d:6c:d5:95:3c:f9:9b:fc"
       - run:
           name: Prepare
           command: |
@@ -39,13 +44,13 @@ jobs:
       - run:
           name: Deploy demo
           command: |
-            gh-pages --dist demo -m "Update demo [ci skip]"
+            gh-pages --dist . -m "Update demo [ci skip]"
 workflows:
   version: 2
   build:
     jobs:
       - build
-      - update-demo:
+      - update-demos:
           requires:
             - build
           filters:

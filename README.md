@@ -8,6 +8,8 @@ Desktop | Mobile
 --- | ---
 <img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
 
+Storybook: https://wikimedia.github.io/wikipedia-preview/storybook-static
+
 ## Compatibility
 
 Browsers | Versions

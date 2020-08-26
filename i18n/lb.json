@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Robby"
 		]
 	},
 	"continue-reading": "Virufuere mat Liesen",
+	"gallery-loading-error-refresh": "Aktualiséieren",
+	"gallery-loading-still": "Gëtt nach gelueden",
+	"read-on-wiki": "Op Wikipedia liesen",
 	"read-more": "Liest méi op Wikipedia"
 }

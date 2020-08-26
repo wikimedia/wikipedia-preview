@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Eduardo Addad de Oliveira"
 		]
 	},
 	"continue-reading": "Continuar lendo",
-	"read-more": "Leia mais na Wikipédia"
+	"gallery-loading-error": "Ocorreu um erro ao carregar esta imagem",
+	"gallery-loading-error-refresh": "Atualizar",
+	"gallery-loading-still": "Ainda carregando",
+	"preview-loading-error": "Ocorreu um problema ao exibir esta pré-visualização.",
+	"read-on-wiki": "Leia na Wikipédia",
+	"read-more": "Leia mais na Wikipédia",
+	"preview-disambiguation-message": "Título <strong>$1</strong> está relacionado a mais de um artigo na Wikipédia."
 }

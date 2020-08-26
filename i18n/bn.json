@@ -5,5 +5,8 @@
 		]
 	},
 	"continue-reading": "পড়া অব্যাহত রাখুন",
+	"gallery-loading-error": "এই ছবি লোড করার সময় একটি ত্রুটি হয়েছে",
+	"gallery-loading-error-refresh": "পুনঃসতেজ করুন",
+	"gallery-loading-still": "এখনও লোড হচ্ছে",
 	"read-more": "উইকিপিডিয়ায় আরও পড়ুন"
 }

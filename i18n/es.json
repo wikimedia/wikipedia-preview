@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"continue-reading": "Continuar leyendo",
+	"gallery-loading-error": "Se produjo un error al cargar esta imagen",
+	"gallery-loading-error-refresh": "Actualizar",
+	"read-more": "Leer más en Wikipedia"
+}

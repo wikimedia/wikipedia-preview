@@ -48,6 +48,10 @@ a {
     transform           : rotate(0deg);
     opacity             : 1.0;
   }
+  .container[dir="rtl"] .cover .close-btn {
+    left: 24px;
+    right: unset;
+  }
   @media screen and (min-width: 650px) {
     .container .cover .close-btn{
       visibility: hidden;
@@ -111,8 +115,7 @@ a {
     background-color    : rgba(255,255,255,0.0);
     height              : auto;
     width               : calc(100.00% - 83px);
-    position            : relative;
-    left                : 16px;
+    padding: 0 16px;
     transform           : rotate(0deg);
     opacity             : 1.0;
     line-height: 22px;
@@ -124,8 +127,7 @@ a {
     background-color    : rgba(255,255,255,0.0);
     height              : auto;
     width               : calc(100.00% - 32px);
-    position            : relative;
-    left                : 16px;
+    padding: 0 16px;
     transform           : rotate(0deg);
     opacity             : 1.0;
     font-weight         : 400;
@@ -134,4 +136,7 @@ a {
     color               : rgba(32,33,34,1.0);
     text-align          : left;
     line-height         : 24.0px;
+  }
+  .container[dir="rtl"] .content {
+    text-align: right;
   }

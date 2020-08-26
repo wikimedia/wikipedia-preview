@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dvpita"
+			"Abijeet Patro",
+			"Dvpita",
+			"Hamilton Abreu"
 		]
 	},
 	"continue-reading": "Continuar a ler",
-	"read-more": "Leia mais na Wikipédia"
+	"gallery-loading-error": "Ocorreu um erro ao carregar esta imagem",
+	"gallery-loading-error-refresh": "Atualizar",
+	"gallery-loading-still": "Carregamento em curso",
+	"preview-loading-error": "Ocorreu um erro durante a apresentação desta antevisão.",
+	"read-on-wiki": "Ler na Wikipédia",
+	"read-more": "Leia mais na Wikipédia",
+	"preview-disambiguation-message": "O título <strong>$1</strong> está relacionado com mais do que um artigo na Wikipédia."
 }
