@@ -1,9 +1,11 @@
 export const getWikipediaAttrFromUrl = url => {
 		const regexList = [
-		// https://en.wikipedia.org/wiki/Charles_Darwin
+			// https://en.wikipedia.org/wiki/Charles_Darwin
 			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/(\w+)/,
 			// https://en.wikipedia.org/w/index.php?title=Cat
-			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/w\/index.php\?title=(\w+)/
+			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/w\/index.php\?title=(\w+)/,
+			// https://zh.wikipedia.org/wiki/前岐镇"
+			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/([^\u0080-\u00FF]+)/
 		]
 
 		for ( let i = 0; i < regexList.length; i++ ) {
