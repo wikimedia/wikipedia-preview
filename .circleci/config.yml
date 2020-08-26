@@ -34,7 +34,7 @@ jobs:
           at: .
       - add_ssh_keys:
           fingerprints:
-              - "c3:03:93:79:5d:c7:23:b8:4a:4d:5d:41:e3:38:3f:84"
+              - "73:c0:27:e4:c9:d4:af:dd:0d:6c:d5:95:3c:f9:9b:fc"
       - run:
           name: Prepare
           command: |
