@@ -67,16 +67,18 @@
 
 		&-item {
 			width: calc( 100vw );
-			// @todo update
-			max-height: 500px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 
 			img {
-				max-height: 100%;
 				max-width: calc( 100vw );
 				background-color: #fff;
+
+				@media ( orientation: landscape ) {
+					max-width: unset;
+					max-height: calc( 100vh );
+				}
 			}
 		}
 	}
@@ -257,6 +259,10 @@
 					left: 16px;
 					right: unset;
 				}
+			}
+
+			&-slider {
+				transition: margin-right 0.25s ease-in-out;
 			}
 		}
 	}

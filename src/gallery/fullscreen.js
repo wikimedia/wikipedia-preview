@@ -6,7 +6,7 @@ const clientWidth = window.innerWidth,
 	renderImageSlider = ( images, index ) => {
 		return `<div class="wp-gallery-fullscreen-slider" style="margin-left:-${index * clientWidth}px">
 			${images.map( image => {
-		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}"/></div>`
+		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}" loading="lazy"/></div>`
 	} ).join( '' )}
 		</div>`.trim()
 	}, renderFullScreenGallery = ( images, index, lang, dir ) => {
