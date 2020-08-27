@@ -1,6 +1,7 @@
 import { isTouch } from './utils'
-import { getGalleryRow } from './gallery'
+import { GalleryRow } from './gallery'
 import { requestPageMedia } from './api'
+import render from './render'
 
 export const customEvents = popup => {
 
@@ -58,7 +59,7 @@ export const customEvents = popup => {
 				requestPageMedia( lang, title, mediaData => {
 					if ( mediaData && mediaData.length > 0 ) {
 						const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
-						galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
+						render( GalleryRow( mediaData, popup.lang, popup.dir ), galleryContainer )
 					}
 				} )
 			}

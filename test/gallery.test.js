@@ -1,7 +1,7 @@
 'use strict'
 const assert = require( 'assert' )
 const { JSDOM } = require( 'jsdom' )
-const { showFullscreenGallery, getGalleryRow } = require( '../src/gallery' )
+const { showFullscreenGallery, GalleryRow } = require( '../src/gallery' )
 
 describe( 'showFullscreenGallery', () => {
 	let dom,
@@ -87,6 +87,7 @@ describe( 'showFullscreenGallery', () => {
 } )
 
 describe( 'getGalleryRow', () => {
+	let dom, doc
 	const mediaItems = [
 		{
 			caption: 'The first cat',
@@ -109,9 +110,13 @@ describe( 'getGalleryRow', () => {
 	]
 
 	it( 'correctly constructs mini gallery row', () => {
-		const galleryRow = getGalleryRow( mediaItems )
+		const galleryRow = GalleryRow( mediaItems )
 
-		Array.from( galleryRow.children ).forEach( ( image, index ) => {
+		dom = new JSDOM( galleryRow.template )
+		doc = dom.window.document
+		Array.from(
+			doc.querySelector( galleryRow.ui.container ).children
+		).forEach( ( image, index ) => {
 			const thumb = image.style[ 'background-image' ].slice( 4, -1 )
 			assert.equal( thumb, mediaItems[ index ].thumb )
 			assert.equal( image.className, 'wikipediapreview-gallery-image' )

@@ -1,5 +1,6 @@
 import { renderPreview, renderLoading, renderError, renderDisambiguation } from '../preview'
-import { getGalleryRow } from '../gallery'
+import { GalleryRow } from '../gallery'
+import render from '../render'
 
 export default {
 	title: 'Wikipedia Preview',
@@ -65,7 +66,7 @@ export const Expanded = ( { lang, title, extractHtml, dir, pageUrl, touch } ) =>
 			title: 'title2'
 		}
 	]
-	preview.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
+	render( GalleryRow( mediaData, null ), preview.querySelector( '.wikipediapreview-gallery' ) )
 	return preview
 }
 

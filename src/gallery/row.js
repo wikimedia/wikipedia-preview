@@ -1,21 +1,22 @@
 import { showFullscreenGallery } from './fullscreen'
 
-export const getGalleryRow = ( mediaItems, popup ) => {
-	const galleryRow = document.createElement( 'div' )
-	galleryRow.classList.add( 'wikipediapreview-gallery-row' )
+export const GalleryRow = ( mediaItems, lang, dir ) => {
 
-	mediaItems.forEach( item => {
-		const image = document.createElement( 'div' )
+	const images = mediaItems.map( item => {
+		return `<div class="wikipediapreview-gallery-image" style="background-image:url('${item.thumb}')"></div>`
+	} ).join( '' )
 
-		image.classList.add( 'wikipediapreview-gallery-image' )
-		image.style.backgroundImage = `url(${item.thumb})`
-		image.addEventListener( 'click', ( e ) => {
-			const selected = e.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
-			showFullscreenGallery( mediaItems, selected, popup.lang, popup.dir )
-		} )
-
-		galleryRow.appendChild( image )
-	} )
-
-	return galleryRow
+	return {
+		template: `<div class="wikipediapreview-gallery-row">${images}</div>`,
+		ui: {
+			container: '.wikipediapreview-gallery-image',
+			image: '.wikipediapreview-gallery-image'
+		},
+		events: {
+			'image click': e => {
+				const selected = e.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
+				showFullscreenGallery( mediaItems, selected, lang, dir )
+			}
+		}
+	}
 }
