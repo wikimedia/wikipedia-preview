@@ -10,6 +10,7 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://he.wikipedia.org/wiki/ירח', expected: { lang: 'he', mobile: false, title: 'ירח' } },
 		{ url: 'https://ru.wikipedia.org/wiki/Каменобродский,_Альфред_Адольфович', expected: { lang: 'ru', mobile: false, title: 'Каменобродский,_Альфред_Адольфович' } },
 		{ url: 'https://zh.wikipedia.org/wiki/太阳帆', expected: { lang: 'zh', mobile: false, title: '太阳帆' } },
+		{ url: 'https://zh.wikipedia.org/w/index.php?title=太阳帆&action=purge', expected: { lang: 'zh', mobile: false, title: '太阳帆' } },
 		{ url: 'https://ar.wikipedia.org/wiki/كلية_التربية_النوعية_(جامعة_أسوان)', expected: { lang: 'ar', mobile: false, title: 'كلية_التربية_النوعية_(جامعة_أسوان)' } },
 		{ url: 'https://en.wikipedia.org/wiki/Cat#Section', expected: { lang: 'en', mobile: false, title: 'Cat' } },
 		{ url: 'https://en.wikipedia.org/wiki/Cat?action=edit', expected: { lang: 'en', mobile: false, title: 'Cat' } },
