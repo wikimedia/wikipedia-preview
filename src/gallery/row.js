@@ -9,7 +9,7 @@ export const GalleryRow = ( mediaItems, lang, dir ) => {
 	return {
 		template: `<div class="wikipediapreview-gallery-row">${images}</div>`,
 		ui: {
-			container: '.wikipediapreview-gallery-image',
+			container: '.wikipediapreview-gallery-row',
 			image: '.wikipediapreview-gallery-image'
 		},
 		events: {

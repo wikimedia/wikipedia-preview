@@ -3,7 +3,7 @@ export default ( component, container = document.body ) => {
 
 	container.insertAdjacentHTML( 'beforeend', template )
 
-    Object.entries( events ).forEach( entry => { // eslint-disable-line
+	Object.entries( events ).forEach( entry => { // eslint-disable-line
 		const [ key, action ] = entry,
 			[ uiElement, eventType ] = key.split( ' ' ),
 			targetElements = container.querySelectorAll( ui[ uiElement ] )
