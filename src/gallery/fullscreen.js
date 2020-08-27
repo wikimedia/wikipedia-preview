@@ -5,8 +5,18 @@ let gallery = [],
 const clientWidth = window.innerWidth,
 	renderImageSlider = ( images, index ) => {
 		return `<div class="wp-gallery-fullscreen-slider" style="margin-left:-${index * clientWidth}px">
-			${images.map( image => {
-		return `<div class="wp-gallery-fullscreen-slider-item"><img src="${image.src}" loading="lazy"/></div>`
+			${images.map( ( image, index ) => {
+		const id = `wp-gallery-fullscreen-item-${index}`
+		return `<div class="wp-gallery-fullscreen-slider-item">
+			<div id="${id}" class="wp-gallery-fullscreen-slider-item-loading-icons">
+				<div class="wp-gallery-fullscreen-slider-item-loading-spinner">
+					<div class="wp-gallery-fullscreen-slider-item-loading-spinner-animation">
+						<div class="wp-gallery-fullscreen-slider-item-loading-spinner-animation-bounce"></div>
+					</div>
+				</div>
+			</div>
+			<img src="${image.src}" loading="lazy" onload="javascript:document.querySelector('#${id}').style.visibility='hidden';"/>
+		</div>`
 	} ).join( '' )}
 		</div>`.trim()
 	}, renderFullScreenGallery = ( images, index, lang, dir ) => {
