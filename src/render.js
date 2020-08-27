@@ -8,7 +8,7 @@ export default ( component, container = document.body ) => {
 			[ uiElement, eventType ] = key.split( ' ' ),
 			targetElements = container.querySelectorAll( ui[ uiElement ] )
 
-		targetElements.forEach( targetElement => {
+		Array.prototype.forEach.call( targetElements, targetElement => {
 			targetElement.addEventListener( eventType, action )
 		} )
 
