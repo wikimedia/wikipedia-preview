@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { msg } from '../i18n'
 
 let gallery = [],
@@ -10,6 +11,8 @@ const renderFullScreenGallery = ( lang, dir ) => {
 					<div class="wp-gallery-fullscreen-button close"></div>
 				</div>
 				<div class="wp-gallery-fullscreen-main">
+					<!-- Slider Component -->
+					<!--
 					<div class="wp-gallery-fullscreen-button previous"></div>
 					<div class="wp-gallery-fullscreen-image">
 						<img src="">
@@ -27,6 +30,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 						</div>
 					</div>
 					<div class="wp-gallery-fullscreen-button next"></div>
+					-->
 				</div>
 				<div class="wp-gallery-fullscreen-bottom">
 					<div class="wp-gallery-fullscreen-caption"></div>
@@ -115,6 +119,9 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 
+		// Disable the current image/loading/error code, but don't delete
+		return
+		
 		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),

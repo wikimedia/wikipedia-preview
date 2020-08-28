@@ -1,5 +1,28 @@
 @popup-z-index: 110;
 
+.wikipediapreview {
+	&-gallery {
+		display: flex;
+		height: 80px;
+		margin-top: 5px;
+
+		&-row {
+			display: flex;
+			overflow: scroll;
+		}
+
+		&-image {
+			height: 100%;
+			min-width: 100px;
+			background-size: cover;
+			background-position: center;
+			background-color: #eaecf0;
+			border-radius: 2px;
+			margin: 0 2px 0 2px;
+		}
+	}
+}
+
 .wp-gallery-fullscreen {
 	background-color: #222;
 	z-index: @popup-z-index;
