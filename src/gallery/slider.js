@@ -15,6 +15,10 @@ const clientWidth = window.innerWidth,
                         </div>
                         <div class="${prefixClassname}-item-loading-text">${msg( lang, 'gallery-loading-still' )}</div>
                     </div>
+                    <div class="${prefixClassname}-item-loading-error">
+                            <div class="${prefixClassname}-item-loading-error-text">${msg( lang, 'gallery-loading-error' )}</div>
+                            <div class="${prefixClassname}-item-loading-error-refresh">${msg( lang, 'gallery-loading-error-refresh' )}</div>
+                        </div>
                     <img src="${image.src}" loading="lazy"/>
                 </div>
                 `.trim()
@@ -43,13 +47,13 @@ const clientWidth = window.innerWidth,
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
-			// image load event
 			const imageElement = item.querySelector( 'img' )
 			if ( imageElement.complete ) {
 				const loading = item.querySelector( `.${prefixClassname}-item-loading` )
 				loading.style.visibility = 'hidden'
 			} else {
 				const textElement = item.querySelector( `.${prefixClassname}-item-loading-text` ),
+					errorElement = item.querySelector( `.${prefixClassname}-item-loading-error` ),
 					timeoutId = setTimeout( () => {
 						textElement.style.visibility = 'visible'
 					}, 5000 )
@@ -60,11 +64,18 @@ const clientWidth = window.innerWidth,
 					clearTimeout( timeoutId )
 				} )
 
+				imageElement.addEventListener( 'error', () => {
+					const loading = item.querySelector( `.${prefixClassname}-item-loading` ),
+						refreshElement = item.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
+					loading.style.visibility = 'hidden'
+					errorElement.style.visibility = 'visible'
+					clearTimeout( timeoutId )
+
+					// @todo action to refresh the current image
+					refreshElement.addEventListener( 'click', () => { } )
+				} )
+
 			}
-
-			// image error event
-			// @todo
-
 		}
 
 		slider.style.marginLeft = -clientWidth * current + 'px'

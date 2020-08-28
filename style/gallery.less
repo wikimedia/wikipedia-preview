@@ -100,20 +100,27 @@
 				}
 
 				&-error {
+					visibility: hidden;
 					background-image: inline-svg( '../images/error.svg' );
 					background-repeat: no-repeat;
 					background-position: center;
-					height: 20px;
-					width: 20px;
 					position: absolute;
-					top: 45px;
-					left: 125px;
+
+					&-text {
+						padding-top: 85px;
+						padding-bottom: 10px;
+						text-align: center;
+						font-size: 12px;
+						font-weight: normal;
+						font-stretch: normal;
+						font-style: normal;
+						line-height: normal;
+						letter-spacing: normal;
+						color: #f8f9fa;
+					}
 
 					&-refresh {
-						position: absolute;
-						bottom: -20px;
-						left: 100px;
-						font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+						text-align: center;
 						font-size: 16px;
 						font-weight: bold;
 						font-stretch: normal;

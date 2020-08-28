@@ -1,9 +1,4 @@
-/* eslint-disable */
-import { msg } from '../i18n'
-import { renderImageSlider, onShowFn as sliderOnShowFn  } from './slider'
-
-let gallery = [],
-	current = 0
+import { renderImageSlider, onShowFn as sliderOnShowFn } from './slider'
 
 const renderFullScreenGallery = ( lang, dir ) => {
 		return `
@@ -40,60 +35,9 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		`.trim()
 	},
 
-	/*
-	toggleLoading = ( loading, image, lang ) => {
-		const text = loading.querySelector( '.wp-gallery-fullscreen-loading-text' ),
-			error = loading.querySelector( '.wp-gallery-fullscreen-loading-error' ),
-			refresh = loading.querySelector( '.wp-gallery-fullscreen-loading-error-refresh' ),
-			spinner = loading.querySelector( '.wp-gallery-fullscreen-loading-spinner' ),
-
-			timeoutId = setTimeout( () => {
-				text.innerText = msg( lang, 'gallery-loading-still' )
-				text.style.visibility = 'visible'
-			}, 5000 ),
-
-			onLoad = () => {
-				clearTimeout( timeoutId )
-				spinner.style.visibility = 'hidden'
-				text.style.visibility = 'hidden'
-				image.style.visibility = 'visible'
-				image.removeEventListener( 'load', onLoad )
-			},
-
-			onRefresh = () => {
-				toggleLoading( loading, image, lang )
-				image.src = gallery[ current ].src
-				refresh.removeEventListener( 'click', onRefresh )
-			},
-
-			onError = () => {
-				clearTimeout( timeoutId )
-				error.style.visibility = 'visible'
-				spinner.style.visibility = 'hidden'
-				text.innerText = msg( lang, 'gallery-loading-error' )
-				text.style[ 'font-size' ] = '16px'
-				text.style.visibility = 'visible'
-				refresh.innerText = msg( lang, 'gallery-loading-error-refresh' )
-				refresh.style.visibility = 'visible'
-				refresh.addEventListener( 'click', onRefresh )
-				image.removeEventListener( 'error', onError )
-			}
-
-		spinner.style.visibility = 'visible'
-		image.style.visibility = 'hidden'
-		text.style.visibility = 'hidden'
-		error.style.visibility = 'hidden'
-		refresh.style.visibility = 'hidden'
-
-		image.addEventListener( 'load', onLoad )
-		image.addEventListener( 'error', onError )
-	},
-	*/
-
 	hideFullscreenGallery = container => {
 		const fullscreenGallery = container.querySelector( '.wp-gallery-fullscreen' )
 		container.removeChild( fullscreenGallery )
-		current = 0
 	},
 
 	showFullscreenGallery = ( mediaItems, selectedThumb, lang, dir, container = document.body ) => {
