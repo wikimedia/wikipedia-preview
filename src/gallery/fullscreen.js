@@ -1,5 +1,6 @@
 /* eslint-disable */
 import { msg } from '../i18n'
+import { renderImageSlider, onShowFn as sliderOnShowFn  } from './slider'
 
 let gallery = [],
 	current = 0
@@ -8,7 +9,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		return `
 			<div class="wp-gallery-fullscreen" lang="${lang}" dir="${dir}">
 				<div class="wp-gallery-fullscreen-top">
-					<div class="wp-gallery-fullscreen-button close"></div>
+					<div class="wp-gallery-fullscreen-top-close"></div>
 				</div>
 				<div class="wp-gallery-fullscreen-main">
 					<!-- Slider Component -->
@@ -93,68 +94,29 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		current = 0
 	},
 
-	renderNext = ( galleryContainer, lang, offset = 1 ) => {
-		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
-			nextButton = galleryContainer.querySelector( '.next' ),
-			previousButton = galleryContainer.querySelector( '.previous' ),
-			next = current + offset,
-			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' )
-
-		if ( gallery[ next ] ) {
-			toggleLoading( loading, image, lang )
-			image.src = gallery[ next ].src
-			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
-			current += offset
-			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
-			previousButton.style.opacity = current === 0 ? '0.5' : '1'
-		}
-	},
-
-	renderPrevious = ( galleryContainer, lang ) => {
-		renderNext( galleryContainer, lang, -1 )
-	},
-
 	showFullscreenGallery = ( mediaItems, selectedThumb, lang, dir, container = document.body ) => {
 
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
+		container.querySelector( '.wp-gallery-fullscreen-main' )
+			.insertAdjacentHTML( 'beforeend', renderImageSlider( mediaItems, selectedThumb, lang, dir ) )
+
+		// onShow event for full screen component
+		const closeButton = container.querySelector( '.wp-gallery-fullscreen-top-close' )
+		closeButton.addEventListener( 'click', () => {
+			hideFullscreenGallery( container )
+		} )
+
+		// onShow event for slider component
+		sliderOnShowFn()
 
 		// Disable the current image/loading/error code, but don't delete
 		return
 		
 		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
-			previousButton = galleryContainer.querySelector( '.previous' ),
-			closeButton = galleryContainer.querySelector( '.close' )
-
-		let selectedThumbIndex = 0
-		gallery = mediaItems
-		gallery.some( ( image, index ) => {
-			if ( image.thumb === selectedThumb ) {
-				selectedThumbIndex = index
-				return true
-			}
-			return false
-		} )
+			previousButton = galleryContainer.querySelector( '.previous' )
 
 		renderNext( galleryContainer, lang, selectedThumbIndex )
-
-		closeButton.addEventListener( 'click', () => {
-			hideFullscreenGallery( container )
-		} )
-
-		if ( gallery.length === 1 ) {
-			previousButton.style.visibility = 'hidden'
-			nextButton.style.visibility = 'hidden'
-		} else {
-			nextButton.addEventListener( 'click', () => {
-				renderNext( galleryContainer, lang )
-			} )
-
-			previousButton.addEventListener( 'click', () => {
-				renderPrevious( galleryContainer, lang )
-			} )
-		}
 	}
 
 export { showFullscreenGallery }

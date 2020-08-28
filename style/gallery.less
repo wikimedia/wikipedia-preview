@@ -34,50 +34,78 @@
 
 	&-top {
 		height: 10vh;
-	}
 
-	&-main {
-		display: flex;
-		max-width: 100%;
-		height: 70vh;
-	}
-
-	&-bottom {
-		height: 20vh;
-	}
-
-	&-button {
-		background-repeat: no-repeat;
-		background-position: center;
-		cursor: pointer;
-		width: 24px;
-		color: #72777d;
-		font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
-		position: absolute;
-
-		&.close {
+		&-close {
+			position: absolute;
+			cursor: pointer;
 			background-image: inline-svg( '../images/close-white.svg' );
+			width: 24px;
 			top: 40px;
 			right: 16px;
 			height: 24px;
 			z-index: @popup-z-index + 20;
 		}
+	}
 
-		&.previous {
-			background-image: inline-svg( '../images/arrow-left.svg' );
-			left: 16px;
-			align-self: center;
-			height: 100%;
-			-webkit-tap-highlight-color: transparent;
+	&-main {
+		display: flex;
+		max-width: 100%;
+		height: 80vh;
+	}
+
+	&-slider {
+		display: inline-flex;
+		transition: margin-left 0.25s ease-in-out;
+
+		&::-webkit-scrollbar {
+			display: none;
 		}
 
-		&.next {
-			background-image: inline-svg( '../images/arrow-right.svg' );
-			right: 16px;
-			align-self: center;
-			height: 100%;
-			-webkit-tap-highlight-color: transparent;
+		&-item {
+			width: calc( 100vw );
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				max-width: calc( 100vw );
+				background-color: #fff;
+
+				@media ( orientation: landscape ) {
+					max-width: unset;
+					max-height: calc( 100vh );
+				}
+			}
 		}
+
+		&-button {
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+			width: 24px;
+			color: #72777d;
+			position: absolute;
+
+			&.previous {
+				background-image: inline-svg( '../images/arrow-left.svg' );
+				left: 16px;
+				align-self: center;
+				height: 100%;
+				-webkit-tap-highlight-color: transparent;
+			}
+
+			&.next {
+				background-image: inline-svg( '../images/arrow-right.svg' );
+				right: 16px;
+				align-self: center;
+				height: 100%;
+				-webkit-tap-highlight-color: transparent;
+			}
+		}
+	}
+
+	&-bottom {
+		height: 20vh;
 	}
 
 	&-image {
@@ -239,12 +267,14 @@
 
 	&[ dir='rtl' ] {
 		.wp-gallery-fullscreen {
-			&-button {
-				&.close {
+			&-top {
+				&-close {
 					right: unset;
 					left: 16px;
 				}
+			}
 
+			&-button {
 				&.previous {
 					background-image: inline-svg( '../images/arrow-right.svg' );
 					left: unset;
