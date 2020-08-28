@@ -108,15 +108,6 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		// onShow event for slider component
 		sliderOnShowFn()
-
-		// Disable the current image/loading/error code, but don't delete
-		return
-		
-		const galleryContainer = container.querySelector( '.wp-gallery-fullscreen' ),
-			nextButton = galleryContainer.querySelector( '.next' ),
-			previousButton = galleryContainer.querySelector( '.previous' )
-
-		renderNext( galleryContainer, lang, selectedThumbIndex )
 	}
 
 export { showFullscreenGallery }

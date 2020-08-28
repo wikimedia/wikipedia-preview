@@ -5,12 +5,19 @@ const clientWidth = window.innerWidth,
         const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
 			imageListHtml = images.map( ( image ) => `
                 <div class="${prefixClassname}-item">
+                    <div class="${prefixClassname}-item-loading">
+                        <div class="${prefixClassname}-item-loading-spinner">
+                            <div class="${prefixClassname}-item-loading-spinner-animation">
+                                <div class="${prefixClassname}-item-loading-spinner-animation-bounce"></div>
+                            </div>
+                        </div>
+                    </div>
                     <img src="${image.src}" loading="lazy"/>
                 </div>
                 `.trim()
 			).join( '' )
 
-		current += selectedIndex
+		current = selectedIndex
 		return `
             <div class="${prefixClassname}" style="margin-left:-${selectedIndex * clientWidth}px">
                 <div class="${prefixClassname}-button previous"></div>
@@ -25,12 +32,29 @@ const clientWidth = window.innerWidth,
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = slider.querySelector( '.next' ),
 			previousButton = slider.querySelector( '.previous' ),
-			next = current + offset
+			next = current + offset,
+			item = items[ next ]
 
-		if ( items[ next ] ) {
+		if ( item ) {
 			current += offset
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
+
+			// image load event
+			const imageElement = item.querySelector( 'img' )
+			if ( imageElement.complete ) {
+				const loading = item.querySelector( `.${prefixClassname}-item-loading` )
+				loading.style.visibility = 'hidden'
+			} else {
+				imageElement.addEventListener( 'load', () => {
+					const loading = item.querySelector( `.${prefixClassname}-item-loading` )
+					loading.style.visibility = 'hidden'
+				} )
+			}
+
+			// image error event
+			// @todo
+
 		}
 
 		slider.style.marginLeft = -clientWidth * current + 'px'
@@ -99,8 +123,9 @@ const clientWidth = window.innerWidth,
 			nextButton = sliderContainer.querySelector( '.next' ),
 			previousButton = sliderContainer.querySelector( '.previous' )
 
-		renderNext( current )
+		renderNext( 0 )
 		applyGestureEvent()
+
 		if ( items.length === 1 ) {
 			previousButton.style.visibility = 'hidden'
 			nextButton.style.visibility = 'hidden'
