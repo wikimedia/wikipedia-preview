@@ -29,10 +29,11 @@ const clientWidth = window.innerWidth,
 
 		if ( items[ next ] ) {
 			current += offset
-			slider.style.marginLeft = -clientWidth * current + 'px'
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 		}
+
+		slider.style.marginLeft = -clientWidth * current + 'px'
 
 		/* original source
         const image = galleryContainer.querySelector( 'img' ),
@@ -53,6 +54,45 @@ const clientWidth = window.innerWidth,
 	renderPrevious = () => {
 		renderNext( -1 )
 	},
+	applyGestureEvent = () => {
+		let temp = {
+			screenX: null,
+			targetScreenX: null,
+			originalMarginLeft: null,
+			currentMarginLeft: null,
+			originalTransition: null
+		}
+
+		const container = document.querySelector( `.${prefixClassname}` )
+
+		container.addEventListener( 'touchstart', e => {
+			temp.screenX = e.touches[ 0 ].clientX
+			temp.targetScreenX = null
+			temp.originalMarginLeft =
+                +window.getComputedStyle( container ).marginLeft.slice( 0, -2 )
+			temp.currentMarginLeft =
+                +window.getComputedStyle( container ).marginLeft.slice( 0, -2 )
+			temp.originalTransition = window.getComputedStyle( container ).transition
+			container.style.transition = 'unset'
+		} )
+		container.addEventListener( 'touchmove', e => {
+			const clientX = e.touches[ 0 ].clientX,
+				offset = clientX - temp.screenX
+			temp.targetScreenX = clientX
+			temp.currentMarginLeft = temp.originalMarginLeft + offset
+			container.style.marginLeft = temp.currentMarginLeft + 'px'
+		} )
+		container.addEventListener( 'touchend', () => {
+			container.style.transition = temp.originalTransition
+			const diff = temp.originalMarginLeft - temp.currentMarginLeft
+
+			if ( Math.abs( diff / clientWidth ) > 0.4 ) {
+				renderNext( diff > 0 ? 1 : -1 )
+			} else {
+				container.style.marginLeft = temp.originalMarginLeft + 'px'
+			}
+		} )
+	},
 	onShowFn = () => {
 		const sliderContainer = document.querySelector( `.${prefixClassname}` ),
 			items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` ),
@@ -60,6 +100,7 @@ const clientWidth = window.innerWidth,
 			previousButton = sliderContainer.querySelector( '.previous' )
 
 		renderNext( current )
+		applyGestureEvent()
 		if ( items.length === 1 ) {
 			previousButton.style.visibility = 'hidden'
 			nextButton.style.visibility = 'hidden'
