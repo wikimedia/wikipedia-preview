@@ -40,6 +40,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		`.trim()
 	},
 
+	/*
 	toggleLoading = ( loading, image, lang ) => {
 		const text = loading.querySelector( '.wp-gallery-fullscreen-loading-text' ),
 			error = loading.querySelector( '.wp-gallery-fullscreen-loading-error' ),
@@ -87,6 +88,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 		image.addEventListener( 'load', onLoad )
 		image.addEventListener( 'error', onError )
 	},
+	*/
 
 	hideFullscreenGallery = container => {
 		const fullscreenGallery = container.querySelector( '.wp-gallery-fullscreen' )

@@ -1,7 +1,9 @@
+import { msg } from '../i18n'
+
 let current = 0
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
-	renderImageSlider = ( images = [], selectedImage = '' ) => {
+	renderImageSlider = ( images = [], selectedImage = '', lang ) => {
         const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
 			imageListHtml = images.map( ( image ) => `
                 <div class="${prefixClassname}-item">
@@ -11,6 +13,7 @@ const clientWidth = window.innerWidth,
                                 <div class="${prefixClassname}-item-loading-spinner-animation-bounce"></div>
                             </div>
                         </div>
+                        <div class="${prefixClassname}-item-loading-text">${msg( lang, 'gallery-loading-still' )}</div>
                     </div>
                     <img src="${image.src}" loading="lazy"/>
                 </div>
@@ -46,10 +49,17 @@ const clientWidth = window.innerWidth,
 				const loading = item.querySelector( `.${prefixClassname}-item-loading` )
 				loading.style.visibility = 'hidden'
 			} else {
+				const textElement = item.querySelector( `.${prefixClassname}-item-loading-text` ),
+					timeoutId = setTimeout( () => {
+						textElement.style.visibility = 'visible'
+					}, 5000 )
+
 				imageElement.addEventListener( 'load', () => {
 					const loading = item.querySelector( `.${prefixClassname}-item-loading` )
 					loading.style.visibility = 'hidden'
+					clearTimeout( timeoutId )
 				} )
+
 			}
 
 			// image error event
