@@ -138,6 +138,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 		if ( gallery[ next ] ) {
 			toggleLoading( loading, image, lang )
+			bottom.innerText = ''
 			requestPageMediaInfo(
 				lang,
 				gallery[ next ].title,
