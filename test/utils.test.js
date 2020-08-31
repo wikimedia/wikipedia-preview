@@ -17,6 +17,7 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://en.wikipedia.org/wiki/Cat?action=edit', expected: { lang: 'en', mobile: false, title: 'Cat' } },
 		{ url: 'https://de.wikipedia.org/w/index.php?title=Katze', expected: { lang: 'de', mobile: false, title: 'Katze' } },
 		{ url: 'https://en.m.wikipedia.org/w/index.php?title=Cat&uselang=de', expected: { lang: 'en', mobile: true, title: 'Cat' } },
+		{ url: 'https://es.wikipedia.org/wiki/82.ª_División_Aerotransportada', expected: { lang: 'es', mobile: false, title: '82.ª_División Aerotransportada'} },
 		{ url: 'https://wikimediafoundation.org/', expected: null }
 	]
 
