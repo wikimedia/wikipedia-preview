@@ -46,7 +46,18 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				}
 			},
 
-			license = mediaInfo.license,
+			getLicenseInfo = ( license ) => {
+				const licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
+				let licenses = ''
+				licenseTypes.forEach( type => {
+					if ( license && license.indexOf( type ) !== -1 ) {
+						licenses += `<div class="wp-gallery-fullscreen-attribution-info-${type.toLowerCase()}"></div>`
+					}
+				} )
+				return licenses
+			},
+
+			license = getLicenseInfo( mediaInfo.license ),
 			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
 			link = mediaInfo.filePage,
 			description = getImageDescription()
@@ -55,11 +66,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 			<div class="wp-gallery-fullscreen-caption">${description}</div>
 			<div class="wp-gallery-fullscreen-attribution">
 				<div class="wp-gallery-fullscreen-attribution-info">
-					${ license && license.indexOf( 'CC' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-cc"></div>' : ''}
-					${ license && license.indexOf( 'BY' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-by"></div>' : ''}
-					${ license && license.indexOf( 'SA' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-sa"></div>' : ''}
-					${ license && license.indexOf( 'Fair use' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-fair"></div>' : ''}
-					${ license && license.indexOf( 'Public domain' ) !== -1 ? '<div class="wp-gallery-fullscreen-attribution-info-public"></div>' : ''}
+					${license}
 					${ author ? `<div class="wp-gallery-fullscreen-attribution-info-author">${author}</div>` : ''}
 				</div>
 				<div class="wp-gallery-fullscreen-attribution-more-info">

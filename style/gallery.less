@@ -1,5 +1,12 @@
 @popup-z-index: 110;
 
+.license {
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	margin-right: 8px;
+}
+
 .wp-gallery-fullscreen {
 	background-color: #222;
 	z-index: @popup-z-index;
@@ -231,42 +238,27 @@
 
 			&-cc {
 				background-image: inline-svg( '../images/attribution-cc.svg' );
-				background-repeat: no-repeat;
-				width: 14px;
-				height: 14px;
-				margin-right: 8px;
+				&:extend( .license );
 			}
 
 			&-by {
 				background-image: inline-svg( '../images/attribution-author.svg' );
-				background-repeat: no-repeat;
-				width: 14px;
-				height: 14px;
-				margin-right: 8px;
+				&:extend( .license );
 			}
 
 			&-sa {
 				background-image: inline-svg( '../images/attribution-icon-share-a-like.svg' );
-				background-repeat: no-repeat;
-				width: 14px;
-				height: 14px;
-				margin-right: 8px;
+				&:extend( .license );
 			}
 
 			&-fair {
 				background-image: inline-svg( '../images/attribution-license-generic-gnu-free.svg' );
-				background-repeat: no-repeat;
-				width: 14px;
-				height: 14px;
-				margin-right: 8px;
+				&:extend( .license );
 			}
 
 			&-public {
 				background-image: inline-svg( '../images/attribution-license-public-domain.svg' );
-				background-repeat: no-repeat;
-				width: 14px;
-				height: 14px;
-				margin-right: 8px;
+				&:extend( .license );
 			}
 
 			&-author {
@@ -275,11 +267,6 @@
 				margin-right: 4px;
 				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 				font-size: 12px;
-				font-weight: normal;
-				font-stretch: normal;
-				font-style: normal;
-				line-height: normal;
-				letter-spacing: normal;
 				color: #fff;
 				overflow: hidden;
 				text-overflow: ellipsis;
