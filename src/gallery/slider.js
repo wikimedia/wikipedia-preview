@@ -1,9 +1,12 @@
 import { msg } from '../i18n'
 
-let current = 0
+// internal state of the slider component
+let current = 0,
+	dir = ''
+
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
-	renderImageSlider = ( images = [], selectedImage = '', lang ) => {
+	renderImageSlider = ( images = [], selectedImage = '', lang, givenDir ) => {
         const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
 			imageListHtml = images.map( ( image ) => `
                 <div class="${prefixClassname}-item">
@@ -24,9 +27,12 @@ const clientWidth = window.innerWidth,
                 `.trim()
 			).join( '' )
 
+		// set the internal state
 		current = selectedIndex
+		dir = givenDir
+
 		return `
-            <div class="${prefixClassname}" style="margin-left:-${selectedIndex * clientWidth}px">
+            <div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${selectedIndex * clientWidth}px">
                 <div class="${prefixClassname}-button previous"></div>
                 <div class="${prefixClassname}-button next"></div>
                 ${imageListHtml}
@@ -34,7 +40,6 @@ const clientWidth = window.innerWidth,
         `.trim()
 	},
 	renderNext = ( offset = 1 ) => {
-		// @todo RTL Support
 		const slider = document.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = slider.querySelector( '.next' ),
@@ -78,7 +83,7 @@ const clientWidth = window.innerWidth,
 			}
 		}
 
-		slider.style.marginLeft = -clientWidth * current + 'px'
+		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
 
 		/* original source
         const image = galleryContainer.querySelector( 'img' ),
@@ -108,15 +113,16 @@ const clientWidth = window.innerWidth,
 			originalTransition: null
 		}
 
-		const container = document.querySelector( `.${prefixClassname}` )
+		const container = document.querySelector( `.${prefixClassname}` ),
+			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 
 		container.addEventListener( 'touchstart', e => {
 			temp.screenX = e.touches[ 0 ].clientX
 			temp.targetScreenX = null
 			temp.originalMarginLeft =
-                +window.getComputedStyle( container ).marginLeft.slice( 0, -2 )
+                +window.getComputedStyle( container )[ marginLR ].slice( 0, -2 )
 			temp.currentMarginLeft =
-                +window.getComputedStyle( container ).marginLeft.slice( 0, -2 )
+                +window.getComputedStyle( container )[ marginLR ].slice( 0, -2 )
 			temp.originalTransition = window.getComputedStyle( container ).transition
 			container.style.transition = 'unset'
 		} )
@@ -124,8 +130,8 @@ const clientWidth = window.innerWidth,
 			const clientX = e.touches[ 0 ].clientX,
 				offset = clientX - temp.screenX
 			temp.targetScreenX = clientX
-			temp.currentMarginLeft = temp.originalMarginLeft + offset
-			container.style.marginLeft = temp.currentMarginLeft + 'px'
+			temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
+			container.style[ marginLR ] = temp.currentMarginLeft + 'px'
 		} )
 		container.addEventListener( 'touchend', () => {
 			container.style.transition = temp.originalTransition
@@ -134,7 +140,7 @@ const clientWidth = window.innerWidth,
 			if ( Math.abs( diff / clientWidth ) > 0.4 ) {
 				renderNext( diff > 0 ? 1 : -1 )
 			} else {
-				container.style.marginLeft = temp.originalMarginLeft + 'px'
+				container.style[ marginLR ] = temp.originalMarginLeft + 'px'
 			}
 		} )
 	},

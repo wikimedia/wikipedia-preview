@@ -278,17 +278,21 @@
 				}
 			}
 
-			&-button {
-				&.previous {
-					background-image: inline-svg( '../images/arrow-right.svg' );
-					left: unset;
-					right: 16px;
-				}
+			&-slider {
+				transition: margin-right 0.25s ease-in-out;
 
-				&.next {
-					background-image: inline-svg( '../images/arrow-left.svg' );
-					left: 16px;
-					right: unset;
+				&-button {
+					&.previous {
+						background-image: inline-svg( '../images/arrow-right.svg' );
+						left: unset;
+						right: 16px;
+					}
+
+					&.next {
+						background-image: inline-svg( '../images/arrow-left.svg' );
+						left: 16px;
+						right: unset;
+					}
 				}
 			}
 		}
