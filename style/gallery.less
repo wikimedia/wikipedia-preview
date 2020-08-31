@@ -1,5 +1,13 @@
 @popup-z-index: 110;
 
+// @todo this needs rename to avoid collison with client site
+.license {
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	margin-right: 8px;
+}
+
 .wikipediapreview {
 	&-gallery {
 		display: flex;
@@ -37,10 +45,12 @@
 			position: absolute;
 			cursor: pointer;
 			background-image: inline-svg( '../images/close-white.svg' );
-			width: 24px;
-			top: 40px;
+			background-repeat: no-repeat;
+			background-position: center;
+			width: 44px;
+			top: 16px;
 			right: 16px;
-			height: 24px;
+			height: 44px;
 			z-index: @popup-z-index + 20;
 		}
 	}
@@ -79,16 +89,21 @@
 			&-caption {
 				// @todo the actual position will be updated after image attribution
 				position: absolute;
-				bottom: 55px;
-				padding: 30px 30px;
-				width: calc( 100vw - 30px );
-				font-size: 18px;
+				bottom: 35px;
+				width: calc( 100vw - 32px );
+				font-size: 16px;
 				font-weight: normal;
 				font-stretch: normal;
 				font-style: normal;
 				line-height: 1.56;
 				letter-spacing: normal;
 				color: #f8f9fa;
+				overflow: scroll;
+				height: 80px;
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
 			}
 
 			&-loading {
@@ -243,6 +258,9 @@
 
 	&-bottom {
 		height: 20vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	&-image {
@@ -271,6 +289,192 @@
 		}
 	}
 
+	&-loading {
+		position: absolute;
+		height: 112px;
+		width: 270px;
+
+		&-icons {
+			margin-left: 116px;
+		}
+
+		&-text {
+			position: absolute;
+			bottom: 10px;
+			left: -8px;
+			width: 292px;
+			text-align: center;
+			font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+			font-size: 12px;
+			font-weight: normal;
+			font-stretch: normal;
+			font-style: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			color: #f8f9fa;
+		}
+
+		&-error {
+			background-image: inline-svg( '../images/error.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+			height: 20px;
+			width: 20px;
+			position: absolute;
+			top: 45px;
+			left: 125px;
+
+			&-refresh {
+				position: absolute;
+				bottom: -20px;
+				left: 100px;
+				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+			}
+		}
+
+		&-spinner {
+			&-animation {
+				margin: 50px auto 0;
+				width: 70px;
+				opacity: 0.8;
+				display: inline-block;
+				white-space: nowrap;
+			}
+
+			&-animation &-animation-bounce,
+			&-animation:before,
+			&-animation:after {
+				content: '';
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background-color: #c8ccd1;
+				border-radius: 100%;
+				-webkit-animation: bounce 1.4s infinite ease-in-out;
+				animation: bounce 1.4s infinite ease-in-out;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+			}
+
+			&-animation:before {
+				-webkit-animation-delay: -0.33s;
+				animation-delay: -0.33s;
+			}
+
+			&-animation:after {
+				-webkit-animation-delay: -0.01s;
+				animation-delay: -0.01s;
+			}
+
+			@-webkit-keyframes bounce {
+				0%,
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					transform: scale( 0.6 );
+				}
+
+				40% {
+					-webkit-transform: scale( 1 );
+					transform: scale( 1 );
+					background-color: #bbb;
+				}
+			}
+
+			@keyframes bounce {
+				0%,
+				100%,
+				80% {
+					-webkit-transform: scale( 0.6 );
+					-ms-transform: scale( 0.6 );
+					transform: scale( 0.6 );
+				}
+
+				40% {
+					-webkit-transform: scale( 1 );
+					-ms-transform: scale( 1 );
+					transform: scale( 1 );
+				}
+			}
+		}
+	}
+
+	&-attribution {
+		border: #f8f9fa;
+		height: 44px;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 15px;
+
+		&-info {
+			display: flex;
+			align-items: center;
+			margin-left: 16px;
+
+			&-cc {
+				background-image: inline-svg( '../images/attribution-cc.svg' );
+				&:extend( .license );
+			}
+
+			&-by {
+				background-image: inline-svg( '../images/attribution-author.svg' );
+				&:extend( .license );
+			}
+
+			&-sa {
+				background-image: inline-svg( '../images/attribution-icon-share-a-like.svg' );
+				&:extend( .license );
+			}
+
+			&-fair {
+				background-image: inline-svg( '../images/attribution-license-generic-gnu-free.svg' );
+				&:extend( .license );
+			}
+
+			&-public {
+				background-image: inline-svg( '../images/attribution-license-public-domain.svg' );
+				&:extend( .license );
+			}
+
+			&-author {
+				width: 220px;
+				height: 14px;
+				margin-right: 4px;
+				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
+				font-size: 12px;
+				color: #fff;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+
+		&-more-info {
+			margin-right: 16px;
+			height: 44px;
+			width: 44px;
+			display: flex;
+			background-image: inline-svg( '../images/attribution-icon-info.svg' );
+			background-repeat: no-repeat;
+			background-position: center;
+
+			&-link {
+				display: block;
+				height: 44px;
+				width: 44px;
+			}
+		}
+	}
+
 	&[ dir='rtl' ] {
 		.wp-gallery-fullscreen {
 			&-top {
@@ -295,6 +499,13 @@
 						left: 16px;
 						right: unset;
 					}
+				}
+			}
+
+			&-loading {
+				&-icons {
+					margin-left: 0;
+					margin-right: 116px;
 				}
 			}
 		}
