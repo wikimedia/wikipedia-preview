@@ -22,7 +22,8 @@ const clientWidth = window.innerWidth,
                             <div class="${prefixClassname}-item-loading-error-text">${msg( lang, 'gallery-loading-error' )}</div>
                             <div class="${prefixClassname}-item-loading-error-refresh">${msg( lang, 'gallery-loading-error-refresh' )}</div>
                         </div>
-                    <img src="${image.src}" loading="lazy"/>
+					<img src="${image.src}" loading="lazy"/>
+					${ image.caption ? `<div class="${prefixClassname}-item-caption">${image.caption}</div>` : ''}
                 </div>
                 `.trim()
 			).join( '' )

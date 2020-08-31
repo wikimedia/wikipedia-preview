@@ -8,7 +8,6 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				</div>
 				<div class="wp-gallery-fullscreen-main"></div>
 				<div class="wp-gallery-fullscreen-bottom">
-					<div class="wp-gallery-fullscreen-caption"></div>
 				</div>
 			</div>
 		`.trim()

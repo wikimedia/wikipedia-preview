@@ -33,8 +33,6 @@
 	top: 0;
 
 	&-top {
-		height: 10vh;
-
 		&-close {
 			position: absolute;
 			cursor: pointer;
@@ -75,6 +73,21 @@
 					max-width: unset;
 					max-height: calc( 100vh );
 				}
+			}
+
+			&-caption {
+				// @todo the actual position will be updated after image attribution
+				position: absolute;
+				bottom: 0;
+				padding: 30px 30px;
+				width: calc( 100vw - 30px );
+				font-size: 18px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.56;
+				letter-spacing: normal;
+				color: #f8f9fa;
 			}
 
 			&-loading {
@@ -255,18 +268,6 @@
 				margin: 0 auto;
 			}
 		}
-	}
-
-	&-caption {
-		font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
-		font-size: 18px;
-		font-weight: normal;
-		font-stretch: normal;
-		font-style: normal;
-		line-height: 1.56;
-		letter-spacing: normal;
-		color: #f8f9fa;
-		margin: 2px 16px 0 16px;
 	}
 
 	&[ dir='rtl' ] {
