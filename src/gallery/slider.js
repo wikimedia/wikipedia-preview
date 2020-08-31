@@ -40,6 +40,44 @@ const clientWidth = window.innerWidth,
             </div>
         `.trim()
 	},
+	bindImageEvent = ( container, refresh = false ) => {
+		const imageElement = container.querySelector( 'img' ),
+			loading = container.querySelector( `.${prefixClassname}-item-loading` ),
+			errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
+
+		if ( refresh ) {
+			imageElement.src = `${imageElement.src}?timestamp=${new Date().getTime()}`
+			loading.style.visibility = 'visible'
+			errorElement.style.visibility = 'hidden'
+		}
+
+		if ( imageElement.complete ) {
+			loading.style.visibility = 'hidden'
+		} else {
+			const textElement = container.querySelector( `.${prefixClassname}-item-loading-text` ),
+				timeoutId = setTimeout( () => {
+					textElement.style.visibility = 'visible'
+				}, 5000 )
+
+			imageElement.addEventListener( 'load', () => {
+				loading.style.visibility = 'hidden'
+				textElement.style.visibility = 'hidden'
+				clearTimeout( timeoutId )
+			} )
+
+			imageElement.addEventListener( 'error', () => {
+				const refreshElement = container.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
+				loading.style.visibility = 'hidden'
+				errorElement.style.visibility = 'visible'
+				clearTimeout( timeoutId )
+
+				refreshElement.addEventListener( 'click', () => {
+					bindImageEvent( container, true )
+				} )
+			} )
+
+		}
+	},
 	renderNext = ( offset = 1 ) => {
 		const slider = document.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
@@ -53,55 +91,11 @@ const clientWidth = window.innerWidth,
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
-			const imageElement = item.querySelector( 'img' )
-			if ( imageElement.complete ) {
-				const loading = item.querySelector( `.${prefixClassname}-item-loading` )
-				loading.style.visibility = 'hidden'
-			} else {
-				const textElement = item.querySelector( `.${prefixClassname}-item-loading-text` ),
-					errorElement = item.querySelector( `.${prefixClassname}-item-loading-error` ),
-					timeoutId = setTimeout( () => {
-						textElement.style.visibility = 'visible'
-					}, 5000 )
-
-				imageElement.addEventListener( 'load', () => {
-					const loading = item.querySelector( `.${prefixClassname}-item-loading` )
-					loading.style.visibility = 'hidden'
-					clearTimeout( timeoutId )
-				} )
-
-				imageElement.addEventListener( 'error', () => {
-					const loading = item.querySelector( `.${prefixClassname}-item-loading` ),
-						refreshElement = item.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
-					loading.style.visibility = 'hidden'
-					errorElement.style.visibility = 'visible'
-					clearTimeout( timeoutId )
-
-					// @todo action to refresh the current image
-					refreshElement.addEventListener( 'click', () => { } )
-				} )
-
-			}
+			bindImageEvent( item )
 		}
 
 		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
-
-		/* original source
-        const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
-			nextButton = galleryContainer.querySelector( '.next' ),
-			previousButton = galleryContainer.querySelector( '.previous' ),
-			next = current + offset,
-			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' )
-
-		if ( gallery[ next ] ) {
-			toggleLoading( loading, image, lang )
-			image.src = gallery[ next ].src
-			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
-        }
-        */
 	},
-
 	renderPrevious = () => {
 		renderNext( -1 )
 	},
