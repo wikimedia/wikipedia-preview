@@ -12,19 +12,22 @@ describe( 'showFullscreenGallery', () => {
 				caption: 'The first cat',
 				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_1.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_1.jpg',
-				title: 'File:Cat_1.jpg'
+				title: 'File:Cat_poster_1.jpg',
+				fromCommon: true
 			},
 			{
 				caption: 'The second cat',
 				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_2.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_2.jpg',
-				title: 'File:Cat_2.jpg'
+				title: 'File:Wild-domestic-hybrid_cat_skulls.png',
+				fromCommon: true
 			},
 			{
 				caption: 'The third cat',
 				thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_3.jpg',
 				src: 'https://upload.wikimedia.org/640px-Cat_3.jpg',
-				title: 'File:Cat_3.jpg'
+				title: 'File:Tomb_of_Nakht_(7).jpg',
+				fromCommon: true
 			}
 		],
 
@@ -92,19 +95,22 @@ describe( 'getGalleryRow', () => {
 			caption: 'The first cat',
 			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_1.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_1.jpg',
-			title: 'File:Cat_1.jpg'
+			title: 'File:Cat_poster_1.jpg',
+			fromCommon: true
 		},
 		{
 			caption: 'The second cat',
 			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_2.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_2.jpg',
-			title: 'File:Cat_2.jpg'
+			title: 'File:Wild-domestic-hybrid_cat_skulls.png',
+			fromCommon: true
 		},
 		{
 			caption: 'The third cat',
 			thumb: 'https://upload.wikimedia.org/thumb/640px-Cat_3.jpg',
 			src: 'https://upload.wikimedia.org/640px-Cat_3.jpg',
-			title: 'File:Cat_3.jpg'
+			title: 'File:Tomb_of_Nakht_(7).jpg',
+			fromCommon: true
 		}
 	]
 

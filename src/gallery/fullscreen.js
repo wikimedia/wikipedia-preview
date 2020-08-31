@@ -1,4 +1,5 @@
 import { msg } from '../i18n'
+import { requestPageMediaInfo } from './../api'
 
 let gallery = [],
 	current = 0
@@ -28,8 +29,46 @@ const renderFullScreenGallery = ( lang, dir ) => {
 					</div>
 					<div class="wp-gallery-fullscreen-button next"></div>
 				</div>
-				<div class="wp-gallery-fullscreen-bottom">
-					<div class="wp-gallery-fullscreen-caption"></div>
+				<div class="wp-gallery-fullscreen-bottom"></div>
+			</div>
+		`.trim()
+	},
+
+	renderImageInfo = ( mediaInfo, container, image, lang ) => {
+		container.innerText = ''
+		const getImageDescription = () => {
+				if ( image.caption ) {
+					return image.caption
+				} else if ( mediaInfo.description ) {
+					return mediaInfo.description
+				} else {
+					return ''
+				}
+			},
+
+			getLicenseInfo = ( license ) => {
+				const licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
+				let licenses = ''
+				licenseTypes.forEach( type => {
+					if ( license && license.indexOf( type ) !== -1 ) {
+						licenses += `<div class="wp-gallery-fullscreen-attribution-info-${type.toLowerCase()}"></div>`
+					}
+				} )
+				return licenses
+			},
+
+			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
+			link = mediaInfo.filePage
+
+		return `
+			<div class="wp-gallery-fullscreen-caption">${getImageDescription()}</div>
+			<div class="wp-gallery-fullscreen-attribution">
+				<div class="wp-gallery-fullscreen-attribution-info">
+					${getLicenseInfo( mediaInfo.license )}
+					${ author ? `<div class="wp-gallery-fullscreen-attribution-info-author">${author}</div>` : ''}
+				</div>
+				<div class="wp-gallery-fullscreen-attribution-more-info">
+					<a href="${link}" class="wp-gallery-fullscreen-attribution-more-info-link" target="_blank"></a>
 				</div>
 			</div>
 		`.trim()
@@ -91,16 +130,23 @@ const renderFullScreenGallery = ( lang, dir ) => {
 
 	renderNext = ( galleryContainer, lang, offset = 1 ) => {
 		const image = galleryContainer.querySelector( 'img' ),
-			caption = galleryContainer.querySelector( '.wp-gallery-fullscreen-caption' ),
 			nextButton = galleryContainer.querySelector( '.next' ),
 			previousButton = galleryContainer.querySelector( '.previous' ),
 			next = current + offset,
-			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' )
+			loading = galleryContainer.querySelector( '.wp-gallery-fullscreen-loading' ),
+			bottom = galleryContainer.querySelector( '.wp-gallery-fullscreen-bottom' )
 
 		if ( gallery[ next ] ) {
 			toggleLoading( loading, image, lang )
+			bottom.innerText = ''
+			requestPageMediaInfo(
+				lang,
+				gallery[ next ].title,
+				gallery[ next ].fromCommon,
+				mediaInfo => {
+					bottom.insertAdjacentHTML( 'beforeend', renderImageInfo( mediaInfo, bottom, gallery[ next ], lang ) )
+				} )
 			image.src = gallery[ next ].src
-			caption.innerText = gallery[ next ].caption ? gallery[ next ].caption : ''
 			current += offset
 			nextButton.style.opacity = current === gallery.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
