@@ -57,16 +57,14 @@ const renderFullScreenGallery = ( lang, dir ) => {
 				return licenses
 			},
 
-			license = getLicenseInfo( mediaInfo.license ),
 			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
-			link = mediaInfo.filePage,
-			description = getImageDescription()
+			link = mediaInfo.filePage
 
 		return `
-			<div class="wp-gallery-fullscreen-caption">${description}</div>
+			<div class="wp-gallery-fullscreen-caption">${getImageDescription()}</div>
 			<div class="wp-gallery-fullscreen-attribution">
 				<div class="wp-gallery-fullscreen-attribution-info">
-					${license}
+					${getLicenseInfo( mediaInfo.license )}
 					${ author ? `<div class="wp-gallery-fullscreen-attribution-info-author">${author}</div>` : ''}
 				</div>
 				<div class="wp-gallery-fullscreen-attribution-more-info">
