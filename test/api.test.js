@@ -1,6 +1,6 @@
 'use strict'
 const assert = require( 'assert' )
-const { requestPagePreview, requestPageMedia } = require( '../src/api' )
+const { requestPagePreview, requestPageMedia, requestPageMediaInfo } = require( '../src/api' )
 
 const requestMock = ( data ) => {
 	return ( url, transformFn, callback ) => {
@@ -124,12 +124,14 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: 'Cats are popular within internet culture for some reason',
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				src: 'https://wikimedia.org/cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: 'Skulls of a wildcat (top left) and a housecat (top right)',
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				src: 'https://wikimedia.org/cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'
@@ -186,12 +188,14 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: undefined,
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				src: 'https://wikimedia.org/cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: undefined,
+				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				src: 'https://wikimedia.org/cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'
@@ -212,5 +216,113 @@ describe( 'requestPageMedia', () => {
 		requestPageMedia( 'zh', '貓', () => {}, ( url ) => {
 			assert( url.endsWith( '%E8%B2%93' ) )
 		} )
+	} )
+} )
+
+describe( 'requestPageMediaInfo', () => {
+	it( 'transforms the API output', () => {
+		const apiOutput = {
+			batchcomplete: true,
+			query: {
+				normalized: [
+					{
+						fromencoded: false,
+						from: 'File:Horn_Louvre_OA4069.jpg',
+						to: 'File:Horn Louvre OA4069.jpg'
+					}
+				],
+				pages: [
+					{
+						pageid: 916963,
+						ns: 6,
+						title: 'File:Horn Louvre OA4069.jpg',
+						imagerepository: 'local',
+						imageinfo: [
+							{
+								url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Horn_Louvre_OA4069.jpg',
+								descriptionurl: 'https://commons.wikimedia.org/wiki/File:Horn_Louvre_OA4069.jpg',
+								descriptionshorturl: 'https://commons.wikimedia.org/w/index.php?curid=916963',
+								extmetadata: {
+									Artist: {
+										value: '<div class="fn value">\n<span lang="en">Unknown artist</span>\n</div>',
+										source: 'commons-desc-page'
+									},
+									ImageDescription: {
+										value: {
+											en: 'Olifant. Ivory, southern Italy, late 11th century.',
+											fr: 'Olifant. Ivoire, Italie du Sud, fin du XIe siècle.',
+											_type: 'lang'
+										},
+										source: 'commons-desc-page'
+									},
+									LicenseShortName: {
+										value: 'Public domain',
+										source: 'commons-desc-page',
+										hidden: ''
+									},
+									License: {
+										value: 'pd',
+										source: 'commons-templates',
+										hidden: ''
+									}
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+		const transformedOutput = {
+			author: '\nUnknown artist\n',
+			description: 'Olifant. Ivory, southern Italy, late 11th century.',
+			filePage: 'https://commons.m.wikimedia.org/w/index.php?curid=916963',
+			license: 'Public domain'
+		}
+		requestPageMediaInfo( 'en', 'title', true, ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output when image is not from Common', () => {
+		const apiOutput = {
+			continue: {
+				iistart: '2006-09-08T11:50:16Z',
+				continue: '||'
+			},
+			query: {
+				normalized: [
+					{
+						fromencoded: false,
+						from: 'File:Dunia_muundo.png',
+						to: 'Picha:Dunia muundo.png'
+					}
+				],
+				pages: [
+					{
+						pageid: 5145,
+						ns: 6,
+						title: 'Picha:Dunia muundo.png',
+						imagerepository: 'local',
+						imageinfo: [
+							{
+								url: 'https://upload.wikimedia.org/wikipedia/sw/d/d7/Dunia_muundo.png',
+								descriptionurl: 'https://sw.wikipedia.org/wiki/Picha:Dunia_muundo.png',
+								descriptionshorturl: 'https://sw.wikipedia.org/w/index.php?curid=5145',
+								extmetadata: []
+							}
+						]
+					}
+				]
+			}
+		}
+		const transformedOutput = {
+			author: undefined,
+			description: undefined,
+			filePage: 'https://sw.m.wikipedia.org/w/index.php?curid=5145',
+			license: undefined
+		}
+		requestPageMediaInfo( 'en', 'title', false, ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
 	} )
 } )

@@ -1,4 +1,5 @@
 import { cachedRequest } from './cachedRequest'
+import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip } from './utils'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
@@ -32,7 +33,8 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 							caption: item.caption && item.caption.text.trim(),
 							src: source,
 							thumb: thumbnail,
-							title: item.title
+							title: item.title,
+							fromCommon: source.indexOf( '/commons' ) !== -1
 						}
 
 					return mediaArray.concat( media )
@@ -43,6 +45,44 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			return pageMedia
 
 		}, callback )
+	},
+
+	requestPageMediaInfo = ( lang, title, fromCommon, callback, request = cachedRequest ) => {
+		const params = {
+				action: 'query',
+				prop: 'imageinfo',
+				iiextmetadatafilter: 'License|LicenseShortName|ImageDescription|Artist',
+				iiextmetadatalanguage: lang,
+				iiextmetadatamultilang: 1,
+				iiprop: 'url|extmetadata',
+				titles: title
+			},
+
+			url = fromCommon ? buildCommonsApiUrl( params ) : buildMwApiUrl( lang, params )
+
+		request( url, mediaInfoData => {
+			const pages = mediaInfoData.query.pages,
+				imageInfo = pages[ 0 ].imageinfo
+
+			if ( !imageInfo ) {
+				return {}
+			}
+
+			let { Artist, ImageDescription, LicenseShortName } = imageInfo[ 0 ].extmetadata,
+				author = Artist && strip( Artist.value ),
+				description = ImageDescription && strip(
+					( typeof ImageDescription.value === 'string' && ImageDescription.value ) ||
+					( ImageDescription.value[ lang ] ||
+						ImageDescription.value[ Object.keys( ImageDescription.value )[ 0 ] ] )
+				)
+
+			return {
+				author,
+				description,
+				license: LicenseShortName && LicenseShortName.value,
+				filePage: convertUrlToMobile( imageInfo[ 0 ].descriptionshorturl )
+			}
+		}, callback )
 	}
 
-export { requestPagePreview, requestPageMedia }
+export { requestPagePreview, requestPageMedia, requestPageMediaInfo }
