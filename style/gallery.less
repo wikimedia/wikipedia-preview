@@ -40,19 +40,17 @@
 	left: 0;
 	top: 0;
 
-	&-top {
-		&-close {
-			position: absolute;
-			cursor: pointer;
-			background-image: inline-svg( '../images/close-white.svg' );
-			background-repeat: no-repeat;
-			background-position: center;
-			width: 44px;
-			top: 16px;
-			right: 16px;
-			height: 44px;
-			z-index: @popup-z-index + 20;
-		}
+	&-close {
+		position: absolute;
+		cursor: pointer;
+		background-image: inline-svg( '../images/close-white.svg' );
+		background-repeat: no-repeat;
+		background-position: center;
+		width: 44px;
+		top: 16px;
+		right: 16px;
+		height: 44px;
+		z-index: @popup-z-index + 20;
 	}
 
 	&-main {
@@ -457,11 +455,9 @@
 
 	&[ dir='rtl' ] {
 		.wp-gallery-fullscreen {
-			&-top {
-				&-close {
-					right: unset;
-					left: 16px;
-				}
+			&-close {
+				right: unset;
+				left: 16px;
 			}
 
 			&-slider {
