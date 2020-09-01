@@ -129,7 +129,9 @@ const clientWidth = window.innerWidth,
 			nextButton = slider.querySelector( '.next' ),
 			previousButton = slider.querySelector( '.previous' ),
 			next = current + offset,
-			item = items[ next ]
+			item = items[ next ],
+			caption = item.querySelector( `.${prefixClassname}-item-caption` ),
+			attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
 
 		if ( item ) {
 			current += offset
@@ -139,16 +141,18 @@ const clientWidth = window.innerWidth,
 			bindImageEvent( item )
 
 			// render image attribution element
-			requestPageMediaInfo(
-				lang,
-				gallery[ next ].title,
-				gallery[ next ].fromCommon,
-				mediaInfo => {
-					item.insertAdjacentHTML(
-						'beforeend',
-						renderImageInfo( mediaInfo, gallery[ next ], lang
-						) )
-				} )
+			if ( !caption && !attribution ) {
+				requestPageMediaInfo(
+					lang,
+					gallery[ next ].title,
+					gallery[ next ].fromCommon,
+					mediaInfo => {
+						item.insertAdjacentHTML(
+							'beforeend',
+							renderImageInfo( mediaInfo, gallery[ next ], lang
+							) )
+					} )
+			}
 		}
 
 		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
