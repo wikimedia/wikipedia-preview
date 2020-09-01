@@ -20,7 +20,7 @@ const prefixClassname = 'wp-gallery-fullscreen',
 		// render utils for fullscreen then slider component
 		container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 		container.querySelector( `.${prefixClassname}-main` )
-			.insertAdjacentHTML( 'beforeend', renderImageSlider( mediaItems, selectedThumb, lang, dir ) )
+			.insertAdjacentHTML( 'beforeend', renderImageSlider( mediaItems, selectedThumb, lang, dir, container ) )
 
 		// onShow event for full screen component
 		const closeButton = container.querySelector( `.${prefixClassname}-close` )

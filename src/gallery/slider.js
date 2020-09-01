@@ -5,11 +5,12 @@ import { requestPageMediaInfo } from '../api'
 let current = 0,
 	dir = '',
 	lang,
-	gallery
+	gallery,
+	parentContainer
 
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
-	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir ) => {
+	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir, container ) => {
         const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
 			imageListHtml = images.map( ( image ) => `
                 <div class="${prefixClassname}-item" style="background-image:url('${image.src}')">
@@ -30,13 +31,14 @@ const clientWidth = window.innerWidth,
                 `.trim()
 			).join( '' )
 
-		current = selectedIndex
+		current = selectedIndex >= 0 ? selectedIndex : 0
 		dir = givenDir
 		lang = givenLang
 		gallery = images
+		parentContainer = container
 
 		return `
-            <div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${selectedIndex * clientWidth}px">
+            <div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${current * clientWidth}px">
                 <div class="${prefixClassname}-button previous"></div>
                 <div class="${prefixClassname}-button next"></div>
                 ${imageListHtml}
@@ -124,7 +126,7 @@ const clientWidth = window.innerWidth,
 	},
 
 	renderNext = ( offset = 1 ) => {
-		const slider = document.querySelector( `.${prefixClassname}` ),
+		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = slider.querySelector( '.next' ),
 			previousButton = slider.querySelector( '.previous' ),
@@ -171,7 +173,7 @@ const clientWidth = window.innerWidth,
 			originalTransition: null
 		}
 
-		const container = document.querySelector( `.${prefixClassname}` ),
+		const container = parentContainer.querySelector( `.${prefixClassname}` ),
 			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 
 		container.addEventListener( 'touchstart', e => {
@@ -204,7 +206,7 @@ const clientWidth = window.innerWidth,
 	},
 
 	onShowFn = () => {
-		const sliderContainer = document.querySelector( `.${prefixClassname}` ),
+		const sliderContainer = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = sliderContainer.querySelector( '.next' ),
 			previousButton = sliderContainer.querySelector( '.previous' )
