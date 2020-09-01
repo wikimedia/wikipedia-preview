@@ -74,15 +74,12 @@
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
 
 			img {
-				max-width: calc( 100% );
-				background-color: #fff;
-
-				@media ( orientation: landscape ) {
-					max-width: unset;
-					max-height: calc( 100% );
-				}
+				visibility: hidden;
 			}
 
 			&-caption {

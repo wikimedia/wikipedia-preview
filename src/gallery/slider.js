@@ -12,7 +12,7 @@ const clientWidth = window.innerWidth,
 	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir ) => {
         const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
 			imageListHtml = images.map( ( image ) => `
-                <div class="${prefixClassname}-item">
+                <div class="${prefixClassname}-item" style="background-image:url('${image.src}')">
                     <div class="${prefixClassname}-item-loading">
                         <div class="${prefixClassname}-item-loading-spinner">
                             <div class="${prefixClassname}-item-loading-spinner-animation">
