@@ -131,11 +131,12 @@ const clientWidth = window.innerWidth,
 			nextButton = slider.querySelector( '.next' ),
 			previousButton = slider.querySelector( '.previous' ),
 			next = current + offset,
-			item = items[ next ],
-			caption = item.querySelector( `.${prefixClassname}-item-caption` ),
-			attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
+			item = items[ next ]
 
 		if ( item ) {
+			const caption = item.querySelector( `.${prefixClassname}-item-caption` ),
+				attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
+
 			current += offset
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
