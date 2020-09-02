@@ -20,6 +20,7 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://es.wikipedia.org/wiki/82.ª_División_Aerotransportada', expected: { lang: 'es', mobile: false, title: '82.ª_División_Aerotransportada'} },
 		{ url: 'https://en.wikipedia.org/wiki/Ā', expected: { lang: 'en', mobile: false, title: 'Ā' } },
 		{ url: 'https://it.wikipedia.org/wiki/Željko_Obradović', expected: { lang: 'it', mobile: false, title: 'Željko_Obradović' } },
+		{ url: 'https://en.wikipedia.org/wiki/&Burn', expected: { lang: 'en', mobile: false, title: '&Burn' } },
 		{ url: 'https://wikimediafoundation.org/', expected: null }
 	]
 
