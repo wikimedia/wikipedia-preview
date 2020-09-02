@@ -64,6 +64,32 @@ export const customEvents = popup => {
 			}
 		},
 
+		applySwipeEvent = ( element ) => {
+			let detectedCoordinates = {
+				initialY: null,
+				finalY: null
+			}
+
+			const container = element.component.wikipediapreview
+
+			container.addEventListener( 'touchstart', e => {
+				detectedCoordinates.initialY = e.touches[ 0 ].clientY
+			} )
+			container.addEventListener( 'touchmove', e => {
+				detectedCoordinates.finalY = e.touches[ 0 ].clientY
+			} )
+			container.addEventListener( 'touchend', () => {
+				const expanded = element.querySelector( '.wikipediapreview.expanded' ),
+					delta = detectedCoordinates.initialY - detectedCoordinates.finalY
+
+				if ( !expanded && delta > 0 ) {
+					onExpand()
+				} else if ( delta < 0 && Math.abs( delta ) > 80 ) {
+					popup.hide()
+				}
+			} )
+		},
+
 		onHide = () => {
 			popup.element.component.wikipediapreview.classList.remove( 'expanded' )
 			popup.lang = null
@@ -97,6 +123,7 @@ export const customEvents = popup => {
 			if ( isTouch ) {
 				const darkScreen = document.querySelector( '.wp-dark-screen' )
 				addEventListener( darkScreen, 'click', popup.hide, true )
+				applySwipeEvent( element )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
