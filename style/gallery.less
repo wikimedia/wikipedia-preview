@@ -11,11 +11,13 @@
 .wikipediapreview {
 	&-gallery {
 		display: flex;
+		display: -ms-flex;
 		height: 80px;
 		margin-top: 5px;
 
 		&-row {
 			display: flex;
+			display: -ms-flex;
 			overflow: scroll;
 		}
 
@@ -55,12 +57,14 @@
 
 	&-main {
 		display: flex;
+		display: -ms-flex;
 		max-width: 100%;
 		height: 80vh;
 	}
 
 	&-slider {
 		display: inline-flex;
+		display: -ms-inline-flex;
 		transition: margin-left 0.25s ease-in-out;
 
 		&::-webkit-scrollbar {
@@ -71,6 +75,7 @@
 			width: calc( 100vw );
 			height: calc( 100% - 64px );
 			display: flex;
+			display: -ms-flex;
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
@@ -114,11 +119,13 @@
 				border: #f8f9fa;
 				height: 44px;
 				display: flex;
+				display: -ms-flex;
 				justify-content: space-between;
 				margin-bottom: 15px;
 
 				&-info {
 					display: flex;
+					display: -ms-flex;
 					align-items: center;
 
 					&-cc {
@@ -163,6 +170,7 @@
 					height: 44px;
 					width: 44px;
 					display: flex;
+					display: -ms-flex;
 					background-image: inline-svg( '../images/attribution-icon-info.svg' );
 					background-repeat: no-repeat;
 					background-position: center;
@@ -327,6 +335,7 @@
 	&-bottom {
 		height: 20vh;
 		display: flex;
+		display: -ms-flex;
 		flex-direction: column;
 		justify-content: space-between;
 	}

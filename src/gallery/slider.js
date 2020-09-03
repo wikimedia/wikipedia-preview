@@ -11,8 +11,7 @@ let current = 0,
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
 	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir, container ) => {
-        const selectedIndex = images.findIndex( image => image.thumb === selectedImage ), // eslint-disable-line
-			imageListHtml = images.map( ( image ) => `
+		const imageListHtml = images.map( ( image ) => `
                 <div class="${prefixClassname}-item" style="background-image:url('${image.src}')">
                     <div class="${prefixClassname}-item-loading">
                         <div class="${prefixClassname}-item-loading-spinner">
@@ -29,9 +28,15 @@ const clientWidth = window.innerWidth,
 					<img src="${image.src}" loading="lazy"/>
                 </div>
                 `.trim()
-			).join( '' )
+		).join( '' )
 
-		current = selectedIndex >= 0 ? selectedIndex : 0
+		images.some( ( image, index ) => {
+			if ( image.thumb === selectedImage ) {
+				current = index
+				return true
+			}
+			return false
+		} )
 		dir = givenDir
 		lang = givenLang
 		gallery = images
