@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"BPX-web"
+			"BPX-web",
+			"Elliot"
 		]
 	},
 	"continue-reading": "Mit dem Lesen fortfahren",
 	"gallery-loading-error": "Beim Laden dieses Bildes gab es einen Fehler.",
 	"gallery-loading-error-refresh": "Aktualisieren",
+	"gallery-unknown-author": "Urheber unbekannt.",
 	"read-more": "Mehr in Wikipedia"
 }
