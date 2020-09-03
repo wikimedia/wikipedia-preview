@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"continue-reading": "המשך קריאה",
+	"gallery-loading-error": "אירעה שגיאה בעת טעינת התמונה הזאת",
+	"gallery-loading-error-refresh": "רענון",
+	"gallery-loading-still": "עדיין בטעינה",
+	"gallery-unknown-author": "היוצר אינו ידוע",
+	"preview-loading-error": "הייתה בעיה עם הצגת התצוגה המקדימה הזאת.",
+	"read-on-wiki": "לקרוא בוויקיפדיה",
+	"read-more": "לקרוא עוד בוויקיפדיה",
+	"preview-disambiguation-message": "הכותרת <strong>$1</strong> קשורה ליותר מערך אחד בוויקיפדיה."
+}
