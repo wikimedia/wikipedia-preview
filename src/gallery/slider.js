@@ -11,8 +11,8 @@ let current = 0,
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
 	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir, container ) => {
-		const imageListHtml = images.map( ( image ) => `
-                <div class="${prefixClassname}-item" style="background-image:url('${image.src}')">
+		const imageListHtml = images.map( () => `
+                <div class="${prefixClassname}-item">
                     <div class="${prefixClassname}-item-loading">
                         <div class="${prefixClassname}-item-loading-spinner">
                             <div class="${prefixClassname}-item-loading-spinner-animation">
@@ -22,10 +22,9 @@ const clientWidth = window.innerWidth,
                         <div class="${prefixClassname}-item-loading-text">${msg( givenLang, 'gallery-loading-still' )}</div>
                     </div>
                     <div class="${prefixClassname}-item-loading-error">
-                            <div class="${prefixClassname}-item-loading-error-text">${msg( givenLang, 'gallery-loading-error' )}</div>
-                            <div class="${prefixClassname}-item-loading-error-refresh">${msg( givenLang, 'gallery-loading-error-refresh' )}</div>
-                        </div>
-					<img src="${image.src}" loading="lazy"/>
+						<div class="${prefixClassname}-item-loading-error-text">${msg( givenLang, 'gallery-loading-error' )}</div>
+						<div class="${prefixClassname}-item-loading-error-refresh">${msg( givenLang, 'gallery-loading-error-refresh' )}</div>
+					</div>
                 </div>
                 `.trim()
 		).join( '' )
@@ -130,6 +129,35 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
+	showImageAndInfo = ( index ) => {
+		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
+			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
+			item = items[ index ]
+
+		if ( item ) {
+			const imageElement = item.querySelector( 'img' )
+			if ( !imageElement ) {
+
+				// image
+				item.insertAdjacentHTML( 'beforeend', `<img src="${gallery[ index ].src}"/>` )
+				item.style.backgroundImage = `url("${gallery[ index ].src}")`
+				bindImageEvent( item )
+
+				// image info - caption / attribution
+				requestPageMediaInfo(
+					lang,
+					gallery[ index ].title,
+					gallery[ index ].fromCommon,
+					mediaInfo => {
+						item.insertAdjacentHTML(
+							'beforeend',
+							renderImageInfo( mediaInfo, gallery[ index ], lang
+							) )
+					} )
+			}
+		}
+	},
+
 	renderNext = ( offset = 1 ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
@@ -139,28 +167,14 @@ const clientWidth = window.innerWidth,
 			item = items[ next ]
 
 		if ( item ) {
-			const caption = item.querySelector( `.${prefixClassname}-item-caption` ),
-				attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
-
 			current += offset
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
-			bindImageEvent( item )
-
-			// render image attribution element
-			if ( !caption && !attribution ) {
-				requestPageMediaInfo(
-					lang,
-					gallery[ next ].title,
-					gallery[ next ].fromCommon,
-					mediaInfo => {
-						item.insertAdjacentHTML(
-							'beforeend',
-							renderImageInfo( mediaInfo, gallery[ next ], lang
-							) )
-					} )
-			}
+			// render image attribution element - current, next, previous
+			showImageAndInfo( current )
+			showImageAndInfo( current + 1 )
+			showImageAndInfo( current - 1 )
 		}
 
 		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
