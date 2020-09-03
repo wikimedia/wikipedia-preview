@@ -168,7 +168,6 @@ const clientWidth = window.innerWidth,
 	applyGestureEvent = () => {
 		let temp = {
 			screenX: null,
-			targetScreenX: null,
 			originalMarginLeft: null,
 			currentMarginLeft: null,
 			originalTransition: null
@@ -179,7 +178,6 @@ const clientWidth = window.innerWidth,
 
 		container.addEventListener( 'touchstart', e => {
 			temp.screenX = e.touches[ 0 ].clientX
-			temp.targetScreenX = null
 			temp.originalMarginLeft =
                 +window.getComputedStyle( container )[ marginLR ].slice( 0, -2 )
 			temp.currentMarginLeft =
@@ -190,9 +188,9 @@ const clientWidth = window.innerWidth,
 		container.addEventListener( 'touchmove', e => {
 			const clientX = e.touches[ 0 ].clientX,
 				offset = clientX - temp.screenX
-			temp.targetScreenX = clientX
 			temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
 			container.style[ marginLR ] = temp.currentMarginLeft + 'px'
+			e.preventDefault()
 		} )
 		container.addEventListener( 'touchend', () => {
 			container.style.transition = temp.originalTransition
