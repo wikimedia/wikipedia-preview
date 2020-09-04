@@ -21,6 +21,8 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://en.wikipedia.org/wiki/Ā', expected: { lang: 'en', mobile: false, title: 'Ā' } },
 		{ url: 'https://it.wikipedia.org/wiki/Željko_Obradović', expected: { lang: 'it', mobile: false, title: 'Željko_Obradović' } },
 		{ url: 'https://en.wikipedia.org/wiki/&Burn', expected: { lang: 'en', mobile: false, title: '&Burn' } },
+		{ url: 'https://en.wikipedia.org/wiki/ȏ', expected: { lang: 'en', mobile: false, title: 'ȏ' } },
+		{ url: 'https://en.wikipedia.org/w/index.php?title=?!_(album)', expected: { lang: 'en', mobile: false, title: '?!_(album)' } },
 		{ url: 'https://wikimediafoundation.org/', expected: null }
 	]
 

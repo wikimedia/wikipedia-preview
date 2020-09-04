@@ -2,10 +2,10 @@ export const getWikipediaAttrFromUrl = url => {
 		const regexList = [
 			// https://zh.wikipedia.org/wiki/前岐镇"
 			// https://en.wikipedia.org/wiki/Cat#Section
-			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/([^#?\u0180-\u024F]+)/,
+			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/([^#?]+)/,
 			// https://en.wikipedia.org/w/index.php?title=Cat
 			// https://zh.wikipedia.org/w/index.php?title=太阳帆&action=purge
-			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/w\/index.php\?title=([^&\u0180-\u024F]+)/
+			/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/w\/index.php\?title=([^#&]+)/
 		]
 
 		for ( let i = 0; i < regexList.length; i++ ) {
