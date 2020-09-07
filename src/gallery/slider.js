@@ -96,7 +96,7 @@ const clientWidth = window.innerWidth,
 			errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
 
 		if ( refresh ) {
-			imageElement.src = `${imageElement.src}?timestamp=${new Date().getTime()}`
+			imageElement.src = `${imageElement.src}?timestamp=${Date.now()}`
 			loading.style.visibility = 'visible'
 			errorElement.style.visibility = 'hidden'
 		}
@@ -189,19 +189,22 @@ const clientWidth = window.innerWidth,
 			screenX: null,
 			originalMarginLeft: null,
 			currentMarginLeft: null,
-			originalTransition: null
+			originalTransition: null,
+			durationStart: null
 		}
 
 		const container = parentContainer.querySelector( `.${prefixClassname}` ),
 			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 
 		container.addEventListener( 'touchstart', e => {
+			const containerStyle = window.getComputedStyle( container )
+			temp.durationStart = Date.now()
 			temp.screenX = e.touches[ 0 ].clientX
 			temp.originalMarginLeft =
-                +window.getComputedStyle( container )[ marginLR ].slice( 0, -2 )
+                +containerStyle[ marginLR ].slice( 0, -2 )
 			temp.currentMarginLeft =
-                +window.getComputedStyle( container )[ marginLR ].slice( 0, -2 )
-			temp.originalTransition = window.getComputedStyle( container ).transition
+                +containerStyle[ marginLR ].slice( 0, -2 )
+			temp.originalTransition = containerStyle.transition
 			container.style.transition = 'unset'
 		} )
 		container.addEventListener( 'touchmove', e => {
@@ -213,9 +216,11 @@ const clientWidth = window.innerWidth,
 		} )
 		container.addEventListener( 'touchend', () => {
 			container.style.transition = temp.originalTransition
-			const diff = temp.originalMarginLeft - temp.currentMarginLeft
-
-			if ( Math.abs( diff / clientWidth ) > 0.4 ) {
+			const diff = temp.originalMarginLeft - temp.currentMarginLeft,
+				duration = Date.now() - temp.durationStart
+			if ( Math.abs( diff / clientWidth ) > 0.4 ||
+				( duration <= 300 && Math.abs( diff ) > 5 )
+			) {
 				renderNext( diff > 0 ? 1 : -1 )
 			} else {
 				container.style[ marginLR ] = temp.originalMarginLeft + 'px'
@@ -239,9 +244,7 @@ const clientWidth = window.innerWidth,
 			nextButton.addEventListener( 'click', () => {
 				renderNext()
 			} )
-			previousButton.addEventListener( 'click', () => {
-				renderPrevious()
-			} )
+			previousButton.addEventListener( 'click', renderPrevious )
 		}
 	}
 
