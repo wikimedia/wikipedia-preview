@@ -55,37 +55,22 @@ describe( 'showFullscreenGallery', () => {
 		)
 	} )
 
-	it( 'renders full screen gallery with selected image', () => {
+	it( 'renders full screen gallery with all images', () => {
 		const fullscreenGallery = doc.querySelector( '.wp-gallery-fullscreen' ),
-			image = doc.querySelector( '.wp-gallery-fullscreen-image' )
+			images = fullscreenGallery.querySelectorAll( 'img' )
 
 		assert.ok( fullscreenGallery )
-		assert.equal( image.children[ 0 ].src, mediaItems[ 0 ].src )
-	} )
-
-	it( 'renders next image when next button is clicked', () => {
-		const nextButton = doc.querySelectorAll( '.wp-gallery-fullscreen-button.next' )[ 0 ],
-			image = doc.querySelector( '.wp-gallery-fullscreen-image' )
-
-		nextButton.click()
-		assert.equal( image.children[ 0 ].src, mediaItems[ 1 ].src )
-	} )
-
-	it( 'renders previous image when previous button is clicked', () => {
-		const previousButton = doc.querySelectorAll( '.wp-gallery-fullscreen-button.previous' )[ 0 ],
-			image = doc.querySelector( '.wp-gallery-fullscreen-image' )
-
-		previousButton.click()
-		assert.equal( image.children[ 0 ].src, mediaItems[ 0 ].src )
-
+		images.forEach( ( image, index) => {
+			assert.equal( image.src, mediaItems[ index ].src )
+		})
+		
 	} )
 
 	it( 'closes full screen gallery when close button is clicked', () => {
-		const closeButton = doc.querySelectorAll( '.wp-gallery-fullscreen-button.close' )[ 0 ],
-			galleryContainer = doc.querySelector( '.wikipediapreview-gallery' )
+		const closeButton = doc.querySelector( '.wp-gallery-fullscreen-close' )
 
 		closeButton.click()
-		assert.ifError( galleryContainer.children[ 0 ] )
+		assert.ifError( doc.querySelector( '.wp-gallery-fullscreen' ) )
 	} )
 } )
 
