@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Fitoschido",
 			"Mguix"
 		]
 	},
@@ -9,6 +10,7 @@
 	"gallery-loading-error": "S'ha produït un error en carregar aquesta imatge",
 	"gallery-loading-error-refresh": "Actualitzar",
 	"gallery-loading-still": "carregant-se",
+	"gallery-unknown-author": "Autoria desconeguda",
 	"preview-loading-error": "S'ha produït un problema en mostrar aquesta previsualització.",
 	"read-on-wiki": "Llegiu a la Viquipèdia",
 	"read-more": "Llegeixi més en Viquipèdia",
