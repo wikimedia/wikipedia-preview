@@ -64,7 +64,7 @@ export const customEvents = popup => {
 			}
 		},
 
-		applySwipeEvent = ( element ) => {
+		applyDragEvent = ( element ) => {
 			let detectedCoordinates = {
 				initialY: null,
 				finalY: null
@@ -123,7 +123,7 @@ export const customEvents = popup => {
 			if ( isTouch ) {
 				const darkScreen = document.querySelector( '.wp-dark-screen' )
 				addEventListener( darkScreen, 'click', popup.hide, true )
-				applySwipeEvent( element )
+				applyDragEvent( element )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
