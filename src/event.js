@@ -66,25 +66,41 @@ export const customEvents = popup => {
 
 		applyDragEvent = ( element ) => {
 			let detectedCoordinates = {
-				initialY: null,
-				finalY: null
+				dragUpInitialY: null,
+				dragUpFinalY: null,
+				dragDownInitialY: null,
+				dragDownFinalY: null
 			}
 
-			const container = element.component.wikipediapreview
+			const container = element.component.wikipediapreview,
+				containerHeader = element.querySelector( '.wikipediapreview-header' )
 
 			container.addEventListener( 'touchstart', e => {
-				detectedCoordinates.initialY = e.touches[ 0 ].clientY
+				detectedCoordinates.dragUpInitialY = e.touches[ 0 ].clientY
 			} )
 			container.addEventListener( 'touchmove', e => {
-				detectedCoordinates.finalY = e.touches[ 0 ].clientY
+				detectedCoordinates.dragUpFinalY = e.touches[ 0 ].clientY
 			} )
 			container.addEventListener( 'touchend', () => {
 				const expanded = element.querySelector( '.wikipediapreview.expanded' ),
-					delta = detectedCoordinates.initialY - detectedCoordinates.finalY
+					delta = detectedCoordinates.dragUpInitialY - detectedCoordinates.dragUpFinalY
 
 				if ( !expanded && delta > 0 ) {
 					onExpand()
-				} else if ( delta < 0 && Math.abs( delta ) > 80 ) {
+				}
+			} )
+
+			containerHeader.addEventListener( 'touchstart', e => {
+				detectedCoordinates.dragDownInitialY = e.touches[ 0 ].clientY
+			} )
+			containerHeader.addEventListener( 'touchmove', e => {
+				detectedCoordinates.dragDownFinalY = e.touches[ 0 ].clientY
+			} )
+			containerHeader.addEventListener( 'touchend', () => {
+				const expanded = element.querySelector( '.wikipediapreview.expanded' ),
+					delta = detectedCoordinates.dragDownInitialY - detectedCoordinates.dragDownFinalY
+
+				if ( expanded && delta < 0 && Math.abs( delta ) > 80 ) {
 					popup.hide()
 				}
 			} )
