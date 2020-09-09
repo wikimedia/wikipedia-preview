@@ -70,8 +70,7 @@ export const customEvents = popup => {
 				containerBodyStyle,
 				initialHeight
 
-			const container = element.component.wikipediapreview,
-				containerHeader = element.querySelector( '.wikipediapreview-header' ),
+			const containerHeader = element.querySelector( '.wikipediapreview-header' ),
 				containerBody = element.querySelector( '.wikipediapreview-body' ),
 				handleTouchStart = ( e ) => {
 					initialY = e.touches[ 0 ].clientY
@@ -106,11 +105,11 @@ export const customEvents = popup => {
 					}
 				}
 
-			addEventListener( container, 'touchstart', handleTouchStart )
-			addEventListener( container, 'touchmove', ( e ) => {
+			addEventListener( containerBody, 'touchstart', handleTouchStart )
+			addEventListener( containerBody, 'touchmove', ( e ) => {
 				handleTouchMove( e, false )
 			} )
-			addEventListener( container, 'touchend', () => handleTouchEnd( false ) )
+			addEventListener( containerBody, 'touchend', () => handleTouchEnd( false ) )
 
 			addEventListener( containerHeader, 'touchstart', handleTouchStart )
 			addEventListener( containerHeader, 'touchmove', ( e ) => {
