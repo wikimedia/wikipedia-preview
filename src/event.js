@@ -82,10 +82,11 @@ export const customEvents = popup => {
 					const clientY = e.touches[ 0 ].clientY,
 						offset = initialY - clientY,
 						currentHeight = initialHeight + offset,
-						expanded = element.querySelector( '.wikipediapreview.expanded' )
+						expanded = element.querySelector( '.wikipediapreview.expanded' ),
+						isNotExpandedBody = !expanded && !isHeader || isHeader
 
 					finalY = clientY
-					if ( !isHeader && !expanded || isHeader && expanded ) {
+					if ( isNotExpandedBody ) {
 						containerBody.style.maxHeight = currentHeight + 'px'
 					}
 				},
@@ -93,11 +94,12 @@ export const customEvents = popup => {
 				handleTouchEnd = ( isHeader ) => {
 					const expanded = element.querySelector( '.wikipediapreview.expanded' ),
 						delta = initialY - finalY,
-						isOverThreshold = Math.abs( delta ) > 60
+						isOverThreshold = Math.abs( delta ) > 60,
+						isNotExpandedBody = !expanded && !isHeader || isHeader
 
-					if ( isHeader && expanded && delta < 0 && isOverThreshold ) {
+					if ( delta < 0 && isOverThreshold && isNotExpandedBody ) {
 						popup.hide()
-					} else if ( !isHeader && !expanded && delta > 0 && isOverThreshold ) {
+					} else if ( delta > 0 && isOverThreshold && isNotExpandedBody && !expanded ) {
 						containerBody.style.maxHeight = '70vh'
 						onExpand()
 					} else {
