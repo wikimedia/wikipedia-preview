@@ -67,15 +67,15 @@ export const customEvents = popup => {
 		applyDragEvent = ( element ) => {
 			let initialY,
 				finalY,
-				containerBodyStyle,
+				previewBodyStyle,
 				initialHeight
 
-			const containerHeader = element.querySelector( '.wikipediapreview-header' ),
-				containerBody = element.querySelector( '.wikipediapreview-body' ),
+			const previewHeader = element.querySelector( '.wikipediapreview-header' ),
+				previewBody = element.querySelector( '.wikipediapreview-body' ),
 				handleTouchStart = ( e ) => {
 					initialY = e.touches[ 0 ].clientY
-					containerBodyStyle = window.getComputedStyle( containerBody )
-					initialHeight = Number( containerBodyStyle.height.slice( 0, -2 ) )
+					previewBodyStyle = window.getComputedStyle( previewBody )
+					initialHeight = Number( previewBodyStyle.height.slice( 0, -2 ) )
 				},
 
 				handleTouchMove = ( e, isHeader ) => {
@@ -87,7 +87,7 @@ export const customEvents = popup => {
 
 					finalY = clientY
 					if ( isNotExpandedBody ) {
-						containerBody.style.maxHeight = currentHeight + 'px'
+						previewBody.style.maxHeight = currentHeight + 'px'
 					}
 				},
 
@@ -100,24 +100,24 @@ export const customEvents = popup => {
 					if ( delta < 0 && isOverThreshold && isNotExpandedBody ) {
 						popup.hide()
 					} else if ( delta > 0 && isOverThreshold && isNotExpandedBody && !expanded ) {
-						containerBody.style.maxHeight = '70vh'
+						previewBody.style.maxHeight = '70vh'
 						onExpand()
 					} else {
-						containerBody.style.maxHeight = initialHeight + 'px'
+						previewBody.style.maxHeight = initialHeight + 'px'
 					}
 				}
 
-			addEventListener( containerBody, 'touchstart', handleTouchStart )
-			addEventListener( containerBody, 'touchmove', ( e ) => {
+			addEventListener( previewBody, 'touchstart', handleTouchStart )
+			addEventListener( previewBody, 'touchmove', ( e ) => {
 				handleTouchMove( e, false )
 			} )
-			addEventListener( containerBody, 'touchend', () => handleTouchEnd( false ) )
+			addEventListener( previewBody, 'touchend', () => handleTouchEnd( false ) )
 
-			addEventListener( containerHeader, 'touchstart', handleTouchStart )
-			addEventListener( containerHeader, 'touchmove', ( e ) => {
+			addEventListener( previewHeader, 'touchstart', handleTouchStart )
+			addEventListener( previewHeader, 'touchmove', ( e ) => {
 				handleTouchMove( e, true )
 			} )
-			addEventListener( containerHeader, 'touchend', () => handleTouchEnd( true ) )
+			addEventListener( previewHeader, 'touchend', () => handleTouchEnd( true ) )
 		},
 
 		onHide = () => {
