@@ -65,45 +65,58 @@ export const customEvents = popup => {
 		},
 
 		applyDragEvent = ( element ) => {
-			let detectedCoordinates = {
-				dragUpInitialY: null,
-				dragUpFinalY: null,
-				dragDownInitialY: null,
-				dragDownFinalY: null
-			}
+			let initialY,
+				finalY,
+				containerBodyStyle,
+				initialHeight
 
 			const container = element.component.wikipediapreview,
-				containerHeader = element.querySelector( '.wikipediapreview-header' )
+				containerHeader = element.querySelector( '.wikipediapreview-header' ),
+				containerBody = element.querySelector( '.wikipediapreview-body' ),
+				handleTouchStart = ( e ) => {
+					initialY = e.touches[ 0 ].clientY
+					containerBodyStyle = window.getComputedStyle( containerBody )
+					initialHeight = Number( containerBodyStyle.height.slice( 0, -2 ) )
+				},
 
-			container.addEventListener( 'touchstart', e => {
-				detectedCoordinates.dragUpInitialY = e.touches[ 0 ].clientY
-			} )
-			container.addEventListener( 'touchmove', e => {
-				detectedCoordinates.dragUpFinalY = e.touches[ 0 ].clientY
-			} )
-			container.addEventListener( 'touchend', () => {
-				const expanded = element.querySelector( '.wikipediapreview.expanded' ),
-					delta = detectedCoordinates.dragUpInitialY - detectedCoordinates.dragUpFinalY
+				handleTouchMove = ( e, isHeader ) => {
+					const clientY = e.touches[ 0 ].clientY,
+						offset = initialY - clientY,
+						currentHeight = initialHeight + offset,
+						expanded = element.querySelector( '.wikipediapreview.expanded' )
 
-				if ( !expanded && delta > 0 ) {
-					onExpand()
+					finalY = clientY
+					if ( !isHeader && !expanded || isHeader && expanded ) {
+						containerBody.style.maxHeight = currentHeight + 'px'
+					}
+				},
+
+				handleTouchEnd = ( isHeader ) => {
+					const expanded = element.querySelector( '.wikipediapreview.expanded' ),
+						delta = initialY - finalY,
+						isOverThreshold = Math.abs( delta ) > 60
+
+					if ( isHeader && expanded && delta < 0 && isOverThreshold ) {
+						popup.hide()
+					} else if ( !isHeader && !expanded && delta > 0 && isOverThreshold ) {
+						containerBody.style.maxHeight = '70vh'
+						onExpand()
+					} else {
+						containerBody.style.maxHeight = initialHeight + 'px'
+					}
 				}
-			} )
 
-			containerHeader.addEventListener( 'touchstart', e => {
-				detectedCoordinates.dragDownInitialY = e.touches[ 0 ].clientY
+			addEventListener( container, 'touchstart', handleTouchStart )
+			addEventListener( container, 'touchmove', ( e ) => {
+				handleTouchMove( e, false )
 			} )
-			containerHeader.addEventListener( 'touchmove', e => {
-				detectedCoordinates.dragDownFinalY = e.touches[ 0 ].clientY
-			} )
-			containerHeader.addEventListener( 'touchend', () => {
-				const expanded = element.querySelector( '.wikipediapreview.expanded' ),
-					delta = detectedCoordinates.dragDownInitialY - detectedCoordinates.dragDownFinalY
+			addEventListener( container, 'touchend', () => handleTouchEnd( false ) )
 
-				if ( expanded && delta < 0 && Math.abs( delta ) > 80 ) {
-					popup.hide()
-				}
+			addEventListener( containerHeader, 'touchstart', handleTouchStart )
+			addEventListener( containerHeader, 'touchmove', ( e ) => {
+				handleTouchMove( e, true )
 			} )
+			addEventListener( containerHeader, 'touchend', () => handleTouchEnd( true ) )
 		},
 
 		onHide = () => {
