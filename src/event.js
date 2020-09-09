@@ -94,7 +94,7 @@ export const customEvents = popup => {
 				handleTouchEnd = ( isHeader ) => {
 					const expanded = element.querySelector( '.wikipediapreview.expanded' ),
 						delta = initialY - finalY,
-						isOverThreshold = Math.abs( delta ) > 60,
+						isOverThreshold = Math.abs( delta ) > 80,
 						isNotExpandedBody = !expanded && !isHeader || isHeader
 
 					if ( delta < 0 && isOverThreshold && isNotExpandedBody ) {
