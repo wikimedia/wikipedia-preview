@@ -85,6 +85,7 @@ export const customEvents = popup => {
 						expanded = element.querySelector( '.wikipediapreview.expanded' ),
 						isNotExpandedBody = !expanded && !isHeader || isHeader
 
+					previewBody.style.transition = 'unset'
 					finalY = clientY
 					if ( isNotExpandedBody ) {
 						previewBody.style.maxHeight = currentHeight + 'px'
@@ -97,6 +98,7 @@ export const customEvents = popup => {
 						isOverThreshold = Math.abs( delta ) > 80,
 						isNotExpandedBody = !expanded && !isHeader || isHeader
 
+					previewBody.style.transition = 'all 0.25s ease-in-out'
 					if ( delta < 0 && isOverThreshold && isNotExpandedBody ) {
 						popup.hide()
 					} else if ( delta > 0 && isOverThreshold && isNotExpandedBody && !expanded ) {
@@ -125,6 +127,9 @@ export const customEvents = popup => {
 			popup.lang = null
 			popup.title = null
 			popup.loading = false
+
+			const previewBody = popup.element.component.wikipediapreview.querySelector( '.wikipediapreview-body' )
+			previewBody.style.transition = 'unset'
 
 			clearAllEventListener()
 			clearAllTimeout()
