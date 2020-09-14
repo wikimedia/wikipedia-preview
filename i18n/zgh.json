@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakim1bal",
 			"Ya2sine"
 		]
 	},
 	"continue-reading": "ⵙⵎⴷ ⵙⵓⵍ ⵜⵉⵖⵔⵉ",
+	"gallery-loading-error-refresh": "ⵙⵎⴰⵢⵏⵓ",
 	"gallery-loading-still": "ⵉⵙⵓⵍ ⵓⵣⴷⴰⵎ",
+	"read-on-wiki": "ⵖⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
 	"read-more": "ⵖⵔ ⵓⴳⴳⴰⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ"
 }

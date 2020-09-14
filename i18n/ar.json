@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Hhaboh162002",
 			"Meno25",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -10,6 +11,9 @@
 	"gallery-loading-error": "حدث خطأ أثناء تحميل هذه الصورة",
 	"gallery-loading-error-refresh": "تحديث",
 	"gallery-loading-still": "جاري التحميل",
+	"gallery-unknown-author": "المؤلف غير معروف",
+	"preview-loading-error": "كانت هناك مشكلة في عرض هذه المعاينة.",
 	"read-on-wiki": "اقرأ على ويكيبيديا",
-	"read-more": "اقرأ المزيد عن ويكيبيديا"
+	"read-more": "اقرأ المزيد عن ويكيبيديا",
+	"preview-disambiguation-message": "العنوان <strong>$1</strong> ذو صلة بأكثر من مقالة واحدة على ويكيبيديا."
 }
