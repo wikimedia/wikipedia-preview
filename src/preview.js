@@ -32,7 +32,7 @@ const renderPreview = ( lang, data, isTouch ) => {
 						<div class="wikipediapreview-header-closebtn"></div>
 					</div>
 					<div class="wikipediapreview-loading">
-						<div class="wikipediapreview-loading-body">
+						<div class="wikipediapreview-body">
 							<div class="wikipediapreview-loading-body-line larger"></div>
 							<div class="wikipediapreview-loading-body-line medium"></div>
 							<div class="wikipediapreview-loading-body-line larger"></div>

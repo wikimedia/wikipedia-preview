@@ -64,11 +64,72 @@ export const customEvents = popup => {
 			}
 		},
 
+		applyDragEvent = ( element ) => {
+			let initialY,
+				finalY,
+				previewBodyStyle,
+				initialHeight
+
+			const previewHeader = element.querySelector( '.wikipediapreview-header' ),
+				previewBody = element.querySelector( '.wikipediapreview-body' ),
+				handleTouchStart = ( e ) => {
+					initialY = e.touches[ 0 ].clientY
+					previewBodyStyle = window.getComputedStyle( previewBody )
+					initialHeight = Number( previewBodyStyle.height.slice( 0, -2 ) )
+				},
+
+				handleTouchMove = ( e, isHeader ) => {
+					const clientY = e.touches[ 0 ].clientY,
+						offset = initialY - clientY,
+						currentHeight = initialHeight + offset,
+						expanded = element.querySelector( '.wikipediapreview.expanded' ),
+						isNotExpandedBody = !expanded && !isHeader || isHeader
+
+					previewBody.style.transition = 'unset'
+					finalY = clientY
+					if ( isNotExpandedBody ) {
+						previewBody.style.maxHeight = currentHeight + 'px'
+					}
+				},
+
+				handleTouchEnd = ( isHeader ) => {
+					const expanded = element.querySelector( '.wikipediapreview.expanded' ),
+						delta = initialY - finalY,
+						isOverThreshold = Math.abs( delta ) > 80,
+						isNotExpandedBody = !expanded && !isHeader || isHeader
+
+					previewBody.style.transition = 'all 0.25s ease-in-out'
+					if ( delta < 0 && isOverThreshold && isNotExpandedBody ) {
+						popup.hide()
+					} else if ( delta > 0 && isOverThreshold && isNotExpandedBody && !expanded ) {
+						previewBody.style.maxHeight = '70vh'
+						onExpand()
+					} else {
+						previewBody.style.maxHeight = initialHeight + 'px'
+					}
+				}
+
+			addEventListener( previewBody, 'touchstart', handleTouchStart )
+			addEventListener( previewBody, 'touchmove', ( e ) => {
+				handleTouchMove( e, false )
+			} )
+			addEventListener( previewBody, 'touchend', () => handleTouchEnd( false ) )
+
+			addEventListener( previewHeader, 'touchstart', handleTouchStart )
+			addEventListener( previewHeader, 'touchmove', ( e ) => {
+				handleTouchMove( e, true )
+			} )
+			addEventListener( previewHeader, 'touchend', () => handleTouchEnd( true ) )
+		},
+
 		onHide = () => {
 			popup.element.component.wikipediapreview.classList.remove( 'expanded' )
 			popup.lang = null
 			popup.title = null
 			popup.loading = false
+
+			const previewBody = popup.element.component.wikipediapreview.querySelector( '.wikipediapreview-body' )
+			previewBody.style.transition = 'unset'
 
 			clearAllEventListener()
 			clearAllTimeout()
@@ -97,6 +158,7 @@ export const customEvents = popup => {
 			if ( isTouch ) {
 				const darkScreen = document.querySelector( '.wp-dark-screen' )
 				addEventListener( darkScreen, 'click', popup.hide, true )
+				applyDragEvent( element )
 			} else {
 				addEventListener( element, 'mouseleave', onMouseLeave )
 				addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
