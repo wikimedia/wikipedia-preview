@@ -307,8 +307,9 @@
 
 	&.expanded {
 		.wikipediapreview-body {
-			max-height: 496px;
-			overflow: hidden;
+			// calculate the max height in onExpand()
+			// max-height: 496px;
+			overflow: scroll;
 
 			&:after {
 				content: none;
