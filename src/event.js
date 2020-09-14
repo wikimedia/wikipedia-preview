@@ -56,16 +56,18 @@ export const customEvents = popup => {
 
 			popup.element.component.wikipediapreview.classList.add( 'expanded' )
 
-			// expand up
-			if ( popup.element.style[ 2 ] === 'bottom' ) {
-				let currentTop = popup.element.getBoundingClientRect().top,
-					originalHeight = parseInt(
-						window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
-					)
-				bodyElement.style.maxHeight = Math.min( maxHeight, originalHeight + currentTop ) + 'px'
-			} else {
-				// expand down
-				bodyElement.style.maxHeight = maxHeight + 'px'
+			if ( !isTouch ) {
+				// expand up
+				if ( popup.element.style[ 2 ] === 'bottom' ) {
+					let currentTop = popup.element.getBoundingClientRect().top,
+						originalHeight = parseInt(
+							window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
+						)
+					bodyElement.style.maxHeight = Math.min( maxHeight, originalHeight + currentTop ) + 'px'
+				} else {
+					// expand down
+					bodyElement.style.maxHeight = maxHeight + 'px'
+				}
 			}
 
 			if ( lang && title ) {
