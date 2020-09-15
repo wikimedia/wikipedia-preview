@@ -101,6 +101,10 @@ export const customEvents = popup => {
 				},
 
 				handleTouchMove = ( e, isHeader ) => {
+					if ( isHeader ) {
+						e.preventDefault()
+					}
+
 					const clientY = e.touches[ 0 ].clientY,
 						offset = initialY - clientY,
 						currentHeight = initialHeight + offset,
