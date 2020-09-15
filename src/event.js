@@ -33,6 +33,12 @@ export const customEvents = popup => {
 			eventListenerStack = []
 		},
 
+		getPreviewBody = ( element ) => {
+			return element.querySelector( '.wikipediapreview-body' ) ||
+				element.querySelector( '.wikipediapreview-disambiguation' ) ||
+				element.querySelector( '.wikipediapreview-error' )
+		},
+
 		onMouseLeave = e => {
 			const toElement = e.toElement || e.relatedTarget || e.target,
 				previewElement = popup.element.currentTargetElement
@@ -87,7 +93,7 @@ export const customEvents = popup => {
 				initialHeight
 
 			const previewHeader = element.querySelector( '.wikipediapreview-header' ),
-				previewBody = element.querySelector( '.wikipediapreview-body' ),
+				previewBody = getPreviewBody( element ),
 				handleTouchStart = ( e ) => {
 					initialY = e.touches[ 0 ].clientY
 					previewBodyStyle = window.getComputedStyle( previewBody )
@@ -144,7 +150,7 @@ export const customEvents = popup => {
 			popup.title = null
 			popup.loading = false
 
-			const previewBody = popup.element.component.wikipediapreview.querySelector( '.wikipediapreview-body' )
+			const previewBody = getPreviewBody( popup.element )
 			previewBody.style.transition = 'unset'
 
 			clearAllEventListener()
