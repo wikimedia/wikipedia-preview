@@ -1,6 +1,6 @@
 'use strict'
 const assert = require( 'assert' )
-const { getWikipediaAttrFromUrl } = require( '../src/utils' )
+const { getWikipediaAttrFromUrl, sanitizeHTML } = require( '../src/utils' )
 
 describe( 'getWikipediaAttrFromUrl', () => {
 
@@ -17,7 +17,7 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://en.wikipedia.org/wiki/Cat?action=edit', expected: { lang: 'en', mobile: false, title: 'Cat' } },
 		{ url: 'https://de.wikipedia.org/w/index.php?title=Katze', expected: { lang: 'de', mobile: false, title: 'Katze' } },
 		{ url: 'https://en.m.wikipedia.org/w/index.php?title=Cat&uselang=de', expected: { lang: 'en', mobile: true, title: 'Cat' } },
-		{ url: 'https://es.wikipedia.org/wiki/82.ª_División_Aerotransportada', expected: { lang: 'es', mobile: false, title: '82.ª_División_Aerotransportada'} },
+		{ url: 'https://es.wikipedia.org/wiki/82.ª_División_Aerotransportada', expected: { lang: 'es', mobile: false, title: '82.ª_División_Aerotransportada' } },
 		{ url: 'https://en.wikipedia.org/wiki/Ā', expected: { lang: 'en', mobile: false, title: 'Ā' } },
 		{ url: 'https://it.wikipedia.org/wiki/Željko_Obradović', expected: { lang: 'it', mobile: false, title: 'Željko_Obradović' } },
 		{ url: 'https://en.wikipedia.org/wiki/&Burn', expected: { lang: 'en', mobile: false, title: '&Burn' } },
@@ -29,6 +29,27 @@ describe( 'getWikipediaAttrFromUrl', () => {
 	const testFn = ( test ) => {
 		it( `checks ${test.url}`, () => {
 			const result = getWikipediaAttrFromUrl( test.url )
+			assert.deepStrictEqual( result, test.expected )
+		} )
+	}
+
+	// eslint-disable-next-line mocha/no-setup-in-describe
+	tests.forEach( testFn )
+} )
+
+describe( 'sanitizeHTML', () => {
+
+	const tests = [
+		{ html: '<b>This is a header</b>', expected: '<b>This is a header</b>' },
+		{ html: '<p>This is a content</p>', expected: '<p>This is a content</p>' },
+		{ html: 'Content without anything', expected: 'Content without anything' },
+		{ html: '<p>embedded script</p><script>js tag</script>', expected: '<p>embedded script</p>' },
+		{ html: '<script>first script</script><script>second</script>', expected: '' }
+	]
+
+	const testFn = ( test ) => {
+		it( `checks ${test.html}`, () => {
+			const result = sanitizeHTML( test.html )
 			assert.deepStrictEqual( result, test.expected )
 		} )
 	}
