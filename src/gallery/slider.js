@@ -140,7 +140,6 @@ const clientWidth = window.innerWidth,
 
 				// image
 				item.insertAdjacentHTML( 'beforeend', `<img src="${gallery[ index ].src}"/>` )
-				item.style.backgroundImage = `url("${gallery[ index ].src}")`
 				bindImageEvent( item )
 
 				// image info - caption / attribution
@@ -153,6 +152,8 @@ const clientWidth = window.innerWidth,
 							'beforeend',
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
+
+						item.style.backgroundImage = `url("${mediaInfo.bestFitImageUrl}")`
 					} )
 			}
 		}

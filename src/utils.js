@@ -55,4 +55,8 @@ export const getWikipediaAttrFromUrl = url => {
 	strip = html => {
 		const doc = new window.DOMParser().parseFromString( html, 'text/html' )
 		return doc.body.textContent || ''
+	},
+
+	getDeviceSize = () => {
+		return { height: window.innerHeight, width: window.innerWidth }
 	}
