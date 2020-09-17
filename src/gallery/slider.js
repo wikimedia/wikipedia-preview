@@ -10,23 +10,24 @@ let current = 0,
 
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
+
 	renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir, container ) => {
 		const imageListHtml = images.map( () => `
-                <div class="${prefixClassname}-item">
-                    <div class="${prefixClassname}-item-loading">
-                        <div class="${prefixClassname}-item-loading-spinner">
-                            <div class="${prefixClassname}-item-loading-spinner-animation">
-                                <div class="${prefixClassname}-item-loading-spinner-animation-bounce"></div>
-                            </div>
-                        </div>
-                        <div class="${prefixClassname}-item-loading-text">${msg( givenLang, 'gallery-loading-still' )}</div>
-                    </div>
-                    <div class="${prefixClassname}-item-loading-error">
+			<div class="${prefixClassname}-item">
+					<div class="${prefixClassname}-item-loading">
+							<div class="${prefixClassname}-item-loading-spinner">
+									<div class="${prefixClassname}-item-loading-spinner-animation">
+											<div class="${prefixClassname}-item-loading-spinner-animation-bounce"></div>
+									</div>
+							</div>
+							<div class="${prefixClassname}-item-loading-text">${msg( givenLang, 'gallery-loading-still' )}</div>
+					</div>
+					<div class="${prefixClassname}-item-loading-error">
 						<div class="${prefixClassname}-item-loading-error-text">${msg( givenLang, 'gallery-loading-error' )}</div>
 						<div class="${prefixClassname}-item-loading-error-refresh">${msg( givenLang, 'gallery-loading-error-refresh' )}</div>
 					</div>
-                </div>
-                `.trim()
+			</div>
+			`.trim()
 		).join( '' )
 
 		images.some( ( image, index ) => {
@@ -42,12 +43,12 @@ const clientWidth = window.innerWidth,
 		parentContainer = container
 
 		return `
-            <div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${current * clientWidth}px">
-                <div class="${prefixClassname}-button previous"></div>
-                <div class="${prefixClassname}-button next"></div>
-                ${imageListHtml}
-            </div>
-        `.trim()
+			<div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${current * clientWidth}px">
+					<div class="${prefixClassname}-button previous"></div>
+					<div class="${prefixClassname}-button next"></div>
+					${imageListHtml}
+			</div>
+			`.trim()
 	},
 
 	renderImageInfo = ( mediaInfo, image, lang ) => {
