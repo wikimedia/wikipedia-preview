@@ -28,13 +28,11 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			const pageMedia = mediaListData.items.reduce( ( mediaArray, item ) => {
 				if ( item.showInGallery && item.type === 'image' ) {
 					const thumbnail = item && item.srcset && `https:${item.srcset[ 0 ].src}`,
-						source = thumbnail.slice( 0, thumbnail.lastIndexOf( '/' ) ).replace( '/thumb', '' ),
 						media = {
 							caption: item.caption && item.caption.text.trim(),
-							src: source,
 							thumb: thumbnail,
 							title: item.title,
-							fromCommon: source.indexOf( '/commons' ) !== -1
+							fromCommon: thumbnail.indexOf( '/commons' ) !== -1
 						}
 
 					return mediaArray.concat( media )

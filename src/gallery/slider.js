@@ -77,7 +77,9 @@ const clientWidth = window.innerWidth,
 
 		// @todo consider a wrapper container for all the image info?
 		return `
-			<div class="${prefixClassname}-item-caption">${getImageDescription()}</div>
+			<div class="${prefixClassname}-item-caption">
+				<div class="${prefixClassname}-item-caption-text">${getImageDescription()}</div>
+			</div>
 			<div class="${prefixClassname}-item-attribution">
 				<div class="${prefixClassname}-item-attribution-info">
 					${getLicenseInfo( mediaInfo.license )}
@@ -125,7 +127,6 @@ const clientWidth = window.innerWidth,
 					bindImageEvent( container, true )
 				} )
 			} )
-
 		}
 	},
 
@@ -135,27 +136,22 @@ const clientWidth = window.innerWidth,
 			item = items[ index ]
 
 		if ( item ) {
-			const imageElement = item.querySelector( 'img' )
-			if ( !imageElement ) {
+			requestPageMediaInfo(
+				lang,
+				gallery[ index ].title,
+				gallery[ index ].fromCommon,
+				mediaInfo => {
+					const imageElement = item.querySelector( 'img' )
+					if ( !imageElement ) {
+						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						bindImageEvent( item )
+					}
 
-				// image
-				item.insertAdjacentHTML( 'beforeend', `<img src="${gallery[ index ].src}"/>` )
-				bindImageEvent( item )
-
-				// image info - caption / attribution
-				requestPageMediaInfo(
-					lang,
-					gallery[ index ].title,
-					gallery[ index ].fromCommon,
-					mediaInfo => {
-						item.insertAdjacentHTML(
-							'beforeend',
-							renderImageInfo( mediaInfo, gallery[ index ], lang
-							) )
-
-						item.style.backgroundImage = `url("${mediaInfo.bestFitImageUrl}")`
-					} )
-			}
+					item.insertAdjacentHTML(
+						'beforeend',
+						renderImageInfo( mediaInfo, gallery[ index ], lang
+						) )
+				} )
 		}
 	},
 
