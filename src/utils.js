@@ -58,5 +58,5 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	sanitizeHTML = html => {
-		return html.replace( /(<script>).*(<\/script>)/g, '' )
+		return html.replace( /(<script>).*(<\/script\s*>)/g, '' )
 	}
