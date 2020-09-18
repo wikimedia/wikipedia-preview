@@ -235,8 +235,8 @@ describe( 'requestPageMediaInfo', () => {
 						imagerepository: 'local',
 						imageinfo: [
 							{
-								thumburl:	'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Horn_Louvre_OA4069.jpg/375px-Horn_Louvre_OA4069.jpg',
-								thumbwidth:	375,
+								thumburl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Horn_Louvre_OA4069.jpg/375px-Horn_Louvre_OA4069.jpg',
+								thumbwidth: 375,
 								thumbheight: 218,
 								url: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Horn_Louvre_OA4069.jpg',
 								descriptionurl: 'https://commons.wikimedia.org/wiki/File:Horn_Louvre_OA4069.jpg',
@@ -305,8 +305,8 @@ describe( 'requestPageMediaInfo', () => {
 						imagerepository: 'local',
 						imageinfo: [
 							{
-								thumburl:	'https://upload.wikimedia.org/wikipedia/sw/thumb/d/d7/Dunia_muundo.png',
-								thumbwidth:	375,
+								thumburl: 'https://upload.wikimedia.org/wikipedia/sw/thumb/d/d7/Dunia_muundo.png',
+								thumbwidth: 375,
 								thumbheight: 218,
 								url: 'https://upload.wikimedia.org/wikipedia/sw/d/d7/Dunia_muundo.png',
 								descriptionurl: 'https://sw.wikipedia.org/wiki/Picha:Dunia_muundo.png',
