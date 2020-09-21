@@ -64,7 +64,7 @@ export const customEvents = popup => {
 
 			if ( !isTouch ) {
 				// expand up
-				if ( popup.element.style[ 2 ] === 'bottom' ) {
+				if ( popup.element.style[ 2 ] === 'bottom' || popup.element.style.bottom ) {
 					let currentTop = popup.element.getBoundingClientRect().top,
 						originalHeight = parseInt(
 							window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
