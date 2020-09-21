@@ -3,6 +3,7 @@
 		"authors": [
 			"1917 Ekim Devrimi",
 			"Abijeet Patro",
+			"Mirzali",
 			"Orbot707"
 		]
 	},
@@ -11,7 +12,7 @@
 	"gallery-loading-error-refresh": "Anewe kerê",
 	"gallery-loading-still": "Hewna beno bar",
 	"gallery-unknown-author": "Nuştekarê nêzanıyeni",
-	"preview-loading-error": "No verqayt mocnayış de xırabey tede esta",
+	"preview-loading-error": "Mocnayışê nê verqayti de xırabiye esta.",
 	"read-on-wiki": "Wikipediya de bıwanê",
 	"read-more": "Wikipedia sero tayna bıwanê",
 	"preview-disambiguation-message": "Serey <strong>$1</strong> yew ra zêde meqaleyê Wikipedia ya eleqeyıno."
