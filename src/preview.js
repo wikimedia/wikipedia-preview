@@ -2,6 +2,7 @@ import { msg } from './i18n'
 import '../style/preview.less'
 
 const getPreviewHeader = ( lang, imageUrl = '' ) =>{
+		lang = 'en' // temporarily disabling wordmark localization: https://phabricator.wikimedia.org/T260408#6484684
 		return `
 			<div class="wikipediapreview-header">
 				${imageUrl ? `<div class="wikipediapreview-header-image" style="${`background-image:url('${imageUrl}');background-size:cover;`}"></div>` : ''}
