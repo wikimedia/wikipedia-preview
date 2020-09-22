@@ -43,12 +43,6 @@ function init( {
 								target,
 								pointerPosition
 							)
-
-							const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
-
-							if ( expanded && popup.expand ) {
-								popup.expand()
-							}
 						} else if ( data.type === 'disambiguation' ) {
 							popup.show(
 								renderDisambiguation( isTouch, lang, data.title, data.dir ),
