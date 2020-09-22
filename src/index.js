@@ -35,14 +35,15 @@ function init( {
 				if ( popup.loading ) {
 					if ( data ) {
 						if ( data.type === 'standard' ) {
+							popup.lang = lang
+							popup.title = title
+
 							popup.show(
 								renderPreview( lang, data, isTouch ),
 								target,
 								pointerPosition
 							)
 
-							popup.lang = lang
-							popup.title = title
 							const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
 
 							if ( expanded && popup.expand ) {
