@@ -83,7 +83,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 								<span>${msg( lang, 'preview-disambiguation-message', title )}</span>
 							</div>
 							<div class="wikipediapreview-disambiguation-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki-disambiguation' )}</a>
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki' )}</a>
 							</div>
 						</div>
 					</div>
