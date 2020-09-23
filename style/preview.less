@@ -286,6 +286,51 @@
 		}
 	}
 
+	&-offline {
+		height: 285px;
+
+		&-body {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			&-message {
+				display: flex;
+				margin-left: 16px;
+				margin-right: 16px;
+				font-size: 16px;
+				font-weight: normal;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: 1.4;
+				letter-spacing: normal;
+				color: #000;
+			}
+
+			&-icon {
+				content: inline-svg( '../images/offline-icon.svg' );
+				display: absolute;
+				vertical-align: middle;
+				margin-right: 12px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&-retry {
+				margin: 12px 49px;
+				font-size: 16px;
+				font-weight: bold;
+				font-stretch: normal;
+				font-style: normal;
+				line-height: normal;
+				letter-spacing: normal;
+				color: #36c;
+				cursor: pointer;
+			}
+		}
+	}
+
 	&.expanded {
 		.wikipediapreview-body {
 			// calculate the max height in onExpand()

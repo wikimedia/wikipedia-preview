@@ -89,6 +89,25 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 					</div>
 			</div>
 	`.trim()
+	},
+
+	renderOffline = ( isTouch, lang, title, dir ) => {
+		return `
+			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+					${getPreviewHeader( lang )}
+					<div class="wikipediapreview-offline">
+						<div class="wikipediapreview-offline-body">
+							<div class="wikipediapreview-offline-body-message">
+								<div class="wikipediapreview-offline-body-icon"></div>
+								<span>${msg( lang, 'preview-offline-message' )}</span>
+							</div>
+							<div class="wikipediapreview-offline-body-retry">
+								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'preview-offline-cta' )}</a>
+							</div>
+						</div>
+					</div>
+			</div>
+	`.trim()
 	}
 
-export { renderPreview, renderLoading, renderError, renderDisambiguation }
+export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }

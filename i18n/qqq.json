@@ -10,5 +10,7 @@
 	"preview-loading-error": "Message shown with a preview loading error",
 	"read-on-wiki": "Message shown in the Call to Action (CTA) of a preview loading error or disambiguation page",
 	"read-more": "The message shown in the footer part of the preview popup that brings user to the wikipedia page to read more about the article",
-	"preview-disambiguation-message": "The message shown for disambiguation pages. Params: \n* $1 - Title of the disambiguation page."
+	"preview-disambiguation-message": "The message shown for disambiguation pages. Params: \n* $1 - Title of the disambiguation page.",
+	"preview-offline-message": "The message shown when offline",
+	"preview-offline-cta": "The message shown as the call to action (CTA) when offline"
 }

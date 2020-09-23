@@ -36,7 +36,8 @@ export const customEvents = popup => {
 		getPreviewBody = ( element ) => {
 			return element.querySelector( '.wikipediapreview-body' ) ||
 				element.querySelector( '.wikipediapreview-disambiguation' ) ||
-				element.querySelector( '.wikipediapreview-error' )
+				element.querySelector( '.wikipediapreview-error' ) ||
+				element.querySelector( '.wikipediapreview-offline' )
 		},
 
 		onMouseLeave = e => {

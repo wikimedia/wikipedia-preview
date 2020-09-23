@@ -2,8 +2,8 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading, renderError, renderDisambiguation } from './preview'
-import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
+import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
+import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
 function init( {
 	root = document,
@@ -56,11 +56,19 @@ function init( {
 							)
 						}
 					} else {
-						popup.show(
-							renderError( isTouch, lang, title, dir ),
-							target,
-							pointerPosition
-						)
+						if ( isOnline() ) {
+							popup.show(
+								renderError( isTouch, lang, title, dir ),
+								target,
+								pointerPosition
+							)
+						} else {
+							popup.show(
+								renderOffline( isTouch, lang, title, dir ),
+								target,
+								pointerPosition
+							)
+						}
 					}
 				}
 			} )

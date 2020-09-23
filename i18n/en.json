@@ -7,5 +7,7 @@
     "preview-loading-error": "There was an issue while displaying this preview.",
     "read-on-wiki": "Read on Wikipedia",
     "read-more": "Read more on Wikipedia",
-    "preview-disambiguation-message": "Title <strong>$1</strong> is related to more than one article on Wikipedia."
+    "preview-disambiguation-message": "Title <strong>$1</strong> is related to more than one article on Wikipedia.",
+    "preview-offline-message": "No internet connection available.",
+    "preview-offline-cta": "Try again"
 }
