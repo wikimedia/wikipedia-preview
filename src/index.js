@@ -34,20 +34,14 @@ function init( {
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( popup.loading ) {
 					if ( data ) {
+						popup.lang = lang
+						popup.title = title
 						if ( data.type === 'standard' ) {
 							popup.show(
 								renderPreview( lang, data, isTouch ),
 								target,
 								pointerPosition
 							)
-
-							popup.lang = lang
-							popup.title = title
-							const expanded = root.querySelector( '.wikipediapreview.expanded.mobile' )
-
-							if ( expanded && popup.expand ) {
-								popup.expand()
-							}
 						} else if ( data.type === 'disambiguation' ) {
 							popup.show(
 								renderDisambiguation( isTouch, lang, data.title, data.dir ),
