@@ -1,5 +1,6 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
+import { isOnline } from '../utils'
 
 // internal state of the slider component
 let current = 0,
@@ -99,13 +100,16 @@ const clientWidth = window.innerWidth,
 			errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
 
 		if ( refresh ) {
-			imageElement.src = `${imageElement.src}?timestamp=${Date.now()}`
+			container.removeChild( imageElement )
+			// eslint-disable-next-line no-use-before-define
+			showImageAndInfo( current )
 			loading.style.visibility = 'visible'
 			errorElement.style.visibility = 'hidden'
 		}
 
 		if ( imageElement.complete ) {
 			loading.style.visibility = 'hidden'
+			imageElement.style.visibility = 'visible'
 		} else {
 			const textElement = container.querySelector( `.${prefixClassname}-item-loading-text` ),
 				timeoutId = setTimeout( () => {
@@ -121,6 +125,13 @@ const clientWidth = window.innerWidth,
 			imageElement.addEventListener( 'error', () => {
 				const refreshElement = container.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
 				loading.style.visibility = 'hidden'
+				imageElement.style.visibility = 'hidden'
+
+				if ( !isOnline() ) {
+					const errorElementText = container.querySelector( `.${prefixClassname}-item-loading-error-text` )
+					errorElementText.innerText = msg( lang, 'gallery-loading-error-offline' )
+					errorElement.classList.add( 'offline' )
+				}
 				errorElement.style.visibility = 'visible'
 				clearTimeout( timeoutId )
 

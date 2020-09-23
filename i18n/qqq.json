@@ -4,6 +4,7 @@
 	},
 	"continue-reading": "The message shown in the footer part of the preview popup that allows user to continue reading the summary",
 	"gallery-loading-error": "Message shown with fullscreen gallery loading error",
+	"gallery-loading-error-offline": "Message shown with fullscreen gallery when offline",
 	"gallery-loading-error-refresh": "Message shown with fullscreen gallery loading error",
 	"gallery-loading-still": "Message shown 5 seconds after a fullscreen gallery image starts loading",
 	"gallery-unknown-author": "Message shown if image author is unknown",
