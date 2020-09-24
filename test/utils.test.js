@@ -45,7 +45,10 @@ describe( 'sanitizeHTML', () => {
 		{ html: 'Content without anything', expected: 'Content without anything' },
 		{ html: '<p>embedded script</p><script>js tag</script>', expected: '<p>embedded script</p>' },
 		{ html: '<script>first script</script><script>second</script>', expected: '' },
-		{ html: '<script>first script</script >', expected: '' }
+		{ html: '<script>first script</script >', expected: '' },
+		{ html: '<script>alert(1)</\bscript><script>alert(1)</\0script> <script>\nalert(1)\n</script>', expected: '' },
+		{ html: '<img src="" onload="">', expected: '<img src="">' }
+
 	]
 
 	const testFn = ( test ) => {

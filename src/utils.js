@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify'
+
 export const getWikipediaAttrFromUrl = url => {
 		const regexList = [
 			// https://zh.wikipedia.org/wiki/前岐镇"
@@ -58,7 +60,7 @@ export const getWikipediaAttrFromUrl = url => {
 	},
 
 	sanitizeHTML = html => {
-		return html.replace( /(<script>).*(<\/script\s*>)/g, '' )
+		return DOMPurify.sanitize( html )
 	},
 
 	getDeviceSize = () => {
