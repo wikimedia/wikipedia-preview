@@ -13,36 +13,29 @@
 
 	&-header {
 		display: flex;
-		height: 62px;
+		height: 72px;
 		line-height: 62px;
-		background-color: #eaf3ff;
 
 		&-image {
 			background-size: auto;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: #eaecf0;
-			height: 100%;
-			width: 65px;
-
-			&-wikipedia {
-				height: 100%;
-				width: 65px;
-				background-image: inline-svg( '../images/wikipedia-logo.svg' );
-				background-color: #fff;
-				background-size: auto;
-				background-position: center;
-				background-repeat: no-repeat;
-			}
+			height: 56px;
+			width: 56px;
+			border-radius: 4px;
+			border: solid 1px #eaecf0;
+			margin-left: 16px;
+			margin-top: 16px;
 		}
 
 		&-wordmark {
-			background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
-			background-repeat: no-repeat;
-			background-position: left;
-			height: 100%;
-			flex-grow: 1;
-			margin: 0 13px;
+			&:extend( .wikipediapreview-header-wordmark-base-template );
+
+			&-with-image {
+				&:extend( .wikipediapreview-header-wordmark-base-template );
+				margin-top: 8px;
+			}
 
 			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh-c;
 			each(@wordmark-languages, {
@@ -54,7 +47,7 @@
 			@wordmark-languages-no-margin: ar, bn, fa, he, ps, sd, uz, zh-c;
 			each(@wordmark-languages-no-margin, {
 				&-@{value} {
-					margin: 0 -13px;
+					margin: 8 -16px;
 				}
 			});
 		}
@@ -123,16 +116,6 @@
 	}
 
 	&-loading {
-		&-header-image {
-			background-image: inline-svg( '../images/loading-thumb.svg' );
-			background-size: auto;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-color: #eaecf0;
-			height: 100%;
-			width: 65px;
-		}
-
 		&-body {
 			height: 100%;
 			margin-top: 25px;
@@ -215,7 +198,6 @@
 		height: 285px;
 
 		&-body {
-			background-color: #f8f9fa;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
@@ -262,7 +244,6 @@
 		height: 285px;
 
 		&-body {
-			background-color: #f8f9fa;
 			height: 100%;
 			display: flex;
 			flex-direction: column;
@@ -338,8 +319,13 @@
 	}
 
 	&[ dir='rtl' ] {
-		.wikipediapreview-header-wordmark {
+		.wikipediapreview-header-wordmark,
+		.wikipediapreview-header-wordmark-with-image {
 			background-position: right;
+		}
+
+		.wikipediapreview-header-image {
+			margin-right: 16px;
 		}
 
 		.wikipediapreview-footer {
@@ -378,4 +364,13 @@
 			}
 		}
 	}
+}
+
+.wikipediapreview-header-wordmark-base-template {
+	background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 100%;
+	flex-grow: 1;
+	margin-left: 16px;
 }
