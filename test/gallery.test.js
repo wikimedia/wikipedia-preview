@@ -60,10 +60,10 @@ describe( 'showFullscreenGallery', () => {
 			images = fullscreenGallery.querySelectorAll( 'img' )
 
 		assert.ok( fullscreenGallery )
-		images.forEach( ( image, index) => {
+		images.forEach( ( image, index ) => {
 			assert.equal( image.src, mediaItems[ index ].src )
-		})
-		
+		} )
+
 	} )
 
 	it( 'closes full screen gallery when close button is clicked', () => {

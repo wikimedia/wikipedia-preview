@@ -1,5 +1,5 @@
 import { cachedRequest } from './cachedRequest'
-import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip, sanitizeHTML } from './utils'
+import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip, getDeviceSize, sanitizeHTML } from './utils'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
@@ -28,13 +28,11 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			const pageMedia = mediaListData.items.reduce( ( mediaArray, item ) => {
 				if ( item.showInGallery && item.type === 'image' ) {
 					const thumbnail = item && item.srcset && `https:${item.srcset[ 0 ].src}`,
-						source = thumbnail.slice( 0, thumbnail.lastIndexOf( '/' ) ).replace( '/thumb', '' ),
 						media = {
 							caption: item.caption && item.caption.text.trim(),
-							src: source,
 							thumb: thumbnail,
 							title: item.title,
-							fromCommon: source.indexOf( '/commons' ) !== -1
+							fromCommon: thumbnail.indexOf( '/commons' ) !== -1
 						}
 
 					return mediaArray.concat( media )
@@ -54,6 +52,8 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 				iiextmetadatafilter: 'License|LicenseShortName|ImageDescription|Artist',
 				iiextmetadatalanguage: lang,
 				iiextmetadatamultilang: 1,
+				iiurlwidth: getDeviceSize().width,
+				iiurlheight: getDeviceSize().height,
 				iiprop: 'url|extmetadata',
 				titles: title
 			},
@@ -74,13 +74,15 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 					( typeof ImageDescription.value === 'string' && ImageDescription.value ) ||
 					( ImageDescription.value[ lang ] ||
 						ImageDescription.value[ Object.keys( ImageDescription.value )[ 0 ] ] )
-				)
+				),
+				imageUrl = imageInfo[ 0 ].thumburl
 
 			return {
 				author,
 				description,
 				license: LicenseShortName && LicenseShortName.value,
-				filePage: convertUrlToMobile( imageInfo[ 0 ].descriptionshorturl )
+				filePage: convertUrlToMobile( imageInfo[ 0 ].descriptionshorturl ),
+				bestFitImageUrl: imageUrl
 			}
 		}, callback )
 	}
