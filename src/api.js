@@ -10,6 +10,7 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			const allowedTypes = [ 'standard', 'disambiguation' ]
 			if ( allowedTypes.indexOf( data.type ) !== -1 ) {
 				return {
+					title: data.titles.canonical,
 					extractHtml: data.extract_html,
 					imgUrl: data.thumbnail ? data.thumbnail.source : null,
 					dir: data.dir,

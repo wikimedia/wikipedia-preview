@@ -13,12 +13,14 @@ describe( 'requestPagePreview', () => {
 		const apiOutput = {
 			type: 'standard',
 			dir: 'ltr',
+			titles: { canonical: 'Dog' },
 			/* eslint-disable camelcase */
 			extract_html: '<p>A good boy</p>',
 			/* eslint-enable camelcase */
 			thumbnail: { source: 'image-url' }
 		}
 		const transformedOutput = {
+			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
 			imgUrl: 'image-url',
 			dir: 'ltr',
@@ -33,12 +35,13 @@ describe( 'requestPagePreview', () => {
 		const apiOutput = {
 			type: 'standard',
 			dir: 'rtl',
+			titles: { canonical: 'Dog' },
 			/* eslint-disable camelcase */
 			extract_html: '<p>A good boy</p>',
-			content_urls: { desktop: { page: 'page-url' } }
 			/* eslint-enable camelcase */
 		}
 		const transformedOutput = {
+			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
 			imgUrl: null,
 			dir: 'rtl',
