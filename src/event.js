@@ -76,7 +76,7 @@ export const customEvents = popup => {
 				}
 			}
 
-			if ( lang && title ) {
+			if ( !popup.loading && lang && title ) {
 				requestPageMedia( lang, title, mediaData => {
 					const galleryContainer = popup.element.component.wikipediapreviewGallery
 					if ( mediaData && mediaData.length > 0 ) {

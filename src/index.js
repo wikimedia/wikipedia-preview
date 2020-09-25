@@ -33,6 +33,7 @@ function init( {
 
 			requestPagePreview( lang, title, isTouch, data => {
 				if ( popup.loading ) {
+					popup.loading = false
 					if ( data ) {
 						popup.lang = lang
 						popup.title = title
