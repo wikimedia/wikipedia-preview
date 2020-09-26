@@ -55,9 +55,9 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 
 	renderError = ( isTouch, lang, title, dir ) => {
 		return `
-			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-error">
+					<div class="wikipediapreview-body">
 						<div class="wikipediapreview-error-body">
 							<div class="wikipediapreview-error-body-message">
 								<div class="wikipediapreview-error-body-icon"></div>
@@ -74,9 +74,9 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 
 	renderDisambiguation = ( isTouch, lang, title, dir ) => {
 		return `
-			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-disambiguation">
+					<div class="wikipediapreview-body">
 						<div class="wikipediapreview-disambiguation-body">
 							<div class="wikipediapreview-disambiguation-body-message">
 								<div class="wikipediapreview-disambiguation-body-icon"></div>
@@ -93,9 +93,9 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 
 	renderOffline = ( isTouch, lang, title, dir ) => {
 		return `
-			<div class="wikipediapreview ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
+			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-offline">
+					<div class="wikipediapreview-body">
 						<div class="wikipediapreview-offline-body">
 							<div class="wikipediapreview-offline-body-message">
 								<div class="wikipediapreview-offline-body-icon"></div>
