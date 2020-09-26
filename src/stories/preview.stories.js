@@ -1,4 +1,4 @@
-import { renderPreview, renderLoading, renderError, renderDisambiguation } from '../preview'
+import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from '../preview'
 import { getGalleryRow } from '../gallery'
 
 export default {
@@ -79,4 +79,8 @@ export const Error = ( { touch, lang, title, dir } ) => {
 
 export const Disambiguation = ( { touch, lang, title, dir } ) => {
 	return renderDisambiguation( touch, lang, title, dir )
+}
+
+export const Offline = ( { touch, lang, dir } ) => {
+	return renderOffline( touch, lang, dir )
 }
