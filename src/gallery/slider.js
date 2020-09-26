@@ -102,7 +102,7 @@ const clientWidth = window.innerWidth,
 		if ( refresh ) {
 			container.removeChild( imageElement )
 			// eslint-disable-next-line no-use-before-define
-			showImageAndInfo( current )
+			showImageAndInfo( current, true )
 			loading.style.visibility = 'visible'
 			errorElement.style.visibility = 'hidden'
 		}
@@ -142,7 +142,7 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
-	showImageAndInfo = ( index ) => {
+	showImageAndInfo = ( index, refreshImage = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			item = items[ index ]
@@ -155,7 +155,11 @@ const clientWidth = window.innerWidth,
 				mediaInfo => {
 					const imageElement = item.querySelector( 'img' )
 					if ( !imageElement ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						if ( !refreshImage ) {
+							item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						} else {
+							item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/>` )
+						}
 						bindImageEvent( item )
 					}
 
