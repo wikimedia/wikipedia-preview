@@ -65,7 +65,7 @@ function init( {
 							)
 						} else {
 							popup.show(
-								renderOffline( isTouch, lang, title, dir ),
+								renderOffline( isTouch, lang, dir ),
 								target,
 								pointerPosition
 							)
