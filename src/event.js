@@ -76,11 +76,13 @@ export const customEvents = popup => {
 				}
 			}
 
-			if ( lang && title ) {
+			if ( !popup.loading && lang && title ) {
 				requestPageMedia( lang, title, mediaData => {
+					const galleryContainer = popup.element.component.wikipediapreviewGallery
 					if ( mediaData && mediaData.length > 0 ) {
-						const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
 						galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
+					} else {
+						popup.element.component.body.removeChild( galleryContainer )
 					}
 				} )
 			}
@@ -163,6 +165,7 @@ export const customEvents = popup => {
 
 		onShow = element => {
 			element.component = {
+				body: element.querySelector( '.wikipediapreview-body' ),
 				wikipediapreview: element.querySelector( '.wikipediapreview' ),
 				wikipediapreviewGallery: element.querySelector( '.wikipediapreview-gallery' ),
 				closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
