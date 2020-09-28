@@ -67,7 +67,6 @@
 		background-color: #fff;
 		max-height: 248px;
 		overflow: hidden;
-		padding: 10px 20px;
 
 		&:after {
 			content: ' ';
@@ -86,10 +85,10 @@
 		p {
 			font-family: 'Lato', sans-serif;
 			margin: 0;
-			padding: 0;
 			color: #202122;
 			line-height: 1.6;
 			font-size: 18px;
+			padding: 10px 20px;
 		}
 	}
 
@@ -117,6 +116,8 @@
 	}
 
 	&-loading {
+		padding: 10px 20px;
+
 		&-body {
 			height: 100%;
 			margin-top: 25px;
@@ -338,6 +339,8 @@
 		.wikipediapreview-header-wordmark,
 		.wikipediapreview-header-wordmark-with-image {
 			background-position: right;
+			margin-right: 16px;
+			margin-left: 0;
 		}
 
 		.wikipediapreview-header-image {
@@ -371,6 +374,11 @@
 				margin-left: 0;
 				margin-right: 55px;
 			}
+		}
+
+		.wikipediapreview-offline-body-icon {
+			margin-right: 0;
+			margin-left: 12px;
 		}
 
 		.wikipediapreview-disambiguation-body {
