@@ -65,4 +65,10 @@ export const getWikipediaAttrFromUrl = url => {
 
 	getDeviceSize = () => {
 		return { height: window.innerHeight, width: window.innerWidth }
+	},
+
+	getAnalyticsQueryParam = () => 'wprov=wppw1',
+
+	buildWikipediaUrl = ( lang, title, touch ) => {
+		return `https://${lang}${ touch ? '.m' : '' }.wikipedia.org/wiki/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	}
