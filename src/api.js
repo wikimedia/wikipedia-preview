@@ -1,7 +1,7 @@
 import { cachedRequest } from './cachedRequest'
 import {
 	buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile,
-	strip, getDeviceSize, getAnalyticsQueryParam
+	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam
 } from './utils'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
@@ -11,7 +11,7 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 			if ( allowedTypes.indexOf( data.type ) !== -1 ) {
 				return {
 					title: data.titles.canonical,
-					extractHtml: data.extract_html,
+					extractHtml: sanitizeHTML( data.extract_html ),
 					imgUrl: data.thumbnail ? data.thumbnail.source : null,
 					dir: data.dir,
 					type: data.type
