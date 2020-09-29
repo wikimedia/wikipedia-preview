@@ -1,6 +1,6 @@
 'use strict'
 const assert = require( 'assert' )
-const { getWikipediaAttrFromUrl } = require( '../src/utils' )
+const { getWikipediaAttrFromUrl, sanitizeHTML } = require( '../src/utils' )
 
 describe( 'getWikipediaAttrFromUrl', () => {
 
@@ -29,6 +29,31 @@ describe( 'getWikipediaAttrFromUrl', () => {
 	const testFn = ( test ) => {
 		it( `checks ${test.url}`, () => {
 			const result = getWikipediaAttrFromUrl( test.url )
+			assert.deepStrictEqual( result, test.expected )
+		} )
+	}
+
+	// eslint-disable-next-line mocha/no-setup-in-describe
+	tests.forEach( testFn )
+} )
+
+describe( 'sanitizeHTML', () => {
+
+	const tests = [
+		{ html: '<b>This is a header</b>', expected: '<b>This is a header</b>' },
+		{ html: '<p>This is a content</p>', expected: '<p>This is a content</p>' },
+		{ html: 'Content without anything', expected: 'Content without anything' },
+		{ html: '<p>embedded script</p><script>js tag</script>', expected: '<p>embedded script</p>' },
+		{ html: '<script>first script</script><script>second</script>', expected: '' },
+		{ html: '<script>first script</script >', expected: '' },
+		{ html: '<script>alert(1)</\bscript><script>alert(1)</\0script> <script>\nalert(1)\n</script>', expected: '' },
+		{ html: '<img src="" onload="">', expected: '<img src="">' }
+
+	]
+
+	const testFn = ( test ) => {
+		it( `checks ${test.html}`, () => {
+			const result = sanitizeHTML( test.html )
 			assert.deepStrictEqual( result, test.expected )
 		} )
 	}

@@ -5,6 +5,8 @@
  * @license  MIT
  */
 
+/*! @license DOMPurify | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.0.8/LICENSE */
+
 //! stable.js 0.1.8, https://github.com/Two-Screen/stable
 
 //! © 2018 Angry Bytes and contributors. MIT licensed.
