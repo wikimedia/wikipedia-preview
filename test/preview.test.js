@@ -22,7 +22,7 @@ describe( 'renderPreview', () => {
 			assert( output.includes( 'https://en.wikipedia.org/cat.png' ) ) )
 
 		it( 'contains a link to the article', () =>
-			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat"' ) ) )
+			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw1"' ) ) )
 	} )
 
 	describe( 'without image (in french)', () => {
