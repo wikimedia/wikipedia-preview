@@ -54,26 +54,33 @@ export const customEvents = popup => {
 			}
 		},
 
-		onExpand = () => {
+		setPreviewMaxHeight = ( max ) => {
+			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' )
 
-			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' ),
-				maxHeight = 496,
+			if ( !bodyElement ) {
+				return
+			}
+
+			if ( popup.element.style[ 2 ] === 'bottom' || popup.element.style.bottom ) {
+				let currentTop = popup.element.getBoundingClientRect().top,
+					originalHeight = parseInt(
+						window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
+					)
+				bodyElement.style.maxHeight = Math.min( max, originalHeight + currentTop ) + 'px'
+			} else {
+				// expand down
+				bodyElement.style.maxHeight = max + 'px'
+			}
+		},
+
+		onExpand = () => {
+			const maxHeight = 496,
 				{ lang, title } = popup
 
 			popup.element.component.wikipediapreview.classList.add( 'expanded' )
 
 			if ( !isTouch ) {
-				// expand up
-				if ( popup.element.style[ 2 ] === 'bottom' ) {
-					let currentTop = popup.element.getBoundingClientRect().top,
-						originalHeight = parseInt(
-							window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
-						)
-					bodyElement.style.maxHeight = Math.min( maxHeight, originalHeight + currentTop ) + 'px'
-				} else {
-					// expand down
-					bodyElement.style.maxHeight = maxHeight + 'px'
-				}
+				setPreviewMaxHeight( maxHeight )
 			}
 
 			if ( !popup.loading && lang && title ) {
@@ -177,6 +184,10 @@ export const customEvents = popup => {
 			if ( element.component.content &&
 				element.component.content.getBoundingClientRect().height < 248 ) {
 				onExpand( element )
+			} else {
+				if ( !isTouch ) {
+					setPreviewMaxHeight( 248 )
+				}
 			}
 
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
