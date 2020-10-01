@@ -1,17 +1,17 @@
 import { cachedRequest } from './cachedRequest'
-import { buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile, strip, getDeviceSize } from './utils'
+import {
+	buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile,
+	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam
+} from './utils'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
-		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}`
+		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 		request( url, data => {
 			const allowedTypes = [ 'standard', 'disambiguation' ]
 			if ( allowedTypes.indexOf( data.type ) !== -1 ) {
 				return {
-					title: data.displaytitle,
-					extractHtml: data.extract_html,
-					pageUrl: isTouch ?
-						data.content_urls.mobile.page :
-						data.content_urls.desktop.page,
+					title: data.titles.canonical,
+					extractHtml: sanitizeHTML( data.extract_html ),
 					imgUrl: data.thumbnail ? data.thumbnail.source : null,
 					dir: data.dir,
 					type: data.type

@@ -54,33 +54,42 @@ export const customEvents = popup => {
 			}
 		},
 
-		onExpand = () => {
+		setPreviewMaxHeight = ( max ) => {
+			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' )
 
-			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' ),
-				maxHeight = 496,
+			if ( !bodyElement ) {
+				return
+			}
+
+			if ( popup.element.style[ 2 ] === 'bottom' || popup.element.style.bottom ) {
+				let currentTop = popup.element.getBoundingClientRect().top,
+					originalHeight = parseInt(
+						window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
+					)
+				bodyElement.style.maxHeight = Math.min( max, originalHeight + currentTop ) + 'px'
+			} else {
+				// expand down
+				bodyElement.style.maxHeight = max + 'px'
+			}
+		},
+
+		onExpand = () => {
+			const maxHeight = 496,
 				{ lang, title } = popup
 
 			popup.element.component.wikipediapreview.classList.add( 'expanded' )
 
 			if ( !isTouch ) {
-				// expand up
-				if ( popup.element.style[ 2 ] === 'bottom' ) {
-					let currentTop = popup.element.getBoundingClientRect().top,
-						originalHeight = parseInt(
-							window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
-						)
-					bodyElement.style.maxHeight = Math.min( maxHeight, originalHeight + currentTop ) + 'px'
-				} else {
-					// expand down
-					bodyElement.style.maxHeight = maxHeight + 'px'
-				}
+				setPreviewMaxHeight( maxHeight )
 			}
 
-			if ( lang && title ) {
+			if ( !popup.loading && lang && title ) {
 				requestPageMedia( lang, title, mediaData => {
+					const galleryContainer = popup.element.component.wikipediapreviewGallery
 					if ( mediaData && mediaData.length > 0 ) {
-						const galleryContainer = popup.element.querySelector( '.wikipediapreview-gallery' )
 						galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
+					} else {
+						popup.element.component.body.removeChild( galleryContainer )
 					}
 				} )
 			}
@@ -163,6 +172,7 @@ export const customEvents = popup => {
 
 		onShow = element => {
 			element.component = {
+				body: element.querySelector( '.wikipediapreview-body' ),
 				wikipediapreview: element.querySelector( '.wikipediapreview' ),
 				wikipediapreviewGallery: element.querySelector( '.wikipediapreview-gallery' ),
 				closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
@@ -174,6 +184,10 @@ export const customEvents = popup => {
 			if ( element.component.content &&
 				element.component.content.getBoundingClientRect().height < 248 ) {
 				onExpand( element )
+			} else {
+				if ( !isTouch ) {
+					setPreviewMaxHeight( 248 )
+				}
 			}
 
 			addEventListener( element.component.closeBtn, 'click', popup.hide )

@@ -5,10 +5,16 @@
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	border-radius: 8px 8px 0 0;
 	background-color: #fff;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 
 	* {
 		padding: 0;
 		box-sizing: border-box;
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 
 	&-header {
@@ -208,11 +214,7 @@
 				margin-left: 23px;
 				margin-right: 23px;
 				font-size: 16px;
-				font-weight: normal;
-				font-stretch: normal;
-				font-style: normal;
 				line-height: 1.4;
-				letter-spacing: normal;
 				color: #000;
 			}
 
@@ -230,10 +232,6 @@
 				margin-top: 12px;
 				font-size: 16px;
 				font-weight: bold;
-				font-stretch: normal;
-				font-style: normal;
-				line-height: normal;
-				letter-spacing: normal;
 				color: #36c;
 				cursor: pointer;
 			}
@@ -254,11 +252,7 @@
 				margin-left: 23px;
 				margin-right: 23px;
 				font-size: 16px;
-				font-weight: normal;
-				font-stretch: normal;
-				font-style: normal;
 				line-height: 1.4;
-				letter-spacing: normal;
 				color: #000;
 			}
 
@@ -275,10 +269,6 @@
 				margin: 12px 55px;
 				font-size: 16px;
 				font-weight: bold;
-				font-stretch: normal;
-				font-style: normal;
-				line-height: normal;
-				letter-spacing: normal;
 				color: #36c;
 				cursor: pointer;
 			}
@@ -326,6 +316,7 @@
 
 		.wikipediapreview-header-image {
 			margin-right: 16px;
+			margin-left: 0;
 		}
 
 		.wikipediapreview-footer {
@@ -373,4 +364,5 @@
 	height: 100%;
 	flex-grow: 1;
 	margin-left: 16px;
+	margin-right: 16px;
 }

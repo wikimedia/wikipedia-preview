@@ -1,3 +1,5 @@
+import DOMPurify from 'dompurify'
+
 export const getWikipediaAttrFromUrl = url => {
 		const regexList = [
 			// https://zh.wikipedia.org/wiki/前岐镇"
@@ -57,6 +59,16 @@ export const getWikipediaAttrFromUrl = url => {
 		return doc.body.textContent || ''
 	},
 
+	sanitizeHTML = html => {
+		return DOMPurify.sanitize( html )
+	},
+
 	getDeviceSize = () => {
 		return { height: window.innerHeight, width: window.innerWidth }
+	},
+
+	getAnalyticsQueryParam = () => 'wprov=wppw1',
+
+	buildWikipediaUrl = ( lang, title, touch ) => {
+		return `https://${lang}${ touch ? '.m' : '' }.wikipedia.org/wiki/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	}
