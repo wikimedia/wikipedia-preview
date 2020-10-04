@@ -13,17 +13,15 @@ describe( 'requestPagePreview', () => {
 		const apiOutput = {
 			type: 'standard',
 			dir: 'ltr',
-			displaytitle: 'Dog',
+			titles: { canonical: 'Dog' },
 			/* eslint-disable camelcase */
 			extract_html: '<p>A good boy</p>',
-			content_urls: { desktop: { page: 'page-url' } },
 			/* eslint-enable camelcase */
 			thumbnail: { source: 'image-url' }
 		}
 		const transformedOutput = {
 			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
-			pageUrl: 'page-url',
 			imgUrl: 'image-url',
 			dir: 'ltr',
 			type: 'standard'
@@ -37,16 +35,14 @@ describe( 'requestPagePreview', () => {
 		const apiOutput = {
 			type: 'standard',
 			dir: 'rtl',
-			displaytitle: 'Dog',
+			titles: { canonical: 'Dog' },
 			/* eslint-disable camelcase */
 			extract_html: '<p>A good boy</p>',
-			content_urls: { desktop: { page: 'page-url' } }
 			/* eslint-enable camelcase */
 		}
 		const transformedOutput = {
 			title: 'Dog',
 			extractHtml: '<p>A good boy</p>',
-			pageUrl: 'page-url',
 			imgUrl: null,
 			dir: 'rtl',
 			type: 'standard'
@@ -64,7 +60,7 @@ describe( 'requestPagePreview', () => {
 
 	it( 'encodes the page title in the URL', () => {
 		requestPagePreview( 'fr', "L'Époque des Châteaux", false, () => {}, ( url ) => {
-			assert( url.endsWith( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
+			assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
 		} )
 	} )
 } )

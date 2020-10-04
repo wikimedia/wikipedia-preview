@@ -1,4 +1,5 @@
 import { msg } from './i18n'
+import { buildWikipediaUrl } from './utils'
 import '../style/preview.less'
 
 const getPreviewHeader = ( lang, imageUrl = '' ) =>{
@@ -24,7 +25,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 				</div>
 				<div class="wikipediapreview-footer">
 					<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${msg( lang, 'continue-reading' )}</span>
-					<a href="${data.pageUrl}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${msg( lang, 'read-more' )}</a>
+					<a href="${buildWikipediaUrl( lang, data.title, isTouch )}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${msg( lang, 'read-more' )}</a>
 				</div>
 			</div>
 	`.trim()
@@ -64,7 +65,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 								${msg( lang, 'preview-loading-error' )}
 							</div>
 							<div class="wikipediapreview-error-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki' )}</a>
+								<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>
 							</div>
 						</div>
 					</div>
@@ -83,7 +84,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 								<span>${msg( lang, 'preview-disambiguation-message', title )}</span>
 							</div>
 							<div class="wikipediapreview-disambiguation-body-readon">
-								<a href=${`https://${lang}.m.wikipedia.org/wiki/${encodeURIComponent( title )}`} target="_blank">${msg( lang, 'read-on-wiki' )}</a>
+								<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>
 							</div>
 						</div>
 					</div>

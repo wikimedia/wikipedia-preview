@@ -43,6 +43,7 @@
 	height: 100%;
 	left: 0;
 	top: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 
 	&-close {
 		position: absolute;
@@ -69,10 +70,6 @@
 		display: -ms-inline-flex;
 		transition: margin-left 0.25s ease-in-out;
 
-		&::-webkit-scrollbar {
-			display: none;
-		}
-
 		&-item {
 			width: calc( 100vw );
 			height: calc( 100% );
@@ -95,11 +92,7 @@
 				bottom: 35px;
 				width: calc( 100vw + 1px );
 				font-size: 16px;
-				font-weight: normal;
-				font-stretch: normal;
-				font-style: normal;
 				line-height: 1.56;
-				letter-spacing: normal;
 				color: #f8f9fa;
 				overflow: scroll;
 				height: 80px;
@@ -107,10 +100,6 @@
 				&-text {
 					padding-left: 13px;
 					padding-right: 13px;
-				}
-
-				&::-webkit-scrollbar {
-					display: none;
 				}
 			}
 
@@ -120,10 +109,6 @@
 				bottom: 0;
 				width: 100%;
 				font-size: 16px;
-				font-weight: normal;
-				font-stretch: normal;
-				font-style: normal;
-				letter-spacing: normal;
 				color: #f8f9fa;
 				border: #f8f9fa;
 				height: 44px;
@@ -167,7 +152,6 @@
 						width: 220px;
 						height: 14px;
 						margin-right: 4px;
-						font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 						font-size: 12px;
 						color: #fff;
 						overflow: hidden;
@@ -208,11 +192,6 @@
 					padding-top: 10px;
 					text-align: center;
 					font-size: 12px;
-					font-weight: normal;
-					font-stretch: normal;
-					font-style: normal;
-					line-height: normal;
-					letter-spacing: normal;
 					color: #f8f9fa;
 				}
 
@@ -228,11 +207,6 @@
 						padding-bottom: 10px;
 						text-align: center;
 						font-size: 12px;
-						font-weight: normal;
-						font-stretch: normal;
-						font-style: normal;
-						line-height: normal;
-						letter-spacing: normal;
 						color: #f8f9fa;
 					}
 
@@ -240,10 +214,6 @@
 						text-align: center;
 						font-size: 16px;
 						font-weight: bold;
-						font-stretch: normal;
-						font-style: normal;
-						line-height: normal;
-						letter-spacing: normal;
 						color: #36c;
 					}
 				}
@@ -370,13 +340,7 @@
 			left: -8px;
 			width: 292px;
 			text-align: center;
-			font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 			font-size: 12px;
-			font-weight: normal;
-			font-stretch: normal;
-			font-style: normal;
-			line-height: normal;
-			letter-spacing: normal;
 			color: #f8f9fa;
 		}
 
@@ -394,13 +358,8 @@
 				position: absolute;
 				bottom: -20px;
 				left: 100px;
-				font-family: 'Lato', 'Linux Libertine', 'Georgia', 'Times', serif;
 				font-size: 16px;
 				font-weight: bold;
-				font-stretch: normal;
-				font-style: normal;
-				line-height: normal;
-				letter-spacing: normal;
 				color: #36c;
 			}
 		}
@@ -496,6 +455,11 @@
 						left: 16px;
 						right: unset;
 					}
+				}
+
+				&-item-attribution {
+					padding-left: 0;
+					padding-right: 20px;
 				}
 			}
 
