@@ -14,7 +14,7 @@ export default {
 			defaultValue: 'en',
 			control: {
 				type: 'select',
-				options: [ 'en', 'fr', 'hi', 'ks', 'he' ]
+				options: [ 'en', 'ar', 'atj', 'bn', 'ca', 'cs', 'cy', 'et', 'fa', 'fr', 'he', 'hi', 'ja', 'la', 'ps', 'ru', 'sd', 'sr', 'szl', 'tr', 'ur', 'uz', 'zh-c' ]
 			}
 		},
 		dir: {

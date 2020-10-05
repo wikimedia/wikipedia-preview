@@ -3,7 +3,7 @@ const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const path = require('path');
 const config = {
@@ -34,7 +34,11 @@ const config = {
         filename: 'wikipedia-preview.css'
       }),
       new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js']),
-      new CompressionPlugin()
+      new CompressionPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+        generateStatsFile: true
+      })
     ],
   module: {
     rules: [
