@@ -100,15 +100,25 @@ const clientWidth = window.innerWidth,
 			errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
 
 		if ( refresh ) {
-			container.removeChild( imageElement )
+			const slider = parentContainer.querySelector( `.${prefixClassname}` ),
+				items = slider.querySelectorAll( `.${prefixClassname}-item` )
+
+			items.forEach( item => {
+				const image = item.querySelector( 'img' )
+				if ( image ) {
+					item.removeChild( image )
+				}
+			} )
+
 			// eslint-disable-next-line no-use-before-define
-			showImageAndInfo( current, true )
+			renderNext( 0, true )
 			loading.style.visibility = 'visible'
 			errorElement.style.visibility = 'hidden'
 		}
 
 		if ( imageElement.complete ) {
 			loading.style.visibility = 'hidden'
+			errorElement.style.visibility = 'hidden'
 			imageElement.style.visibility = 'visible'
 		} else {
 			const textElement = container.querySelector( `.${prefixClassname}-item-loading-text` ),
@@ -118,6 +128,7 @@ const clientWidth = window.innerWidth,
 
 			imageElement.addEventListener( 'load', () => {
 				loading.style.visibility = 'hidden'
+				errorElement.style.visibility = 'hidden'
 				textElement.style.visibility = 'hidden'
 				clearTimeout( timeoutId )
 			} )
@@ -171,7 +182,7 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
-	renderNext = ( offset = 1 ) => {
+	renderNext = ( offset = 1, refresh = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = slider.querySelector( '.next' ),
@@ -185,9 +196,9 @@ const clientWidth = window.innerWidth,
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
 			// render image attribution element - current, next, previous
-			showImageAndInfo( current )
-			showImageAndInfo( current + 1 )
-			showImageAndInfo( current - 1 )
+			showImageAndInfo( current, refresh )
+			showImageAndInfo( current + 1, refresh )
+			showImageAndInfo( current - 1, refresh )
 		}
 
 		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
