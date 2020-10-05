@@ -13,7 +13,8 @@
     "build": "npm run build:dev && npm run build:prod",
     "dev": "webpack-dev-server --mode development --host=0.0.0.0 --disable-host-check",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
@@ -49,6 +50,7 @@
     "stylelint-webpack-plugin": "^2.1.0",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },

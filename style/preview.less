@@ -36,24 +36,22 @@
 		}
 
 		&-wordmark {
-			&:extend( .wikipediapreview-header-wordmark-base-template );
+			background-image: url( https://wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg );
+			background-repeat: no-repeat;
+			background-position: left;
+			height: 100%;
+			flex-grow: 1;
+			margin-left: 16px;
+			margin-right: 16px;
 
 			&-with-image {
-				&:extend( .wikipediapreview-header-wordmark-base-template );
 				margin-top: 8px;
 			}
 
 			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh-c;
 			each(@wordmark-languages, {
 				&-@{value} {
-					background-image: inline-svg( '../images/wikipedia-wordmark-@{value}.svg' );
-				}
-			});
-
-			@wordmark-languages-no-margin: ar, bn, fa, he, ps, sd, uz, zh-c;
-			each(@wordmark-languages-no-margin, {
-				&-@{value} {
-					margin: 8 -16px;
+					background-image: url( 'https://wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-@{value}.svg' );
 				}
 			});
 		}
@@ -355,14 +353,4 @@
 			}
 		}
 	}
-}
-
-.wikipediapreview-header-wordmark-base-template {
-	background-image: inline-svg( '../images/wikipedia-wordmark-en.svg' );
-	background-repeat: no-repeat;
-	background-position: left;
-	height: 100%;
-	flex-grow: 1;
-	margin-left: 16px;
-	margin-right: 16px;
 }
