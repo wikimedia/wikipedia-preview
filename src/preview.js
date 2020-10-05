@@ -3,11 +3,10 @@ import { buildWikipediaUrl } from './utils'
 import '../style/preview.less'
 
 const getPreviewHeader = ( lang, imageUrl = '' ) =>{
-		lang = 'en' // temporarily disabling wordmark localization: https://phabricator.wikimedia.org/T260408#6484684
 		return `
 			<div class="wikipediapreview-header">
 				${imageUrl ? `<div class="wikipediapreview-header-image" style="${`background-image:url('${imageUrl}');background-size:cover;`}"></div>` : ''}
-				<div class="wikipediapreview-header-wordmark${imageUrl ? '-with-image' : ''} wikipediapreview-header-wordmark-${lang}"></div>
+				<div class="wikipediapreview-header-wordmark${imageUrl ? ' wikipediapreview-header-wordmark-with-image' : ''} wikipediapreview-header-wordmark-${lang}"></div>
 				<div class="wikipediapreview-header-closebtn"></div>
 			</div>
 	`.trim()
