@@ -16,16 +16,16 @@ function init( {
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
-		lastPage = {},
+		last = {},
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
 			}
-			const { target } = e,
-				title = refresh ? lastPage.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
-				lang = refresh ? lastPage.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
-				pointerPosition = { x: e.clientX, y: e.clientY },
+			const { target } = refresh ? last : e,
+				title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
+				lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
+				pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY },
 				dir = getDir( lang )
 
 			popup.loading = true
@@ -65,8 +65,10 @@ function init( {
 								pointerPosition
 							)
 							const again = root.querySelector( '.wikipediapreview-offline-body-retry' )
-							lastPage.lang = lang
-							lastPage.title = title
+							last.lang = lang
+							last.title = title
+							last.pointerPosition = pointerPosition
+							last.target = target
 							again.addEventListener( 'click', ( e ) => {
 								showPopup( e, true )
 							} )
