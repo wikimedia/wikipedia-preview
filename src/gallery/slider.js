@@ -53,10 +53,14 @@ const clientWidth = window.innerWidth,
 
 	renderImageInfo = ( mediaInfo, image, lang ) => {
 		const getImageDescription = () => {
-				if ( image.caption ) {
-					return image.caption
-				} else if ( mediaInfo.description ) {
+				// description list order
+				// (1) commons caption - Not found
+				// (2) commons description
+				// (3) media-list caption
+				if ( mediaInfo.description ) {
 					return mediaInfo.description
+				} else if ( image.caption ) {
+					return image.caption
 				} else {
 					return ''
 				}
