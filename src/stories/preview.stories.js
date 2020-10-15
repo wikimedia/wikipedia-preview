@@ -1,4 +1,4 @@
-import { renderPreview, renderLoading, renderError, renderDisambiguation } from '../preview'
+import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from '../preview'
 import { getGalleryRow } from '../gallery'
 
 export default {
@@ -37,7 +37,7 @@ export default {
 		},
 		extractHtml: {
 			name: 'Preview HTML',
-			defaultValue: '<strong>Lorem ipsum dolor sit amet,</strong> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/><br/>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+			defaultValue: '<p><strong>Lorem ipsum dolor sit amet,</strong> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br/><br/>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
 			control: 'text'
 		},
 		imgUrl: {
@@ -88,4 +88,8 @@ export const Error = ( { touch, lang, title, dir } ) => {
 
 export const Disambiguation = ( { touch, lang, title, dir } ) => {
 	return renderDisambiguation( touch, lang, title, dir )
+}
+
+export const Offline = ( { touch, lang, dir } ) => {
+	return renderOffline( touch, lang, dir )
 }

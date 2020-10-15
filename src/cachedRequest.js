@@ -20,6 +20,8 @@ const request = ( url, callback ) => {
 		r( url, data => {
 			if ( data ) {
 				callback( dataCache[ url ] = transformFn( data ) )
+			} else {
+				callback( false )
 			}
 		} )
 	}

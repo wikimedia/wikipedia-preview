@@ -14,6 +14,8 @@
 		display: -ms-flex;
 		height: 80px;
 		margin-top: 5px;
+		margin-right: 20px;
+		margin-left: 20px;
 
 		&-row {
 			display: flex;
@@ -214,6 +216,10 @@
 						font-weight: bold;
 						color: #36c;
 					}
+				}
+
+				&-error.offline {
+					background-image: inline-svg( '../images/offline-icon-white.svg' );
 				}
 
 				&-spinner {

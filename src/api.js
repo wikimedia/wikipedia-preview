@@ -8,7 +8,7 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 		const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 		request( url, data => {
 			const allowedTypes = [ 'standard', 'disambiguation' ]
-			if ( allowedTypes.indexOf( data.type ) !== -1 ) {
+			if ( data && allowedTypes.indexOf( data.type ) !== -1 ) {
 				return {
 					title: data.titles.canonical,
 					extractHtml: sanitizeHTML( data.extract_html ),

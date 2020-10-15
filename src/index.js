@@ -2,8 +2,8 @@ import { requestPagePreview } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading, renderError, renderDisambiguation } from './preview'
-import { getWikipediaAttrFromUrl, isTouch, getDir } from './utils'
+import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
+import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
 function init( {
 	root = document,
@@ -16,15 +16,16 @@ function init( {
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
-		showPopup = e => {
+		last = {},
+		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
 			}
-			const { target } = e,
-				title = target.getAttribute( 'data-wp-title' ) || target.textContent,
-				lang = target.getAttribute( 'data-wp-lang' ) || globalLang,
-				pointerPosition = { x: e.clientX, y: e.clientY },
+			const { target } = refresh ? last : e,
+				title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
+				lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
+				pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY },
 				dir = getDir( lang )
 
 			popup.loading = true
@@ -51,11 +52,27 @@ function init( {
 							)
 						}
 					} else {
-						popup.show(
-							renderError( isTouch, lang, title, dir ),
-							target,
-							pointerPosition
-						)
+						if ( isOnline() ) {
+							popup.show(
+								renderError( isTouch, lang, title, dir ),
+								target,
+								pointerPosition
+							)
+						} else {
+							popup.show(
+								renderOffline( isTouch, lang, dir ),
+								target,
+								pointerPosition
+							)
+							const again = root.querySelector( '.wikipediapreview-offline-body-retry' )
+							last.lang = lang
+							last.title = title
+							last.pointerPosition = pointerPosition
+							last.target = target
+							again.addEventListener( 'click', ( e ) => {
+								showPopup( e, true )
+							} )
+						}
 					}
 				}
 			} )
