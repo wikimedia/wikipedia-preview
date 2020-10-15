@@ -13,3 +13,8 @@
   vertical-align: middle;
   margin-left: 1px;
 }
+
+[dir='rtl'] .wmf-wp-with-preview::after {
+    margin-left: unset;
+    margin-right: 1px;
+}
