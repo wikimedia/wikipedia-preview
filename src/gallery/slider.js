@@ -1,5 +1,6 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
+import { isOnline } from '../utils'
 
 // internal state of the slider component
 let current = 0,
@@ -103,13 +104,26 @@ const clientWidth = window.innerWidth,
 			errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
 
 		if ( refresh ) {
-			imageElement.src = `${imageElement.src}?timestamp=${Date.now()}`
+			const slider = parentContainer.querySelector( `.${prefixClassname}` ),
+				items = slider.querySelectorAll( `.${prefixClassname}-item` )
+
+			items.forEach( item => {
+				const image = item.querySelector( 'img' )
+				if ( image ) {
+					item.removeChild( image )
+				}
+			} )
+
+			// eslint-disable-next-line no-use-before-define
+			renderNext( 0, true )
 			loading.style.visibility = 'visible'
 			errorElement.style.visibility = 'hidden'
 		}
 
 		if ( imageElement.complete ) {
 			loading.style.visibility = 'hidden'
+			errorElement.style.visibility = 'hidden'
+			imageElement.style.visibility = 'visible'
 		} else {
 			const textElement = container.querySelector( `.${prefixClassname}-item-loading-text` ),
 				timeoutId = setTimeout( () => {
@@ -118,6 +132,7 @@ const clientWidth = window.innerWidth,
 
 			imageElement.addEventListener( 'load', () => {
 				loading.style.visibility = 'hidden'
+				errorElement.style.visibility = 'hidden'
 				textElement.style.visibility = 'hidden'
 				clearTimeout( timeoutId )
 			} )
@@ -125,6 +140,13 @@ const clientWidth = window.innerWidth,
 			imageElement.addEventListener( 'error', () => {
 				const refreshElement = container.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
 				loading.style.visibility = 'hidden'
+				imageElement.style.visibility = 'hidden'
+
+				if ( !isOnline() ) {
+					const errorElementText = container.querySelector( `.${prefixClassname}-item-loading-error-text` )
+					errorElementText.innerText = msg( lang, 'gallery-loading-error-offline' )
+					errorElement.classList.add( 'offline' )
+				}
 				errorElement.style.visibility = 'visible'
 				clearTimeout( timeoutId )
 
@@ -135,7 +157,7 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
-	showImageAndInfo = ( index ) => {
+	showImageAndInfo = ( index, refreshImage = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			item = items[ index ]
@@ -148,7 +170,11 @@ const clientWidth = window.innerWidth,
 				mediaInfo => {
 					const imageElement = item.querySelector( 'img' )
 					if ( !imageElement ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						if ( !refreshImage ) {
+							item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						} else {
+							item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/>` )
+						}
 						bindImageEvent( item )
 					}
 
@@ -160,7 +186,7 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
-	renderNext = ( offset = 1 ) => {
+	renderNext = ( offset = 1, refresh = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
 			nextButton = slider.querySelector( '.next' ),
@@ -174,9 +200,9 @@ const clientWidth = window.innerWidth,
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
 
 			// render image attribution element - current, next, previous
-			showImageAndInfo( current )
-			showImageAndInfo( current + 1 )
-			showImageAndInfo( current - 1 )
+			showImageAndInfo( current, refresh )
+			showImageAndInfo( current + 1, refresh )
+			showImageAndInfo( current - 1, refresh )
 		}
 
 		slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
