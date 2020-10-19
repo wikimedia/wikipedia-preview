@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hanna Tardos"
+		]
+	},
+	"gallery-loading-error-offline": "Nincs internetkapcsolat",
+	"preview-offline-message": "Nincs internetkapcsolat",
+	"preview-offline-cta": "Próbáld újra"
+}

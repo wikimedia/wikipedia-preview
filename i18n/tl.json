@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mrkczr"
+		]
+	},
+	"gallery-loading-error-offline": "Walang internet connection.",
+	"preview-offline-message": "Walang internet connection.",
+	"preview-offline-cta": "Subukang muli"
+}

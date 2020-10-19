@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Just Sayori",
 			"Patsagorn Y."
 		]
 	},
 	"continue-reading": "อ่านต่อ",
 	"gallery-loading-error": "เกิดข้อผิดพลาดขณะโหลดภาพนี้",
+	"gallery-loading-error-offline": "ไม่มีสัญญาณอินเทอร์เน็ต",
 	"gallery-loading-error-refresh": "รีเฟรช",
 	"gallery-loading-still": "กำลังโหลดเหมือนเดิม",
-	"read-more": "อ่านเพิ่มเติมบนวิกิพีเดีย"
+	"read-more": "อ่านเพิ่มเติมบนวิกิพีเดีย",
+	"preview-offline-message": "ไม่มีสัญญาณอินเทอร์เน็ต",
+	"preview-offline-cta": "ลองอีกครั้ง"
 }

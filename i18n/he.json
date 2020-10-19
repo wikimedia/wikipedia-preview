@@ -1,16 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"YaronSh"
 		]
 	},
 	"continue-reading": "המשך קריאה",
 	"gallery-loading-error": "אירעה שגיאה בעת טעינת התמונה הזאת",
+	"gallery-loading-error-offline": "אין חיבור זמין לאינטרנט.",
 	"gallery-loading-error-refresh": "רענון",
 	"gallery-loading-still": "עדיין בטעינה",
 	"gallery-unknown-author": "היוצר אינו ידוע",
 	"preview-loading-error": "הייתה בעיה עם הצגת התצוגה המקדימה הזאת.",
 	"read-on-wiki": "לקרוא בוויקיפדיה",
 	"read-more": "לקרוא עוד בוויקיפדיה",
-	"preview-disambiguation-message": "הכותרת <strong>$1</strong> קשורה ליותר מערך אחד בוויקיפדיה."
+	"preview-disambiguation-message": "הכותרת <strong>$1</strong> קשורה ליותר מערך אחד בוויקיפדיה.",
+	"preview-offline-message": "אין חיבור זמין לאינטרנט.",
+	"preview-offline-cta": "לנסות שוב"
 }
