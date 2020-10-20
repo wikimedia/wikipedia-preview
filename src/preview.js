@@ -12,6 +12,36 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 	`.trim()
 	},
 
+	getPreviewBody = ( lang, title, type, isTouch = false ) => {
+		const getMessage = () => {
+				if ( type === 'disambiguation' ) {
+					return `<span>${msg( lang, `preview-${type}-message`, title )}</span>`
+				}
+				return `<span>${msg( lang, `preview-${type}-message` )}</span>`
+			},
+
+			getCallToAction = () => {
+				if ( type === 'offline' ) {
+					return `<a>${msg( lang, 'preview-offline-cta' )}</a>`
+				}
+				return `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
+			}
+
+		return `
+			<div class="wikipediapreview-body">
+				<div class="wikipediapreview-body-template-${type}">
+					<div class="wikipediapreview-body-template-message">
+						<div class="wikipediapreview-body-template-icon"></div>
+							${getMessage()}
+					</div>
+					<div class="wikipediapreview-body-template-action">
+						${getCallToAction()}
+					</div>
+				</div>
+			</div>
+	`.trim()
+	},
+
 	renderPreview = ( lang, data, isTouch ) => {
 		const imageUrl = data.imgUrl
 		return `
@@ -57,17 +87,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		return `
 			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-body">
-						<div class="wikipediapreview-error-body">
-							<div class="wikipediapreview-error-body-message">
-								<div class="wikipediapreview-error-body-icon"></div>
-								${msg( lang, 'preview-loading-error' )}
-							</div>
-							<div class="wikipediapreview-error-body-readon">
-								<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>
-							</div>
-						</div>
-					</div>
+					${getPreviewBody( lang, title, 'error', isTouch )}
 			</div>
 	`.trim()
 	},
@@ -76,17 +96,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		return `
 			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-body">
-						<div class="wikipediapreview-disambiguation-body">
-							<div class="wikipediapreview-disambiguation-body-message">
-								<div class="wikipediapreview-disambiguation-body-icon"></div>
-								<span>${msg( lang, 'preview-disambiguation-message', title )}</span>
-							</div>
-							<div class="wikipediapreview-disambiguation-body-readon">
-								<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>
-							</div>
-						</div>
-					</div>
+					${getPreviewBody( lang, title, 'disambiguation', isTouch )}
 			</div>
 	`.trim()
 	},
@@ -95,17 +105,7 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		return `
 			<div class="wikipediapreview expanded ${isTouch ? 'mobile' : ''}" lang="${lang}" dir="${dir}">
 					${getPreviewHeader( lang )}
-					<div class="wikipediapreview-body">
-						<div class="wikipediapreview-offline-body">
-							<div class="wikipediapreview-offline-body-message">
-								<div class="wikipediapreview-offline-body-icon"></div>
-								<span>${msg( lang, 'preview-offline-message' )}</span>
-							</div>
-							<div class="wikipediapreview-offline-body-retry">
-								<a>${msg( lang, 'preview-offline-cta' )}</a>
-							</div>
-						</div>
-					</div>
+					${getPreviewBody( lang, false, 'offline', isTouch )}
 			</div>
 	`.trim()
 	}
