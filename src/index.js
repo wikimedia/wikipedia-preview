@@ -5,6 +5,8 @@ import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
+let currentPopupId
+
 function init( {
 	root = document,
 	selector = '[data-wikipedia-preview]',
@@ -17,7 +19,8 @@ function init( {
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		last = {},
-		showPopup = ( e, refresh = false ) => {
+		showPopup = ( e, refresh = false, popupId = Date.now() ) => {
+			currentPopupId = popupId
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
@@ -33,6 +36,9 @@ function init( {
 			popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
 
 			requestPagePreview( lang, title, isTouch, data => {
+				if ( popupId !== currentPopupId ) {
+					return
+				}
 				if ( popup.loading ) {
 					popup.loading = false
 					if ( data ) {
