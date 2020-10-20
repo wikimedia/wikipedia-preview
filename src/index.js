@@ -19,13 +19,13 @@ function init( {
 			createPopup( popupContainer ),
 		events = customEvents( popup ),
 		last = {},
-		showPopup = ( e, refresh = false, popupId = Date.now() ) => {
-			currentPopupId = popupId
+		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
 			}
-			const { target } = refresh ? last : e,
+			const popupId = currentPopupId = Date.now(),
+				{ target } = refresh ? last : e,
 				title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
 				pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY },
