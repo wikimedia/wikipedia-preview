@@ -8,11 +8,14 @@
 	},
 	"continue-reading": "Continuar a ler",
 	"gallery-loading-error": "Ocorreu um erro ao carregar esta imagem",
+	"gallery-loading-error-offline": "Não existe ligação à Internet.",
 	"gallery-loading-error-refresh": "Atualizar",
 	"gallery-loading-still": "Carregamento em curso",
 	"gallery-unknown-author": "Autor desconhecido",
 	"preview-loading-error": "Ocorreu um erro durante a apresentação desta antevisão.",
 	"read-on-wiki": "Ler na Wikipédia",
 	"read-more": "Leia mais na Wikipédia",
-	"preview-disambiguation-message": "O título <strong>$1</strong> está relacionado com mais do que um artigo na Wikipédia."
+	"preview-disambiguation-message": "O título <strong>$1</strong> está relacionado com mais do que um artigo na Wikipédia.",
+	"preview-offline-message": "Não existe ligação à Internet.",
+	"preview-offline-cta": "Tente novamente"
 }
