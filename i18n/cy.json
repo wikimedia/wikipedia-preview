@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robin Owain"
+		]
+	},
+	"continue-reading": "Parhau i Ddarllen",
+	"gallery-loading-error": "Cafwyd nam yn llwytho'r ddelwedd hon",
+	"gallery-loading-error-offline": "Dim cysylltiad rhyngrwyd.",
+	"gallery-loading-error-refresh": "Adfywio",
+	"gallery-loading-still": "Dal wrthi'n llwytho",
+	"gallery-unknown-author": "Awdur anhysbys",
+	"preview-loading-error": "Gafwyd gwall tra'n ceisio arddangos y rhagolwg",
+	"read-on-wiki": "Darllen ar Wicipedia",
+	"read-more": "Darllen rhagor ar Wicipedia",
+	"preview-disambiguation-message": "Mae'r teitl <strong>$1</strong> yn berthnasol i fwy nag un erthygl ar Wicipedia.",
+	"preview-offline-message": "Dim cysylltiad rhyngrwyd.",
+	"preview-offline-cta": "Ceisiwch eto"
+}

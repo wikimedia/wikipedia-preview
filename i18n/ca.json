@@ -8,11 +8,14 @@
 	},
 	"continue-reading": "Continua llegint",
 	"gallery-loading-error": "S'ha produït un error en carregar aquesta imatge",
+	"gallery-loading-error-offline": "Cap connexió d'internet disponible.",
 	"gallery-loading-error-refresh": "Actualitzar",
 	"gallery-loading-still": "carregant-se",
 	"gallery-unknown-author": "Autoria desconeguda",
 	"preview-loading-error": "S'ha produït un problema en mostrar aquesta previsualització.",
 	"read-on-wiki": "Llegiu a la Viquipèdia",
 	"read-more": "Llegeixi més en Viquipèdia",
-	"preview-disambiguation-message": "El títol <strong>$1</strong> està enllaçat a més d'un article a la Viquipèdia."
+	"preview-disambiguation-message": "El títol <strong>$1</strong> està enllaçat a més d'un article a la Viquipèdia.",
+	"preview-offline-message": "Cap connexió d'internet disponible.",
+	"preview-offline-cta": "Torneu-ho a provar"
 }
