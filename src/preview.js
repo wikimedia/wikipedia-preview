@@ -80,21 +80,21 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		const message = `<span>${msg( lang, 'preview-error-message' )}</span>`,
 			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'error', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-error', message, cta ) )
 	},
 
 	renderDisambiguation = ( isTouch, lang, title, dir ) => {
 		const message = `<span>${msg( lang, 'preview-disambiguation-message', title )}</span>`,
 			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'disambiguation', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-disambiguation', message, cta ) )
 	},
 
 	renderOffline = ( isTouch, lang, dir ) => {
 		const message = `<span>${msg( lang, 'preview-offline-message' )}</span>`,
 			cta = `<a>${msg( lang, 'preview-offline-cta' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'offline', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-offline', message, cta ) )
 	}
 
 export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }
