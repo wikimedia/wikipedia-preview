@@ -14,15 +14,13 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 
 	getPreviewBody = ( type, message, cta ) => {
 		return `
-			<div class="wikipediapreview-body">
-				<div class="wikipediapreview-body-template ${type}">
-					<div class="wikipediapreview-body-template-message">
-						<div class="wikipediapreview-body-template-icon"></div>
-							${message}
-					</div>
-					<div class="wikipediapreview-body-template-action">
-						${cta}
-					</div>
+			<div class="wikipediapreview-body wikipediapreview-body-${type}">
+				<div class="wikipediapreview-body-message">
+					<div class="wikipediapreview-body-icon"></div>
+						${message}
+				</div>
+				<div class="wikipediapreview-body-action">
+					${cta}
 				</div>
 			</div>
 	`.trim()
@@ -80,21 +78,21 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		const message = `<span>${msg( lang, 'preview-error-message' )}</span>`,
 			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-error', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'error', message, cta ) )
 	},
 
 	renderDisambiguation = ( isTouch, lang, title, dir ) => {
 		const message = `<span>${msg( lang, 'preview-disambiguation-message', title )}</span>`,
 			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-disambiguation', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'disambiguation', message, cta ) )
 	},
 
 	renderOffline = ( isTouch, lang, dir ) => {
 		const message = `<span>${msg( lang, 'preview-offline-message' )}</span>`,
 			cta = `<a>${msg( lang, 'preview-offline-cta' )}</a>`
 
-		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'wikipediapreview-body-offline', message, cta ) )
+		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'offline', message, cta ) )
 	}
 
 export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }

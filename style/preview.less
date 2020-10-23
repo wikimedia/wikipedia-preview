@@ -94,66 +94,65 @@
 			padding: 10px 20px;
 		}
 
-		&-template {
-			height: 240px;
+		&-message {
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
+			margin-left: 23px;
+			margin-right: 23px;
+			font-size: 16px;
+			line-height: 1.4;
+			color: #000;
+		}
 
-			&-message {
-				display: flex;
-				margin-left: 23px;
-				margin-right: 23px;
-				font-size: 16px;
-				line-height: 1.4;
-				color: #000;
+		&-icon {
+			display: absolute;
+			vertical-align: middle;
+			margin-right: 12px;
+			width: 20px;
+			height: 20px;
+		}
+
+		&-action {
+			margin-left: 55px;
+			margin-top: 12px;
+			font-size: 16px;
+			font-weight: bold;
+			cursor: pointer;
+
+			a {
+				color: #36c;
+			}
+		}
+
+		&.wikipediapreview-body-error {
+			&:extend( .wikipediapreview-body-non-regular );
+
+			.wikipediapreview-body-icon {
+				content: inline-svg( '../images/error-preview.svg' );
+			}
+		}
+
+		&.wikipediapreview-body-disambiguation {
+			&:extend( .wikipediapreview-body-non-regular );
+
+			.wikipediapreview-body-icon {
+				content: inline-svg( '../images/articles.svg' );
+			}
+		}
+
+		&.wikipediapreview-body-offline {
+			&:extend( .wikipediapreview-body-non-regular );
+
+			.wikipediapreview-body-message {
+				margin-left: 16px;
+				margin-right: 16px;
 			}
 
-			&-icon {
-				display: absolute;
-				vertical-align: middle;
-				margin-right: 12px;
-				width: 20px;
-				height: 20px;
+			.wikipediapreview-body-icon {
+				content: inline-svg( '../images/offline-icon.svg' );
 			}
 
-			&-action {
-				margin-left: 55px;
-				margin-top: 12px;
-				font-size: 16px;
-				font-weight: bold;
-				cursor: pointer;
-
-				a {
-					color: #36c;
-				}
-			}
-
-			&.wikipediapreview-body-error {
-				.wikipediapreview-body-template-icon {
-					content: inline-svg( '../images/error-preview.svg' );
-				}
-			}
-
-			&.wikipediapreview-body-disambiguation {
-				.wikipediapreview-body-template-icon {
-					content: inline-svg( '../images/articles.svg' );
-				}
-			}
-
-			&.wikipediapreview-body-offline {
-				.wikipediapreview-body-template-message {
-					margin-left: 16px;
-					margin-right: 16px;
-				}
-
-				.wikipediapreview-body-template-icon {
-					content: inline-svg( '../images/offline-icon.svg' );
-				}
-
-				.wikipediapreview-body-template-action {
-					margin: 12px 49px;
-				}
+			.wikipediapreview-body-action {
+				margin: 12px 49px;
 			}
 		}
 	}
@@ -308,6 +307,16 @@
 			margin-left: 0;
 		}
 
+		.wikipediapreview-body-icon {
+			margin-right: 0;
+			margin-left: 12px;
+		}
+
+		.wikipediapreview-body-action {
+			margin-left: 0;
+			margin-right: 55px;
+		}
+
 		.wikipediapreview-footer {
 			&-cc {
 				left: 30px;
@@ -319,34 +328,12 @@
 				right: unset;
 			}
 		}
-
-		.wikipediapreview-error-body {
-			&-message {
-				margin-left: 0;
-				margin-right: 23px;
-			}
-
-			&-icon {
-				margin-right: 0;
-				margin-left: 12px;
-			}
-
-			&-readon {
-				margin-left: 0;
-				margin-right: 55px;
-			}
-		}
-
-		.wikipediapreview-offline-body-icon {
-			margin-right: 0;
-			margin-left: 12px;
-		}
-
-		.wikipediapreview-disambiguation-body {
-			&-icon {
-				margin-right: 0;
-				margin-left: 12px;
-			}
-		}
 	}
+}
+
+.wikipediapreview-body-non-regular {
+	height: 240px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
