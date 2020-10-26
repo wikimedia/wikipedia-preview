@@ -54,21 +54,19 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 
 	renderLoading = ( isTouch, lang, dir ) => {
 		const bodyContent = `
-      <div class="wikipediapreview-loading">
-        <div class="wikipediapreview-body">
-          <div class="wikipediapreview-loading-body-line larger"></div>
-          <div class="wikipediapreview-loading-body-line medium"></div>
-          <div class="wikipediapreview-loading-body-line larger"></div>
-          <div class="wikipediapreview-loading-body-line medium"></div>
-          <div class="wikipediapreview-loading-body-line smaller"></div>
-          <div class="wikipediapreview-loading-body-line larger"></div>
-          <div class="wikipediapreview-loading-body-line medium"></div>
-          <div class="wikipediapreview-loading-body-line larger"></div>
-          <div class="wikipediapreview-loading-body-line medium"></div>
-          <div class="wikipediapreview-loading-body-line smaller"></div>
-        </div>
-      </div>
-      <div class="wikipediapreview-loading-footer"></div>
+      <div class="wikipediapreview-body wikipediapreview-body-loading">
+				<div class="wikipediapreview-body-loading-line larger"></div>
+				<div class="wikipediapreview-body-loading-line medium"></div>
+				<div class="wikipediapreview-body-loading-line larger"></div>
+				<div class="wikipediapreview-body-loading-line medium"></div>
+				<div class="wikipediapreview-body-loading-line smaller"></div>
+				<div class="wikipediapreview-body-loading-line larger"></div>
+				<div class="wikipediapreview-body-loading-line medium"></div>
+				<div class="wikipediapreview-body-loading-line larger"></div>
+				<div class="wikipediapreview-body-loading-line medium"></div>
+				<div class="wikipediapreview-body-loading-line smaller"></div>
+			</div>
+			<div class="wikipediapreview-footer-loading"></div>
     `.trim()
 
 		return render( lang, isTouch, dir, getPreviewHeader( lang ), bodyContent )
