@@ -168,7 +168,9 @@ const clientWidth = window.innerWidth,
 				gallery[ index ].title,
 				gallery[ index ].fromCommon,
 				mediaInfo => {
-					const imageElement = item.querySelector( 'img' )
+					const imageElement = item.querySelector( 'img' ),
+						captionElement = item.querySelector( `.${prefixClassname}-item-captiond` )
+
 					if ( !imageElement ) {
 						if ( !refreshImage ) {
 							item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
@@ -178,10 +180,12 @@ const clientWidth = window.innerWidth,
 						bindImageEvent( item )
 					}
 
-					item.insertAdjacentHTML(
-						'beforeend',
-						renderImageInfo( mediaInfo, gallery[ index ], lang
-						) )
+					if ( !captionElement ) {
+						item.insertAdjacentHTML(
+							'beforeend',
+							renderImageInfo( mediaInfo, gallery[ index ], lang
+							) )
+					}
 				} )
 		}
 	},
