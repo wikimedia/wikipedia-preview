@@ -114,7 +114,7 @@ export const customEvents = popup => {
 						expanded = element.querySelector( '.wikipediapreview.expanded' ),
 						isNotExpandedBody = !expanded && !isHeader || isHeader
 
-					previewBody.style.transition = 'unset'
+					previewBody.style.transition = 'auto'
 					finalY = clientY
 					if ( isNotExpandedBody ) {
 						previewBody.style.maxHeight = currentHeight + 'px'
@@ -158,7 +158,7 @@ export const customEvents = popup => {
 			popup.loading = false
 
 			const previewBody = popup.element.querySelector( '.wikipediapreview-body' )
-			previewBody.style.transition = 'unset'
+			previewBody.style.transition = 'auto'
 
 			clearAllEventListener()
 			clearAllTimeout()
