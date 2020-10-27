@@ -169,7 +169,7 @@ const clientWidth = window.innerWidth,
 				gallery[ index ].fromCommon,
 				mediaInfo => {
 					const imageElement = item.querySelector( 'img' ),
-						captionElement = item.querySelector( `.${prefixClassname}-item-captiond` )
+						captionElement = item.querySelector( `.${prefixClassname}-item-caption` )
 
 					if ( !imageElement ) {
 						if ( !refreshImage ) {
