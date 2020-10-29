@@ -10,7 +10,7 @@
 	"gallery-loading-error-refresh": "Actualizar",
 	"gallery-loading-still": "Todavía sigue cargando",
 	"gallery-unknown-author": "Autor desconocido",
-	"preview-loading-error": "Hubo un problema al mostrar esta previsualización",
+	"preview-error-message": "Hubo un problema al mostrar esta previsualización",
 	"read-on-wiki": "Ver en Wikipedia",
 	"read-more": "Leer más en Wikipedia",
 	"preview-disambiguation-message": "El título <strong>$1</strong> está relacionado a más de un artículo en Wikipedia."

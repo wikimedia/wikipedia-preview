@@ -10,7 +10,7 @@
 	"gallery-loading-error-refresh": "Haaromsi",
 	"gallery-loading-still": "Ammayyu fe'aara",
 	"gallery-unknown-author": "Barreessaan hin beekamu",
-	"preview-loading-error": "Yeroo kun akka fakkaatu agarsiisuu irratti dhimma ta'e.",
+	"preview-error-message": "Yeroo kun akka fakkaatu agarsiisuu irratti dhimma ta'e.",
 	"read-on-wiki": "Wiikiipiidiyaa gubbatti dubbisi",
 	"read-more": "Dabalata Wikipiidiyaa irra dubbisi",
 	"preview-disambiguation-message": "Mata duree <strong>$1</strong> Wikipiidiyaa irra barruu tokko ol waliin walqabata."
