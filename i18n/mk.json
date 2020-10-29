@@ -11,7 +11,7 @@
 	"gallery-loading-error-refresh": "Превчитај",
 	"gallery-loading-still": "Сè уште се вчитува",
 	"gallery-unknown-author": "Непознат автор",
-	"preview-loading-error": "Се јави проблем при приказот на прегледот.",
+	"preview-error-message": "Се јави проблем при приказот на прегледот.",
 	"read-on-wiki": "Прочитајте на Википедија",
 	"read-more": "Прочитајте повеќе на Википедија",
 	"preview-disambiguation-message": "Насловот <strong>$1</strong> е поврзансо повеќе од една статија на Википедија.",

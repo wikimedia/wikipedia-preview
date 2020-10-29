@@ -12,7 +12,7 @@
 	"gallery-loading-error-refresh": "تحديث",
 	"gallery-loading-still": "جاري التحميل",
 	"gallery-unknown-author": "المؤلف غير معروف",
-	"preview-loading-error": "كانت هناك مشكلة في عرض هذه المعاينة.",
+	"preview-error-message": "كانت هناك مشكلة في عرض هذه المعاينة.",
 	"read-on-wiki": "اقرأ على ويكيبيديا",
 	"read-more": "اقرأ المزيد عن ويكيبيديا",
 	"preview-disambiguation-message": "العنوان <strong>$1</strong> ذو صلة بأكثر من مقالة واحدة على ويكيبيديا."

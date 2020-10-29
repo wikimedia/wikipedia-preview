@@ -10,7 +10,7 @@
 	"gallery-loading-error-offline": "无可用的因特网连接",
 	"gallery-loading-error-refresh": "刷新",
 	"gallery-loading-still": "仍在读取",
-	"preview-loading-error": "显示此预览时出现问题",
+	"preview-error-message": "显示此预览时出现问题",
 	"read-on-wiki": "在维基百科上查看",
 	"read-more": "在维基百科上查看更多内容",
 	"preview-disambiguation-message": "在维基百科上，标题<strong>$1</strong>对应多篇文章。",

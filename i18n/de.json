@@ -11,7 +11,7 @@
 	"gallery-loading-error-refresh": "Aktualisieren",
 	"gallery-loading-still": "Wird noch geladen",
 	"gallery-unknown-author": "Urheber unbekannt.",
-	"preview-loading-error": "Es gab ein Problem bei der Anzeige dieser Vorschau.",
+	"preview-error-message": "Es gab ein Problem bei der Anzeige dieser Vorschau.",
 	"read-on-wiki": "Auf Wikipedia lesen",
 	"read-more": "Mehr in Wikipedia",
 	"preview-disambiguation-message": "Titel <strong>$1</strong> bezieht sich auf mehr als einen Artikel auf Wikipedia."

@@ -11,7 +11,7 @@
 	"gallery-loading-error-refresh": "Uppdatera",
 	"gallery-loading-still": "Läser fortfarande in",
 	"gallery-unknown-author": "Okänd författare",
-	"preview-loading-error": "Det uppstod ett problem när förhandsvisningen skulle visas.",
+	"preview-error-message": "Det uppstod ett problem när förhandsvisningen skulle visas.",
 	"read-on-wiki": "Läs på Wikipedia",
 	"read-more": "Läs mer på Wikipedia",
 	"preview-disambiguation-message": "Titeln <strong>$1</strong> är relaterad till fler än en artikel på Wikipedia."
