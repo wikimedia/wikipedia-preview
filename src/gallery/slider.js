@@ -79,12 +79,14 @@ const clientWidth = window.innerWidth,
 			},
 
 			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
-			link = mediaInfo.filePage
+			link = mediaInfo.filePage,
+			description = getImageDescription()
 
 		// @todo consider a wrapper container for all the image info?
 		return `
 			<div class="${prefixClassname}-item-caption">
-				<div class="${prefixClassname}-item-caption-text">${getImageDescription()}</div>
+				${description.length > 95 ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
+				<div class="${prefixClassname}-item-caption-text">${description}</div>
 			</div>
 			<div class="${prefixClassname}-item-attribution">
 				<div class="${prefixClassname}-item-attribution-info">
@@ -185,6 +187,20 @@ const clientWidth = window.innerWidth,
 							'beforeend',
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
+
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
+						insertedCaption.addEventListener( 'click', () => {
+							const expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` ),
+								expanded = insertedCaption.querySelector( '.expanded' )
+
+							if ( expandCue && expanded ) {
+								expandCue.classList.remove( 'expanded' )
+								insertedCaption.style.maxHeight = '95px'
+							} else if ( expandCue ) {
+								expandCue.classList.add( 'expanded' )
+								insertedCaption.style.maxHeight = '41.2%'
+							}
+						} )
 					}
 				} )
 		}
@@ -226,9 +242,14 @@ const clientWidth = window.innerWidth,
 		}
 
 		const container = parentContainer.querySelector( `.${prefixClassname}` ),
-			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
+			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight',
+			captionText = `${prefixClassname}-item-caption-text`
 
 		container.addEventListener( 'touchstart', e => {
+			if ( e.target.className === captionText ) {
+				return
+			}
+
 			const containerStyle = window.getComputedStyle( container )
 			temp.durationStart = Date.now()
 			temp.screenX = e.touches[ 0 ].clientX
@@ -240,13 +261,19 @@ const clientWidth = window.innerWidth,
 			container.style.transition = 'unset'
 		} )
 		container.addEventListener( 'touchmove', e => {
+			if ( e.target.className === captionText ) {
+				return
+			}
 			const clientX = e.touches[ 0 ].clientX,
 				offset = clientX - temp.screenX
 			temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
 			container.style[ marginLR ] = temp.currentMarginLeft + 'px'
 			e.preventDefault()
 		} )
-		container.addEventListener( 'touchend', () => {
+		container.addEventListener( 'touchend', e => {
+			if ( e.target.className === captionText ) {
+				return
+			}
 			container.style.transition = temp.originalTransition
 			const diff = temp.originalMarginLeft - temp.currentMarginLeft,
 				duration = Date.now() - temp.durationStart
