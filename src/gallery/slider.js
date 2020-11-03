@@ -80,12 +80,22 @@ const clientWidth = window.innerWidth,
 
 			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
 			link = mediaInfo.filePage,
-			description = getImageDescription()
+			description = getImageDescription(),
+
+			isCaptionExpandable = () => {
+				if ( clientWidth < 400 && description.length > 128 ) {
+					return true
+				} else if ( clientWidth > 400 && description.length > 142 ) {
+					return true
+				} else {
+					return false
+				}
+			}
 
 		// @todo consider a wrapper container for all the image info?
 		return `
 			<div class="${prefixClassname}-item-caption">
-				${description.length > 95 ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
+				${isCaptionExpandable() ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
 				<div class="${prefixClassname}-item-caption-text">${description}</div>
 			</div>
 			<div class="${prefixClassname}-item-attribution">
