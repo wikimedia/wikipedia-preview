@@ -311,9 +311,15 @@ const clientWidth = window.innerWidth,
 			nextButton.style.visibility = 'hidden'
 		} else {
 			nextButton.addEventListener( 'click', () => {
-				renderNext()
+				if ( !items[ current ].querySelector( '.expanded' ) ) {
+					renderNext()
+				}
 			} )
-			previousButton.addEventListener( 'click', renderPrevious )
+			previousButton.addEventListener( 'click', () => {
+				if ( !items[ current ].querySelector( '.expanded' ) ) {
+					renderPrevious()
+				}
+			} )
 		}
 	}
 
