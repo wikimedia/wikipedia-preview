@@ -169,6 +169,20 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
+	handleCaptionExpansion = ( item, forceClose = false ) => {
+		const captionText = item.querySelector( `.${prefixClassname}-item-caption-text` ),
+			expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` ),
+			expanded = item.querySelector( '.expanded' )
+
+		if ( expandCue && expanded || forceClose && expandCue ) {
+			expandCue.classList.remove( 'expanded' )
+			captionText.style.maxHeight = '80px'
+		} else if ( expandCue ) {
+			expandCue.classList.add( 'expanded' )
+			captionText.style.maxHeight = '241px'
+		}
+	},
+
 	showImageAndInfo = ( index, refreshImage = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
@@ -198,20 +212,10 @@ const clientWidth = window.innerWidth,
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
 
-						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` ),
-							insertedCaptionText = item.querySelector( `.${prefixClassname}-item-caption-text` )
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
 
 						insertedCaption.addEventListener( 'click', () => {
-							const expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` ),
-								expanded = insertedCaption.querySelector( '.expanded' )
-
-							if ( expandCue && expanded ) {
-								expandCue.classList.remove( 'expanded' )
-								insertedCaptionText.style.maxHeight = '80px'
-							} else if ( expandCue ) {
-								expandCue.classList.add( 'expanded' )
-								insertedCaptionText.style.maxHeight = '241px'
-							}
+							handleCaptionExpansion( item )
 						} )
 					}
 				} )
@@ -227,6 +231,7 @@ const clientWidth = window.innerWidth,
 			item = items[ next ]
 
 		if ( item ) {
+			handleCaptionExpansion( items[ current ], true )
 			current += offset
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
