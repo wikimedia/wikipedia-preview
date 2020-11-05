@@ -255,10 +255,12 @@ const clientWidth = window.innerWidth,
 
 		const container = parentContainer.querySelector( `.${prefixClassname}` ),
 			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight',
-			captionText = `${prefixClassname}-item-caption-text`
+			captionText = `${prefixClassname}-item-caption-text`,
+			items = container.querySelectorAll( `.${prefixClassname}-item` )
 
 		container.addEventListener( 'touchstart', e => {
-			if ( e.target.className === captionText ) {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
 				return
 			}
 
@@ -273,7 +275,8 @@ const clientWidth = window.innerWidth,
 			container.style.transition = 'unset'
 		} )
 		container.addEventListener( 'touchmove', e => {
-			if ( e.target.className === captionText ) {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
 				return
 			}
 			const clientX = e.touches[ 0 ].clientX,
@@ -283,7 +286,8 @@ const clientWidth = window.innerWidth,
 			e.preventDefault()
 		} )
 		container.addEventListener( 'touchend', e => {
-			if ( e.target.className === captionText ) {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
 				return
 			}
 			container.style.transition = temp.originalTransition
