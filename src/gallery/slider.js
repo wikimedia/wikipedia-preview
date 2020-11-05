@@ -198,17 +198,19 @@ const clientWidth = window.innerWidth,
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
 
-						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` ),
+							insertedCaptionText = item.querySelector( `.${prefixClassname}-item-caption-text` )
+
 						insertedCaption.addEventListener( 'click', () => {
 							const expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` ),
 								expanded = insertedCaption.querySelector( '.expanded' )
 
 							if ( expandCue && expanded ) {
 								expandCue.classList.remove( 'expanded' )
-								insertedCaption.style.maxHeight = '95px'
+								insertedCaptionText.style.maxHeight = '80px'
 							} else if ( expandCue ) {
 								expandCue.classList.add( 'expanded' )
-								insertedCaption.style.maxHeight = '41.2%'
+								insertedCaptionText.style.maxHeight = '241px'
 							}
 						} )
 					}
