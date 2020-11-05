@@ -7,7 +7,8 @@ let current = 0,
 	dir = '',
 	lang,
 	gallery,
-	parentContainer
+	parentContainer,
+	focusMode = false
 
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
@@ -212,11 +213,17 @@ const clientWidth = window.innerWidth,
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
 
-						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` ),
+							insertedAttribution = item.querySelector( `.${prefixClassname}-item-attribution` )
 
 						insertedCaption.addEventListener( 'click', () => {
 							handleCaptionExpansion( item )
 						} )
+
+						if ( focusMode ) {
+							insertedCaption.style.visibility = 'hidden'
+							insertedAttribution.style.visibility = 'hidden'
+						}
 					}
 				} )
 		}
@@ -308,6 +315,30 @@ const clientWidth = window.innerWidth,
 		} )
 	},
 
+	toggleFocusMode = () => {
+		const toggleElements = [
+			'.wp-gallery-fullscreen-close',
+			'.previous',
+			'.next',
+			'.wp-gallery-fullscreen-slider-item-caption',
+			'.wp-gallery-fullscreen-slider-item-attribution'
+		]
+
+		focusMode = !focusMode
+		toggleElements.forEach( elementName => {
+			Array.prototype.forEach.call(
+				parentContainer.querySelectorAll( elementName ),
+				element => {
+					if ( element.style.visibility === 'hidden' ) {
+						element.style.visibility = 'visible'
+					} else {
+						element.style.visibility = 'hidden'
+					}
+				}
+			)
+		} )
+	},
+
 	onShowFn = () => {
 		const sliderContainer = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` ),
@@ -316,6 +347,13 @@ const clientWidth = window.innerWidth,
 
 		renderNext( 0 )
 		applyGestureEvent()
+
+		sliderContainer.addEventListener( 'click', ( e ) => {
+			if ( e.target.className === 'wp-gallery-fullscreen-slider-item' ||
+					e.target.tagName === 'IMG' ) {
+				toggleFocusMode()
+			}
+		} )
 
 		if ( items.length === 1 ) {
 			previousButton.style.visibility = 'hidden'
