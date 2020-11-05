@@ -7,7 +7,7 @@
 	"continue-reading": "Verder lezen",
 	"gallery-loading-error": "Er is een fout opgetreden bij het laden van deze afbeelding",
 	"gallery-loading-error-refresh": "Vernieuwen",
-	"preview-loading-error": "Er is een probleem opgetreden bij het weergeven van deze voorvertoning",
+	"preview-error-message": "Er is een probleem opgetreden bij het weergeven van deze voorvertoning",
 	"read-on-wiki": "Op Wikipedia lezen",
 	"read-more": "Meer lezen op Wikipedia",
 	"preview-disambiguation-message": "De titel <strong>$1</strong> is gerelateerd aan meer dan één artikel op Wikipedia."
