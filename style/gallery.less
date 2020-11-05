@@ -69,6 +69,7 @@
 		flex: 1 0 auto;
 
 		&-item {
+			position: relative;
 			width: calc( 100vw );
 			height: calc( 100% );
 			display: inline-flex;
@@ -84,6 +85,7 @@
 				position: absolute;
 				background-color: #222;
 				bottom: 35px;
+				left: 0;
 				width: calc( 100vw + 1px );
 				font-size: 16px;
 				line-height: 1.56;
@@ -101,6 +103,7 @@
 				position: absolute;
 				background-color: #222;
 				bottom: 0;
+				left: 0;
 				width: 100%;
 				font-size: 16px;
 				color: #f8f9fa;
@@ -297,6 +300,7 @@
 				top: 0;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
+				z-index: @popup-z-index;
 			}
 
 			&.next {
@@ -304,6 +308,7 @@
 				right: 16px;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
+				z-index: @popup-z-index;
 			}
 		}
 	}
