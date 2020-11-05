@@ -317,14 +317,10 @@ const clientWidth = window.innerWidth,
 			nextButton.style.visibility = 'hidden'
 		} else {
 			nextButton.addEventListener( 'click', () => {
-				if ( !items[ current ].querySelector( '.expanded' ) ) {
-					renderNext()
-				}
+				renderNext()
 			} )
 			previousButton.addEventListener( 'click', () => {
-				if ( !items[ current ].querySelector( '.expanded' ) ) {
-					renderPrevious()
-				}
+				renderPrevious()
 			} )
 		}
 	}
