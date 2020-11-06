@@ -47,6 +47,7 @@
     "sinon": "^9.0.3",
     "style-loader": "^1.2.1",
     "stylelint-config-wikimedia": "^0.10.1",
+    "stylelint-no-unsupported-browser-features": "^4.1.4",
     "stylelint-webpack-plugin": "^2.1.0",
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.44.1",
