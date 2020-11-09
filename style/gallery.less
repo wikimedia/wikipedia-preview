@@ -11,7 +11,6 @@
 .wikipediapreview {
 	&-gallery {
 		display: flex;
-		display: -ms-flex;
 		height: 80px;
 		margin-top: 5px;
 		margin-right: 20px;
@@ -19,7 +18,6 @@
 
 		&-row {
 			display: flex;
-			display: -ms-flex;
 			overflow: scroll;
 		}
 
@@ -60,27 +58,24 @@
 
 	&-main {
 		display: flex;
-		display: -ms-flex;
 		max-width: 100%;
 		height: 100%;
 	}
 
 	&-slider {
-		display: inline-flex;
-		display: -ms-inline-flex;
+		display: flex;
 		transition: margin-left 0.25s ease-in-out;
+		flex-wrap: wrap;
+		flex: 1 0 auto;
 
 		&-item {
+			position: relative;
 			width: calc( 100vw );
 			height: calc( 100% );
-			display: flex;
-			display: -ms-flex;
+			display: inline-flex;
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			background-repeat: no-repeat;
-			background-size: contain;
-			background-position: center;
 
 			img {
 				background-color: #fff;
@@ -90,6 +85,7 @@
 				position: absolute;
 				background-color: #222;
 				bottom: 35px;
+				left: 0;
 				width: calc( 100vw + 1px );
 				font-size: 16px;
 				line-height: 1.56;
@@ -101,26 +97,33 @@
 					padding-left: 13px;
 					padding-right: 13px;
 				}
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
 			}
 
 			&-attribution {
 				position: absolute;
 				background-color: #222;
 				bottom: 0;
+				left: 0;
 				width: 100%;
 				font-size: 16px;
 				color: #f8f9fa;
 				border: #f8f9fa;
 				height: 44px;
 				display: flex;
-				display: -ms-flex;
 				justify-content: space-between;
 				padding-bottom: 15px;
-				padding-left: 20px;
+				padding-left: 12px;
+
+				&::-webkit-scrollbar {
+					display: none;
+				}
 
 				&-info {
 					display: flex;
-					display: -ms-flex;
 					align-items: center;
 
 					&-cc {
@@ -164,11 +167,11 @@
 					height: 44px;
 					width: 44px;
 					display: flex;
-					display: -ms-flex;
 					background-image: inline-svg( '../images/attribution-icon-info.svg' );
 					background-repeat: no-repeat;
 					background-position: center;
 					padding-right: 20px;
+					z-index: @popup-z-index + 20;
 
 					&-link {
 						display: block;
@@ -180,7 +183,9 @@
 
 			&-loading {
 				position: absolute;
-				height: 112px;
+				top: calc( 50% - 10px );
+				left: 0;
+				width: 100%;
 				text-align: center;
 
 				&-icons {
@@ -196,6 +201,9 @@
 				}
 
 				&-error {
+					top: calc( 50% - 80px );
+					left: 0;
+					width: 100%;
 					visibility: hidden;
 					background-image: inline-svg( '../images/error.svg' );
 					background-repeat: no-repeat;
@@ -224,7 +232,6 @@
 
 				&-spinner {
 					&-animation {
-						margin: 50px auto 0;
 						width: 70px;
 						opacity: 0.8;
 						display: inline-block;
@@ -306,6 +313,7 @@
 				top: 0;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
+				z-index: @popup-z-index;
 			}
 
 			&.next {
@@ -313,6 +321,7 @@
 				right: 16px;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
+				z-index: @popup-z-index;
 			}
 		}
 	}
@@ -320,7 +329,6 @@
 	&-bottom {
 		height: 20vh;
 		display: flex;
-		display: -ms-flex;
 		flex-direction: column;
 		justify-content: space-between;
 	}
@@ -436,7 +444,7 @@
 	&[ dir='rtl' ] {
 		.wp-gallery-fullscreen {
 			&-close {
-				right: unset;
+				right: auto;
 				left: 16px;
 			}
 
@@ -446,14 +454,14 @@
 				&-button {
 					&.previous {
 						background-image: inline-svg( '../images/arrow-right.svg' );
-						left: unset;
+						left: auto;
 						right: 16px;
 					}
 
 					&.next {
 						background-image: inline-svg( '../images/arrow-left.svg' );
 						left: 16px;
-						right: unset;
+						right: auto;
 					}
 				}
 

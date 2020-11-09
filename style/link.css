@@ -15,6 +15,6 @@
 }
 
 [dir='rtl'] .wmf-wp-with-preview::after {
-    margin-left: unset;
+    margin-left: auto;
     margin-right: 1px;
 }
