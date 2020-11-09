@@ -17,8 +17,8 @@ a {
       top: 0px;
     }
     .header {
-      box-shadow          : unset;
-      border-bottom       : unset;
+      box-shadow          : auto;
+      border-bottom       : auto;
     }
   }
   @media screen and (min-width: 650px) {
@@ -51,7 +51,7 @@ a {
   }
   .container[dir="rtl"] .cover .close-btn {
     left: 24px;
-    right: unset;
+    right: auto;
   }
   @media screen and (min-width: 650px) {
     .container .cover .close-btn{
