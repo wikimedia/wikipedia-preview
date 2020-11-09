@@ -70,7 +70,7 @@ function init( {
 								target,
 								pointerPosition
 							)
-							const again = root.querySelector( '.wikipediapreview-offline-body-retry' )
+							const again = root.querySelector( '.wikipediapreview-body-action' )
 							last.lang = lang
 							last.title = title
 							last.pointerPosition = pointerPosition
