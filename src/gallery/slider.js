@@ -303,7 +303,7 @@ const clientWidth = window.innerWidth,
 			) {
 				renderNext( diff > 0 ? 1 : -1 )
 			} else {
-				container.style[ marginLR ] = temp.originalMarginLeft + 'px'
+				container.style[ marginLR ] = -clientWidth * current + 'px'
 			}
 		} )
 	},

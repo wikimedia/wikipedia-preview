@@ -48,7 +48,7 @@ div {
 }
 .container .listview .item[dir="rtl"] .image {
   left: 20px;
-  right: unset;
+  right: auto;
 }
 .container .listview .item .image .cover {
   height: 80px;
