@@ -10,7 +10,7 @@
 	"gallery-loading-error-refresh": "Обновить",
 	"gallery-loading-still": "Загрузка продолжается",
 	"gallery-unknown-author": "Автор неизвестен.",
-	"preview-loading-error": "Возникла проблема в ходе предпросмотра.",
+	"preview-error-message": "Возникла проблема в ходе предпросмотра.",
 	"read-on-wiki": "Читать в Википедии",
 	"read-more": "Читать далее в Википедии",
 	"preview-disambiguation-message": "Название <strong>$1</strong> относится к более чем одной статье в Википедии."

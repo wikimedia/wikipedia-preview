@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Nike",
 			"Pyscowicz"
 		]
 	},
@@ -10,7 +11,7 @@
 	"gallery-loading-error-refresh": "Päivitä",
 	"gallery-loading-still": "Vielä lataa",
 	"gallery-unknown-author": "Tuntematon tekijä",
-	"preview-loading-error": "Virheen vuoksi esikatselua ei voida näyttää.",
+	"preview-error-message": "Virheen vuoksi esikatselua ei voida näyttää.",
 	"read-on-wiki": "Lue Wikipediassa",
 	"read-more": "Lue lisää Wikipediassa"
 }
