@@ -69,6 +69,12 @@ export const Error = ( { lang, dir } ) => {
 		},
 		{
 			title: 'error.jpg'
+		},
+		{
+			title: 'error.jpg'
+		},
+		{
+			title: 'error.jpg'
 		}
 	]
 
