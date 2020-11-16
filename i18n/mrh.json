@@ -1,9 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Taytay"
+			"Taytay",
+			"Teitei Para"
 		]
 	},
 	"continue-reading": "Reih pazao",
-	"read-more": "Wikipedia liata reina mode"
+	"gallery-loading-error": "He hmâthlâ â khâ hai nota pâna sâkha a y",
+	"gallery-loading-error-offline": "Internet azaona y vei.",
+	"gallery-loading-error-refresh": "Pathieh",
+	"gallery-loading-still": "A khâh hai chy",
+	"gallery-unknown-author": "Rohtuh pahno leipa",
+	"preview-error-message": "He mochhilina â palâ hai nota pâna sâkha a y.",
+	"read-on-wiki": "Wikipedia liata reih",
+	"read-more": "Wikipedia liata reina mode",
+	"preview-disambiguation-message": "Chôtlâhpi <strong>$1</strong> nata a zaopa châpawzy Wikipedia lia sâkha hlâ hluh a y.",
+	"preview-offline-message": "Internet a zaona y vei.",
+	"preview-offline-cta": "A zaoh via"
 }
