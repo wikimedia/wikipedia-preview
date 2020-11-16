@@ -37,7 +37,7 @@ Android | 4.1+
   wikipediaPreview.init()
 </script>
 ```
-You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@1.1.1/dist/wikipedia-preview.production.js).
+You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@latest/dist/wikipedia-preview.production.js).
 
 ### NPM
 ```bash
