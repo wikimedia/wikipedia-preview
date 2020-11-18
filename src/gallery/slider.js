@@ -96,7 +96,7 @@ const clientWidth = window.innerWidth,
 		return `
 			<div class="${prefixClassname}-item-caption">
 				${isCaptionExpandable() ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
-				<div class="${prefixClassname}-item-caption-text">${description}</div>
+				${ description ? `<div class="${prefixClassname}-item-caption-text">${description}</div>` : ''}
 			</div>
 			<div class="${prefixClassname}-item-attribution">
 				<div class="${prefixClassname}-item-attribution-info">
