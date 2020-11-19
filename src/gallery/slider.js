@@ -221,8 +221,8 @@ const clientWidth = window.innerWidth,
 						} )
 
 						if ( focusMode ) {
-							insertedCaption.style.visibility = 'hidden'
-							insertedAttribution.style.visibility = 'hidden'
+							insertedCaption.classList.add( `${prefixClassname}-focus-mode` )
+							insertedAttribution.classList.add( `${prefixClassname}-focus-mode` )
 						}
 					}
 				} )
@@ -320,8 +320,8 @@ const clientWidth = window.innerWidth,
 			'.wp-gallery-fullscreen-close',
 			'.previous',
 			'.next',
-			'.wp-gallery-fullscreen-slider-item-caption',
-			'.wp-gallery-fullscreen-slider-item-attribution'
+			`.${prefixClassname}-item-caption`,
+			`.${prefixClassname}-item-attribution`
 		]
 
 		focusMode = !focusMode
@@ -329,11 +329,7 @@ const clientWidth = window.innerWidth,
 			Array.prototype.forEach.call(
 				parentContainer.querySelectorAll( elementName ),
 				element => {
-					if ( element.style.visibility === 'hidden' ) {
-						element.style.visibility = 'visible'
-					} else {
-						element.style.visibility = 'hidden'
-					}
+					element.classList.toggle( `${prefixClassname}-focus-mode` )
 				}
 			)
 		} )
@@ -349,7 +345,7 @@ const clientWidth = window.innerWidth,
 		applyGestureEvent()
 
 		sliderContainer.addEventListener( 'click', ( e ) => {
-			if ( e.target.className === 'wp-gallery-fullscreen-slider-item' ||
+			if ( e.target.className === `${prefixClassname}-item` ||
 					e.target.tagName === 'IMG' ) {
 				toggleFocusMode()
 			}
