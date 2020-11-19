@@ -29,10 +29,11 @@ export default {
 
 export const Fullscreen = ( { lang, dir } ) => {
 	const container = document.createElement( 'div' )
+	const selectedThumb = 'selected'
 	const mediaItems = [
 		{
 			caption: 'Wikipedia logo',
-			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/225px-Wikipedia-logo-v2.svg.png',
+			thumb: selectedThumb,
 			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/225px-Wikipedia-logo-v2.svg.png',
 			title: 'File:Wikipedia-logo-v2.png'
 		},
@@ -56,29 +57,25 @@ export const Fullscreen = ( { lang, dir } ) => {
 		}
 	]
 
-	showFullscreenGallery( mediaItems, '', lang, dir, container )
+	showFullscreenGallery( mediaItems, selectedThumb, lang, dir, container )
 
 	return container
 }
 
 export const Error = ( { lang, dir } ) => {
 	const container = document.createElement( 'div' )
+	const selectedThumb = 'selected'
 	const mediaItems = [
 		{
-			title: 'error.jpg'
-		},
-		{
-			title: 'error.jpg'
-		},
-		{
-			title: 'error.jpg'
+			title: 'error.jpg',
+			thumb: selectedThumb
 		},
 		{
 			title: 'error.jpg'
 		}
 	]
 
-	showFullscreenGallery( mediaItems, '', lang, dir, container )
+	showFullscreenGallery( mediaItems, selectedThumb, lang, dir, container )
 
 	return container
 }
