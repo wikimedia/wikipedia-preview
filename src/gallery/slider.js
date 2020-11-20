@@ -91,9 +91,9 @@ const clientWidth = window.innerWidth,
 					${getLicenseInfo( mediaInfo.license )}
 					${ author ? `<div class="${prefixClassname}-item-attribution-info-author">${author}</div>` : ''}
 				</div>
-				${ link ? `<div class="${prefixClassname}-item-attribution-more-info">
+				<div class="${prefixClassname}-item-attribution-more-info">
 					<a href="${link}" class="${prefixClassname}-item-attribution-more-info-link" target="_blank"></a>
-				</div>` : '' }
+				</div>
 			</div>
 		`.trim()
 	},
@@ -108,17 +108,9 @@ const clientWidth = window.innerWidth,
 				items = slider.querySelectorAll( `.${prefixClassname}-item` )
 
 			items.forEach( item => {
-				const image = item.querySelector( 'img' ),
-					caption = item.querySelector( `.${prefixClassname}-item-caption` ),
-					attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
+				const image = item.querySelector( 'img' )
 				if ( image ) {
 					item.removeChild( image )
-				}
-				if ( caption ) {
-					item.removeChild( caption )
-				}
-				if ( attribution ) {
-					item.removeChild( attribution )
 				}
 			} )
 
