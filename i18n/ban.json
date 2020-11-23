@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chinamoonroll",
 			"Joseagush"
 		]
 	},
@@ -10,7 +11,10 @@
 	"gallery-loading-error-refresh": "Nganyarin",
 	"gallery-loading-still": "Tasih ngantosin",
 	"gallery-unknown-author": "$1 Panyurat nénten kauningin",
+	"preview-error-message": "Wénten pikobet rikala ngédengang pratayang puniki.",
 	"read-on-wiki": "Wacén ring Wikipédia",
 	"read-more": "Lanturang wacén ring Wikipédia",
-	"preview-offline-message": "Nénten wénten konéksi internét."
+	"preview-disambiguation-message": "Murda <strong>$1</strong> kakait langkung saking satunggal suratan ring Wikipédia.",
+	"preview-offline-message": "Nénten wénten konéksi internét.",
+	"preview-offline-cta": "Coba malih"
 }
