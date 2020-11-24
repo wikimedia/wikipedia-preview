@@ -1,13 +1,5 @@
 @popup-z-index: 110;
 
-// @todo this needs rename to avoid collison with client site
-.license {
-	background-repeat: no-repeat;
-	width: 14px;
-	height: 14px;
-	margin-right: 8px;
-}
-
 .wikipediapreview {
 	&-gallery {
 		display: flex;
@@ -34,7 +26,7 @@
 }
 
 .wp-gallery-fullscreen {
-	background-color: #222;
+	background-color: #202122;
 	z-index: @popup-z-index;
 	position: fixed;
 	width: 100%;
@@ -83,19 +75,37 @@
 
 			&-caption {
 				position: absolute;
-				background-color: #222;
-				bottom: 35px;
-				left: 0;
+				background-color: rgba( 32, 33, 34, 0.6 );
+				bottom: 59px;
 				width: calc( 100vw + 1px );
 				font-size: 16px;
 				line-height: 1.56;
 				color: #f8f9fa;
-				overflow: scroll;
-				height: 80px;
+				max-height: 41.2%;
+
+				&-expand-cue {
+					width: 37px;
+					height: 2px;
+					background-color: #fff;
+					margin: auto;
+					margin-top: 10px;
+
+					&.expanded {
+						background-image: inline-svg( '../images/caption-cue-expanded.svg' );
+						background-repeat: no-repeat;
+						width: 37px;
+						height: 8px;
+						background-color: transparent;
+					}
+				}
 
 				&-text {
 					padding-left: 13px;
 					padding-right: 13px;
+					margin-top: 10px;
+					max-height: 80px;
+					overflow-y: scroll;
+					transition: max-height 0.25s ease-in-out;
 				}
 
 				&::-webkit-scrollbar {
@@ -105,7 +115,7 @@
 
 			&-attribution {
 				position: absolute;
-				background-color: #222;
+				background-color: #202122;
 				bottom: 0;
 				left: 0;
 				width: 100%;
@@ -128,27 +138,27 @@
 
 					&-cc {
 						background-image: inline-svg( '../images/attribution-cc.svg' );
-						&:extend( .license );
+						&:extend( .wp-gallery-fullscreen-slider-item-attribution-info-license );
 					}
 
 					&-by {
 						background-image: inline-svg( '../images/attribution-author.svg' );
-						&:extend( .license );
+						&:extend( .wp-gallery-fullscreen-slider-item-attribution-info-license );
 					}
 
 					&-sa {
 						background-image: inline-svg( '../images/attribution-icon-share-a-like.svg' );
-						&:extend( .license );
+						&:extend( .wp-gallery-fullscreen-slider-item-attribution-info-license );
 					}
 
 					&-fair {
 						background-image: inline-svg( '../images/attribution-license-generic-gnu-free.svg' );
-						&:extend( .license );
+						&:extend( .wp-gallery-fullscreen-slider-item-attribution-info-license );
 					}
 
 					&-public {
 						background-image: inline-svg( '../images/attribution-license-public-domain.svg' );
-						&:extend( .license );
+						&:extend( .wp-gallery-fullscreen-slider-item-attribution-info-license );
 					}
 
 					&-author {
@@ -479,4 +489,11 @@
 			}
 		}
 	}
+}
+
+.wp-gallery-fullscreen-slider-item-attribution-info-license {
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	margin-right: 8px;
 }
