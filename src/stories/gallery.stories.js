@@ -54,6 +54,24 @@ export const Fullscreen = ( { lang, dir } ) => {
 			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/English_Wikipedia_main_page_20011217.jpg/480px-English_Wikipedia_main_page_20011217.jpg',
 			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/English_Wikipedia_main_page_20011217.jpg/480px-English_Wikipedia_main_page_20011217.jpg',
 			title: 'File:English_Wikipedia_main_page_20011217.jpg'
+		},
+		{
+			caption: undefined,
+			fromCommon: true,
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Muizz_Street_-_Egypt.jpg/640px-Muizz_Street_-_Egypt.jpg',
+			title: 'File:Muizz_Street_-_Egypt.jpg'
+		},
+		{
+			caption: undefined,
+			fromCommon: true,
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Porphyrogenetus.jpg/111px-Porphyrogenetus.jpg',
+			title: 'File:Porphyrogenetus.jpg'
+		},
+		{
+			caption: 'Cylindrical ivory casket, Siculo-Arabic, Hunt Museum',
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cylindrical_Ivory_Casket.jpg/640px-Cylindrical_Ivory_Casket.jpg',
+			src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cylindrical_Ivory_Casket.jpg/640px-Cylindrical_Ivory_Casket.jpg',
+			title: 'File:Cylindrical_Ivory_Casket.jpg'
 		}
 	]
 

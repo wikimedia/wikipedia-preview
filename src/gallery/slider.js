@@ -79,12 +79,24 @@ const clientWidth = window.innerWidth,
 			},
 
 			author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' ),
-			link = mediaInfo.filePage
+			link = mediaInfo.filePage,
+			description = getImageDescription(),
+
+			isCaptionExpandable = () => {
+				if ( clientWidth < 400 && description.length > 128 ) {
+					return true
+				} else if ( clientWidth > 400 && description.length > 142 ) {
+					return true
+				} else {
+					return false
+				}
+			}
 
 		// @todo consider a wrapper container for all the image info?
 		return `
 			<div class="${prefixClassname}-item-caption">
-				<div class="${prefixClassname}-item-caption-text">${getImageDescription()}</div>
+				${isCaptionExpandable() ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
+				${ description ? `<div class="${prefixClassname}-item-caption-text">${description}</div>` : ''}
 			</div>
 			<div class="${prefixClassname}-item-attribution">
 				<div class="${prefixClassname}-item-attribution-info">
@@ -165,6 +177,20 @@ const clientWidth = window.innerWidth,
 		}
 	},
 
+	handleCaptionExpansion = ( item, forceClose = false ) => {
+		const captionText = item.querySelector( `.${prefixClassname}-item-caption-text` ),
+			expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` ),
+			expanded = item.querySelector( '.expanded' )
+
+		if ( expandCue && expanded || forceClose && expandCue ) {
+			expandCue.classList.remove( 'expanded' )
+			captionText.style.maxHeight = '80px'
+		} else if ( expandCue ) {
+			expandCue.classList.add( 'expanded' )
+			captionText.style.maxHeight = '241px'
+		}
+	},
+
 	showImageAndInfo = ( index, refreshImage = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = slider.querySelectorAll( `.${prefixClassname}-item` ),
@@ -193,6 +219,12 @@ const clientWidth = window.innerWidth,
 							'beforeend',
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
+
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
+
+						insertedCaption.addEventListener( 'click', () => {
+							handleCaptionExpansion( item )
+						} )
 					}
 				} )
 		}
@@ -207,6 +239,7 @@ const clientWidth = window.innerWidth,
 			item = items[ next ]
 
 		if ( item ) {
+			handleCaptionExpansion( items[ current ], true )
 			current += offset
 			nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 			previousButton.style.opacity = current === 0 ? '0.5' : '1'
@@ -234,9 +267,16 @@ const clientWidth = window.innerWidth,
 		}
 
 		const container = parentContainer.querySelector( `.${prefixClassname}` ),
-			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
+			marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight',
+			captionText = `${prefixClassname}-item-caption-text`,
+			items = container.querySelectorAll( `.${prefixClassname}-item` )
 
 		container.addEventListener( 'touchstart', e => {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
+				return
+			}
+
 			const containerStyle = window.getComputedStyle( container )
 			temp.durationStart = Date.now()
 			temp.screenX = e.touches[ 0 ].clientX
@@ -248,13 +288,21 @@ const clientWidth = window.innerWidth,
 			container.style.transition = 'unset'
 		} )
 		container.addEventListener( 'touchmove', e => {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
+				return
+			}
 			const clientX = e.touches[ 0 ].clientX,
 				offset = clientX - temp.screenX
 			temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
 			container.style[ marginLR ] = temp.currentMarginLeft + 'px'
 			e.preventDefault()
 		} )
-		container.addEventListener( 'touchend', () => {
+		container.addEventListener( 'touchend', e => {
+			if ( e.target.className === captionText &&
+				items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
+				return
+			}
 			container.style.transition = temp.originalTransition
 			const diff = temp.originalMarginLeft - temp.currentMarginLeft,
 				duration = Date.now() - temp.durationStart
@@ -284,7 +332,9 @@ const clientWidth = window.innerWidth,
 			nextButton.addEventListener( 'click', () => {
 				renderNext()
 			} )
-			previousButton.addEventListener( 'click', renderPrevious )
+			previousButton.addEventListener( 'click', () => {
+				renderPrevious()
+			} )
 		}
 	}
 
