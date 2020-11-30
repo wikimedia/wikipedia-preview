@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Akmaie Ajam",
+			"Daud I.F. Argana",
 			"Herryz",
 			"Joseagush",
 			"Sonic Speedy"
@@ -16,5 +17,7 @@
 	"preview-error-message": "Ada masalah ketika menampilkan pratayang ini.",
 	"read-on-wiki": "Baca di Wikipedia",
 	"read-more": "Baca lebih lanjut tentang Wikipedia",
-	"preview-disambiguation-message": "Judul <strong>$1</strong> terkait dengan lebih dari satu artikel di Wikipedia."
+	"preview-disambiguation-message": "Judul <strong>$1</strong> terkait dengan lebih dari satu artikel di Wikipedia.",
+	"preview-offline-message": "Tidak ada koneksi internet.",
+	"preview-offline-cta": "Coba lagi"
 }
