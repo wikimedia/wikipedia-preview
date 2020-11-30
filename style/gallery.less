@@ -334,10 +334,6 @@
 				z-index: @popup-z-index;
 			}
 		}
-
-		&-focus-mode {
-			visibility: hidden;
-		}
 	}
 
 	&-bottom {
@@ -452,6 +448,16 @@
 					transform: scale( 1 );
 				}
 			}
+		}
+	}
+
+	&-focus-mode {
+		.previous,
+		.next,
+		.wp-gallery-fullscreen-close,
+		.wp-gallery-fullscreen-slider-item-caption,
+		.wp-gallery-fullscreen-slider-item-attribution {
+			visibility: hidden;
 		}
 	}
 

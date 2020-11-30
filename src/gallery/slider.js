@@ -7,8 +7,7 @@ let current = 0,
 	dir = '',
 	lang,
 	gallery,
-	parentContainer,
-	focusMode = false
+	parentContainer
 
 const clientWidth = window.innerWidth,
 	prefixClassname = 'wp-gallery-fullscreen-slider',
@@ -221,17 +220,11 @@ const clientWidth = window.innerWidth,
 							renderImageInfo( mediaInfo, gallery[ index ], lang
 							) )
 
-						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` ),
-							insertedAttribution = item.querySelector( `.${prefixClassname}-item-attribution` )
+						const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
 
 						insertedCaption.addEventListener( 'click', () => {
 							handleCaptionExpansion( item )
 						} )
-
-						if ( focusMode ) {
-							insertedCaption.classList.add( `${prefixClassname}-focus-mode` )
-							insertedAttribution.classList.add( `${prefixClassname}-focus-mode` )
-						}
 					}
 				} )
 		}
@@ -324,23 +317,8 @@ const clientWidth = window.innerWidth,
 	},
 
 	toggleFocusMode = () => {
-		const toggleElements = [
-			'.wp-gallery-fullscreen-close',
-			'.previous',
-			'.next',
-			`.${prefixClassname}-item-caption`,
-			`.${prefixClassname}-item-attribution`
-		]
-
-		focusMode = !focusMode
-		toggleElements.forEach( elementName => {
-			Array.prototype.forEach.call(
-				parentContainer.querySelectorAll( elementName ),
-				element => {
-					element.classList.toggle( `${prefixClassname}-focus-mode` )
-				}
-			)
-		} )
+		const gallery = parentContainer.querySelector( '.wp-gallery-fullscreen' )
+		gallery.classList.toggle( 'wp-gallery-fullscreen-focus-mode' )
 	},
 
 	onShowFn = () => {
