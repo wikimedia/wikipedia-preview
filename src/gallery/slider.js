@@ -316,6 +316,11 @@ const clientWidth = window.innerWidth,
 		} )
 	},
 
+	toggleFocusMode = () => {
+		const gallery = parentContainer.querySelector( '.wp-gallery-fullscreen' )
+		gallery.classList.toggle( 'wp-gallery-fullscreen-focus-mode' )
+	},
+
 	onShowFn = () => {
 		const sliderContainer = parentContainer.querySelector( `.${prefixClassname}` ),
 			items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` ),
@@ -324,6 +329,13 @@ const clientWidth = window.innerWidth,
 
 		renderNext( 0 )
 		applyGestureEvent()
+
+		sliderContainer.addEventListener( 'click', ( e ) => {
+			if ( e.target.className === `${prefixClassname}-item` ||
+					e.target.tagName === 'IMG' ) {
+				toggleFocusMode()
+			}
+		} )
 
 		if ( items.length === 1 ) {
 			previousButton.style.visibility = 'hidden'
