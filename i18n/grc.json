@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"PastelKos"
+		]
+	},
+	"continue-reading": "Διατελεῖν τὸ ἀναγιγνώσκειν",
+	"gallery-loading-error": "Ὑπῆρξε ἁμαρτία τῷ ἐπιφορτίζειν τήνδε τὴν εἰκόνα",
+	"gallery-loading-error-offline": "Όὐ διατίθεται διαδυκτίου σύνδεσις.",
+	"gallery-loading-error-refresh": "Ἀναψύχειν",
+	"gallery-loading-still": "Ἔτι ἐπιφορτίζεται",
+	"gallery-unknown-author": "Ἄδηλος συγγραφεύς",
+	"preview-error-message": "Ὑπῆρξε ἀπορία τῷ προεπισκοπεῖν",
+	"read-on-wiki": "Ἀναγιγνώσκειν τῇ Οὐικιπαιδείᾳ",
+	"read-more": "Ἀναγιγνώσκειν πλείω τῇ Οὐικιπαιδείᾳ",
+	"preview-disambiguation-message": "Ὁ τίτλος '''$1''' τείνει εἰς πολλὰς ἐγγραφὰς τῇ Οὐικιπαιδείᾳ",
+	"preview-offline-message": "Όὐ διατίθεται διαδυκτίου σύνδεσις.",
+	"preview-offline-cta": "Πάλιν πειρᾶν"
+}
