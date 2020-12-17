@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"1917 Ekim Devrimi"
+		]
+	},
+	"continue-reading": "Wanayışi dewam ke",
+	"gallery-loading-error": "No resım barkerdış de xeta veciye",
+	"gallery-loading-error-offline": "Gıreniyeyi interneti çıniyo",
+	"gallery-loading-error-refresh": "Anewe ke",
+	"gallery-loading-still": "Hewna beno bar",
+	"gallery-unknown-author": "Nuştekarê nêzanıyeni",
+	"preview-error-message": "Mocnayışê nê verqayti de xırabiye esta.",
+	"read-on-wiki": "Wikipediya de bıwanê",
+	"read-more": "Wikipedia sero tayna bıwanê",
+	"preview-disambiguation-message": "Sernamey <strong>$1</strong> yew ra zêde meqaleyê Wikipedia ya eleqeyıno.",
+	"preview-offline-message": "Gıreniyeyi interneti çıniyo",
+	"preview-offline-cta": "Anciya bıcerebne"
+}
