@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alefar"
+		]
+	},
+	"continue-reading": "Continue Reading",
+	"gallery-loading-error": "There was an error loading this image!",
+	"gallery-loading-error-offline": "No internet connection available!",
+	"gallery-loading-error-refresh": "Refresh",
+	"gallery-loading-still": "Still loading",
+	"gallery-unknown-author": "Author unknown",
+	"preview-error-message": "There was an issue while displaying this preview.",
+	"read-on-wiki": "Read on Wikipedia",
+	"read-more": "Read more on Wikipedia",
+	"preview-offline-message": "No internet connection available!",
+	"preview-offline-cta": "TRY AGAIN"
+}
