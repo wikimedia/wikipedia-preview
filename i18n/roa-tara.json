@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"continue-reading": "Condinue a leggere",
+	"gallery-loading-error": "ha assute 'nerrore carecanne st'immaggine",
+	"gallery-loading-error-offline": "Nisciuna connessione Indernette disponibbele.",
+	"gallery-loading-error-refresh": "Aggiorne",
+	"gallery-loading-still": "Stoche a careche angore",
+	"gallery-unknown-author": "Autore scanusciute",
+	"preview-error-message": "Ha assute 'nu probbleme sus a'u 'ndrucamende de l'andeprime.",
+	"read-on-wiki": "'Mbormaziune sus a Uicchipèdie",
+	"read-more": "Otre 'mbormaziune sus a Uicchipèdie",
+	"preview-disambiguation-message": "'U titole <strong>$1</strong> jè collegate a cchiù de 'na vôsce sus a Uicchipèdie.",
+	"preview-offline-message": "Nisciuna connessione Indernette disponibbele.",
+	"preview-offline-cta": "Pruève arrete"
+}
