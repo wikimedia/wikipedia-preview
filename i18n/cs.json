@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matěj Suchánek",
+			"Robins7"
+		]
+	},
+	"continue-reading": "Pokračovat ve čtení",
+	"gallery-loading-error": "Při načítání tohoto obrázku došlo k chybě",
+	"gallery-loading-error-offline": "Není dostupné internetové připojení.",
+	"gallery-loading-error-refresh": "Obnovit",
+	"gallery-unknown-author": "Autor neznámý",
+	"preview-error-message": "Při zobrazování tohoto náhledu se objevil problém.",
+	"read-on-wiki": "Přečíst na Wikipedii",
+	"read-more": "Přečíst více na Wikipedii",
+	"preview-disambiguation-message": "Název <strong>$1</strong> souvisí s více než jedním článkem na Wikipedii.",
+	"preview-offline-message": "Není dostupné internetové připojení.",
+	"preview-offline-cta": "Zkusit znovu"
+}
