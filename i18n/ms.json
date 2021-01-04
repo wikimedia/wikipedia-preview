@@ -5,7 +5,15 @@
 		]
 	},
 	"continue-reading": "Teruskan Membaca",
+	"gallery-loading-error": "Terdapat ralat memuatkan imej ini",
+	"gallery-loading-error-offline": "Tiada sambungan Internet.",
 	"gallery-loading-error-refresh": "Segar semula",
+	"gallery-loading-still": "Masih memuatkan",
 	"gallery-unknown-author": "Pengarang tidak diketahui",
-	"read-on-wiki": "Baca tentang Wikipedia"
+	"preview-error-message": "Terdapat masalah ketika memaparkan pralihat ini.",
+	"read-on-wiki": "Baca tentang Wikipedia",
+	"read-more": "Baca lebih lanjut di Wikipedia",
+	"preview-disambiguation-message": "Tajuk <strong>$1</strong> berkaitan dengan lebih daripada satu rencana di Wikipedia.",
+	"preview-offline-message": "Tiada sambungan Internet.",
+	"preview-offline-cta": "Cuba lagi"
 }
