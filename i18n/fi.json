@@ -2,16 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Abijeet Patro",
+			"Alluk.",
 			"Nike",
 			"Pyscowicz"
 		]
 	},
 	"continue-reading": "Jatka lukemista",
-	"gallery-loading-error": "Virhe kuvan lataamisessa",
+	"gallery-loading-error": "Kuvan lataaminen epäonnistui",
+	"gallery-loading-error-offline": "Ei Internet-yhteyttä",
 	"gallery-loading-error-refresh": "Päivitä",
-	"gallery-loading-still": "Vielä lataa",
+	"gallery-loading-still": "Ladataan edelleen",
 	"gallery-unknown-author": "Tuntematon tekijä",
-	"preview-error-message": "Virheen vuoksi esikatselua ei voida näyttää.",
+	"preview-error-message": "Esikatselua ei voida näyttää",
 	"read-on-wiki": "Lue Wikipediassa",
-	"read-more": "Lue lisää Wikipediassa"
+	"read-more": "Lue lisää Wikipediassa",
+	"preview-disambiguation-message": "Otsikko <strong>$1</strong> liittyy useampaan Wikipedia-artikkeliin.",
+	"preview-offline-message": "Internet-yhteyttä ei ole.",
+	"preview-offline-cta": "Yritä uudelleen"
 }
