@@ -1,11 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"BrennodAloisi"
+			"BrennodAloisi",
+			"Nicolas Eynaud"
 		]
 	},
 	"continue-reading": "Contunhar a legir",
+	"gallery-loading-error": "Una error a agut luòc durant lo cargament d'aquel imatge.",
+	"gallery-loading-error-offline": "Ges de connexion internet disponible",
 	"gallery-loading-error-refresh": "Refrescar",
+	"gallery-loading-still": "Cargament totjorn en cors",
+	"gallery-unknown-author": "Autor desconegut",
 	"read-on-wiki": "Legir sus Wikipèdia",
+	"read-more": "Legir mai sus Wikipèdia",
+	"preview-disambiguation-message": "Lo títol <strong>$1</strong> es liat a mai d'un article dins Wikipèdia.",
+	"preview-offline-message": "Ges de connexion internet disponible.",
 	"preview-offline-cta": "Ensajatz tornamai"
 }
