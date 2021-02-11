@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Maria zaos"
+		]
+	},
+	"continue-reading": "Continua a ler",
+	"gallery-loading-error": "Houbo un erro ó cargar esta imaxe.",
+	"gallery-loading-error-refresh": "Refrescar",
+	"gallery-unknown-author": "Autor descoñecido",
+	"preview-error-message": "Houbo un problema ó amosar esta previsualización",
+	"preview-offline-cta": "Ténteo de novo"
+}
