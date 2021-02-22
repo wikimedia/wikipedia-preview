@@ -2,13 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Titodutta",
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
 	"continue-reading": "পড়া অব্যাহত রাখুন",
 	"gallery-loading-error": "এই ছবি লোড করার সময় একটি ত্রুটি হয়েছে",
+	"gallery-loading-error-offline": "কোনও ইন্টারনেট কানেকশন নেই।",
 	"gallery-loading-error-refresh": "পুনঃসতেজ করুন",
 	"gallery-loading-still": "এখনও লোড হচ্ছে",
 	"gallery-unknown-author": "লেখক অজানা",
-	"read-more": "উইকিপিডিয়ায় আরও পড়ুন"
+	"preview-error-message": "প্রাকদর্শন দেখানোর সময় একটি সমস্যা হয়েছে।",
+	"read-on-wiki": "উইকিপিডিয়ায় পড়ুন",
+	"read-more": "উইকিপিডিয়ায় আরও পড়ুন",
+	"preview-disambiguation-message": "<strong>$1</strong> শিরোনাম একাধিক উইকিপিডিয়া নিবন্ধের সাথে সম্পর্কিত।",
+	"preview-offline-message": "কোনও ইন্টারনেট কানেকশন নেই।",
+	"preview-offline-cta": "আবার চেষ্টা করুন"
 }
