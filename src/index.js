@@ -5,6 +5,17 @@ import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
+const invokeCallback = ( events, name, ...params ) => {
+	const callback = events && events[ name ]
+	if ( callback instanceof Function ) {
+		try {
+			callback.apply( null, params )
+		} catch ( e ) {
+			// we don't care about buggy 3rd party functions
+		}
+	}
+}
+
 let currentPopupId
 
 function init( {
@@ -12,12 +23,14 @@ function init( {
 	selector = '[data-wikipedia-preview]',
 	lang = 'en',
 	detectLinks = false,
-	popupContainer = document.body } ) {
+	popupContainer = document.body,
+	events = {}
+} ) {
 	const globalLang = lang,
 		popup = isTouch ?
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
-		events = customEvents( popup ),
+		popupEvents = customEvents( popup ),
 		last = {},
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
@@ -50,12 +63,14 @@ function init( {
 								target,
 								pointerPosition
 							)
+							invokeCallback( events, 'onShow', [ title, lang, 'standard' ] )
 						} else if ( data.type === 'disambiguation' ) {
 							popup.show(
 								renderDisambiguation( isTouch, lang, data.title, data.dir ),
 								target,
 								pointerPosition
 							)
+							invokeCallback( events, 'onShow', [ title, lang, 'disambiguation' ] )
 						}
 					} else {
 						if ( isOnline() ) {
@@ -64,12 +79,14 @@ function init( {
 								target,
 								pointerPosition
 							)
+							invokeCallback( events, 'onShow', [ title, lang, 'error' ] )
 						} else {
 							popup.show(
 								renderOffline( isTouch, lang, dir ),
 								target,
 								pointerPosition
 							)
+							invokeCallback( events, 'onShow', [ title, lang, 'offline' ] )
 							const again = root.querySelector( '.wikipediapreview-body-action' )
 							last.lang = lang
 							last.title = title
@@ -84,7 +101,7 @@ function init( {
 			} )
 		}
 
-	popup.subscribe( events )
+	popup.subscribe( popupEvents )
 
 	Array.prototype.forEach.call(
 		root.querySelectorAll( selector ),
