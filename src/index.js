@@ -97,6 +97,9 @@ function init( {
 							} )
 						}
 					}
+					popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
+						invokeCallback( events, 'onReadOnWiki', [ title, lang ] )
+					} )
 				}
 			} )
 		}

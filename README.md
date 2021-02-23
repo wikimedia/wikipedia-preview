@@ -60,7 +60,7 @@ selector | string | `'[data-wikipedia-preview]'` | How nodes that should have th
 lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
 detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
-events | Object | `{ onShow: <fn> }` | Specific custom event handlers
+events | Object | `{ onShow: <fn>, onReadOnWiki: <fn> }` | Specific custom event handlers
 
 Example (custom selector)
 ```html
