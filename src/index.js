@@ -5,7 +5,7 @@ import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
-const invokeCallback = ( events, name, ...params ) => {
+const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
 	if ( callback instanceof Function ) {
 		try {
@@ -98,7 +98,7 @@ function init( {
 						}
 					}
 					popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-						invokeCallback( events, 'onReadOnWiki', [ title, lang ] )
+						invokeCallback( events, 'onWikiRead', [ title, lang ] )
 					} )
 				}
 			} )
