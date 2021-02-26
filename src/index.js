@@ -11,7 +11,7 @@ const invokeCallback = ( events, name, params ) => {
 		try {
 			callback.apply( null, params )
 		} catch ( e ) {
-			// we don't care about buggy 3rd party functions
+			console.log('Error invoking Wikipedia Preview custom callback' e )
 		}
 	}
 }
