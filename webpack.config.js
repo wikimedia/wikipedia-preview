@@ -3,8 +3,27 @@ const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+const fs = require('fs');
 const path = require('path');
+const CryptoJS = require("crypto-js");
+
+// This is a less plugin to build cache-busting wikipedia urls
+class WikipediaImage {
+    install(less) {
+        less.functions.functionRegistry.add(
+          'wikipedia-image', function (fileArg) {
+                const { value } = fileArg;
+                const baseUrl = 'https://www.wikipedia.org/static/images/wikipedia-preview';
+                const fileUrl = `${baseUrl}/${value}`
+                const fileContent = '' // TODO: fetch file content
+                const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5);
+                const fullUrl = `${baseUrl}/${value}?${hash}`;
+                return new (less.tree.Quoted)( '"', "url('" + fullUrl + "')" );
+            }
+        )
+    }
+}
+
 const config = {
   entry: {
     'wikipedia-preview': './src/index.js',
@@ -74,7 +93,11 @@ const config = {
           'css-loader',
           {
             loader: 'less-loader', options: {
-              sourceMap: true
+              sourceMap: true,
+              plugins:
+              [
+                new WikipediaImage()
+              ]
             }
           },
         ]
@@ -86,7 +109,11 @@ const config = {
             'css-loader',
             {
               loader: 'less-loader', options: {
-                sourceMap: true
+                sourceMap: true,
+                plugins:
+                [
+                  new WikipediaImage()
+                ]
               }
             },
           ],
