@@ -21,15 +21,22 @@ function init( {
 		last = {},
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
-			if ( popup.element.style.visibility === 'visible' ) {
-				popup.hide()
-			}
+
 			const popupId = currentPopupId = Date.now(),
 				{ target } = refresh ? last : e,
 				title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
 				pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY },
 				dir = getDir( lang )
+
+			if ( popup.element.currentTargetElement === target && !refresh ) {
+				// Hovering over the same link and the popup is already open
+				return
+			}
+
+			if ( popup.element.style.visibility === 'visible' ) {
+				popup.hide()
+			}
 
 			popup.loading = true
 			popup.dir = dir
