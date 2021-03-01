@@ -11,7 +11,8 @@ const invokeCallback = ( events, name, params ) => {
 		try {
 			callback.apply( null, params )
 		} catch ( e ) {
-			console.log('Error invoking Wikipedia Preview custom callback' e )
+			// eslint-disable-next-line no-console
+			console.log( 'Error invoking Wikipedia Preview custom callback', e )
 		}
 	}
 }
