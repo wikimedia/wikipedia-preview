@@ -22,7 +22,7 @@ function init( {
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 
-			const popupId = currentPopupId = Date.now(),
+			const popupId = Date.now(),
 				{ target } = refresh ? last : e,
 				title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent,
 				lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang,
@@ -33,6 +33,8 @@ function init( {
 				// Hovering over the same link and the popup is already open
 				return
 			}
+
+			currentPopupId = popupId
 
 			if ( popup.element.style.visibility === 'visible' ) {
 				popup.hide()
