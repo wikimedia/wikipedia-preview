@@ -72,16 +72,20 @@ const getPreviewHeader = ( lang, imageUrl = '' ) =>{
 		return render( lang, isTouch, dir, getPreviewHeader( lang ), bodyContent )
 	},
 
+	getReadOnWikiCta = ( lang, title, isTouch ) => {
+		return `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank" class="wikipediapreview-cta-readonwiki">${msg( lang, 'read-on-wiki' )}</a>`
+	},
+
 	renderError = ( isTouch, lang, title, dir ) => {
 		const message = `<span>${msg( lang, 'preview-error-message' )}</span>`,
-			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
+			cta = getReadOnWikiCta( lang, title, isTouch )
 
 		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'error', message, cta ) )
 	},
 
 	renderDisambiguation = ( isTouch, lang, title, dir ) => {
 		const message = `<span>${msg( lang, 'preview-disambiguation-message', title )}</span>`,
-			cta = `<a href="${buildWikipediaUrl( lang, title, isTouch )}" target="_blank">${msg( lang, 'read-on-wiki' )}</a>`
+			cta = getReadOnWikiCta( lang, title, isTouch )
 
 		return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'disambiguation', message, cta ) )
 	},

@@ -55,7 +55,15 @@
         <script src="../wikipedia-preview.development.js"></script>
         <script>
             wikipediaPreview.init({
-                lang: 'en'
+                lang: 'en',
+                events: {
+                    onShow: function(title, lang, type) {
+                        console.log(`Opening ${type} popup for article ${title} in ${lang}`)
+                    },
+                    onWikiRead: function(title, lang) {
+                        console.log(`Going to read article ${title} in ${lang} on Wikipedia`)
+                    }
+                }
             });
         </script>
         <!-- End of Scripts -->
