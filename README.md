@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master)
+[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main)
 
 # Wikipedia Preview
 
