@@ -49,21 +49,30 @@ export const customEvents = popup => {
 		},
 
 		setPreviewMaxHeight = ( max ) => {
-			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' )
+			const bodyElement = popup.element.querySelector( '.wikipediapreview-body' ),
+				headerElement = popup.element.querySelector( '.wikipediapreview-header' ),
+				footerElement = popup.element.querySelector( '.wikipediapreview-footer-cta' ) || popup.element.querySelector( '.wikipediapreview-footer-loading' )
 
 			if ( !bodyElement ) {
 				return
 			}
 
 			if ( popup.element.style[ 2 ] === 'bottom' || popup.element.style.bottom ) {
+				// expand up
 				let currentTop = popup.element.getBoundingClientRect().top,
 					originalHeight = parseInt(
 						window.getComputedStyle( bodyElement ).maxHeight.slice( 0, -2 )
 					)
+
 				bodyElement.style.maxHeight = Math.min( max, originalHeight + currentTop ) + 'px'
 			} else {
 				// expand down
-				bodyElement.style.maxHeight = max + 'px'
+				let currentTop = popup.element.getBoundingClientRect().top,
+					headerHeight = window.getComputedStyle( headerElement ).height.slice( 0, -2 ),
+					footerHeight = window.getComputedStyle( footerElement ).height.slice( 0, -2 ),
+					availableHeight = window.innerHeight - currentTop - headerHeight - footerHeight
+
+				bodyElement.style.maxHeight = Math.min( max, availableHeight ) + 'px'
 			}
 		},
 
