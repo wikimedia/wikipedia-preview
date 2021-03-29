@@ -1,6 +1,10 @@
 /// <reference types="Cypress" />
 
-describe('Testing Thai version', () => {
+describe('Testing Thai version for Mobileview', () => {
+
+    beforeEach(() => { 
+        cy.viewport('iphone-xr')
+    })
 
     it('Check URL', () => {
         cy.visit('http://localhost:8080/articles/thai.html').url().should('include', '/thai.html')  
@@ -11,7 +15,7 @@ describe('Testing Thai version', () => {
     })
 
     it('Check Header Font-Size', () => {
-        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '32px')   
+        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '18px')   
     })
 
     it('Check Image Rendering', () => {

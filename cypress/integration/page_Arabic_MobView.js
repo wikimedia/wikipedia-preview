@@ -1,6 +1,10 @@
 /// <reference types="Cypress" />
 
-describe('Testing Arabic version', () => {
+describe('Testing Arabic version for MobileView', () => {
+
+    beforeEach(() => { 
+        cy.viewport('iphone-xr')
+    })
 
     it('Check URL', () => {
         cy.visit('http://localhost:8080/articles/arabic.html').url().should('include', '/arabic.html') 
@@ -11,7 +15,7 @@ describe('Testing Arabic version', () => {
     })
 
     it('Check Header Font-Size', () => {
-        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '32px')  
+        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '18px')  
     })
 
     it('Check Image Rendering', () => {

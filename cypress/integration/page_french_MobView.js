@@ -1,7 +1,11 @@
 /// <reference types="Cypress" />
 
-describe('Testing French version', () => {
+describe('Testing French version for MobileView', () => {
 
+    beforeEach(() => { 
+        cy.viewport('iphone-xr')
+    })
+    
     it('Check URL', () => {
         cy.visit('http://localhost:8080/articles/french.html').url().should('include', '/french.html')  
     })
@@ -11,7 +15,7 @@ describe('Testing French version', () => {
     })
 
     it('Check Header Font-Size', () => {
-        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '32px')    
+        cy.pageHeader().should('be.visible').should('have.css', 'font-size', '18px')    
     })
 
     it('Check Image Rendering', () => {
