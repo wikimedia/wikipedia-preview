@@ -2,5 +2,6 @@
   "name": "Using fixtures to represent data",
   "email": "hello@cypress.io",
   "body": "Fixtures are a great way to mock data for responses to routes",
-  "airticleName" : ["Wildlife of the Central African Republic","Gili Trawangan","विस्तार से जानिये कालिंजर दुर्ग के बारे में","เฉลิมชัย โฆษิตพิพัฒน์","Nikola Tesla","Conseil de sécurité des Nations unies","أم كلثوم (مطربة)"]
+  "airticleName" : ["Wildlife of the Central African Republic","Gili Trawangan","विस्तार से जानिये कालिंजर दुर्ग के बारे में","เฉลิมชัย โฆษิตพิพัฒน์","Nikola Tesla","Conseil de sécurité des Nations unies","أم كلثوم (مطربة)"],
+"subTitle" : ["\n Language · English \n","Language · Bahasa Indonesia","Language · Hindi","Language · Thai","Language · Spanish","Language · French","Language · Arabic"]
 }
