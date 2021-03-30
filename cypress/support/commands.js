@@ -1,25 +1,18 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// I have used custom commands for the repetetive selectors 
+
+Cypress.Commands.add('getPopup', () => {
+    cy.get('body > div.wp-popup',{timeout:5000}) // Get the popup element 
+})
+Cypress.Commands.add('closePopup', () => {
+    cy.get('body > div.wp-popup > div > div.wikipediapreview-header > div.wikipediapreview-header-closebtn') // gets the close button inside popup element
+})
+Cypress.Commands.add('continueReading', () => {
+    cy.get('body > div.wp-popup > div > div.wikipediapreview-footer > span',{timeout:5000}) //get the continue reading button inside popup
+})
+Cypress.Commands.add('goToWiki', () => {
+    cy.get('body > div.wp-popup > div > div.wikipediapreview-footer > a',{timeout:5000}) // gets the wikipedia hyperlink for that popup article
+})
+
+
+
+
