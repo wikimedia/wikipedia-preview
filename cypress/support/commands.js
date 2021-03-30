@@ -1,6 +1,7 @@
+import { AirticelPage } from "../integration/pageObject/airticlePage";
 import { Homepage } from "../integration/pageObject/HomePage";
 const homepage = new Homepage();
-
+const airticlePage = new AirticelPage();
 Cypress.Commands.add("openingArticle", (articleName) => {
   cy.get("div.title").each(($el, index, $list) => {
     if ($el.text().includes(articleName)) {
@@ -10,6 +11,36 @@ Cypress.Commands.add("openingArticle", (articleName) => {
     }
   });
 });
+Cypress.Commands.add("getHomePage", (page) => {
+  return cy.visit('http://localhost:8080' + page )
+});
+Cypress.Commands.add("checkingParagraph", (articleName) => {
+  cy.get("div.title").each(($el, index, $list) => {
+    if ($el.text().includes(articleName)) {
+      cy.get("div.title").eq(index).get('div.para').eq(index)
+      // cy.go('back')
+    }
+  });
+});
+Cypress.Commands.add("openingApopups", (popupName) => { 
+  cy.get('span.wmf-wp-with-preview').each(($el,index,$list) => {
+      if($el.text().includes(popupName))
+      {
+          // cy.get('span.wmf-wp-with-preview').eq(index).trigger('mouseover')
+          // cy.get('span.wmf-wp-with-preview').eq(index).invoke('show')
+          cy.get('span.wmf-wp-with-preview').eq(index)
+        //  airticelPage.getCloseButton('wikipediapreview-header-closebtn').eq(index).click()
+         
+          // cy.contains('Continue Reading').click()
+          // homepage.getHomePage('/articles/english.html');
+          // cy.contains('Read more on Wikipedia').invoke('removeAttr','target').click()
+          
+       
+      }
+  })
+})
+
+
 Cypress.Commands.add("homePageHeader", () => {
   cy.get("body > div.header");
 });
@@ -23,16 +54,7 @@ Cypress.Commands.add("pageTitle", () => {
 Cypress.Commands.add("pageFooter", () => {
   cy.get("body > div.footer");
 });
-Cypress.Commands.add("bodyTitle", () => {
-  cy.get("body> div.container > div.listview > div.item > a > div.title");
-});
-Cypress.Commands.add("bodyImage", () => {
-  cy.get("body> div.container > div.listview > div.item > a > div.image");
-});
 
-Cypress.Commands.add("bodySubTitle", () => {
-  cy.get("body> div.container > div.listview > div.item > a > div.image > div.subtitle");
-});
 
 Cypress.Commands.add("bodyUrl", () => {
     cy.get("body> div.container > div.listview > div.item > a ");
