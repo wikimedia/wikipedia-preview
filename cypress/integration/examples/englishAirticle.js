@@ -34,7 +34,6 @@ describe("Wikimedia english page test", function () {
 
   it("cheching all the popups in loop", () => {
     cy.openingApopups("ivory");
-    cy.popUpBoxFooterImg3().should("not.be.visible");
     cy.popUpBoxFoooterLink().should(
       "have.attr",
       "href",

@@ -7,7 +7,7 @@ Cypress.Commands.add("openingArticle", (articleName) => {
   cy.get("div.title").each(($el, index, $list) => {
     if ($el.text().includes(articleName)) {
       cy.get("div.title").eq(index);
-      homepage.getHomePage("/");
+      cy.getHomePage('/')
       // cy.go('back')
     }
   });
@@ -15,7 +15,7 @@ Cypress.Commands.add("openingArticle", (articleName) => {
 Cypress.Commands.add("getHomePage", (page) => {
   return cy.visit("http://localhost:8080" + page);
 });
-Cypress.Commands.add("checkingParagraph", (articleName) => {
+Cypress.Commands.add("bodyTitle", (articleName) => {
   cy.get("div.title").each(($el, index, $list) => {
     if ($el.text().includes(articleName)) {
       cy.get("div.title").eq(index).get("div.para").eq(index);
@@ -64,7 +64,7 @@ Cypress.Commands.add("openingApopups", (popupName) => {
       cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
       cy.wait(2000);
       cy.popUpBoxFooterImg2().should("be.visible");
-      cy.popUpBoxFooterImg3().should("be.visible");
+      // cy.popUpBoxFooterImg3().should("be.visible");
       cy.popUpBoxCloseBtn().should("be.visible");
       cy.contains("Read more on Wikipedia").should("be.visible");
       cy.popUpBoxCloseBtn().click();

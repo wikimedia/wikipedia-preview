@@ -26,6 +26,12 @@ export class AirticelPage {
   getSpan1A(){
     return cy.get('body > div.container > div.content > p:nth-child(1) > a')
   }
+  getSpan1B(){
+    return cy.get('body > div.container > div.content > p:nth-child(1) > span:nth-child(1)')
+  }
+  getSpan1C(){
+    return cy.get('body > div.container > div.content > p:nth-child(1) > span:nth-child(2)')
+  }
   getSpan1(){
     return cy.get('body > div.container > div.content > p:nth-child(1) > span')
   }

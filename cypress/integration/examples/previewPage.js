@@ -3,7 +3,7 @@ const homepage = new Homepage();
 
 describe("Wikimedia preview page test", function () {
   before(function () {
-    homepage.getHomePage("/");
+    cy.getHomePage('/')
     cy.fixture("example").then(function (data) {
       this.data = data;
     });
@@ -15,16 +15,16 @@ describe("Wikimedia preview page test", function () {
     });
   });
   it("Check Header", function () {
-    homepage.getHomePage("/");
-    cy.homePageHeader().should("have.text", "Wikipedia Preview demo");
-    cy.homePageHeader().should("have.css", "font-size", "32px");
+    cy.getHomePage('/')
+  cy.getHeader().should("have.text", "Wikipedia Preview demo");
+  cy.getHeader().should("have.css", "font-size", "32px");
   });
-// it("Check Body", () => {
-//   cy.bodyTitle().should("have.text", "Wildlife of the Central African Republic")
-//   cy.bodySubTitle().should("have.text", "Language · English")
-//   // cy.bodyImage().image()
-//   // cy.homePageBody().a()
-// })
+it("Check Body", () => {
+  cy.bodyTitle().should("have.text", "Wildlife of the Central African Republic")
+  cy.bodySubTitle().should("have.text", "Language · English")
+  // cy.bodyImage().image()
+  // cy.homePageBody().a()
+})
 // it("Check next page", () => {
 //   cy.bodyTitle().should("have.text", "Gili Trawangan")
 //   cy.bodySubTitle().should("have.text", "Language · Bahasa Indonesia")
@@ -63,11 +63,9 @@ describe("Wikimedia preview page test", function () {
 // })
 
   it("Check Footer", () => {
-    cy.pageFooter().should("be.visible");
-    cy.get("body > div.footer > p") .should("have.css", "font-size", "12px");
+    homepage.getFooter().scrollIntoView().should("be.visible");
+    homepage.getFooter().should("have.css", "font-size", "16px");
   });
-
- 
 });
 
 

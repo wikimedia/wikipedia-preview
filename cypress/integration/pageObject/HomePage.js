@@ -12,6 +12,9 @@ bodyTitle() {
 bodyImage ()  {
     return   cy.get("body> div.container > div.listview > div.item > a > div.image");
   }
+  bodyLink(){
+    return   cy.get("body> div.container > div.listview > div.item > a ")
+  }
   
 bodySubTitle () {
     return   cy.get("body> div.container > div.listview > div.item > a > div.image > div.subtitle");
