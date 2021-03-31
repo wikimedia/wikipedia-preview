@@ -132,8 +132,3 @@ Cypress.Commands.add("popUpBoxCloseBtn", () => {
     "body > div.wp-popup > div > div.wikipediapreview-header > div.wikipediapreview-header-closebtn"
   );
 });
-Cypress.Commands.add("popUpBoxFoooterLink", () => {
-  cy.get(
-    "body > div.wp-popup > div.wikipediapreview > div.wikipediapreview-footer  > a"
-  );
-});
