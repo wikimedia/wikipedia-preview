@@ -7,7 +7,7 @@ Cypress.Commands.add("openingArticle", (articleName) => {
   cy.get("div.title").each(($el, index, $list) => {
     if ($el.text().includes(articleName)) {
       cy.get("div.title").eq(index);
-      cy.getHomePage('/')
+      cy.getHomePage("/");
       // cy.go('back')
     }
   });
@@ -55,7 +55,7 @@ Cypress.Commands.add("openingApopups", (popupName) => {
       // cy.get('span.wmf-wp-with-preview').eq(index).trigger('mouseover')
       // cy.get('span.wmf-wp-with-preview').eq(index).invoke('show')
       // cy.get("span.wmf-wp-with-preview").eq(index).click({ force: true });
-      cy.get("span.wmf-wp-with-preview").eq(index).trigger('mouseenter')
+      cy.get("span.wmf-wp-with-preview").eq(index).trigger("mouseenter");
       cy.wait(2000);
       cy.popUpBox().should("be.visible");
       cy.popUpBoxHeaderImg().should("be.visible");
@@ -76,13 +76,19 @@ Cypress.Commands.add("openingApopups", (popupName) => {
   });
 });
 
-// Cypress.Commands.add("bodyUrl", () => {
-//     cy.get("body> div.container > div.listview > div.item > a ");
-//   });
+Cypress.Commands.add("bodyTitle", () => {
+  cy.get("body> div.container > div.listview > div.item > a ");
+});
+Cypress.Commands.add("bodySubTitle", () => {
+  cy.get("body> div.container > div.listview > div.item > a ");
+});
+Cypress.Commands.add("bodyLink", () => {
+  cy.get("body> div.container > div.listview > div.item > a ");
+});
 
-// Cypress.Commands.add("coverImage", () => {
-//   cy.get("body > div.container > div.cover", { timeout: 5000 });
-// });
+Cypress.Commands.add("bodyImage", () => {
+  cy.get("body > div.container > div.cover", { timeout: 5000 });
+});
 
 Cypress.Commands.add("popUpBox", () => {
   cy.get("body > div.wp-popup");
@@ -97,14 +103,8 @@ Cypress.Commands.add("popUpBoxHeaderImg", () => {
 Cypress.Commands.add("popUpBoxHeader", () => {
   cy.get(
     "body > div.wp-popup > div > div.wikipediapreview-header > div.wikipediapreview-header-wordmark wikipediapreview-header-wordmark-with-image wikipediapreview-header-wordmark-id"
-
   );
 });
-
-
-// Cypress.Commands.add("continueReadBtn", () => {
-//   cy.get("body > div.wp-popup > div > div.wikipediapreview-footer > span");
-// });
 
 Cypress.Commands.add("popUpBoxFooterImg1", () => {
   cy.get(
@@ -126,10 +126,6 @@ Cypress.Commands.add("popUpBoxFooterImg3", () => {
     { timeout: 5000 }
   );
 });
-
-// Cypress.Commands.add("readMoreBtn", () => {
-//   cy.get("body > div.wp-popup > div > div.wikipediapreview-footer > a");
-// });
 
 Cypress.Commands.add("popUpBoxCloseBtn", () => {
   cy.get(

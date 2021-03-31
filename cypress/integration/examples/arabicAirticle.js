@@ -19,9 +19,7 @@ describe("Wikimedia english page test", function () {
     airticlePage.getHeaderLink().should("have.attr", "href", "../index.html");
   });
   it("cheching the title", () => {
-    airticlePage
-      .getTitle()
-      .should("have.text", "أم كلثوم (مطربة)");
+    airticlePage.getTitle().should("have.text", "أم كلثوم (مطربة)");
   });
   it("cheching the cover image", () => {
     airticlePage.getCover().should("be.visible");
@@ -32,62 +30,56 @@ describe("Wikimedia english page test", function () {
   });
 
   it("cheching the popups القاهرة", () => {
-      airticlePage.getSpan1B().should('have.text','القاهرة')
-    airticlePage.getSpan1B().trigger('mouseenter')
-    cy.popUpBoxHeaderImg().should('be.visible')
+    airticlePage.getSpan1B().should("have.text", "القاهرة");
+    airticlePage.getSpan1B().trigger("mouseenter");
+    cy.popUpBoxHeaderImg().should("be.visible");
     cy.popUpBoxCloseBtn().should("be.visible");
-    cy.contains("مواصلة القراءة").click(); 
+    cy.contains("مواصلة القراءة").click();
     cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
     cy.popUpBoxFooterImg2().scrollIntoView().should("be.visible");
     cy.popUpBoxFooterImg3().scrollIntoView().should("be.visible");
     cy.contains("اقرأ المزيد عن ويكيبيديا").should("be.visible");
     cy.popUpBoxFoooterLink().should(
-        "have.attr",
-        "href",
-        "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9?wprov=wppw1"
-        
-      ); 
-      cy.popUpBoxCloseBtn().click();
-
-    })
-    it("cheching the popups مصر", () => {
-        airticlePage.getSpan1C().should('have.text','مصر')
-      airticlePage.getSpan1C().trigger('mouseenter')
-      cy.popUpBoxHeaderImg().should('be.visible')
-      cy.popUpBoxCloseBtn().should("be.visible");
-      cy.contains("مواصلة القراءة").click(); 
-      cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
-      cy.popUpBoxFooterImg2().scrollIntoView().should("be.visible");
-      cy.popUpBoxFooterImg3().scrollIntoView().should("be.visible");
-      cy.contains("اقرأ المزيد عن ويكيبيديا").should("be.visible");
-      cy.popUpBoxFoooterLink().should(
-          "have.attr",
-          "href",
-          "https://ar.wikipedia.org/wiki/%D9%85%D8%B5%D8%B1?wprov=wppw1"
-          
-        ); 
-        cy.popUpBoxCloseBtn().click();
-  
-      })
+      "have.attr",
+      "href",
+      "https://ar.wikipedia.org/wiki/%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9?wprov=wppw1"
+    );
+    cy.popUpBoxCloseBtn().click();
+  });
+  it("cheching the popups مصر", () => {
+    airticlePage.getSpan1C().should("have.text", "مصر");
+    airticlePage.getSpan1C().trigger("mouseenter");
+    cy.popUpBoxHeaderImg().should("be.visible");
+    cy.popUpBoxCloseBtn().should("be.visible");
+    cy.contains("مواصلة القراءة").click();
+    cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
+    cy.popUpBoxFooterImg2().scrollIntoView().should("be.visible");
+    cy.popUpBoxFooterImg3().scrollIntoView().should("be.visible");
+    cy.contains("اقرأ المزيد عن ويكيبيديا").should("be.visible");
+    cy.popUpBoxFoooterLink().should(
+      "have.attr",
+      "href",
+      "https://ar.wikipedia.org/wiki/%D9%85%D8%B5%D8%B1?wprov=wppw1"
+    );
+    cy.popUpBoxCloseBtn().click();
+  });
   it("cheching the popups محمد_عبد_الوهاب", () => {
-    airticlePage.getSpan2().should('have.text','محمد_عبد_الوهاب')
-  airticlePage.getSpan2().trigger('mouseenter')
-  cy.popUpBoxHeaderImg().should('be.visible')
-  cy.popUpBoxCloseBtn().should("be.visible");
-  cy.contains("مواصلة القراءة").click(); 
-  cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
-  cy.popUpBoxFooterImg2().scrollIntoView().should("be.visible");
-  cy.popUpBoxFooterImg3().scrollIntoView().should("be.visible");
-  cy.contains("اقرأ المزيد عن ويكيبيديا").should("be.visible");
-  cy.popUpBoxFoooterLink().should(
+    airticlePage.getSpan2().should("have.text", "محمد_عبد_الوهاب");
+    airticlePage.getSpan2().trigger("mouseenter");
+    cy.popUpBoxHeaderImg().should("be.visible");
+    cy.popUpBoxCloseBtn().should("be.visible");
+    cy.contains("مواصلة القراءة").click();
+    cy.popUpBoxFooterImg1().scrollIntoView().should("be.visible");
+    cy.popUpBoxFooterImg2().scrollIntoView().should("be.visible");
+    cy.popUpBoxFooterImg3().scrollIntoView().should("be.visible");
+    cy.contains("اقرأ المزيد عن ويكيبيديا").should("be.visible");
+    cy.popUpBoxFoooterLink().should(
       "have.attr",
       "href",
       "https://ar.wikipedia.org/wiki/%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D8%A8%D8%AF_%D8%A7%D9%84%D9%88%D9%87%D8%A7%D8%A8?wprov=wppw1"
-      
-    ); 
+    );
     cy.popUpBoxCloseBtn().click();
-
-  })
+  });
   it("cheching the footer", () => {
     airticlePage
       .getFooter()

@@ -1,24 +1,27 @@
 export class Homepage {
-  
-getHeader(){
-   return cy.get("body > div.header")
-}
-getFooter() {
-   return cy.get("body > div.footer");
-}
-bodyTitle() {
-    return  cy.get("body> div.container > div.listview > div.item > a > div.title");
+  getHeader() {
+    return cy.get("body > div.header");
   }
-bodyImage ()  {
-    return   cy.get("body> div.container > div.listview > div.item > a > div.image");
+  getFooter() {
+    return cy.get("body > div.footer");
   }
-  bodyLink(){
-    return   cy.get("body> div.container > div.listview > div.item > a ")
+  bodyTitle() {
+    return cy.get(
+      "body> div.container > div.listview > div.item > a > div.title"
+    );
   }
-  
-bodySubTitle () {
-    return   cy.get("body> div.container > div.listview > div.item > a > div.image > div.subtitle");
+  bodyImage() {
+    return cy.get(
+      "body> div.container > div.listview > div.item > a > div.image"
+    );
+  }
+  bodyLink() {
+    return cy.get("body> div.container > div.listview > div.item > a ");
   }
 
-
+  bodySubTitle() {
+    return cy.get(
+      "body> div.container > div.listview > div.item > a > div.image > div.subtitle"
+    );
+  }
 }
