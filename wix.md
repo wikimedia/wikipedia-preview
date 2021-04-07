@@ -35,4 +35,4 @@ Then to initialize:
   6. By default this code should be marked as "Essential", you can ensure this is the case under the Code Type tab.
   7. Click "Apply"
 
-  You are now ready to start using Wikipedia Preview in your Wix Site. Simply [add hyperlinks](https://support.wix.com/en/article/wix-editor-adding-a-text-hyperlink) through the Wix Editor with the Wikipedia article link you would like to use on a specific word. Once you publish your site to the updated version, Wikipedia Preview popups should appear on link hover (desktop) or touch (mobile).
+You are now ready to start using Wikipedia Preview in your Wix Site. Simply [add hyperlinks](https://support.wix.com/en/article/wix-editor-adding-a-text-hyperlink) through the Wix Editor with the Wikipedia article link you would like to use on a specific word. Once you publish your site to the updated version, Wikipedia Preview popups should appear on link hover (desktop) or touch (mobile).
