@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "header": "English",
+    "link": "english.html",
+    "img": "english-pic.png"
+  },
+  {
+    "id": 2,
+    "header": "BahasaIndonesia",
+    "link": "bahasaIndonesia.html",
+    "img": "bahasa-indonesia-pic.jpg"
+  },
+  {
+    "id": 3,
+    "header": "Hindi",
+    "link": "hindi.html",
+    "img": "hindi-pic.png"
+  },
+
+  {
+    "id": 4,
+    "header": "Thai",
+    "link": "thai.html",
+    "img": "thai-pic.png"
+  },
+  {
+    "id": 5,
+    "header": "Spanish",
+    "link": "spanish.html",
+    "img": "spanish-pic.png"
+  },
+  {
+    "id": 6,
+    "header": "French",
+    "link": "french.html",
+    "img": "french-pic.png"
+  },
+  {
+    "id": 7,
+    "header": "Arabic",
+    "link": "arabic.html",
+    "img": "arabic-pic.jpg"
+  }
+]
