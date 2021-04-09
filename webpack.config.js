@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
@@ -38,7 +40,11 @@ const config = {
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
         generateStatsFile: true
-      })
+      }),
+      new webpack.DefinePlugin({
+        APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
+        CIRCLE_SHA1: JSON.stringify(process.env.CIRCLE_SHA1 || '-')
+      }),
     ],
   module: {
     rules: [

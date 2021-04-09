@@ -29,6 +29,14 @@ Android | 4.1+
 
 ## Getting Started
 
+Integrating Wikipedia Preview to your site consists of a three step process:
+
+1. Loading wikipedia-preview.js (either as a standalong script or an npm dependency)
+2. Invoking `wikipediaPreview.init( <options> )`
+3. Annotating articles accordingly
+
+You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console.
+
 ### Standalone Script
 
 ```html

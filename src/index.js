@@ -6,16 +6,21 @@ import { renderPreview, renderLoading, renderError, renderDisambiguation, render
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
-	const callback = events && events[ name ]
-	if ( callback instanceof Function ) {
-		try {
-			callback.apply( null, params )
-		} catch ( e ) {
-			// eslint-disable-next-line no-console
-			console.log( 'Error invoking Wikipedia Preview custom callback', e )
+		const callback = events && events[ name ]
+		if ( callback instanceof Function ) {
+			try {
+				callback.apply( null, params )
+			} catch ( e ) {
+				// eslint-disable-next-line no-console
+				console.log( 'Error invoking Wikipedia Preview custom callback', e )
+			}
 		}
+	},
+
+	version = () => {
+	/* eslint-disable-next-line no-undef, no-console */
+		console.log( `Wikipedia Preview - ${APP_VERSION} (${CIRCLE_SHA1})` )
 	}
-}
 
 let currentPopupId
 
@@ -146,6 +151,8 @@ function init( {
 			}
 		)
 	}
+
+	version()
 }
 
 export { init }
