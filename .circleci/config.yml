@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
 jobs:
   build:
     docker:
@@ -49,13 +51,24 @@ jobs:
           command: |
             gh-pages --dist . -m "Update demo [ci skip]"
 workflows:
-  version: 2
   build:
     jobs:
-      - build
-      - update-demos:
+      - cypress/install
+      - cypress/run:
+          executor: cypress/browsers-chrome73-ff68
+          name: Chrome
           requires:
-            - build
-          filters:
-            branches:
-              only: main
+            - cypress/install
+          start: npm install && npm run dev
+          wait-on: http://localhost:8080
+          group: chrome
+          browser: chrome
+      - cypress/run:
+          executor: cypress/browsers-chrome73-ff68
+          name: Firefox
+          requires:
+            - cypress/install
+          start: npm install && npm run dev
+          wait-on: http://localhost:8080
+          group: firefox-critical-path
+          browser: firefox
