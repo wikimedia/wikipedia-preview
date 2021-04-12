@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby"
 		]
 	},
 	"continue-reading": "Virufuere mat Liesen",
+	"gallery-loading-error": "Feeler beim eropluede vum Bild",
+	"gallery-loading-error-offline": "Et gëtt keng Internetverbindung",
 	"gallery-loading-error-refresh": "Aktualiséieren",
 	"gallery-loading-still": "Gëtt nach gelueden",
 	"gallery-unknown-author": "Auteur onbekannt",
+	"preview-error-message": "Et gouf e Probleem fir dëst ze weisen",
 	"read-on-wiki": "Op Wikipedia liesen",
 	"read-more": "Liest méi op Wikipedia"
 }
