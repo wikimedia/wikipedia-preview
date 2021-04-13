@@ -6,16 +6,25 @@ import { renderPreview, renderLoading, renderError, renderDisambiguation, render
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
-	const callback = events && events[ name ]
-	if ( callback instanceof Function ) {
-		try {
-			callback.apply( null, params )
-		} catch ( e ) {
+		const callback = events && events[ name ]
+		if ( callback instanceof Function ) {
+			try {
+				callback.apply( null, params )
+			} catch ( e ) {
 			// eslint-disable-next-line no-console
-			console.log( 'Error invoking Wikipedia Preview custom callback', e )
+				console.log( 'Error invoking Wikipedia Preview custom callback', e )
+			}
+		}
+	},
+
+	Log = ( debug ) => {
+		return ( ...message ) => {
+			if ( !debug ) {
+				return
+			}
+			console.log( 'Wikipedia Preview -', ...message ) // eslint-disable-line
 		}
 	}
-}
 
 let currentPopupId
 
@@ -25,9 +34,11 @@ function init( {
 	lang = 'en',
 	detectLinks = false,
 	popupContainer = document.body,
-	events = {}
+	events = {},
+	debug = false
 } ) {
-	const globalLang = lang,
+	const log = new Log( debug ),
+		globalLang = lang,
 		popup = isTouch ?
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
@@ -74,6 +85,7 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'standard' ] )
+							log( `Show ${title} in Standard Mode` )
 						} else if ( data.type === 'disambiguation' ) {
 							popup.show(
 								renderDisambiguation( isTouch, lang, data.title, data.dir ),
@@ -81,6 +93,7 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'disambiguation' ] )
+							log( `Show ${title} in Disambiguation Mode` )
 						}
 					} else {
 						if ( isOnline() ) {
@@ -90,6 +103,7 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'error' ] )
+							log( `Show ${title} in Error Mode` )
 						} else {
 							popup.show(
 								renderOffline( isTouch, lang, dir ),
@@ -97,6 +111,7 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'offline' ] )
+							log( `Show ${title} in Offline Mode` )
 							const again = root.querySelector( '.wikipediapreview-body-action' )
 							last.lang = lang
 							last.title = title
@@ -146,6 +161,8 @@ function init( {
 			}
 		)
 	}
+
+	log( 'Initialization props', { selector, lang, detectLinks } )
 }
 
 version()
