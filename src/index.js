@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline } from './utils'
+import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -148,4 +148,6 @@ function init( {
 	}
 }
 
-export { init }
+version()
+
+export { init, version }
