@@ -73,4 +73,9 @@ export const getWikipediaAttrFromUrl = url => {
 
 	buildWikipediaUrl = ( lang, title, touch ) => {
 		return `https://${lang}${ touch ? '.m' : '' }.wikipedia.org/wiki/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
+	},
+
+	version = () => {
+		/* eslint-disable-next-line no-undef, no-console */
+		console.log( `Wikipedia Preview - version ${APP_VERSION} (${CIRCLE_SHA1})` )
 	}
