@@ -150,4 +150,4 @@ function init( {
 
 version()
 
-export { init }
+export { init, version }

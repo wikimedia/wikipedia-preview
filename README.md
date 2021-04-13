@@ -35,7 +35,7 @@ Integrating Wikipedia Preview to your site consists of a three step process:
 2. Invoking `wikipediaPreview.init( <options> )`
 3. Annotating articles accordingly
 
-You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console.
+You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console. You can also invoke `wikipediaPreview.version()` from your JS console to view version information at any time. 
 
 ### Standalone Script
 
