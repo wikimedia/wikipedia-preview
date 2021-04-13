@@ -77,5 +77,5 @@ export const getWikipediaAttrFromUrl = url => {
 
 	version = () => {
 		/* eslint-disable-next-line no-undef, no-console */
-		console.log( `Wikipedia Preview - version ${APP_VERSION} (${CIRCLE_SHA1})` )
+		console.log( `Wikipedia Preview - version ${APP_VERSION} (${GIT_HASH})` )
 	}

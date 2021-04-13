@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const childProcess = require('child_process')
 const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
@@ -43,7 +44,7 @@ const config = {
       }),
       new webpack.DefinePlugin({
         APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
-        CIRCLE_SHA1: JSON.stringify(process.env.CIRCLE_SHA1 || '-')
+        GIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse --short HEAD').toString().trim())
       }),
     ],
   module: {
