@@ -124,6 +124,7 @@ function init( {
 					}
 					popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
 						invokeCallback( events, 'onWikiRead', [ title, lang ] )
+						log( `Read ${title} on Wikipedia` )
 					} )
 				}
 			} )
