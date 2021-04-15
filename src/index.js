@@ -6,25 +6,16 @@ import { renderPreview, renderLoading, renderError, renderDisambiguation, render
 import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
-		const callback = events && events[ name ]
-		if ( callback instanceof Function ) {
-			try {
-				callback.apply( null, params )
-			} catch ( e ) {
+	const callback = events && events[ name ]
+	if ( callback instanceof Function ) {
+		try {
+			callback.apply( null, params )
+		} catch ( e ) {
 			// eslint-disable-next-line no-console
-				console.log( 'Error invoking Wikipedia Preview custom callback', e )
-			}
-		}
-	},
-
-	Log = ( debug ) => {
-		return ( ...message ) => {
-			if ( !debug ) {
-				return
-			}
-			console.log( 'Wikipedia Preview -', ...message ) // eslint-disable-line
+			console.log( 'Error invoking Wikipedia Preview custom callback', e )
 		}
 	}
+}
 
 let currentPopupId
 
@@ -37,13 +28,14 @@ function init( {
 	events = {},
 	debug = false
 } ) {
-	const log = new Log( debug ),
-		globalLang = lang,
+	const globalLang = lang,
 		popup = isTouch ?
 			createTouchPopup( popupContainer ) :
 			createPopup( popupContainer ),
 		popupEvents = customEvents( popup ),
 		last = {},
+		foundSelectorLinks = [],
+		foundDetectLinks = [],
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 
@@ -85,7 +77,6 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'standard' ] )
-							log( `Show ${title} in Standard Mode` )
 						} else if ( data.type === 'disambiguation' ) {
 							popup.show(
 								renderDisambiguation( isTouch, lang, data.title, data.dir ),
@@ -93,7 +84,6 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'disambiguation' ] )
-							log( `Show ${title} in Disambiguation Mode` )
 						}
 					} else {
 						if ( isOnline() ) {
@@ -103,7 +93,6 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'error' ] )
-							log( `Show ${title} in Error Mode` )
 						} else {
 							popup.show(
 								renderOffline( isTouch, lang, dir ),
@@ -111,7 +100,6 @@ function init( {
 								pointerPosition
 							)
 							invokeCallback( events, 'onShow', [ title, lang, 'offline' ] )
-							log( `Show ${title} in Offline Mode` )
 							const again = root.querySelector( '.wikipediapreview-body-action' )
 							last.lang = lang
 							last.title = title
@@ -124,7 +112,6 @@ function init( {
 					}
 					popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
 						invokeCallback( events, 'onWikiRead', [ title, lang ] )
-						log( `Read ${title} on Wikipedia` )
 					} )
 				}
 			} )
@@ -140,6 +127,12 @@ function init( {
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
 			}
+
+			foundSelectorLinks.push( {
+				text: node.textContent,
+				title: node.getAttribute( 'data-wp-title' ) || node.textContent,
+				lang: node.getAttribute( 'data-wp-lang' ) || globalLang
+			} )
 		}
 	)
 
@@ -158,12 +151,37 @@ function init( {
 					} else {
 						node.addEventListener( 'mouseenter', showPopup )
 					}
+
+					foundDetectLinks.push( {
+						text: node.textContent,
+						title: matches.title,
+						lang: matches.lang
+					} )
 				}
 			}
 		)
 	}
 
-	log( 'Initialization props', { selector, lang, detectLinks } )
+	if ( debug ) {
+		/* eslint-disable no-console */
+		console.group( 'Wikipedia Preview [debugger]' )
+		console.log( `searching for the content in language "${globalLang}" within the selector of "${selector}"` )
+		console.group( `Total links found in the given selector of "${selector}" : ${foundSelectorLinks.length}` )
+		foundSelectorLinks.forEach( ( link, index ) => {
+			console.log( index + 1, `text "${link.text}", title "${link.title}", lang : "${link.lang}"` )
+		} )
+		console.groupEnd()
+		if ( detectLinks ) {
+			console.group( `Total links found in the hyperlink : ${foundDetectLinks.length}` )
+			foundDetectLinks.forEach( ( link, index ) => {
+				console.log( index + 1, `text "${link.text}", title "${link.title}", lang : "${link.lang}"` )
+			} )
+			console.groupEnd()
+		}
+		console.groupEnd()
+		/* eslint-enable no-console */
+	}
+
 }
 
 version()
