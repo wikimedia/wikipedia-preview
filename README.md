@@ -69,6 +69,7 @@ lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
 detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
 events | Object | `{}` | Custom event handlers: `{ onShow: <fn>, onWikiRead: <fn> }`
+debug | Boolean | `false` | Shows the debug message when `init()` is called
 
 Example (custom selector)
 ```html
