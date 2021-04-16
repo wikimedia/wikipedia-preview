@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline, version } from './utils'
+import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -164,17 +164,16 @@ function init( {
 
 	if ( debug ) {
 		/* eslint-disable no-console */
-		console.group( 'Wikipedia Preview [debugger]' )
-		console.log( `searching for the content in language "${globalLang}" within the selector of "${selector}"` )
-		console.group( `Total links found in the given selector of "${selector}" : ${foundSelectorLinks.length}` )
+		console.group( 'Wikipedia Preview [debug mode]' )
+		console.group( `Searching for "${selector}" inside ${root}, Total links found: ${foundSelectorLinks.length}` )
 		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `text "${link.text}", title "${link.title}", lang : "${link.lang}"` )
+			console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch )}` )
 		} )
 		console.groupEnd()
 		if ( detectLinks ) {
-			console.group( `Total links found in the hyperlink : ${foundDetectLinks.length}` )
+			console.group( `Searching for links to Wikipedia, Total links found: ${foundDetectLinks.length}` )
 			foundDetectLinks.forEach( ( link, index ) => {
-				console.log( index + 1, `text "${link.text}", title "${link.title}", lang : "${link.lang}"` )
+				console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch )}` )
 			} )
 			console.groupEnd()
 		}
