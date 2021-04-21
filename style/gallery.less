@@ -85,24 +85,25 @@
 
 				&-expand-cue {
 					width: 37px;
-					height: 2px;
-					background-color: #fff;
+					height: 3px;
+					background-image: inline-svg( '../images/caption-cue.svg' );
+					background-repeat: no-repeat;
+					background-color: transparent;
 					margin: auto;
 					margin-top: 10px;
+					padding-bottom: 4px;
+					transition: height 0.25s ease-in-out;
 
 					&.expanded {
 						background-image: inline-svg( '../images/caption-cue-expanded.svg' );
-						background-repeat: no-repeat;
-						width: 37px;
 						height: 8px;
-						background-color: transparent;
 					}
 				}
 
 				&-text {
 					padding-left: 13px;
 					padding-right: 13px;
-					margin-top: 10px;
+					margin-top: 6px;
 					max-height: 80px;
 					overflow-y: scroll;
 					transition: max-height 0.25s ease-in-out;
