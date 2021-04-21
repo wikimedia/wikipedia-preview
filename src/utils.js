@@ -71,8 +71,8 @@ export const getWikipediaAttrFromUrl = url => {
 
 	getAnalyticsQueryParam = () => 'wprov=wppw1',
 
-	buildWikipediaUrl = ( lang, title, touch ) => {
-		return `https://${lang}${ touch ? '.m' : '' }.wikipedia.org/wiki/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
+	buildWikipediaUrl = ( lang, title, touch, analytics = true ) => {
+		return `https://${lang}${ touch ? '.m' : '' }.wikipedia.org/wiki/${encodeURIComponent( title )}${analytics ? `?${getAnalyticsQueryParam()}` : ''}`
 	},
 
 	version = () => {
