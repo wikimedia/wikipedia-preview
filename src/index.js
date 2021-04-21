@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, isTouch, getDir, isOnline, version } from './utils'
+import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -25,7 +25,8 @@ function init( {
 	lang = 'en',
 	detectLinks = false,
 	popupContainer = document.body,
-	events = {}
+	events = {},
+	debug = false
 } ) {
 	const globalLang = lang,
 		popup = isTouch ?
@@ -33,6 +34,8 @@ function init( {
 			createPopup( popupContainer ),
 		popupEvents = customEvents( popup ),
 		last = {},
+		foundSelectorLinks = [],
+		foundDetectLinks = [],
 		showPopup = ( e, refresh = false ) => {
 			e.preventDefault()
 
@@ -124,6 +127,12 @@ function init( {
 			} else {
 				node.addEventListener( 'mouseenter', showPopup )
 			}
+
+			foundSelectorLinks.push( {
+				text: node.textContent,
+				title: node.getAttribute( 'data-wp-title' ) || node.textContent,
+				lang: node.getAttribute( 'data-wp-lang' ) || globalLang
+			} )
 		}
 	)
 
@@ -142,10 +151,36 @@ function init( {
 					} else {
 						node.addEventListener( 'mouseenter', showPopup )
 					}
+
+					foundDetectLinks.push( {
+						text: node.textContent,
+						title: matches.title,
+						lang: matches.lang
+					} )
 				}
 			}
 		)
 	}
+
+	if ( debug ) {
+		/* eslint-disable no-console */
+		console.group( 'Wikipedia Preview [debug mode]' )
+		console.group( `Searching for "${selector}" inside ${root}, Total links found: ${foundSelectorLinks.length}` )
+		foundSelectorLinks.forEach( ( link, index ) => {
+			console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch, false )}` )
+		} )
+		console.groupEnd()
+		if ( detectLinks ) {
+			console.group( `Searching for links to Wikipedia, Total links found: ${foundDetectLinks.length}` )
+			foundDetectLinks.forEach( ( link, index ) => {
+				console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch, false )}` )
+			} )
+			console.groupEnd()
+		}
+		console.groupEnd()
+		/* eslint-enable no-console */
+	}
+
 }
 
 version()
