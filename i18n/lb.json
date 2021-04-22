@@ -13,5 +13,7 @@
 	"gallery-unknown-author": "Auteur onbekannt",
 	"preview-error-message": "Et gouf e Probleem fir dëst ze weisen",
 	"read-on-wiki": "Op Wikipedia liesen",
-	"read-more": "Liest méi op Wikipedia"
+	"read-more": "Liest méi op Wikipedia",
+	"preview-offline-message": "Et gëtt keng Internetverbindung",
+	"preview-offline-cta": "Probéiert nach emol"
 }
