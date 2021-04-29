@@ -37,7 +37,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'rtl',
 			titles: { canonical: 'Dog' },
 			/* eslint-disable camelcase */
-			extract_html: '<p>A good boy</p>',
+			extract_html: '<p>A good boy</p>'
 			/* eslint-enable camelcase */
 		}
 		const transformedOutput = {
