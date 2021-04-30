@@ -43,10 +43,9 @@ function init( {
 		const popupId = Date.now()
 		const { target } = refresh ? last : e
 		const title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent
-		// eslint-disable-next-line no-shadow
-		const lang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang
+		const localLang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang
 		const pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY }
-		const dir = getDir( lang )
+		const dir = getDir( localLang )
 
 		if ( popup.element.currentTargetElement === target && !refresh ) {
 			// Hovering over the same link and the popup is already open
@@ -61,49 +60,49 @@ function init( {
 
 		popup.loading = true
 		popup.dir = dir
-		popup.show( renderLoading( isTouch, lang, dir ), target, pointerPosition )
+		popup.show( renderLoading( isTouch, localLang, dir ), target, pointerPosition )
 
-		requestPagePreview( lang, title, isTouch, data => {
+		requestPagePreview( localLang, title, isTouch, data => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}
 			if ( popup.loading ) {
 				popup.loading = false
 				if ( data ) {
-					popup.lang = lang
+					popup.lang = localLang
 					popup.title = title
 					if ( data.type === 'standard' ) {
 						popup.show(
-							renderPreview( lang, data, isTouch ),
+							renderPreview( localLang, data, isTouch ),
 							target,
 							pointerPosition
 						)
-						invokeCallback( events, 'onShow', [ title, lang, 'standard' ] )
+						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						popup.show(
-							renderDisambiguation( isTouch, lang, data.title, data.dir ),
+							renderDisambiguation( isTouch, localLang, data.title, data.dir ),
 							target,
 							pointerPosition
 						)
-						invokeCallback( events, 'onShow', [ title, lang, 'disambiguation' ] )
+						invokeCallback( events, 'onShow', [ title, localLang, 'disambiguation' ] )
 					}
 				} else {
 					if ( isOnline() ) {
 						popup.show(
-							renderError( isTouch, lang, title, dir ),
+							renderError( isTouch, localLang, title, dir ),
 							target,
 							pointerPosition
 						)
-						invokeCallback( events, 'onShow', [ title, lang, 'error' ] )
+						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
-							renderOffline( isTouch, lang, dir ),
+							renderOffline( isTouch, localLang, dir ),
 							target,
 							pointerPosition
 						)
-						invokeCallback( events, 'onShow', [ title, lang, 'offline' ] )
+						invokeCallback( events, 'onShow', [ title, localLang, 'offline' ] )
 						const again = root.querySelector( '.wikipediapreview-body-action' )
-						last.lang = lang
+						last.lang = localLang
 						last.title = title
 						last.pointerPosition = pointerPosition
 						last.target = target
@@ -113,7 +112,7 @@ function init( {
 					}
 				}
 				popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-					invokeCallback( events, 'onWikiRead', [ title, lang ] )
+					invokeCallback( events, 'onWikiRead', [ title, localLang ] )
 				} )
 			}
 		} )
