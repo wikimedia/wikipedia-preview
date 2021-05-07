@@ -1,6 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
+import { pointerdownHandler, pointermoveHandler, pointerupHandler } from './gestures'
 
 // internal state of the slider component
 let current = 0
@@ -271,6 +272,18 @@ const applyGestureEvent = () => {
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 	const captionText = `${prefixClassname}-item-caption-text`
 	const items = container.querySelectorAll( `.${prefixClassname}-item` )
+
+	container.addEventListener( 'pointerdown', e =>{
+		pointerdownHandler( e )
+	} )
+
+	container.addEventListener( 'pointermove', e => {
+		pointermoveHandler( e )
+	} )
+
+	container.addEventListener( 'pointerup', e => {
+		pointerupHandler( e )
+	} )
 
 	container.addEventListener( 'touchstart', e => {
 		if ( e.target.className === captionText &&
