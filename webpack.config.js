@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
+const LessPluginInlineSvg = require('less-plugin-inline-svg');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -12,6 +13,7 @@ class WikipediaImage {
     install(less) {
         less.functions.functionRegistry.add(
           'wikipedia-image', function (fileArg) {
+                // return new LessPluginInlineSvg
                 const { value } = fileArg;
                 const baseUrl = 'https://www.wikipedia.org/static/images/wikipedia-preview';
                 const fileUrl = `${baseUrl}/${value}`
