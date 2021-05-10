@@ -11,21 +11,23 @@ const CryptoJS = require("crypto-js");
 // This is a less plugin to build cache-busting wikipedia urls
 class WikipediaImage {
     install(less) {
-        less.functions.functionRegistry.add(
-          'wikipedia-image', function (fileArg, iconIdArg, svgArgs) {
-                // if (some env var...) {
-                  // const inlineSvg = less.functions.functionRegistry._data['inline-svg'].bind(this)
-                  // return inlineSvg(fileArg, iconIdArg, svgArgs)
-                  // }
-                const { value } = fileArg;
-                const baseUrl = 'https://www.wikipedia.org/static/images/wikipedia-preview';
-                const fileUrl = `${baseUrl}/${value}`
-                const fileContent = '' // TODO: fetch file content
-                const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5);
-                const fullUrl = `${baseUrl}/${value}?${hash}`;
-                return new (less.tree.Quoted)( '"', "url('" + fullUrl + "')" );
-            }
-        )
+      less.functions.functionRegistry.add(
+        'wikipedia-image', function (fileArg, iconIdArg, svgArgs) {
+          const { IMAGE_PATH } = process.env
+          const { value } = fileArg;
+
+          if ( IMAGE_PATH ) {
+            const fileUrl = `${IMAGE_PATH}/${value}`
+            const fileContent = '' // TODO: fetch file content
+            const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5);
+            const fullUrl = `${fileUrl}?${hash}`;
+            return new (less.tree.Quoted)( '"', "url('" + fullUrl + "')" );
+          } else {
+            const inlineSvg = less.functions.functionRegistry.get('inline-svg').bind(this)
+            return inlineSvg( { value: `../images/${value}` }, iconIdArg, svgArgs)
+          }
+        }
+      )
     }
 }
 
