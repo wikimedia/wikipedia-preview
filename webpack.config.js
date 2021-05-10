@@ -12,8 +12,11 @@ const CryptoJS = require("crypto-js");
 class WikipediaImage {
     install(less) {
         less.functions.functionRegistry.add(
-          'wikipedia-image', function (fileArg) {
-                // return new LessPluginInlineSvg
+          'wikipedia-image', function (fileArg, iconIdArg, svgArgs) {
+                // if (some env var...) {
+                  // const inlineSvg = less.functions.functionRegistry._data['inline-svg'].bind(this)
+                  // return inlineSvg(fileArg, iconIdArg, svgArgs)
+                  // }
                 const { value } = fileArg;
                 const baseUrl = 'https://www.wikipedia.org/static/images/wikipedia-preview';
                 const fileUrl = `${baseUrl}/${value}`
@@ -98,6 +101,7 @@ const config = {
               sourceMap: true,
               plugins:
               [
+                new LessPluginInlineSvg({ base64: true }),
                 new WikipediaImage()
               ]
             }
@@ -114,6 +118,7 @@ const config = {
                 sourceMap: true,
                 plugins:
                 [
+                  new LessPluginInlineSvg({ base64: true }),
                   new WikipediaImage()
                 ]
               }
