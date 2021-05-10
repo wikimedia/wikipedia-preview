@@ -1,6 +1,10 @@
 let evCache = []
 let prevDiff = -1
 
+const getFingerAmount = () => {
+	return evCache.length
+}
+
 const removeEvent = ( ev ) => {
 	// Remove this event from the target's cache
 	for ( var i = 0; i < evCache.length; i++ ) {
@@ -11,14 +15,13 @@ const removeEvent = ( ev ) => {
 	}
 }
 
-const pointerdownHandler = ( ev ) => {
+const zoomStart = ( ev ) => {
 	// The pointerdown event signals the start of a touch interaction.
 	// This event is cached to support 2-finger gestures
-	// console.log( 'pointerdownHandler - ev', ev )
 	evCache.push( ev )
 }
 
-const pointermoveHandler = ( ev ) => {
+const zoomMove = ( ev ) => {
 	// This function implements a 2-pointer horizontal pinch/zoom gesture.
 	//
 	// If the distance between the two pointers has increased (zoom in),
@@ -33,7 +36,7 @@ const pointermoveHandler = ( ev ) => {
 	// eslint-disable-next-line no-debugger
 	// debugger
 
-	console.log( 'ev.target...', ev.target )
+	// console.log( 'ev.target...', ev.target )
 
 	// Find this event in the cache and update its record with this event
 	for ( var i = 0; i < evCache.length; i++ ) {
@@ -51,13 +54,13 @@ const pointermoveHandler = ( ev ) => {
 		if ( prevDiff > 0 ) {
 			if ( curDiff > prevDiff ) {
 				// The distance between the two pointers has increased
-				console.log( 'Pinch moving OUT -> Zoom in', ev )
+				// console.log( 'Pinch moving OUT -> Zoom in', ev )
 				ev.target.style.border = '3px solid green'
 				// ev.target.style.transform = 'scale(1.6)'
 			}
 			if ( curDiff < prevDiff ) {
 				// The distance between the two pointers has decreased
-				console.log( 'Pinch moving IN -> Zoom out', ev )
+				// console.log( 'Pinch moving IN -> Zoom out', ev )
 				ev.target.style.border = '3px solid red'
 				// ev.target.style.transform = 'scale(1.1)'
 			}
@@ -68,12 +71,9 @@ const pointermoveHandler = ( ev ) => {
 	}
 }
 
-const pointerupHandler = ( ev ) => {
-	console.log( ev.type, ev )
-	// Remove this pointer from the cache and reset the target's
-	// background and border
+const zoomEnd = ( ev ) => {
 	removeEvent( ev )
-	ev.target.style.border = '1px solid black'
+	ev.target.style.border = 'none'
 
 	// If the number of pointers down is less than two then reset diff tracker
 	if ( evCache.length < 2 ) {
@@ -81,4 +81,4 @@ const pointerupHandler = ( ev ) => {
 	}
 }
 
-export { pointerdownHandler, pointermoveHandler, pointerupHandler }
+export { getFingerAmount, prevDiff, zoomStart, zoomMove, zoomEnd }
