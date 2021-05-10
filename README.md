@@ -111,7 +111,7 @@ To use the default trigger link styling:
 
 * Add the following link to the page header:
 ```html
-<link href="wikipedia-preview.css" rel="stylesheet">
+<link href="'wikipedia-preview-linkStyle.css" rel="stylesheet">
 ```
 * Add the class `wmf-wp-with-preview` to the node
 
