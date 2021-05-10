@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+const childProcess = require('child_process')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
@@ -18,10 +20,8 @@ class WikipediaImage {
 
           if ( IMAGE_PATH ) {
             const fileUrl = `${IMAGE_PATH}/${value}`
-            const fileContent = fs.readFileSync('./images/' + value)
-            const hash = CryptoJS.MD5(fileContent).toString();
-            console.log( hash )
-            console.log(fileContent)
+            const fileContent = fs.readFileSync('./images/' + value).toString()
+            const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5)
             const fullUrl = `${fileUrl}?${hash}`;
             return new (less.tree.Quoted)( '"', "url('" + fullUrl + "')" );
           } else {
