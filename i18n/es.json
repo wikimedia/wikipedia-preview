@@ -7,11 +7,14 @@
 	},
 	"continue-reading": "Continuar leyendo",
 	"gallery-loading-error": "Se produjo un error al cargar esta imagen",
+	"gallery-loading-error-offline": "No hay conexión a internet disponible.",
 	"gallery-loading-error-refresh": "Actualizar",
 	"gallery-loading-still": "Todavía sigue cargando",
 	"gallery-unknown-author": "Autor desconocido",
 	"preview-error-message": "Hubo un problema al mostrar esta previsualización",
 	"read-on-wiki": "Ver en Wikipedia",
 	"read-more": "Leer más en Wikipedia",
-	"preview-disambiguation-message": "El título <strong>$1</strong> está relacionado a más de un artículo en Wikipedia."
+	"preview-disambiguation-message": "El título <strong>$1</strong> está relacionado a más de un artículo en Wikipedia.",
+	"preview-offline-message": "No hay conexión a internet disponible.",
+	"preview-offline-cta": "Reintentar"
 }

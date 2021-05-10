@@ -1,16 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sveinki",
 			"Sveinn í Felli"
 		]
 	},
 	"continue-reading": "Halda lestri áfram",
 	"gallery-loading-error": "Upp kom villa við að hlaða inn þessari mynd",
+	"gallery-loading-error-offline": "Engin internettenging er tiltæk.",
 	"gallery-loading-error-refresh": "Endurlesa",
 	"gallery-loading-still": "Ennþá að lesa inn",
 	"gallery-unknown-author": "Óþekkur höfundur",
 	"preview-error-message": "Það kom upp vandamál við að birta þessa forskoðun.",
 	"read-on-wiki": "Lesa á Wikipedia",
 	"read-more": "Lesta meira á Wikipedia",
-	"preview-disambiguation-message": "Titillinn <strong>$1</strong> tengist fleiri en einni grein á Wikipedia."
+	"preview-disambiguation-message": "Titillinn <strong>$1</strong> tengist fleiri en einni grein á Wikipedia.",
+	"preview-offline-message": "Engin internettenging er tiltæk.",
+	"preview-offline-cta": "Reyndu aftur"
 }

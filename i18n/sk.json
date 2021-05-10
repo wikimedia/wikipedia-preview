@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jaroslav.micek",
+			"Yardom78"
+		]
+	},
+	"continue-reading": "Pokračovať v čítaní",
+	"gallery-loading-error": "Pri načítavaní tohto obrázku došlo k chybe.",
+	"gallery-loading-error-offline": "Nieje dostupné internetové pripojenie.",
+	"gallery-loading-error-refresh": "Obnoviť",
+	"gallery-loading-still": "Stále načítava",
+	"gallery-unknown-author": "Autor neznámy",
+	"preview-error-message": "Pri zobrazovaní tohto náhľadu sa objavil problém.",
+	"read-on-wiki": "Čítať na Wikipédii",
+	"read-more": "Čítať viac na Wikipédii",
+	"preview-disambiguation-message": "Názov  <strong>$1</strong> súvisí s viac než jedným artiklom na Wikipédii.",
+	"preview-offline-message": "Nieje dostupné internetové pripojenie.",
+	"preview-offline-cta": "Skúsiť znova"
+}

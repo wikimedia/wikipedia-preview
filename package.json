@@ -33,7 +33,7 @@
     "crypto-js": "^4.0.0",
     "css-loader": "^3.6.0",
     "eslint": "^7.8.1",
-    "eslint-config-wikimedia": "^0.16.2",
+    "eslint-config-wikimedia": "0.20.0",
     "eslint-loader": "^4.0.2",
     "ignore-emit-webpack-plugin": "^2.0.3",
     "ignore-styles": "^5.0.1",

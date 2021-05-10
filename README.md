@@ -1,10 +1,10 @@
-[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/master)
+[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main)
 
 # Wikipedia Preview
 
 Wikipedia Preview is a JavaScript component that allows you to provide context from Wikipedia about words or phrases on any website. It lets you show a popup card with a short summary from Wikipedia when a reader hovers over a link.
 
-Desktop | Mobile 
+Desktop | Mobile
 --- | ---
 <img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
 
@@ -28,6 +28,14 @@ Android | 4.1+
 * Works for articles with or without a lead image
 
 ## Getting Started
+
+Integrating Wikipedia Preview to your site consists of a three step process:
+
+1. Loading wikipedia-preview.js (either as a standalong script or an npm dependency)
+2. Invoking `wikipediaPreview.init( <options> )`
+3. Annotating articles accordingly
+
+You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console. You can also invoke `wikipediaPreview.version()` from your JS console to view version information at any time. 
 
 ### Standalone Script
 
@@ -60,6 +68,8 @@ selector | string | `'[data-wikipedia-preview]'` | How nodes that should have th
 lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
 detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
+events | Object | `{}` | Custom event handlers: `{ onShow: <fn>, onWikiRead: <fn> }`
+debug | Boolean | `false` | Shows the debug message when `init()` is called
 
 Example (custom selector)
 ```html
@@ -88,6 +98,20 @@ Example (detect Wikipedia links)
 ```javascript
 wikipediaPreview.init({
 	detectLinks: true
+});
+```
+
+Example (custom event handlers)
+```javascript
+wikipediaPreview.init({
+	events: {
+		onShow: function(title, lang, type) {
+			// call custom instrumentation here
+		},
+		onWikiRead: function(title, lang) {
+			// call custom instrumentation here
+		}
+	}
 });
 ```
 

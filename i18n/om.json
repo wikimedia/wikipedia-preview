@@ -6,11 +6,14 @@
 	},
 	"continue-reading": "Dubbisuu itti fufi",
 	"gallery-loading-error": "Dogoggara suura kana fee'utti ta'e",
+	"gallery-loading-error-offline": "Konnekshiniin intarneetaa hin jiru.",
 	"gallery-loading-error-refresh": "Haaromsi",
 	"gallery-loading-still": "Ammayyu fe'aara",
 	"gallery-unknown-author": "Barreessaan hin beekamu",
-	"preview-error-message": "Yeroo kun akka fakkaatu agarsiisuu irratti dhimma ta'e.",
-	"read-on-wiki": "Wiikiipiidiyaa gubbatti dubbisi",
+	"preview-error-message": "Yeroo yaalii kana agarsiisuu dhimma ta'e.",
+	"read-on-wiki": "Wikipiidiyaa irra Dubbisi",
 	"read-more": "Dabalata Wikipiidiyaa irra dubbisi",
-	"preview-disambiguation-message": "Mata duree <strong>$1</strong> Wikipiidiyaa irra barruu tokko ol waliin walqabata."
+	"preview-disambiguation-message": "Mata duree <strong>$1</strong> Wikipiidiyaa irra barruu tokko ol waliin walqabata.",
+	"preview-offline-message": "Konnekshiniin intarneetaa hin jiru.",
+	"preview-offline-cta": "Irra deebi'ii yaali"
 }

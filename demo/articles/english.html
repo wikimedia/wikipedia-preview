@@ -40,7 +40,7 @@
                     Realising the serious threat to the wildlife, the colonists – French Administration – in 1935 and later the Government of the Republic of CRA, enacted laws and created National parks and preserves, which covered 16.6% of the country. The three most coveted national parks are the Manovo-Gounda St. Floris National Park with its reported "greatest concentrations of hippos in the world", the <span class="wmf-wp-with-preview" data-wp-title="Bamingui-Bangoran_National_Park_and_Biosphere_Reserve" data-wikipedia-preview> Bamingui-Bangoran National</span> Park in the north; and the Dzanga-Sangha Reserve which covers rain forests. The Manovo-Gounda-Saint-Floris National Park, in particular was inscribed to the UNESCO List of World Heritage Sites in 1988 in recognition of the diversity of life present within it in respect of its wealth of flora and fauna.
                 </p>
                 <p>
-                    In 2014, the Chinko Nature Reserve in eastern CRA was granted management through a public-private partnership with the Central African Republic Ministry of Wildlife, Water and Forestry and African Parks, a conservation NGO that takes on the direct, long-term management of national parks and protected areas in partnership with governments to save wildlife, restore landscapes and ensure sustainable livelihoods for local communities. African Parks has a mandate to manage this protected area, now referred to as the <span class="wmf-wp-with-preview" data-wikipedia-preview>Chinko Project</span>, for the next <span class="wmf-wp-with-preview" data-wikipedia-preview>50</span> years.
+                    In 2014, the Chinko Nature Reserve in eastern CRA was granted management through a public-private partnership with the Central African Republic Ministry of Wildlife, Water and Forestry and African Parks, a conservation NGO that takes on the direct, long-term management of national parks and protected areas in partnership with governments to save wildlife, restore landscapes and ensure sustainable livelihoods for local communities. African Parks has a mandate to manage this protected area, now referred to as the <span class="wmf-wp-with-preview" data-wikipedia-preview>Chinko Project</span>, for the next 50 years.
                 </p>
             </div>
         </div>
@@ -55,7 +55,15 @@
         <script src="../wikipedia-preview.development.js"></script>
         <script>
             wikipediaPreview.init({
-                lang: 'en'
+                lang: 'en',
+                events: {
+                    onShow: function(title, lang, type) {
+                        console.log( 'Opening ' + type + ' popup for article ' + title + ' in ' + lang )
+                    },
+                    onWikiRead: function(title, lang) {
+                        console.log( 'Going to read article ' + title + ' in ' + lang + ' on Wikipedia' )
+                    }
+                }
             });
         </script>
         <!-- End of Scripts -->

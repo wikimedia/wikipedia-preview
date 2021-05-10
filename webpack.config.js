@@ -67,7 +67,11 @@ const config = {
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
         generateStatsFile: true
-      })
+      }),
+      new webpack.DefinePlugin({
+        APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
+        GIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse --short HEAD').toString().trim())
+      }),
     ],
   module: {
     rules: [
