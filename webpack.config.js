@@ -111,7 +111,7 @@ const config = {
         ]
       },
       {
-        test: /\.css$/i,
+        test: /link.less$/i,
         use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
