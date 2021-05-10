@@ -20,7 +20,7 @@ class WikipediaImage {
                 const { value } = fileArg;
                 const baseUrl = 'https://www.wikipedia.org/static/images/wikipedia-preview';
                 const fileUrl = `${baseUrl}/${value}`
-                const fileContent = '' // TODO: fetch file content
+                const fileContent = fs.readFileSync('./style/' + value)
                 const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5);
                 const fullUrl = `${baseUrl}/${value}?${hash}`;
                 return new (less.tree.Quoted)( '"', "url('" + fullUrl + "')" );
