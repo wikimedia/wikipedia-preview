@@ -36,12 +36,9 @@ const showFullscreenGallery = (
 		hideFullscreenGallery( container )
 	} )
 
-	addEventListener( window, 'keydown', event => {
-		const key = event.key
-		switch ( key ) {
-			case 'Escape':
-				hideFullscreenGallery( container )
-				break
+	addEventListener( window, 'keydown', ( { key } ) => {
+		if ( key === 'Escape' || key === 'Esc' ) {
+			hideFullscreenGallery( container )
 		}
 	} )
 

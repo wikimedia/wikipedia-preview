@@ -349,14 +349,23 @@ const onShowFn = () => {
 		previousButton.addEventListener( 'click', () => {
 			renderPrevious()
 		} )
-		addEventListener( window, 'keydown', event => {
-			const key = event.key
+		addEventListener( window, 'keydown', ( { key } ) => {
 			switch ( key ) {
 				case 'ArrowRight':
-					renderNext()
+				case 'Right':
+					if ( dir === 'ltr' ) {
+						renderNext()
+					} else {
+						renderPrevious()
+					}
 					break
 				case 'ArrowLeft':
-					renderPrevious()
+				case 'Left':
+					if ( dir === 'ltr' ) {
+						renderPrevious()
+					} else {
+						renderNext()
+					}
 					break
 				default:
 					break
