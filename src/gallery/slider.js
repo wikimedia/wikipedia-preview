@@ -1,6 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
+import { addEventListener } from './event'
 
 // internal state of the slider component
 let current = 0
@@ -347,6 +348,19 @@ const onShowFn = () => {
 		} )
 		previousButton.addEventListener( 'click', () => {
 			renderPrevious()
+		} )
+		addEventListener( window, 'keydown', event => {
+			const key = event.key
+			switch ( key ) {
+				case 'ArrowRight':
+					renderNext()
+					break
+				case 'ArrowLeft':
+					renderPrevious()
+					break
+				default:
+					break
+			}
 		} )
 	}
 }
