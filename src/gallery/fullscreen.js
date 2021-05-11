@@ -1,5 +1,4 @@
 import { renderImageSlider, onShowFn as sliderOnShowFn } from './slider'
-import { addEventListener, clearAllEventListener } from './event'
 
 const prefixClassname = 'wp-gallery-fullscreen'
 
@@ -15,7 +14,6 @@ const renderFullScreenGallery = ( lang, dir ) => {
 const hideFullscreenGallery = container => {
 	const fullscreenGallery = container.querySelector( `.${prefixClassname}` )
 	container.removeChild( fullscreenGallery )
-	clearAllEventListener()
 }
 
 const showFullscreenGallery = (
@@ -34,15 +32,6 @@ const showFullscreenGallery = (
 	const closeButton = container.querySelector( `.${prefixClassname}-close` )
 	closeButton.addEventListener( 'click', () => {
 		hideFullscreenGallery( container )
-	} )
-
-	addEventListener( window, 'keydown', event => {
-		const key = event.key
-		switch ( key ) {
-			case 'Escape':
-				hideFullscreenGallery( container )
-				break
-		}
 	} )
 
 	// onShow event for slider component
