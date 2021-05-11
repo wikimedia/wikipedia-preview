@@ -36,8 +36,7 @@ class WikipediaImage {
 const config = {
   entry: {
     'wikipedia-preview': './src/index.js',
-    'wikipedia-preview-linkStyle': './src/linkStyle.js',
-    'wikipedia-preview-style': './src/style.js'
+    'default-link-style': './src/linkStyle.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,11 +57,10 @@ const config = {
         files: '*.less',
         fix: true
       }),
-      new MiniCssExtractPlugin(),
-      new IgnoreEmitPlugin([
-        'wikipedia-preview-linkStyle.production.js', 'wikipedia-preview-linkStyle.development.js',
-        'wikipedia-preview-style.production.js', 'wikipedia-preview-style.development.js',
-      ]),
+      new MiniCssExtractPlugin({
+        filename: 'wikipedia-preview.css'
+      }),
+      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js']),
       new CompressionPlugin(),
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
@@ -119,7 +117,7 @@ const config = {
         ]
       },
       {
-        test: /\.less$/i,
+        test: /link.less$/i,
         use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
