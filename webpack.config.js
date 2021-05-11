@@ -9,7 +9,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const fs = require('fs');
 const path = require('path');
 const CryptoJS = require("crypto-js");
-const { EXTERNAL_IMAGE_PATH } = process.env;
+const { EXTERNAL_IMAGE_PATH, EXCLUDE_STYLE } = process.env;
 
 // This is a less plugin to build cache-busting wikipedia urls
 class WikipediaImage {
@@ -36,7 +36,8 @@ class WikipediaImage {
 const config = {
   entry: {
     'wikipedia-preview': './src/index.js',
-    'default-link-style': './src/linkStyle.js'
+    'wikipedia-preview-style': './src/style.js',
+    'wikipedia-preview-link': './src/linkStyle.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -57,10 +58,8 @@ const config = {
         files: '*.less',
         fix: true
       }),
-      new MiniCssExtractPlugin({
-        filename: 'wikipedia-preview.css'
-      }),
-      new IgnoreEmitPlugin(['default-link-style.production.js', 'default-link-style.development.js']),
+      new MiniCssExtractPlugin(),
+      new IgnoreEmitPlugin(/wikipedia-preview-.*\.js/),
       new CompressionPlugin(),
       new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
@@ -102,7 +101,7 @@ const config = {
       {
         test: /\.less$/,
         use: [
-          'style-loader',
+          !!EXCLUDE_STYLE ? 'null-loader' : 'style-loader',
           { loader: 'css-loader', options: { url: !EXTERNAL_IMAGE_PATH } },
           {
             loader: 'less-loader', options: {
@@ -117,7 +116,7 @@ const config = {
         ]
       },
       {
-        test: /link.less$/i,
+        test: /style\.less|link\.less/,
         use: [
             MiniCssExtractPlugin.loader,
             { loader: 'css-loader', options: { url: !EXTERNAL_IMAGE_PATH } },
