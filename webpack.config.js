@@ -103,7 +103,7 @@ const config = {
         test: /\.less$/,
         use: [
           'style-loader',
-          'css-loader' + ( EXTERNAL_IMAGE_PATH ? '?url=false' : '' ),
+          { loader: 'css-loader', options: { url: !EXTERNAL_IMAGE_PATH } },
           {
             loader: 'less-loader', options: {
               sourceMap: true,
@@ -120,7 +120,7 @@ const config = {
         test: /link.less$/i,
         use: [
             MiniCssExtractPlugin.loader,
-            'css-loader' + ( EXTERNAL_IMAGE_PATH ? '?url=false' : '' ),
+            { loader: 'css-loader', options: { url: !EXTERNAL_IMAGE_PATH } },
             {
               loader: 'less-loader', options: {
                 sourceMap: true,
