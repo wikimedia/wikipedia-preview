@@ -9,17 +9,17 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const fs = require('fs');
 const path = require('path');
 const CryptoJS = require("crypto-js");
+const { EXTERNAL_IMAGE_PATH } = process.env;
 
 // This is a less plugin to build cache-busting wikipedia urls
 class WikipediaImage {
     install(less) {
       less.functions.functionRegistry.add(
         'wikipedia-image', function (fileArg, iconIdArg, svgArgs) {
-          const { IMAGE_PATH } = process.env
           const { value } = fileArg;
 
-          if ( IMAGE_PATH ) {
-            const fileUrl = `${IMAGE_PATH}/${value}`
+          if ( EXTERNAL_IMAGE_PATH ) {
+            const fileUrl = `${EXTERNAL_IMAGE_PATH}/${value}`
             const fileContent = fs.readFileSync('./images/' + value).toString()
             const hash = CryptoJS.MD5(fileContent).toString().slice(0, 5)
             const fullUrl = `${fileUrl}?${hash}`;
@@ -103,7 +103,7 @@ const config = {
         test: /\.less$/,
         use: [
           'style-loader',
-          'css-loader',
+          'css-loader' + ( EXTERNAL_IMAGE_PATH ? '?url=false' : '' ),
           {
             loader: 'less-loader', options: {
               sourceMap: true,
@@ -120,7 +120,7 @@ const config = {
         test: /link.less$/i,
         use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
+            'css-loader' + ( EXTERNAL_IMAGE_PATH ? '?url=false' : '' ),
             {
               loader: 'less-loader', options: {
                 sourceMap: true,
