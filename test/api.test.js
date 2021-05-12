@@ -63,7 +63,6 @@ describe( 'requestPagePreview', () => {
 			assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
 		} )
 	} )
-
 } )
 
 describe( 'requestPageMedia', () => {
