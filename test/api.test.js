@@ -64,11 +64,6 @@ describe( 'requestPagePreview', () => {
 		} )
 	} )
 
-	it( 'do not encode the encoded title in the URL', () => {
-		requestPagePreview( 'fr', "L'%C3%89poque%20des%20Ch%C3%A2teaux", false, () => {}, ( url ) => {
-			assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
-		} )
-	} )
 } )
 
 describe( 'requestPageMedia', () => {
