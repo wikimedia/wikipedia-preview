@@ -17,6 +17,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    semi: [2, "never"]
+    semi: [2, "never"],
+    'no-nonoctal-decimal-escape': 'off'
   }
 }

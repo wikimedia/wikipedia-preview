@@ -28,94 +28,95 @@ function init( {
 	events = {},
 	debug = false
 } ) {
-	const globalLang = lang,
-		popup = isTouch ?
-			createTouchPopup( popupContainer ) :
-			createPopup( popupContainer ),
-		popupEvents = customEvents( popup ),
-		last = {},
-		foundSelectorLinks = [],
-		foundDetectLinks = [],
-		showPopup = ( e, refresh = false ) => {
-			e.preventDefault()
+	const globalLang = lang
+	const popup = isTouch ?
+		createTouchPopup( popupContainer ) :
+		createPopup( popupContainer )
+	const popupEvents = customEvents( popup )
+	const last = {}
+	const foundSelectorLinks = []
+	const foundDetectLinks = []
 
-			const popupId = Date.now(),
-				{ currentTarget } = refresh ? last : e,
-				title = refresh ? last.title : currentTarget.getAttribute( 'data-wp-title' ) || currentTarget.textContent,
-				lang = refresh ? last.lang : currentTarget.getAttribute( 'data-wp-lang' ) || globalLang,
-				pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY },
-				dir = getDir( lang )
+	const showPopup = ( e, refresh = false ) => {
+		e.preventDefault()
 
-			if ( popup.element.currentTargetElement === currentTarget && !refresh ) {
-				// Hovering over the same link and the popup is already open
+		const popupId = Date.now()
+		const { currentTarget } = refresh ? last : e
+		const title = refresh ? last.title : currentTarget.getAttribute( 'data-wp-title' ) || currentTarget.textContent
+		const localLang = refresh ? last.lang : currentTarget.getAttribute( 'data-wp-lang' ) || globalLang
+		const pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY }
+		const dir = getDir( localLang )
+
+		if ( popup.element.currentTargetElement === currentTarget && !refresh ) {
+			// Hovering over the same link and the popup is already open
+			return
+		}
+
+		currentPopupId = popupId
+
+		if ( popup.element.style.visibility === 'visible' ) {
+			popup.hide()
+		}
+
+		popup.loading = true
+		popup.dir = dir
+		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
+
+		requestPagePreview( localLang, title, isTouch, data => {
+			if ( popupId !== currentPopupId ) {
 				return
 			}
-
-			currentPopupId = popupId
-
-			if ( popup.element.style.visibility === 'visible' ) {
-				popup.hide()
-			}
-
-			popup.loading = true
-			popup.dir = dir
-			popup.show( renderLoading( isTouch, lang, dir ), currentTarget, pointerPosition )
-
-			requestPagePreview( lang, title, isTouch, data => {
-				if ( popupId !== currentPopupId ) {
-					return
-				}
-				if ( popup.loading ) {
-					popup.loading = false
-					if ( data ) {
-						popup.lang = lang
-						popup.title = title
-						if ( data.type === 'standard' ) {
-							popup.show(
-								renderPreview( lang, data, isTouch ),
-								currentTarget,
-								pointerPosition
-							)
-							invokeCallback( events, 'onShow', [ title, lang, 'standard' ] )
-						} else if ( data.type === 'disambiguation' ) {
-							popup.show(
-								renderDisambiguation( isTouch, lang, data.title, data.dir ),
-								currentTarget,
-								pointerPosition
-							)
-							invokeCallback( events, 'onShow', [ title, lang, 'disambiguation' ] )
-						}
-					} else {
-						if ( isOnline() ) {
-							popup.show(
-								renderError( isTouch, lang, title, dir ),
-								currentTarget,
-								pointerPosition
-							)
-							invokeCallback( events, 'onShow', [ title, lang, 'error' ] )
-						} else {
-							popup.show(
-								renderOffline( isTouch, lang, dir ),
-								currentTarget,
-								pointerPosition
-							)
-							invokeCallback( events, 'onShow', [ title, lang, 'offline' ] )
-							const again = root.querySelector( '.wikipediapreview-body-action' )
-							last.lang = lang
-							last.title = title
-							last.pointerPosition = pointerPosition
-							last.target = currentTarget
-							again.addEventListener( 'click', ( e ) => {
-								showPopup( e, true )
-							} )
-						}
+			if ( popup.loading ) {
+				popup.loading = false
+				if ( data ) {
+					popup.lang = localLang
+					popup.title = title
+					if ( data.type === 'standard' ) {
+						popup.show(
+							renderPreview( localLang, data, isTouch ),
+							currentTarget,
+							pointerPosition
+						)
+						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
+					} else if ( data.type === 'disambiguation' ) {
+						popup.show(
+							renderDisambiguation( isTouch, localLang, data.title, data.dir ),
+							currentTarget,
+							pointerPosition
+						)
+						invokeCallback( events, 'onShow', [ title, localLang, 'disambiguation' ] )
 					}
-					popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-						invokeCallback( events, 'onWikiRead', [ title, lang ] )
-					} )
+				} else {
+					if ( isOnline() ) {
+						popup.show(
+							renderError( isTouch, localLang, title, dir ),
+							currentTarget,
+							pointerPosition
+						)
+						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
+					} else {
+						popup.show(
+							renderOffline( isTouch, localLang, dir ),
+							currentTarget,
+							pointerPosition
+						)
+						invokeCallback( events, 'onShow', [ title, localLang, 'offline' ] )
+						const again = root.querySelector( '.wikipediapreview-body-action' )
+						last.lang = localLang
+						last.title = title
+						last.pointerPosition = pointerPosition
+						last.target = currentTarget
+						again.addEventListener( 'click', ( event ) => {
+							showPopup( event, true )
+						} )
+					}
 				}
-			} )
-		}
+				popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
+					invokeCallback( events, 'onWikiRead', [ title, localLang ] )
+				} )
+			}
+		} )
+	}
 
 	popup.subscribe( popupEvents )
 

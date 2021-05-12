@@ -58,10 +58,10 @@
                 lang: 'en',
                 events: {
                     onShow: function(title, lang, type) {
-                        console.log(`Opening ${type} popup for article ${title} in ${lang}`)
+                        console.log( 'Opening ' + type + ' popup for article ' + title + ' in ' + lang )
                     },
                     onWikiRead: function(title, lang) {
-                        console.log(`Going to read article ${title} in ${lang} on Wikipedia`)
+                        console.log( 'Going to read article ' + title + ' in ' + lang + ' on Wikipedia' )
                     }
                 }
             });
