@@ -22,21 +22,13 @@ const zoomStart = ( ev ) => {
 }
 
 const zoomMove = ( ev ) => {
-	// This function implements a 2-pointer horizontal pinch/zoom gesture.
-	//
-	// If the distance between the two pointers has increased (zoom in),
-	// the taget element's background is changed to "pink" and if the
-	// distance is decreasing (zoom out), the color is changed to "lightblue".
-	//
-	// This function sets the target element's border to "dashed" to visually
-	// indicate the pointer's target received a move event.
-	// console.log( 'pointerMove', ev )
-	// ev.target.style.border = 'dashed'
+	const image = ev.target.nodeName === 'IMG' ? ev.target : ev.target.querySelector( 'img' )
 
-	// eslint-disable-next-line no-debugger
-	// debugger
-
-	// console.log( 'ev.target...', ev.target )
+	const delta = 0.1
+	const min = 1
+	const max = 2
+	let scale = image.style.transform ? Number( image.style.transform.slice( 6, -1 ) ) : min
+	console.log( 'INITIAL SCALE...', scale )
 
 	// Find this event in the cache and update its record with this event
 	for ( var i = 0; i < evCache.length; i++ ) {
@@ -56,13 +48,20 @@ const zoomMove = ( ev ) => {
 				// The distance between the two pointers has increased
 				// console.log( 'Pinch moving OUT -> Zoom in', ev )
 				ev.target.style.border = '3px solid green'
-				// ev.target.style.transform = 'scale(1.6)'
+				console.log( 'scale...', scale )
+				if ( scale + delta < max ) {
+					scale += delta
+					ev.target.style.transform = `scale(${scale})`
+				}
 			}
 			if ( curDiff < prevDiff ) {
 				// The distance between the two pointers has decreased
 				// console.log( 'Pinch moving IN -> Zoom out', ev )
 				ev.target.style.border = '3px solid red'
-				// ev.target.style.transform = 'scale(1.1)'
+				if ( scale - delta > min ) {
+					scale -= delta
+					ev.target.style.transform = `scale(${scale})`
+				}
 			}
 		}
 
@@ -73,7 +72,7 @@ const zoomMove = ( ev ) => {
 
 const zoomEnd = ( ev ) => {
 	removeEvent( ev )
-	ev.target.style.border = 'none'
+	ev.target.style.border = 'none' // TODO - you can remove this border, but do we need to set anything else on zoomEnd
 
 	// If the number of pointers down is less than two then reset diff tracker
 	if ( evCache.length < 2 ) {
