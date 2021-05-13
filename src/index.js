@@ -42,7 +42,7 @@ function init( {
 
 		const popupId = Date.now()
 		const { target } = refresh ? last : e
-		const title = refresh ? last.title : target.getAttribute( 'data-wp-title' ) || target.textContent
+		const title = refresh ? last.title : decodeURIComponent( target.getAttribute( 'data-wp-title' ) || target.textContent )
 		const localLang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang
 		const pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY }
 		const dir = getDir( localLang )
