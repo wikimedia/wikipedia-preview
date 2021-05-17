@@ -1,7 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
-import { getFingerAmount, zoomStart, zoomMove, zoomEnd } from './gestures'
+import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, zoomStart, zoomMove, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 
 // internal state of the slider component
 let current = 0
@@ -260,85 +260,43 @@ const renderPrevious = () => {
 }
 
 const applyGestureEvent = () => {
-	const temp = {
-		screenX: null,
-		originalMarginLeft: null,
-		currentMarginLeft: null,
-		originalTransition: null,
-		durationStart: null
-	}
 
 	const container = parentContainer.querySelector( `.${prefixClassname}` )
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 	const captionText = `${prefixClassname}-item-caption-text`
 	const items = container.querySelectorAll( `.${prefixClassname}-item` )
-	let zooming
 
 	container.addEventListener( 'pointerdown', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ||
-			e.pointerType !== 'touch' ) {
+		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
 			return
-		}
-
-		console.log( 'pointerDOWN - getFingerAmount...', getFingerAmount() )
-		if ( getFingerAmount() > 0 ) {
-			// activate zooming
-			zooming = true
-		} else {
-			const containerStyle = window.getComputedStyle( container )
-			temp.durationStart = Date.now()
-			temp.screenX = e.clientX
-			temp.originalMarginLeft =
-								+containerStyle[ marginLR ].slice( 0, -2 )
-			temp.currentMarginLeft =
-								+containerStyle[ marginLR ].slice( 0, -2 )
-			temp.originalTransition = containerStyle.transition
-			container.style.transition = 'unset'
-			zooming = false
 		}
 
 		zoomStart( e )
+		if ( getFingerAmount() === 1 && !isImgZoomedIn() ) {
+			slideStart( e, container, marginLR )
+		}
 	} )
 	container.addEventListener( 'pointermove', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ||
-			e.pointerType !== 'touch' ) {
+		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
 			return
 		}
-		console.log( 'pointerMOVE - getFingerAmount...', getFingerAmount() )
+
 		if ( getFingerAmount() > 1 ) {
 			zoomMove( e )
-		} else if ( !zooming ) {
-			const clientX = e.clientX
-			const offset = clientX - temp.screenX
-			temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
-			container.style[ marginLR ] = temp.currentMarginLeft + 'px'
-			e.preventDefault()
+		} else if ( !isImgZoomedIn() ) {
+			slideMove( e, container, marginLR, dir )
 		}
 	} )
 	container.addEventListener( 'pointerup', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ||
-			e.pointerType !== 'touch' ) {
+		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
 			return
 		}
+
 		container.style.transition = temp.originalTransition
-
-		if ( getFingerAmount() === 1 && !zooming ) {
-			const diff = temp.originalMarginLeft - temp.currentMarginLeft
-			const duration = Date.now() - temp.durationStart
-			if ( Math.abs( diff / clientWidth ) > 0.4 ||
-				( duration <= 300 && Math.abs( diff ) > 5 )
-			) {
-				renderNext( diff > 0 ? 1 : -1 )
-			} else {
-				container.style[ marginLR ] = -clientWidth * current + 'px'
-			}
+		if ( getFingerAmount() === 1 && !isImgZoomedIn() ) {
+			slideEnd( e, container, renderNext, marginLR, clientWidth, current )
 		}
-
 		zoomEnd( e )
-
 	} )
 }
 
