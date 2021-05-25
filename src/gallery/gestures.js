@@ -1,12 +1,18 @@
 let evCache = []
 let prevDiff = -1
 let zoomedIn = false
+const scaleMin = 1
+const scaleMax = 4
 const temp = {
 	screenX: null,
 	originalMarginLeft: null,
 	currentMarginLeft: null,
 	originalTransition: null,
 	durationStart: null
+}
+
+const grabImageFromEvent = ( ev ) => {
+	return ev.target.nodeName === 'IMG' ? ev.target : ev.target.querySelector( 'img' )
 }
 
 const isInvalidEvent = ( e, items, current, captionText, prefixClassname ) => {
@@ -21,6 +27,19 @@ const isImgZoomedIn = () => {
 
 const getFingerAmount = () => {
 	return evCache.length
+}
+
+const toggleZoom = ( ev ) => {
+	const image = grabImageFromEvent( ev )
+	console.log( 'toggleZoome - ev...', ev )
+	console.log( 'toggleZoome - image...', image )
+	if ( isImgZoomedIn() ) {
+		image.style.transform = `scale(${scaleMin})`
+		zoomedIn = false
+	} else {
+		image.style.transform = `scale(${scaleMax})`
+		zoomedIn = true
+	}
 }
 
 const removeEvent = ( ev ) => {
@@ -40,12 +59,10 @@ const zoomStart = ( ev ) => {
 }
 
 const zoomMove = ( ev ) => {
-	const image = ev.target.nodeName === 'IMG' ? ev.target : ev.target.querySelector( 'img' )
+	const image = grabImageFromEvent( ev )
 
 	const delta = 0.1
-	const min = 1
-	const max = 4
-	let scale = image.style.transform ? Number( image.style.transform.slice( 6, -1 ) ) : min
+	let scale = image.style.transform ? Number( image.style.transform.slice( 6, -1 ) ) : scaleMin
 
 	// Find this event in the cache and update its record with this event
 	for ( let i = 0; i < evCache.length; i++ ) {
@@ -66,7 +83,7 @@ const zoomMove = ( ev ) => {
 				// console.log( 'Pinch moving OUT -> Zoom in', ev )
 				// ev.target.style.border = '3px solid green'
 				zoomedIn = true
-				if ( scale + delta < max ) {
+				if ( scale + delta < scaleMax ) {
 					scale += delta
 					ev.target.style.transform = `scale(${scale})`
 				}
@@ -75,11 +92,11 @@ const zoomMove = ( ev ) => {
 				// The distance between the two pointers has decreased
 				// console.log( 'Pinch moving IN -> Zoom out', ev )
 				// ev.target.style.border = '3px solid red'
-				if ( scale - delta > min ) {
+				if ( scale - delta > scaleMin ) {
 					scale -= delta
 					ev.target.style.transform = `scale(${scale})`
 				} else {
-					ev.target.style.transform = 'scale(1)'
+					ev.target.style.transform = `scale(${scaleMin})`
 					zoomedIn = false
 				}
 			}
@@ -133,4 +150,9 @@ const slideEnd = ( e, container, renderNext, marginLR, clientWidth, current ) =>
 
 }
 
-export { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, zoomStart, zoomMove, zoomEnd, slideStart, slideMove, slideEnd }
+export {
+	temp, isInvalidEvent, isImgZoomedIn,
+	getFingerAmount, toggleZoom,
+	zoomStart, zoomMove, zoomEnd,
+	slideStart, slideMove, slideEnd
+}

@@ -1,7 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
-import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, zoomStart, zoomMove, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
+import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, zoomStart, zoomMove, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 
 // internal state of the slider component
 let current = 0
@@ -310,6 +310,7 @@ const onShowFn = () => {
 	const items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` )
 	const nextButton = sliderContainer.querySelector( '.next' )
 	const previousButton = sliderContainer.querySelector( '.previous' )
+	let tapped = false
 
 	renderNext( 0 )
 	applyGestureEvent()
@@ -317,7 +318,17 @@ const onShowFn = () => {
 	sliderContainer.addEventListener( 'click', ( e ) => {
 		if ( e.target.className === `${prefixClassname}-item` ||
 				e.target.tagName === 'IMG' ) {
-			toggleFocusMode()
+			if ( !tapped ) {
+				tapped = setTimeout( () => {
+					tapped = null
+					toggleFocusMode()
+				}, 300 )
+			} else {
+				// Double tap
+				clearTimeout( tapped )
+				tapped = null
+				toggleZoom( e )
+			}
 		}
 	} )
 
