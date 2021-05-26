@@ -209,9 +209,9 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 
 				if ( !imageElement ) {
 					if ( !refreshImage ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						item.insertAdjacentHTML( 'beforeend', `<div class="${prefixClassname}-item-img-wrapper"><img src="${mediaInfo.bestFitImageUrl}"/></div>` )
 					} else {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/>` )
+						item.insertAdjacentHTML( 'beforeend', `<div class="${prefixClassname}-item-img-wrapper"><img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/></div>` )
 					}
 					bindImageEvent( item )
 				}
@@ -287,7 +287,7 @@ const applyGestureEvent = () => {
 			slideMove( e, container, marginLR, dir )
 		}
 	} )
-	container.addEventListener( 'pointerup', e => {
+	container.addEventListener( 'pointerout', e => {
 		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
 			return
 		}

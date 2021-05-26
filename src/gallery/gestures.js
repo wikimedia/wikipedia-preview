@@ -31,13 +31,17 @@ const getFingerAmount = () => {
 
 const toggleZoom = ( ev ) => {
 	const image = grabImageFromEvent( ev )
-	console.log( 'toggleZoome - ev...', ev )
-	console.log( 'toggleZoome - image...', image )
+	const imageWrapper = image.parentNode
+	const clientX = ev.clientX
+	const clientY = ev.clientY
 	if ( isImgZoomedIn() ) {
+		imageWrapper.style.overflow = 'hidden'
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
 	} else {
 		image.style.transform = `scale(${scaleMax})`
+		imageWrapper.style.overflow = 'scroll'
+		imageWrapper.scrollTo( clientX, clientY )
 		zoomedIn = true
 	}
 }
@@ -60,6 +64,7 @@ const zoomStart = ( ev ) => {
 
 const zoomMove = ( ev ) => {
 	const image = grabImageFromEvent( ev )
+	// const imageWrapper = image.parentNode
 
 	const delta = 0.1
 	let scale = image.style.transform ? Number( image.style.transform.slice( 6, -1 ) ) : scaleMin
@@ -83,7 +88,10 @@ const zoomMove = ( ev ) => {
 				// console.log( 'Pinch moving OUT -> Zoom in', ev )
 				// ev.target.style.border = '3px solid green'
 				zoomedIn = true
+				// imageWrapper.style.overflow = 'scroll'
+				// imageWrapper.scrollTo( ev.clientX, ev.clientY )
 				if ( scale + delta < scaleMax ) {
+					console.log( 'zoomMove - expanding...' )
 					scale += delta
 					ev.target.style.transform = `scale(${scale})`
 				}
@@ -93,11 +101,13 @@ const zoomMove = ( ev ) => {
 				// console.log( 'Pinch moving IN -> Zoom out', ev )
 				// ev.target.style.border = '3px solid red'
 				if ( scale - delta > scaleMin ) {
+					console.log( 'zoomMove - contracting...' )
 					scale -= delta
 					ev.target.style.transform = `scale(${scale})`
 				} else {
 					ev.target.style.transform = `scale(${scaleMin})`
 					zoomedIn = false
+					// imageWrapper.style.overflow = 'hidden'
 				}
 			}
 		}
