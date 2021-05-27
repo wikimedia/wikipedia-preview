@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joao Xavier"
+		]
+	},
+	"continue-reading": "Durigar lektado",
+	"gallery-loading-error": "Eventis eroro dum charjo di ca imajo",
+	"gallery-loading-error-offline": "Nula konekto al interreto disponebla.",
+	"gallery-loading-error-refresh": "Rinovigar",
+	"gallery-loading-still": "Charjo duras",
+	"gallery-unknown-author": "Nekonocata autoro",
+	"preview-error-message": "Eventis problemo dum la montro di ca previdado.",
+	"read-on-wiki": "Lektez che Wikipedio",
+	"read-more": "Lektez pluse che Wikipedio",
+	"preview-disambiguation-message": "La titulo <strong>$1</strong> uzesas en plu kam 1 artiklo che Wikipedio.",
+	"preview-offline-message": "Nula konekto al interreto disponebla.",
+	"preview-offline-cta": "Probez itere"
+}
