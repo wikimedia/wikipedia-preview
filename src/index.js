@@ -41,13 +41,13 @@ function init( {
 		e.preventDefault()
 
 		const popupId = Date.now()
-		const { target } = refresh ? last : e
-		const title = refresh ? last.title : decodeURIComponent( target.getAttribute( 'data-wp-title' ) || target.textContent )
-		const localLang = refresh ? last.lang : target.getAttribute( 'data-wp-lang' ) || globalLang
+		const { currentTarget } = refresh ? last : e
+		const title = refresh ? last.title : decodeURIComponent( currentTarget.getAttribute( 'data-wp-title' ) || currentTarget.textContent )
+		const localLang = refresh ? last.lang : currentTarget.getAttribute( 'data-wp-lang' ) || globalLang
 		const pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY }
 		const dir = getDir( localLang )
 
-		if ( popup.element.currentTargetElement === target && !refresh ) {
+		if ( popup.element.currentTargetElement === currentTarget && !refresh ) {
 			// Hovering over the same link and the popup is already open
 			return
 		}
@@ -60,7 +60,7 @@ function init( {
 
 		popup.loading = true
 		popup.dir = dir
-		popup.show( renderLoading( isTouch, localLang, dir ), target, pointerPosition )
+		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
 
 		requestPagePreview( localLang, title, isTouch, data => {
 			if ( popupId !== currentPopupId ) {
@@ -74,14 +74,14 @@ function init( {
 					if ( data.type === 'standard' ) {
 						popup.show(
 							renderPreview( localLang, data, isTouch ),
-							target,
+							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						popup.show(
 							renderDisambiguation( isTouch, localLang, data.title, data.dir ),
-							target,
+							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'disambiguation' ] )
@@ -90,14 +90,14 @@ function init( {
 					if ( isOnline() ) {
 						popup.show(
 							renderError( isTouch, localLang, title, dir ),
-							target,
+							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
 							renderOffline( isTouch, localLang, dir ),
-							target,
+							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'offline' ] )
@@ -105,7 +105,7 @@ function init( {
 						last.lang = localLang
 						last.title = title
 						last.pointerPosition = pointerPosition
-						last.target = target
+						last.target = currentTarget
 						again.addEventListener( 'click', ( event ) => {
 							showPopup( event, true )
 						} )
