@@ -18,6 +18,7 @@ module.exports = {
   },
   rules: {
     semi: [2, "never"],
-    'one-var': [2, "never"]
+    'one-var': [2, "never"],
+    'no-nonoctal-decimal-escape': 'off'
   }
 }
