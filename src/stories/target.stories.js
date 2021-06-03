@@ -18,7 +18,6 @@ export default {
 			control: 'text'
 		}
 	}
-
 }
 
 export const Hyperlink = ( { lang, title } ) => {
