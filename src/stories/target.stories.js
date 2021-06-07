@@ -2,7 +2,7 @@ import { buildWikipediaUrl } from '../utils'
 import { init } from '../index'
 
 export default {
-	title: 'Target Cases',
+	title: 'Targets',
 	argTypes: {
 		lang: {
 			name: 'Language',
