@@ -29,7 +29,7 @@ Android | 4.1+
 
 ## Getting Started
 
-Integrating Wikipedia Preview to your site consists of a three step process:
+Integrating Wikipedia Preview to your site consists of a three-step process:
 
 1. Loading wikipedia-preview.js (either as a standalong script or an npm dependency)
 2. Invoking `wikipediaPreview.init( <options> )`
@@ -139,15 +139,15 @@ To use the default trigger link styling:
 ```
 * Add the class `wmf-wp-with-preview` to the node
 
-If you prefer to style them in a way that makes more sense for you context, simply don't include the `wikipediaPreview.css` link in header and add your own class to the node. Both of these are valid ways:
+If you prefer to style them in a way that makes more sense for your context, simply don't include the `wikipediaPreview.css` link in the header and add your own class to the node. Both of these are valid ways:
 
-```css
+```CSS
 [data-wikipedia-preview] {
 	background-color: yellow;
 }
 ```
 
-```css
+```CSS
 .my-own-css-style {
 	background-color: yellow;
 }
@@ -156,4 +156,3 @@ If you prefer to style them in a way that makes more sense for you context, simp
 ## Acknowledgements/Contributors
 
 This is heavily inspired by [jquery.wikilookup](https://github.com/mooeypoo/jquery.wikilookup) and [Page Previews](https://www.mediawiki.org/wiki/Page_Previews).
-
