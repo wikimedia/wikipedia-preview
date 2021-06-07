@@ -7,6 +7,7 @@ const temp = {
 	originalMarginLeft: null,
 	currentMarginLeft: null,
 	originalTransition: null,
+	imgOriginalTransition: null,
 	durationStart: null,
 	translateX: 0,
 	translateY: 0,
@@ -68,6 +69,9 @@ const zoomStart = ( ev ) => {
 	// The pointerdown event signals the start of a touch interaction.
 	// This event is cached to support 2-finger gestures
 	evCache.push( ev )
+	const image = grabImageFromEvent( ev )
+	const imageStyle = window.getComputedStyle( image )
+	temp.imgOriginalTransition = imageStyle.transition
 }
 
 const zoomMove = ( ev ) => {
@@ -125,6 +129,7 @@ const zoomScroll = ( ev ) => {
 	const image = grabImageFromEvent( ev )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
+	image.style.transition = 'unset'
 
 	if ( !temp.clientX || !temp.clientY ) {
 		temp.clientX = ev.clientX
@@ -147,6 +152,8 @@ const zoomEnd = ( ev ) => {
 	removeEvent( ev )
 	temp.clientX = null
 	temp.clientY = null
+	const image = grabImageFromEvent( ev )
+	image.style.transition = temp.imgOriginalTransition
 	// If the number of pointers down is less than two then reset diff tracker
 	if ( evCache.length < 2 ) {
 		prevDiff = -1
