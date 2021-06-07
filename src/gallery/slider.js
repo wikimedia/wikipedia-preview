@@ -1,7 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
-import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, zoomStart, zoomMove, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
+import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 
 // internal state of the slider component
 let current = 0
@@ -283,7 +283,9 @@ const applyGestureEvent = () => {
 
 		if ( getFingerAmount() > 1 ) {
 			zoomMove( e )
-		} else if ( !isImgZoomedIn() ) {
+		} else if ( isImgZoomedIn() ) {
+			zoomScroll( e )
+		} else {
 			slideMove( e, container, marginLR, dir )
 		}
 	} )
@@ -294,7 +296,7 @@ const applyGestureEvent = () => {
 
 		container.style.transition = temp.originalTransition
 		if ( getFingerAmount() === 1 && !isImgZoomedIn() ) {
-			slideEnd( e, container, renderNext, marginLR, clientWidth, current )
+			slideEnd( e, container, renderNext, marginLR, current )
 		}
 		zoomEnd( e )
 	} )

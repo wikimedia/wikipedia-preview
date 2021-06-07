@@ -1,18 +1,28 @@
-let evCache = []
-let prevDiff = -1
-let zoomedIn = false
 const scaleMin = 1
-const scaleMax = 4
+const scaleMax = 2
+const clientWidth = window.innerWidth
+const clientHeight = window.innerHeight
 const temp = {
 	screenX: null,
 	originalMarginLeft: null,
 	currentMarginLeft: null,
 	originalTransition: null,
-	durationStart: null
+	durationStart: null,
+	translateX: 0,
+	translateY: 0,
+	clientX: null,
+	clientY: null
 }
+let evCache = []
+let prevDiff = -1
+let zoomedIn = false
 
 const grabImageFromEvent = ( ev ) => {
 	return ev.target.nodeName === 'IMG' ? ev.target : ev.target.querySelector( 'img' )
+}
+
+const grabScaleFromTransform = ( transform ) => {
+	return Number( transform.slice( transform.indexOf( 'scale' ) + 6, -1 ) )
 }
 
 const isInvalidEvent = ( e, items, current, captionText, prefixClassname ) => {
@@ -31,17 +41,15 @@ const getFingerAmount = () => {
 
 const toggleZoom = ( ev ) => {
 	const image = grabImageFromEvent( ev )
-	const imageWrapper = image.parentNode
-	const clientX = ev.clientX
-	const clientY = ev.clientY
+	temp.clientX = null
+	temp.clientY = null
+	temp.translateX = 0
+	temp.translateY = 0
 	if ( isImgZoomedIn() ) {
-		imageWrapper.style.overflow = 'hidden'
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
 	} else {
 		image.style.transform = `scale(${scaleMax})`
-		imageWrapper.style.overflow = 'scroll'
-		imageWrapper.scrollTo( clientX, clientY )
 		zoomedIn = true
 	}
 }
@@ -64,10 +72,11 @@ const zoomStart = ( ev ) => {
 
 const zoomMove = ( ev ) => {
 	const image = grabImageFromEvent( ev )
+	const transform = image.style.transform
 	// const imageWrapper = image.parentNode
 
 	const delta = 0.1
-	let scale = image.style.transform ? Number( image.style.transform.slice( 6, -1 ) ) : scaleMin
+	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
 
 	// Find this event in the cache and update its record with this event
 	for ( let i = 0; i < evCache.length; i++ ) {
@@ -88,12 +97,9 @@ const zoomMove = ( ev ) => {
 				// console.log( 'Pinch moving OUT -> Zoom in', ev )
 				// ev.target.style.border = '3px solid green'
 				zoomedIn = true
-				// imageWrapper.style.overflow = 'scroll'
-				// imageWrapper.scrollTo( ev.clientX, ev.clientY )
 				if ( scale + delta < scaleMax ) {
-					console.log( 'zoomMove - expanding...' )
 					scale += delta
-					ev.target.style.transform = `scale(${scale})`
+					image.style.transform = `scale(${scale})`
 				}
 			}
 			if ( curDiff < prevDiff ) {
@@ -101,13 +107,11 @@ const zoomMove = ( ev ) => {
 				// console.log( 'Pinch moving IN -> Zoom out', ev )
 				// ev.target.style.border = '3px solid red'
 				if ( scale - delta > scaleMin ) {
-					console.log( 'zoomMove - contracting...' )
 					scale -= delta
-					ev.target.style.transform = `scale(${scale})`
+					image.style.transform = `scale(${scale})`
 				} else {
-					ev.target.style.transform = `scale(${scaleMin})`
+					image.style.transform = `scale(${scaleMin})`
 					zoomedIn = false
-					// imageWrapper.style.overflow = 'hidden'
 				}
 			}
 		}
@@ -117,9 +121,32 @@ const zoomMove = ( ev ) => {
 	}
 }
 
+const zoomScroll = ( ev ) => {
+	const image = grabImageFromEvent( ev )
+	const transform = image.style.transform
+	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
+
+	if ( !temp.clientX || !temp.clientY ) {
+		temp.clientX = ev.clientX
+		temp.clientY = ev.clientY
+	}
+
+	const translateX = temp.translateX + ( ev.clientX - temp.clientX )
+	const translateY = temp.translateY + ( ev.clientY - temp.clientY )
+
+	if ( Math.abs( translateX ) < clientWidth / 2 && Math.abs( translateY ) < clientHeight / 2 ) {
+		temp.translateX = translateX
+		temp.translateY = translateY
+		temp.clientX = ev.clientX
+		temp.clientY = ev.clientY
+		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
+	}
+}
+
 const zoomEnd = ( ev ) => {
 	removeEvent( ev )
-
+	temp.clientX = null
+	temp.clientY = null
 	// If the number of pointers down is less than two then reset diff tracker
 	if ( evCache.length < 2 ) {
 		prevDiff = -1
@@ -146,7 +173,7 @@ const slideMove = ( e, container, marginLR, dir ) => {
 	e.preventDefault()
 }
 
-const slideEnd = ( e, container, renderNext, marginLR, clientWidth, current ) => {
+const slideEnd = ( e, container, renderNext, marginLR, current ) => {
 	const diff = temp.originalMarginLeft - temp.currentMarginLeft
 	const duration = Date.now() - temp.durationStart
 	if ( Math.abs( diff / clientWidth ) > 0.4 ||
@@ -163,6 +190,6 @@ const slideEnd = ( e, container, renderNext, marginLR, clientWidth, current ) =>
 export {
 	temp, isInvalidEvent, isImgZoomedIn,
 	getFingerAmount, toggleZoom,
-	zoomStart, zoomMove, zoomEnd,
+	zoomStart, zoomMove, zoomScroll, zoomEnd,
 	slideStart, slideMove, slideEnd
 }
