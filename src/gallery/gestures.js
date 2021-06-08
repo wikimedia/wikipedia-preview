@@ -140,7 +140,6 @@ const zoomScroll = ( ev, renderNext, items, current ) => {
 	const horizontalLimit = clientWidth / 2
 	const verticalLimit = clientHeight / 2
 	const paddingOffset = 80
-	const nextImageAvailable = items[ current + 1 ] || items[ current - 1 ]
 
 	image.style.transition = 'unset'
 	if ( !temp.clientX || !temp.clientY ) {
@@ -157,13 +156,14 @@ const zoomScroll = ( ev, renderNext, items, current ) => {
 		temp.clientX = ev.clientX
 		temp.clientY = ev.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
-	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset && nextImageAvailable ) {
-		if ( translateX > 0 ) {
+	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
+		if ( translateX > 0 && items[ current - 1 ] ) {
 			renderNext( -1 )
-		} else {
+			clearZoom( image )
+		} else if ( translateX < 0 && items[ current + 1 ] ) {
 			renderNext( 1 )
+			clearZoom( image )
 		}
-		clearZoom( image )
 	}
 }
 
