@@ -18,8 +18,8 @@ let evCache = []
 let prevDiff = -1
 let zoomedIn = false
 
-const grabImageFromEvent = ( ev ) => {
-	return ev.target.nodeName === 'IMG' ? ev.target : ev.target.querySelector( 'img' )
+const grabImageFromEvent = ( e ) => {
+	return e.target.nodeName === 'IMG' ? e.target : e.target.querySelector( 'img' )
 }
 
 const grabScaleFromTransform = ( transform ) => {
@@ -42,9 +42,9 @@ const getFingerAmount = () => {
 	return evCache.length
 }
 
-const removeEvent = ( ev ) => {
+const removeEvent = ( e ) => {
 	for ( let i = 0; i < evCache.length; i++ ) {
-		if ( evCache[ i ].pointerId === ev.pointerId ) {
+		if ( evCache[ i ].pointerId === e.pointerId ) {
 			evCache.splice( i, 1 )
 			break
 		}
@@ -58,12 +58,13 @@ const clearZoom = ( image ) => {
 	}
 }
 
-const toggleZoom = ( ev ) => {
-	const image = grabImageFromEvent( ev )
+const toggleZoom = ( e ) => {
+	const image = grabImageFromEvent( e )
 	temp.clientX = null
 	temp.clientY = null
 	temp.translateX = 0
 	temp.translateY = 0
+
 	if ( isImgZoomedIn() ) {
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
@@ -73,52 +74,41 @@ const toggleZoom = ( ev ) => {
 	}
 }
 
-const zoomStart = ( ev ) => {
-	// The pointerdown event signals the start of a touch interaction.
-	// This event is cached to support 2-finger gestures
-	evCache.push( ev )
-	const image = grabImageFromEvent( ev )
+const zoomStart = ( e ) => {
+	const image = grabImageFromEvent( e )
 	const imageStyle = window.getComputedStyle( image )
 	temp.imgOriginalTransition = imageStyle.transition
+	evCache.push( e )
 }
 
-const zoomMove = ( ev ) => {
-	const image = grabImageFromEvent( ev )
+const zoomMove = ( e ) => {
+	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
-	// const imageWrapper = image.parentNode
-
 	const delta = 0.1
 	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
 
-	// Find this event in the cache and update its record with this event
 	for ( let i = 0; i < evCache.length; i++ ) {
-		if ( ev.pointerId === evCache[ i ].pointerId ) {
-			evCache[ i ] = ev
+		if ( e.pointerId === evCache[ i ].pointerId ) {
+			evCache[ i ] = e
 			break
 		}
 	}
 
-	// If two pointers are down, check for pinch gestures
 	if ( evCache.length === 2 ) {
-		// Calculate the distance between the two pointers
 		let curDiff = Math.abs( evCache[ 0 ].clientX - evCache[ 1 ].clientX )
 
 		if ( prevDiff > 0 ) {
 			if ( curDiff > prevDiff ) {
-				// The distance between the two pointers has increased
-				// console.log( 'Pinch moving OUT -> Zoom in', ev )
-				// ev.target.style.border = '3px solid green'
 				zoomedIn = true
 				if ( scale + delta < scaleMax ) {
+					// Expand image
 					scale += delta
 					image.style.transform = `scale(${scale})`
 				}
 			}
 			if ( curDiff < prevDiff ) {
-				// The distance between the two pointers has decreased
-				// console.log( 'Pinch moving IN -> Zoom out', ev )
-				// ev.target.style.border = '3px solid red'
 				if ( scale - delta > scaleMin ) {
+					// Contract image
 					scale -= delta
 					image.style.transform = `scale(${scale})`
 				} else {
@@ -128,13 +118,12 @@ const zoomMove = ( ev ) => {
 			}
 		}
 
-		// Cache the distance for the next move event
 		prevDiff = curDiff
 	}
 }
 
-const zoomScroll = ( ev, renderNext, items, current ) => {
-	const image = grabImageFromEvent( ev )
+const zoomScroll = ( e, renderNext, items, current ) => {
+	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
 	const horizontalLimit = clientWidth / 2
@@ -143,18 +132,18 @@ const zoomScroll = ( ev, renderNext, items, current ) => {
 
 	image.style.transition = 'unset'
 	if ( !temp.clientX || !temp.clientY ) {
-		temp.clientX = ev.clientX
-		temp.clientY = ev.clientY
+		temp.clientX = e.clientX
+		temp.clientY = e.clientY
 	}
 
-	const translateX = temp.translateX + ( ev.clientX - temp.clientX )
-	const translateY = temp.translateY + ( ev.clientY - temp.clientY )
+	const translateX = temp.translateX + ( e.clientX - temp.clientX )
+	const translateY = temp.translateY + ( e.clientY - temp.clientY )
 
 	if ( Math.abs( translateX ) < horizontalLimit && Math.abs( translateY ) < verticalLimit ) {
 		temp.translateX = translateX
 		temp.translateY = translateY
-		temp.clientX = ev.clientX
-		temp.clientY = ev.clientY
+		temp.clientX = e.clientX
+		temp.clientY = e.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
 	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
 		if ( translateX > 0 && items[ current - 1 ] ) {
@@ -167,13 +156,12 @@ const zoomScroll = ( ev, renderNext, items, current ) => {
 	}
 }
 
-const zoomEnd = ( ev ) => {
-	removeEvent( ev )
+const zoomEnd = ( e ) => {
+	const image = grabImageFromEvent( e )
+	image.style.transition = temp.imgOriginalTransition
+	removeEvent( e )
 	temp.clientX = null
 	temp.clientY = null
-	const image = grabImageFromEvent( ev )
-	image.style.transition = temp.imgOriginalTransition
-	// If the number of pointers down is less than two then reset diff tracker
 	if ( evCache.length < 2 ) {
 		prevDiff = -1
 	}
@@ -206,7 +194,6 @@ const slideEnd = ( e, container, renderNext, marginLR, current ) => {
     ( duration <= 300 && Math.abs( diff ) > 5 )
 	) {
 		renderNext( diff > 0 ? 1 : -1 )
-		// TODO - reset image scale?
 	} else {
 		container.style[ marginLR ] = -clientWidth * current + 'px'
 	}
