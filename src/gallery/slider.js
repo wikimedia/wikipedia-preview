@@ -262,7 +262,6 @@ const renderPrevious = () => {
 }
 
 const applyGestureEvent = () => {
-
 	const container = parentContainer.querySelector( `.${prefixClassname}` )
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 	const captionText = `${prefixClassname}-item-caption-text`
@@ -286,7 +285,7 @@ const applyGestureEvent = () => {
 		if ( getFingerAmount() > 1 ) {
 			zoomMove( e )
 		} else if ( isImgZoomedIn() ) {
-			zoomScroll( e )
+			zoomScroll( e, renderNext, items, current )
 		} else {
 			slideMove( e, container, marginLR, dir )
 		}

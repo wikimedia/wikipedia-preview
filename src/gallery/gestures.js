@@ -133,12 +133,16 @@ const zoomMove = ( ev ) => {
 	}
 }
 
-const zoomScroll = ( ev ) => {
+const zoomScroll = ( ev, renderNext, items, current ) => {
 	const image = grabImageFromEvent( ev )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
-	image.style.transition = 'unset'
+	const horizontalLimit = clientWidth / 2
+	const verticalLimit = clientHeight / 2
+	const paddingOffset = 80
+	const nextImageAvailable = items[ current + 1 ] || items[ current - 1 ]
 
+	image.style.transition = 'unset'
 	if ( !temp.clientX || !temp.clientY ) {
 		temp.clientX = ev.clientX
 		temp.clientY = ev.clientY
@@ -147,12 +151,19 @@ const zoomScroll = ( ev ) => {
 	const translateX = temp.translateX + ( ev.clientX - temp.clientX )
 	const translateY = temp.translateY + ( ev.clientY - temp.clientY )
 
-	if ( Math.abs( translateX ) < clientWidth / 2 && Math.abs( translateY ) < clientHeight / 2 ) {
+	if ( Math.abs( translateX ) < horizontalLimit && Math.abs( translateY ) < verticalLimit ) {
 		temp.translateX = translateX
 		temp.translateY = translateY
 		temp.clientX = ev.clientX
 		temp.clientY = ev.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
+	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset && nextImageAvailable ) {
+		if ( translateX > 0 ) {
+			renderNext( -1 )
+		} else {
+			renderNext( 1 )
+		}
+		clearZoom( image )
 	}
 }
 
