@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lea.Fakauvea"
+		]
+	},
+	"continue-reading": "Hoko atu tau lau",
+	"gallery-loading-error": "Ne'e hala te fakahā o te pāki aeni",
+	"gallery-loading-error-offline": "Mole ha'ele te neti.",
+	"gallery-loading-error-refresh": "Fakafo'ou",
+	"gallery-loading-still": "Kei lolotoga mai",
+	"gallery-unknown-author": "Mole ilo'i pe ko ai ne'e ina tohi",
+	"preview-error-message": "Ne'e tō hala tona fakahā atu fakatomu'a.",
+	"read-on-wiki": "Lau i te Wikipedia",
+	"read-more": "Fakakātoā atu tona lau i te Wikipedia",
+	"preview-disambiguation-message": "Pāsina <strong>$1</strong> e 'alu tahi mo 'ihi ake pāsina o te Wikipedia.",
+	"preview-offline-message": "Mole ha'ele te neti.",
+	"preview-offline-cta": "Toe faiga'i."
+}
