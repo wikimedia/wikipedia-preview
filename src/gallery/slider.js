@@ -209,9 +209,9 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 
 				if ( !imageElement ) {
 					if ( !refreshImage ) {
-						item.insertAdjacentHTML( 'beforeend', `<div class="${prefixClassname}-item-img-wrapper"><img src="${mediaInfo.bestFitImageUrl}"/></div>` )
+						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
 					} else {
-						item.insertAdjacentHTML( 'beforeend', `<div class="${prefixClassname}-item-img-wrapper"><img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/></div>` )
+						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/>` )
 					}
 					bindImageEvent( item )
 				}
