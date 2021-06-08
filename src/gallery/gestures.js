@@ -29,7 +29,9 @@ const grabScaleFromTransform = ( transform ) => {
 const isInvalidEvent = ( e, items, current, captionText, prefixClassname ) => {
 	return e.target.className === captionText &&
 			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ||
-			e.pointerType !== 'touch'
+			e.target.className === captionText ||
+			e.pointerType !== 'touch' ||
+			e.target.className.indexOf( 'slider-button' ) > -1
 }
 
 const isImgZoomedIn = () => {
