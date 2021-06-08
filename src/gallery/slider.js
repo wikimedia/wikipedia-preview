@@ -1,7 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
-import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
+import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, clearZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 
 // internal state of the slider component
 let current = 0
@@ -239,12 +239,14 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	const previousButton = slider.querySelector( '.previous' )
 	const next = current + offset
 	const item = items[ next ]
+	const currentImage = items[ current ].querySelector( 'img' )
 
 	if ( item ) {
 		handleCaptionExpansion( items[ current ], true )
 		current += offset
 		nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 		previousButton.style.opacity = current === 0 ? '0.5' : '1'
+		clearZoom( currentImage )
 
 		// render image attribution element - current, next, previous
 		showImageAndInfo( current, refresh )

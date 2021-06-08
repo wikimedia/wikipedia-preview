@@ -42,6 +42,22 @@ const getFingerAmount = () => {
 	return evCache.length
 }
 
+const removeEvent = ( ev ) => {
+	for ( let i = 0; i < evCache.length; i++ ) {
+		if ( evCache[ i ].pointerId === ev.pointerId ) {
+			evCache.splice( i, 1 )
+			break
+		}
+	}
+}
+
+const clearZoom = ( image ) => {
+	if ( image ) {
+		image.style.transform = `scale(${scaleMin})`
+		zoomedIn = false
+	}
+}
+
 const toggleZoom = ( ev ) => {
 	const image = grabImageFromEvent( ev )
 	temp.clientX = null
@@ -54,16 +70,6 @@ const toggleZoom = ( ev ) => {
 	} else {
 		image.style.transform = `scale(${scaleMax})`
 		zoomedIn = true
-	}
-}
-
-const removeEvent = ( ev ) => {
-	// Remove this event from the target's cache
-	for ( let i = 0; i < evCache.length; i++ ) {
-		if ( evCache[ i ].pointerId === ev.pointerId ) {
-			evCache.splice( i, 1 )
-			break
-		}
 	}
 }
 
@@ -198,7 +204,7 @@ const slideEnd = ( e, container, renderNext, marginLR, current ) => {
 
 export {
 	temp, isInvalidEvent, isImgZoomedIn,
-	getFingerAmount, toggleZoom,
+	getFingerAmount, toggleZoom, clearZoom,
 	zoomStart, zoomMove, zoomScroll, zoomEnd,
 	slideStart, slideMove, slideEnd
 }
