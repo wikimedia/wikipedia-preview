@@ -126,8 +126,9 @@ const zoomScroll = ( e, renderNext, items, current ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
+	const isImgLandscape = image.naturalHeight <= image.naturalWidth
 	const horizontalLimit = clientWidth / 2
-	const verticalLimit = clientHeight / 2
+	const verticalLimit = isImgLandscape ? clientHeight / 8 : clientHeight / 2
 	const paddingOffset = 80
 
 	image.style.transition = 'unset'
