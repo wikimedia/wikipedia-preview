@@ -26,12 +26,18 @@ const grabScaleFromTransform = ( transform ) => {
 	return Number( transform.slice( transform.indexOf( 'scale' ) + 6, -1 ) )
 }
 
-const isInvalidEvent = ( e, items, current, captionText, prefixClassname ) => {
-	return e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ||
-			e.target.className === captionText ||
-			e.pointerType !== 'touch' ||
-			e.target.className.indexOf( 'slider-button' ) > -1
+const isInvalidEvent = ( e, prefixClassname ) => {
+	const invalidClasses = [
+		`${prefixClassname}-item-caption-expand-cue`,
+		`${prefixClassname}-item-caption-text`,
+		`${prefixClassname}-button`
+	]
+
+	const invalidElement = invalidClasses.find( className => {
+		return e.target.className.indexOf( className ) > -1
+	} )
+
+	return e.pointerType !== 'touch' || invalidElement
 }
 
 const isImgZoomedIn = () => {

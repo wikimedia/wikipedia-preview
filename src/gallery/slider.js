@@ -265,11 +265,10 @@ const renderPrevious = () => {
 const applyGestureEvent = () => {
 	const container = parentContainer.querySelector( `.${prefixClassname}` )
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
-	const captionText = `${prefixClassname}-item-caption-text`
 	const items = container.querySelectorAll( `.${prefixClassname}-item` )
 
 	container.addEventListener( 'pointerdown', e => {
-		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
 
@@ -279,7 +278,7 @@ const applyGestureEvent = () => {
 		}
 	} )
 	container.addEventListener( 'pointermove', e => {
-		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
 
@@ -292,7 +291,7 @@ const applyGestureEvent = () => {
 		}
 	} )
 	container.addEventListener( 'pointerout', e => {
-		if ( isInvalidEvent( e, items, current, captionText, prefixClassname ) ) {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
 
