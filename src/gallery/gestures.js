@@ -28,6 +28,7 @@ const grabScaleFromTransform = ( transform ) => {
 
 const isInvalidEvent = ( e, prefixClassname ) => {
 	const invalidClasses = [
+		`${prefixClassname}-item-caption`,
 		`${prefixClassname}-item-caption-expand-cue`,
 		`${prefixClassname}-item-caption-text`,
 		`${prefixClassname}-button`
@@ -165,7 +166,9 @@ const zoomScroll = ( e, renderNext, items, current ) => {
 
 const zoomEnd = ( e ) => {
 	const image = grabImageFromEvent( e )
-	image.style.transition = temp.imgOriginalTransition
+	if ( image ) {
+		image.style.transition = temp.imgOriginalTransition
+	}
 	removeEvent( e )
 	temp.clientX = null
 	temp.clientY = null
