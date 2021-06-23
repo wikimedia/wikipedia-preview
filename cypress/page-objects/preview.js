@@ -1,79 +1,80 @@
 export class Preview {
 
-    // Wikipedia Preiew Span
+	// Wikipedia Preiew Span
 
-    PreviewSpan () {
-        return cy.get('span.wmf-wp-with-preview')
+	getPreviewSpan() {
+		return cy.get( 'span.wmf-wp-with-preview' )
+	}
+
+	// Wikipedia Preiew Container
+
+	getPreview() {
+		return cy.get( 'div.wp-popup' ).find( 'div.wikipediapreview' )
+	}
+
+    getMobPreview() {
+        return cy.get( 'div.wp-touch-popup' ).find( 'div.wikipediapreview' )
     }
 
+    getMobBackgroundScreen() {
+        return cy.get( '.wp-dark-screen')
+    }
+	// Wikipedia Preiew Header
 
-    // Wikipedia Preiew Container
+	getHeader() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-header' )
+	}
 
-    Preview () {
-        return cy.get('div.wp-popup  > div.wikipediapreview')
+	getHeaderImage() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-header-image' )
+	}
+
+	getHeaderWatermark() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-header-wordmark' )
+	}
+
+	getHeaderClosebtn() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div[class="wikipediapreview-header-closebtn"]' )
+	}
+
+	// Wikipedia Preiew Body
+
+	getBody() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-body' )
+	}
+
+	getBodyContent() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-body > p' )
+	}
+
+	getBodyGallery() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-gallery-row' )
+	}
+
+    getBodyGalleryImages() {
+        return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-gallery-image' )
     }
 
+	getBodyMessage() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-body-message' )
+	}
 
-    // Wikipedia Preiew Header
+	getBodyAction() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-body-action > a' )
+	}
 
-    Header () {
-        return cy.get('div.wp-popup  > div.wikipediapreview > div.wikipediapreview-header')
-    }
+	//  Wikipedia Preview Footer
 
-    HeaderImage () {
-        return cy.get('div.wp-popup  > div.wikipediapreview > div.wikipediapreview-header').find('div.wikipediapreview-header-image')
-    }
+	getFooter() {
+		return cy.get( 'div.wikipediapreview' ).find( ' div.wikipediapreview-footer' )
+	}
 
-    HeaderWatermark () {
-        return cy.get('div.wp-popup  > div.wikipediapreview > div.wikipediapreview-header').find('div.wikipediapreview-header-wordmark')
-    }
+	getFooterContiReading() {
+		return cy.get( 'div.wikipediapreview' ).find( 'span[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore"]' )
+	}
 
-    HeaderClosebtn () {
-        return cy.get('div.wp-popup  > div.wikipediapreview > div.wikipediapreview-header').find('div[class="wikipediapreview-header-closebtn"]')
-    }
+	getFooterReadMore() {
+		return cy.get( 'div.wikipediapreview' ).find( 'a[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki"]' )
+	}
 
-
-
-
-    // Wikipedia Preiew Body
-
-    Body () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-body')
-    }
-
-    BodyContent () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-body > p')
-    }
-
-    BodyGallery () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-body > div.wikipediapreview-gallery')
-    }
-
-    BodyMessage () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-body').find('div.wikipediapreview-body-message')
-    }
-
-    BodyAction () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-body').find('div.wikipediapreview-body-action > a')
-    }
-
-
-
-
-    //  Wikipedia Preview Footer
-
-    Footer () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-footer')
-    }
-
-    FooterContiReading () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-footer').find('span[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore"]')
-    }
-
-    FooterReadMore () {
-        return cy.get('div.wp-popup > div.wikipediapreview > div.wikipediapreview-footer').find('a[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki"]')
-    }
-
-    
-    
 }
