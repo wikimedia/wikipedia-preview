@@ -22,18 +22,20 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@babel/register": "^7.11.5",
-    "@storybook/addon-actions": "^6.0.21",
-    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.0.21",
-    "@storybook/html": "^6.0.21",
+    "@storybook/html": "^6.2.9",
     "babel-loader": "^8.1.0",
     "bufferutil": "^4.0.1",
     "canvas": "^2.6.1",
     "compression-webpack-plugin": "^4.0.1",
     "css-loader": "^3.6.0",
+    "cy-mobile-commands": "^0.2.1",
     "eslint": "^7.8.1",
     "eslint-config-wikimedia": "0.20.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-cypress": "^2.11.3",
     "ignore-emit-webpack-plugin": "^2.0.3",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.4.0",
@@ -46,7 +48,7 @@
     "nyc": "^15.1.0",
     "sinon": "^9.0.3",
     "style-loader": "^1.2.1",
-    "stylelint-config-wikimedia": "^0.10.1",
+    "stylelint-config-wikimedia": "^0.10.3",
     "stylelint-no-unsupported-browser-features": "^4.1.4",
     "stylelint-webpack-plugin": "^2.1.0",
     "utf-8-validate": "^5.0.2",
@@ -56,6 +58,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "cypress": "^7.5.0",
     "dompurify": "^2.1.0"
   }
 }
