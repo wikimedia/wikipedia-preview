@@ -45,7 +45,7 @@ describe( 'Check the layout', () => {
 
 	} )
 
-	it( 'Check the Wikipedia Preview in Error Layout', () => {
+	it.skip( 'Check the Wikipedia Preview in Error Layout', () => {
 		preview.getPreviewSpan().eq( 1 ).click()
 
 		preview.getHeader().should( 'be.visible' )
@@ -75,7 +75,7 @@ describe( 'Check the layout', () => {
 
 	} )
 
-	it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
+	it.skip( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
 		preview.getPreviewSpan().eq( 2 ).click()
 
 		preview.getHeader().should( 'be.visible' )
