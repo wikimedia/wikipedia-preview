@@ -59,7 +59,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "cypress": "^7.5.0",
+    "cypress": "7.6.0",
     "dompurify": "^2.1.0"
   }
 }

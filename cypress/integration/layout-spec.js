@@ -14,7 +14,7 @@ describe( 'Check the layout', () => {
 		preview.getPreviewSpan().should( 'have.attr', 'data-wikipedia-preview' )
 	} )
 
-	it( 'Check the Wikipedia Preview in Offline Layout', () => {
+	it.skip( 'Check the Wikipedia Preview in Offline Layout', () => {
 		goOffline()
 
 		preview.getPreviewSpan().first().click()
@@ -82,7 +82,7 @@ describe( 'Check the layout', () => {
 		preview.getHeaderWatermark().should( 'be.visible' )
 		preview.getHeaderClosebtn().should( 'be.visible' )
 
-		preview.vPreview().then( tag => {
+		preview.getPreview().then( tag => {
 
 			const lang = tag.attr( 'lang' )
 
