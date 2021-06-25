@@ -8,7 +8,7 @@ Cypress.Commands.add( 'navigateToHomePage', ( url = '' ) => {
 } )
 
 Cypress.Commands.add( 'navigateToMobileHomePage', ( url = '' ) => {
-    cy.visitMobile(String( url ))
+	cy.visitMobile( String( url ) )
 } )
 
 // Custom Command to check the existence of Preview
@@ -74,12 +74,12 @@ Cypress.Commands.add( 'CheckPreviewExpanded', () =>{
 	preview.getBody().should( 'be.visible' )
 	preview.getBodyContent().should( 'be.visible' )
 		.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
-	preview.getHeaderImage().its('length').then( len => {
-        if(len>0){
-           preview.getBodyGallery().scrollIntoView().should('be.visible')
-           preview.getBodyGalleryImages().should('be.visible')
-        }
-    })
+	preview.getHeaderImage().its( 'length' ).then( len => {
+		if ( len > 0 ) {
+			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
+			preview.getBodyGalleryImages().should( 'be.visible' )
+		}
+	} )
 	preview.getFooter().should( 'be.visible' )
 	preview.getFooterReadMore().should( 'be.visible' )
 

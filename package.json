@@ -36,6 +36,7 @@
     "eslint-config-wikimedia": "0.20.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-cypress": "^2.11.3",
+    "eslint-plugin-no-only-tests": "^2.6.0",
     "ignore-emit-webpack-plugin": "^2.0.3",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.4.0",

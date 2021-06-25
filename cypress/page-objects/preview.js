@@ -12,13 +12,13 @@ export class Preview {
 		return cy.get( 'div.wp-popup' ).find( 'div.wikipediapreview' )
 	}
 
-    getMobPreview() {
-        return cy.get( 'div.wp-touch-popup' ).find( 'div.wikipediapreview' )
-    }
+	getMobPreview() {
+		return cy.get( 'div.wp-touch-popup' ).find( 'div.wikipediapreview' )
+	}
 
-    getMobBackgroundScreen() {
-        return cy.get( '.wp-dark-screen')
-    }
+	getMobBackgroundScreen() {
+		return cy.get( '.wp-dark-screen' )
+	}
 	// Wikipedia Preiew Header
 
 	getHeader() {
@@ -51,9 +51,9 @@ export class Preview {
 		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-gallery-row' )
 	}
 
-    getBodyGalleryImages() {
-        return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-gallery-image' )
-    }
+	getBodyGalleryImages() {
+		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-gallery-image' )
+	}
 
 	getBodyMessage() {
 		return cy.get( 'div.wikipediapreview' ).find( 'div.wikipediapreview-body-message' )
