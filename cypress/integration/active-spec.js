@@ -1,6 +1,8 @@
 import { Preview } from '../page-objects/preview'
+import { Check } from '../page-objects/check'
 
 const preview = new Preview()
+const check = new Check()
 
 describe( 'Check the Hover and Click Event', () => {
 
@@ -8,33 +10,13 @@ describe( 'Check the Hover and Click Event', () => {
 		cy.navigateToHomePage( '/articles/english.html' )
 	} )
 
-	it( 'Check the Preview by hovering over the Span', () => {
-
-		preview.getPreviewSpan().first().trigger( 'mouseenter' )
-
-		cy.CheckPreview()
-
-		preview.getPreview().invoke( 'hide' )
-
-	} )
-
 	it( 'Check the Preview by hovering over the Span and click Close', () => {
 
 		preview.getPreviewSpan().first().trigger( 'mouseenter', 'right' )
 
-		cy.CheckPreview()
+		check.preview()
 
 		preview.getHeaderClosebtn().click()
-
-	} )
-
-	it( 'Check the Preview by Clicking over the Span', () => {
-
-		preview.getPreviewSpan().first().click()
-
-		cy.CheckPreview()
-
-		preview.getPreview().invoke( 'hide' )
 
 	} )
 
@@ -42,7 +24,7 @@ describe( 'Check the Hover and Click Event', () => {
 
 		preview.getPreviewSpan().first().click()
 
-		cy.CheckPreview()
+		check.preview()
 
 		preview.getHeaderClosebtn().click()
 
