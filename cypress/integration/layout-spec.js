@@ -11,9 +11,9 @@ describe( 'Check the layout', () => {
 		cy.navigateToHomePage( '/articles/test.html' )
 	} )
 
-	it.only( 'Check the Wikipedia Preview in Standard with Image Layout', () => {
+	it( 'Check the Wikipedia Preview in Standard with Image Layout', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait(1000)
+
 		check.previewStandard()
 
 		preview.getHeaderClosebtn().click()
