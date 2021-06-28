@@ -13,8 +13,9 @@ describe( 'Check the layout', () => {
 
 	it( 'Check the Wikipedia Preview in Standard with Image Layout', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
+		cy.wait(1000)
 
-		check.previewStandardWithImage()
+		check.previewStandard()
 
 		preview.getHeaderClosebtn().click()
 	} )

@@ -1,5 +1,4 @@
 import { Preview } from '../page-objects/preview'
-import { msg } from '../../src/i18n'
 import { goOffline, goOnline, changeOnline } from '../plugins/network'
 
 const preview = new Preview()
@@ -18,26 +17,8 @@ describe( 'Check the onShow, onHide and onExpand functiom', () => {
         // Swipe Up to generate Expanded Mode
         preview.getBody().swipe('bottom','top')
         // Checks the preview
-        preview.getMobPreview().should( 'be.visible' )
-        .and( 'have.class', 'mobile' )
-        .and( 'have.class', 'expanded')
-
-        preview.getHeader().should( 'be.visible' )
-        preview.getHeaderWatermark().should( 'be.visible' )
-        preview.getHeaderClosebtn().should( 'be.visible' )
-
-        preview.getBody().should( 'be.visible' )
-        preview.getBodyContent().should('have.css', 'font-size' ).and( 'equal', '18px' )
-
-        preview.getHeaderImage().its('length').then( len => {
-            if(len>0){
-               preview.getBodyGallery().scrollIntoView().should('be.visible')
-               preview.getBodyGalleryImages().should('be.visible')
-            }
-        })
-
-        preview.getFooter().should( 'be.visible' )
-        preview.getFooterReadMore().should( 'be.visible' )
+        check.mobilePreview()
+        check.previewExpanded()
         // Closes the Mobile Preview
         preview.getHeaderClosebtn().click()
 
@@ -50,19 +31,8 @@ describe( 'Check the onShow, onHide and onExpand functiom', () => {
         // Click on Continue Reading Up to generate Expanded Mode
         preview.getFooterContiReading().click()        
         // Checks the preview
-        preview.getMobPreview().should( 'be.visible' )
-        .and( 'have.class', 'mobile' )
-        .and( 'have.class', 'expanded' )
-
-        preview.getHeader().should( 'be.visible' )
-        preview.getHeaderWatermark().should( 'be.visible' )
-        preview.getHeaderClosebtn().should( 'be.visible' )
-
-        preview.getBody().should( 'be.visible' )
-        preview.getBodyContent().should('have.css', 'font-size' ).and( 'equal', '18px' )
-
-        preview.getFooter().should( 'be.visible' )
-        preview.getFooterReadMore().should( 'be.visible' )
+        check.mobilePreview()
+        check.previewExpanded()
         // Closes the Mobile Preview
         preview.getHeaderClosebtn().click()
 

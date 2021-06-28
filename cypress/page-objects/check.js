@@ -18,15 +18,25 @@ export class Check {
 
 	}
 
-	// Custom Command to check the Preview in Standard With Image Mode
-	previewStandardWithImage() {
+	// Custom Command to check the existence of Mobile Preview
+	mobilePreview() {
+		preview.getMobPreview().should( 'be.visible' )
+        .and( 'have.class', 'mobile' )
+	}
+
+	// Custom Command to check the Preview in Standard Mode
+	previewStandard() {
 
 		preview.getPreview().should( 'be.visible' )
 
 		preview.getHeader().should( 'be.visible' )
-		preview.getHeaderImage().should( 'be.visible' )
 		preview.getHeaderWatermark().should( 'be.visible' )
 		preview.getHeaderClosebtn().should( 'be.visible' )
+		preview.getHeaderImage().its( 'length' ).then( len => {
+			if ( len > 0 ) {
+				preview.getHeaderImage().should( 'be.visible' )
+			}
+		} )
 
 		preview.getBody().should( 'be.visible' )
 		preview.getBodyContent().should( 'be.visible' )
@@ -37,25 +47,7 @@ export class Check {
 
 	}
 
-	// Custom Command to check the Preview in Standard Without Image Mode
-	previewStandardWithoutImage() {
-
-		preview.getPreview().should( 'be.visible' )
-
-		preview.getHeader().should( 'be.visible' )
-		preview.getHeaderWatermark().should( 'be.visible' )
-		preview.getHeaderClosebtn().should( 'be.visible' )
-
-		preview.getBody().should( 'be.visible' )
-		preview.getBodyContent().should( 'be.visible' )
-			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
-
-		preview.getFooter().should( 'be.visible' )
-		preview.getFooterContiReading().should( 'be.visible' )
-
-	}
-
-	// Custom Command to check the Preview in Standard Without Image Mode
+	// Custom Command to check the Preview in Expanded Mode
 	previewExpanded() {
 
 		preview.getPreview().should( 'be.visible' )
