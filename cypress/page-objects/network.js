@@ -44,8 +44,4 @@ const goOnline = () => {
 		} )
 }
 
-const changeOnline = () => {
-	window.navigator.onLine = false
-}
-
-export { goOffline, goOnline, changeOnline }
+export { goOffline, goOnline }
