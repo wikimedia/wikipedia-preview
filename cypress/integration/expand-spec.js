@@ -2,7 +2,7 @@ import { Preview } from '../page-objects/preview'
 
 const preview = new Preview()
 
-describe( 'Check the Expnaded Layout', () => {
+describe( 'Check the Expanded Layout', () => {
 
 	beforeEach( 'Open the English Page', () => {
 		cy.navigateToHomePage( '/articles/test.html' )
@@ -14,8 +14,8 @@ describe( 'Check the Expnaded Layout', () => {
 		// Click on Continue Reading Footer element
 		preview.getFooterContiReading().click()
 		// Check the Expanded Mode preview
-        preview.checkPreviewExpanded()
-        // Closes the Preview
+		preview.checkPreviewExpanded()
+		// Closes the Preview
 		preview.getHeaderClosebtn().click()
 
 	} )

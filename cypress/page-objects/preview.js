@@ -96,9 +96,8 @@ export class Preview {
 	checkMobilePreview() {
 
 		this.getMobPreview().should( 'be.visible' )
-        .and( 'have.class', 'mobile' )
+			.and( 'have.class', 'mobile' )
 	}
-
 
 	// Custom Command to check the Preview in Standard Mode
 	checkPreviewStandard() {
@@ -115,14 +114,13 @@ export class Preview {
 		} )
 
 		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'be.visible' , {'force':true})
+		this.getBodyContent().should( 'be.visible', { force: true } )
 			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
 
 		this.getFooter().should( 'be.visible' )
 		this.getFooterContiReading().should( 'be.visible' )
 
 	}
-
 
 	// Custom Command to check the Preview in Expanded Mode
 	checkPreviewExpanded() {
@@ -234,6 +232,5 @@ export class Preview {
 		} )
 
 	}
-
 
 }

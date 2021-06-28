@@ -7,52 +7,52 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 
 	beforeEach( 'Open the English Page', () => {
 		cy.navigateToMobileHomePage( '/articles/test.html' )
-        cy.viewport(550, 750)
+		cy.viewport( 550, 750 )
 	} )
 
-    it( 'Check the Wikipedia Preview in Standard Layout', () => {
-        // Opens Mobile Preview
+	it( 'Check the Wikipedia Preview in Standard Layout', () => {
+		// Opens Mobile Preview
 		preview.getPreviewSpan().eq( 0 ).click()
-        // Checks the preview
-        preview.checkMobilePreview()
-        preview.checkPreview()
-        // Closes the Mobile Preview
+		// Checks the preview
+		preview.checkMobilePreview()
+		preview.checkPreview()
+		// Closes the Mobile Preview
 		preview.getHeaderClosebtn().click()
 
 	} )
 
-    it.skip( 'Check the Wikipedia Preview in Offline Layout', () => {
-        goOffline()
-        // Opens Mobile Preview
-        preview.getPreviewSpan().first().click()
-        // Checks the preview
-        preview.checkMobilePreview()
-        preview.checkPreviewOffline()
-        // Closes the Mobile Preview
-        preview.getHeaderClosebtn().click()
-        goOnline()
+	it.skip( 'Check the Wikipedia Preview in Offline Layout', () => {
+		goOffline()
+		// Opens Mobile Preview
+		preview.getPreviewSpan().first().click()
+		// Checks the preview
+		preview.checkMobilePreview()
+		preview.checkPreviewOffline()
+		// Closes the Mobile Preview
+		preview.getHeaderClosebtn().click()
+		goOnline()
 
-    } )
+	} )
 
-    it( 'Check the Wikipedia Preview in Error Layout', () => {
-        // Opens Mobile Preview
-        preview.getPreviewSpan().eq( 1 ).click()
-        // Checks the preview
-        preview.checkMobilePreview()
-        preview.checkPreviewError()
-        // Closes the Mobile Preview
-        preview.getHeaderClosebtn().click()
+	it( 'Check the Wikipedia Preview in Error Layout', () => {
+		// Opens Mobile Preview
+		preview.getPreviewSpan().eq( 1 ).click()
+		// Checks the preview
+		preview.checkMobilePreview()
+		preview.checkPreviewError()
+		// Closes the Mobile Preview
+		preview.getHeaderClosebtn().click()
 
-    } )
+	} )
 
-    it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
-        // Opens Mobile Preview
-        preview.getPreviewSpan().eq( 2 ).click()
-        // Checks the preview
-        preview.checkMobilePreview()
-        preview.checkPreviewDisambiguation()
-        // Closes the Mobile Preview
-        preview.getHeaderClosebtn().click()
+	it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
+		// Opens Mobile Preview
+		preview.getPreviewSpan().eq( 2 ).click()
+		// Checks the preview
+		preview.checkMobilePreview()
+		preview.checkPreviewDisambiguation()
+		// Closes the Mobile Preview
+		preview.getHeaderClosebtn().click()
 
-    } )
+	} )
 } )
