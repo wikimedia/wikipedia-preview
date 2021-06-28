@@ -9,14 +9,14 @@ describe( 'Check the Expnaded Layout', () => {
 	} )
 
 	it( 'Check the Wikipedia Preview in Expanded Layout', () => {
-		// Opening the Expanded Mode
+		// Opens Mobile Preview
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		cy.wait( 1500 )
 		preview.getFooterContiReading().click()
 
-		cy.CheckPreviewExpanded()
-
+        check.previewExpanded()
+        // Closes the Preview
 		preview.getHeaderClosebtn().click()
 
 	} )
@@ -33,7 +33,7 @@ describe( 'Check the Expnaded Layout', () => {
 		cy.wait( 1500 )
 		preview.getFooterContiReading().click()
 
-		cy.CheckPreviewExpanded()
+        check.previewExpanded()
 
 		preview.getHeaderClosebtn().click()
 
