@@ -1,8 +1,6 @@
 import { Preview } from '../page-objects/preview'
-import { Check } from '../page-objects/check'
 
 const preview = new Preview()
-const check = new Check()
 
 describe( 'Check the Hover and Click Event', () => {
 
@@ -14,7 +12,7 @@ describe( 'Check the Hover and Click Event', () => {
 
 		preview.getPreviewSpan().first().trigger( 'mouseenter', 'right' )
 
-		check.preview()
+		preview.checkPreview()
 
 		preview.getHeaderClosebtn().click()
 
@@ -24,7 +22,7 @@ describe( 'Check the Hover and Click Event', () => {
 
 		preview.getPreviewSpan().first().click()
 
-		check.preview()
+		preview.checkPreview()
 
 		preview.getHeaderClosebtn().click()
 
