@@ -1,9 +1,7 @@
 import { Preview } from '../page-objects/preview'
-import { Check } from '../page-objects/check'
-import { goOffline, goOnline } from '../page-objects/network'
+import { goOffline, goOnline } from '../page-objects/helpers/network'
 
 const preview = new Preview()
-const check = new Check()
 
 describe( 'Check the layout', () => {
 
@@ -13,9 +11,8 @@ describe( 'Check the layout', () => {
 
 	it( 'Check the Wikipedia Preview in Standard with Image Layout', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait(1000)
 
-		check.previewStandard()
+		preview.checkPreviewStandard()
 
 		preview.getHeaderClosebtn().click()
 	} )
@@ -25,7 +22,7 @@ describe( 'Check the layout', () => {
 
 		preview.getPreviewSpan().eq( 0 ).click()
 
-		check.previewOffline()
+		preview.checkPreviewOffline()
 
 		preview.getHeaderClosebtn().click()
 
@@ -35,7 +32,7 @@ describe( 'Check the layout', () => {
 	it( 'Check the Wikipedia Preview in Error Layout', () => {
 		preview.getPreviewSpan().eq( 1 ).click()
 
-		check.previewError()
+		preview.checkPreviewError()
 
 		preview.getHeaderClosebtn().click()
 	} )
@@ -43,7 +40,7 @@ describe( 'Check the layout', () => {
 	it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
 		preview.getPreviewSpan().eq( 2 ).click()
 
-		check.previewDisambiguation()
+		preview.checkPreviewDisambiguation()
 
 		preview.getHeaderClosebtn().click()
 	} )
