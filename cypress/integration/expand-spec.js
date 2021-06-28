@@ -9,35 +9,15 @@ describe( 'Check the Expnaded Layout', () => {
 	} )
 
 	it( 'Check the Wikipedia Preview in Expanded Layout', () => {
-		// Opens Mobile Preview
+		// Opens the Preview
 		preview.getPreviewSpan().eq( 0 ).click()
-
-		cy.wait( 1500 )
+		// Click on Continue Reading Footer element
 		preview.getFooterContiReading().click()
-
-        check.previewExpanded()
+		// Check the Expanded Mode preview
+        preview.checkPreviewExpanded()
         // Closes the Preview
 		preview.getHeaderClosebtn().click()
 
 	} )
-
-	it( 'Check the Wikipedia Preview appears in Standard Layout after being in expanded Mode ', () => {
-
-		// Opening the Expanded Mode
-		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait( 1500 )
-		preview.getFooterContiReading().click()
-		preview.getHeaderClosebtn().click()
-
-		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait( 1500 )
-		preview.getFooterContiReading().click()
-
-        check.previewExpanded()
-
-		preview.getHeaderClosebtn().click()
-
-	} )
-
 
 } )

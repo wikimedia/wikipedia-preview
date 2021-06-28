@@ -92,6 +92,14 @@ export class Preview {
 
 	}
 
+	// Custom Command to check the existence of Mobile Preview
+	checkMobilePreview() {
+
+		this.getMobPreview().should( 'be.visible' )
+        .and( 'have.class', 'mobile' )
+	}
+
+
 	// Custom Command to check the Preview in Standard Mode
 	checkPreviewStandard() {
 
@@ -107,7 +115,7 @@ export class Preview {
 		} )
 
 		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'be.visible' )
+		this.getBodyContent().should( 'be.visible' , {'force':true})
 			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
 
 		this.getFooter().should( 'be.visible' )
