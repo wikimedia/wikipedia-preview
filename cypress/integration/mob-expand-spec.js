@@ -1,4 +1,4 @@
-import { Preview } from '../page-objects/preview'
+import { Preview } from '../page-objects/preview-page'
 
 const preview = new Preview()
 
