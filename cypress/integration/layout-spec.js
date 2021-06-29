@@ -1,4 +1,4 @@
-import { Preview } from '../page-objects/preview'
+import { Preview } from '../page-objects/preview-page'
 import { goOffline, goOnline } from '../page-objects/helpers/network'
 
 const preview = new Preview()
