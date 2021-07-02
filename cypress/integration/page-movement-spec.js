@@ -13,13 +13,17 @@ describe( 'Check Page Movement ', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		// Continue Reading is available
-		preview.getFooterContiReading().its( 'length' ).then( res => {
-			if ( res > 0 ) { preview.getFooterContiReading().click() }
+		preview.getFooterContiReading().then( res => {
+			if ( res.css( 'display' ) !== 'none' ) {
+				preview.getFooterContiReading().click()
+			}
 		} )
 
 		// Open the Wikipedia Page in the same window
-		preview.getFooterReadMore().invoke( 'removeAttr', 'target' )
-		preview.getFooterReadMore().click()
+		preview.getFooterReadMore().should( $a => {
+			expect( $a.attr( 'target' ), 'target' ).to.equal( '_blank' )
+			$a.attr( 'target', '_self' )
+		} ).click()
 
 		// Page should contain wikipedia.org
 		cy.url().should( 'include', 'wikipedia.org' )
