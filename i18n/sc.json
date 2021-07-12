@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"L2212"
+		]
+	},
+	"continue-reading": "Sighi a lèghere",
+	"gallery-loading-error": "B'at àpidu una faddina in su carrigamentu de custa immàgine",
+	"gallery-loading-error-offline": "Peruna connessione a ìnternet a disponimentu.",
+	"gallery-loading-error-refresh": "Agiorna",
+	"gallery-loading-still": "Galu carrighende",
+	"gallery-unknown-author": "Autore disconnotu",
+	"preview-error-message": "B'at àpidu unu problema in sa visualizatzione de custa antiprima.",
+	"read-on-wiki": "Leghe in Wikipedia",
+	"read-more": "Àteras informatziones in Wikipedia",
+	"preview-disambiguation-message": "Su tìtulu <strong>$1</strong> est ligadu a prus de un'artìculu in Wikipedia.",
+	"preview-offline-message": "Peruna connessione a ìnternet a disponimentu.",
+	"preview-offline-cta": "Torra a proare"
+}
