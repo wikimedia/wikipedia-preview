@@ -1,6 +1,7 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
 import { isOnline } from '../utils'
+import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, clearZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 import { addEventListener } from './event'
 
 // internal state of the slider component
@@ -239,12 +240,14 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	const previousButton = slider.querySelector( '.previous' )
 	const next = current + offset
 	const item = items[ next ]
+	const currentImage = items[ current ].querySelector( 'img' )
 
 	if ( item ) {
 		handleCaptionExpansion( items[ current ], true )
 		current += offset
 		nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
 		previousButton.style.opacity = current === 0 ? '0.5' : '1'
+		clearZoom( currentImage )
 
 		// render image attribution element - current, next, previous
 		showImageAndInfo( current, refresh )
@@ -260,61 +263,43 @@ const renderPrevious = () => {
 }
 
 const applyGestureEvent = () => {
-	const temp = {
-		screenX: null,
-		originalMarginLeft: null,
-		currentMarginLeft: null,
-		originalTransition: null,
-		durationStart: null
-	}
-
 	const container = parentContainer.querySelector( `.${prefixClassname}` )
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
-	const captionText = `${prefixClassname}-item-caption-text`
 	const items = container.querySelectorAll( `.${prefixClassname}-item` )
 
-	container.addEventListener( 'touchstart', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
+	container.addEventListener( 'pointerdown', e => {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
 
-		const containerStyle = window.getComputedStyle( container )
-		temp.durationStart = Date.now()
-		temp.screenX = e.touches[ 0 ].clientX
-		temp.originalMarginLeft =
-							+containerStyle[ marginLR ].slice( 0, -2 )
-		temp.currentMarginLeft =
-							+containerStyle[ marginLR ].slice( 0, -2 )
-		temp.originalTransition = containerStyle.transition
-		container.style.transition = 'unset'
+		zoomStart( e )
+		if ( getFingerAmount() === 1 && !isImgZoomedIn() ) {
+			slideStart( e, container, marginLR )
+		}
 	} )
-	container.addEventListener( 'touchmove', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
+	container.addEventListener( 'pointermove', e => {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
-		const clientX = e.touches[ 0 ].clientX
-		const offset = clientX - temp.screenX
-		temp.currentMarginLeft = temp.originalMarginLeft + offset * ( dir === 'ltr' ? 1 : -1 )
-		container.style[ marginLR ] = temp.currentMarginLeft + 'px'
-		e.preventDefault()
-	} )
-	container.addEventListener( 'touchend', e => {
-		if ( e.target.className === captionText &&
-			items[ current ].querySelector( `.${prefixClassname}-item-caption-expand-cue` ) ) {
-			return
-		}
-		container.style.transition = temp.originalTransition
-		const diff = temp.originalMarginLeft - temp.currentMarginLeft
-		const duration = Date.now() - temp.durationStart
-		if ( Math.abs( diff / clientWidth ) > 0.4 ||
-			( duration <= 300 && Math.abs( diff ) > 5 )
-		) {
-			renderNext( diff > 0 ? 1 : -1 )
+
+		if ( getFingerAmount() > 1 ) {
+			zoomMove( e )
+		} else if ( isImgZoomedIn() ) {
+			zoomScroll( e, renderNext, items, current )
 		} else {
-			container.style[ marginLR ] = -clientWidth * current + 'px'
+			slideMove( e, container, marginLR, dir )
 		}
+	} )
+	container.addEventListener( 'pointerout', e => {
+		if ( isInvalidEvent( e, prefixClassname ) ) {
+			return
+		}
+
+		container.style.transition = temp.originalTransition
+		if ( getFingerAmount() === 1 && !isImgZoomedIn() ) {
+			slideEnd( e, container, renderNext, marginLR, current )
+		}
+		zoomEnd( e )
 	} )
 }
 
@@ -328,6 +313,7 @@ const onShowFn = () => {
 	const items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` )
 	const nextButton = sliderContainer.querySelector( '.next' )
 	const previousButton = sliderContainer.querySelector( '.previous' )
+	let tapped = false
 
 	renderNext( 0 )
 	applyGestureEvent()
@@ -335,7 +321,17 @@ const onShowFn = () => {
 	sliderContainer.addEventListener( 'click', ( e ) => {
 		if ( e.target.className === `${prefixClassname}-item` ||
 				e.target.tagName === 'IMG' ) {
-			toggleFocusMode()
+			if ( !tapped ) {
+				tapped = setTimeout( () => {
+					tapped = null
+					toggleFocusMode()
+				}, 300 )
+			} else {
+				// Double tap
+				clearTimeout( tapped )
+				tapped = null
+				toggleZoom( e )
+			}
 		}
 	} )
 
