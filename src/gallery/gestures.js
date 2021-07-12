@@ -92,6 +92,7 @@ const zoomMove = ( e ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const delta = 0.1
+	const buffer = 0.3
 	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
 
 	for ( let i = 0; i < evCache.length; i++ ) {
@@ -114,7 +115,7 @@ const zoomMove = ( e ) => {
 				}
 			}
 			if ( curDiff < prevDiff ) {
-				if ( scale - delta > scaleMin ) {
+				if ( scale - delta - buffer > scaleMin ) {
 					// Contract image
 					scale -= delta
 					image.style.transform = `scale(${scale})`
