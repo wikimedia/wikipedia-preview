@@ -2,10 +2,10 @@ import { Preview } from '../page-objects/preview-page'
 
 const preview = new Preview()
 
-describe( 'Check the Expanded Layout', () => {
+describe( 'Check the Expanded Layout in Mobile View', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToMobileHomePage( '/articles/test.html' )
+		cy.navigateToMobileTestPage()
 		cy.viewport( 550, 750 )
 	} )
 
