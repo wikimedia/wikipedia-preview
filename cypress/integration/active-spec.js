@@ -21,7 +21,7 @@ describe( 'Check the Hover and Click Event', () => {
 	it( 'Check the Preview by Clicking over the Span and click Close', () => {
 
 		preview.getPreviewSpan().first().click()
-		cy.wait(1000)
+		cy.wait( 1000 )
 		preview.checkPreview()
 
 		preview.getHeaderClosebtn().click()
