@@ -36,7 +36,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 		} )
 	} )
 
-	it( 'Check the Gallery Pages Movement', () => {
+	it( 'Check the Gallery Pages Movement by Swiping', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
 		// Check for the Continue Reading exist
@@ -45,7 +45,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 				preview.getFooterContiReading().click()
 			}
 		} )
-		const i = 1
+		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( res => {
 			if ( res > 1 ) {
