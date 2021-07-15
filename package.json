@@ -14,7 +14,8 @@
     "dev": "webpack-dev-server --mode development --host=0.0.0.0 --disable-host-check",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json"
+    "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
+    "cypress:run": "cypress run"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
@@ -59,6 +60,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "cypress": "7.6.0",
     "dompurify": "^2.1.0"
   }
 }
