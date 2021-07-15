@@ -115,7 +115,6 @@ export class Preview {
 
 	}
 
-
 	// Custom Command to check the Preview in Expanded Mode
 	checkPreviewExpanded() {
 
@@ -226,6 +225,5 @@ export class Preview {
 		} )
 
 	}
-
 
 }
