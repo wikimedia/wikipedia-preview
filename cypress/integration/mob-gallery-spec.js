@@ -7,7 +7,7 @@ const gallery = new Gallery()
 describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToMobileHomePage( '/articles/test.html' )
+		cy.navigateToMobileTestPage()
 	} )
 
 	it( 'Check the Gallery Pages Movement by Clicking on', () => {

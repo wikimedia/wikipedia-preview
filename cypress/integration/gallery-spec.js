@@ -7,7 +7,7 @@ const gallery = new Gallery()
 describe( 'Check the Gallery Pages ', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToHomePage( '/articles/test.html' )
+		cy.navigateToTestPage()
 	} )
 
 	it( 'Check the Gallery Pages', () => {
