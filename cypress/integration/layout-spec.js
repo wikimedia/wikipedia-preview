@@ -5,8 +5,8 @@ const preview = new Preview()
 
 describe( 'Check the layout', () => {
 
-	beforeEach( 'Open the English Page', () => {
-		cy.navigateToHomePage( '/articles/test.html' )
+	beforeEach( 'Open the Test Page', () => {
+		cy.navigateToTestPage()
 	} )
 
 	it( 'Check the Wikipedia Preview in Standard with Image Layout', () => {
@@ -29,7 +29,7 @@ describe( 'Check the layout', () => {
 		goOnline()
 	} )
 
-	it( 'Check the Wikipedia Preview in Error Layout', () => {
+	it.skip( 'Check the Wikipedia Preview in Error Layout', () => {
 		preview.getPreviewSpan().eq( 1 ).click()
 
 		preview.checkPreviewError()
@@ -37,7 +37,7 @@ describe( 'Check the layout', () => {
 		preview.getHeaderClosebtn().click()
 	} )
 
-	it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
+	it.skip( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
 		preview.getPreviewSpan().eq( 2 ).click()
 
 		preview.checkPreviewDisambiguation()
