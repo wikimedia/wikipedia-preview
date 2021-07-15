@@ -14,6 +14,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 		// Opens Mobile Preview
 		preview.getPreviewSpan().eq( 0 ).click()
 		// Checks the preview
+		cy.wait( 1000 )
 		preview.checkMobilePreview()
 		preview.checkPreview()
 		// Closes the Mobile Preview
