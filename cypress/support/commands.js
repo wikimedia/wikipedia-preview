@@ -6,6 +6,6 @@ Cypress.Commands.add( 'navigateToEnglishPage', () => {
 	cy.visit( '/articles/english.html' )
 } )
 
-Cypress.Commands.add( 'navigateToMobileHomePage', ( url = '' ) => {
-	cy.visitMobile( String( url ) )
+Cypress.Commands.add( 'navigateToMobileTestPage', () => {
+	cy.visitMobile( '/articles/test.html' )
 } )
