@@ -5,7 +5,7 @@ const preview = new Preview()
 describe( 'Check the Hover and Click Event', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToHomePage( '/articles/english.html' )
+		cy.navigateToEnglishPage()
 	} )
 
 	it( 'Check the Preview by hovering over the Span and click Close', () => {
