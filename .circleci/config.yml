@@ -13,7 +13,7 @@ jobs:
           command: |
             npm install
             npm run build
-            npm run start &
+            npm run dev &
             npm run cypress:run 
       - store_artifacts:
           path: cypress/screenshots

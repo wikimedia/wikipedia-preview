@@ -5,7 +5,7 @@ const preview = new Preview()
 describe( 'Check Page Movement ', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToHomePage( '/articles/test.html' )
+		cy.navigateToTestPage()
 	} )
 
 	it( 'Check the Read More link in Wikipedia Preview', () => {

@@ -5,7 +5,7 @@ const preview = new Preview()
 describe( 'Check the Expanded Layout', () => {
 
 	beforeEach( 'Open the English Page', () => {
-		cy.navigateToHomePage( '/articles/test.html' )
+		cy.navigateToTestPage()
 	} )
 
 	it( 'Check the Wikipedia Preview in Expanded Layout', () => {
