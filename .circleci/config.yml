@@ -12,7 +12,6 @@ jobs:
           name: Build and Test
           command: |
             npm install
-            npm run build
             npm run dev &
             npm run cypress:run 
       - store_artifacts:
