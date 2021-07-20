@@ -23,7 +23,7 @@ module.exports = {
     'no-only-tests/no-only-tests': 'error',
     'cypress/no-unnecessary-waiting': 'warn'
   },
-  'plugins': [
+  plugins: [
     'cypress',
     'no-only-tests'
   ],
