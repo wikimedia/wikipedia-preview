@@ -6,7 +6,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'wikimedia/client',
-    "plugin:cypress/recommended"
+    'plugin:cypress/recommended'
   ],
   globals: {
     Atomics: 'readonly',
@@ -18,13 +18,13 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    semi: [2, "never"],
+    semi: [2, 'never'],
     'no-nonoctal-decimal-escape': 'off',
-    "no-only-tests/no-only-tests": "error",
-    "cypress/no-unnecessary-waiting": "warn"
+    'no-only-tests/no-only-tests': 'error',
+    'cypress/no-unnecessary-waiting': 'warn'
   },
-  "plugins": [
-    "cypress",
-    "no-only-tests"
+  'plugins': [
+    'cypress',
+    'no-only-tests'
   ],
 }

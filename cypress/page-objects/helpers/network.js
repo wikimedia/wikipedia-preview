@@ -4,7 +4,7 @@ const goOffline = () => {
 			return Cypress.automation( 'remote:debugger:protocol',
 				{
 					command: 'Network.enable'
-				} )
+				} );
 		} )
 		.then( () => {
 			return Cypress.automation( 'remote:debugger:protocol',
@@ -16,9 +16,9 @@ const goOffline = () => {
 						downloadThroughput: -1,
 						uploadThroughput: -1
 					}
-				} )
-		} )
-}
+				} );
+		} );
+};
 
 const goOnline = () => {
 	// disable offline mode, otherwise we will break our tests :)
@@ -34,14 +34,14 @@ const goOnline = () => {
 						downloadThroughput: -1,
 						uploadThroughput: -1
 					}
-				} )
+				} );
 		} )
 		.then( () => {
 			return Cypress.automation( 'remote:debugger:protocol',
 				{
 					command: 'Network.disable'
-				} )
-		} )
-}
+				} );
+		} );
+};
 
-export { goOffline, goOnline }
+export { goOffline, goOnline };
