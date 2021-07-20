@@ -15,7 +15,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
-    "cypress:run": "cypress run"
+    "cypress:run": "eslint cypress --fix && cypress run",
+    "cypress:test:fix-lint": "eslint cypress --fix"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
