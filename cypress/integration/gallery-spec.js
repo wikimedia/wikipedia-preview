@@ -55,3 +55,4 @@ describe( 'Check the Gallery Pages ', () => {
 	} )
 
 } )
+
