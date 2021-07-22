@@ -30,6 +30,17 @@ jobs:
           name: Unit Test (with coverage)
           command: npm run coverage
       - run:
+          name: Cypress Tests
+          command: 
+            npm run dev &
+            npm run cypress:run 
+      - store_artifacts:
+          path: cypress/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: cypress/videos
+          destination: videos
+      - run:
           name: Build Storybook
           command: npm run build-storybook
       - run:

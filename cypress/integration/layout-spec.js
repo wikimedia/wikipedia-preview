@@ -1,11 +1,12 @@
 import { Preview } from '../page-objects/preview-page'
-import { goOffline, goOnline } from '../page-objects/helpers/network'
+import { goOffline, goOnline } from '../helpers/network'
 
 const preview = new Preview()
 
 describe( 'Check the layout', () => {
 
 	beforeEach( 'Open the Test Page', () => {
+		goOnline()
 		cy.navigateToTestPage()
 	} )
 
@@ -25,8 +26,6 @@ describe( 'Check the layout', () => {
 		preview.checkPreviewOffline()
 
 		preview.getHeaderClosebtn().click()
-
-		goOnline()
 	} )
 
 	it.skip( 'Check the Wikipedia Preview in Error Layout', () => {

@@ -15,7 +15,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
-    "cypress:run": "cypress run"
+    "cypress:run": "eslint cypress --fix && cypress run",
+    "cypress:test:fix-lint": "eslint cypress --fix"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",
@@ -32,7 +33,6 @@
     "canvas": "^2.6.1",
     "compression-webpack-plugin": "^4.0.1",
     "css-loader": "^3.6.0",
-    "cy-mobile-commands": "^0.2.1",
     "cypress": "7.6.0",
     "eslint": "^7.8.1",
     "eslint-config-wikimedia": "0.20.0",
