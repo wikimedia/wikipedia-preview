@@ -166,7 +166,7 @@ const zoomMove = ( e ) => {
 	}
 }
 
-const zoomScroll = ( e, renderNext, items, current ) => {
+const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
@@ -190,9 +190,10 @@ const zoomScroll = ( e, renderNext, items, current ) => {
 		temp.clientY = e.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
 	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
-		if ( translateX > 0 && items[ current - 1 ] ) {
+		const direction = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 ) ? 'next' : 'previous'
+		if ( direction === 'previous' && items[ current - 1 ] ) {
 			renderNext( -1 )
-		} else if ( translateX < 0 && items[ current + 1 ] ) {
+		} else if ( direction === 'next' && items[ current + 1 ] ) {
 			renderNext( 1 )
 		}
 	}
