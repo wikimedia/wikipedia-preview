@@ -26,6 +26,12 @@ const grabScaleFromTransform = ( transform ) => {
 	return Number( transform.slice( transform.indexOf( 'scale' ) + 6, -1 ) )
 }
 
+const grabTranslateFromTransform = ( transform ) => {
+	const re = /translate3d\((?<x>.*?)px, (?<y>.*?)px, (?<z>.*?)px/
+	const coordinates = re.exec( transform )
+	return coordinates ? `translate3d(${coordinates.groups.x}px, ${coordinates.groups.y}px, ${coordinates.groups.z}px)` : ''
+}
+
 const isInvalidEvent = ( e, prefixClassname ) => {
 	const invalidClasses = [
 		`${prefixClassname}-item-caption`,
@@ -45,8 +51,32 @@ const isImgZoomedIn = () => {
 	return zoomedIn
 }
 
+const isImgLandscape = ( image ) => {
+	return image.naturalHeight <= image.naturalWidth
+}
+
 const getFingerAmount = () => {
 	return evCache.length
+}
+
+const getTransformOrigin = ( e = null ) => {
+	let coordinates = {}
+	if ( evCache.length === 2 ) {
+		coordinates.x = ( evCache[ 0 ].clientX + evCache[ 1 ].clientX ) / 2
+		coordinates.y = ( evCache[ 0 ].clientY + evCache[ 1 ].clientY ) / 2
+	} else {
+		coordinates.x = e.clientX
+		coordinates.y = e.clientY
+	}
+	return coordinates
+}
+
+const setTransformOrigin = ( image, e ) => {
+	const currentTransformOrigin = getTransformOrigin( e )
+	if ( isImgLandscape( image ) ) {
+		currentTransformOrigin.y = currentTransformOrigin.y - image.naturalHeight
+	}
+	return `${currentTransformOrigin.x}px ${currentTransformOrigin.y}px`
 }
 
 const removeEvent = ( e ) => {
@@ -60,6 +90,7 @@ const removeEvent = ( e ) => {
 
 const clearZoom = ( image ) => {
 	if ( image ) {
+		image.style.transition = temp.imgOriginalTransition
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
 	}
@@ -71,6 +102,7 @@ const toggleZoom = ( e ) => {
 	temp.clientY = null
 	temp.translateX = 0
 	temp.translateY = 0
+	image.style.transformOrigin = setTransformOrigin( image, e )
 
 	if ( isImgZoomedIn() ) {
 		image.style.transform = `scale(${scaleMin})`
@@ -83,17 +115,20 @@ const toggleZoom = ( e ) => {
 
 const zoomStart = ( e ) => {
 	const image = grabImageFromEvent( e )
-	const imageStyle = window.getComputedStyle( image )
-	temp.imgOriginalTransition = imageStyle.transition
+	if ( evCache.length < 1 ) {
+		const imageStyle = window.getComputedStyle( image )
+		temp.imgOriginalTransition = imageStyle.transition
+	}
 	evCache.push( e )
 }
 
 const zoomMove = ( e ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
-	const delta = 0.1
+	const delta = 0.01
 	const buffer = 0.3
 	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
+	const translate3d = transform ? grabTranslateFromTransform( transform ) : ''
 
 	for ( let i = 0; i < evCache.length; i++ ) {
 		if ( e.pointerId === evCache[ i ].pointerId ) {
@@ -106,22 +141,23 @@ const zoomMove = ( e ) => {
 		let curDiff = Math.abs( evCache[ 0 ].clientX - evCache[ 1 ].clientX )
 
 		if ( prevDiff > 0 ) {
+			image.style.transformOrigin = setTransformOrigin( image )
+			image.style.transition = 'unset'
 			if ( curDiff > prevDiff ) {
 				zoomedIn = true
 				if ( scale + delta < scaleMax ) {
 					// Expand image
 					scale += delta
-					image.style.transform = `scale(${scale})`
+					image.style.transform = `${translate3d} scale(${scale})`
 				}
 			}
 			if ( curDiff < prevDiff ) {
-				if ( scale - delta - buffer > scaleMin ) {
+				if ( scale - delta > scaleMin + buffer ) {
 					// Contract image
 					scale -= delta
-					image.style.transform = `scale(${scale})`
+					image.style.transform = `${translate3d} scale(${scale})`
 				} else {
-					image.style.transform = `scale(${scaleMin})`
-					zoomedIn = false
+					clearZoom( image )
 				}
 			}
 		}
@@ -130,13 +166,12 @@ const zoomMove = ( e ) => {
 	}
 }
 
-const zoomScroll = ( e, renderNext, items, current ) => {
+const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
-	const isImgLandscape = image.naturalHeight <= image.naturalWidth
 	const horizontalLimit = clientWidth / 2
-	const verticalLimit = isImgLandscape ? clientHeight / 8 : clientHeight / 2
+	const verticalLimit = isImgLandscape( image ) ? clientHeight / 8 : clientHeight / 2
 	const paddingOffset = 80
 
 	image.style.transition = 'unset'
@@ -155,12 +190,11 @@ const zoomScroll = ( e, renderNext, items, current ) => {
 		temp.clientY = e.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
 	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
-		if ( translateX > 0 && items[ current - 1 ] ) {
+		const direction = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 ) ? 'next' : 'previous'
+		if ( direction === 'previous' && items[ current - 1 ] ) {
 			renderNext( -1 )
-			clearZoom( image )
-		} else if ( translateX < 0 && items[ current + 1 ] ) {
+		} else if ( direction === 'next' && items[ current + 1 ] ) {
 			renderNext( 1 )
-			clearZoom( image )
 		}
 	}
 }
