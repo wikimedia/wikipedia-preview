@@ -71,9 +71,11 @@ const getTransformOrigin = ( e = null ) => {
 	return coordinates
 }
 
-const setTransformOrigin = ( e ) => {
-	// TODO consider removing this method
+const setTransformOrigin = ( image, e ) => {
 	const currentTransformOrigin = getTransformOrigin( e )
+	if ( isImgLandscape( image ) ) {
+		currentTransformOrigin.y = currentTransformOrigin.y - image.naturalHeight
+	}
 	return `${currentTransformOrigin.x}px ${currentTransformOrigin.y}px`
 }
 
@@ -88,6 +90,7 @@ const removeEvent = ( e ) => {
 
 const clearZoom = ( image ) => {
 	if ( image ) {
+		image.style.transition = temp.imgOriginalTransition
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
 	}
@@ -99,7 +102,7 @@ const toggleZoom = ( e ) => {
 	temp.clientY = null
 	temp.translateX = 0
 	temp.translateY = 0
-	image.style.transformOrigin = setTransformOrigin( e )
+	image.style.transformOrigin = setTransformOrigin( image, e )
 
 	if ( isImgZoomedIn() ) {
 		image.style.transform = `scale(${scaleMin})`
@@ -123,7 +126,7 @@ const zoomMove = ( e ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const delta = 0.01
-	const buffer = 0.15
+	const buffer = 0.3
 	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
 	const translate3d = transform ? grabTranslateFromTransform( transform ) : ''
 
@@ -138,9 +141,7 @@ const zoomMove = ( e ) => {
 		let curDiff = Math.abs( evCache[ 0 ].clientX - evCache[ 1 ].clientX )
 
 		if ( prevDiff > 0 ) {
-			if ( !isImgLandscape( image ) ) {
-				image.style.transformOrigin = setTransformOrigin()
-			}
+			image.style.transformOrigin = setTransformOrigin( image )
 			image.style.transition = 'unset'
 			if ( curDiff > prevDiff ) {
 				zoomedIn = true
@@ -156,8 +157,7 @@ const zoomMove = ( e ) => {
 					scale -= delta
 					image.style.transform = `${translate3d} scale(${scale})`
 				} else {
-					image.style.transform = `scale(${scaleMin})`
-					zoomedIn = false
+					clearZoom( image )
 				}
 			}
 		}
@@ -192,10 +192,8 @@ const zoomScroll = ( e, renderNext, items, current ) => {
 	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
 		if ( translateX > 0 && items[ current - 1 ] ) {
 			renderNext( -1 )
-			clearZoom( image )
 		} else if ( translateX < 0 && items[ current + 1 ] ) {
 			renderNext( 1 )
-			clearZoom( image )
 		}
 	}
 }
