@@ -2,13 +2,9 @@ import { msg } from '../../src/i18n'
 
 export class Preview {
 
-	// Wikipedia Preiew Span
-
 	getPreviewSpan() {
 		return cy.get( 'span.wmf-wp-with-preview' )
 	}
-
-	// Wikipedia Preiew Container
 
 	getPreview() {
 		return cy.get( 'div.wikipediapreview' )
@@ -21,7 +17,6 @@ export class Preview {
 	getMobBackgroundScreen() {
 		return cy.get( '.wp-dark-screen' )
 	}
-	// Wikipedia Preiew Header
 
 	getHeader() {
 		return cy.get( 'div.wikipediapreview-header' )
@@ -38,8 +33,6 @@ export class Preview {
 	getHeaderClosebtn() {
 		return cy.get( 'div.wikipediapreview-header-closebtn' )
 	}
-
-	// Wikipedia Preiew Body
 
 	getBody() {
 		return cy.get( 'div.wikipediapreview-body' )
@@ -64,8 +57,6 @@ export class Preview {
 	getBodyAction() {
 		return cy.get( 'div.wikipediapreview-body-action > a' )
 	}
-
-	//  Wikipedia Preview Footer
 
 	getFooter() {
 		return cy.get( 'div.wikipediapreview-footer' )
@@ -114,7 +105,7 @@ export class Preview {
 		} )
 
 		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'be.visible', { force: true } )
+		this.getBodyContent().should( 'be.visible' )
 			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
 
 		this.getFooter().should( 'be.visible' )
