@@ -55,6 +55,11 @@ const isImgLandscape = ( image ) => {
 	return image.naturalHeight <= image.naturalWidth
 }
 
+const isImgSmallerThanViewport = ( image ) => {
+	const buffer = 50
+	return image.naturalWidth + buffer < clientWidth
+}
+
 const getFingerAmount = () => {
 	return evCache.length
 }
@@ -75,6 +80,9 @@ const setTransformOrigin = ( image, e ) => {
 	const currentTransformOrigin = getTransformOrigin( e )
 	if ( isImgLandscape( image ) ) {
 		currentTransformOrigin.y = currentTransformOrigin.y - image.naturalHeight
+	} else if ( isImgSmallerThanViewport( image ) ) {
+		currentTransformOrigin.x = image.naturalWidth / 2
+		currentTransformOrigin.y = image.naturalHeight / 2
 	}
 	return `${currentTransformOrigin.x}px ${currentTransformOrigin.y}px`
 }
