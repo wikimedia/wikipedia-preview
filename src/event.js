@@ -69,7 +69,8 @@ export const customEvents = popup => {
 			// expand down
 			const currentTop = popup.element.getBoundingClientRect().top
 			const headerHeight = window.getComputedStyle( headerElement ).height.slice( 0, -2 )
-			const footerHeight = window.getComputedStyle( footerElement ).height.slice( 0, -2 )
+			const footerHeight = footerElement ?
+				window.getComputedStyle( footerElement ).height.slice( 0, -2 ) : 0
 			const availableHeight = window.innerHeight - currentTop - headerHeight - footerHeight
 
 			bodyElement.style.maxHeight = Math.min( max, availableHeight ) + 'px'
