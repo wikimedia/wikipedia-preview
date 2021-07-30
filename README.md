@@ -26,7 +26,7 @@ Android | 4.1+
 ## Features
 
 * Works with any link that has an article on Wikipedia
-* Works for LTR languages
+* Supports LTR and RTL languages
 * Works for articles with or without a lead image
 
 ## Getting Started
