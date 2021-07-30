@@ -7,14 +7,26 @@ import {
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	request( url, ( data ) => {
-		const allowedTypes = [ 'standard', 'disambiguation' ]
-		if ( data && allowedTypes.indexOf( data.type ) !== -1 ) {
+		if ( !data ) {
+			return false
+		}
+		if ( data.type === 'standard' || data.type === 'disambiguation' ) {
 			return {
 				title: data.titles.canonical,
 				extractHtml: sanitizeHTML( data.extract_html ),
 				imgUrl: data.thumbnail ? data.thumbnail.source : null,
 				dir: data.dir,
 				type: data.type
+			}
+		}
+		// special case: there is no summary but there is a description
+		if ( data.type === 'no-extract' && data.description ) {
+			return {
+				title: data.titles.canonical,
+				extractHtml: '<p>' + data.description + '</p>',
+				imgUrl: data.thumbnail ? data.thumbnail.source : null,
+				dir: data.dir,
+				type: 'standard'
 			}
 		}
 		return false

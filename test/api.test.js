@@ -52,6 +52,45 @@ describe( 'requestPagePreview', () => {
 		}, requestMock( apiOutput ) )
 	} )
 
+	it( 'transforms the API output (no-extract with description)', () => {
+		const apiOutput = {
+			type: 'no-extract',
+			dir: 'rtl',
+			titles: { canonical: 'Dog' },
+			description: 'A short desc'
+		}
+		const transformedOutput = {
+			title: 'Dog',
+			extractHtml: '<p>A short desc</p>',
+			imgUrl: null,
+			dir: 'rtl',
+			type: 'standard'
+		}
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output (no-extract NO description)', () => {
+		const apiOutput = {
+			type: 'no-extract',
+			dir: 'rtl',
+			titles: { canonical: 'Dog' }
+		}
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
+			assert.equal( data, false )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output (unsupported type)', () => {
+		const apiOutput = {
+			type: 'unsupported'
+		}
+		requestPagePreview( 'lang', 'title', false, ( data ) => {
+			assert.equal( data, false )
+		}, requestMock( apiOutput ) )
+	} )
+
 	it( 'uses the specified language in the URL', () => {
 		requestPagePreview( 'fr', 'title', false, () => {}, ( url ) => {
 			assert( url.startsWith( 'https://fr.wikipedia.org/' ) )
