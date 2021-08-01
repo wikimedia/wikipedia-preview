@@ -5,9 +5,8 @@ const preview = new Preview()
 
 describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 
-	beforeEach( 'Open the English Page', () => {
+	beforeEach( 'Open the Test Page', () => {
 		cy.navigateToMobileTestPage()
-		cy.viewport( 550, 750 )
 	} )
 
 	it( 'Check the Wikipedia Preview in Standard Layout', () => {

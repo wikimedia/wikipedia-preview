@@ -4,9 +4,8 @@ const preview = new Preview()
 
 describe( 'Check the Expanded Layout in Mobile View', () => {
 
-	beforeEach( 'Open the English Page', () => {
+	beforeEach( 'Open the Test Page', () => {
 		cy.navigateToMobileTestPage()
-		cy.viewport( 550, 750 )
 	} )
 
 	it( 'Check the Wikipedia Preview in Expanded Layout by Swiping', () => {
@@ -26,7 +25,7 @@ describe( 'Check the Expanded Layout in Mobile View', () => {
 		// Opens Mobile Preview
 		preview.getPreviewSpan().eq( 0 ).click()
 		// Click on Continue Reading Up to generate Expanded Mode
-		preview.getFooterContiReading().click()
+		preview.getFooterContinueReading().click()
 		// Checks the preview
 		preview.checkMobilePreview()
 		preview.checkPreviewExpanded()
