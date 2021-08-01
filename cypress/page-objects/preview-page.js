@@ -214,5 +214,5 @@ export class Preview {
 
 		} )
 	}
-	
+
 }
