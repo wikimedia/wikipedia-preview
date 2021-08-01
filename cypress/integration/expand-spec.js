@@ -4,7 +4,7 @@ const preview = new Preview()
 
 describe( 'Check the Expanded Layout', () => {
 
-	beforeEach( 'Open the English Page', () => {
+	beforeEach( 'Open the Test Page', () => {
 		cy.navigateToTestPage()
 	} )
 
@@ -12,7 +12,7 @@ describe( 'Check the Expanded Layout', () => {
 		// Opens the Preview
 		preview.getPreviewSpan().eq( 0 ).click()
 		// Click on Continue Reading Footer element
-		preview.getFooterContiReading().click()
+		preview.getFooterContinueReading().click()
 		// Check the Expanded Mode preview
 		preview.checkPreviewExpanded()
 		// Closes the Preview
