@@ -62,7 +62,7 @@ export class Preview {
 		return cy.get( 'div.wikipediapreview-footer' )
 	}
 
-	getFooterContiReading() {
+	getFooterContinueReading() {
 		return cy.get( 'span[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore"]' )
 	}
 
@@ -106,7 +106,7 @@ export class Preview {
 			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
 
 		this.getFooter().should( 'be.visible' )
-		this.getFooterContiReading().should( 'be.visible' )
+		this.getFooterContinueReading().should( 'be.visible' )
 
 	}
 
