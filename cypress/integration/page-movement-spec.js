@@ -4,7 +4,7 @@ const preview = new Preview()
 
 describe( 'Check Page Movement ', () => {
 
-	beforeEach( 'Open the English Page', () => {
+	beforeEach( 'Open the Test Page', () => {
 		cy.navigateToTestPage()
 	} )
 
@@ -13,9 +13,9 @@ describe( 'Check Page Movement ', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		// Continue Reading is available
-		preview.getFooterContiReading().then( res => {
+		preview.getFooterContinueReading().then( res => {
 			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContiReading().click()
+				preview.getFooterContinueReading().click()
 			}
 		} )
 
