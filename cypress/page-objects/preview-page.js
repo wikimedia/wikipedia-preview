@@ -72,7 +72,6 @@ export class Preview {
 
 	// Custom Command to check the existence of Preview
 	checkPreview() {
-
 		this.getPreview().should( 'be.visible' )
 
 		this.getHeader().should( 'be.visible' )
@@ -85,14 +84,12 @@ export class Preview {
 
 	// Custom Command to check the existence of Mobile Preview
 	checkMobilePreview() {
-
 		this.getMobPreview().should( 'be.visible' )
 			.and( 'have.class', 'mobile' )
 	}
 
 	// Custom Command to check the Preview in Standard Mode
 	checkPreviewStandard() {
-
 		this.getPreview().should( 'be.visible' )
 
 		this.getHeader().should( 'be.visible' )
@@ -115,7 +112,6 @@ export class Preview {
 
 	// Custom Command to check the Preview in Expanded Mode
 	checkPreviewExpanded() {
-
 		this.getPreview().should( 'be.visible' )
 			.and( 'have.class', 'expanded' )
 
@@ -139,7 +135,6 @@ export class Preview {
 
 	// Custom Command to check the Preview in Disambiguation Mode
 	checkPreviewDisambiguation() {
-
 		this.getPreview().should( 'be.visible' )
 
 		this.getHeader().should( 'be.visible' )
@@ -166,7 +161,6 @@ export class Preview {
 
 	// Custom Command to check the Preview in Offline Mode
 	checkPreviewOffline() {
-
 		this.getPreview().should( 'be.visible' )
 
 		this.getHeader().should( 'be.visible' )
@@ -189,14 +183,12 @@ export class Preview {
 
 			this.getBodyAction().should( 'be.visible' )
 				.and( 'contain', msg( lang, 'preview-offline-cta' ) )
-
 		} )
 
 	}
 
 	// Custom Command to check the Preview in Error Mode
 	checkPreviewError() {
-
 		this.getPreview().should( 'be.visible' )
 
 		this.getHeader().should( 'be.visible' )
@@ -221,7 +213,6 @@ export class Preview {
 				.should( 'contain', msg( lang, 'read-on-wiki' ) )
 
 		} )
-
 	}
-
+	
 }
