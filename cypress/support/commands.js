@@ -7,6 +7,6 @@ Cypress.Commands.add( 'navigateToEnglishPage', () => {
 } )
 
 Cypress.Commands.add( 'navigateToMobileTestPage', () => {
-	cy.visitMobile( '/articles/test.html' )
 	cy.viewport( 550, 750 )
+	cy.visitMobile( '/articles/test.html' )
 } )
