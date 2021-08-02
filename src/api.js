@@ -1,10 +1,35 @@
 import { cachedRequest } from './cachedRequest'
 import {
 	buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile,
-	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam
+	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam,
+	getDir
 } from './utils'
 
-const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+const requestMwExtract = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+	const params = {
+		action: 'query',
+		prop: 'extracts|pageimages',
+		exsentences: 4,
+		explaintext: 1,
+		exsectionformat: 'plain',
+		piprop: 'thumbnail',
+		pilimit: 1,
+		titles: title
+	}
+	const url = buildMwApiUrl( lang, params )
+	request( url, ( result ) => {
+		const page = result.query.pages[ Object.keys( result.query.pages )[ 0 ] ]
+		return {
+			title,
+			extractHtml: '<p>' + page.extract + '</p>',
+			imgUrl: page.thumbnail ? page.thumbnail.source : null,
+			dir: getDir( lang ),
+			type: 'standard'
+		}
+	}, callback )
+}
+
+const requestPcsSummary = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	request( url, ( data ) => {
 		if ( !data ) {
@@ -32,6 +57,12 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 		return false
 	}, callback )
 
+}
+
+const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+	return title.indexOf( ':' ) === -1 ?
+		requestPcsSummary( lang, title, isTouch, callback, request ) :
+		requestMwExtract( lang, title, isTouch, callback, request )
 }
 
 const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
