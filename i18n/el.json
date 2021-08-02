@@ -1,10 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"Geraki",
 			"Norhorn"
 		]
 	},
 	"continue-reading": "Συνέχεια ανάγνωσης",
 	"gallery-loading-error": "Παρουσιάστηκε σφάλμα κατά τη φόρτωση αυτής της εικόνας",
-	"gallery-loading-error-refresh": "Ανανέωση"
+	"gallery-loading-error-offline": "Δεν υπάρχει διαθέσιμη σύνδεση στο διαδίκτυο.",
+	"gallery-loading-error-refresh": "Ανανέωση",
+	"gallery-loading-still": "Ακόμα φορτώνει",
+	"gallery-unknown-author": "Άγνωστος συγγραφέας",
+	"preview-error-message": "Υπήρξε κάποιο πρόβλημα κατά την εμφάνιση αυτής της προεπισκοπήσης.",
+	"read-on-wiki": "Διαβάστε στη Βικιπαίδεια",
+	"read-more": "Διαβάστε περισσότερα στη Βικιπαίδεια",
+	"preview-disambiguation-message": "Ο τίτλος <strong>$1</strong> σχετίζεται με περισσότερα από ένα λήμματα στη Βικιπαίδεια.",
+	"preview-offline-message": "Δεν υπάρχει διαθέσιμη σύνδεση στο διαδίκτυο.",
+	"preview-offline-cta": "Δοκιμάστε ξανά"
 }
