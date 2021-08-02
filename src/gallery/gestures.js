@@ -23,13 +23,17 @@ const grabImageFromEvent = ( e ) => {
 }
 
 const grabScaleFromTransform = ( transform ) => {
-	return Number( transform.slice( transform.indexOf( 'scale' ) + 6, -1 ) )
+	return transform ?
+		Number( transform.slice( transform.indexOf( 'scale' ) + 6, -1 ) ) :
+		scaleMin
 }
 
 const grabTranslateFromTransform = ( transform ) => {
 	const re = /translate3d\((?<x>.*?)px, (?<y>.*?)px, (?<z>.*?)px/
 	const coordinates = re.exec( transform )
-	return coordinates ? `translate3d(${coordinates.groups.x}px, ${coordinates.groups.y}px, ${coordinates.groups.z}px)` : ''
+	return coordinates ?
+		`translate3d(${coordinates.groups.x}px, ${coordinates.groups.y}px, ${0}px)` :
+		`translate3d(${temp.translateX}px, ${temp.translateY}px, ${0}px)`
 }
 
 const isInvalidEvent = ( e, prefixClassname ) => {
@@ -101,6 +105,8 @@ const clearZoom = ( image ) => {
 		image.style.transition = temp.imgOriginalTransition
 		image.style.transform = `scale(${scaleMin})`
 		zoomedIn = false
+		temp.translateX = 0
+		temp.translateY = 0
 	}
 }
 
@@ -134,9 +140,9 @@ const zoomMove = ( e ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const delta = 0.01
-	const buffer = 0.3
-	let scale = transform ? grabScaleFromTransform( transform ) : scaleMin
-	const translate3d = transform ? grabTranslateFromTransform( transform ) : ''
+	const buffer = 0.4
+	let scale = grabScaleFromTransform( transform )
+	const translate3d = grabTranslateFromTransform( transform )
 
 	for ( let i = 0; i < evCache.length; i++ ) {
 		if ( e.pointerId === evCache[ i ].pointerId ) {
@@ -177,7 +183,7 @@ const zoomMove = ( e ) => {
 const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
-	const scale = transform ? grabScaleFromTransform( transform ) : scaleMin
+	const scale = grabScaleFromTransform( transform )
 	const horizontalLimit = clientWidth / 2
 	const verticalLimit = isImgLandscape( image ) ? clientHeight / 8 : clientHeight / 2
 	const paddingOffset = 80
