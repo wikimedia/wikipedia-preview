@@ -19,6 +19,9 @@ const requestMwExtract = ( lang, title, isTouch, callback, request = cachedReque
 	const url = buildMwApiUrl( lang, params )
 	request( url, ( result ) => {
 		const page = result.query.pages[ Object.keys( result.query.pages )[ 0 ] ]
+		if ( page.missing ) {
+			return false
+		}
 		return {
 			title,
 			extractHtml: '<p>' + page.extract + '</p>',
