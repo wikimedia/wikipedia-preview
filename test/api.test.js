@@ -26,7 +26,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'ltr',
 			type: 'standard'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -47,7 +47,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'rtl',
 			type: 'standard'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -66,7 +66,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'rtl',
 			type: 'standard'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -77,7 +77,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'rtl',
 			titles: { canonical: 'Dog' }
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.equal( data, false )
 		}, requestMock( apiOutput ) )
 	} )
@@ -86,19 +86,19 @@ describe( 'requestPagePreview', () => {
 		const apiOutput = {
 			type: 'unsupported'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.equal( data, false )
 		}, requestMock( apiOutput ) )
 	} )
 
 	it( 'uses the specified language in the URL', () => {
-		requestPagePreview( 'fr', 'title', false, () => {}, ( url ) => {
+		requestPagePreview( 'fr', 'title', () => {}, ( url ) => {
 			assert( url.startsWith( 'https://fr.wikipedia.org/' ) )
 		} )
 	} )
 
 	it( 'encodes the page title in the URL', () => {
-		requestPagePreview( 'fr', "L'Époque des Châteaux", false, () => {}, ( url ) => {
+		requestPagePreview( 'fr', "L'Époque des Châteaux", () => {}, ( url ) => {
 			assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
 		} )
 	} )

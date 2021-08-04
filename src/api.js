@@ -5,7 +5,7 @@ import {
 	getDir
 } from './utils'
 
-const requestMwExtract = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
 		action: 'query',
 		prop: 'extracts|pageimages',
@@ -32,7 +32,7 @@ const requestMwExtract = ( lang, title, isTouch, callback, request = cachedReque
 	}, callback )
 }
 
-const requestPcsSummary = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	request( url, ( data ) => {
 		if ( !data ) {
@@ -62,10 +62,10 @@ const requestPcsSummary = ( lang, title, isTouch, callback, request = cachedRequ
 
 }
 
-const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
+const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
 	return title.indexOf( ':' ) === -1 ?
-		requestPcsSummary( lang, title, isTouch, callback, request ) :
-		requestMwExtract( lang, title, isTouch, callback, request )
+		requestPcsSummary( lang, title, callback, request ) :
+		requestMwExtract( lang, title, callback, request )
 }
 
 const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
