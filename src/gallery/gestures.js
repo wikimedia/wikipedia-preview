@@ -152,7 +152,9 @@ const zoomMove = ( e ) => {
 	}
 
 	if ( evCache.length === 2 ) {
-		let curDiff = Math.abs( evCache[ 0 ].clientX - evCache[ 1 ].clientX )
+		const deltaX = Math.abs( evCache[ 0 ].clientX - evCache[ 1 ].clientX )
+		const deltaY = Math.abs( evCache[ 0 ].clientY - evCache[ 1 ].clientY )
+		const curDiff = Math.sqrt( Math.pow( deltaX, 2 ) + Math.pow( deltaY, 2 ) )
 
 		if ( prevDiff > 0 ) {
 			image.style.transformOrigin = setTransformOrigin( image )
