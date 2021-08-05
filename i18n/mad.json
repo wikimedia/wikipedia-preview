@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Boesenbergia"
+		]
+	},
+	"continue-reading": "Terrosaghi Maca",
+	"gallery-loading-error": "Bâḍâ sè sala bâkto mowa' ghâmbhâr sè arèya",
+	"gallery-loading-error-offline": "Taḍâ' sambhungan internèt.",
+	"gallery-loading-error-refresh": "Pa'anyar",
+	"gallery-loading-still": "Ghi' mowa'",
+	"gallery-unknown-author": "Sè meccè' ta' èkataowè",
+	"preview-error-message": "Bâḍâ masalah bâkto ngangglaghi tangas arèya.",
+	"read-on-wiki": "Bâca è Wikipèḍia",
+	"read-more": "Bâca terrosana è Wikipèḍia",
+	"preview-disambiguation-message": "Bhul-ombhul <strong>$1</strong> akaè' ka lebbi ḍâri sèttong serradhân è Wikipèḍia.",
+	"preview-offline-message": "Taḍâ' sambhungan internèt.",
+	"preview-offline-cta": "Jhâjhâl polè"
+}
