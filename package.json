@@ -33,6 +33,7 @@
     "canvas": "^2.6.1",
     "compression-webpack-plugin": "^4.0.1",
     "css-loader": "^3.6.0",
+    "cy-mobile-commands": "^0.2.1",
     "cypress": "7.6.0",
     "eslint": "^7.8.1",
     "eslint-config-wikimedia": "0.20.0",
