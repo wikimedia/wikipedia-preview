@@ -68,20 +68,26 @@ const getFingerAmount = () => {
 	return evCache.length
 }
 
-const getTransformOrigin = ( e = null ) => {
+const getTransformOrigin = ( e = null, image ) => {
 	let coordinates = {}
+	const setBestVertical = () => {
+		if ( e.clientY > image.naturalHeight && !isImgLandscape( image ) ) {
+			return image.naturalHeight
+		}
+		return e.clientY
+	}
 	if ( evCache.length === 2 ) {
 		coordinates.x = ( evCache[ 0 ].clientX + evCache[ 1 ].clientX ) / 2
 		coordinates.y = ( evCache[ 0 ].clientY + evCache[ 1 ].clientY ) / 2
 	} else {
 		coordinates.x = e.clientX
-		coordinates.y = e.clientY
+		coordinates.y = setBestVertical()
 	}
 	return coordinates
 }
 
 const setTransformOrigin = ( image, e ) => {
-	const currentTransformOrigin = getTransformOrigin( e )
+	const currentTransformOrigin = getTransformOrigin( e, image )
 	if ( isImgLandscape( image ) ) {
 		currentTransformOrigin.y = currentTransformOrigin.y - image.naturalHeight
 	} else if ( isImgSmallerThanViewport( image ) ) {
@@ -186,9 +192,12 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const image = grabImageFromEvent( e )
 	const transform = image.style.transform
 	const scale = grabScaleFromTransform( transform )
-	const horizontalLimit = clientWidth / 2
-	const verticalLimit = isImgLandscape( image ) ? clientHeight / 8 : clientHeight / 2
-	const paddingOffset = 80
+	const leftLimit = clientWidth / 8
+	const rightLimit = clientWidth - leftLimit
+	const topLimit = isImgLandscape( image ) ? clientHeight / 4 : clientHeight / 8
+	const bottomLimit = clientHeight - topLimit
+	const offset = 80
+	const imageRect = image.getBoundingClientRect()
 
 	image.style.transition = 'unset'
 	if ( !temp.clientX || !temp.clientY ) {
@@ -198,18 +207,31 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 
 	const translateX = temp.translateX + ( e.clientX - temp.clientX )
 	const translateY = temp.translateY + ( e.clientY - temp.clientY )
+	const scrollingUp = translateY - temp.translateY >= 0
+	const scrollingLeft = translateX - temp.translateX >= 0
 
-	if ( Math.abs( translateX ) < horizontalLimit && Math.abs( translateY ) < verticalLimit ) {
+	const isImageWithinBoundaries = () => {
+		const horizontallyBound = imageRect.left < leftLimit && scrollingLeft ||
+			imageRect.right > rightLimit && !scrollingLeft
+		const verticallyBound = imageRect.top < topLimit && scrollingUp ||
+			imageRect.bottom > bottomLimit && !scrollingUp
+
+		return horizontallyBound && verticallyBound
+	}
+
+	const slideToNextOrPrevious = Math.abs( translateX ) - Math.abs( temp.translateX ) > offset
+
+	if ( isImageWithinBoundaries() ) {
 		temp.translateX = translateX
 		temp.translateY = translateY
 		temp.clientX = e.clientX
 		temp.clientY = e.clientY
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
-	} else if ( Math.abs( translateX ) > horizontalLimit + paddingOffset ) {
-		const direction = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 ) ? 'next' : 'previous'
-		if ( direction === 'previous' && items[ current - 1 ] ) {
+	} else if ( slideToNextOrPrevious ) {
+		const next = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 )
+		if ( !next && items[ current - 1 ] ) {
 			renderNext( -1 )
-		} else if ( direction === 'next' && items[ current + 1 ] ) {
+		} else if ( next && items[ current + 1 ] ) {
 			renderNext( 1 )
 		}
 	}
