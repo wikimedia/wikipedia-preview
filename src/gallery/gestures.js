@@ -12,7 +12,8 @@ const temp = {
 	translateX: 0,
 	translateY: 0,
 	clientX: null,
-	clientY: null
+	clientY: null,
+	imageRect: {}
 }
 let evCache = []
 let prevDiff = -1
@@ -135,6 +136,12 @@ const toggleZoom = ( e ) => {
 
 const zoomStart = ( e ) => {
 	const image = grabImageFromEvent( e )
+	const imageRect = image.getBoundingClientRect()
+	temp.imageRect.top = imageRect.top
+	temp.imageRect.bottom = imageRect.bottom
+	temp.imageRect.left = imageRect.left
+	temp.imageRect.right = imageRect.right
+
 	if ( evCache.length < 1 ) {
 		const imageStyle = window.getComputedStyle( image )
 		temp.imgOriginalTransition = imageStyle.transition
@@ -197,7 +204,6 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const topLimit = isImgLandscape( image ) ? clientHeight / 4 : clientHeight / 8
 	const bottomLimit = clientHeight - topLimit
 	const offset = 80
-	const imageRect = image.getBoundingClientRect()
 
 	image.style.transition = 'unset'
 	if ( !temp.clientX || !temp.clientY ) {
@@ -211,21 +217,28 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const scrollingLeft = translateX - temp.translateX >= 0
 
 	const isImageWithinBoundaries = () => {
-		const horizontallyBound = imageRect.left < leftLimit && scrollingLeft ||
-			imageRect.right > rightLimit && !scrollingLeft
-		const verticallyBound = imageRect.top < topLimit && scrollingUp ||
-			imageRect.bottom > bottomLimit && !scrollingUp
+		const horizontallyBound = temp.imageRect.left < leftLimit && scrollingLeft ||
+			temp.imageRect.right > rightLimit && !scrollingLeft
+		const verticallyBound = temp.imageRect.top < topLimit && scrollingUp ||
+			temp.imageRect.bottom > bottomLimit && !scrollingUp
 
 		return horizontallyBound && verticallyBound
 	}
-
-	const slideToNextOrPrevious = Math.abs( translateX ) - Math.abs( temp.translateX ) > offset
-
-	if ( isImageWithinBoundaries() ) {
+	const updateTempValues = () => {
+		// The order matters: update imageRect first
+		temp.imageRect.top = temp.imageRect.top + ( translateY - temp.translateY )
+		temp.imageRect.bottom = temp.imageRect.bottom + ( translateY - temp.translateY )
+		temp.imageRect.left = temp.imageRect.left + ( translateX - temp.translateX )
+		temp.imageRect.right = temp.imageRect.right + ( translateX - temp.translateX )
 		temp.translateX = translateX
 		temp.translateY = translateY
 		temp.clientX = e.clientX
 		temp.clientY = e.clientY
+	}
+	const slideToNextOrPrevious = Math.abs( translateX ) - Math.abs( temp.translateX ) > offset
+
+	if ( isImageWithinBoundaries() ) {
+		updateTempValues()
 		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
 	} else if ( slideToNextOrPrevious ) {
 		const next = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 )
