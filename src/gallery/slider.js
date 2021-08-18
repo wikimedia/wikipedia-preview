@@ -285,7 +285,7 @@ const applyGestureEvent = () => {
 		if ( getFingerAmount() > 1 ) {
 			zoomMove( e )
 		} else if ( isImgZoomedIn() ) {
-			zoomScroll( e, renderNext, items, current )
+			zoomScroll( e, renderNext, items, current, dir )
 		} else {
 			slideMove( e, container, marginLR, dir )
 		}
