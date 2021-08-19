@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cgmbo"
+		]
+	},
+	"continue-reading": "Landa Kutanga",
+	"gallery-loading-error": "Kifu me salama na ntangu ya kutula kifwanisu yai",
+	"gallery-loading-error-offline": "Connection ya internet kele ve.",
+	"gallery-loading-error-refresh": "Bandulula",
+	"gallery-loading-still": "Yo ke landa kubaka bima",
+	"gallery-unknown-author": "Munkwa na yo me zabana ve",
+	"preview-error-message": "Kifu me salama na ntangu ya kusonga kima yai.",
+	"read-on-wiki": "Tanga na Wikipedia",
+	"read-more": "Tanga mambu mingi na Wikipedia",
+	"preview-disambiguation-message": "Ntu-diambu <strong>$1</strong> ke na kuwakana ti masolo mingi na Wikipedia.",
+	"preview-offline-message": "Connection ya internet kele ve.",
+	"preview-offline-cta": "Meka diaka"
+}
