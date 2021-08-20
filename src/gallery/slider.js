@@ -203,7 +203,6 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 		requestPageMediaInfo(
 			lang,
 			gallery[ index ].title,
-			gallery[ index ].fromCommon,
 			mediaInfo => {
 				const imageElement = item.querySelector( 'img' )
 				const captionElement = item.querySelector( `.${prefixClassname}-item-caption` )

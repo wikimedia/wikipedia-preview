@@ -57,13 +57,11 @@ export const Fullscreen = ( { lang, dir } ) => {
 		},
 		{
 			caption: undefined,
-			fromCommon: true,
 			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Muizz_Street_-_Egypt.jpg/640px-Muizz_Street_-_Egypt.jpg',
 			title: 'File:Muizz_Street_-_Egypt.jpg'
 		},
 		{
 			caption: undefined,
-			fromCommon: true,
 			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Porphyrogenetus.jpg/111px-Porphyrogenetus.jpg',
 			title: 'File:Porphyrogenetus.jpg'
 		},

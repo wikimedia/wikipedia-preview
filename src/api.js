@@ -1,6 +1,6 @@
 import { cachedRequest } from './cachedRequest'
 import {
-	buildMwApiUrl, buildCommonsApiUrl, convertUrlToMobile,
+	buildMwApiUrl, convertUrlToMobile,
 	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam
 } from './utils'
 
@@ -31,8 +31,7 @@ const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 				const media = {
 					caption: item.caption && item.caption.text.trim(),
 					thumb: thumbnail,
-					title: item.title,
-					fromCommon: thumbnail.indexOf( '/commons' ) !== -1
+					title: item.title
 				}
 
 				return mediaArray.concat( media )
@@ -45,7 +44,7 @@ const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 	}, callback )
 }
 
-const requestPageMediaInfo = ( lang, title, fromCommon, callback, request = cachedRequest ) => {
+const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
 		action: 'query',
 		prop: 'imageinfo',
@@ -58,7 +57,7 @@ const requestPageMediaInfo = ( lang, title, fromCommon, callback, request = cach
 		titles: title
 	}
 
-	const url = fromCommon ? buildCommonsApiUrl( params ) : buildMwApiUrl( lang, params )
+	const url = buildMwApiUrl( lang, params )
 
 	request( url, ( mediaInfoData ) => {
 		const pages = mediaInfoData.query.pages
