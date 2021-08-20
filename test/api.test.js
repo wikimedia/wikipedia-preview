@@ -270,7 +270,7 @@ describe( 'requestPageMediaInfo', () => {
 			bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Horn_Louvre_OA4069.jpg/375px-Horn_Louvre_OA4069.jpg',
 			license: 'Public domain'
 		}
-		requestPageMediaInfo( 'en', 'title', true, ( data ) => {
+		requestPageMediaInfo( 'en', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -317,7 +317,7 @@ describe( 'requestPageMediaInfo', () => {
 			bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/sw/thumb/d/d7/Dunia_muundo.png',
 			license: undefined
 		}
-		requestPageMediaInfo( 'en', 'title', false, ( data ) => {
+		requestPageMediaInfo( 'en', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
