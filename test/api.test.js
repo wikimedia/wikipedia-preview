@@ -120,13 +120,11 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: 'Cats are popular within internet culture for some reason',
-				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: 'Skulls of a wildcat (top left) and a housecat (top right)',
-				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'
 			}
@@ -182,13 +180,11 @@ describe( 'requestPageMedia', () => {
 		const transformedOutput = [
 			{
 				caption: undefined,
-				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat.jpg/640px-cat.jpg',
 				title: 'File:Cat_poster_1.jpg'
 			},
 			{
 				caption: undefined,
-				fromCommon: false,
 				thumb: 'https://wikimedia.org/thumb/cat-skull.jpg/640px-cat-skull.jpg',
 				title: 'File:Cat_skull_1.jpg'
 			}
@@ -274,7 +270,7 @@ describe( 'requestPageMediaInfo', () => {
 			bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Horn_Louvre_OA4069.jpg/375px-Horn_Louvre_OA4069.jpg',
 			license: 'Public domain'
 		}
-		requestPageMediaInfo( 'en', 'title', true, ( data ) => {
+		requestPageMediaInfo( 'en', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -321,7 +317,7 @@ describe( 'requestPageMediaInfo', () => {
 			bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/sw/thumb/d/d7/Dunia_muundo.png',
 			license: undefined
 		}
-		requestPageMediaInfo( 'en', 'title', false, ( data ) => {
+		requestPageMediaInfo( 'en', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
