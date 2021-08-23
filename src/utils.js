@@ -44,14 +44,6 @@ const buildMwApiUrl = ( lang, params ) => {
 	} ).join( '&' )
 }
 
-const buildCommonsApiUrl = params => {
-	params = { ...defaultParams, ...params }
-	const baseUrl = 'https://commons.wikimedia.org/w/api.php'
-	return baseUrl + '?' + Object.keys( params ).map( ( p ) => {
-		return `${p}=${encodeURIComponent( params[ p ] )}`
-	} ).join( '&' )
-}
-
 const convertUrlToMobile = url => {
 	return url.replace( /https:\/\/(.*?)\./, ( subDomain ) => subDomain + 'm.' )
 }
@@ -81,7 +73,7 @@ const version = () => {
 }
 
 export {
-	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl, buildCommonsApiUrl,
+	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
 	buildWikipediaUrl, version
 }
