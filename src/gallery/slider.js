@@ -203,7 +203,6 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 		requestPageMediaInfo(
 			lang,
 			gallery[ index ].title,
-			gallery[ index ].fromCommon,
 			mediaInfo => {
 				const imageElement = item.querySelector( 'img' )
 				const captionElement = item.querySelector( `.${prefixClassname}-item-caption` )
@@ -285,7 +284,7 @@ const applyGestureEvent = () => {
 		if ( getFingerAmount() > 1 ) {
 			zoomMove( e )
 		} else if ( isImgZoomedIn() ) {
-			zoomScroll( e, renderNext, items, current )
+			zoomScroll( e, renderNext, items, current, dir )
 		} else {
 			slideMove( e, container, marginLR, dir )
 		}

@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adriendelucca"
+		]
+	},
+	"continue-reading": "Kenderc'hel da lenn",
+	"gallery-loading-error": "Ur fazi zo bet en ur gargañ ar skeudenn-mañ",
+	"gallery-loading-error-offline": "Kennask internet ebet.",
+	"gallery-loading-error-refresh": "Freskaat",
+	"gallery-loading-still": "O kargañ",
+	"gallery-unknown-author": "Aozer dianav",
+	"preview-error-message": "Ur fazi zo bet en ur ziskouez an alberz-mañ",
+	"read-on-wiki": "Lenn war Wikipedia",
+	"read-more": "Lenn muioc'h war Wikipedia",
+	"preview-offline-message": "Kennask internet ebet.",
+	"preview-offline-cta": "Klask en-dro"
+}

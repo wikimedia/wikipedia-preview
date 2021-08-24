@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Actuallyisjoha",
 			"Alluk.",
 			"Nike",
 			"Pyscowicz"
@@ -16,6 +17,6 @@
 	"read-on-wiki": "Lue Wikipediassa",
 	"read-more": "Lue lisää Wikipediassa",
 	"preview-disambiguation-message": "Otsikko <strong>$1</strong> liittyy useampaan Wikipedia-artikkeliin.",
-	"preview-offline-message": "Internet-yhteyttä ei ole.",
+	"preview-offline-message": "Ei internet-yhteyttä.",
 	"preview-offline-cta": "Yritä uudelleen"
 }
