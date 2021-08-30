@@ -62,7 +62,7 @@ function init( {
 		popup.dir = dir
 		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
 
-		requestPagePreview( localLang, title, isTouch, data => {
+		requestPagePreview( localLang, title, data => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}

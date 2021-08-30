@@ -9,7 +9,7 @@ export default {
 			defaultValue: 'en',
 			control: {
 				type: 'select',
-				options: [ 'en', 'fr', 'hi', 'ks', 'he' ]
+				options: [ 'en', 'fr', 'hi', 'ks', 'he', 'sv' ]
 			}
 		},
 		title: {

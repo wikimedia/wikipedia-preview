@@ -23,7 +23,8 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://en.wikipedia.org/wiki/&Burn', expected: { lang: 'en', mobile: false, title: '&Burn' } },
 		{ url: 'https://en.wikipedia.org/wiki/ȏ', expected: { lang: 'en', mobile: false, title: 'ȏ' } },
 		{ url: 'https://en.wikipedia.org/w/index.php?title=?!_(album)', expected: { lang: 'en', mobile: false, title: '?!_(album)' } },
-		{ url: 'https://wikimediafoundation.org/', expected: null }
+		{ url: 'https://wikimediafoundation.org/', expected: null },
+		{ url: 'https://en.wikipedia.org/wiki/Wikipedia:About', expected: { lang: 'en', mobile: false, title: 'Wikipedia:About' } },
 	]
 
 	const testFn = ( test ) => {
