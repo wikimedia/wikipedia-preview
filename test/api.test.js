@@ -26,7 +26,7 @@ describe( 'requestPagePreview', () => {
 			dir: 'ltr',
 			type: 'standard'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
@@ -47,19 +47,58 @@ describe( 'requestPagePreview', () => {
 			dir: 'rtl',
 			type: 'standard'
 		}
-		requestPagePreview( 'lang', 'title', false, ( data ) => {
+		requestPagePreview( 'lang', 'title', ( data ) => {
 			assert.deepEqual( data, transformedOutput )
 		}, requestMock( apiOutput ) )
 	} )
 
+	it( 'transforms the API output (no-extract with description)', () => {
+		const apiOutput = {
+			type: 'no-extract',
+			dir: 'rtl',
+			titles: { canonical: 'Dog' },
+			description: 'A short desc'
+		}
+		const transformedOutput = {
+			title: 'Dog',
+			extractHtml: '<p>A short desc</p>',
+			imgUrl: null,
+			dir: 'rtl',
+			type: 'standard'
+		}
+		requestPagePreview( 'lang', 'title', ( data ) => {
+			assert.deepEqual( data, transformedOutput )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output (no-extract NO description)', () => {
+		const apiOutput = {
+			type: 'no-extract',
+			dir: 'rtl',
+			titles: { canonical: 'Dog' }
+		}
+		requestPagePreview( 'lang', 'title', ( data ) => {
+			assert.equal( data, false )
+		}, requestMock( apiOutput ) )
+	} )
+
+	it( 'transforms the API output (unsupported type)', () => {
+		const apiOutput = {
+			type: 'unsupported'
+		}
+		requestPagePreview( 'lang', 'title', ( data ) => {
+			assert.equal( data, false )
+		}, requestMock( apiOutput ) )
+	} )
+
 	it( 'uses the specified language in the URL', () => {
-		requestPagePreview( 'fr', 'title', false, () => {}, ( url ) => {
+		requestPagePreview( 'fr', 'title', () => {}, ( url ) => {
 			assert( url.startsWith( 'https://fr.wikipedia.org/' ) )
 		} )
 	} )
 
 	it( 'encodes the page title in the URL', () => {
-		requestPagePreview( 'fr', "L'Époque des Châteaux", false, () => {}, ( url ) => {
+		requestPagePreview( 'fr', "L'Époque des Châteaux", () => {}, ( url ) => {
 			assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
 		} )
 	} )
