@@ -1,4 +1,6 @@
 import DOMPurify from 'dompurify'
+import { requestPagePreview } from './api'
+import { renderPreview } from './preview'
 
 const getWikipediaAttrFromUrl = url => {
 	const regexList = [
@@ -72,8 +74,16 @@ const version = () => {
 	console.log( `Wikipedia Preview - version ${APP_VERSION} (${GIT_HASH})` )
 }
 
+const getPreviewHtml = ( title, lang ) => {
+	return new Promise( ( resolve )=> {
+		requestPagePreview( lang, title, isTouch, data => {
+			resolve( renderPreview( lang, data, isTouch ) )
+		} )
+	} )
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version
+	buildWikipediaUrl, version, getPreviewHtml
 }
