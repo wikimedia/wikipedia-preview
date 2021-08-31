@@ -1,8 +1,9 @@
 import { cachedRequest } from './cachedRequest'
 import {
-	buildMwApiUrl, convertUrlToMobile,
+	buildMwApiUrl, convertUrlToMobile, logError,
 	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam
 } from './utils'
+import { msg } from './i18n'
 
 const requestPagePreview = ( lang, title, isTouch, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
@@ -17,6 +18,7 @@ const requestPagePreview = ( lang, title, isTouch, callback, request = cachedReq
 				type: data.type
 			}
 		}
+		logError( `Preview unavailable for article ${lang}:${title}.`, data )
 		return false
 	}, callback )
 
