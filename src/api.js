@@ -37,7 +37,7 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
 	request( url, ( data, err ) => {
 		if ( !data ) {
-			logError( `Preview unavailable for article ${lang}:${title}. Unexpected error: `, err )
+			logError( msg( lang, 'preview-console-error-message', title, lang ), err )
 			return false
 		}
 		if ( data.type === 'standard' || data.type === 'disambiguation' ) {
@@ -59,7 +59,7 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 				type: 'standard'
 			}
 		}
-		logError( `Preview unavailable for article ${lang}:${title}. More info: `, data )
+		logError( msg( lang, 'preview-console-error-message', title, lang ), data )
 		return false
 	}, callback )
 
