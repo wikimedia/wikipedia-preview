@@ -72,8 +72,12 @@ const version = () => {
 	console.log( `Wikipedia Preview - version ${APP_VERSION} (${GIT_HASH})` )
 }
 
+const logError = ( ...err ) => {
+	console.error.apply( console, err ) // eslint-disable-line no-console
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version
+	buildWikipediaUrl, version, logError
 }
