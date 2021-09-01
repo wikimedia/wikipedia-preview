@@ -30,7 +30,7 @@
     "@storybook/html": "^6.0.21",
     "babel-loader": "^8.1.0",
     "bufferutil": "^4.0.1",
-    "canvas": "^2.6.1",
+    "canvas": "^2.8.0",
     "compression-webpack-plugin": "^4.0.1",
     "css-loader": "^3.6.0",
     "cy-mobile-commands": "^0.2.1",
