@@ -6,6 +6,7 @@
     "gallery-loading-still": "Still loading",
     "gallery-unknown-author": "Author unknown",
     "preview-error-message": "There was an issue while displaying this preview.",
+    "preview-console-error-message": "Preview unavailable for article '$1' (Language: $2)",
     "read-on-wiki": "Read on Wikipedia",
     "read-more": "Read more on Wikipedia",
     "preview-disambiguation-message": "Title <strong>$1</strong> is related to more than one article on Wikipedia.",
