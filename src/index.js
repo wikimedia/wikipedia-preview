@@ -111,9 +111,12 @@ function init( {
 						} )
 					}
 				}
-				popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-					invokeCallback( events, 'onWikiRead', [ title, localLang ] )
-				} )
+				const readOnWikiCta = popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' )
+				if ( readOnWikiCta ) {
+					readOnWikiCta.addEventListener( 'click', () => {
+						invokeCallback( events, 'onWikiRead', [ title, localLang ] )
+					} )
+				}
 			}
 		} )
 	}
