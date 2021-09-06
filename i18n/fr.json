@@ -14,6 +14,7 @@
 	"gallery-loading-still": "Chargement encore en cours",
 	"gallery-unknown-author": "Auteur inconnu",
 	"preview-error-message": "Un problème est survenu en affichant cet aperçu.",
+	"preview-console-error-message": "Aperçu non disponible pour l’article '$1' (langue : $2)",
 	"read-on-wiki": "Lire sur Wikipédia",
 	"read-more": "Lire davantage sur Wikipédia",
 	"preview-disambiguation-message": "Le titre <strong>$1</strong> est lié à plus d’un article dans Wikipédia.",
