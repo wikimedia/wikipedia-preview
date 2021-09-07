@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version, getPreviewHtml } from './utils'
+import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -15,6 +15,12 @@ const invokeCallback = ( events, name, params ) => {
 			console.log( 'Error invoking Wikipedia Preview custom callback', e )
 		}
 	}
+}
+
+const getPreviewHtml = ( title, lang, callback ) => {
+	requestPagePreview( lang, title, isTouch, data => {
+		callback( renderPreview( lang, data, isTouch ) )
+	} )
 }
 
 let currentPopupId
