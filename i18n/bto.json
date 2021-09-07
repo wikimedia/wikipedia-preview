@@ -6,11 +6,14 @@
 	},
 	"continue-reading": "Padagusa a pagbasa",
 	"gallery-loading-error": "Agko sala sa pagkarga kading imahe",
+	"gallery-loading-error-offline": "Udang koneksyon sa internet.",
 	"gallery-loading-error-refresh": "Uliton",
 	"gallery-loading-still": "Kinakarga pa",
 	"gallery-unknown-author": "Diri isi a kagsurat",
 	"preview-error-message": "Agko sala mantang ipinapabayad ading patan-aw",
 	"read-on-wiki": "Magbasa sa Wikipedia",
 	"read-more": "Magbasa pa sa Wikipedia",
-	"preview-disambiguation-message": "Ana titulong <strong>$1</strong> katakod sa dakul pa sa usad na artikulo sa Wikipedia."
+	"preview-disambiguation-message": "Ana titulong <strong>$1</strong> katakod sa dakul pa sa usad na artikulo sa Wikipedia.",
+	"preview-offline-message": "Udang koneksyon sa internet.",
+	"preview-offline-cta": "Purbari dayday"
 }

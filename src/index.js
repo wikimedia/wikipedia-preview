@@ -68,7 +68,7 @@ function init( {
 		popup.dir = dir
 		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
 
-		requestPagePreview( localLang, title, isTouch, data => {
+		requestPagePreview( localLang, title, data => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}
@@ -117,9 +117,12 @@ function init( {
 						} )
 					}
 				}
-				popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-					invokeCallback( events, 'onWikiRead', [ title, localLang ] )
-				} )
+				const readOnWikiCta = popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' )
+				if ( readOnWikiCta ) {
+					readOnWikiCta.addEventListener( 'click', () => {
+						invokeCallback( events, 'onWikiRead', [ title, localLang ] )
+					} )
+				}
 			}
 		} )
 	}
