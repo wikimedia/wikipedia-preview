@@ -19,7 +19,7 @@ const invokeCallback = ( events, name, params ) => {
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
-	requestPagePreview( lang, title, isTouch, data => {
+	requestPagePreview( lang, title, data => {
 		callback( renderPreview( lang, data, isTouch ) )
 	} )
 }
