@@ -12,6 +12,7 @@
 	"gallery-loading-still": "Загрузка продолжается",
 	"gallery-unknown-author": "Автор неизвестен.",
 	"preview-error-message": "Возникла проблема в ходе предпросмотра.",
+	"preview-console-error-message": "Для статьи '$1' предварительный просмотр недоступен (язык: $2)",
 	"read-on-wiki": "Читать в Википедии",
 	"read-more": "Читать далее в Википедии",
 	"preview-disambiguation-message": "Название <strong>$1</strong> относится к более чем одной статье в Википедии.",

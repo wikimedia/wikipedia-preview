@@ -12,6 +12,7 @@
 	"gallery-loading-still": "အလုပ် လုပ်နေတုန်းပါ",
 	"gallery-unknown-author": "ဖန်တီးသူ မသိ",
 	"preview-error-message": "ဤအကြိုမြင်ကွင်းကို ပြသနေစဥ် ကိစ္စတစ်ခုရှိခဲ့သည်။",
+	"preview-console-error-message": "ဆောင်းပါး '$1' အတွက် အကြိုမြင်ကွင်း မရရှိနိုင်ပါ (ဘာသာစကား: $2)",
 	"read-on-wiki": "ဝီကီပီးဒီးယား တွင် ဖတ်ရန်",
 	"read-more": "ဝီကီပီးဒီးယားတွင် ပိုမို ဖတ်ပါ",
 	"preview-disambiguation-message": "ခေါင်းစဥ် <strong>$1</strong> သည် ဝီကီပီးဒီးယား တွင် ‌ဆောင်းပါး တစ်ခုထပ် ပို၍ ဆက်စပ်နေသည်။",
