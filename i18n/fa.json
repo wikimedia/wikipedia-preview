@@ -12,6 +12,7 @@
 	"gallery-loading-still": "همچنان در حال بارگیری",
 	"gallery-unknown-author": "مؤلف ناشناخته",
 	"preview-error-message": "مشکلی هنگام نمایش این پیش‌نمایش پیش آمد.",
+	"preview-console-error-message": "پیش‌نمایش برای مقالهٔ '$1' در دسترس نیست (زبان: $2)",
 	"read-on-wiki": "در ویکی‌پدیا بخوانید",
 	"read-more": "مطالعهٔ بیشتر در ویکی‌پدیا",
 	"preview-disambiguation-message": "عنوان <strong>$1</strong> در ویکی‌پدیا با بیش از یک مقاله مرتبط است.",

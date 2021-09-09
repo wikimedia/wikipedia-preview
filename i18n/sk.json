@@ -12,6 +12,7 @@
 	"gallery-loading-still": "Stále načítava",
 	"gallery-unknown-author": "Autor neznámy",
 	"preview-error-message": "Pri zobrazovaní tohto náhľadu sa objavil problém.",
+	"preview-console-error-message": "Pre článok '$1' nie je dostupný náhľad (jazyk: $2)",
 	"read-on-wiki": "Čítať na Wikipédii",
 	"read-more": "Čítať viac na Wikipédii",
 	"preview-disambiguation-message": "Názov  <strong>$1</strong> súvisí s viac než jedným artiklom na Wikipédii.",
