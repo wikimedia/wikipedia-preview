@@ -14,6 +14,7 @@
 	"gallery-loading-still": "Wird noch geladen",
 	"gallery-unknown-author": "Urheber unbekannt.",
 	"preview-error-message": "Es gab ein Problem bei der Anzeige dieser Vorschau.",
+	"preview-console-error-message": "Vorschau für Artikel „$1“ nicht verfügbar (Sprache: $2)",
 	"read-on-wiki": "Auf Wikipedia lesen",
 	"read-more": "Mehr bei Wikipedia",
 	"preview-disambiguation-message": "Titel <strong>$1</strong> bezieht sich auf mehr als einen Artikel auf Wikipedia.",

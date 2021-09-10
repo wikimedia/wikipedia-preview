@@ -17,6 +17,13 @@ const invokeCallback = ( events, name, params ) => {
 	}
 }
 
+// getPreviewHtml is meant to be used by the Wordpress plugin only
+const getPreviewHtml = ( title, lang, callback ) => {
+	requestPagePreview( lang, title, data => {
+		callback( renderPreview( lang, data, isTouch ) )
+	} )
+}
+
 let currentPopupId
 
 function init( {
@@ -111,9 +118,12 @@ function init( {
 						} )
 					}
 				}
-				popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' ).addEventListener( 'click', () => {
-					invokeCallback( events, 'onWikiRead', [ title, localLang ] )
-				} )
+				const readOnWikiCta = popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' )
+				if ( readOnWikiCta ) {
+					readOnWikiCta.addEventListener( 'click', () => {
+						invokeCallback( events, 'onWikiRead', [ title, localLang ] )
+					} )
+				}
 			}
 		} )
 	}
@@ -184,4 +194,4 @@ function init( {
 
 version()
 
-export { init, version }
+export { init, version, getPreviewHtml }

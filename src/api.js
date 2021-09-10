@@ -1,9 +1,10 @@
 import { cachedRequest } from './cachedRequest'
 import {
-	buildMwApiUrl, convertUrlToMobile,
+	buildMwApiUrl, convertUrlToMobile, logError,
 	strip, getDeviceSize, sanitizeHTML, getAnalyticsQueryParam,
 	getDir
 } from './utils'
+import { msg } from './i18n'
 
 const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
@@ -34,8 +35,9 @@ const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 
 const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
-	request( url, ( data ) => {
+	request( url, ( data, err ) => {
 		if ( !data ) {
+			logError( msg( lang, 'preview-console-error-message', title, lang ), err )
 			return false
 		}
 		if ( data.type === 'standard' || data.type === 'disambiguation' ) {
@@ -57,6 +59,7 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 				type: 'standard'
 			}
 		}
+		logError( msg( lang, 'preview-console-error-message', title, lang ), data )
 		return false
 	}, callback )
 
