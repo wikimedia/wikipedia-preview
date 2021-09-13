@@ -15,6 +15,7 @@
 	"gallery-loading-still": "Masih memuat",
 	"gallery-unknown-author": "$1 Penulis tidak diketahui",
 	"preview-error-message": "Ada masalah ketika menampilkan pratayang ini.",
+	"preview-console-error-message": "Pratinjau tidak ada untuk artikel '$1' (Bahasa: $2)",
 	"read-on-wiki": "Baca di Wikipedia",
 	"read-more": "Baca lebih lanjut tentang Wikipedia",
 	"preview-disambiguation-message": "Judul <strong>$1</strong> terkait dengan lebih dari satu artikel di Wikipedia.",

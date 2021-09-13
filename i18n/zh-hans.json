@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Gerongfenh",
+			"GuoPC",
 			"Shizhao",
 			"SkEy",
 			"沈澄心"
@@ -14,6 +15,7 @@
 	"gallery-loading-still": "仍在读取",
 	"gallery-unknown-author": "作者不明",
 	"preview-error-message": "显示此预览时出现问题",
+	"preview-console-error-message": "条目“$1”无法预览（语言：$2）",
 	"read-on-wiki": "在维基百科上阅读",
 	"read-more": "在维基百科上阅读更多内容",
 	"preview-disambiguation-message": "在维基百科上，标题<strong>$1</strong>对应多篇条目。",
