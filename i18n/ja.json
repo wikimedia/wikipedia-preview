@@ -2,16 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Omotecho",
+			"RYOUMA1117",
 			"そらたこ"
 		]
 	},
 	"continue-reading": "続けて読む",
-	"gallery-loading-error": "この画像を表示する際にエラーが発生しました",
+	"gallery-loading-error": "この画像の読み込み中にエラーが発生しました。",
 	"gallery-loading-error-offline": "インターネット接続が見つかりません。",
 	"gallery-loading-error-refresh": "更新",
-	"gallery-loading-still": "読ま込み中です",
-	"gallery-unknown-author": "作者不明",
+	"gallery-loading-still": "読み込み中",
+	"gallery-unknown-author": "作者不詳",
 	"preview-error-message": "このプレビューを表示する際に問題が発生しました。",
+	"preview-console-error-message": "$1のプレビューは現在エラーが発生していて利用できません。（言語：$2）",
 	"read-on-wiki": "ウィキペディアで読む",
 	"read-more": "ウィキペディアでさらに読む",
 	"preview-disambiguation-message": "標題<strong>$1</strong>はウィキペディアに複数の関連項目があります。",

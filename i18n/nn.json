@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sophie"
+		]
+	},
+	"continue-reading": "Fortsett å lesa",
+	"gallery-loading-error-offline": "Ikkje tilkopla på Internett.",
+	"gallery-unknown-author": "Ukjend forfattar",
+	"read-on-wiki": "Les på Wikipedia",
+	"read-more": "Les meir på Wikipedia",
+	"preview-offline-message": "Ikkje tilkopla på Internett.",
+	"preview-offline-cta": "Prøv igjen"
+}
