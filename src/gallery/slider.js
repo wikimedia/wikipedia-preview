@@ -98,12 +98,12 @@ const renderImageInfo = ( mediaInfo, image ) => {
 	return `
 		<div class="${prefixClassname}-item-caption">
 			${isCaptionExpandable() ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
-			${description ? `<div class="${prefixClassname}-item-caption-text">${description}</div>` : ''}
+			${description ? `<div class="${prefixClassname}-item-caption-text"><bdi>${description}</bdi></div>` : ''}
 		</div>
 		<div class="${prefixClassname}-item-attribution">
 			<div class="${prefixClassname}-item-attribution-info">
 				${getLicenseInfo( mediaInfo.license )}
-				${author ? `<div class="${prefixClassname}-item-attribution-info-author">${author}</div>` : ''}
+				${author ? `<div class="${prefixClassname}-item-attribution-info-author"><bdi>${author}</bdi></div>` : ''}
 			</div>
 			${link ? `<div class="${prefixClassname}-item-attribution-more-info">
 				<a href="${link}" class="${prefixClassname}-item-attribution-more-info-link" target="_blank"></a>
