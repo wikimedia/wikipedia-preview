@@ -166,14 +166,18 @@
 					}
 
 					&-author {
-						width: 220px;
 						height: 14px;
 						margin-right: 4px;
 						font-size: 12px;
 						color: #fff;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
+
+						bdi {
+							display: inline-block;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+							overflow: hidden;
+							max-width: 220px;
+						}
 					}
 				}
 
