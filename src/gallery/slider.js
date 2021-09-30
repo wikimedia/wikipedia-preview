@@ -103,7 +103,7 @@ const renderImageInfo = ( mediaInfo, image ) => {
 		<div class="${prefixClassname}-item-attribution">
 			<div class="${prefixClassname}-item-attribution-info">
 				${getLicenseInfo( mediaInfo.license )}
-				${author ? `<div class="${prefixClassname}-item-attribution-info-author"><bdi>${author}</bdi></div>` : ''}
+				${author ? `<bdi class="${prefixClassname}-item-attribution-info-author">${author}</bdi>` : ''}
 			</div>
 			${link ? `<div class="${prefixClassname}-item-attribution-more-info">
 				<a href="${link}" class="${prefixClassname}-item-attribution-more-info-link" target="_blank"></a>
