@@ -12,6 +12,7 @@
 	"gallery-loading-still": "carregant-se",
 	"gallery-unknown-author": "Autoria desconeguda",
 	"preview-error-message": "S'ha produït un problema en mostrar aquesta previsualització.",
+	"preview-console-error-message": "Previsualització no disponible per a l'article '$1' (Idioma: $2)",
 	"read-on-wiki": "Llegiu a la Viquipèdia",
 	"read-more": "Llegeixi més en Viquipèdia",
 	"preview-disambiguation-message": "El títol <strong>$1</strong> està enllaçat a més d'un article a la Viquipèdia.",
