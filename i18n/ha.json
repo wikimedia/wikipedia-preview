@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Em-em"
+		]
+	},
+	"continue-reading": "Cigaba da karatu",
+	"gallery-loading-error": "Akwai kuskure shigarwa a wannan hoto",
+	"gallery-loading-error-offline": "Babu hadin intanet ayanzu.",
+	"gallery-loading-error-refresh": "Daidaita",
+	"gallery-loading-still": "Har yanzu yana shiga",
+	"gallery-unknown-author": "Ba'a san mawallafi ba",
+	"preview-error-message": "Akwai yar matsala sanda ake saukar wannan kwajin gani.",
+	"preview-console-error-message": "Babu kwajin gani ga makalar '$1' (Language: $2)",
+	"read-on-wiki": "Karanta a Wikipedia",
+	"read-more": "Karanta kari a Wikipedia",
+	"preview-disambiguation-message": "Lakabi <strong>$1</strong> ya danganci fiye da makala daya a Wikipedia.",
+	"preview-offline-message": "Babu hadin intanet ayanzu.",
+	"preview-offline-cta": "Sake gwadawa"
+}
