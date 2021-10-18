@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chrumps",
 			"Krzyz23",
 			"Rail"
 		]
@@ -12,6 +13,7 @@
 	"gallery-loading-still": "Wciąż wczytuję",
 	"gallery-unknown-author": "Autor nieznany",
 	"preview-error-message": "Wystąpił problem podczas wyświetlania podglądu.",
+	"preview-console-error-message": "Podgląd niedostępny dla artykułu „$1” (język: $2)",
 	"read-on-wiki": "Przeczytaj na Wikipedii",
 	"read-more": "Przeczytaj więcej na Wikipedii",
 	"preview-disambiguation-message": "Tytuł <strong>$1</strong> jest związany z więcej niż jednym artykułem na Wikipedii.",
