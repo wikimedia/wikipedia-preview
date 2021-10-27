@@ -29,6 +29,7 @@
     "@storybook/addon-links": "^6.0.21",
     "@storybook/html": "^6.0.21",
     "babel-loader": "^8.1.0",
+    "browserslist-config-wikimedia": "^0.2.0",
     "bufferutil": "^4.0.1",
     "canvas": "^2.8.0",
     "compression-webpack-plugin": "^4.0.1",
@@ -63,5 +64,6 @@
   },
   "dependencies": {
     "dompurify": "^2.1.0"
-  }
+  },
+  "browserslist": ["extends browserslist-config-wikimedia/modern"]
 }
