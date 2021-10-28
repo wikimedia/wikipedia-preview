@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"Fitoschido",
 			"Rodney Araujo"
 		]
@@ -12,6 +13,7 @@
 	"gallery-loading-still": "Todavía sigue cargando",
 	"gallery-unknown-author": "Autor desconocido",
 	"preview-error-message": "Hubo un problema al mostrar esta previsualización",
+	"preview-console-error-message": "Vista previa no disponible para el artículo '$1' (Idioma: $2)",
 	"read-on-wiki": "Ver en Wikipedia",
 	"read-more": "Leer más en Wikipedia",
 	"preview-disambiguation-message": "El título <strong>$1</strong> está relacionado a más de un artículo en Wikipedia.",
