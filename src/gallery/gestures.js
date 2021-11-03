@@ -137,6 +137,11 @@ const toggleZoom = ( e ) => {
 
 const zoomStart = ( e ) => {
 	const image = grabImageFromEvent( e )
+
+	if ( !image ) {
+		return
+	}
+
 	const imageRect = image.getBoundingClientRect()
 	temp.imageRect.top = imageRect.top
 	temp.imageRect.bottom = imageRect.bottom
@@ -198,6 +203,11 @@ const zoomMove = ( e ) => {
 
 const zoomScroll = ( e, renderNext, items, current, dir ) => {
 	const image = grabImageFromEvent( e )
+
+	if ( !image ) {
+		return
+	}
+
 	const transform = image.style.transform
 	const scale = grabScaleFromTransform( transform )
 	const leftLimit = clientWidth / 8
