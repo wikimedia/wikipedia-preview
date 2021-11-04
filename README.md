@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main)
+[![CI](https://github.com/wikimedia/wikipedia-preview/actions/workflows/main.yml/badge.svg)](https://github.com/wikimedia/wikipedia-preview/actions/workflows/main.yml)
 
 # Wikipedia Preview
 
