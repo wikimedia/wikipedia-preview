@@ -10,7 +10,7 @@ Desktop | Mobile
 --- | ---
 <img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
 
-Storybook: https://wikimedia.github.io/wikipedia-preview/storybook-static
+Storybook: https://wikimedia.github.io/wikipedia-preview/main/storybook
 
 ## Compatibility
 
