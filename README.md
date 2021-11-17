@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main.svg?style=svg)](https://circleci.com/gh/wikimedia/wikipedia-preview/tree/main)
+[![CI](https://github.com/wikimedia/wikipedia-preview/actions/workflows/main.yml/badge.svg)](https://github.com/wikimedia/wikipedia-preview/actions/workflows/main.yml)
 
 # Wikipedia Preview
 
@@ -10,7 +10,7 @@ Desktop | Mobile
 --- | ---
 <img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
 
-Storybook: https://wikimedia.github.io/wikipedia-preview/storybook-static
+Storybook: https://wikimedia.github.io/wikipedia-preview/main/storybook
 
 ## Compatibility
 

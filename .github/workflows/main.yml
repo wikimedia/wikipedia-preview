@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+     
+      - name: Unit Test (with coverage)
+        run: npm run coverage
+      
+      - name: Cypress Test
+        run: npm run dev & npm run cypress:run 
+  
+      - name: Preparing Demo
+        run: ./scripts/demo.sh
+
+      - name: Preparing Storybook
+        run: npm run build-storybook
+
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5
+
+      - name: Deploy Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: demo
+          target-folder: ${{ steps.branch-name.outputs.current_branch }}
+        
+      - name: Deploy Storybook 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: storybook-static
+          target-folder: ${{ steps.branch-name.outputs.current_branch }}/storybook
