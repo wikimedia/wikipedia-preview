@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"Luca.favorido"
 		]
@@ -8,6 +9,7 @@
 	"continue-reading": "Continua a leggere",
 	"gallery-loading-error-offline": "Nessuna connessione internet disponibile.",
 	"gallery-unknown-author": "Autore sconosciuto",
+	"read-on-wiki": "Leggi su Wikipedia",
 	"read-more": "Ulteriori informazioni su Wikipedia",
 	"preview-offline-message": "Nessuna connessione internet disponibile.",
 	"preview-offline-cta": "Riprova"
