@@ -1,6 +1,6 @@
 {
   "name": "wikipedia-preview",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.production.js",
   "scripts": {
@@ -65,5 +65,7 @@
   "dependencies": {
     "dompurify": "^2.1.0"
   },
-  "browserslist": ["extends browserslist-config-wikimedia/modern"]
+  "browserslist": [
+    "extends browserslist-config-wikimedia/modern"
+  ]
 }
