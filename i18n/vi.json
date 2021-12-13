@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Keo010122",
 			"Nguyễn Mạnh An"
 		]
 	},
@@ -9,8 +10,9 @@
 	"gallery-loading-error-offline": "Không có kết nối internet.",
 	"gallery-loading-error-refresh": "Làm mới",
 	"gallery-loading-still": "Đang tải",
-	"gallery-unknown-author": "Tác giả không rõ.",
+	"gallery-unknown-author": "Tác giả không rõ",
 	"preview-error-message": "Đã xảy ra sự cố khi hiển thị bản xem trước này.",
+	"preview-console-error-message": "Không có bản xem trước cho bài viết '$1' (Ngôn ngữ: $2)",
 	"read-on-wiki": "Đọc trên Wikipedia",
 	"read-more": "Đọc thêm trên Wikipedia",
 	"preview-disambiguation-message": "Tiêu đề <strong>$1</strong> có liên quan đến nhiều bài viết trên Wikipedia.",
