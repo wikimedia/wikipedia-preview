@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Patriot Kur",
 			"Гусейн"
 		]
 	},
-	"continue-reading": "Һанде дәвомкә",
+	"continue-reading": "Hande Dəvomkə",
 	"gallery-loading-error": "Шикили әловә кардејәдә хәто беше",
 	"gallery-loading-error-offline": "Де интернети әлоғә ни.",
 	"gallery-loading-error-refresh": "Нујә карде",
 	"gallery-loading-still": "Әловә кардејдә",
-	"gallery-unknown-author": "Мыәллиф зынә быәни.",
+	"gallery-unknown-author": "Noməlumə mıəllif",
 	"preview-error-message": "Бә нав дијә карде хәто беше.",
 	"read-on-wiki": "Википедијәдә һанде",
 	"read-more": "Әмандә Википедиәдә һанде",
