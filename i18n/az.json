@@ -6,8 +6,12 @@
 	},
 	"continue-reading": "Oxumağa davam et",
 	"gallery-loading-error": "Bu şəkili yükləyərkən xəta baş verdi",
+	"gallery-loading-error-offline": "İnternet bağlantısı yoxdur.",
 	"gallery-loading-error-refresh": "Yenilə",
 	"gallery-loading-still": "Hələ yüklənir",
 	"gallery-unknown-author": "Naməlum müəllif",
-	"read-on-wiki": "Vikipediyada oxu"
+	"read-on-wiki": "Vikipediyada oxu",
+	"read-more": "Vikipediyada daha ətraflı oxu",
+	"preview-offline-message": "İnternet bağlantısı yoxdur.",
+	"preview-offline-cta": "Yenidən cəhd edin"
 }
