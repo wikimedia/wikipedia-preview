@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Karapananguasú Kururú Teremembé"
+		]
+	},
+	"continue-reading": "E-kaçakiri umũgitá",
+	"gallery-loading-error": "Umereçe'ana yepé yawiçawa ĩdé reiku'ana rewatá kuá çãgawa",
+	"gallery-loading-error-offline": "Ti aikué yumũdiçawa internet upé yukuawa.",
+	"gallery-loading-error-refresh": "Mukuiriwara",
+	"gallery-loading-still": "Uwatá uikú raĩ",
+	"gallery-unknown-author": "Munhãgara kanhẽma",
+	"preview-error-message": "Umereçe'ana yepé iwaçuçawa umukameẽ ramẽ kuá maãgawa enũdé.",
+	"preview-console-error-message": "Maãgawa enũdé yukuawaĩma kuatiara '$1' arã (Language: $2)",
+	"read-on-wiki": "E-maã wikipedia upé",
+	"read-more": "E-mũgitá píri Wikipedia upé",
+	"preview-disambiguation-message": "Titapawa <strong>$1</strong> uikú umuatiana yepé píri kuatiara Wikipedia upé.",
+	"preview-offline-message": "Ti aikué yumũdiçawa internet irũ yukuawa.",
+	"preview-offline-cta": "E-çaá amũ ruê"
+}
