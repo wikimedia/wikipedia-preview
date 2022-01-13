@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Renessaince",
 			"W"
 		]
 	},
@@ -11,6 +12,7 @@
 	"gallery-loading-still": "Дагэтуль пампуецца",
 	"gallery-unknown-author": "Творца невядомы(-ая)",
 	"preview-error-message": "Падчас адлюстраваньня гэтага перадпрагляду ўзьнікла складанасьць.",
+	"preview-console-error-message": "Прагляд для артыкулу '$1' немагчымы (мова: $2)",
 	"read-on-wiki": "Чытаць у Вікіпэдыі",
 	"read-more": "Чытаць больш у Вікіпэдыі",
 	"preview-disambiguation-message": "Загаловак <strong>$1</strong> тычыцца больш як аднаго артыкула ў Вікіпэдыі.",
