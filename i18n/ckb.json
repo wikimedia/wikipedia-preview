@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Halbast"
+		]
+	},
+	"continue-reading": "بەردەوام ببە لە خوێندنەوە",
+	"gallery-loading-error": "ھەڵەیەک لە بارکردنی ئەم وێنەیە ڕوویدا",
+	"gallery-loading-error-offline": "ھیچ پەیوەندییەکی ئینتەرنێت بەردەست نییە.",
+	"gallery-loading-error-refresh": "نوێکردنەوە",
+	"gallery-loading-still": "ھێشتا لە بارکردن دایە",
+	"gallery-unknown-author": "نووسەر نەزانراوە",
+	"preview-error-message": "کێشەیەک ھەبوو لە پیشاندنانی ئەم پێشبینییەدا.",
+	"preview-console-error-message": "پێشبینی بەردەست نییە بۆ وتاری '$1' (زمان: $2)",
+	"read-on-wiki": "بیخوێنەوە لە ویکیپیدیا",
+	"read-more": "زیاتر بخوێنەوە لە ویکیپیدیا",
+	"preview-disambiguation-message": "ناونیشانی <strong>$1</strong> پەیوەندیی بە زیاتر لە یەک وتارەوە ھەیە لە ویکیپیدیا.",
+	"preview-offline-message": "ھیچ پەیوەندییەکی ئینتەرنێت بەردەست نییە.",
+	"preview-offline-cta": "ھەوڵ بدەرەوە"
+}
