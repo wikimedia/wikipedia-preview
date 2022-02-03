@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Juan90264"
 		]
 	},
 	"continue-reading": "Continuar lendo",
@@ -12,6 +13,7 @@
 	"gallery-loading-still": "Ainda carregando",
 	"gallery-unknown-author": "Ator desconhecido",
 	"preview-error-message": "Ocorreu um problema ao exibir esta pré-visualização.",
+	"preview-console-error-message": "Pré-visualização indisponível para o artigo '$1' (Idioma: $2)",
 	"read-on-wiki": "Leia na Wikipédia",
 	"read-more": "Leia mais na Wikipédia",
 	"preview-disambiguation-message": "Título <strong>$1</strong> está relacionado a mais de um artigo na Wikipédia.",
