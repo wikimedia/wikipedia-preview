@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Шоҳидахоним"
+		]
+	},
+	"continue-reading": "O‘qishni davom ettirish",
+	"gallery-loading-error": "Rasmni yuklashda xatolik",
+	"gallery-loading-error-offline": "Tarmoqqa ulanish mavjud emas",
+	"gallery-loading-error-refresh": "Yangilash"
+}
