@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
+			"Nickthijssen1994",
 			"Romaine"
 		]
 	},
@@ -12,6 +13,7 @@
 	"gallery-loading-still": "Nog steeds aan het laden",
 	"gallery-unknown-author": "Auteur onbekend",
 	"preview-error-message": "Er is een probleem opgetreden bij het weergeven van deze voorvertoning",
+	"preview-console-error-message": "Voorbeeldweergave onbeschikbaar voor artikel '$1' (Taal: $2)",
 	"read-on-wiki": "Op Wikipedia lezen",
 	"read-more": "Meer lezen op Wikipedia",
 	"preview-disambiguation-message": "De titel <strong>$1</strong> is gerelateerd aan meer dan één artikel op Wikipedia.",
