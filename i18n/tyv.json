@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Riverman"
+		]
+	},
+	"continue-reading": "Номчуурун уламчылаар",
+	"gallery-loading-error": "Чурукту чүдүрүп турда чазыг болу берген",
+	"gallery-loading-error-offline": "Интернетке коштунулга чок.",
+	"gallery-loading-error-refresh": "Чаартыр",
+	"gallery-loading-still": "Ам-даа чүдүрүп тур",
+	"gallery-unknown-author": "Автору билдинмес",
+	"preview-error-message": "Пре-көрүлде көргүзүп турда проблема үнген.",
+	"preview-console-error-message": "'$1' деп чүүл пре-көрүлдези болдунмас (Дыл: $2)",
+	"read-on-wiki": "Википедияга номчуур",
+	"read-more": "Википедияга ам-даа номчуур",
+	"preview-disambiguation-message": "<strong>$1</strong> деп ат Википедияда чаңгыстан хөй чүүлге хамааржыр.",
+	"preview-offline-message": "Интернетке коштунулга чок.",
+	"preview-offline-cta": "Катап шенептиңер"
+}

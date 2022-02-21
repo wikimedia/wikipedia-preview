@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Seipinne"
+		]
+	},
+	"continue-reading": "Juáđhi luuhâm",
+	"gallery-loading-error": "Kove luođđim ij luhostum",
+	"gallery-loading-error-offline": "Ij internet-ohtâvuođâ",
+	"gallery-loading-error-refresh": "Peivid",
+	"gallery-loading-still": "Luođiimin vala-uv",
+	"gallery-unknown-author": "Tubdâmettum tahhee",
+	"preview-error-message": "Munekejâdem ij pyevti čäittiđ",
+	"read-on-wiki": "Luuvâ Wikipediast",
+	"read-more": "Luuvâ lase Wikipediast",
+	"preview-disambiguation-message": "Paječaalâ <strong>$1</strong> lahta eenâb ko oohtân Wikipedia-artikkâlân.",
+	"preview-offline-message": "Ij internet-ohtâvuođâ.",
+	"preview-offline-cta": "Iirât uđđâsist"
+}
