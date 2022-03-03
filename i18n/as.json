@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mohsin Ali"
+		]
+	},
+	"continue-reading": "পঢ়া অব্যাহত ৰাখক",
+	"gallery-loading-error": "এই ছবিখন ল'ড কৰোঁতে কিবা ত্ৰুটি ঘটিছে",
+	"gallery-loading-error-offline": "ইণ্টাৰনেট সংযোগ উপলব্ধ নহয়।",
+	"gallery-loading-error-refresh": "সতেজ কৰক",
+	"gallery-loading-still": "এতিয়াও ল'ড হৈ আছে",
+	"gallery-unknown-author": "লেখক অজ্ঞাত",
+	"preview-error-message": "এই পূৰ্বলোকনটো দেখুৱাওঁতে কিবা সমস্যা হৈছে।",
+	"preview-console-error-message": "প্ৰবন্ধ '$1'ৰ বাবে পূৰ্বলোকন উপলব্ধ নহয় (ভাষা: $2)",
+	"read-on-wiki": "ৱিকিপিডিয়াত পঢ়ক",
+	"read-more": "ৱিকিপিডিয়াত অধিক পঢ়ক",
+	"preview-disambiguation-message": "<strong>$1</strong> শীৰ্ষকটো ৱিকিপিডিয়াৰ একাধিক প্ৰবন্ধৰ সৈতে সম্পৰ্কিত।",
+	"preview-offline-message": "ইণ্টাৰনেট সংযোগ উপলব্ধ নহয়।",
+	"preview-offline-cta": "আকৌ চেষ্টা কৰক"
+}
