@@ -14,6 +14,7 @@
 	"gallery-loading-still": "جاري التحميل",
 	"gallery-unknown-author": "المؤلف غير معروف",
 	"preview-error-message": "كانت هناك مشكلة في عرض هذه المعاينة.",
+	"preview-console-error-message": "العرض غير متوفر للمقالة '$1' (اللغة: $2)",
 	"read-on-wiki": "اقرأ على ويكيبيديا",
 	"read-more": "اقرأ المزيد عن ويكيبيديا",
 	"preview-disambiguation-message": "العنوان <strong>$1</strong> ذو صلة بأكثر من مقالة واحدة على ويكيبيديا.",
