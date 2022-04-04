@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"StarrySky"
+		]
+	},
+	"continue-reading": "Lean air adhart a’ leughadh",
+	"gallery-loading-error": "Bha mearachd ann a' luchdadh an dealbh seo",
+	"gallery-loading-error-offline": "Chan eil ceangal eadar-lìn ri fhaighinn.",
+	"gallery-loading-error-refresh": "ùraich",
+	"gallery-loading-still": "A’ luchdachadh fhathast",
+	"gallery-unknown-author": "Ùghdar neo-aithnichte",
+	"preview-error-message": "Bha duilgheadas ann fhad 's a bha sinn a' taisbeanadh an ro-shealladh seo.",
+	"preview-console-error-message": "Chan eil ro-shealladh ri fhaighinn airson artaigil '$1' (Cànan: $2)",
+	"read-on-wiki": "Leugh air Wikipedia",
+	"read-more": "Leugh tuilleadh air Wikipedia",
+	"preview-disambiguation-message": "Tha an tiotal <strong>$1</strong> co-cheangailte ri barrachd air aon artaigil air Wikipedia.",
+	"preview-offline-message": "Chan eil ceangal eadar-lìn ri fhaighinn.",
+	"preview-offline-cta": "Feuch a-rithist"
+}

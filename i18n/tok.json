@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"SpanishSnake"
+		]
+	},
+	"continue-reading": "o awen lukin",
+	"gallery-loading-error": "sitelen ni li kama la, pakala li kama.",
+	"gallery-loading-error-offline": "linja ala li lon.",
+	"gallery-loading-error-refresh": "o kama sin",
+	"gallery-loading-still": "ijo li awen kama",
+	"gallery-unknown-author": "jan pali li sona ala",
+	"preview-error-message": "lukin li kama la, pakala li kama.",
+	"preview-console-error-message": "$2 la, lukin pi lipu '$1' li lon ala",
+	"read-on-wiki": "o lukin lon lipu Wikipesija",
+	"read-more": "o lukin e mute lon lipu Wikipesija",
+	"preview-disambiguation-message": "nimi <strong>$1</strong> li tawa lipu mute lon lipu Wikipesija.",
+	"preview-offline-message": "linja ala li lon.",
+	"preview-offline-cta": "o alasa sin"
+}

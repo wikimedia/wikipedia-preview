@@ -10,7 +10,7 @@
 	"gallery-loading-error": "เกิดข้อผิดพลาดขณะโหลดภาพนี้",
 	"gallery-loading-error-offline": "ไม่มีสัญญาณอินเทอร์เน็ต",
 	"gallery-loading-error-refresh": "รีเฟรช",
-	"gallery-loading-still": "กำลังโหลดเหมือนเดิม",
+	"gallery-loading-still": "กำลังโหลดอยู่",
 	"gallery-unknown-author": "ไม่รู้จักผู้เขียน",
 	"preview-error-message": "มีปัญหาในการแสดงผลตัวอย่างนี้",
 	"preview-console-error-message": "ไม่มีตัวอย่างสำหรับบทความ \"$1\" (ภาษา: $2)",
