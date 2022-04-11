@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kakonjo"
+		]
+	},
+	"continue-reading": "Gumizamu n'oshoma",
+	"gallery-loading-error": "Habaho Enshobi omu kworeka ekishushani ekyi",
+	"gallery-loading-error-offline": "Tihariho okukwatanisa kwa internet okuliho",
+	"gallery-loading-error-refresh": "Garuza busya",
+	"gallery-loading-still": "Kikiriyo Ni kiija",
+	"gallery-unknown-author": "Nyakukikora tari kumanywa",
+	"preview-error-message": "Ekyi nikyo Kya kiri ekizibu omu kworeka ebiriyo nibikorwa",
+	"preview-console-error-message": "Ebiriyo nibikorwa tibiriho ahabwa orubaju '$1' (Orurimi:$2)",
+	"read-on-wiki": "Shoma Ahari Wikipediya",
+	"read-more": "Shoma bingi Ahari wikipediya",
+	"preview-disambiguation-message": "Omutwe mukuru <strong>$1</strong> gwiine obuzaare nana Engingo enyiingi aha Wikipediya",
+	"preview-offline-message": "Tihiine internet yoona eriho hati",
+	"preview-offline-cta": "Gyezaho ogudi murundi"
+}
