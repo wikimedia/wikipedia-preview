@@ -12,6 +12,7 @@
 	"gallery-loading-still": "Ennþá að lesa inn",
 	"gallery-unknown-author": "Óþekkur höfundur",
 	"preview-error-message": "Það kom upp vandamál við að birta þessa forskoðun.",
+	"preview-console-error-message": "Forskoðun er ekki til fyrir greinina '$1' (Tungumál: $2)",
 	"read-on-wiki": "Lesa á Wikipedia",
 	"read-more": "Lesta meira á Wikipedia",
 	"preview-disambiguation-message": "Titillinn <strong>$1</strong> tengist fleiri en einni grein á Wikipedia.",
