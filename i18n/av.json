@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gazimagomedov",
+			"Omarov M."
+		]
+	},
+	"continue-reading": "Жегиги цӀализе",
+	"gallery-loading-error": "Гьаб сурат гъоркьцӀалаго гъалатӀ лъугӀана",
+	"gallery-loading-error-offline": "Интернеталъул бухьен тӀагӀана.",
+	"gallery-loading-error-refresh": "ЦӀигьабизе",
+	"gallery-loading-still": "ГъоркьцӀай унеб буго",
+	"gallery-unknown-author": "Автор лъларо",
+	"preview-error-message": "Цебеккун хал гьабулеб мехалъ гъалатӀ лъугӀана",
+	"preview-console-error-message": "'$1' макъалаялъул цебеккун хал гьабун бажаруларо (мацӀ: $2)",
+	"read-on-wiki": "Википедиялда цӀализе",
+	"read-more": "ЦӀикӀкӀун цӀале Википедиялда",
+	"preview-disambiguation-message": "Гьаб <strong>$1</strong> абураб цӀар Википедиялда бугеб чанго гьумералъе данде ккола.",
+	"preview-offline-message": "Интернеталъул бухьен тӀагӀана.",
+	"preview-offline-cta": "Цогиги нухалъ хӀалбихье"
+}

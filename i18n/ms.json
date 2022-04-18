@@ -11,6 +11,7 @@
 	"gallery-loading-still": "Masih memuatkan",
 	"gallery-unknown-author": "Pengarang tidak diketahui",
 	"preview-error-message": "Terdapat masalah ketika memaparkan pralihat ini.",
+	"preview-console-error-message": "Pralihat tidak tersedia untuk rencana '$1' (Bahasa: $2)",
 	"read-on-wiki": "Baca tentang Wikipedia",
 	"read-more": "Baca lebih lanjut di Wikipedia",
 	"preview-disambiguation-message": "Tajuk <strong>$1</strong> berkaitan dengan lebih daripada satu rencana di Wikipedia.",
