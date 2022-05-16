@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"TayfunEt."
+		]
+	},
+	"continue-reading": "Oqumağa devam et",
+	"gallery-loading-error": "Resimni yükler ekende hata çıqqa berdi",
+	"gallery-loading-error-offline": "İnternet bağlantısı qısıtlı.",
+	"gallery-loading-error-refresh": "Yañart",
+	"gallery-loading-still": "Daa yüklene",
+	"gallery-unknown-author": "Yaratıcı bilinmey",
+	"preview-error-message": "Bu önizlemeni körünti ettirken sorun çıqtı.",
+	"preview-console-error-message": "'$1' maqalesi içün önizleme mümkün degil (Til: $2)",
+	"read-on-wiki": "Vikipediyada oqu",
+	"read-more": "Vikipediyada daa oqumağa mevcut",
+	"preview-disambiguation-message": "<strong>$1</strong> Vikipediyada birden fazla maqalenen ilgili.",
+	"preview-offline-message": "İnternet bağlantısı qısıtlı.",
+	"preview-offline-cta": "Tekrar deneñiz"
+}
