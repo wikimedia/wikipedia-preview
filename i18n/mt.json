@@ -1,9 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chrisportelli",
 			"ToniSant"
 		]
 	},
 	"continue-reading": "Kompli Aqra",
-	"read-more": "Aqra aktar fuq Wikipedija"
+	"gallery-loading-error": "L-istampa ma setgħetx titla'",
+	"gallery-loading-error-offline": "Bħalissa m'hemmx konnessjoni tal-internet disponibbli.",
+	"gallery-loading-error-refresh": "Aġġorna",
+	"gallery-loading-still": "Għadha tielgħa",
+	"gallery-unknown-author": "L-awtur mhuwiex magħruf",
+	"preview-error-message": "Kien hemm problema biex titla' l-wirja minn qabel.",
+	"preview-console-error-message": "Il-wirja minn qabel għall-artiklu '$1' (Lingwa: $2)",
+	"read-on-wiki": "Aqra fuq il-Wikipedija",
+	"read-more": "Aqra aktar fuq il-Wikipedija",
+	"preview-disambiguation-message": "It-titlu <strong>$1</strong> għandu x'jaqsam ma' aktar minn artiklu wieħed fuq il-Wikipedija.",
+	"preview-offline-message": "Bħalissa m'hemmx konnessjoni tal-internet disponibbli.",
+	"preview-offline-cta": "Erġa' pprova"
 }
