@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"TayfunEt."
+		]
+	},
+	"continue-reading": "Okaň",
+	"gallery-loading-error": "Bu suraty ýüklemekde ýalňyşlyk boldy",
+	"gallery-loading-error-offline": "Internet birikmesi ýok.",
+	"gallery-loading-error-refresh": "Täzelendir",
+	"gallery-loading-still": "Entegem ýükleýär",
+	"gallery-unknown-author": "Awtory näbelli",
+	"preview-error-message": "Bu deslapky syn görkezilende bir mesele ýüze çykdy.",
+	"preview-console-error-message": "'$1' makalasy üçin deslapky syn (Dil: $2)",
+	"read-on-wiki": "Wikipediýada okaň",
+	"read-more": "Wikipediýada has giňişleýin okaň",
+	"preview-disambiguation-message": "Ady <strong>$1</strong> Wikipediýada birden köp makala bilen baglanyşykly.",
+	"preview-offline-message": "Internet birikmesi ýok.",
+	"preview-offline-cta": "Täzeden synanş"
+}
