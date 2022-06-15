@@ -3,23 +3,22 @@ import '../style/popup.less'
 let popup
 
 const computePopupPosition = (
-	targetRect, popupWidth, scrollX, scrollY, innerWidth, innerHeight
+	targetRect,
+	popupWidth, popupHeight,
+	innerWidth, innerHeight
 ) => {
-	let left
-	let right = ''
-	let top = ''
-	let bottom = ''
+	const targetCenterX = targetRect.left + targetRect.width / 2
+	const targetCenterY = targetRect.top + targetRect.height / 2
 
-	left = targetRect.left > ( innerWidth / 2 ) ?
-		( scrollX + targetRect.right - popupWidth ) :
-		( scrollX + targetRect.left )
+	const left = targetCenterX > innerWidth / 2 ?
+		targetRect.left + targetRect.width - popupWidth :
+		targetRect.left
 
-	if ( targetRect.top > ( innerHeight / 2 ) ) {
-		bottom = ( innerHeight - targetRect.top - scrollY )
-	} else {
-		top = ( scrollY + targetRect.bottom )
-	}
-	return { left, right, top, bottom }
+	const top = targetCenterY > innerHeight / 2 ?
+		targetRect.top - popupHeight :
+		targetRect.top + targetRect.height
+
+	return { left, top }
 }
 
 const withPx = value => {
@@ -73,33 +72,16 @@ const createPopup = ( container, win = window ) => {
 	const show = ( content, nextTo, pointerPosition ) => {
 		popup.innerHTML = content
 
-		const scrollX = ( win.pageXOffset !== undefined ) ?
-			win.pageXOffset :
-			(
-				win.document.documentElement ||
-				win.document.body.parentNode ||
-				win.document.body
-			).scrollLeft
-		const scrollY = ( win.pageYOffset !== undefined ) ?
-			win.pageYOffset :
-			(
-				win.document.documentElement ||
-				win.document.body.parentNode ||
-				win.document.body
-			).scrollTop
 		const position = computePopupPosition(
 			getTargetRect( nextTo, pointerPosition ),
 			popup.offsetWidth,
-			scrollX,
-			scrollY,
+			popup.offsetHeight,
 			win.innerWidth,
 			win.innerHeight
 		)
 
 		popup.style.left = withPx( position.left )
-		popup.style.right = withPx( position.right )
 		popup.style.top = withPx( position.top )
-		popup.style.bottom = withPx( position.bottom )
 
 		popup.currentTargetElement = nextTo
 		popup.style.visibility = 'visible'
