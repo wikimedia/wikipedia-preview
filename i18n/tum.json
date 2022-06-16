@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tumbuka Arch"
+		]
+	},
+	"continue-reading": "Pitilizgani kuŵelenga",
+	"gallery-loading-error": "Panguwa suzgo pakuloda chithuzi ichi",
+	"gallery-loading-error-offline": "Intaneti yachimbila.",
+	"gallery-loading-error-refresh": "Yezgaso",
+	"gallery-loading-still": "Ichali kuloda",
+	"gallery-unknown-author": "Mlemba wambula zina",
+	"preview-error-message": "Pasangika suzgo pakuoneska ichi",
+	"preview-console-error-message": "Preview unavailable for article '$1' (Language: $2)",
+	"read-on-wiki": "Ẇelengani pa Wikipedia",
+	"read-more": "Ẇelengani vinandi pa Wikipedia",
+	"preview-disambiguation-message": "Mutu uwu <strong>$1</strong> una vyakulemba vinandi pa Wikipedia.",
+	"preview-offline-message": "Intaneti palije.",
+	"preview-offline-cta": "Yezgaso"
+}

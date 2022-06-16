@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Z423x5c6"
+		]
+	},
+	"continue-reading": "繼續睇",
+	"gallery-loading-error": "載入呢張圖嗰陣出現錯誤",
+	"gallery-loading-error-offline": "上唔到網。",
+	"gallery-loading-error-refresh": "重新整理",
+	"gallery-loading-still": "仲載入緊",
+	"gallery-unknown-author": "作者未知",
+	"preview-error-message": "顯示呢個預覽嗰陣出現問題。",
+	"preview-console-error-message": "文章「$1」無法預覽（語言：$2）",
+	"read-on-wiki": "喺維基百科上面睇",
+	"read-more": "喺維基百科上面睇多啲",
+	"preview-disambiguation-message": "標題<strong>$1</strong>同維基百科入面多過一篇文章有關。",
+	"preview-offline-message": "上唔到網。",
+	"preview-offline-cta": "再試過"
+}
