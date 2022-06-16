@@ -29,6 +29,7 @@ describe( 'computePopupPosition', () => {
 		} )
 		it( 'is under the target', () => assert.equal( position.top, 75 ) )
 		it( 'is left-aligned', () => assert.equal( position.left, 60 ) )
+		it( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
 	}
 	)
 
@@ -55,6 +56,7 @@ describe( 'computePopupPosition', () => {
 		} )
 		it( 'is under the target', () => assert.equal( position.top, 75 ) )
 		it( 'is right-aligned', () => assert.equal( position.left, 350 ) )
+		it( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
 	}
 	)
 
@@ -79,8 +81,9 @@ describe( 'computePopupPosition', () => {
 			position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 				viewport.width, viewport.height )
 		} )
-		it( 'is over the target', () => assert.equal( position.top, 270 ) )
+		it( 'is over the target', () => assert.equal( position.bottom, 90 ) )
 		it( 'is left-aligned', () => assert.equal( position.left, 70 ) )
+		it( 'does not specify top', () => assert.equal( position.top, '' ) )
 	}
 	)
 
@@ -105,8 +108,9 @@ describe( 'computePopupPosition', () => {
 			position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 				viewport.width, viewport.height )
 		} )
-		it( 'is over the target', () => assert.equal( position.top, 270 ) )
+		it( 'is over the target', () => assert.equal( position.bottom, 90 ) )
 		it( 'is right-aligned', () => assert.equal( position.left, 390 ) )
+		it( 'does not specify top', () => assert.equal( position.top, '' ) )
 	}
 	)
 
@@ -133,6 +137,7 @@ describe( 'computePopupPosition', () => {
 		} )
 		it( 'is under the target', () => assert.equal( position.top, 75 ) )
 		it( 'is left-aligned', () => assert.equal( position.left, 60 ) )
+		it( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
 	}
 	)
 
@@ -157,8 +162,9 @@ describe( 'computePopupPosition', () => {
 			position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 				viewport.width, viewport.height )
 		} )
-		it( 'is over the target', () => assert.equal( position.top, 270 ) )
+		it( 'is over the target', () => assert.equal( position.bottom, 90 ) )
 		it( 'is left-aligned', () => assert.equal( position.left, 70 ) )
+		it( 'does not specify top', () => assert.equal( position.top, '' ) )
 	}
 	)
 
@@ -185,8 +191,9 @@ describe( 'computePopupPosition', () => {
 			position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 				viewport.width, viewport.height )
 		} )
-		it( 'is over the target', () => assert.equal( position.top, 270 ) )
+		it( 'is over the target', () => assert.equal( position.bottom, 90 ) )
 		it( 'is right-aligned', () => assert.equal( position.left, 390 ) )
+		it( 'does not specify top', () => assert.equal( position.top, '' ) )
 	}
 	)
 

@@ -9,16 +9,22 @@ const computePopupPosition = (
 ) => {
 	const targetCenterX = targetRect.left + targetRect.width / 2
 	const targetCenterY = targetRect.top + targetRect.height / 2
+	const alignLeft = targetCenterX <= innerWidth / 2
+	const popupBelowTarget = targetCenterY <= innerHeight / 2
 
-	const left = targetCenterX > innerWidth / 2 ?
-		targetRect.left + targetRect.width - popupWidth :
-		targetRect.left
+	const left = alignLeft ?
+		targetRect.left :
+		targetRect.left + targetRect.width - popupWidth
 
-	const top = targetCenterY > innerHeight / 2 ?
-		targetRect.top - popupHeight :
-		targetRect.top + targetRect.height
+	const top = popupBelowTarget ?
+		targetRect.top + targetRect.height :
+		''
 
-	return { left, top }
+	const bottom = popupBelowTarget ?
+		'' :
+		innerHeight - targetRect.top
+
+	return { left, top, bottom }
 }
 
 const withPx = value => {
@@ -82,6 +88,7 @@ const createPopup = ( container, win = window ) => {
 
 		popup.style.left = withPx( position.left )
 		popup.style.top = withPx( position.top )
+		popup.style.bottom = withPx( position.bottom )
 
 		popup.currentTargetElement = nextTo
 		popup.style.visibility = 'visible'
