@@ -20,7 +20,7 @@ const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 	const url = buildMwApiUrl( lang, params )
 	request( url, ( result ) => {
 		const page = result.query.pages[ Object.keys( result.query.pages )[ 0 ] ]
-		if ( page.missing ) {
+		if ( !page.extract ) {
 			return false
 		}
 		return {
@@ -74,7 +74,8 @@ const requestPagePreview = ( lang, title, callback, request = cachedRequest ) =>
 const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/media-list/${encodeURIComponent( title )}`
 	request( url, ( mediaListData ) => {
-		const pageMedia = mediaListData.items.reduce( ( mediaArray, item ) => {
+		const items = mediaListData.items || []
+		const pageMedia = items.reduce( ( mediaArray, item ) => {
 			if ( item.showInGallery && item.type === 'image' ) {
 				const thumbnail = item && item.srcset && `https:${item.srcset[ 0 ].src}`
 				const media = {
