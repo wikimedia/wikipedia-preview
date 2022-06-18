@@ -33,11 +33,15 @@ Android | 4.1+
 
 Integrating Wikipedia Preview to your site consists of a three-step process:
 
-1. Loading wikipedia-preview.js (either as a standalong script or an npm dependency)
+1. Loading wikipedia-preview.js (as a standalone script, WordPress plugin, or an npm dependency)
 2. Invoking `wikipediaPreview.init( <options> )`
 3. Annotating articles accordingly
 
-You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console. You can also invoke `wikipediaPreview.version()` from your JS console to view version information at any time. 
+You can read more about each step below. Once Wikipedia Preview is set up correctly, you should see the version information being logged in your JS console. You can also invoke `wikipediaPreview.version()` from your JS console to view version information at any time.
+
+### WordPress Plugin
+
+A WordPress plugin providing a thin wrapper around Wikipedia Preview to simplify its integration and usage within WordPress is available on [GitHub](https://github.com/wikimedia/wikipediapreview-wordpress) and [WordPress.org](http://wordpress.org/plugins/wikipedia-preview/).
 
 ### Standalone Script
 
