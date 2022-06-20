@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siddhan"
+		]
+	},
+	"continue-reading": "தொடர்ந்து படிக்கவும்",
+	"gallery-loading-error": "இந்தப் படத்தை ஏற்றுவதில் பிழை இருந்தது",
+	"gallery-loading-error-offline": "இணைய இணைப்பு இல்லை",
+	"gallery-loading-error-refresh": "புதுப்பி",
+	"gallery-loading-still": "இன்னும் ஏற்றப்படுகிறது",
+	"gallery-unknown-author": "அறயப்படாத ஆசிரியர்",
+	"preview-error-message": "இந்த மாதிரிக்காட்சியைக் காண்பிக்கும் போது சிக்கல் ஏற்பட்டது.",
+	"preview-console-error-message": "'$1' கட்டுரைக்கான முன்னோட்டம் கிடைக்கவில்லை (மொழி: $2)",
+	"read-on-wiki": "விக்கிபீடியாவில் படிக்கவும்",
+	"read-more": "விக்கிபீடியாவில் மேலும் படிக்கவும்",
+	"preview-disambiguation-message": "தலைப்பு <strong>$1</strong> என்பது விக்கிபீடியாவில் ஒன்றுக்கும் மேற்பட்ட கட்டுரைகளுடன் தொடர்புடையது.",
+	"preview-offline-message": "இணைய இணைப்பு இல்லை",
+	"preview-offline-cta": "மீண்டும் முயல்க"
+}
