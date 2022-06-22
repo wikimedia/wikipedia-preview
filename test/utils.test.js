@@ -25,6 +25,8 @@ describe( 'getWikipediaAttrFromUrl', () => {
 		{ url: 'https://en.wikipedia.org/w/index.php?title=?!_(album)', expected: { lang: 'en', mobile: false, title: '?!_(album)' } },
 		{ url: 'https://wikimediafoundation.org/', expected: null },
 		{ url: 'https://en.wikipedia.org/wiki/Wikipedia:About', expected: { lang: 'en', mobile: false, title: 'Wikipedia:About' } },
+		{ url: 'https://cs.wikipedia.org/wiki/Wikipedie:Studenti_p%25C3%25AD%25C5%25A1%25C3%25AD_Wikipedii', expected: { lang: 'cs', mobile: false, title: 'Wikipedie:Studenti_píší_Wikipedii' } },
+		{ url: 'https://cs.wikipedia.org/wiki/Wikipedie:Studenti_p%C3%AD%C5%A1%C3%AD_Wikipedii', expected: { lang: 'cs', mobile: false, title: 'Wikipedie:Studenti_píší_Wikipedii' } },
 	]
 
 	const testFn = ( test ) => {
