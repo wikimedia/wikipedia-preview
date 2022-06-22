@@ -102,8 +102,7 @@ export class Preview {
 		} )
 
 		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'be.visible' )
-			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
+		this.getBodyContent().should( 'have.css', 'font-size' ).and( 'equal', '18px' )
 
 		this.getFooter().should( 'be.visible' )
 		this.getFooterContinueReading().should( 'be.visible' )
