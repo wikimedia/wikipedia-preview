@@ -1,5 +1,13 @@
 import DOMPurify from 'dompurify'
 
+const recursiveDecodeUri = ( uri ) => {
+	const decoded = decodeURI( uri )
+	if ( decoded === uri ) {
+		return decoded
+	}
+	return recursiveDecodeUri( decoded )
+}
+
 const getWikipediaAttrFromUrl = url => {
 	const regexList = [
 		// https://zh.wikipedia.org/wiki/前岐镇"
@@ -13,7 +21,7 @@ const getWikipediaAttrFromUrl = url => {
 	for ( let i = 0; i < regexList.length; i++ ) {
 		const matches = regexList[ i ].exec( url )
 		if ( matches ) {
-			return { lang: matches[ 1 ], mobile: !!matches[ 2 ], title: matches[ 3 ] }
+			return { lang: matches[ 1 ], mobile: !!matches[ 2 ], title: recursiveDecodeUri( matches[ 3 ] ) }
 		}
 	}
 
