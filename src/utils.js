@@ -1,5 +1,22 @@
 import DOMPurify from 'dompurify'
 
+const decodeUri = ( uri ) => {
+	// Attempt to decode links that have been encoded multiple times
+	const maxAttempts = 5
+	let currentUri = uri
+
+	for ( let i = 0; i < maxAttempts; i++ ) {
+		const decoded = decodeURIComponent( currentUri )
+		if ( decoded === currentUri ) {
+			return decoded
+		} else {
+			currentUri = decoded
+		}
+	}
+
+	return currentUri
+}
+
 const getWikipediaAttrFromUrl = url => {
 	const regexList = [
 		// https://zh.wikipedia.org/wiki/前岐镇"
@@ -13,7 +30,7 @@ const getWikipediaAttrFromUrl = url => {
 	for ( let i = 0; i < regexList.length; i++ ) {
 		const matches = regexList[ i ].exec( url )
 		if ( matches ) {
-			return { lang: matches[ 1 ], mobile: !!matches[ 2 ], title: matches[ 3 ] }
+			return { lang: matches[ 1 ], mobile: !!matches[ 2 ], title: decodeUri( matches[ 3 ] ) }
 		}
 	}
 
