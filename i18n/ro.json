@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"continue-reading": "Continuă lectura",
+	"gallery-loading-error": "A apărut o eroare la încărcarea acestei imagini",
+	"gallery-loading-error-offline": "Nu este disponibilă nicio conexiune la internet.",
+	"gallery-loading-error-refresh": "Reîmprospătează",
+	"gallery-loading-still": "Încă se încarcă",
+	"gallery-unknown-author": "Autor necunoscut",
+	"preview-error-message": "A apărut o eroare la afișarea acestei previzualizări.",
+	"preview-console-error-message": "Previzualizare indisponibilă pentru articolul '$1' (Limbă: $2)",
+	"read-on-wiki": "Citiți pe Wikipedia",
+	"read-more": "Citiți mai mult pe Wikipedia",
+	"preview-disambiguation-message": "Titlul <strong>$1</strong> este legat de mai mult de un singur articol pe Wikipedia.",
+	"preview-offline-message": "Nu este disponibilă nicio conexiune la internet.",
+	"preview-offline-cta": "Reîncearcă"
+}
