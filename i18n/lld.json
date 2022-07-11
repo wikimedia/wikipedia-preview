@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Asenoner"
+		]
+	},
+	"continue-reading": "Liej inant",
+	"gallery-loading-error": "L ie suzedù n fal a ciarië chësta foto",
+	"gallery-loading-error-offline": "L ne ie deguna cunescion cun l'internet.",
+	"gallery-loading-error-refresh": "Cëria da nuef",
+	"gallery-loading-still": "Cëria mo for",
+	"gallery-unknown-author": "Autor scunesciù",
+	"preview-error-message": "L ie unì su n problem a mustré chësta preududa.",
+	"preview-console-error-message": "Preududa nia da garat per l articul '$1' (Rujeneda: $2)",
+	"read-on-wiki": "Liej sun Wikipedia",
+	"read-more": "Liej de plu sun Wikipedia",
+	"preview-disambiguation-message": "Titul <strong>$1</strong> ie culegà cun plu de un n articul sun Wikipedia.",
+	"preview-offline-message": "L ne ie deguna cunescion cun l'internet.",
+	"preview-offline-cta": "Prova mo n iede"
+}
