@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"এম আবু সাঈদ"
+		]
+	},
+	"continue-reading": "ꠚꠠꠣ ꠍꠣꠟꠣꠁꠀ ꠎꠣꠅꠇꠣ",
+	"gallery-loading-error": "ꠍꠛꠤꠉꠥ ꠟꠃꠒ ꠅꠀꠔ ꠡꠝꠂꠡꠡꠣ ꠅꠁꠉꠦꠍ",
+	"gallery-loading-error-offline": "ꠁꠘ꠆ꠐꠣꠞꠘꠦꠐꠞ ꠡꠋꠉꠧ ꠚꠣꠞ ꠘꠣ",
+	"gallery-loading-error-refresh": "ꠛꠣꠃꠇ꠆ꠇꠞꠧ",
+	"gallery-loading-still": "ꠄꠛꠧ ꠟꠃꠒ ꠅꠞ",
+	"gallery-unknown-author": "ꠅꠍꠤꠘ ꠟꠦꠈꠞꠣ",
+	"preview-error-message": "ꠁ ꠀꠉ-ꠖꠦꠈꠘꠤ ꠖꠦꠈꠣꠘꠤꠞ ꠡꠝꠄꠇꠥ ꠄꠈꠣꠘ ꠡꠝꠂꠡꠡꠣ ꠅꠁꠍꠦ",
+	"preview-console-error-message": "'$1' ꠚꠣꠔꠣ ꠈꠣꠘꠔꠣꠞ ꠀꠉ-ꠖꠦꠈꠘꠤ ꠘꠣꠄ (ꠝꠣꠔ: $2)",
+	"read-on-wiki": "ꠃꠁꠇꠤꠙꠤꠒꠤꠀꠔ ꠚꠠꠇꠣ",
+	"read-more": "ꠃꠁꠇꠤꠙꠤꠒꠤꠀꠔ ꠀꠞꠧ ꠚꠠꠇꠣ",
+	"preview-disambiguation-message": "ꠐꠣꠁꠐꠦꠟ <strong>$1</strong> ꠁꠇꠣꠘ ꠃꠁꠇꠤꠙꠤꠒꠤꠀꠞ ꠄꠈ ꠔꠘꠦ ꠛꠦꠡꠤ ꠚꠣꠔꠣ ꠡꠝ꠆ꠙꠞꠇꠤꠔ",
+	"preview-offline-message": "ꠁꠘ꠆ꠐꠣꠞꠘꠦꠐ ꠝꠤꠟꠦꠞ ꠘꠣ",
+	"preview-offline-cta": "ꠢꠤꠛ꠆ꠛꠣꠞ ꠍꠦꠡꠐꠣ ꠈꠞꠂꠘ"
+}
