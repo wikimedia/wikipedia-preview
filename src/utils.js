@@ -47,6 +47,8 @@ const getDir = lang => {
 	return rtl.indexOf( lang ) === -1 ? 'ltr' : 'rtl'
 }
 
+const getAnalyticsQueryParam = () => 'wprov=wppw1' + ( isTouch ? 't' : '' )
+
 const defaultParams = {
 	format: 'json',
 	formatversion: 2,
@@ -58,7 +60,7 @@ const buildMwApiUrl = ( lang, params ) => {
 	const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
 	return baseUrl + '?' + Object.keys( params ).map( ( p ) => {
 		return `${p}=${encodeURIComponent( params[ p ] )}`
-	} ).join( '&' )
+	} ).join( '&' ) + '&' + getAnalyticsQueryParam()
 }
 
 const convertUrlToMobile = url => {
@@ -82,8 +84,6 @@ const sanitizeHTML = html => {
 const getDeviceSize = () => {
 	return { height: window.innerHeight, width: window.innerWidth }
 }
-
-const getAnalyticsQueryParam = () => 'wprov=wppw1' + ( isTouch ? 't' : '' )
 
 const buildWikipediaUrl = ( lang, title, touch, analytics = true ) => {
 	return `https://${lang}${touch ? '.m' : ''}.wikipedia.org/wiki/${encodeURIComponent( title )}${analytics ? `?${getAnalyticsQueryParam()}` : ''}`
