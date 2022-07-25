@@ -17,7 +17,7 @@ const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 		pilimit: 1,
 		titles: title
 	}
-	const url = buildMwApiUrl( lang, params )
+	const url = buildMwApiUrl( lang, params ) + '&' + getAnalyticsQueryParam()
 	request( url, ( result ) => {
 		const page = result.query.pages[ Object.keys( result.query.pages )[ 0 ] ]
 		if ( !page.extract ) {
