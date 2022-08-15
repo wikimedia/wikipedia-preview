@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Adriendelucca"
+			"Adriendelucca",
+			"Huñvreüs"
 		]
 	},
 	"continue-reading": "Kenderc'hel da lenn",
-	"gallery-loading-error": "Ur fazi zo bet en ur gargañ ar skeudenn-mañ",
+	"gallery-loading-error": "Ur fazi ez eus bet en ur gargañ ar skeudenn-mañ",
 	"gallery-loading-error-offline": "Kennask internet ebet.",
 	"gallery-loading-error-refresh": "Freskaat",
 	"gallery-loading-still": "O kargañ",
