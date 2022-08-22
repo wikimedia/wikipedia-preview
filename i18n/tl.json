@@ -1,10 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"GinawaSaHapon",
 			"Mrkczr"
 		]
 	},
-	"gallery-loading-error-offline": "Walang internet connection.",
-	"preview-offline-message": "Walang internet connection.",
-	"preview-offline-cta": "Subukang muli"
+	"continue-reading": "Magpatuloy sa pagbabasa",
+	"gallery-loading-error": "Nagka-error habang nilo-load ang larawang ito",
+	"gallery-loading-error-offline": "Hindi konektado sa internet.",
+	"gallery-loading-error-refresh": "I-refresh",
+	"gallery-loading-still": "Naglo-load pa rin",
+	"gallery-unknown-author": "Di kilalang may-akda",
+	"preview-error-message": "Nagkaroon ng isyu habang pinapakita ang pasilip na ito.",
+	"preview-console-error-message": "Walang pasilip para sa artikulong '$1' (Wika: $2)",
+	"read-on-wiki": "Basahin sa Wikipedia",
+	"read-more": "Magbasa pa sa Wikipedia",
+	"preview-disambiguation-message": "Nauugnay ang pamagat na <strong>$1</strong> sa higit sa isang artikulo sa Wikipedia.",
+	"preview-offline-message": "Hindi konektado sa internet.",
+	"preview-offline-cta": "Subukan muli"
 }

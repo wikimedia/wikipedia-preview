@@ -1,16 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pokno Royal"
+			"Pokno Royal",
+			"គីមស៊្រុន"
 		]
 	},
-	"continue-reading": "បន្តការលេង",
-	"gallery-loading-error": "មានកំហុសក្នុងការផ្ទុករូបភាពនេះ",
-	"gallery-loading-error-refresh": "ធ្វើឱ្យស្រស់",
-	"gallery-loading-still": "នៅតែកំពុងផ្ទុក",
-	"gallery-unknown-author": "អ្នកនិពន្ធមិនស្គាល់។",
+	"continue-reading": "បន្តការអាន",
+	"gallery-loading-error": "មានបញ្ហាក្នុងការផ្ទុករូបភាពនេះ",
+	"gallery-loading-error-offline": "គ្មានបណ្ដាញអ៊ីនធើណិតទេ។",
+	"gallery-loading-error-refresh": "ផ្ទុកឡើងវិញ",
+	"gallery-loading-still": "កំពុងផ្ទុក",
+	"gallery-unknown-author": "អ្នកនិពន្ធមិនស្គាល់",
 	"preview-error-message": "មានបញ្ហាពេលបង្ហាញការមើលមុននេះ។",
-	"read-on-wiki": "អាននៅលើវិគីភីឌៀ",
-	"read-more": "អានបន្ថែមនៅលើវិគីភីឌៀ",
-	"preview-disambiguation-message": "ចំណងជើងនៃ <strong>$1</strong> បានជាប់ទាក់ទងច្រើនជាងមួយអត្ថបទនៅលើវិគីភីឌៀ។"
+	"preview-console-error-message": "គ្មានការមើលមុនសម្រាប់អត្ថបទ $1 (ភាសា៖ $2) ទេ",
+	"read-on-wiki": "អាននៅលើវិគីភីឌា",
+	"read-more": "អានបន្ថែមនៅលើវិគីភីឌា",
+	"preview-disambiguation-message": "ចំណងជើង <strong>$1</strong> បានជាប់ទាក់ទងជាមួយអត្ថបទច្រើនជាងមួយនៅក្នុងវិគីភីឌា។",
+	"preview-offline-message": "គ្មានបណ្ដាញអ៊ីនធើណិតទេ។",
+	"preview-offline-cta": "ព្យាយាមម្ដងទៀត"
 }
