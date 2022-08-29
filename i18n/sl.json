@@ -11,6 +11,7 @@
 	"gallery-loading-still": "Še vedno nalagam",
 	"gallery-unknown-author": "Avtor neznan",
 	"preview-error-message": "Pri prikazovanju tega predogleda je prišlo do napake.",
+	"preview-console-error-message": "Predogled za članek »$1« (jezik: $2) ni na voljo",
 	"read-on-wiki": "Berite v Wikipediji",
 	"read-more": "Več o tem v Wikipediji",
 	"preview-disambiguation-message": "Naslov <strong>$1<&strong> se povezuje z več kot enim člankom v Wikipediji.",
