@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Finizio"
+		]
+	},
+	"continue-reading": "Continua 'a lettura",
+	"gallery-loading-error-offline": "Interner nu funziona",
+	"gallery-loading-error-refresh": "Agghiuorna",
+	"gallery-loading-still": "Stong ancora carrecann'",
+	"gallery-unknown-author": "Autore scanosciuto",
+	"read-on-wiki": "Liegge 'ncoppa a Wikipedia",
+	"read-more": "Liegge 'e cchiù 'ncoppa a Wikipedia",
+	"preview-offline-message": "Internet nun funziona",
+	"preview-offline-cta": "Prova n'ata vota"
+}
