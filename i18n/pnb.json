@@ -6,6 +6,12 @@
 		]
 	},
 	"continue-reading": "ہور پڑھایو",
+	"gallery-loading-error": "ایہہ تصویر لوڈ کر نہیں سکیا",
+	"gallery-loading-error-offline": "انٹرنیٹ کنیکشن دستیاب نہیں ا‏‏ے۔",
+	"gallery-loading-error-refresh": "تازہ کرو",
+	"gallery-loading-still": "حالیہ لوڈ کردے",
+	"gallery-unknown-author": "لیکھک نامعلوم",
+	"preview-error-message": "ایہہ ویکھ نیہں سکیا۔",
 	"read-on-wiki": "وِکیپیڈیا تے پڑھایو",
 	"read-more": "ویکیپیڈیا اُتے ہور پڑھو",
 	"preview-offline-message": "انٹرنیٹ کنیکشن دستیاب نئيں ا‏‏ے۔",
