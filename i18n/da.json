@@ -1,11 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Peterleth",
 			"Saederup92"
 		]
 	},
 	"continue-reading": "Fortsæt læsning",
+	"gallery-loading-error": "Der opstod en fejl under indlæsning af dette billede",
+	"gallery-loading-error-offline": "Ingen internetforbindelse tilgængelig.",
+	"gallery-loading-error-refresh": "Genindlæs",
+	"gallery-loading-still": "Indlæser stadig",
+	"gallery-unknown-author": "Ukendt forfatter",
+	"preview-error-message": "Der opstod et problem under visning af denne forhåndsvisning.",
+	"preview-console-error-message": "Forhåndsvisning er ikke tilgængelig for artiklen '$1' (Sprog: $2)",
 	"read-on-wiki": "Læs på Wikipedia",
 	"read-more": "Læs mere på Wikipedia",
+	"preview-disambiguation-message": "Titel <strong>$1</strong> er relateret til mere end én artikel på Wikipedia.",
+	"preview-offline-message": "Ingen internetforbindelse tilgængelig.",
 	"preview-offline-cta": "Prøv igen"
 }
