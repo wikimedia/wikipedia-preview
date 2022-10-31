@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Just Sayori",
+			"Lookruk",
 			"Patsagorn Y.",
 			"Prame Tan"
 		]
@@ -14,7 +15,7 @@
 	"gallery-unknown-author": "ไม่รู้จักผู้เขียน",
 	"preview-error-message": "มีปัญหาในการแสดงผลตัวอย่างนี้",
 	"preview-console-error-message": "ไม่มีตัวอย่างสำหรับบทความ \"$1\" (ภาษา: $2)",
-	"read-on-wiki": "อ่านเพิ่มเติมบนวิกิพีเดีย",
+	"read-on-wiki": "อ่านบนวิกิพีเดีย",
 	"read-more": "อ่านเพิ่มเติมบนวิกิพีเดีย",
 	"preview-disambiguation-message": "หัวข้อ <strong>$1</strong> เกี่ยวข้องกับบทความบนวิกิพีเดียมากกว่าหนึ่งบทความ",
 	"preview-offline-message": "ไม่มีสัญญาณอินเทอร์เน็ต",

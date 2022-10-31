@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"continue-reading": "Окъугъанынгы андан ары бардыр",
+	"gallery-loading-error": "Бу сурат джюклене тургъанлай халат болду",
+	"gallery-loading-error-offline": "Интернетге байлам джокъду",
+	"gallery-loading-error-refresh": "Джангырт",
+	"gallery-loading-still": "Алкъын джюклене турады",
+	"gallery-unknown-author": "Автору белгисизди",
+	"preview-error-message": "Бу ал къарауну кёргюзген заманда проблема чыкъды",
+	"preview-console-error-message": "'$1' (Тил: $2) статьяны ал къарауу ишлемейди",
+	"read-on-wiki": "Википедияда окъу",
+	"read-more": "Андан да асламысын Википедияда окъу",
+	"preview-disambiguation-message": "<strong>$1</strong> башлыкъ Википедияда бирден аслам статья бла байламлыды.",
+	"preview-offline-message": "Интернетге байлам джокъду",
+	"preview-offline-cta": "Энтда сынаб кёр"
+}
