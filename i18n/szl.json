@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krol111"
+		]
+	},
+	"continue-reading": "Czytej dalij",
+	"gallery-loading-error": "We czasie ładowanio tego ôbrozka wystōmpiōł feler",
+	"gallery-loading-error-offline": "Internec niydostympny.",
+	"gallery-loading-error-refresh": "Ôdświyż",
+	"gallery-loading-still": "Durch ładujã",
+	"gallery-unknown-author": "Autor niyznōmy",
+	"preview-error-message": "Wystōmpiōł feler przi wyświytlaniu podglōndu.",
+	"preview-console-error-message": "Nie ma podglōndu lo artikla „$1” (godka: $2)",
+	"read-on-wiki": "Przeczytej na Wikipedyji",
+	"read-more": "Przeczytej wiyncyj na Wikipedyji",
+	"preview-disambiguation-message": "Titel <strong>$1</strong> mo cosik ze wiyncyj jak jednym artiklym na Wikipedyji.",
+	"preview-offline-message": "Internec niydostympny.",
+	"preview-offline-cta": "Sprōbuj zaś"
+}
