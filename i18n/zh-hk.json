@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"StarrySky"
+			"StarrySky",
+			"捍粵者"
 		]
 	},
 	"continue-reading": "繼續閱讀",
@@ -14,7 +15,7 @@
 	"preview-console-error-message": "條目「$1」無法預覽（語言：$2）",
 	"read-on-wiki": "在維基百科上閱讀",
 	"read-more": "在維基百科上閱讀更多",
-	"preview-disambiguation-message": "標題<strong>$1</strong>與維基百科裡一個以上條目相關。",
+	"preview-disambiguation-message": "標題<strong>$1</strong>與維基百科一條以上條目有關。",
 	"preview-offline-message": "沒有可用的網路連線。",
 	"preview-offline-cta": "再試一次"
 }

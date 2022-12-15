@@ -4,7 +4,8 @@
 			"Actuallyisjoha",
 			"Alluk.",
 			"Nike",
-			"Pyscowicz"
+			"Pyscowicz",
+			"SMAUG"
 		]
 	},
 	"continue-reading": "Jatka lukemista",
@@ -14,6 +15,7 @@
 	"gallery-loading-still": "Ladataan edelleen",
 	"gallery-unknown-author": "Tuntematon tekijä",
 	"preview-error-message": "Esikatselua ei voida näyttää",
+	"preview-console-error-message": "Esikatselu ei ole saatavilla artikkelille ”$1” (kieli: $2)",
 	"read-on-wiki": "Lue Wikipediassa",
 	"read-more": "Lue lisää Wikipediassa",
 	"preview-disambiguation-message": "Otsikko <strong>$1</strong> liittyy useampaan Wikipedia-artikkeliin.",
