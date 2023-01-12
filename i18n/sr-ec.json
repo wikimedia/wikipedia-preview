@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"continue-reading": "Настави читање",
+	"gallery-loading-error": "Дошло је до грешке при учитавању ове слике",
+	"gallery-loading-error-offline": "Нема интернета.",
+	"gallery-loading-error-refresh": "Освежи",
+	"gallery-loading-still": "Још се учитава",
+	"gallery-unknown-author": "Непознат аутор",
+	"preview-offline-cta": "Покушај поново"
+}
