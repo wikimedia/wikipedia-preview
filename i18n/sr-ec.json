@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kizule",
 			"Milicevic01"
 		]
 	},
@@ -10,5 +11,7 @@
 	"gallery-loading-error-refresh": "Освежи",
 	"gallery-loading-still": "Још се учитава",
 	"gallery-unknown-author": "Непознат аутор",
+	"preview-error-message": "Дошло је до грешке при приказивању овог прегледа.",
+	"preview-offline-message": "Нема доступне интернет конекције.",
 	"preview-offline-cta": "Покушај поново"
 }

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Enye Lav"
+		]
+	},
+	"continue-reading": "Лыддьыны водзӧ",
+	"gallery-loading-error": "Серпас пыртӧдігӧн мыйкӧ торксьӧма",
+	"gallery-loading-error-offline": "Ӧтуввезкӧд йитӧд абу",
+	"gallery-loading-error-refresh": "Выльмӧдны",
+	"gallery-loading-still": "Век на пыртӧдам",
+	"gallery-unknown-author": "Авторыс абу тӧдса",
+	"preview-error-message": "Водзвыв видзӧдігӧн мыйкӧ абу лючки мунӧма",
+	"preview-console-error-message": "'$1' статьясӧ водзвыв видзӧдны он вермы (кыв: $2)",
+	"read-on-wiki": "Лыддьыны Википедияысь",
+	"read-more": "Водзӧ лыддьыны Википедияысь",
+	"preview-disambiguation-message": "Википедияын <strong>$1</strong> нима гижӧдыс ӧтиысь унджык.",
+	"preview-offline-message": "Ӧтуввезкӧд йитчыны оз артмы",
+	"preview-offline-cta": "Видлӧй нӧшта ӧтчыд"
+}
