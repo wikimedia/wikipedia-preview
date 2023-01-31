@@ -3,7 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version } from './utils'
+import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version, getAnalyticsQueryParam } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -123,6 +123,13 @@ function init( {
 					readOnWikiCta.addEventListener( 'click', () => {
 						invokeCallback( events, 'onWikiRead', [ title, localLang ] )
 					} )
+				}
+				// add wprov to target's href
+				if ( currentTarget.tagName === 'A' ) {
+					const param = getAnalyticsQueryParam().split( '=' )
+					const url = new URL( currentTarget.href )
+					url.searchParams.set( param[ 0 ], param[ 1 ] )
+					currentTarget.href = url.href
 				}
 			}
 		} )

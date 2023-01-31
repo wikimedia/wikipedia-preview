@@ -83,7 +83,7 @@ const getDeviceSize = () => {
 	return { height: window.innerHeight, width: window.innerWidth }
 }
 
-const getAnalyticsQueryParam = () => 'wprov=wppw1' + ( isTouch ? 't' : '' )
+const getAnalyticsQueryParam = () => 'wprov=wppw2' + ( isTouch ? 't' : '' )
 
 const buildWikipediaUrl = ( lang, title, touch, analytics = true ) => {
 	return `https://${lang}${touch ? '.m' : ''}.wikipedia.org/wiki/${encodeURIComponent( title )}${analytics ? `?${getAnalyticsQueryParam()}` : ''}`
