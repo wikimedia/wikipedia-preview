@@ -39,21 +39,31 @@
 			background-image: url( https://wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-en.svg );
 			background-repeat: no-repeat;
 			background-position: left;
-			height: 100%;
+			background-size: 160px;
 			flex-grow: 1;
 			margin-left: 16px;
 			margin-right: 16px;
 
 			&-with-image {
-				margin-top: 8px;
+				margin-top: 16px;
 			}
 
-			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh-c;
+			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh;
 			each(@wordmark-languages, {
 				&-@{value} {
 					background-image: url( 'https://wikipedia.org/static/images/mobile/copyright/wikipedia-wordmark-@{value}.svg' );
+					background-size: unset;
 				}
 			});
+
+			&-sr {
+				background-size: 160px;
+			}
+
+			&-he, &-sd, &-zh {
+				background-size: 120px;
+			}
+
 		}
 
 		&-closebtn {
