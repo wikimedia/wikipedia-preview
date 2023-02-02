@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Finizio"
+			"Finizio",
+			"Ruthven"
 		]
 	},
 	"continue-reading": "Continua 'a lettura",
@@ -10,11 +11,11 @@
 	"gallery-loading-error-refresh": "Agghiuorna",
 	"gallery-loading-still": "Stong ancora carrecann'",
 	"gallery-unknown-author": "Autore scanosciuto",
-	"preview-error-message": "Agio avuto nu problema facenno verè 'sta anteprimma",
-	"preview-console-error-message": "L'anteprimma nun ce sta pe'll'articulo '$1' (Lengua: $2)",
+	"preview-error-message": "Sta nu problema facenno verè st'anteprimma",
+	"preview-console-error-message": "L'anteprimma nun ce sta pe ll'articulo '$1' (Lengua: $2)",
 	"read-on-wiki": "Liegge 'ncoppa a Wikipedia",
 	"read-more": "Liegge 'e cchiù 'ncoppa a Wikipedia",
-	"preview-disambiguation-message": "'O titulo <strong>$1</strong> s'arriferisce a cchiù 'e un articulo n'coppa 'a Wikipedia",
+	"preview-disambiguation-message": "'O titulo <strong>$1</strong> s'arriferisce a cchiù 'e n'articulo ncopp’a Wikipedia",
 	"preview-offline-message": "Internet nun funziona",
 	"preview-offline-cta": "Prova n'ata vota"
 }
