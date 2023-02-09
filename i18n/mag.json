@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"ऐक्टिवेटेड्"
+		]
+	},
+	"continue-reading": "पढ़ेला जारी रखी",
+	"gallery-loading-error": "इचित्र आरोपणमे त्रुटि होएल्",
+	"gallery-loading-error-offline": "कोइयो अन्तर्जालसम्पर्क उपलब्ध नहई।",
+	"gallery-loading-error-refresh": "नवीकरण",
+	"gallery-loading-still": "अखनीयो आरोपित होइत्",
+	"gallery-unknown-author": "अज्ञात लेखक",
+	"preview-error-message": "इ झलक देखावेमे एगो समस्या होलै।",
+	"preview-console-error-message": "लेख '$1' (भासा: $2) ला झलक अनुपलब्ध",
+	"read-on-wiki": "बिकिपीडियापर पढ़ी",
+	"read-more": "बिकिपीडियापर आउ पढ़ी",
+	"preview-disambiguation-message": "सीर्सक <strong>$1</strong> बिकिपीडियापर एकसे बेसी लेखसे सम्बन्धित हई",
+	"preview-offline-message": "कोइयो अन्तर्जालसम्पर्क उपलब्ध नहई।",
+	"preview-offline-cta": "फिन प्रयास करी"
+}
