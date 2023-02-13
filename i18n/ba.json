@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Roustammr"
+		]
+	},
+	"continue-reading": "Уҡыуҙы дауам итергә",
+	"gallery-loading-error": "Рәсемде йөкмәткән ваҡытта хата килеп сыҡты",
+	"gallery-loading-error-offline": "Интернетҡа тоташыу юҡ",
+	"gallery-loading-error-refresh": "Яңыртырға",
+	"gallery-loading-still": "Йөкмәтеү дауам ителә",
+	"gallery-unknown-author": "Билгеһеҙ автор",
+	"preview-error-message": "Алдан ҡараған ваҡытта хата килеп сыҡты",
+	"preview-console-error-message": "'$1' мәҡәләһен алдан ҡарап булмай (Тел: $2)",
+	"read-on-wiki": "Википедияла уҡырға",
+	"read-more": "Тулыһынса Википедияла уҡырға",
+	"preview-disambiguation-message": "<strong>$1</strong> исеме Википедияла берҙән күберәк мәҡәлә исеменә ҡарай",
+	"preview-offline-message": "Интернетҡа тоташыу юҡ",
+	"preview-offline-cta": "Яңынан ҡабатлап ҡарарға"
+}
