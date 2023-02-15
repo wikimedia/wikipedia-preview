@@ -1,3 +1,7 @@
+/* Needed to allow .wmf-wp-* classes to be available for Wordpress plugin.
+See https://github.com/wikimedia/wikipedia-preview#wordpress-plugin for more info */
+.wp-block {}
+
 .wmf-wp-with-preview {
   background-color: #eaf3ff;
   padding: 2px 2px 2px 2px;
