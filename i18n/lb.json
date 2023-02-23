@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Les Meloures",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"continue-reading": "Virufuere mat Liesen",
@@ -12,8 +13,10 @@
 	"gallery-loading-still": "Gëtt nach gelueden",
 	"gallery-unknown-author": "Auteur onbekannt",
 	"preview-error-message": "Et gouf e Probleem fir dëst ze weisen",
+	"preview-console-error-message": "Virschau fir den Artikel '$1' net verfügbar (Sprooch: $2)",
 	"read-on-wiki": "Op Wikipedia liesen",
 	"read-more": "Liest méi op Wikipedia",
+	"preview-disambiguation-message": "Den Titel <strong>$1</strong> bezitt sech op méi wéi een Artikel op Wikipedia.",
 	"preview-offline-message": "Et gëtt keng Internetverbindung",
 	"preview-offline-cta": "Probéiert nach emol"
 }
