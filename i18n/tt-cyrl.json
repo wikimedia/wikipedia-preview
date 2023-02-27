@@ -1,13 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Run Li",
 			"Ерней"
 		]
 	},
 	"continue-reading": "Укуны дәвам итү",
+	"gallery-loading-error": "Рәсем төягәндә хата килеп чыкты",
+	"gallery-loading-error-offline": "Итернетка тоташмаган",
 	"gallery-loading-error-refresh": "Яңарту",
+	"gallery-loading-still": "Төяү бара",
 	"gallery-unknown-author": "Автор билгесез",
+	"preview-error-message": "Алдан караганда хата килеп чыкты",
+	"preview-console-error-message": "$2 телендәге '$1' мәкаләсен алдан карап булмый",
 	"read-on-wiki": "Википедиядә уку",
 	"read-more": "Википедиядә тулырак уку",
+	"preview-disambiguation-message": "Википедиядә <strong>$1</strong> исемле берничә мәкалә бар",
+	"preview-offline-message": "Итернетка тоташмаган",
 	"preview-offline-cta": "Кабатлагыз"
 }
