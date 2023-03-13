@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mucalexx"
+		]
+	},
+	"continue-reading": "Mi'm lessen weiderdoah",
+	"gallery-loading-error": "Ban Loon voh dém Büdel hod's an Feeler geem.",
+	"gallery-loading-error-offline": "Es is koah Internetvabindung vurhánden",
+	"gallery-loading-error-refresh": "Aktualisian",
+	"gallery-loading-still": "Werd noh gloon",
+	"gallery-unknown-author": "Urheewer néd bekánnt",
+	"preview-error-message": "Es hod a Próblém ba da Áhzoag vo dera Vurschau geem.",
+	"preview-console-error-message": "Vurschau fier Artiké „$1“ néd vafiagbor (Sprooch: $2)",
+	"read-on-wiki": "In da Wikipedia leesen",
+	"read-more": "Mearer ba da Wikipedia",
+	"preview-disambiguation-message": "Da Titel <strong>$1</strong> beziagt sé auf mearer ois wia oan Artiké a'da Wikipedia.",
+	"preview-offline-message": "Es is koah Internetvabindung vurhánden",
+	"preview-offline-cta": "Nohamoi vasuachen"
+}
