@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"MRidhaAJ"
+		]
+	},
+	"continue-reading": "إقره بعد",
+	"gallery-loading-error": "صار شي غلط وإنته تحمل هاي الصورة",
+	"gallery-loading-error-offline": "ماكو نت",
+	"gallery-loading-error-refresh": "حدث",
+	"gallery-loading-still": "بعده جاي يحمل",
+	"gallery-unknown-author": "المؤلف ما تعرفه",
+	"preview-error-message": "أكو مشكلة وإنته تعرض النتيجة",
+	"preview-console-error-message": "العرض مو موجود لهاي المقالة '1$' (لغة:2$)",
+	"read-on-wiki": "إقرا على ويكيبيديا",
+	"read-more": "إقرا بعد على ويكيبيديا",
+	"preview-disambiguation-message": "هاذ العنوان <strong>$1>/strong يشبه أكثر من مقالة وحدة على ويكيبيديا.",
+	"preview-offline-message": "ماكو نت",
+	"preview-offline-cta": "عيدها مرة ثانية"
+}
