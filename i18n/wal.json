@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ella Lachow"
+		]
+	},
+	"continue-reading": "Nabbabuwaa Doomma",
+	"gallery-loading-error": "Ha misiliyaa ehiishin balay de'ees",
+	"gallery-loading-error-offline": "Interneetee gaytotettay baawa.",
+	"gallery-loading-error-refresh": "Ooraxissa",
+	"gallery-loading-still": "Hanno gaakkanawu ehiidi de'ees",
+	"gallery-unknown-author": "Xaafidaagee erettenna",
+	"preview-error-message": "Ha zari be'uwaa bessishin metoy merettiis.",
+	"preview-console-error-message": "Xuufiya $1 (Doonaa:$2) zaari be'oy baawa",
+	"read-on-wiki": "Wikkiimiidiyaan nabbaba",
+	"read-more": "Daruwaa Wikkiipeediyaan nabbaba",
+	"preview-disambiguation-message": "Huuphe yohoy <strong>$1</strong> Wikkiipeediyaan issuwaappe dariyaa xaafotuura gayttees.",
+	"preview-offline-message": "Interneetee gaytotettay baawa.",
+	"preview-offline-cta": "Zaara mala"
+}
