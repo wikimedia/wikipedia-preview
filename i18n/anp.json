@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Proabscorp!"
+		]
+	},
+	"continue-reading": "पढ़ना जारी रखौ",
+	"gallery-loading-error": "हैय चित्र क लोड करै मँ त्रुटि होलौ छेलै",
+	"gallery-loading-error-offline": "कोय इंटरनेट कनेक्शन उपलब्ध नाय छौं।",
+	"gallery-loading-error-refresh": "रिफ़्रेश करौ",
+	"gallery-loading-still": "अभीयो लोड होय रहलौ छौं",
+	"gallery-unknown-author": "लेखक अज्ञात छौं",
+	"preview-error-message": "हैय पूर्वावलोकन क प्रदर्शित करै घड़ियाँ एगो समस्या होलौं।",
+	"preview-console-error-message": "लेख '$1' लेली पूर्वावलोकन अनुपलब्ध (भाषा: $2)",
+	"read-on-wiki": "विकिपीडिया प पढ़ौ",
+	"read-more": "विकिपीडिया प आरू पढ़ौ",
+	"preview-disambiguation-message": "शीर्षक <strong>$1</strong> विकिपीडिया प एगो सँ अधिक लेख सँ संबंधित छै।",
+	"preview-offline-message": "कोय इंटरनेट कनेक्शन उपलब्ध नाय छौं।",
+	"preview-offline-cta": "फेनु प्रयास करौ"
+}
