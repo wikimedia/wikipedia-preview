@@ -12,8 +12,10 @@
 	"gallery-loading-still": "O kargañ",
 	"gallery-unknown-author": "Aozer dianav",
 	"preview-error-message": "Ur fazi zo bet en ur ziskouez an alberz-mañ",
+	"preview-console-error-message": "Rakwel ebet da gaout evit ar pennad \"$1\" (Yezh: $2)",
 	"read-on-wiki": "Lenn war Wikipedia",
 	"read-more": "Lenn muioc'h war Wikipedia",
+	"preview-disambiguation-message": "An titl <strong>$1</strong> a zo liammet ouzh meur a bennad war Wikipedia.",
 	"preview-offline-message": "Kennask internet ebet.",
 	"preview-offline-cta": "Klask en-dro"
 }
