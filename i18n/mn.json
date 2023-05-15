@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anand.orkhon"
+		]
+	},
+	"continue-reading": "Цааш унших",
+	"gallery-loading-error": "Зургийг уншихад алдаа гарлаа",
+	"gallery-loading-error-offline": "Интернэт холболт байхгүй байна.",
+	"gallery-loading-error-refresh": "Дахин ачааллах",
+	"gallery-loading-still": "Ачаалсаар байна",
+	"gallery-unknown-author": "Зохиогч тодорхойгүй",
+	"preview-error-message": "Урьдчилж харах явцад асуудал гарлаа.",
+	"preview-console-error-message": "' $1 ' нийтлэлийг урьдчилан харах боломжгүй (Хэл: $2 )",
+	"read-on-wiki": "Википедиа-аас уншаарай",
+	"read-more": "Википедиа-аас дэлгэрэнгүй уншаарай",
+	"preview-disambiguation-message": "<strong>$1</strong> гарчиг нь Википедиа дээрх нэгээс олон нийтлэлтэй холбоотой байна.",
+	"preview-offline-message": "Интернэт холболт байхгүй байна.",
+	"preview-offline-cta": "Дахин оролдоно уу"
+}

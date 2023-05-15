@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lancine.kounfantoh.fofana"
+		]
+	},
+	"continue-reading": "ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲ ߘߊߓߊ߲߫",
+	"gallery-loading-error": "ߝߎ߬ߕߎ߲߬ߕߌ ߘߏ߫ ߕߘߍ߬ ߦߋ߫ ߦߋ߲߬ ߖߌ߬ߦߊ߬ߓߍ ߣߌ߲߬ ߟߊߢߎ߲߫ ߕߎߡߊ ߟߊ߫.",
+	"gallery-loading-error-offline": "ߓߟߐߟߐ ߜߊ߲߬ߞߎ߲߬ߠߌ߲߫ ߕߍ߫ ߦߋ߲߬",
+	"gallery-loading-error-refresh": "ߞߵߊ߬ ߟߊߛߎߡߊ߫",
+	"gallery-loading-still": "ߊ߬ ߟߊߢߎ߲ ߦߴߌ ߘߐ߫ ߡߎߣߎ߲߬",
+	"gallery-unknown-author": "ߛߓߍߦߟߊ߫ ߡߊߟߐ߲ߓߊߟߌ",
+	"preview-error-message": "ߝߙߋߞߋ ߘߏ߫ ߕߘߍ߬ ߦߴߊ߬ ߘߐ߫ ߦߋߟߌ ߣߌ߲߬ ߠߊߓߊ߯ߙߊ߫ ߕߎߡߊ ߟߊ߫.",
+	"preview-console-error-message": "ߢߍߦߋߟߌ߫ ߕߴߦߋ߲߬ ߞߎߡߘߊ «$1» ߢߍ߫ (ߞߊ߲:$2)",
+	"read-on-wiki": "ߘߐ߬ߞߊ߬ߙߊ߲߬ߠߌ߲ ߞߍ߫ ߥߞߌߔߋߘߌߦߊ ߞߊ߲߬",
+	"read-more": "ߘߏ߫ ߜߘߍ߫ ߟߎ߫ ߘߐߞߊ߬ߙߊ߲߫ ߥߞߌߔߋߘߌߦߊ ߞߊ߲߬",
+	"preview-disambiguation-message": "ߞߎ߲߬ߕߐ߮ <strong>$1</strong> ߜߋ߲߭ߞߘߎ߬ߢߐ߲߮ ߞߊߛߌߦߊ߫ ߞߎߡߘߊ߫ ߞߋߟߋ߲߫ ߘߌ߫ ߥߞߌߔߋߘߌߦߊ ߣߌ߲߬ ߠߊ߫.",
+	"preview-offline-message": "ߓߟߐߟߐ ߜߊ߲߬ߞߎ߲߬ߠߌ߲߫ ߕߍ߫ ߦߋ߲߬.",
+	"preview-offline-cta": "ߊ߬ ߡߊߝߍߣߍ߲߫ ߕߎ߲߯"
+}
