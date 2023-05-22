@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AZISS",
 			"Şeyx Şamil"
 		]
 	},
@@ -10,8 +11,11 @@
 	"gallery-loading-error-refresh": "Yenilə",
 	"gallery-loading-still": "Hələ yüklənir",
 	"gallery-unknown-author": "Naməlum müəllif",
+	"preview-error-message": "Səhifəyə ilkin baxış göstərilməsi ilə bağlı çətinlik yarandı",
+	"preview-console-error-message": "' $1 ' məqaləsi üçün önizləmə mümkün deyil (Dil: $2 )",
 	"read-on-wiki": "Vikipediyada oxu",
 	"read-more": "Vikipediyada daha ətraflı oxu",
+	"preview-disambiguation-message": "<strong>$1</strong> başlığı Vikipediyada birdən çox məqalə ilə bağlıdır.",
 	"preview-offline-message": "İnternet bağlantısı yoxdur.",
 	"preview-offline-cta": "Yenidən cəhd edin"
 }
