@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bangrapip"
+		]
+	},
+	"continue-reading": "Terus Ngebaca",
+	"gallery-loading-error": "Ada ngablu pas muat ni gambar",
+	"gallery-loading-error-offline": "Kaga' ada jala sambungan internèt.",
+	"gallery-loading-error-refresh": "Segerin",
+	"gallery-loading-still": "Masing muat",
+	"gallery-unknown-author": "Mualip kaga' ditauin",
+	"preview-error-message": "Ada masalah pas mampangin ni pradeleng.",
+	"preview-console-error-message": "Pradeleng kaga' ada bakal artikel '$' (Basa: $2)",
+	"read-on-wiki": "Baca di Wikipédia",
+	"read-more": "Baca lebi lanjut pasal Wikipédia",
+	"preview-disambiguation-message": "Judul <strong>$1</strong> ada kaètan ama lebi deri atu artikel di Wikipédia.",
+	"preview-offline-message": "Kaga' ada jala sambungan internèt.",
+	"preview-offline-cta": "Jal lagi"
+}
