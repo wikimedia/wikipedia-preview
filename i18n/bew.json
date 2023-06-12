@@ -12,9 +12,9 @@
 	"gallery-unknown-author": "Mualip kaga' ditauin",
 	"preview-error-message": "Ada masalah pas mampangin ni pradeleng.",
 	"preview-console-error-message": "Pradeleng kaga' ada bakal artikel '$' (Basa: $2)",
-	"read-on-wiki": "Baca di Wikipédia",
-	"read-more": "Baca lebi lanjut pasal Wikipédia",
-	"preview-disambiguation-message": "Judul <strong>$1</strong> ada kaètan ama lebi deri atu artikel di Wikipédia.",
+	"read-on-wiki": "Baca di Wikipédi",
+	"read-more": "Baca lebi lanjut pasal Wikipédi",
+	"preview-disambiguation-message": "Judul <strong>$1</strong> ada kaètan ama lebi deri atu artikel di Wikipédi.",
 	"preview-offline-message": "Kaga' ada jala sambungan internèt.",
 	"preview-offline-cta": "Jal lagi"
 }
