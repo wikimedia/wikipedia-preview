@@ -20,7 +20,6 @@ const config = {
     library: 'wikipediaPreview',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    hashFunction: 'sha25',
   },
   devServer: {
     contentBase: [ path.join(__dirname, 'demo'), path.join(__dirname, 'dist') ],
