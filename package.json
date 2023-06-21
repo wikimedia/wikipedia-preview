@@ -11,7 +11,7 @@
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "build": "npm run build:dev && npm run build:prod",
-    "dev": "NODE_OPTIONS='--openssl-legacy-provider' webpack-dev-server --mode development --host=0.0.0.0 --disable-host-check",
+    "dev": "webpack-dev-server --mode development --host=0.0.0.0 --disable-host-check",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
