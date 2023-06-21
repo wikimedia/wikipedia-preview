@@ -19,7 +19,7 @@ const config = {
     filename: '(SET AT THE BOTTOM OF THIS FILE)',
     library: 'wikipediaPreview',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   devServer: {
     contentBase: [ path.join(__dirname, 'demo'), path.join(__dirname, 'dist') ],
