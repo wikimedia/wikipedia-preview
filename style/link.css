@@ -1,9 +1,16 @@
 .wmf-wp-with-preview {
+  position: relative;
   font-weight: 400;
-  text-decoration: underline dashed;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  text-decoration-color: rgba(0,0,0,0.5);
   color: inherit;
   cursor: pointer;
+}
+
+.wmf-wp-with-preview::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  opacity: 0.5;
+  border-bottom: 2px dashed;
 }
