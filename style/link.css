@@ -1,7 +1,16 @@
 .wmf-wp-with-preview {
-  font-weight: 700;
-  text-decoration: underline dashed;
-  text-decoration-thickness: 2px;
+  position: relative;
+  font-weight: 400;
   color: inherit;
   cursor: pointer;
+}
+
+.wmf-wp-with-preview::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  opacity: 0.5;
+  border-bottom: 2px dashed;
 }
