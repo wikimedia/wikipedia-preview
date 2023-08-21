@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"P. S. F. Freitas"
+		]
+	},
+	"continue-reading": "Emoñe'ẽve",
+	"gallery-loading-error": "Oĩkuri peteĩ jejavy ojejupívo ko ta'anga",
+	"gallery-loading-error-offline": "Ndaipóri internet joajuha ojeguerekóva.",
+	"gallery-loading-error-refresh": "Embopyahu",
+	"gallery-loading-still": "Omba'apo gueteri",
+	"gallery-unknown-author": "Ndojekuaái ijapohára",
+	"preview-error-message": "Oĩkuri peteĩ apuñuái ojehechauka aja ko kuatia recharã.",
+	"preview-console-error-message": "Ndaipóri kuatia recharã '$1'-pe g̃uarã (Ñe'ẽ: $2)",
+	"read-on-wiki": "Ehecha Vikipetãme",
+	"read-more": "Ehechave Vikipetãme",
+	"preview-disambiguation-message": "Ko <strong>$1</strong> ojoaju heta kuatiáre Vikipetãme.",
+	"preview-offline-message": "Ndaipóri internet joajuha ojeguerekóva.",
+	"preview-offline-cta": "Eñeha'ã jey"
+}

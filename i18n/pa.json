@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kuldeepburjbhalaike"
+		]
+	},
+	"continue-reading": "ਪੜ੍ਹਨਾ ਜਾਰੀ ਰੱਖੋ",
+	"gallery-loading-error": "ਇਸ ਚਿੱਤਰ ਨੂੰ ਲੋਡ ਕਰਨ ਵਿੱਚ ਇੱਕ ਤਰੁੱਟੀ ਆਈ ਸੀ",
+	"gallery-loading-error-offline": "ਕੋਈ ਇੰਟਰਨੈਟ ਕਨੈਕਸ਼ਨ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।",
+	"gallery-loading-error-refresh": "ਤਾਜ਼ਾ ਕਰੋ",
+	"gallery-loading-still": "ਹਾਲੇ ਵੀ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ",
+	"gallery-unknown-author": "ਅਣਜਾਣ ਲੇਖਕ",
+	"preview-error-message": "ਇਸ ਪੂਰਵ-ਝਲਕ ਨੂੰ ਪ੍ਰਦਰਸ਼ਿਤ ਕਰਨ ਦੌਰਾਨ ਕੋਈ ਸਮੱਸਿਆ ਆਈ ਸੀ।",
+	"preview-console-error-message": "ਲੇਖ '$1' (ਭਾਸ਼ਾ: $2) ਲਈ ਪੂਰਵ-ਝਲਕ ਉਪਲਬਧ ਨਹੀਂ ਹੈ",
+	"read-on-wiki": "ਵਿਕੀਪੀਡੀਆ 'ਤੇ ਪੜ੍ਹੋ",
+	"read-more": "ਵਿਕੀਪੀਡੀਆ 'ਤੇ ਹੋਰ ਪੜ੍ਹੋ",
+	"preview-disambiguation-message": "ਸਿਰਲੇਖ <strong>$1</strong> ਵਿਕੀਪੀਡੀਆ 'ਤੇ ਇੱਕ ਤੋਂ ਵੱਧ ਲੇਖਾਂ ਨਾਲ ਸਬੰਧਤ ਹੈ।",
+	"preview-offline-message": "ਕੋਈ ਇੰਟਰਨੈਟ ਕਨੈਕਸ਼ਨ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।",
+	"preview-offline-cta": "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+}
