@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"continue-reading": "Skaityti toliau",
+	"gallery-loading-error": "Įkeliant šį paveikslėlį įvyko klaida",
+	"gallery-loading-error-offline": "Nėra interneto ryšio.",
+	"gallery-loading-error-refresh": "Atnaujinti",
+	"gallery-loading-still": "Vis dar kraunasi",
+	"gallery-unknown-author": "Autorius nežinomas",
+	"preview-error-message": "Rodant šią peržiūrą kilo problema.",
+	"preview-console-error-message": "Straipsnio „$1“ peržiūra neprieinama (kalba: $2)",
+	"read-on-wiki": "Skaitykite Vikipedijoje",
+	"read-more": "Daugiau skaitykite Vikipedijoje",
+	"preview-disambiguation-message": "Pavadinimas <strong>$1</strong> susijęs su daugiau nei vienu straipsniu Vikipedijoje.",
+	"preview-offline-message": "Nėra interneto ryšio.",
+	"preview-offline-cta": "Bandykite dar kartą"
+}
