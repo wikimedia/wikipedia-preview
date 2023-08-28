@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Moshtank"
+		]
+	},
+	"continue-reading": "وانگءِ دامدار",
+	"gallery-loading-error": "اے اکسءِ گݔجگءِ ٹݔما مِشتِکے پݔش آتک",
+	"gallery-loading-error-offline": "شمئی اینترنت کَھت اِنت۔",
+	"gallery-loading-error-refresh": "نۏک کنگ",
+	"gallery-loading-still": "ھنگت گݔجَگئن/لود بییگئن",
+	"gallery-unknown-author": "ناپججارݔن لِککۏک",
+	"preview-error-message": "اے پݔشسۏجءِ سۏج دیگ ٹݔما مِشتِکے پݔش آتک۔",
+	"preview-console-error-message": "پݔشسۏج پہ '$1' ءِ نبشتانکا دسرسا نئت(زبان:$2)",
+	"read-on-wiki": "ویکیپدیاءِ سرئی بوان",
+	"read-more": "گݔشتر ویکی پدیاءِ سرا بوانی",
+	"preview-disambiguation-message": "سرگال <strong>$1</strong> مہ ویکیپدیا گۏن گݔش چہ یک نبشتانکے امگرنچ اِنت۔",
+	"preview-offline-message": "شمئی اینترنت کَھت اِنت۔",
+	"preview-offline-cta": "پدا کۏشست کن"
+}
