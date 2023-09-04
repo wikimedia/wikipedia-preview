@@ -6,11 +6,15 @@
 	},
 	"continue-reading": "Nastavite čitati",
 	"gallery-loading-error": "Došlo je do greške pri učitavanju ove slike",
+	"gallery-loading-error-offline": "Internetska veza nije dostupna.",
 	"gallery-loading-error-refresh": "Preučitaj",
+	"gallery-loading-still": "I dalje se učitava",
 	"gallery-unknown-author": "Nepoznat autor",
 	"preview-error-message": "Došlo je do problema prilikom prikazivanja ovog pregleda.",
+	"preview-console-error-message": "Pregled nije dostupan za članak '$1' (Jezik: $2)",
 	"read-on-wiki": "Pročitajte na Wikipediji",
 	"read-more": "Pročitajte više na Wikipediji",
 	"preview-disambiguation-message": "Naslov <strong>$1</strong> povezan jes više članaka na Wikipediji.",
+	"preview-offline-message": "Internetska veza nije dostupna.",
 	"preview-offline-cta": "Pokušajte ponovo"
 }
