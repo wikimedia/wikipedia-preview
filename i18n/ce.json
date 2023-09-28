@@ -5,9 +5,16 @@
 		]
 	},
 	"continue-reading": "Кхин дӀа йеша",
+	"gallery-loading-error": "Сурт чудоккхуш гӀалат даьлла",
+	"gallery-loading-error-offline": "Интернет йац.",
 	"gallery-loading-error-refresh": "Карлайаккха",
+	"gallery-loading-still": "Чуйаккхар дӀадоьдуш ду",
 	"gallery-unknown-author": "Ца вевза автор.",
+	"preview-error-message": "Хьалхе хьожуш гӀалат даьлла.",
+	"preview-console-error-message": "Хьалхе хьажар '$1' йаззаман дац (мотт: $2)",
 	"read-on-wiki": "Йеша Википедехь",
 	"read-more": "Кхин сов йеша Википедехь",
+	"preview-disambiguation-message": "<strong>$1</strong> цӀе йолуш цхьаналла а сов йаззам бу Википедехь.",
+	"preview-offline-message": "Интернет йац.",
 	"preview-offline-cta": "Кхин цӀа гӀорта"
 }
