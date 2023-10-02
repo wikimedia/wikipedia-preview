@@ -13,6 +13,7 @@
 	"gallery-loading-still": "এখনও লোড হচ্ছে",
 	"gallery-unknown-author": "লেখক অজানা",
 	"preview-error-message": "প্রাকদর্শন দেখানোর সময় একটি সমস্যা হয়েছে।",
+	"preview-console-error-message": "'$1' নিবন্ধের পূর্বরূপ অনুপলব্ধ (ভাষা: $2 )",
 	"read-on-wiki": "উইকিপিডিয়ায় পড়ুন",
 	"read-more": "উইকিপিডিয়ায় আরও পড়ুন",
 	"preview-disambiguation-message": "<strong>$1</strong> শিরোনাম একাধিক উইকিপিডিয়া নিবন্ধের সাথে সম্পর্কিত।",
