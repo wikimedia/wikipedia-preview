@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"continue-reading": "Nastavi čitanje",
+	"gallery-loading-error": "Došlo je do greške pri učitavanju ove slike",
+	"gallery-loading-error-offline": "Nema interneta.",
+	"gallery-loading-error-refresh": "Osveži",
+	"gallery-loading-still": "Još se učitava",
+	"gallery-unknown-author": "Nepoznat autor",
+	"preview-error-message": "Došlo je do greške pri prikazivanju ovog pregleda.",
+	"preview-console-error-message": "Pregled nije dostupan za članak '$1' (jezik: $2)",
+	"read-on-wiki": "Vidi na Vikipediji",
+	"read-more": "Vidi više na Vikipediji",
+	"preview-disambiguation-message": "Naslov <strong>$1</strong> se odnosi na više od jednog članka na Vikipediji.",
+	"preview-offline-message": "Nema dostupne internet konekcije.",
+	"preview-offline-cta": "Pokušaj ponovo"
+}
