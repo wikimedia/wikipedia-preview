@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kitanago"
+		]
+	},
+	"continue-reading": "Kontinye li",
+	"gallery-loading-error": "Te gen yon erè pandan w ap chaje imaj sa a.",
+	"gallery-loading-error-offline": "Pa gen koneksyon entènèt ki disponib.",
+	"gallery-loading-error-refresh": "Relanse",
+	"gallery-loading-still": "L ap chaje",
+	"gallery-unknown-author": "Otè a enkoni",
+	"preview-error-message": "Te gen yon pwoblèm pandan w ap montre apèsi sa a.",
+	"preview-console-error-message": "Apèsi pa disponib pou atik '$1' (Lang: $2 )",
+	"read-on-wiki": "Li sou Wikipedya",
+	"read-more": "Li plis sou Wikipedya",
+	"preview-disambiguation-message": "Tit <strong>$1</strong> gen rapò ak plis pase yon atik sou Wikipedya.",
+	"preview-offline-message": "Pa gen koneksyon entènèt ki disponib.",
+	"preview-offline-cta": "Eseye ankò"
+}
