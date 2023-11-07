@@ -24,6 +24,36 @@ const getPreviewHtml = ( title, lang, callback ) => {
 	} )
 }
 
+const forEachRoot = ( rootConfig, callback ) => {
+	let roots = []
+	// rootConfig can be a selector (String)
+	if (
+		typeof rootConfig === 'string' ||
+		rootConfig instanceof String
+	) {
+		Array.prototype.forEach.call(
+			document.querySelectorAll( rootConfig ),
+			node => { roots.push( node ) }
+		)
+	}
+
+	// rootConfig can be a node (Document or Element)
+	if ( rootConfig instanceof Document || rootConfig instanceof Element ) {
+		roots.push( rootConfig )
+	}
+
+	// rootConfig can be a list of nodes (Element[])
+	if ( Array.isArray( rootConfig ) ) {
+		rootConfig.forEach( r => {
+			if ( r instanceof Element ) {
+				roots.push( r )
+			}
+		} )
+	}
+
+	roots.forEach( root => callback( root ) )
+}
+
 let currentPopupId
 
 function init( {
@@ -108,7 +138,7 @@ function init( {
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'offline' ] )
-						const again = root.querySelector( '.wikipediapreview-body-action' )
+						const again = document.querySelector( '.wikipediapreview-body-action' )
 						last.lang = localLang
 						last.title = title
 						last.pointerPosition = pointerPosition
@@ -137,45 +167,49 @@ function init( {
 
 	popup.subscribe( popupEvents )
 
-	Array.prototype.forEach.call(
-		root.querySelectorAll( selector ),
-		node => {
-			if ( isTouch ) {
-				node.addEventListener( 'click', showPopup )
-			} else {
-				node.addEventListener( 'mouseenter', showPopup )
-			}
-
-			foundSelectorLinks.push( {
-				text: node.textContent,
-				title: node.getAttribute( 'data-wp-title' ) || node.textContent,
-				lang: node.getAttribute( 'data-wp-lang' ) || globalLang
-			} )
-		}
-	)
-
-	if ( detectLinks ) {
+	forEachRoot( root, localRoot => {
 		Array.prototype.forEach.call(
-			root.querySelectorAll( 'a' ),
+			localRoot.querySelectorAll( selector ),
 			node => {
-				const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
-				if ( matches ) {
-					node.setAttribute( 'data-wp-title', matches.title )
-					node.setAttribute( 'data-wp-lang', matches.lang )
-					if ( isTouch ) {
-						node.addEventListener( 'click', showPopup )
-					} else {
-						node.addEventListener( 'mouseenter', showPopup )
-					}
-
-					foundDetectLinks.push( {
-						text: node.textContent,
-						title: matches.title,
-						lang: matches.lang
-					} )
+				if ( isTouch ) {
+					node.addEventListener( 'click', showPopup )
+				} else {
+					node.addEventListener( 'mouseenter', showPopup )
 				}
+
+				foundSelectorLinks.push( {
+					text: node.textContent,
+					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
+					lang: node.getAttribute( 'data-wp-lang' ) || globalLang
+				} )
 			}
 		)
+	} )
+
+	if ( detectLinks ) {
+		forEachRoot( root, localRoot => {
+			Array.prototype.forEach.call(
+				localRoot.querySelectorAll( 'a' ),
+				node => {
+					const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
+					if ( matches ) {
+						node.setAttribute( 'data-wp-title', matches.title )
+						node.setAttribute( 'data-wp-lang', matches.lang )
+						if ( isTouch ) {
+							node.addEventListener( 'click', showPopup )
+						} else {
+							node.addEventListener( 'mouseenter', showPopup )
+						}
+
+						foundDetectLinks.push( {
+							text: node.textContent,
+							title: matches.title,
+							lang: matches.lang
+						} )
+					}
+				}
+			)
+		} )
 	}
 
 	if ( debug ) {
