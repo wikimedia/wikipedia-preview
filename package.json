@@ -9,7 +9,7 @@
     "test:fix-lint": "eslint test --fix",
     "coverage": "nyc npm test",
     "build": "vite build",
-    "dev": "vite serve demo/index.html",
+    "dev": "vite serve index.html",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
