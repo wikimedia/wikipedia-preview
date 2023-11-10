@@ -2,14 +2,24 @@
   "name": "wikipedia-preview",
   "version": "1.8.0",
   "description": "Shows Wikipedia article preview in a popup",
-  "main": "dist/wikipedia-preview.production.js",
+  "main": "dist/wikipedia-preview.umd.cjs",
+  "type": "module",
+  "files": ["dist"],
+  "module": "dist/wikipedia-preview.js",
+  "exports": {
+    ".": {
+      "import": "./dist/wikipedia-preview.js",
+      "require": "./dist/wikipedia-preview.umd.cjs"
+    }
+  },
   "scripts": {
     "test": "mocha --require ignore-styles,@babel/register,jsdom-global/register",
     "test:watch": "mocha --require ignore-styles,@babel/register,jsdom-global/register -w",
     "test:fix-lint": "eslint test --fix",
     "coverage": "nyc npm test",
     "build": "vite build",
-    "dev": "vite serve index.html",
+    "dev": "vite",
+    "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "wba": "npm run build:prod && npx webpack-bundle-analyzer dist/stats.json",
