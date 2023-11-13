@@ -42,14 +42,14 @@ jobs:
         uses: tj-actions/branch-names@v7
 
       - name: Deploy Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@4.4.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
           folder: demo
           target-folder: ${{ steps.branch-name.outputs.current_branch }}
         
       - name: Deploy Storybook 🚀
-        uses: JamesIves/github-pages-deploy-action@4.4.3
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
           folder: storybook-static
