@@ -201,4 +201,4 @@ function init( {
 
 // version()
 
-export { init, version, getPreviewHtml }
+export default { init, version, getPreviewHtml }

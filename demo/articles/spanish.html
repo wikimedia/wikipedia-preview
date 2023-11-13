@@ -9,7 +9,7 @@
         <link href="../css/header.css" rel="stylesheet" type="text/css"/>
         <link href="../css/footer.css" rel="stylesheet" type="text/css"/>
         <link href="../css/article.css" rel="stylesheet" type="text/css"/>
-        <link href="../wikipedia-preview.css" rel="stylesheet" type="text/css"/>
+        <link href="../../style/link.css" rel="stylesheet" type="text/css"/>
         <style>
             @media screen and (max-width: 650px) {
                 .customize-background-position {    
@@ -64,8 +64,8 @@
             </p>
         </div>
         <!-- Scripts -->
-        <script src="../wikipedia-preview.development.js"></script>
-        <script>
+        <script type="module">
+            import wikipediaPreview from '/src/index.js' ;
             wikipediaPreview.init({
                 lang: 'es'
             });
