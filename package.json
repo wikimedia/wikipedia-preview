@@ -4,7 +4,9 @@
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.umd.cjs",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "module": "dist/wikipedia-preview.js",
   "exports": {
     ".": {
