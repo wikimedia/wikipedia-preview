@@ -1,5 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
+import fs from 'fs'
+import childProcess from 'child_process'
 
 import { defineConfig } from 'vite'
 
@@ -10,6 +12,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  define: {
+    APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
+    GIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse --short HEAD').toString().trim())
   },
   build: {
     target: 'es2015',

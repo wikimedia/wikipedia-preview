@@ -199,6 +199,6 @@ function init( {
 
 }
 
-// version()
+version()
 
 export default { init, version, getPreviewHtml }
