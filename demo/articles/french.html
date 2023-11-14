@@ -10,14 +10,15 @@
         <link href="../css/footer.css" rel="stylesheet" type="text/css"/>
         <link href="../css/article.css" rel="stylesheet" type="text/css"/>
         <link href="../../style/link.css" rel="stylesheet" type="text/css"/>
+        <link href="/dist/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <a href="../../index.html">
+        <a href="../index.html">
             <div class="header">Wikipedia Preview demo</div>
         </a>
         <div class="container">
             <div class="cover" style="background-image: url('../img/french-pic.png');">
-                <a href="../../index.html">
+                <a href="../index.html">
                     <div class="close-btn">
                         <div class="outer">
                             <img alt="Image/" src="../img/oval.png" class="oval" />
@@ -52,8 +53,8 @@
             </p>
         </div>
         <!-- Scripts -->
-        <script type="module">
-            import wikipediaPreview from '/src/index.js' ;
+        <script src="/dist/wikipedia-preview.umd.cjs"></script>
+        <script>
             wikipediaPreview.init({
                 lang: 'fr'
             });
