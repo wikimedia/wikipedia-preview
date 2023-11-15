@@ -34,8 +34,8 @@ jobs:
       - name: Preparing Demo
         run: ./scripts/demo.sh
 
-      - name: Preparing Storybook
-        run: npm run build-storybook
+      # - name: Preparing Storybook
+      #   run: npm run build-storybook
 
       - name: Get branch name
         id: branch-name
