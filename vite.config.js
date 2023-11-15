@@ -23,6 +23,11 @@ export default defineConfig({
         entry: resolve(__dirname, './src/index.js'),
         name: 'wikipediaPreview',
         fileName: 'wikipedia-preview',
+    },
+    rollupOptions: {
+      output: {
+        assetFileNames: 'wikipedia-preview.[ext]'
+      }
     }
   }
 })
