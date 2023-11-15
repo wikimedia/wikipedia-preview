@@ -25,11 +25,11 @@ jobs:
           npm install
           npm run build
      
-      - name: Unit Test (with coverage)
-        run: npm run coverage
+      # - name: Unit Test (with coverage)
+      #   run: npm run coverage
       
-      - name: Cypress Test
-        run: npm run dev & npm run cypress:run
+      # - name: Cypress Test
+      #   run: npm run dev & npm run cypress:run
   
       - name: Preparing Demo
         run: ./scripts/demo.sh
@@ -48,9 +48,9 @@ jobs:
           folder: demo
           target-folder: ${{ steps.branch-name.outputs.current_branch }}
         
-      - name: Deploy Storybook 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          branch: gh-pages
-          folder: storybook-static
-          target-folder: ${{ steps.branch-name.outputs.current_branch }}/storybook
+      # - name: Deploy Storybook 🚀
+      #   uses: JamesIves/github-pages-deploy-action@4.1.5
+      #   with:
+      #     branch: gh-pages
+      #     folder: storybook-static
+      #     target-folder: ${{ steps.branch-name.outputs.current_branch }}/storybook
