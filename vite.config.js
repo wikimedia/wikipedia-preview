@@ -1,9 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
+import { defineConfig } from 'vite'
 import fs from 'fs'
 import childProcess from 'child_process'
-
-import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
