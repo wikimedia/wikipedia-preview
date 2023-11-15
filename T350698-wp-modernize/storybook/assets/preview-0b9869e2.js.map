@@ -1,1 +1,0 @@
-{"version":3,"file":"preview-0b9869e2.js","sources":["../../.storybook/preview.js"],"sourcesContent":["\nexport const parameters = {\n  actions: { argTypesRegex: \"^on[A-Z].*\" },\n}"],"names":["parameters"],"mappings":"AACY,MAACA,EAAa,CACxB,QAAS,CAAE,cAAe,YAAc,CAC1C"}
