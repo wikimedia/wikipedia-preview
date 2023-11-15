@@ -4,6 +4,7 @@ import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version, getAnalyticsQueryParam } from './utils'
+import '../style/link.css'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
