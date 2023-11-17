@@ -25,8 +25,8 @@ jobs:
           npm install
           npm run build
      
-      # - name: Unit Test (with coverage)
-      #   run: npm run coverage
+      - name: Unit Test (with coverage)
+        run: npm run coverage
       
       # - name: Cypress Test
       #   run: npm run dev & npm run cypress:run
