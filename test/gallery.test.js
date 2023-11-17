@@ -1,6 +1,5 @@
-import assert from 'assert'
 import { JSDOM } from 'jsdom'
-import { describe, test, beforeAll } from 'vitest'
+import { describe, test, beforeAll, expect } from 'vitest'
 import { showFullscreenGallery, getGalleryRow } from '../src/gallery'
 
 describe( 'Gallery', () => {
@@ -57,18 +56,20 @@ describe( 'Gallery', () => {
 			const fullscreenGallery = doc.querySelector( '.wp-gallery-fullscreen' ),
 				images = fullscreenGallery.querySelectorAll( 'img' )
 
-			assert.ok( fullscreenGallery )
+			expect( fullscreenGallery ).toBeTruthy()
 			images.forEach( ( image, index ) => {
-				assert.equal( image.src, mediaItems[ index ].src )
+				expect( image.src ).toBe( mediaItems[ index ].src )
 			} )
 
 		} )
 
 		test( 'closes full screen gallery when close button is clicked', () => {
 			const closeButton = doc.querySelector( '.wp-gallery-fullscreen-close' )
+			const galleryClassName = '.wp-gallery-fullscreen'
 
+			expect( doc.querySelector( galleryClassName ) ).toBeTruthy()
 			closeButton.click()
-			assert.ifError( doc.querySelector( '.wp-gallery-fullscreen' ) )
+			expect( doc.querySelector( galleryClassName ) ).toBeFalsy()
 		} )
 	} )
 
@@ -99,8 +100,8 @@ describe( 'Gallery', () => {
 
 			Array.from( galleryRow.children ).forEach( ( image, index ) => {
 				const thumb = image.style[ 'background-image' ].slice( 4, -1 )
-				assert.equal( thumb, mediaItems[ index ].thumb )
-				assert.equal( image.className, 'wikipediapreview-gallery-image' )
+				expect( thumb ).toBe( mediaItems[ index ].thumb )
+				expect( image.className ).toBe( 'wikipediapreview-gallery-image' )
 			} )
 		} )
 	} )

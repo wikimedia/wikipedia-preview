@@ -1,5 +1,4 @@
-import assert from 'assert'
-import { describe, test } from 'vitest'
+import { describe, test, expect } from 'vitest'
 import { getWikipediaAttrFromUrl, sanitizeHTML } from '../src/utils'
 
 describe( 'utils', () => {
@@ -33,7 +32,7 @@ describe( 'utils', () => {
 		const testFn = ( t ) => {
 			test( `checks ${t.url}`, () => {
 				const result = getWikipediaAttrFromUrl( t.url )
-				assert.deepStrictEqual( result, t.expected )
+				expect( result ).toStrictEqual( t.expected )
 			} )
 		}
 
@@ -57,7 +56,7 @@ describe( 'utils', () => {
 		const testFn = ( t ) => {
 			test( `checks ${t.html}`, () => {
 				const result = sanitizeHTML( t.html )
-				assert.deepStrictEqual( result, t.expected )
+				expect( result ).toStrictEqual( t.expected )
 			} )
 		}
 

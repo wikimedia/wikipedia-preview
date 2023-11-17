@@ -1,5 +1,4 @@
-import assert from 'assert'
-import { describe, test, beforeAll } from 'vitest'
+import { describe, test, beforeAll, expect } from 'vitest'
 import { renderPreview } from '../src/preview'
 
 describe( 'renderPreview', () => {
@@ -13,16 +12,16 @@ describe( 'renderPreview', () => {
 				imgUrl: 'https://en.wikipedia.org/cat.png'
 			}, false )
 		} )
-		test( 'renders something', () => assert( output ) )
+		test( 'renders something', () => expect( output ).toBeTruthy() )
 
 		test( 'contains the extract HTML', () =>
-			assert( output.includes( '<p>A small domesticated feline</p>' ) ) )
+			expect( output.includes( '<p>A small domesticated feline</p>' ) ).toBeTruthy() )
 
 		test( 'contains the image url', () =>
-			assert( output.includes( 'https://en.wikipedia.org/cat.png' ) ) )
+			expect( output.includes( 'https://en.wikipedia.org/cat.png' ) ).toBeTruthy() )
 
 		test( 'contains a link to the article', () =>
-			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2t"' ) ) )
+			expect( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2t"' ) ).toBeTruthy() )
 	} )
 
 	describe( 'without image (in french)', () => {
@@ -35,6 +34,6 @@ describe( 'renderPreview', () => {
 				imgUrl: null
 			}, false )
 		} )
-		test( 'renders something', () => assert( output ) )
+		test( 'renders something', () => expect( output ).toBeTruthy() )
 	} )
 } )

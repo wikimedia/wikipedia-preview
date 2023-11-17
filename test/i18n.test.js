@@ -1,5 +1,4 @@
-import assert from 'assert'
-import { describe, test } from 'vitest'
+import { describe, test, expect } from 'vitest'
 
 import { msg } from '../src/i18n'
 
@@ -8,18 +7,18 @@ const [ firstKey, firstValue ] = [ Object.keys( english )[ 0 ], Object.values( e
 
 describe( 'msg', () => {
 	test( 'returns the localized key', () => {
-		assert.equal( msg( 'en', firstKey ), firstValue )
+		expect( msg( 'en', firstKey ) ).toBe( firstValue )
 	} )
 	test( 'falls back to english', () => {
-		assert.equal( msg( 'asdf', firstKey ), firstValue )
+		expect( msg( 'asdf', firstKey ) ).toBe( firstValue )
 	} )
 	test( 'falls back to given key', () => {
 		const nonExistedKey = 'i-do-not-think-this-existed'
-		assert.equal( msg( 'en', nonExistedKey ), nonExistedKey )
+		expect( msg( 'en', nonExistedKey ) ).toBe( nonExistedKey )
 	} )
 	test( 'replaces parameters', () => {
-		assert.equal(
-			msg( 'en', 'preview-disambiguation-message', 'Cat' ),
+		expect(
+			msg( 'en', 'preview-disambiguation-message', 'Cat' ) ).toBe(
 			'Title <strong>Cat</strong> is related to more than one article on Wikipedia.'
 		)
 	} )

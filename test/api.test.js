@@ -1,5 +1,4 @@
-import assert from 'assert'
-import { describe, test } from 'vitest'
+import { describe, test, expect } from 'vitest'
 import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from '../src/api'
 
 const requestMock = ( data ) => {
@@ -28,7 +27,7 @@ describe( 'API', () => {
 				type: 'standard'
 			}
 			requestPagePreview( 'lang', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -49,7 +48,7 @@ describe( 'API', () => {
 				type: 'standard'
 			}
 			requestPagePreview( 'lang', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -68,7 +67,7 @@ describe( 'API', () => {
 				type: 'standard'
 			}
 			requestPagePreview( 'lang', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -79,7 +78,7 @@ describe( 'API', () => {
 				titles: { canonical: 'Dog' }
 			}
 			requestPagePreview( 'lang', 'title', ( data ) => {
-				assert.equal( data, false )
+				expect( data ).toBeFalsy()
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -88,19 +87,19 @@ describe( 'API', () => {
 				type: 'unsupported'
 			}
 			requestPagePreview( 'lang', 'title', ( data ) => {
-				assert.equal( data, false )
+				expect( data ).toBeFalsy()
 			}, requestMock( apiOutput ) )
 		} )
 
 		test( 'uses the specified language in the URL', () => {
 			requestPagePreview( 'fr', 'title', () => {}, ( url ) => {
-				assert( url.startsWith( 'https://fr.wikipedia.org/' ) )
+				expect( url.startsWith( 'https://fr.wikipedia.org/' ) ).toBeTruthy()
 			} )
 		} )
 
 		test( 'encodes the page title in the URL', () => {
 			requestPagePreview( 'fr', "L'Époque des Châteaux", () => {}, ( url ) => {
-				assert( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) )
+				expect( url.includes( "L'%C3%89poque%20des%20Ch%C3%A2teaux" ) ).toBeTruthy()
 			} )
 		} )
 	} )
@@ -170,7 +169,7 @@ describe( 'API', () => {
 				}
 			]
 			requestPageMedia( 'en', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -230,19 +229,19 @@ describe( 'API', () => {
 				}
 			]
 			requestPageMedia( 'en', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
 		test( 'uses the specified language in the URL', () => {
 			requestPageMedia( 'es', 'title', () => {}, ( url ) => {
-				assert( url.startsWith( 'https://es.wikipedia.org/' ) )
+				expect( url.startsWith( 'https://es.wikipedia.org/' ) ).toBeTruthy()
 			} )
 		} )
 
 		test( 'encodes the page title in the URL', () => {
 			requestPageMedia( 'zh', '貓', () => {}, ( url ) => {
-				assert( url.endsWith( '%E8%B2%93' ) )
+				expect( url.endsWith( '%E8%B2%93' ) ).toBeTruthy()
 			} )
 		} )
 	} )
@@ -311,7 +310,7 @@ describe( 'API', () => {
 				license: 'Public domain'
 			}
 			requestPageMediaInfo( 'en', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 
@@ -358,7 +357,7 @@ describe( 'API', () => {
 				license: undefined
 			}
 			requestPageMediaInfo( 'en', 'title', ( data ) => {
-				assert.deepEqual( data, transformedOutput )
+				expect( data ).toEqual( transformedOutput )
 			}, requestMock( apiOutput ) )
 		} )
 	} )

@@ -1,12 +1,10 @@
-import assert from 'assert'
-import sinon from 'sinon'
-import { describe, test, beforeAll } from 'vitest'
+import { describe, test, beforeAll, expect, vi } from 'vitest'
 import { createTouchPopup } from '../src/touchPopup'
 import { JSDOM } from 'jsdom'
 
 describe( 'createTouchPopup', () => {
-	const onShowCallback = sinon.spy(),
-		onHideCallback = sinon.spy()
+	const onShowCallback = vi.fn(),
+		onHideCallback = vi.fn()
 
 	let dom,
 		popup,
@@ -28,25 +26,25 @@ describe( 'createTouchPopup', () => {
 	} )
 
 	test( 'adds a hidden popup to the dom', () => {
-		assert.equal( popupElement.style.visibility, 'hidden' )
+		expect( popupElement.style.visibility ).toBe( 'hidden' )
 	} )
 
 	test( 'shows content with background screen', () => {
 		popup.show( 'Hello World' )
-		assert.equal( popupElement.style.visibility, 'visible' )
-		assert.equal( popupElement.innerHTML, 'Hello World' )
-		assert( onShowCallback.called )
+		expect( popupElement.style.visibility ).toBe( 'visible' )
+		expect( popupElement.innerHTML ).toBe( 'Hello World' )
+		expect( onShowCallback ).toHaveBeenCalled()
 
 		const backgroundScreen = dom.window.document.querySelector( '.wp-dark-screen' )
-		assert.ok( backgroundScreen )
+		expect( backgroundScreen ).toBeTruthy()
 	} )
 
 	test( 'hides the popup and removes background screen when hide event is triggered', () => {
 		popup.hide()
-		assert.equal( popupElement.style.visibility, 'hidden' )
-		assert( onHideCallback.called )
+		expect( popupElement.style.visibility ).toBe( 'hidden' )
+		expect( onHideCallback ).toHaveBeenCalled()
 
 		const backgroundScreen = dom.window.document.querySelector( '.wp-dark-screen' )
-		assert.ifError( backgroundScreen )
+		expect( backgroundScreen ).toBeFalsy()
 	} )
 } )

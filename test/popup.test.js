@@ -1,6 +1,4 @@
-import assert from 'assert'
-import sinon from 'sinon'
-import { describe, test, beforeAll } from 'vitest'
+import { describe, test, beforeAll, expect, vi } from 'vitest'
 import { computePopupPosition, createPopup } from '../src/popup'
 import { JSDOM } from 'jsdom'
 
@@ -28,9 +26,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is under the target', () => assert.equal( position.top, 75 ) )
-			test( 'is left-aligned', () => assert.equal( position.left, 60 ) )
-			test( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
+			test( 'is under the target', () => expect( position.top ).toBe( 75 ) )
+			test( 'is left-aligned', () => expect( position.left ).toBe( 60 ) )
+			test( 'does not specify bottom', () => expect( position.bottom ).toBe( '' ) )
 		}
 		)
 
@@ -55,9 +53,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is under the target', () => assert.equal( position.top, 75 ) )
-			test( 'is right-aligned', () => assert.equal( position.left, 350 ) )
-			test( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
+			test( 'is under the target', () => expect( position.top ).toBe( 75 ) )
+			test( 'is right-aligned', () => expect( position.left ).toBe( 350 ) )
+			test( 'does not specify bottom', () => expect( position.bottom ).toBe( '' ) )
 		}
 		)
 
@@ -82,9 +80,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is over the target', () => assert.equal( position.bottom, 90 ) )
-			test( 'is left-aligned', () => assert.equal( position.left, 70 ) )
-			test( 'does not specify top', () => assert.equal( position.top, '' ) )
+			test( 'is over the target', () => expect( position.bottom ).toBe( 90 ) )
+			test( 'is left-aligned', () => expect( position.left ).toBe( 70 ) )
+			test( 'does not specify top', () => expect( position.top ).toBe( '' ) )
 		}
 		)
 
@@ -109,9 +107,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is over the target', () => assert.equal( position.bottom, 90 ) )
-			test( 'is right-aligned', () => assert.equal( position.left, 390 ) )
-			test( 'does not specify top', () => assert.equal( position.top, '' ) )
+			test( 'is over the target', () => expect( position.bottom ).toBe( 90 ) )
+			test( 'is right-aligned', () => expect( position.left ).toBe( 390 ) )
+			test( 'does not specify top', () => expect( position.top ).toBe( '' ) )
 		}
 		)
 
@@ -136,9 +134,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is under the target', () => assert.equal( position.top, 75 ) )
-			test( 'is left-aligned', () => assert.equal( position.left, 60 ) )
-			test( 'does not specify bottom', () => assert.equal( position.bottom, '' ) )
+			test( 'is under the target', () => expect( position.top ).toBe( 75 ) )
+			test( 'is left-aligned', () => expect( position.left ).toBe( 60 ) )
+			test( 'does not specify bottom', () => expect( position.bottom ).toBe( '' ) )
 		}
 		)
 
@@ -163,9 +161,9 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is over the target', () => assert.equal( position.bottom, 90 ) )
-			test( 'is left-aligned', () => assert.equal( position.left, 70 ) )
-			test( 'does not specify top', () => assert.equal( position.top, '' ) )
+			test( 'is over the target', () => expect( position.bottom ).toBe( 90 ) )
+			test( 'is left-aligned', () => expect( position.left ).toBe( 70 ) )
+			test( 'does not specify top', () => expect( position.top ).toBe( '' ) )
 		}
 		)
 
@@ -192,17 +190,17 @@ describe( 'Popup', () => {
 				position = computePopupPosition( targetRect, popupSize.width, popupSize.height,
 					viewport.width, viewport.height )
 			} )
-			test( 'is over the target', () => assert.equal( position.bottom, 90 ) )
-			test( 'is right-aligned', () => assert.equal( position.left, 390 ) )
-			test( 'does not specify top', () => assert.equal( position.top, '' ) )
+			test( 'is over the target', () => expect( position.bottom ).toBe( 90 ) )
+			test( 'is right-aligned', () => expect( position.left ).toBe( 390 ) )
+			test( 'does not specify top', () => expect( position.top ).toBe( '' ) )
 		}
 		)
 
 	} )
 
 	describe( 'createPopup', () => {
-		const onShowCallback = sinon.spy(),
-			onHideCallback = sinon.spy()
+		const onShowCallback = vi.fn(),
+			onHideCallback = vi.fn()
 
 		let dom,
 			popup,
@@ -224,21 +222,21 @@ describe( 'Popup', () => {
 		} )
 
 		test( 'adds a hidden popup to the dom', () => {
-			assert.equal( popupElement.style.visibility, 'hidden' )
+			expect( popupElement.style.visibility ).toBe( 'hidden' )
 		} )
 
 		test( 'shows content next to a target', () => {
 			const target = dom.window.document.querySelector( '.target' )
 			popup.show( 'Hello World', target, { x: 1, y: 1 } )
-			assert.equal( popupElement.style.visibility, 'visible' )
-			assert.equal( popupElement.innerHTML, 'Hello World' )
-			assert( onShowCallback.called )
+			expect( popupElement.style.visibility ).toBe( 'visible' )
+			expect( popupElement.innerHTML ).toBe( 'Hello World' )
+			expect( onShowCallback ).toHaveBeenCalled()
 		} )
 
 		test( 'hides the popup when trigger the hide event', () => {
 			popup.hide()
-			assert.equal( popupElement.style.visibility, 'hidden' )
-			assert( onHideCallback.called )
+			expect( popupElement.style.visibility ).toBe( 'hidden' )
+			expect( onHideCallback ).toHaveBeenCalled()
 		} )
 	} )
 } )
