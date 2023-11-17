@@ -28,5 +28,9 @@ export default defineConfig({
         assetFileNames: 'wikipedia-preview.[ext]'
       }
     }
+  },
+  test: {
+    global: true,
+    environment: 'jsdom'
   }
 })

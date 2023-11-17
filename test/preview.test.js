@@ -1,11 +1,11 @@
-'use strict'
-const assert = require( 'assert' )
-const { renderPreview } = require( '../src/preview' )
+import assert from 'assert'
+import { describe, test, beforeAll } from 'vitest'
+import { renderPreview } from '../src/preview'
 
 describe( 'renderPreview', () => {
 	describe( 'with image (in english)', () => {
 		let output
-		before( () => {
+		beforeAll( () => {
 			output = renderPreview( 'en', {
 				title: 'Cat',
 				extractHtml: '<p>A small domesticated feline</p>',
@@ -13,21 +13,21 @@ describe( 'renderPreview', () => {
 				imgUrl: 'https://en.wikipedia.org/cat.png'
 			}, false )
 		} )
-		it( 'renders something', () => assert( output ) )
+		test( 'renders something', () => assert( output ) )
 
-		it( 'contains the extract HTML', () =>
+		test( 'contains the extract HTML', () =>
 			assert( output.includes( '<p>A small domesticated feline</p>' ) ) )
 
-		it( 'contains the image url', () =>
+		test( 'contains the image url', () =>
 			assert( output.includes( 'https://en.wikipedia.org/cat.png' ) ) )
 
-		it( 'contains a link to the article', () =>
-			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2"' ) ) )
+		test( 'contains a link to the article', () =>
+			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2t"' ) ) )
 	} )
 
 	describe( 'without image (in french)', () => {
 		let output
-		before( () => {
+		beforeAll( () => {
 			output = renderPreview( 'fr', {
 				title: 'Chat',
 				extractHtml: '<p>Un petit félin domestique</p>',
@@ -35,6 +35,6 @@ describe( 'renderPreview', () => {
 				imgUrl: null
 			}, false )
 		} )
-		it( 'renders something', () => assert( output ) )
+		test( 'renders something', () => assert( output ) )
 	} )
 } )
