@@ -6,18 +6,18 @@ export default {
 	argTypes: {
 		lang: {
 			name: 'Language',
-			defaultValue: 'en',
-			control: {
-				type: 'select',
-				options: [ 'en', 'fr', 'hi', 'ks', 'he', 'sv' ]
-			}
+			control: 'select',
+			options: [ 'en', 'fr', 'hi', 'ks', 'he', 'sv' ]
 		},
 		title: {
 			name: 'Article Title',
-			defaultValue: 'Cat',
 			control: 'text'
 		}
-	}
+	},
+	args: {
+		lang: 'en',
+		title: 'Cat',
+	},
 }
 
 export const Hyperlink = ( { lang, title } ) => {
