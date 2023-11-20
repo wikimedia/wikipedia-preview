@@ -137,25 +137,12 @@ To use a language different than the language specified in the options, use the 
 
 #### .wmf-wp-with-preview
 
-To use the default trigger link styling:
+To overwrite the default link styling, add the following style to your css file
 
 * Add the following link to the page header:
-```html
-<link href="wikipedia-preview.css" rel="stylesheet">
-```
-* Add the class `wmf-wp-with-preview` to the node
-
-If you prefer to style them in a way that makes more sense for your context, simply don't include the `wikipediaPreview.css` link in the header and add your own class to the node. Both of these are valid ways:
-
 ```CSS
-[data-wikipedia-preview] {
-	background-color: yellow;
-}
-```
-
-```CSS
-.my-own-css-style {
-	background-color: yellow;
+.wmf-wp-with-preview {
+  /* your own style */
 }
 ```
 
