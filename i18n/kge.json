@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Es Krim 5 Juta Rasa"
+		]
+	},
+	"continue-reading": "Torusko mbaca",
+	"gallery-loading-error": "Uwat kasalahan harak mbukak gambar sija",
+	"gallery-loading-error-offline": "Makka koneksi internet",
+	"gallery-loading-error-refresh": "Muat ulang",
+	"gallery-loading-still": "Lokok mbukak",
+	"gallery-unknown-author": "Panulis mak tikapandai",
+	"preview-error-message": "Uwat masalah harak nampilko pratayang sija.",
+	"preview-console-error-message": "Pratinjau makka untuk artikel '$1' (Basa: $2)",
+	"read-on-wiki": "Baca di Wikipedia",
+	"read-more": "Baca lobih lanjut di Wikipedia",
+	"preview-disambiguation-message": "Judul<strong>$1</strong> tikahik rik liyu jak osai artikel di Wikipedia.",
+	"preview-offline-message": "Makka koneksi internet",
+	"preview-offline-cta": "Cuba lagi"
+}
