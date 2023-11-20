@@ -21,7 +21,7 @@
     "lint:fix": "eslint --fix src/**.js",
     "coverage": "vitest run --coverage",
     "build": "vite build",
-    "dev": "vite",
+    "dev": "vite build --watch & vite",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
