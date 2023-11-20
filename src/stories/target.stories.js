@@ -16,8 +16,8 @@ export default {
 	},
 	args: {
 		lang: 'en',
-		title: 'Cat',
-	},
+		title: 'Cat'
+	}
 }
 
 export const Hyperlink = ( { lang, title } ) => {

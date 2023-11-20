@@ -27,14 +27,14 @@ const computePopupPosition = (
 	return { left, top, bottom }
 }
 
-const withPx = value => {
+const withPx = ( value ) => {
 	return value ? ( value + 'px' ) : value
 }
 
 // Strangely, mouseenter often fires with the pointer slightly
 // outside any element rect. Making the rects bigger by a few pixel
 // ensures the pointer will be inside one of them.
-const expandRect = rect => {
+const expandRect = ( rect ) => {
 	const delta = 3
 	return {
 		left: rect.left - delta,

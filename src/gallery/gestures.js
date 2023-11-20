@@ -15,7 +15,7 @@ const temp = {
 	clientY: null,
 	imageRect: {}
 }
-let evCache = []
+const evCache = []
 let prevDiff = -1
 let zoomedIn = false
 
@@ -46,7 +46,7 @@ const isInvalidEvent = ( e, prefixClassname ) => {
 		`${prefixClassname}-button`
 	]
 
-	const invalidElement = invalidClasses.find( className => {
+	const invalidElement = invalidClasses.find( ( className ) => {
 		return e.target.className.indexOf( className ) > -1
 	} )
 
@@ -70,8 +70,8 @@ const getFingerAmount = () => {
 	return evCache.length
 }
 
-const getTransformOrigin = ( e = null, image ) => {
-	let coordinates = {}
+const getTransformOrigin = ( image, e = null ) => {
+	const coordinates = {}
 	const setBestVertical = () => {
 		if ( e.clientY > image.naturalHeight && !isImgLandscape( image ) ) {
 			return image.naturalHeight
@@ -89,7 +89,7 @@ const getTransformOrigin = ( e = null, image ) => {
 }
 
 const setTransformOrigin = ( image, e ) => {
-	const currentTransformOrigin = getTransformOrigin( e, image )
+	const currentTransformOrigin = getTransformOrigin( image, e )
 	if ( isImgLandscape( image ) ) {
 		currentTransformOrigin.y = currentTransformOrigin.y - image.naturalHeight
 	} else if ( isImgSmallerThanViewport( image ) ) {

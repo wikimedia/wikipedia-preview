@@ -14,7 +14,7 @@ let parentContainer
 const clientWidth = window.innerWidth
 const prefixClassname = 'wp-gallery-fullscreen-slider'
 
-const renderImageSlider = ( images = [], selectedImage = '', givenLang, givenDir, container ) => {
+const renderImageSlider = ( givenLang, givenDir, container, images = [], selectedImage = '' ) => {
 	const imageListHtml = images.map( () => `
 		<div class="${prefixClassname}-item">
 				<div class="${prefixClassname}-item-loading">
@@ -72,7 +72,7 @@ const renderImageInfo = ( mediaInfo, image ) => {
 	const getLicenseInfo = ( license ) => {
 		const licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
 		let licenses = ''
-		licenseTypes.forEach( type => {
+		licenseTypes.forEach( ( type ) => {
 			if ( license && license.indexOf( type ) !== -1 ) {
 				licenses += `<div class="${prefixClassname}-item-attribution-info-${type.toLowerCase()}"></div>`
 			}
@@ -121,7 +121,7 @@ const bindImageEvent = ( container, refresh = false ) => {
 		const slider = parentContainer.querySelector( `.${prefixClassname}` )
 		const items = slider.querySelectorAll( `.${prefixClassname}-item` )
 
-		items.forEach( item => {
+		items.forEach( ( item ) => {
 			const image = item.querySelector( 'img' )
 			const caption = item.querySelector( `.${prefixClassname}-item-caption` )
 			const attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
@@ -203,7 +203,7 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 		requestPageMediaInfo(
 			lang,
 			gallery[ index ].title,
-			mediaInfo => {
+			( mediaInfo ) => {
 				const imageElement = item.querySelector( 'img' )
 				const captionElement = item.querySelector( `.${prefixClassname}-item-caption` )
 
@@ -266,7 +266,7 @@ const applyGestureEvent = () => {
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
 	const items = container.querySelectorAll( `.${prefixClassname}-item` )
 
-	container.addEventListener( 'pointerdown', e => {
+	container.addEventListener( 'pointerdown', ( e ) => {
 		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
@@ -276,7 +276,7 @@ const applyGestureEvent = () => {
 			slideStart( e, container, marginLR )
 		}
 	} )
-	container.addEventListener( 'pointermove', e => {
+	container.addEventListener( 'pointermove', ( e ) => {
 		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}
@@ -289,7 +289,7 @@ const applyGestureEvent = () => {
 			slideMove( e, container, marginLR, dir )
 		}
 	} )
-	container.addEventListener( 'pointerout', e => {
+	container.addEventListener( 'pointerout', ( e ) => {
 		if ( isInvalidEvent( e, prefixClassname ) ) {
 			return
 		}

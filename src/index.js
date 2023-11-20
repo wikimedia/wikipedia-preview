@@ -20,7 +20,7 @@ const invokeCallback = ( events, name, params ) => {
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
-	requestPagePreview( lang, title, data => {
+	requestPagePreview( lang, title, ( data ) => {
 		callback( renderPreview( lang, data, isTouch ) )
 	} )
 }
@@ -70,7 +70,7 @@ function init( {
 		popup.dir = dir
 		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
 
-		requestPagePreview( localLang, title, data => {
+		requestPagePreview( localLang, title, ( data ) => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}
@@ -140,7 +140,7 @@ function init( {
 
 	Array.prototype.forEach.call(
 		root.querySelectorAll( selector ),
-		node => {
+		( node ) => {
 			if ( isTouch ) {
 				node.addEventListener( 'click', showPopup )
 			} else {
@@ -158,7 +158,7 @@ function init( {
 	if ( detectLinks ) {
 		Array.prototype.forEach.call(
 			root.querySelectorAll( 'a' ),
-			node => {
+			( node ) => {
 				const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
 				if ( matches ) {
 					node.setAttribute( 'data-wp-title', matches.title )

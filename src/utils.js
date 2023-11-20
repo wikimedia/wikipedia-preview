@@ -17,7 +17,7 @@ const decodeUri = ( uri ) => {
 	return currentUri
 }
 
-const getWikipediaAttrFromUrl = url => {
+const getWikipediaAttrFromUrl = ( url ) => {
 	const regexList = [
 		// https://zh.wikipedia.org/wiki/前岐镇"
 		// https://en.wikipedia.org/wiki/Cat#Section
@@ -42,7 +42,7 @@ const isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
 
 const isOnline = () => window.navigator.onLine
 
-const getDir = lang => {
+const getDir = ( lang ) => {
 	const rtl = [ 'ar', 'arc', 'arz', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi', 'pnb', 'ckb', 'mzn', 'glk', 'ug', 'sd', 'azb', 'lrc' ]
 	return rtl.indexOf( lang ) === -1 ? 'ltr' : 'rtl'
 }
@@ -61,11 +61,11 @@ const buildMwApiUrl = ( lang, params ) => {
 	} ).join( '&' )
 }
 
-const convertUrlToMobile = url => {
+const convertUrlToMobile = ( url ) => {
 	return url.replace( /https:\/\/(.*?)\./, ( subDomain ) => subDomain + 'm.' )
 }
 
-const strip = html => {
+const strip = ( html ) => {
 	const doc = new window.DOMParser().parseFromString( html, 'text/html' )
 	for ( const span of doc.querySelectorAll( 'span' ) ) {
 		if ( span.style.display === 'none' ) {
@@ -75,7 +75,7 @@ const strip = html => {
 	return doc.body.textContent || ''
 }
 
-const sanitizeHTML = html => {
+const sanitizeHTML = ( html ) => {
 	return DOMPurify.sanitize( html )
 }
 

@@ -17,7 +17,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:fix-lint": "eslint test --fix",
+    "test:fix-lint": "eslint . --fix --ext .js",
     "coverage": "vitest run --coverage",
     "build": "vite build",
     "dev": "vite",
@@ -46,6 +46,7 @@
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-unicorn": "^49.0.0",
     "jsdom": "^22.1.0",
     "less": "^4.2.0",
     "style-loader": "^3.3.3",
@@ -54,6 +55,7 @@
     "utf-8-validate": "^6.0.3",
     "vite": "^5.0.0",
     "vite-bundle-visualizer": "^0.11.0",
+    "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.34.6"
   },
   "dependencies": {

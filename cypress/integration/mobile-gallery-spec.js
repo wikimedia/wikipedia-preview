@@ -14,7 +14,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
 		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}
@@ -41,7 +41,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
 		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}
@@ -64,7 +64,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 		// Open the Preview
 		preview.getPreviewSpan().eq( 4 ).click()
 		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}
@@ -77,7 +77,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 			// Check the Gallery Page
 			gallery.checkGalleryPage( i )
 			// Check if the Caption Bar exist
-			gallery.getGalleryCaptionBar( i ).its( 'length' ).then( len => {
+			gallery.getGalleryCaptionBar( i ).its( 'length' ).then( ( len ) => {
 				if ( len > 0 ) {
 					// Scroll the Caption Text
 					gallery.getGalleryCaptionBar( i ).click()

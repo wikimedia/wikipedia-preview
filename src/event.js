@@ -2,7 +2,7 @@ import { isTouch } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
-export const customEvents = popup => {
+export const customEvents = ( popup ) => {
 
 	let eventListenerStack = []
 	let timeoutStack = []
@@ -14,7 +14,7 @@ export const customEvents = popup => {
 	}
 
 	const clearAllTimeout = () => {
-		timeoutStack.forEach( timeoutId => {
+		timeoutStack.forEach( ( timeoutId ) => {
 			clearTimeout( timeoutId )
 		} )
 		timeoutStack = []
@@ -26,29 +26,29 @@ export const customEvents = popup => {
 	}
 
 	const clearAllEventListener = () => {
-		eventListenerStack.forEach( eventListener => {
+		eventListenerStack.forEach( ( eventListener ) => {
 			const [ target, type, listener, options ] = eventListener
 			target.removeEventListener( type, listener, options )
 		} )
 		eventListenerStack = []
 	}
 
-	const onMouseLeave = e => {
+	const onMouseLeave = ( e ) => {
 		const toElement = e.toElement || e.relatedTarget || e.target
 		const previewElement = popup.element.currentTargetElement
 
 		if ( toElement !== previewElement && !popup.element.contains( toElement ) ) {
-			let timeoutId
+			const timeoutId = addTimeout( popup.hide, 300 )
 			const persistPopup = () => {
 				clearTimeout( timeoutId )
 			}
 
-			timeoutId = addTimeout( popup.hide, 300 )
+			// timeoutId = addTimeout( popup.hide, 300 )
 			addEventListener( popup.element, 'mouseenter', persistPopup )
 		}
 	}
 
-	const setPreviewMaxHeight = max => {
+	const setPreviewMaxHeight = ( max ) => {
 		const bodyElement = popup.element.querySelector( '.wikipediapreview-body' )
 		const headerElement = popup.element.querySelector( '.wikipediapreview-header' )
 		const footerElement = popup.element.querySelector( '.wikipediapreview-footer-cta' ) || popup.element.querySelector( '.wikipediapreview-footer-loading' )
@@ -149,13 +149,13 @@ export const customEvents = popup => {
 		}
 
 		addEventListener( previewBody, 'touchstart', handleTouchStart )
-		addEventListener( previewBody, 'touchmove', e => {
+		addEventListener( previewBody, 'touchmove', ( e ) => {
 			handleTouchMove( e, false )
 		} )
 		addEventListener( previewBody, 'touchend', () => handleTouchEnd( false ) )
 
 		addEventListener( previewHeader, 'touchstart', handleTouchStart )
-		addEventListener( previewHeader, 'touchmove', e => {
+		addEventListener( previewHeader, 'touchmove', ( e ) => {
 			handleTouchMove( e, true )
 		} )
 		addEventListener( previewHeader, 'touchend', () => handleTouchEnd( true ) )

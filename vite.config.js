@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import eslint from 'vite-plugin-eslint'
 import fs from 'fs'
 import childProcess from 'child_process'
 
@@ -12,6 +13,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  plugins: [ eslint() ],
   define: {
     APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
     GIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse --short HEAD').toString().trim())

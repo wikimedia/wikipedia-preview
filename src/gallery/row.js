@@ -4,7 +4,7 @@ export const getGalleryRow = ( mediaItems, popup ) => {
 	const galleryRow = document.createElement( 'div' )
 	galleryRow.classList.add( 'wikipediapreview-gallery-row' )
 
-	mediaItems.forEach( item => {
+	mediaItems.forEach( ( item ) => {
 		const image = document.createElement( 'div' )
 
 		image.classList.add( 'wikipediapreview-gallery-image' )
