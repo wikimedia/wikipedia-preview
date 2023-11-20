@@ -28,8 +28,8 @@ jobs:
       - name: Unit Test (with coverage)
         run: npm run coverage
       
-      # - name: Cypress Test
-      #   run: npm run dev & npm run cypress:run
+      - name: Cypress Test
+        run: npm run dev & npm run cypress:run
   
       - name: Preparing Demo
         run: ./scripts/demo.sh
