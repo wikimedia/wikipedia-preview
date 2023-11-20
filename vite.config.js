@@ -13,7 +13,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  plugins: [ eslint() ],
+  plugins: [ eslint({
+    exclude: ['/virtual:/**', 'node_modules/**'],
+  }) ],
   define: {
     APP_VERSION: JSON.stringify(JSON.parse(fs.readFileSync('./package.json')).version),
     GIT_HASH: JSON.stringify(childProcess.execSync('git rev-parse --short HEAD').toString().trim())
