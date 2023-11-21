@@ -14,7 +14,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  ignorePatterns: ["storybook-static", "dist", "vite.config.js"],
+  ignorePatterns: ["storybook-static", "dist", "vite.config.js", "src/i18n.js", "src/preview.js"],
   rules: {
     semi: [2, 'never'],
     'no-nonoctal-decimal-escape': 'off',

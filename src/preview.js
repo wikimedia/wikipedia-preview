@@ -44,8 +44,8 @@ const renderPreview = ( lang, data, isTouch ) => {
 				</div>
 			</div>
 			<div class="wikipediapreview-footer">
-				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${msg( lang, 'continue-reading' )}</span>
-				<a href="${buildWikipediaUrl( lang, data.title, isTouch )}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${msg( lang, 'read-more' )}</a>
+				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${whatif( lang, 'continue-reading' )}</span>
+				<a href="${buildWikipediaUrl( lang, data.title, isTouch )}" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${whatif( lang, 'read-more' )}</a>
 			</div>
 		`.trim()
 
@@ -95,6 +95,19 @@ const renderOffline = ( isTouch, lang, dir ) => {
 	const cta = `<a>${msg( lang, 'preview-offline-cta' )}</a>`
 
 	return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'offline', message, cta ) )
+}
+
+const whatif = ( lang, key ) => {
+	// debugger
+	const message = msg( lang, key )
+	console.log('whatif - message', message);
+	return message
+	// .then( data => {
+	// 	console.log('whatif - data', data);
+	// 	return data
+	// })
+	// console.log( 'message', message )
+	// return message
 }
 
 export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }
