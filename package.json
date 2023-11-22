@@ -4,6 +4,9 @@
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.umd.cjs",
   "type": "module",
+  "engines": {
+    "node": "~21.2.0"
+  },
   "files": [
     "dist"
   ],
