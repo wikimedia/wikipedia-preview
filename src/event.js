@@ -43,7 +43,6 @@ export const customEvents = ( popup ) => {
 				clearTimeout( timeoutId )
 			}
 
-			// timeoutId = addTimeout( popup.hide, 300 )
 			addEventListener( popup.element, 'mouseenter', persistPopup )
 		}
 	}
