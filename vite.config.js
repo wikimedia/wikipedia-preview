@@ -31,6 +31,7 @@ export default defineConfig({
         name: 'wikipediaPreview',
         fileName: 'wikipedia-preview',
     },
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         assetFileNames: 'wikipedia-preview.[ext]'
