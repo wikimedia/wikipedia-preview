@@ -4,7 +4,7 @@
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.production.js",
   "engines": {
-    "node": "<=16.20.2"
+    "node": "<17"
   },
   "scripts": {
     "test": "mocha --require ignore-styles,@babel/register,jsdom-global/register",
