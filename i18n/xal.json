@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Алия"
+		]
+	},
+	"continue-reading": "Цааран умшх",
+	"gallery-loading-error": "Зургиг умшхд эндү һарла",
+	"gallery-loading-error-offline": "Интернет холвлт бәәхш.",
+	"gallery-loading-error-refresh": "Дәкн ацалх",
+	"gallery-loading-still": "Ацалсар бәәнә",
+	"gallery-unknown-author": "Зокаһач тодрха биш",
+	"preview-error-message": "Урдчлҗ харх йовцд асудл һарла.",
+	"preview-console-error-message": "' $1 ' өгүллиг урдчлн харх болмҗго (келн: $2)",
+	"read-on-wiki": "Википедиаһас умштн",
+	"read-more": "Википедиаһас делгрңгү умштн",
+	"preview-disambiguation-message": "<strong>$1</strong> һарцгнь Википедиа деерк негнәс олн өгүллтә холвата бәәнә.",
+	"preview-offline-message": "Интернет холвлт бәәхш.",
+	"preview-offline-cta": "Дәкн орлдтн"
+}
