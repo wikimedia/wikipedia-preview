@@ -26,7 +26,6 @@ module.exports = {
   },
   plugins: [
     'cypress',
-    'no-only-tests',
-    'unicorn'
+    'no-only-tests'
   ]
 }
