@@ -141,11 +141,11 @@ To use the default trigger link styling:
 
 * Add the following link to the page header:
 ```html
-<link href="wikipedia-preview.css" rel="stylesheet">
+<link href="wikipedia-preview-link.css" rel="stylesheet">
 ```
 * Add the class `wmf-wp-with-preview` to the node
 
-If you prefer to style them in a way that makes more sense for your context, simply don't include the `wikipediaPreview.css` link in the header and add your own class to the node. Both of these are valid ways:
+If you prefer to style them in a way that makes more sense for your context, simply don't include the `wikipedia-preview-link.css` link in the header and add your own class to the node. Both of these are valid ways:
 
 ```CSS
 [data-wikipedia-preview] {

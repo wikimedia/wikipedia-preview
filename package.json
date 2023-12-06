@@ -23,6 +23,7 @@
     "test:fix-lint": "eslint . --fix --ext .js",
     "coverage": "vitest run --coverage",
     "build": "vite build",
+    "postbuild": "sh scripts/postbuild.sh",
     "dev": "vite build --watch & vite",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
