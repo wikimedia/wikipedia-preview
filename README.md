@@ -46,12 +46,12 @@ A WordPress plugin providing a thin wrapper around Wikipedia Preview to simplify
 ### Standalone Script
 
 ```html
-<script src="wikipedia-preview.production.js"></script>
+<script src="wikipedia-preview.umd.cjs"></script>
 <script type="text/javascript">
   wikipediaPreview.init()
 </script>
 ```
-You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@latest/dist/wikipedia-preview.production.js).
+You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@latest/dist/wikipedia-preview.umd.cjs).
 
 ### NPM
 ```bash
