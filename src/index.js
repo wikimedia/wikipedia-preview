@@ -25,7 +25,7 @@ const getPreviewHtml = ( title, lang, callback ) => {
 }
 
 const forEachRoot = ( rootConfig, callback ) => {
-	let roots = []
+	const roots = []
 	// rootConfig can be a selector (String)
 	if (
 		typeof rootConfig === 'string' ||
@@ -33,7 +33,7 @@ const forEachRoot = ( rootConfig, callback ) => {
 	) {
 		Array.prototype.forEach.call(
 			document.querySelectorAll( rootConfig ),
-			node => { roots.push( node ) }
+			( node ) => { roots.push( node ) }
 		)
 	}
 
@@ -44,14 +44,14 @@ const forEachRoot = ( rootConfig, callback ) => {
 
 	// rootConfig can be a list of nodes (Element[])
 	if ( Array.isArray( rootConfig ) ) {
-		rootConfig.forEach( r => {
+		rootConfig.forEach( ( r ) => {
 			if ( r instanceof Element ) {
 				roots.push( r )
 			}
 		} )
 	}
 
-	roots.forEach( root => callback( root ) )
+	roots.forEach( ( root ) => callback( root ) )
 }
 
 let currentPopupId
@@ -167,10 +167,10 @@ function init( {
 
 	popup.subscribe( popupEvents )
 
-	forEachRoot( root, localRoot => {
+	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
-			node => {
+			( node ) => {
 				if ( isTouch ) {
 					node.addEventListener( 'click', showPopup )
 				} else {
@@ -187,10 +187,10 @@ function init( {
 	} )
 
 	if ( detectLinks ) {
-		forEachRoot( root, localRoot => {
+		forEachRoot( root, ( localRoot ) => {
 			Array.prototype.forEach.call(
 				localRoot.querySelectorAll( 'a' ),
-				node => {
+				( node ) => {
 					const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
