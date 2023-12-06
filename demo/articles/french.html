@@ -55,6 +55,8 @@
         <script src="/dist/wikipedia-preview.umd.cjs"></script>
         <script>
             wikipediaPreview.init({
+                root: '.content > p, .footer > p',
+                detectLinks: true,
                 lang: 'fr'
             });
         </script>
