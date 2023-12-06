@@ -24,7 +24,7 @@
     "coverage": "vitest run --coverage",
     "build": "vite build",
     "postbuild": "sh scripts/postbuild.sh",
-    "dev": "vite build --watch & vite",
+    "dev": "vite build --watch & vite --open /demo/index.html",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
