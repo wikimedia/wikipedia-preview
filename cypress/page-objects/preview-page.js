@@ -95,7 +95,7 @@ export class Preview {
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
 		this.getHeaderClosebtn().should( 'be.visible' )
-		this.getHeaderImage().its( 'length' ).then( len => {
+		this.getHeaderImage().its( 'length' ).then( ( len ) => {
 			if ( len > 0 ) {
 				this.getHeaderImage().should( 'be.visible' )
 			}
@@ -121,7 +121,7 @@ export class Preview {
 		this.getBody().should( 'be.visible' )
 		this.getBodyContent().should( 'be.visible' )
 			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
-		this.getHeaderImage().its( 'length' ).then( len => {
+		this.getHeaderImage().its( 'length' ).then( ( len ) => {
 			if ( len > 0 ) {
 				this.getBodyGallery().scrollIntoView().should( 'be.visible' )
 				this.getBodyGalleryImages().should( 'be.visible' )
@@ -140,7 +140,7 @@ export class Preview {
 		this.getHeaderWatermark().should( 'be.visible' )
 		this.getHeaderClosebtn().should( 'be.visible' )
 
-		this.getPreview().then( tag => {
+		this.getPreview().then( ( tag ) => {
 
 			const lang = tag.attr( 'lang' )
 
@@ -148,7 +148,7 @@ export class Preview {
 				.and( 'have.class', 'wikipediapreview-body-disambiguation' )
 				.and( 'have.css', 'font-size' ).and( 'equal', '16px' )
 
-			this.getBodyMessage().then( ele => {
+			this.getBodyMessage().then( ( ele ) => {
 				cy.wrap( ele ).find( 'div.wikipediapreview-body-icon' )
 			} )
 
@@ -166,7 +166,7 @@ export class Preview {
 		this.getHeaderWatermark().should( 'be.visible' )
 		this.getHeaderClosebtn().should( 'be.visible' )
 
-		this.getPreview().then( tag => {
+		this.getPreview().then( ( tag ) => {
 
 			const lang = tag.attr( 'lang' )
 
@@ -174,7 +174,7 @@ export class Preview {
 				.and( 'have.class', 'wikipediapreview-body-offline' )
 				.and( 'have.css', 'font-size' ).and( 'equal', '16px' )
 
-			this.getBodyMessage().then( ele => {
+			this.getBodyMessage().then( ( ele ) => {
 				cy.wrap( ele ).find( 'div.wikipediapreview-body-icon' ).should( 'be.visible' )
 				cy.wrap( ele ).find( 'span' ).should( 'contain', msg( lang, 'preview-offline-message' ) )
 
@@ -194,7 +194,7 @@ export class Preview {
 		this.getHeaderWatermark().should( 'be.visible' )
 		this.getHeaderClosebtn().should( 'be.visible' )
 
-		this.getPreview().then( tag => {
+		this.getPreview().then( ( tag ) => {
 
 			const lang = tag.attr( 'lang' )
 
@@ -202,7 +202,7 @@ export class Preview {
 				.and( 'have.class', 'wikipediapreview-body-error' )
 				.and( 'have.css', 'font-size' ).and( 'equal', '16px' )
 
-			this.getBodyMessage().then( ele => {
+			this.getBodyMessage().then( ( ele ) => {
 				cy.wrap( ele ).find( 'div.wikipediapreview-body-icon' )
 				cy.wrap( ele ).find( 'span' ).should( 'contain', msg( lang, 'preview-error-message' ) )
 

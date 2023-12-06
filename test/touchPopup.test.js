@@ -1,20 +1,16 @@
-'use strict'
-const assert = require( 'assert' )
-const sinon = require( 'sinon' )
-const { createTouchPopup } = require( '../src/touchPopup' )
-const { JSDOM } = require( 'jsdom' )
+import { describe, test, beforeAll, expect, vi } from 'vitest'
+import { createTouchPopup } from '../src/touchPopup'
+import { JSDOM } from 'jsdom'
 
 describe( 'createTouchPopup', () => {
-	/* eslint-disable mocha/no-setup-in-describe */
-	const onShowCallback = sinon.spy(),
-		onHideCallback = sinon.spy()
-	/* eslint-enable mocha/no-setup-in-describe */
+	const onShowCallback = vi.fn(),
+		onHideCallback = vi.fn()
 
 	let dom,
 		popup,
 		popupElement
 
-	before( () => {
+	beforeAll( () => {
 		dom = new JSDOM( `
 			<html>
 				<body>
@@ -29,26 +25,26 @@ describe( 'createTouchPopup', () => {
 		popupElement = doc.querySelector( '.wp-touch-popup' )
 	} )
 
-	it( 'adds a hidden popup to the dom', () => {
-		assert.equal( popupElement.style.visibility, 'hidden' )
+	test( 'adds a hidden popup to the dom', () => {
+		expect( popupElement.style.visibility ).toBe( 'hidden' )
 	} )
 
-	it( 'shows content with background screen', () => {
+	test( 'shows content with background screen', () => {
 		popup.show( 'Hello World' )
-		assert.equal( popupElement.style.visibility, 'visible' )
-		assert.equal( popupElement.innerHTML, 'Hello World' )
-		assert( onShowCallback.called )
+		expect( popupElement.style.visibility ).toBe( 'visible' )
+		expect( popupElement.innerHTML ).toBe( 'Hello World' )
+		expect( onShowCallback ).toHaveBeenCalled()
 
 		const backgroundScreen = dom.window.document.querySelector( '.wp-dark-screen' )
-		assert.ok( backgroundScreen )
+		expect( backgroundScreen ).toBeTruthy()
 	} )
 
-	it( 'hides the popup and removes background screen when hide event is triggered', () => {
+	test( 'hides the popup and removes background screen when hide event is triggered', () => {
 		popup.hide()
-		assert.equal( popupElement.style.visibility, 'hidden' )
-		assert( onHideCallback.called )
+		expect( popupElement.style.visibility ).toBe( 'hidden' )
+		expect( onHideCallback ).toHaveBeenCalled()
 
 		const backgroundScreen = dom.window.document.querySelector( '.wp-dark-screen' )
-		assert.ifError( backgroundScreen )
+		expect( backgroundScreen ).toBeFalsy()
 	} )
 } )

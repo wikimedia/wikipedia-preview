@@ -1,12 +1,12 @@
 Cypress.Commands.add( 'navigateToTestPage', () => {
-	cy.visit( '/articles/test.html' )
+	cy.visit( 'demo/articles/test.html' )
 } )
 
 Cypress.Commands.add( 'navigateToEnglishPage', () => {
-	cy.visit( '/articles/english.html' )
+	cy.visit( 'demo/articles/english.html' )
 } )
 
 Cypress.Commands.add( 'navigateToMobileTestPage', () => {
 	cy.viewport( 550, 750 )
-	cy.visitMobile( '/articles/test.html' )
+	cy.visitMobile( 'demo/articles/test.html' )
 } )

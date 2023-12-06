@@ -5,25 +5,23 @@ export default {
 	argTypes: {
 		touch: {
 			name: 'Mobile',
-			defaultValue: false,
 			control: 'boolean'
 		},
 		lang: {
 			name: 'Language',
-			defaultValue: 'en',
-			control: {
-				type: 'select',
-				options: [ 'en', 'fr', 'hi', 'ks', 'he' ]
-			}
+			control: 'select',
+			options: [ 'en', 'fr', 'hi', 'ks', 'he' ]
 		},
 		dir: {
 			name: 'Direction',
-			defaultValue: 'ltr',
-			control: {
-				type: 'inline-radio',
-				options: [ 'ltr', 'rtl' ]
-			}
+			control: 'inline-radio',
+			options: [ 'ltr', 'rtl' ]
 		}
+	},
+	args: {
+		touch: false,
+		lang: 'en',
+		dir: 'ltr'
 	}
 }
 

@@ -14,7 +14,7 @@ describe( 'Check the Gallery Pages ', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
 		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}
@@ -35,7 +35,7 @@ describe( 'Check the Gallery Pages ', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
 		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}

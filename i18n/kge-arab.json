@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"EWDAja"
+		]
+	},
+	"continue-reading": "توروسكو مباچا",
+	"gallery-loading-error": "وات كسالهن هاراک مبوکاک گامبر سيج",
+	"gallery-loading-error-offline": "مكّا كونيكسي اينترنيت",
+	"gallery-loading-error-refresh": "موات اولڠ",
+	"gallery-loading-still": "لوكوک مبوکاک",
+	"gallery-unknown-author": "ڤنوليس مک تيكاڤنداي",
+	"preview-error-message": "وات ماساله هارک نمڤيلكو ڤراتياڠ سيج",
+	"preview-console-error-message": "ڤراتينجاو مكّا اونتوک ارتيكيل '$' (باس:2$)",
+	"read-on-wiki": "باچ د ويكيڤيديا",
+	"read-more": "باچ لوبيه لنجوت د ويكيڤيديا",
+	"preview-disambiguation-message": "جودول <strong>$1</strong> تيكاهيک ريک ليو جک اوسي ارتيكيل ويكيڤيديا",
+	"preview-offline-message": "مكّا كونيكسي اينترنيت",
+	"preview-offline-cta": "چوبا لاگي"
+}
