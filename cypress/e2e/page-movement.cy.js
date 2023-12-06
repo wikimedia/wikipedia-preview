@@ -13,14 +13,14 @@ describe( 'Check Page Movement ', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		// Continue Reading is available
-		preview.getFooterContinueReading().then( res => {
+		preview.getFooterContinueReading().then( ( res ) => {
 			if ( res.css( 'display' ) !== 'none' ) {
 				preview.getFooterContinueReading().click()
 			}
 		} )
 
 		// Open the Wikipedia Page in the same window
-		preview.getFooterReadMore().should( $a => {
+		preview.getFooterReadMore().should( ( $a ) => {
 			expect( $a.attr( 'target' ), 'target' ).to.equal( '_blank' )
 			$a.attr( 'target', '_self' )
 		} ).click()

@@ -6,7 +6,7 @@ const addEventListener = ( target, type, listener, options = undefined ) => {
 }
 
 const clearAllEventListener = () => {
-	eventListenerStack.forEach( eventListener => {
+	eventListenerStack.forEach( ( eventListener ) => {
 		const [ target, type, listener, options ] = eventListener
 		target.removeEventListener( type, listener, options )
 	} )

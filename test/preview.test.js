@@ -1,11 +1,10 @@
-'use strict'
-const assert = require( 'assert' )
-const { renderPreview } = require( '../src/preview' )
+import { describe, test, beforeAll, expect } from 'vitest'
+import { renderPreview } from '../src/preview'
 
 describe( 'renderPreview', () => {
 	describe( 'with image (in english)', () => {
 		let output
-		before( () => {
+		beforeAll( () => {
 			output = renderPreview( 'en', {
 				title: 'Cat',
 				extractHtml: '<p>A small domesticated feline</p>',
@@ -13,21 +12,21 @@ describe( 'renderPreview', () => {
 				imgUrl: 'https://en.wikipedia.org/cat.png'
 			}, false )
 		} )
-		it( 'renders something', () => assert( output ) )
+		test( 'renders something', () => expect( output ).toBeTruthy() )
 
-		it( 'contains the extract HTML', () =>
-			assert( output.includes( '<p>A small domesticated feline</p>' ) ) )
+		test( 'contains the extract HTML', () =>
+			expect( output.includes( '<p>A small domesticated feline</p>' ) ).toBeTruthy() )
 
-		it( 'contains the image url', () =>
-			assert( output.includes( 'https://en.wikipedia.org/cat.png' ) ) )
+		test( 'contains the image url', () =>
+			expect( output.includes( 'https://en.wikipedia.org/cat.png' ) ).toBeTruthy() )
 
-		it( 'contains a link to the article', () =>
-			assert( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2"' ) ) )
+		test( 'contains a link to the article', () =>
+			expect( output.includes( '<a href="https://en.wikipedia.org/wiki/Cat?wprov=wppw2t"' ) ).toBeTruthy() )
 	} )
 
 	describe( 'without image (in french)', () => {
 		let output
-		before( () => {
+		beforeAll( () => {
 			output = renderPreview( 'fr', {
 				title: 'Chat',
 				extractHtml: '<p>Un petit félin domestique</p>',
@@ -35,6 +34,6 @@ describe( 'renderPreview', () => {
 				imgUrl: null
 			}, false )
 		} )
-		it( 'renders something', () => assert( output ) )
+		test( 'renders something', () => expect( output ).toBeTruthy() )
 	} )
 } )

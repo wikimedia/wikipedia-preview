@@ -12,7 +12,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	`.trim()
 }
 
-const hideFullscreenGallery = container => {
+const hideFullscreenGallery = ( container ) => {
 	const fullscreenGallery = container.querySelector( `.${prefixClassname}` )
 	container.removeChild( fullscreenGallery )
 	clearAllEventListener()
@@ -28,7 +28,7 @@ const showFullscreenGallery = (
 	// render utils for fullscreen then slider component
 	container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 	container.querySelector( `.${prefixClassname}-main` )
-		.insertAdjacentHTML( 'beforeend', renderImageSlider( mediaItems, selectedThumb, lang, dir, container ) )
+		.insertAdjacentHTML( 'beforeend', renderImageSlider( lang, dir, container, mediaItems, selectedThumb ) )
 
 	// onShow event for full screen component
 	const closeButton = container.querySelector( `.${prefixClassname}-close` )
