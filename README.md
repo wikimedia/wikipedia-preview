@@ -69,7 +69,7 @@ The `init` function accepts the following options:
 
 Name | Type | Default | Description
 --- | --- | --- | ---
-root | string|Element|Element[] | `document` | Where to look for elements that should have the popup
+root | string,Element,Element[] | `document` | Where to look for elements that should have the popup
 selector. Can be a selector to locate the root, a DOM Element, or an array of Elements | string | `'[data-wikipedia-preview]'` | How nodes that should have the popup are identified
 lang | string | `'en'` | Default Wikipedia language
 popupContainer | DOM Element | `document.body` | Where to put the popup in the DOM
