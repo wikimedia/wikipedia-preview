@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Laitei",
 			"Taytay",
 			"Teitei Para"
 		]
@@ -12,6 +13,7 @@
 	"gallery-loading-still": "A khâh hai chy",
 	"gallery-unknown-author": "Rohtuh pahno leipa",
 	"preview-error-message": "He mochhilina â palâ hai nota pâna sâkha a y.",
+	"preview-console-error-message": "Châpaw '$1' châta mochhilina â hmô (Reihchâ: $2)",
 	"read-on-wiki": "Wikipedia liata reih",
 	"read-more": "Wikipedia liata reina mode",
 	"preview-disambiguation-message": "Chôtlâhpi <strong>$1</strong> nata a zaopa châpawzy Wikipedia lia sâkha hlâ hluh a y.",
