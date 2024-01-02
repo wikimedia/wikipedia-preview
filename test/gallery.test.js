@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom'
 import { describe, test, beforeAll, expect } from 'vitest'
-import { showFullscreenGallery, getGalleryRow } from '../src/gallery'
+import { showFullscreenGallery, getGalleryRow } from '../src/gallery/index.js'
 
 describe( 'Gallery', () => {
 	describe( 'showFullscreenGallery', () => {

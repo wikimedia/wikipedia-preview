@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from '../src/api'
+import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from '../src/api.js'
 
 const requestMock = ( data ) => {
 	return ( url, transformFn, callback ) => {

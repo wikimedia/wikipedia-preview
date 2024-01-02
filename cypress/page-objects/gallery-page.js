@@ -3,6 +3,7 @@ export class Gallery {
 	getGalleryImageBody( i ) {
 		return cy.get( 'div.wp-gallery-fullscreen-slider-item' ).eq( i )
 	}
+
 	getGalleryImage( i ) {
 		return cy.get( 'div.wp-gallery-fullscreen-slider-item' ).eq( i ).find( 'img' )
 	}

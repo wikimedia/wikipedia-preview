@@ -34,7 +34,7 @@ const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 }
 
 const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => {
-	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent( title )}?${getAnalyticsQueryParam()}`
+	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/summary/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
 	request( url, ( data, err ) => {
 		if ( !data ) {
 			logError( msg( lang, 'preview-console-error-message', title, lang ), err )
@@ -72,12 +72,12 @@ const requestPagePreview = ( lang, title, callback, request = cachedRequest ) =>
 }
 
 const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
-	const url = `https://${lang}.wikipedia.org/api/rest_v1/page/media-list/${encodeURIComponent( title )}`
+	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/media-list/${ encodeURIComponent( title ) }`
 	request( url, ( mediaListData ) => {
 		const items = mediaListData.items || []
 		const pageMedia = items.reduce( ( mediaArray, item ) => {
 			if ( item.showInGallery && item.type === 'image' ) {
-				const thumbnail = item && item.srcset && `https:${item.srcset[ 0 ].src}`
+				const thumbnail = item && item.srcset && `https:${ item.srcset[ 0 ].src }`
 				const media = {
 					caption: item.caption && item.caption.text.trim(),
 					thumb: thumbnail,

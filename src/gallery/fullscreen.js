@@ -5,15 +5,15 @@ const prefixClassname = 'wp-gallery-fullscreen'
 
 const renderFullScreenGallery = ( lang, dir ) => {
 	return `
-		<div class="${prefixClassname}" lang="${lang}" dir="${dir}">
-			<div class="${prefixClassname}-close"></div>
-			<div class="${prefixClassname}-main"></div>
+		<div class="${ prefixClassname }" lang="${ lang }" dir="${ dir }">
+			<div class="${ prefixClassname }-close"></div>
+			<div class="${ prefixClassname }-main"></div>
 		</div>
 	`.trim()
 }
 
 const hideFullscreenGallery = ( container ) => {
-	const fullscreenGallery = container.querySelector( `.${prefixClassname}` )
+	const fullscreenGallery = container.querySelector( `.${ prefixClassname }` )
 	container.removeChild( fullscreenGallery )
 	clearAllEventListener()
 }
@@ -27,11 +27,11 @@ const showFullscreenGallery = (
 ) => {
 	// render utils for fullscreen then slider component
 	container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
-	container.querySelector( `.${prefixClassname}-main` )
+	container.querySelector( `.${ prefixClassname }-main` )
 		.insertAdjacentHTML( 'beforeend', renderImageSlider( lang, dir, container, mediaItems, selectedThumb ) )
 
 	// onShow event for full screen component
-	const closeButton = container.querySelector( `.${prefixClassname}-close` )
+	const closeButton = container.querySelector( `.${ prefixClassname }-close` )
 	closeButton.addEventListener( 'click', () => {
 		hideFullscreenGallery( container )
 	} )

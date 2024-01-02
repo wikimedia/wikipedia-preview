@@ -33,17 +33,17 @@ const grabTranslateFromTransform = ( transform ) => {
 	const re = /translate3d\((?<x>.*?)px, (?<y>.*?)px, (?<z>.*?)px/
 	const coordinates = re.exec( transform )
 	return coordinates ?
-		`translate3d(${coordinates.groups.x}px, ${coordinates.groups.y}px, ${0}px)` :
-		`translate3d(${temp.translateX}px, ${temp.translateY}px, ${0}px)`
+		`translate3d(${ coordinates.groups.x }px, ${ coordinates.groups.y }px, ${ 0 }px)` :
+		`translate3d(${ temp.translateX }px, ${ temp.translateY }px, ${ 0 }px)`
 }
 
 const isInvalidEvent = ( e, prefixClassname ) => {
 	const invalidClasses = [
-		`${prefixClassname}-item-caption`,
-		`${prefixClassname}-item-caption-expand-cue`,
-		`${prefixClassname}-item-caption-text`,
-		`${prefixClassname}-item-attribution`,
-		`${prefixClassname}-button`
+		`${ prefixClassname }-item-caption`,
+		`${ prefixClassname }-item-caption-expand-cue`,
+		`${ prefixClassname }-item-caption-text`,
+		`${ prefixClassname }-item-attribution`,
+		`${ prefixClassname }-button`
 	]
 
 	const invalidElement = invalidClasses.find( ( className ) => {
@@ -96,7 +96,7 @@ const setTransformOrigin = ( image, e ) => {
 		currentTransformOrigin.x = image.naturalWidth / 2
 		currentTransformOrigin.y = image.naturalHeight / 2
 	}
-	return `${currentTransformOrigin.x}px ${currentTransformOrigin.y}px`
+	return `${ currentTransformOrigin.x }px ${ currentTransformOrigin.y }px`
 }
 
 const removeEvent = ( e ) => {
@@ -111,7 +111,7 @@ const removeEvent = ( e ) => {
 const clearZoom = ( image ) => {
 	if ( image ) {
 		image.style.transition = temp.imgOriginalTransition
-		image.style.transform = `scale(${scaleMin})`
+		image.style.transform = `scale(${ scaleMin })`
 		zoomedIn = false
 		temp.translateX = 0
 		temp.translateY = 0
@@ -127,10 +127,10 @@ const toggleZoom = ( e ) => {
 	image.style.transformOrigin = setTransformOrigin( image, e )
 
 	if ( isImgZoomedIn() ) {
-		image.style.transform = `scale(${scaleMin})`
+		image.style.transform = `scale(${ scaleMin })`
 		zoomedIn = false
 	} else {
-		image.style.transform = `scale(${scaleMax})`
+		image.style.transform = `scale(${ scaleMax })`
 		zoomedIn = true
 	}
 }
@@ -183,14 +183,14 @@ const zoomMove = ( e ) => {
 				if ( scale + delta < scaleMax ) {
 					// Expand image
 					scale += delta
-					image.style.transform = `${translate3d} scale(${scale})`
+					image.style.transform = `${ translate3d } scale(${ scale })`
 				}
 			}
 			if ( curDiff < prevDiff ) {
 				if ( scale - delta > scaleMin + buffer ) {
 					// Contract image
 					scale -= delta
-					image.style.transform = `${translate3d} scale(${scale})`
+					image.style.transform = `${ translate3d } scale(${ scale })`
 				} else {
 					clearZoom( image )
 				}
@@ -250,7 +250,7 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 
 	if ( isImageWithinBoundaries() ) {
 		updateTempValues()
-		image.style.transform = `translate3d(${translateX}px, ${translateY}px, 0px) scale(${scale})`
+		image.style.transform = `translate3d(${ translateX }px, ${ translateY }px, 0px) scale(${ scale })`
 	} else if ( slideToNextOrPrevious ) {
 		const next = ( dir === 'ltr' && translateX < 0 ) || ( dir === 'rtl' && translateX > 0 )
 		if ( !next && items[ current - 1 ] ) {

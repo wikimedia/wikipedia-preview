@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 
-import { msg } from '../src/i18n'
+import { msg } from '../src/i18n.js'
 
 import english from '../i18n/en.json'
 const [ firstKey, firstValue ] = [ Object.keys( english )[ 0 ], Object.values( english )[ 0 ] ]

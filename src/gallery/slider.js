@@ -16,18 +16,18 @@ const prefixClassname = 'wp-gallery-fullscreen-slider'
 
 const renderImageSlider = ( givenLang, givenDir, container, images = [], selectedImage = '' ) => {
 	const imageListHtml = images.map( () => `
-		<div class="${prefixClassname}-item">
-				<div class="${prefixClassname}-item-loading">
-						<div class="${prefixClassname}-item-loading-spinner">
-								<div class="${prefixClassname}-item-loading-spinner-animation">
-										<div class="${prefixClassname}-item-loading-spinner-animation-bounce"></div>
+		<div class="${ prefixClassname }-item">
+				<div class="${ prefixClassname }-item-loading">
+						<div class="${ prefixClassname }-item-loading-spinner">
+								<div class="${ prefixClassname }-item-loading-spinner-animation">
+										<div class="${ prefixClassname }-item-loading-spinner-animation-bounce"></div>
 								</div>
 						</div>
-						<div class="${prefixClassname}-item-loading-text">${msg( givenLang, 'gallery-loading-still' )}</div>
+						<div class="${ prefixClassname }-item-loading-text">${ msg( givenLang, 'gallery-loading-still' ) }</div>
 				</div>
-				<div class="${prefixClassname}-item-loading-error">
-					<div class="${prefixClassname}-item-loading-error-text">${msg( givenLang, 'gallery-loading-error' )}</div>
-					<div class="${prefixClassname}-item-loading-error-refresh">${msg( givenLang, 'gallery-loading-error-refresh' )}</div>
+				<div class="${ prefixClassname }-item-loading-error">
+					<div class="${ prefixClassname }-item-loading-error-text">${ msg( givenLang, 'gallery-loading-error' ) }</div>
+					<div class="${ prefixClassname }-item-loading-error-refresh">${ msg( givenLang, 'gallery-loading-error-refresh' ) }</div>
 				</div>
 		</div>
 		`.trim()
@@ -46,10 +46,10 @@ const renderImageSlider = ( givenLang, givenDir, container, images = [], selecte
 	parentContainer = container
 
 	return `
-		<div class="${prefixClassname}" style="${dir === 'ltr' ? 'margin-left' : 'margin-right'}:-${current * clientWidth}px">
-				<div class="${prefixClassname}-button previous"></div>
-				<div class="${prefixClassname}-button next"></div>
-				${imageListHtml}
+		<div class="${ prefixClassname }" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ current * clientWidth }px">
+				<div class="${ prefixClassname }-button previous"></div>
+				<div class="${ prefixClassname }-button next"></div>
+				${ imageListHtml }
 		</div>
 		`.trim()
 }
@@ -74,7 +74,7 @@ const renderImageInfo = ( mediaInfo, image ) => {
 		let licenses = ''
 		licenseTypes.forEach( ( type ) => {
 			if ( license && license.indexOf( type ) !== -1 ) {
-				licenses += `<div class="${prefixClassname}-item-attribution-info-${type.toLowerCase()}"></div>`
+				licenses += `<div class="${ prefixClassname }-item-attribution-info-${ type.toLowerCase() }"></div>`
 			}
 		} )
 		return licenses
@@ -96,35 +96,35 @@ const renderImageInfo = ( mediaInfo, image ) => {
 
 	// @todo consider a wrapper container for all the image info?
 	return `
-		<div class="${prefixClassname}-item-caption">
-			${isCaptionExpandable() ? `<div class="${prefixClassname}-item-caption-expand-cue"></div>` : ''}
-			${description ? `<div class="${prefixClassname}-item-caption-text"><bdi>${description}</bdi></div>` : ''}
+		<div class="${ prefixClassname }-item-caption">
+			${ isCaptionExpandable() ? `<div class="${ prefixClassname }-item-caption-expand-cue"></div>` : '' }
+			${ description ? `<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>` : '' }
 		</div>
-		<div class="${prefixClassname}-item-attribution">
-			<div class="${prefixClassname}-item-attribution-info">
-				${getLicenseInfo( mediaInfo.license )}
-				${author ? `<bdi class="${prefixClassname}-item-attribution-info-author">${author}</bdi>` : ''}
+		<div class="${ prefixClassname }-item-attribution">
+			<div class="${ prefixClassname }-item-attribution-info">
+				${ getLicenseInfo( mediaInfo.license ) }
+				${ author ? `<bdi class="${ prefixClassname }-item-attribution-info-author">${ author }</bdi>` : '' }
 			</div>
-			${link ? `<div class="${prefixClassname}-item-attribution-more-info">
-				<a href="${link}" class="${prefixClassname}-item-attribution-more-info-link" target="_blank"></a>
-			</div>` : ''}
+			${ link ? `<div class="${ prefixClassname }-item-attribution-more-info">
+				<a href="${ link }" class="${ prefixClassname }-item-attribution-more-info-link" target="_blank"></a>
+			</div>` : '' }
 		</div>
 	`.trim()
 }
 
 const bindImageEvent = ( container, refresh = false ) => {
 	const imageElement = container.querySelector( 'img' )
-	const loading = container.querySelector( `.${prefixClassname}-item-loading` )
-	const errorElement = container.querySelector( `.${prefixClassname}-item-loading-error` )
+	const loading = container.querySelector( `.${ prefixClassname }-item-loading` )
+	const errorElement = container.querySelector( `.${ prefixClassname }-item-loading-error` )
 
 	if ( refresh ) {
-		const slider = parentContainer.querySelector( `.${prefixClassname}` )
-		const items = slider.querySelectorAll( `.${prefixClassname}-item` )
+		const slider = parentContainer.querySelector( `.${ prefixClassname }` )
+		const items = slider.querySelectorAll( `.${ prefixClassname }-item` )
 
 		items.forEach( ( item ) => {
 			const image = item.querySelector( 'img' )
-			const caption = item.querySelector( `.${prefixClassname}-item-caption` )
-			const attribution = item.querySelector( `.${prefixClassname}-item-attribution` )
+			const caption = item.querySelector( `.${ prefixClassname }-item-caption` )
+			const attribution = item.querySelector( `.${ prefixClassname }-item-attribution` )
 
 			if ( image ) {
 				item.removeChild( image )
@@ -148,7 +148,7 @@ const bindImageEvent = ( container, refresh = false ) => {
 		errorElement.style.visibility = 'hidden'
 		imageElement.style.visibility = 'visible'
 	} else {
-		const textElement = container.querySelector( `.${prefixClassname}-item-loading-text` )
+		const textElement = container.querySelector( `.${ prefixClassname }-item-loading-text` )
 		const timeoutId = setTimeout( () => {
 			textElement.style.visibility = 'visible'
 		}, 5000 )
@@ -161,12 +161,12 @@ const bindImageEvent = ( container, refresh = false ) => {
 		} )
 
 		imageElement.addEventListener( 'error', () => {
-			const refreshElement = container.querySelector( `.${prefixClassname}-item-loading-error-refresh` )
+			const refreshElement = container.querySelector( `.${ prefixClassname }-item-loading-error-refresh` )
 			loading.style.visibility = 'hidden'
 			imageElement.style.visibility = 'hidden'
 
 			if ( !isOnline() ) {
-				const errorElementText = container.querySelector( `.${prefixClassname}-item-loading-error-text` )
+				const errorElementText = container.querySelector( `.${ prefixClassname }-item-loading-error-text` )
 				errorElementText.innerText = msg( lang, 'gallery-loading-error-offline' )
 				errorElement.classList.add( 'offline' )
 			}
@@ -181,8 +181,8 @@ const bindImageEvent = ( container, refresh = false ) => {
 }
 
 const handleCaptionExpansion = ( item, forceClose = false ) => {
-	const captionText = item.querySelector( `.${prefixClassname}-item-caption-text` )
-	const expandCue = item.querySelector( `.${prefixClassname}-item-caption-expand-cue` )
+	const captionText = item.querySelector( `.${ prefixClassname }-item-caption-text` )
+	const expandCue = item.querySelector( `.${ prefixClassname }-item-caption-expand-cue` )
 	const expanded = item.querySelector( '.expanded' )
 
 	if ( expandCue && expanded || forceClose && expandCue ) {
@@ -195,8 +195,8 @@ const handleCaptionExpansion = ( item, forceClose = false ) => {
 }
 
 const showImageAndInfo = ( index, refreshImage = false ) => {
-	const slider = parentContainer.querySelector( `.${prefixClassname}` )
-	const items = slider.querySelectorAll( `.${prefixClassname}-item` )
+	const slider = parentContainer.querySelector( `.${ prefixClassname }` )
+	const items = slider.querySelectorAll( `.${ prefixClassname }-item` )
 	const item = items[ index ]
 
 	if ( item ) {
@@ -205,13 +205,13 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 			gallery[ index ].title,
 			( mediaInfo ) => {
 				const imageElement = item.querySelector( 'img' )
-				const captionElement = item.querySelector( `.${prefixClassname}-item-caption` )
+				const captionElement = item.querySelector( `.${ prefixClassname }-item-caption` )
 
 				if ( !imageElement ) {
 					if ( !refreshImage ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}"/>` )
+						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }"/>` )
 					} else {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${mediaInfo.bestFitImageUrl}?timestamp=${Date.now()}"/>` )
+						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }?timestamp=${ Date.now() }"/>` )
 					}
 					bindImageEvent( item )
 				}
@@ -222,7 +222,7 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 						renderImageInfo( mediaInfo, gallery[ index ] )
 					)
 
-					const insertedCaption = item.querySelector( `.${prefixClassname}-item-caption` )
+					const insertedCaption = item.querySelector( `.${ prefixClassname }-item-caption` )
 
 					insertedCaption.addEventListener( 'click', () => {
 						handleCaptionExpansion( item )
@@ -233,8 +233,8 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 }
 
 const renderNext = ( offset = 1, refresh = false ) => {
-	const slider = parentContainer.querySelector( `.${prefixClassname}` )
-	const items = slider.querySelectorAll( `.${prefixClassname}-item` )
+	const slider = parentContainer.querySelector( `.${ prefixClassname }` )
+	const items = slider.querySelectorAll( `.${ prefixClassname }-item` )
 	const nextButton = slider.querySelector( '.next' )
 	const previousButton = slider.querySelector( '.previous' )
 	const next = current + offset
@@ -262,9 +262,9 @@ const renderPrevious = () => {
 }
 
 const applyGestureEvent = () => {
-	const container = parentContainer.querySelector( `.${prefixClassname}` )
+	const container = parentContainer.querySelector( `.${ prefixClassname }` )
 	const marginLR = dir === 'ltr' ? 'marginLeft' : 'marginRight'
-	const items = container.querySelectorAll( `.${prefixClassname}-item` )
+	const items = container.querySelectorAll( `.${ prefixClassname }-item` )
 
 	container.addEventListener( 'pointerdown', ( e ) => {
 		if ( isInvalidEvent( e, prefixClassname ) ) {
@@ -308,8 +308,8 @@ const toggleFocusMode = () => {
 }
 
 const onShowFn = () => {
-	const sliderContainer = parentContainer.querySelector( `.${prefixClassname}` )
-	const items = sliderContainer.querySelectorAll( `.${prefixClassname}-item` )
+	const sliderContainer = parentContainer.querySelector( `.${ prefixClassname }` )
+	const items = sliderContainer.querySelectorAll( `.${ prefixClassname }-item` )
 	const nextButton = sliderContainer.querySelector( '.next' )
 	const previousButton = sliderContainer.querySelector( '.previous' )
 	let tapped = false
@@ -318,7 +318,7 @@ const onShowFn = () => {
 	applyGestureEvent()
 
 	sliderContainer.addEventListener( 'click', ( e ) => {
-		if ( e.target.className === `${prefixClassname}-item` ||
+		if ( e.target.className === `${ prefixClassname }-item` ||
 				e.target.tagName === 'IMG' ) {
 			if ( !tapped ) {
 				tapped = setTimeout( () => {
