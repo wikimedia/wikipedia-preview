@@ -33,7 +33,9 @@ const forEachRoot = ( rootConfig, callback ) => {
 	) {
 		Array.prototype.forEach.call(
 			document.querySelectorAll( rootConfig ),
-			( node ) => { roots.push( node ) }
+			( node ) => {
+				roots.push( node )
+			}
 		)
 	}
 
@@ -215,15 +217,15 @@ function init( {
 	if ( debug ) {
 		/* eslint-disable no-console */
 		console.group( 'Wikipedia Preview [debug mode]' )
-		console.group( `Searching for "${selector}" inside ${root}, Total links found: ${foundSelectorLinks.length}` )
+		console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
 		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch, false )}` )
+			console.log( index + 1, `${ link.text } -> ${ buildWikipediaUrl( link.lang, link.title, isTouch, false ) }` )
 		} )
 		console.groupEnd()
 		if ( detectLinks ) {
-			console.group( `Searching for links to Wikipedia, Total links found: ${foundDetectLinks.length}` )
+			console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
 			foundDetectLinks.forEach( ( link, index ) => {
-				console.log( index + 1, `${link.text} -> ${buildWikipediaUrl( link.lang, link.title, isTouch, false )}` )
+				console.log( index + 1, `${ link.text } -> ${ buildWikipediaUrl( link.lang, link.title, isTouch, false ) }` )
 			} )
 			console.groupEnd()
 		}

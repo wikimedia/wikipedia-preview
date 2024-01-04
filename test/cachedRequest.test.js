@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { cachedRequest } from '../src/cachedRequest'
+import { cachedRequest } from '../src/cachedRequest.js'
 
 const requestMock = ( data ) => {
 	return ( url, callback ) => {
@@ -9,7 +9,7 @@ const requestMock = ( data ) => {
 
 describe( 'cachedRequest', () => {
 	test( 'executes the transform function', () => {
-		return cachedRequest( 'url', ( d ) => `transformed ${d}`, ( data ) => {
+		return cachedRequest( 'url', ( d ) => `transformed ${ d }`, ( data ) => {
 			expect( data ).toBe( 'transformed data' )
 		}, requestMock( 'data' ) )
 	} )

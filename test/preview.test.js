@@ -1,5 +1,5 @@
 import { describe, test, beforeAll, expect } from 'vitest'
-import { renderPreview } from '../src/preview'
+import { renderPreview } from '../src/preview.js'
 
 describe( 'renderPreview', () => {
 	describe( 'with image (in english)', () => {

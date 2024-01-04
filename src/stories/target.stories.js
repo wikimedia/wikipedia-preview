@@ -22,7 +22,7 @@ export default {
 
 export const Hyperlink = ( { lang, title } ) => {
 	const container = document.createElement( 'div' )
-	const template = `<a href="${buildWikipediaUrl( lang, title, true, false )}">${title} (${lang})</a>`
+	const template = `<a href="${ buildWikipediaUrl( lang, title, true, false ) }">${ title } (${ lang })</a>`
 	container.innerHTML = template
 	wikipediaPreview.init( { root: container, detectLinks: true } )
 	return container
@@ -30,7 +30,7 @@ export const Hyperlink = ( { lang, title } ) => {
 
 export const Image = ( { lang, title } ) => {
 	const container = document.createElement( 'div' )
-	const template = `<a href="${buildWikipediaUrl( lang, title, true, false )}"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Wikipedia-logo-v2.png"></a>`
+	const template = `<a href="${ buildWikipediaUrl( lang, title, true, false ) }"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Wikipedia-logo-v2.png"></a>`
 	container.innerHTML = template
 	wikipediaPreview.init( { root: container, detectLinks: true } )
 	return container
@@ -38,7 +38,7 @@ export const Image = ( { lang, title } ) => {
 
 export const Text = ( { lang, title } ) => {
 	const container = document.createElement( 'div' )
-	const template = `<span class="wmf-wp-with-preview" data-wikipedia-preview data-wp-title="${title}">${title} (${lang})</span>`
+	const template = `<span class="wmf-wp-with-preview" data-wikipedia-preview data-wp-title="${ title }">${ title } (${ lang })</span>`
 	container.innerHTML = template
 	wikipediaPreview.init( { root: container, lang } )
 	return container

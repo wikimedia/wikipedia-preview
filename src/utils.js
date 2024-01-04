@@ -55,9 +55,9 @@ const defaultParams = {
 
 const buildMwApiUrl = ( lang, params ) => {
 	params = { ...defaultParams, ...params }
-	const baseUrl = `https://${lang}.wikipedia.org/w/api.php`
+	const baseUrl = `https://${ lang }.wikipedia.org/w/api.php`
 	return baseUrl + '?' + Object.keys( params ).map( ( p ) => {
-		return `${p}=${encodeURIComponent( params[ p ] )}`
+		return `${ p }=${ encodeURIComponent( params[ p ] ) }`
 	} ).join( '&' )
 }
 
@@ -86,12 +86,12 @@ const getDeviceSize = () => {
 const getAnalyticsQueryParam = () => 'wprov=wppw2' + ( isTouch ? 't' : '' )
 
 const buildWikipediaUrl = ( lang, title, touch, analytics = true ) => {
-	return `https://${lang}${touch ? '.m' : ''}.wikipedia.org/wiki/${encodeURIComponent( title )}${analytics ? `?${getAnalyticsQueryParam()}` : ''}`
+	return `https://${ lang }${ touch ? '.m' : '' }.wikipedia.org/wiki/${ encodeURIComponent( title ) }${ analytics ? `?${ getAnalyticsQueryParam() }` : '' }`
 }
 
 const version = () => {
 	/* eslint-disable-next-line no-undef, no-console */
-	console.log( `Wikipedia Preview - version ${APP_VERSION} (${GIT_HASH})` )
+	console.log( `Wikipedia Preview - version ${ APP_VERSION } (${ GIT_HASH })` )
 }
 
 const logError = ( ...err ) => {

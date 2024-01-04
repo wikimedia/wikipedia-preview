@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { getWikipediaAttrFromUrl, sanitizeHTML } from '../src/utils'
+import { getWikipediaAttrFromUrl, sanitizeHTML } from '../src/utils.js'
 
 describe( 'utils', () => {
 	describe( 'getWikipediaAttrFromUrl', () => {
@@ -30,7 +30,7 @@ describe( 'utils', () => {
 		]
 
 		const testFn = ( t ) => {
-			test( `checks ${t.url}`, () => {
+			test( `checks ${ t.url }`, () => {
 				const result = getWikipediaAttrFromUrl( t.url )
 				expect( result ).toStrictEqual( t.expected )
 			} )
@@ -54,7 +54,7 @@ describe( 'utils', () => {
 		]
 
 		const testFn = ( t ) => {
-			test( `checks ${t.html}`, () => {
+			test( `checks ${ t.html }`, () => {
 				const result = sanitizeHTML( t.html )
 				expect( result ).toStrictEqual( t.expected )
 			} )

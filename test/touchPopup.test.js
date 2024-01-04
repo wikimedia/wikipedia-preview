@@ -1,5 +1,5 @@
 import { describe, test, beforeAll, expect, vi } from 'vitest'
-import { createTouchPopup } from '../src/touchPopup'
+import { createTouchPopup } from '../src/touchPopup.js'
 import { JSDOM } from 'jsdom'
 
 describe( 'createTouchPopup', () => {
