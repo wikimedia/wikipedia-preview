@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Antho201723"
+		]
+	},
+	"continue-reading": "Continua à leghje",
+	"gallery-loading-error": "Caricamentu fiascatu di sta figura",
+	"gallery-loading-error-offline": "Varuna cunnessione internet",
+	"gallery-loading-error-refresh": "Attualizà",
+	"gallery-loading-still": "Si carica",
+	"gallery-unknown-author": "Autore scunisciutu",
+	"preview-error-message": "Ci hè statu un prublema durante a visualisazione di l'anteprima.",
+	"preview-console-error-message": "Anteprima indispunibile per l'articulu '$1' (Lingua: $2)",
+	"read-on-wiki": "Leghje nant'à Wikipedia",
+	"read-more": "Per sapene di più nant'à Wikipedia",
+	"preview-disambiguation-message": "U titulu <strong>$1</strong> hè in leia incù più d'un articulu nant'à Wikipedia.",
+	"preview-offline-message": "Varruna cunnession internet dispunibile.",
+	"preview-offline-cta": "Turnà à pruvà"
+}
