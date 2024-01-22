@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1917 Ekim Devrimi",
+			"GolyatGeri",
 			"Mirzali",
 			"Orbot707"
 		]
@@ -13,6 +14,7 @@
 	"gallery-loading-still": "Hewna beno bar",
 	"gallery-unknown-author": "Nuştekarê nêzanıyeni",
 	"preview-error-message": "Mocnayışê nê verqayti de xırabiye esta.",
+	"preview-console-error-message": "Veronayış serva pela '$1' mıkum niyo (Zon: $2)",
 	"read-on-wiki": "Wikipediya de bıwanê",
 	"read-more": "Wikipedia sero tayna bıwanê",
 	"preview-disambiguation-message": "Serey <strong>$1</strong> yew ra zêde meqaleyê Wikipedia ya eleqeyıno.",
