@@ -1,10 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dj",
 			"Hanna Tardos"
 		]
 	},
-	"gallery-loading-error-offline": "Nincs internetkapcsolat",
+	"gallery-loading-error": "Hiba történt a kép betöltésekor",
+	"gallery-loading-error-offline": "Nincs internetkapcsolat.",
+	"gallery-loading-error-refresh": "Frissítés",
+	"gallery-loading-still": "Még mindig tölt",
+	"gallery-unknown-author": "Ismeretlen szerző",
+	"preview-error-message": "Hiba történt az előnézet megjelenítésekor.",
+	"preview-console-error-message": "A(z) \"$1\" szócikk előnézete nem érhető el (nyelv: $2)",
+	"read-on-wiki": "Olvass a Wikipédián",
+	"read-more": "Olvass tovább a Wikipédián",
+	"preview-disambiguation-message": "<strong>$1</strong> cím egynél több cikkhez kapcsolódik a Wikipédián.",
 	"preview-offline-message": "Nincs internetkapcsolat",
 	"preview-offline-cta": "Próbáld újra"
 }
