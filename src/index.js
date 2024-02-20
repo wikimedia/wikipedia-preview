@@ -118,8 +118,12 @@ function init( {
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
+						const content = data.extractHtml ?
+							renderPreview( localLang, data, isTouch ) :
+							// fallback message when no extract is found on disambiguation page
+							renderDisambiguation( isTouch, localLang, data.title, data.dir )
 						popup.show(
-							renderDisambiguation( isTouch, localLang, data.title, data.dir ),
+							content,
 							currentTarget,
 							pointerPosition
 						)
