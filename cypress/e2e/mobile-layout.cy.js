@@ -50,6 +50,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 		preview.getPreviewSpan().eq( 2 ).click()
 		// Checks the preview
 		preview.checkMobilePreview()
+		preview.checkPreview()
 
 		// add this check back if found a disambiguation page with no extract data
 		// preview.checkPreviewDisambiguation()
