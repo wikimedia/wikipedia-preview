@@ -84,7 +84,11 @@ export const Error = ( { touch, lang, title, dir } ) => {
 	return renderError( touch, lang, title, dir )
 }
 
-export const Disambiguation = ( { touch, lang, title, dir } ) => {
+export const Disambiguation = ( { lang, title, extractHtml, dir, pageUrl, touch } ) => {
+	return renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch )
+}
+
+export const DisambiguationWithNoExtract = ( { touch, lang, title, dir } ) => {
 	return renderDisambiguation( touch, lang, title, dir )
 }
 
