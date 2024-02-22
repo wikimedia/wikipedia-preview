@@ -83,20 +83,6 @@
 		max-height: 248px;
 		overflow: hidden;
 
-		&:after {
-			content: ' ';
-			position: absolute;
-			width: 100%;
-			bottom: 35px;
-			left: 0;
-			right: 200px;
-			top: 235px;
-			background: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
-		}
-
 		p {
 			margin: 0;
 			color: #202122;
@@ -343,6 +329,42 @@
 				right: auto;
 			}
 		}
+	}
+
+	&.dark {
+		background-color: #202122;
+
+		.wikipediapreview-body {
+			background-color: #202122;
+			&-message,
+			p {
+				color: #EAECF0;
+			}
+		}
+
+		.wikipediapreview-header-wordmark,
+		.wikipediapreview-header-closebtn {
+			filter: invert(1);
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.wikipediapreview {
+			background-color: #202122;
+
+			.wikipediapreview-body {
+				background-color: #202122;
+				&-message,
+				p {
+					color: #EAECF0;
+				}
+			}
+
+			.wikipediapreview-header-wordmark,
+			.wikipediapreview-header-closebtn {
+				filter: invert(1);
+			}
+		}
+
 	}
 }
 

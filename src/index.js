@@ -65,7 +65,8 @@ function init( {
 	detectLinks = false,
 	popupContainer = document.body,
 	events = {},
-	debug = false
+	debug = false,
+	prefersColorScheme = 'light'
 } ) {
 	const globalLang = lang
 	const popup = isTouch ?
@@ -99,7 +100,7 @@ function init( {
 
 		popup.loading = true
 		popup.dir = dir
-		popup.show( renderLoading( isTouch, localLang, dir ), currentTarget, pointerPosition )
+		popup.show( renderLoading( isTouch, localLang, dir, prefersColorScheme ), currentTarget, pointerPosition )
 
 		requestPagePreview( localLang, title, ( data ) => {
 			if ( popupId !== currentPopupId ) {
@@ -112,16 +113,16 @@ function init( {
 					popup.title = title
 					if ( data.type === 'standard' ) {
 						popup.show(
-							renderPreview( localLang, data, isTouch ),
+							renderPreview( localLang, data, isTouch, prefersColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?
-							renderPreview( localLang, data, isTouch ) :
+							renderPreview( localLang, data, isTouch, prefersColorScheme ) :
 							// fallback message when no extract is found on disambiguation page
-							renderDisambiguation( isTouch, localLang, data.title, data.dir )
+							renderDisambiguation( isTouch, localLang, data.title, data.dir, prefersColorScheme )
 						popup.show(
 							content,
 							currentTarget,
@@ -132,14 +133,14 @@ function init( {
 				} else {
 					if ( isOnline() ) {
 						popup.show(
-							renderError( isTouch, localLang, title, dir ),
+							renderError( isTouch, localLang, title, dir, prefersColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
-							renderOffline( isTouch, localLang, dir ),
+							renderOffline( isTouch, localLang, dir, prefersColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
