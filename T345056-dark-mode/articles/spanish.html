@@ -11,6 +11,18 @@
         <link href="../css/article.css" rel="stylesheet" type="text/css"/>
         <link href="../css/link.css" rel="stylesheet" type="text/css"/>
         <style>
+            body {
+                background-color: #202122;
+
+                p {
+                    color: #EAECF0;
+                }
+            }
+
+            .header {
+                color: #36c;
+            }
+
             @media screen and (max-width: 650px) {
                 .customize-background-position {    
                     background-position-y: -30px !important;
@@ -67,7 +79,8 @@
         <script src="../script/wikipedia-preview.umd.cjs"></script>
         <script>
             wikipediaPreview.init({
-                lang: 'es'
+                lang: 'es',
+                prefersColorScheme: 'dark'
             });
         </script>
         <!-- End of Scripts -->
