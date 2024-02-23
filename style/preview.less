@@ -347,25 +347,6 @@
 			filter: invert(1);
 		}
 	}
-	@media (prefers-color-scheme: dark) {
-		.wikipediapreview {
-			background-color: #202122;
-
-			.wikipediapreview-body {
-				background-color: #202122;
-				&-message,
-				p {
-					color: #EAECF0;
-				}
-			}
-
-			.wikipediapreview-header-wordmark,
-			.wikipediapreview-header-closebtn {
-				filter: invert(1);
-			}
-		}
-
-	}
 }
 
 .wikipediapreview-body-non-regular {
@@ -373,4 +354,24 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+	.wikipediapreview {
+		background-color: #202122;
+
+		.wikipediapreview-body {
+			background-color: #202122;
+			&-message,
+			p {
+				color: #EAECF0;
+			}
+		}
+
+		.wikipediapreview-header-wordmark,
+		.wikipediapreview-header-closebtn {
+			filter: invert(1);
+		}
+	}
+
 }
