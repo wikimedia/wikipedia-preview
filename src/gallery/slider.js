@@ -11,7 +11,7 @@ let lang
 let gallery
 let parentContainer
 
-const clientWidth = window.innerWidth
+const getClientWidth = () => window.innerWidth
 const prefixClassname = 'wp-gallery-fullscreen-slider'
 
 const renderImageSlider = ( givenLang, givenDir, container, images = [], selectedImage = '' ) => {
@@ -46,7 +46,7 @@ const renderImageSlider = ( givenLang, givenDir, container, images = [], selecte
 	parentContainer = container
 
 	return `
-		<div class="${ prefixClassname }" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ current * clientWidth }px">
+		<div class="${ prefixClassname }" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ current * getClientWidth() }px">
 				<div class="${ prefixClassname }-button previous"></div>
 				<div class="${ prefixClassname }-button next"></div>
 				${ imageListHtml }
@@ -85,9 +85,9 @@ const renderImageInfo = ( mediaInfo, image ) => {
 	const description = getImageDescription()
 
 	const isCaptionExpandable = () => {
-		if ( clientWidth < 400 && description.length > 128 ) {
+		if ( getClientWidth() < 400 && description.length > 128 ) {
 			return true
-		} else if ( clientWidth > 400 && description.length > 142 ) {
+		} else if ( getClientWidth() > 400 && description.length > 142 ) {
 			return true
 		} else {
 			return false
@@ -254,7 +254,7 @@ const renderNext = ( offset = 1, refresh = false ) => {
 		showImageAndInfo( current - 1, refresh )
 	}
 
-	slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -clientWidth * current + 'px'
+	slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -getClientWidth() * current + 'px'
 }
 
 const renderPrevious = () => {
@@ -332,6 +332,18 @@ const onShowFn = () => {
 				toggleZoom( e )
 			}
 		}
+	} )
+
+	// the following code to reset styling when user resize the screen size when gallery is opened
+	const windowResize = function () {
+		const slider = document.querySelector( '.' + prefixClassname )
+		slider.style.marginLeft = -current * getClientWidth() + 'px'
+	}
+
+	let windowResizeTimeout // used for debounced
+	addEventListener( window, 'resize', () => {
+		clearTimeout( windowResizeTimeout )
+		windowResizeTimeout = setTimeout( windowResize, 100 )
 	} )
 
 	if ( items.length === 1 ) {
