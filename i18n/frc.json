@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beunice"
+			"Beunice",
+			"Cinebeunice"
 		]
 	},
 	"continue-reading": "Continuer à lire",
-	"gallery-loading-error": "Une erreur s’est produite durant le chargement de cette portrait.",
+	"gallery-loading-error": "Une erreur s’est produite durant le chargement de cette image.",
 	"gallery-loading-error-offline": "Aucune connexion Internet disponible.",
 	"gallery-loading-error-refresh": "Actualiser",
 	"gallery-loading-still": "Chargement encore en cours",
@@ -16,5 +17,5 @@
 	"read-more": "Lire davantage sur Wikipédia",
 	"preview-disambiguation-message": "Le titre <strong>$1</strong> est lié à plus d’un article dans Wikipédia.",
 	"preview-offline-message": "Aucune connexion Internet disponible.",
-	"preview-offline-cta": "Assayez à nouveau"
+	"preview-offline-cta": "Essayez à nouveau"
 }
