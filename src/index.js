@@ -100,7 +100,11 @@ function init( {
 
 		popup.loading = true
 		popup.dir = dir
-		popup.show( renderLoading( isTouch, localLang, dir, prefersColorScheme ), currentTarget, pointerPosition )
+		popup.show(
+			renderLoading( isTouch, localLang, dir, prefersColorScheme ),
+			currentTarget,
+			pointerPosition
+		)
 
 		requestPagePreview( localLang, title, ( data ) => {
 			if ( popupId !== currentPopupId ) {
@@ -122,7 +126,13 @@ function init( {
 						const content = data.extractHtml ?
 							renderPreview( localLang, data, isTouch, prefersColorScheme ) :
 							// fallback message when no extract is found on disambiguation page
-							renderDisambiguation( isTouch, localLang, data.title, data.dir, prefersColorScheme )
+							renderDisambiguation(
+								isTouch,
+								localLang,
+								data.title,
+								data.dir,
+								prefersColorScheme
+							)
 						popup.show(
 							content,
 							currentTarget,

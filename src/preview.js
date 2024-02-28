@@ -54,7 +54,14 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 			</div>
 		`.trim()
 
-	return render( lang, isTouch, data.dir, getPreviewHeader( lang, imageUrl ), bodyContent, prefersColorScheme )
+	return render(
+		lang,
+		isTouch,
+		data.dir,
+		getPreviewHeader( lang, imageUrl ),
+		bodyContent,
+		prefersColorScheme
+	)
 }
 
 const renderLoading = ( isTouch, lang, dir, prefersColorScheme ) => {
