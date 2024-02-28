@@ -334,16 +334,21 @@ const onShowFn = () => {
 		}
 	} )
 
-	// the following code to reset styling when user resize the screen size when gallery is opened
-	const windowResize = function () {
-		const slider = document.querySelector( '.' + prefixClassname )
-		slider.style.marginLeft = -current * getClientWidth() + 'px'
+	// set the slider position when user resize the gallery fullscreen size
+	const windowResize = function ( el ) {
+		el.style.transition = 'unset'
+		el.style.marginLeft = -current * getClientWidth() + 'px'
 	}
 
 	let windowResizeTimeout // used for debounced
 	addEventListener( window, 'resize', () => {
+		const slider = document.querySelector( '.' + prefixClassname )
+		windowResize( slider )
+
 		clearTimeout( windowResizeTimeout )
-		windowResizeTimeout = setTimeout( windowResize, 100 )
+		windowResizeTimeout = setTimeout( () => {
+			slider.style.removeProperty( 'transition' )
+		}, 100 )
 	} )
 
 	if ( items.length === 1 ) {
