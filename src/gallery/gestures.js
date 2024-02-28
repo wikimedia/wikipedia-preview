@@ -1,7 +1,7 @@
 const scaleMin = 1
 const scaleMax = 2
-const clientWidth = window.innerWidth
-const clientHeight = window.innerHeight
+const getClientWidth = () => window.innerWidth
+const getClientHeight = () => window.innerHeight
 const temp = {
 	screenX: null,
 	originalMarginLeft: null,
@@ -63,7 +63,7 @@ const isImgLandscape = ( image ) => {
 
 const isImgSmallerThanViewport = ( image ) => {
 	const buffer = 50
-	return image.naturalWidth + buffer < clientWidth
+	return image.naturalWidth + buffer < getClientWidth()
 }
 
 const getFingerAmount = () => {
@@ -210,10 +210,10 @@ const zoomScroll = ( e, renderNext, items, current, dir ) => {
 
 	const transform = image.style.transform
 	const scale = grabScaleFromTransform( transform )
-	const leftLimit = clientWidth / 8
-	const rightLimit = clientWidth - leftLimit
-	const topLimit = isImgLandscape( image ) ? clientHeight / 4 : clientHeight / 8
-	const bottomLimit = clientHeight - topLimit
+	const leftLimit = getClientWidth() / 8
+	const rightLimit = getClientWidth() - leftLimit
+	const topLimit = isImgLandscape( image ) ? getClientHeight() / 4 : getClientHeight() / 8
+	const bottomLimit = getClientHeight() - topLimit
 	const offset = 80
 
 	image.style.transition = 'unset'
@@ -297,12 +297,12 @@ const slideMove = ( e, container, marginLR, dir ) => {
 const slideEnd = ( e, container, renderNext, marginLR, current ) => {
 	const diff = temp.originalMarginLeft - temp.currentMarginLeft
 	const duration = Date.now() - temp.durationStart
-	if ( Math.abs( diff / clientWidth ) > 0.4 ||
+	if ( Math.abs( diff / getClientWidth() ) > 0.4 ||
     ( duration <= 300 && Math.abs( diff ) > 5 )
 	) {
 		renderNext( diff > 0 ? 1 : -1 )
 	} else {
-		container.style[ marginLR ] = -clientWidth * current + 'px'
+		container.style[ marginLR ] = -getClientWidth() * current + 'px'
 	}
 
 }
