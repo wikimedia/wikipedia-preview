@@ -76,6 +76,7 @@ popupContainer | DOM Element | `document.body` | Where to put the popup in the D
 detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
 events | Object | `{}` | Custom event handlers: `{ onShow: <fn>, onWikiRead: <fn> }`
 debug | Boolean | `false` | Shows the debug message when `init()` is called
+prefersColorScheme | string | `'detect'` | Sets theme color. Allowed values are 'light', 'dark' and 'detect'. Setting it to 'light' or 'dark' will dictate theme color regardless of [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme); setting to 'detect' will render preview according to [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 Example (custom selector)
 ```html

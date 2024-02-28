@@ -4,7 +4,6 @@
 	width: 350px;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	border-radius: 8px 8px 0 0;
-	background-color: #fff;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 
 	* {
@@ -79,13 +78,11 @@
 	}
 
 	&-body {
-		background-color: #fff;
 		max-height: 248px;
 		overflow: hidden;
 
 		p {
 			margin: 0;
-			color: #202122;
 			line-height: 1.6;
 			font-size: 18px;
 			padding: 10px 20px;
@@ -103,7 +100,6 @@
 			margin-right: 23px;
 			font-size: 16px;
 			line-height: 1.4;
-			color: #000;
 		}
 
 		&-icon {
@@ -330,23 +326,6 @@
 			}
 		}
 	}
-
-	&.dark {
-		background-color: #202122;
-
-		.wikipediapreview-body {
-			background-color: #202122;
-			&-message,
-			p {
-				color: #EAECF0;
-			}
-		}
-
-		.wikipediapreview-header-wordmark,
-		.wikipediapreview-header-closebtn {
-			filter: invert(1);
-		}
-	}
 }
 
 .wikipediapreview-body-non-regular {
@@ -358,20 +337,52 @@
 
 @media (prefers-color-scheme: dark) {
 	.wikipediapreview {
-		background-color: #202122;
+		.wikipediapreview-dark-theme();
+	}
+}
 
-		.wikipediapreview-body {
-			background-color: #202122;
-			&-message,
-			p {
-				color: #EAECF0;
-			}
-		}
+@media (prefers-color-scheme: light) {
+	.wikipediapreview {
+		.wikipediapreview-light-theme();
+	}
+}
 
-		.wikipediapreview-header-wordmark,
-		.wikipediapreview-header-closebtn {
-			filter: invert(1);
+.wikipediapreview.wikipediapreview-dark-theme {
+	.wikipediapreview-dark-theme();
+}
+
+.wikipediapreview.wikipediapreview-light-theme {
+	.wikipediapreview-light-theme();
+}
+
+.wikipediapreview-dark-theme() {
+	background-color: #202122;
+
+	.wikipediapreview-body {
+		&-message,
+		p {
+			color: #EAECF0;
 		}
 	}
 
+	.wikipediapreview-header-wordmark,
+	.wikipediapreview-header-closebtn {
+		filter: invert(1);
+	}
+}
+
+.wikipediapreview-light-theme() {
+	background-color: #fff;
+
+	.wikipediapreview-body {
+		&-message,
+		p {
+			color: #202122;
+		}
+	}
+
+	.wikipediapreview-header-wordmark,
+	.wikipediapreview-header-closebtn {
+		filter: unset;
+	}
 }

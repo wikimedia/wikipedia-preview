@@ -31,8 +31,9 @@ const getReadOnWikiCta = ( lang, title, isTouch ) => {
 }
 
 const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme ) => {
+	const colorScheme = prefersColorScheme === 'detect' ? '' : `wikipediapreview-${ prefersColorScheme }-theme`
 	return `
-		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ prefersColorScheme === 'light' ? '' : 'dark' }" lang="${ lang }" dir="${ dir }">
+		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }">
 			${ headerContent }
 			${ bodyContent }
 		</div>

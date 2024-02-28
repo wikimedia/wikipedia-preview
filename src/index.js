@@ -66,7 +66,7 @@ function init( {
 	popupContainer = document.body,
 	events = {},
 	debug = false,
-	prefersColorScheme = 'light'
+	prefersColorScheme = 'detect'
 } ) {
 	const globalLang = lang
 	const popup = isTouch ?
