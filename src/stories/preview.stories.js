@@ -37,7 +37,7 @@ export default {
 		prefersColorScheme: {
 			name: 'Color Scheme',
 			control: 'inline-radio',
-			options: [ 'light', 'dark' ]
+			options: [ 'light', 'dark', 'detect' ]
 		}
 	},
 	args: {
