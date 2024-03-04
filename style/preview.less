@@ -349,31 +349,34 @@
 
 @media (prefers-color-scheme: dark) {
 	.wikipediapreview {
-		--wikipediapreview-primary-background-color: #202122;
-		--wikipediapreview-secondary-background-color: #202122;
-		--wikipediapreview-primary-color: #eaecf0;
-		--wikipediapreview-filter-setting: invert(1);
+		.mixin-wikipediapreview-dark-theme();
 	}
 }
 
 @media (prefers-color-scheme: light) {
 	.wikipediapreview {
-		--wikipediapreview-primary-background-color: #fff;
-		--wikipediapreview-secondary-background-color: #eaecf0;
-		--wikipediapreview-primary-color: #202122;
-		--wikipediapreview-filter-setting: unset;
+		.mixin-wikipediapreview-light-theme();
 	}
 }
 
 .wikipediapreview.wikipediapreview-dark-theme {
-	--wikipediapreview-primary-background-color: #202122;
-	--wikipediapreview-secondary-background-color: #202122;
-	--wikipediapreview-primary-color: #eaecf0;
-	--wikipediapreview-filter-setting: invert(1);
+	.mixin-wikipediapreview-dark-theme();
 	
 }
 
 .wikipediapreview.wikipediapreview-light-theme {
+	.mixin-wikipediapreview-light-theme();
+}
+
+
+.mixin-wikipediapreview-dark-theme () {
+	--wikipediapreview-primary-background-color: #202122;
+	--wikipediapreview-secondary-background-color: #202122;
+	--wikipediapreview-primary-color: #eaecf0;
+	--wikipediapreview-filter-setting: invert(1);
+}
+
+.mixin-wikipediapreview-light-theme () {
 	--wikipediapreview-primary-background-color: #fff;
 	--wikipediapreview-secondary-background-color: #eaecf0;
 	--wikipediapreview-primary-color: #202122;
