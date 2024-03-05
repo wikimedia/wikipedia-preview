@@ -161,13 +161,14 @@ If you prefer to style them in a way that makes more sense for your context, sim
 ```
 
 #### CSS custom properties
+
 If you wish to adjust the styling of the light/dark theme, you can override the following CSS custom properties to your liking as shown below, under the appropriate [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) query.
 
 ```CSS
 @media (prefers-color-scheme: dark) {
 	.wikipediapreview {
 		--wikipediapreview-primary-background-color: #202122;
-	    --wikipediapreview-secondary-background-color: #202122;
+		--wikipediapreview-secondary-background-color: #202122;
 		--wikipediapreview-primary-color: #eaecf0;
 		--wikipediapreview-filter-setting: invert(1);
 	}
