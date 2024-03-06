@@ -76,6 +76,7 @@ popupContainer | DOM Element | `document.body` | Where to put the popup in the D
 detectLinks | Boolean | `false` | Allow Wikipedia hyperlinks to have the popup
 events | Object | `{}` | Custom event handlers: `{ onShow: <fn>, onWikiRead: <fn> }`
 debug | Boolean | `false` | Shows the debug message when `init()` is called
+prefersColorScheme | string | `'detect'` | Sets theme color. Allowed values are 'light', 'dark' and 'detect'. Setting it to 'light' or 'dark' will dictate theme color regardless of [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme); setting to 'detect' will render preview according to [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
 Example (custom selector)
 ```html
@@ -156,6 +157,21 @@ If you prefer to style them in a way that makes more sense for your context, sim
 ```CSS
 .my-own-css-style {
 	background-color: yellow;
+}
+```
+
+#### CSS custom properties
+
+If you wish to adjust the styling of the light/dark theme, you can override the following CSS custom properties to your liking as shown below, under the appropriate [`prefers-color-scheme`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) query.
+
+```CSS
+@media (prefers-color-scheme: dark) {
+	.wikipediapreview {
+		--wikipediapreview-primary-background-color: #202122;
+		--wikipediapreview-secondary-background-color: #202122;
+		--wikipediapreview-primary-color: #eaecf0;
+		--wikipediapreview-filter-setting: invert(1);
+	}
 }
 ```
 

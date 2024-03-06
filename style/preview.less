@@ -2,9 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	width: 350px;
+	background-color: var( --wikipediapreview-primary-background-color );
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	border-radius: 8px 8px 0 0;
-	background-color: #fff;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 
 	* {
@@ -43,6 +43,7 @@
 			flex-grow: 1;
 			margin-left: 16px;
 			margin-right: 16px;
+			filter: var( --wikipediapreview-filter-setting );
 
 			&-with-image {
 				margin-top: 16px;
@@ -75,34 +76,20 @@
 			height: 100%;
 			text-align: center;
 			width: 50px;
+			filter: var( --wikipediapreview-filter-setting );
 		}
 	}
 
 	&-body {
-		background-color: #fff;
 		max-height: 248px;
 		overflow: hidden;
 
-		&:after {
-			content: ' ';
-			position: absolute;
-			width: 100%;
-			bottom: 35px;
-			left: 0;
-			right: 200px;
-			top: 235px;
-			background: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
-		}
-
 		p {
 			margin: 0;
-			color: #202122;
 			line-height: 1.6;
 			font-size: 18px;
 			padding: 10px 20px;
+			color: var( --wikipediapreview-primary-color );
 		}
 
 		ul {
@@ -117,7 +104,7 @@
 			margin-right: 23px;
 			font-size: 16px;
 			line-height: 1.4;
-			color: #000;
+			color: var( --wikipediapreview-primary-color );
 		}
 
 		&-icon {
@@ -272,7 +259,7 @@
 
 		&-loading {
 			height: 30px;
-			background-color: #eaecf0;
+			background-color: var( --wikipediapreview-secondary-background-color );
 		}
 	}
 
@@ -351,4 +338,40 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+	.wikipediapreview {
+		.mixin-wikipediapreview-dark-theme();
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	.wikipediapreview {
+		.mixin-wikipediapreview-light-theme();
+	}
+}
+
+.wikipediapreview.wikipediapreview-dark-theme {
+	.mixin-wikipediapreview-dark-theme();
+	
+}
+
+.wikipediapreview.wikipediapreview-light-theme {
+	.mixin-wikipediapreview-light-theme();
+}
+
+
+.mixin-wikipediapreview-dark-theme () {
+	--wikipediapreview-primary-background-color: #202122;
+	--wikipediapreview-secondary-background-color: #202122;
+	--wikipediapreview-primary-color: #eaecf0;
+	--wikipediapreview-filter-setting: invert(1);
+}
+
+.mixin-wikipediapreview-light-theme () {
+	--wikipediapreview-primary-background-color: #fff;
+	--wikipediapreview-secondary-background-color: #eaecf0;
+	--wikipediapreview-primary-color: #202122;
+	--wikipediapreview-filter-setting: unset;
 }
