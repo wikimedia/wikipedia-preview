@@ -57,6 +57,7 @@ const forEachRoot = ( rootConfig, callback ) => {
 }
 
 let currentPopupId
+let currentColorScheme
 
 function init( {
 	root = document,
@@ -76,6 +77,7 @@ function init( {
 	const last = {}
 	const foundSelectorLinks = []
 	const foundDetectLinks = []
+	currentColorScheme = prefersColorScheme
 
 	const showPopup = ( e, refresh = false ) => {
 		e.preventDefault()
@@ -101,7 +103,7 @@ function init( {
 		popup.loading = true
 		popup.dir = dir
 		popup.show(
-			renderLoading( isTouch, localLang, dir, prefersColorScheme ),
+			renderLoading( isTouch, localLang, dir, currentColorScheme ),
 			currentTarget,
 			pointerPosition
 		)
@@ -117,21 +119,21 @@ function init( {
 					popup.title = title
 					if ( data.type === 'standard' ) {
 						popup.show(
-							renderPreview( localLang, data, isTouch, prefersColorScheme ),
+							renderPreview( localLang, data, isTouch, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?
-							renderPreview( localLang, data, isTouch, prefersColorScheme ) :
+							renderPreview( localLang, data, isTouch, currentColorScheme ) :
 							// fallback message when no extract is found on disambiguation page
 							renderDisambiguation(
 								isTouch,
 								localLang,
 								data.title,
 								data.dir,
-								prefersColorScheme
+								currentColorScheme
 							)
 						popup.show(
 							content,
@@ -143,14 +145,14 @@ function init( {
 				} else {
 					if ( isOnline() ) {
 						popup.show(
-							renderError( isTouch, localLang, title, dir, prefersColorScheme ),
+							renderError( isTouch, localLang, title, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
-							renderOffline( isTouch, localLang, dir, prefersColorScheme ),
+							renderOffline( isTouch, localLang, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
