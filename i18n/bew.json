@@ -6,7 +6,7 @@
 	},
 	"continue-reading": "Terus Ngebaca",
 	"gallery-loading-error": "Ada ngablu pas munggah ni gambar",
-	"gallery-loading-error-offline": "Kaga' ada jala sambungan internèt.",
+	"gallery-loading-error-offline": "Kaga' ada bungselan internèt.",
 	"gallery-loading-error-refresh": "Segerin",
 	"gallery-loading-still": "Masing munggah",
 	"gallery-unknown-author": "Mualip kaga' ditauin",
@@ -15,6 +15,6 @@
 	"read-on-wiki": "Baca di Wikipédi",
 	"read-more": "Baca lebi lanjut pasal Wikipédi",
 	"preview-disambiguation-message": "Judul <strong>$1</strong> ada kaètan ama lebi deri atu artikel di Wikipédi.",
-	"preview-offline-message": "Kaga' ada jala sambungan internèt.",
+	"preview-offline-message": "Kaga' ada bungselan internèt.",
 	"preview-offline-cta": "Jal lagi"
 }
