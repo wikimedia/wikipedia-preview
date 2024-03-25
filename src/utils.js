@@ -30,7 +30,11 @@ const getWikipediaAttrFromUrl = ( url ) => {
 	for ( let i = 0; i < regexList.length; i++ ) {
 		const matches = regexList[ i ].exec( url )
 		if ( matches ) {
-			return { lang: matches[ 1 ], mobile: !!matches[ 2 ], title: decodeUri( matches[ 3 ] ) }
+			return {
+				lang: matches[ 1 ],
+				mobile: !!matches[ 2 ],
+				title: decodeUri( matches[ 3 ] )
+			}
 		}
 	}
 
@@ -98,8 +102,57 @@ const logError = ( ...err ) => {
 	console.error.apply( console, err ) // eslint-disable-line no-console
 }
 
+const forEachRoot = ( rootConfig, selector, callback ) => {
+	const roots = []
+	// rootConfig can be a selector (String)
+	if (
+		typeof rootConfig === 'string' ||
+		rootConfig instanceof String
+	) {
+		Array.prototype.forEach.call(
+			document.querySelectorAll( rootConfig ),
+			( node ) => {
+				roots.push( node )
+			}
+		)
+	}
+
+	// rootConfig can be a node (Document or Element)
+	if ( rootConfig instanceof Document || rootConfig instanceof Element ) {
+		roots.push( rootConfig )
+	}
+
+	// rootConfig can be a list of nodes (Element[])
+	if ( Array.isArray( rootConfig ) ) {
+		rootConfig.forEach( ( r ) => {
+			if ( r instanceof Element ) {
+				roots.push( r )
+			}
+		} )
+	}
+
+	roots.forEach( ( root ) => {
+		Array.prototype.forEach.call(
+			root.querySelectorAll( selector ),
+			callback
+		)
+	} )
+}
+
+const invokeCallback = ( events, name, params ) => {
+	const callback = events && events[ name ]
+	if ( callback instanceof Function ) {
+		try {
+			callback.apply( null, params )
+		} catch ( e ) {
+			// eslint-disable-next-line no-console
+			console.log( 'Error invoking Wikipedia Preview custom callback', e )
+		}
+	}
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError
+	buildWikipediaUrl, version, logError, forEachRoot, invokeCallback
 }
