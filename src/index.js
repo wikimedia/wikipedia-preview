@@ -1,10 +1,13 @@
-import controller from './controller'
+// import controller from './controller'
 import { requestPagePreview } from './api'
 import { renderPreview } from './preview'
+import { getPopup } from './popup'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch,
 	version, getAnalyticsQueryParam, forEachRoot
 } from './utils'
+
+import { store, component } from 'reefjs'
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
@@ -26,16 +29,61 @@ function init( {
 	const foundSelectorLinks = []
 	const foundDetectLinks = []
 
-	controller.init( popupContainer, prefersColorScheme, events )
+	if ( events === 1 ) {
+		return
+	}
+	if ( prefersColorScheme === 'banana' ) {
+		return
+	}
+
+	const wpStore = store( {
+		content: null,
+		target: null,
+		position: null
+	}, {
+		trigger( state, target, position, title, titleLang ) {
+			// wpStore.open = true
+			state.target = target
+			state.position = position
+			state.content = null
+			requestPagePreview( titleLang, title, ( data ) => {
+				wpStore.receiveContent( titleLang, data )
+			} )
+		},
+
+		receiveContent( state, titleLang, data ) {
+			state.content = renderPreview( titleLang, data, isTouch )
+		},
+
+		close( state ) {
+			state.target = null
+		}
+	} )
+
+	const template = () => {
+		console.log( 'template', wpStore.value ) // eslint-disable-line
+		const state = wpStore.value
+		const target = document.querySelector( '[data-wp-id="' + state.target + '"]' )
+		return getPopup( target, state.position, state.content )
+	}
+
+	const container = document.createElement( 'div' )
+	container.classList.add( 'wp-popup-container' )
+	popupContainer.appendChild( container )
+
+	component( container, template )
+
+	// controller.init( popupContainer, prefersColorScheme, events )
 
 	const onHoverOrTap = ( e ) => {
 		e.preventDefault()
 		const target = e.currentTarget
-		controller.trigger(
-			target.getAttribute( 'data-wp-title' ) || target.textContent,
-			target.getAttribute( 'data-wp-lang' ) || lang,
+		console.log( 'on hover', target ) // eslint-disable-line
+		wpStore.trigger(
+			target.getAttribute( 'data-wp-id' ),
 			{ x: e.clientX, y: e.clientY },
-			target
+			target.getAttribute( 'data-wp-title' ) || target.textContent,
+			target.getAttribute( 'data-wp-lang' ) || lang
 		)
 	}
 
@@ -71,9 +119,14 @@ function init( {
 		} )
 	}
 
-	const eventName = isTouch ? 'click' : 'mouseenter'
-	foundSelectorLinks.concat( foundDetectLinks ).forEach( ( target ) => {
-		target.node.addEventListener( eventName, onHoverOrTap )
+	// const eventName = isTouch ? 'click' : 'mouseenter'
+	foundSelectorLinks.concat( foundDetectLinks ).forEach( ( { node } ) => {
+		node.setAttribute( 'data-wp-id', crypto.randomUUID().replace( /-/g, '' ) )
+		node.addEventListener( 'mouseenter', onHoverOrTap )
+		node.addEventListener( 'mouseleave', () => {
+			console.log( 'mouse leave' ) // eslint-disable-line
+			wpStore.close()
+		} )
 	} )
 
 	if ( debug ) {
