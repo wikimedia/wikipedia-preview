@@ -45,6 +45,7 @@ const expandRect = ( rect ) => {
 }
 
 const getTargetRect = ( element, { x, y } ) => {
+	console.log( 'getTargetRect', element ) // eslint-disable-line
 	const rects = element.getClientRects()
 	for ( let i = 0; i < rects.length; i++ ) {
 		const rect = expandRect( rects[ i ] )
@@ -55,6 +56,29 @@ const getTargetRect = ( element, { x, y } ) => {
 	}
 	// fallback for unit tests
 	return rects[ 0 ] || element.getBoundingClientRect()
+}
+
+const getPopup = ( nextTo, pointerPosition, content ) => {
+	console.log( 'getPopup', nextTo, pointerPosition, content ) // eslint-disable-line
+	let style = ''
+	if ( nextTo ) {
+		const position = computePopupPosition(
+			getTargetRect( nextTo, pointerPosition ),
+			350,
+			350,
+			window.innerWidth,
+			window.innerHeight
+		)
+		style = `left: ${ position.left }px; top: ${ position.top }px; bottom: ${ position.bottom }px; visibility: visible;`
+	} else {
+		style = 'visibility: hidden;'
+		content = 'no content'
+	}
+	return `
+		<div class="wp-popup" style="${ style }">
+			${ content }
+		</div>
+	`
 }
 
 const createPopup = ( container, win = window ) => {
@@ -110,4 +134,4 @@ const createPopup = ( container, win = window ) => {
 	return { show, hide, subscribe, element: popup }
 }
 
-export { createPopup, computePopupPosition }
+export { createPopup, computePopupPosition, getPopup }
