@@ -1,13 +1,14 @@
-// import controller from './controller'
 import { requestPagePreview } from './api'
-import { renderPreview } from './preview'
-import { getPopup } from './popup'
+import { renderPreview } from './components/preview'
+import app from './components/app'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch,
 	version, getAnalyticsQueryParam, forEachRoot
 } from './utils'
 
-import { store, component } from 'reefjs'
+import { component } from 'reefjs'
+
+import store from './store'
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
@@ -32,60 +33,21 @@ function init( {
 	if ( events === 1 ) {
 		return
 	}
-	if ( prefersColorScheme === 'banana' ) {
-		return
-	}
-
-	const wpStore = store( {
-		content: null,
-		target: null,
-		position: null
-	}, {
-		trigger( state, target, position, title, titleLang ) {
-			// wpStore.open = true
-			state.target = target
-			state.position = position
-			state.content = null
-			requestPagePreview( titleLang, title, ( data ) => {
-				wpStore.receiveContent( titleLang, data )
-			} )
-		},
-
-		receiveContent( state, titleLang, data ) {
-			state.content = renderPreview( titleLang, data, isTouch )
-		},
-
-		close( state ) {
-			state.target = null
-		}
-	} )
-
-	const template = () => {
-		console.log( 'template', wpStore.value ) // eslint-disable-line
-		const state = wpStore.value
-		const target = document.querySelector( '[data-wp-id="' + state.target + '"]' )
-		return getPopup( target, state.position, state.content )
-	}
+	store.setColorScheme( prefersColorScheme )
 
 	const container = document.createElement( 'div' )
 	container.classList.add( 'wp-popup-container' )
 	popupContainer.appendChild( container )
 
-	component( container, template )
-
-	// controller.init( popupContainer, prefersColorScheme, events )
-
-	const onHoverOrTap = ( e ) => {
-		e.preventDefault()
-		const target = e.currentTarget
-		console.log( 'on hover', target ) // eslint-disable-line
-		wpStore.trigger(
-			target.getAttribute( 'data-wp-id' ),
-			{ x: e.clientX, y: e.clientY },
-			target.getAttribute( 'data-wp-title' ) || target.textContent,
-			target.getAttribute( 'data-wp-lang' ) || lang
-		)
-	}
+	component(
+		container,
+		() => app( store.value ),
+		{
+			events: {
+				close: store.close
+			}
+		}
+	)
 
 	forEachRoot( root, selector, ( node ) => {
 		foundSelectorLinks.push( {
@@ -121,12 +83,50 @@ function init( {
 
 	// const eventName = isTouch ? 'click' : 'mouseenter'
 	foundSelectorLinks.concat( foundDetectLinks ).forEach( ( { node } ) => {
-		node.setAttribute( 'data-wp-id', crypto.randomUUID().replace( /-/g, '' ) )
-		node.addEventListener( 'mouseenter', onHoverOrTap )
-		node.addEventListener( 'mouseleave', () => {
-			console.log( 'mouse leave' ) // eslint-disable-line
-			wpStore.close()
-		} )
+		if ( !node.getAttribute( 'id' ) ) {
+			node.setAttribute( 'id', 'wp-' + crypto.randomUUID().replace( /-/g, '' ) )
+		}
+
+		if ( isTouch ) {
+			node.addEventListener( 'click', ( e ) => {
+				e.preventDefault()
+				const target = e.currentTarget
+				store.trigger(
+					target.getAttribute( 'id' ),
+					{ x: e.clientX, y: e.clientY },
+					target.getAttribute( 'data-wp-title' ) || target.textContent,
+					target.getAttribute( 'data-wp-lang' ) || lang
+				)
+			} )
+		} else {
+			let momentaryLapseTimeout
+			node.addEventListener( 'mouseenter', ( e ) => {
+				console.log( 'momentaryLapseTimeout', momentaryLapseTimeout ) // eslint-disable-line
+				if ( momentaryLapseTimeout ) {
+					clearTimeout( momentaryLapseTimeout )
+					momentaryLapseTimeout = null
+					return
+				}
+				const target = e.currentTarget
+				store.trigger(
+					target.getAttribute( 'id' ),
+					{ x: e.clientX, y: e.clientY },
+					target.getAttribute( 'data-wp-title' ) || target.textContent,
+					target.getAttribute( 'data-wp-lang' ) || lang
+				)
+			} )
+			node.addEventListener( 'mouseleave', ( e ) => {
+				const toElement = e.toElement || e.relatedTarget || e.target
+				const currentTarget = document.getElementById( store.value.targetId )
+				const popup = document.querySelector( '.wp-popup' )
+				if ( toElement !== currentTarget && popup && !popup.contains( toElement ) ) {
+					momentaryLapseTimeout = setTimeout( () => {
+						store.close()
+						momentaryLapseTimeout = null
+					}, 300 )
+				}
+			} )
+		}
 	} )
 
 	if ( debug ) {

@@ -1,4 +1,4 @@
-import '../style/popup.less'
+import '../../style/popup.less'
 
 let popup
 let originalOverflow
@@ -17,6 +17,15 @@ const removeBackgroundScreen = ( document ) => {
 	const screen = document.getElementsByClassName( 'wp-dark-screen' )
 	document.body.removeChild( screen[ 0 ] )
 	document.body.style.overflow = originalOverflow
+}
+
+const touchPopup = ( target, pointerPosition, content ) => {
+	const style = target ? '' : 'visibility: hidden;'
+	return `
+		<div class="wp-touch-popup" style="${ style }">
+			${ content }
+		</div>
+	`
 }
 
 const createTouchPopup = ( container, win = window ) => {
@@ -69,4 +78,4 @@ const createTouchPopup = ( container, win = window ) => {
 	return { show, hide, expand, subscribe, element: popup }
 }
 
-export { createTouchPopup }
+export { createTouchPopup, touchPopup }

@@ -1,13 +1,13 @@
-import { msg } from './i18n'
-import { buildWikipediaUrl } from './utils'
-import '../style/preview.less'
+import { msg } from './../i18n'
+import { buildWikipediaUrl, getDir } from './../utils'
+import '../../style/preview.less'
 
 const getPreviewHeader = ( lang, imageUrl = '' ) => {
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
 			<div class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
-			<div class="wikipediapreview-header-closebtn"></div>
+			<div class="wikipediapreview-header-closebtn" onclick="close"></div>
 		</div>
 `.trim()
 }
@@ -33,7 +33,7 @@ const getReadOnWikiCta = ( lang, title, isTouch ) => {
 const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme ) => {
 	const colorScheme = prefersColorScheme === 'detect' ? '' : `wikipediapreview-${ prefersColorScheme }-theme`
 	return `
-		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }">
+		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }" onmouseleave="close">
 			${ headerContent }
 			${ bodyContent }
 		</div>
@@ -105,4 +105,12 @@ const renderOffline = ( isTouch, lang, dir, prefersColorScheme ) => {
 	return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'offline', message, cta ), prefersColorScheme )
 }
 
-export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }
+const preview = ( lang, data, isTouch, prefersColorScheme ) => {
+	if ( !data ) {
+		return renderLoading( isTouch, lang, getDir( lang ), prefersColorScheme )
+	} else {
+		return renderPreview( lang, data, isTouch, prefersColorScheme )
+	}
+}
+
+export { preview, renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }
