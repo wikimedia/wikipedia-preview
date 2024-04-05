@@ -35,16 +35,26 @@ function init( {
 	}
 	store.setColorScheme( prefersColorScheme )
 
-	const container = document.createElement( 'div' )
-	container.classList.add( 'wp-popup-container' )
-	popupContainer.appendChild( container )
+	let container = document.querySelector( '.wp-popup-containerner' )
+	if ( !container ) {
+		container = document.createElement( 'div' )
+		container.classList.add( 'wp-popup-container' )
+		popupContainer.appendChild( container )
+		// todo: consider putting the 'dark' class
+		// at this level
+	}
 
 	component(
 		container,
 		() => app( store.value ),
 		{
 			events: {
-				close: store.close
+				close: store.close,
+				expand: store.expand,
+				clickThumbnail: store.clickThumbnail,
+				closeGallery: store.closeGallery,
+				previousGalleryImage: store.previousGalleryImage,
+				nextGalleryImage: store.nextGalleryImage
 			}
 		}
 	)
@@ -101,7 +111,6 @@ function init( {
 		} else {
 			let momentaryLapseTimeout
 			node.addEventListener( 'mouseenter', ( e ) => {
-				console.log( 'momentaryLapseTimeout', momentaryLapseTimeout ) // eslint-disable-line
 				if ( momentaryLapseTimeout ) {
 					clearTimeout( momentaryLapseTimeout )
 					momentaryLapseTimeout = null

@@ -9,6 +9,12 @@
 	z-index: @popup-z-index;
 	overflow: hidden;
 	position: fixed;
+	width: 350px;
+	max-height: 370px;
+
+	&.expanded {
+		max-height: 496px;
+	}
 }
 
 .wp-touch-popup {

@@ -1,5 +1,7 @@
 import '../../style/popup.less'
 
+import { classesToString } from '../utils'
+
 const computePopupPosition = (
 	targetRect,
 	popupWidth, popupHeight,
@@ -51,7 +53,7 @@ const getTargetRect = ( element, { x, y } ) => {
 	return rects[ 0 ] || element.getBoundingClientRect()
 }
 
-const popup = ( target, pointerPosition, content ) => {
+const popup = ( { target, pointerPosition, content, expanded } ) => {
 	let style = ''
 	if ( target ) {
 		const position = computePopupPosition(
@@ -65,8 +67,12 @@ const popup = ( target, pointerPosition, content ) => {
 	} else {
 		style = 'visibility: hidden;'
 	}
+	const classes = {
+		'wp-popup': true,
+		expanded: expanded
+	}
 	return `
-		<div class="wp-popup" style="${ style }">
+		<div class="${ classesToString( classes ) }" style="${ style }">
 			${ content }
 		</div>
 	`
