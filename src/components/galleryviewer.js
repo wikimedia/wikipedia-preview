@@ -3,8 +3,11 @@ import { getClientWidth, getSelectedImageIndex } from '../utils'
 
 const prefixClassname = 'wp-gallery-fullscreen'
 
-const galleryviewer = ( media, selectedImageUrl, lang, dir ) => {
-	const current = getSelectedImageIndex( media, selectedImageUrl )
+const galleryviewer = ( { media, selectedGalleryItem, lang, dir } ) => {
+	if ( !media || !selectedGalleryItem ) {
+		return ''
+	}
+	const current = getSelectedImageIndex( media, selectedGalleryItem )
 	const imageListHtml = media.map( ( image ) => `
 		<div class="${ prefixClassname }-item" key="${ image.thumb }">
 			<div class="${ prefixClassname }-item-loading">

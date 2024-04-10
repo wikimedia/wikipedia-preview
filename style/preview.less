@@ -254,7 +254,7 @@
 			}
 
 			&-readonwiki {
-				display: none;
+				display: block;
 			}
 		}
 
@@ -267,21 +267,11 @@
 	&.expanded {
 		.wikipediapreview-body {
 			// calculate the max height in onExpand()
-			// max-height: 496px;
+			max-height: 496px;
 			overflow: scroll;
 
 			&:after {
 				content: none;
-			}
-		}
-
-		.wikipediapreview-footer-cta {
-			&-readmore {
-				display: none;
-			}
-
-			&-readonwiki {
-				display: block;
 			}
 		}
 	}

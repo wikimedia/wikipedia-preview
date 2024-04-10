@@ -130,7 +130,7 @@ function init( {
 				const popup = document.querySelector( '.wp-popup' )
 				if ( toElement !== currentTarget && popup && !popup.contains( toElement ) ) {
 					momentaryLapseTimeout = setTimeout( () => {
-						store.close()
+						store.close( e )
 						momentaryLapseTimeout = null
 					}, 300 )
 				}

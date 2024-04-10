@@ -12,7 +12,7 @@ const galleryitem = ( item ) => {
 	`
 }
 
-const galleryrow = ( media ) => {
+const galleryrow = ( { media } ) => {
 	if ( !media ) {
 		return ''
 	}
