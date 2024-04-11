@@ -1,6 +1,6 @@
 import { store } from 'reefjs'
-import { requestPagePreview, requestPageMedia } from './api'
-import { getSelectedImageIndex } from './utils'
+import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from './api'
+import { getSelectedImageIndex, getSelectedImageTitle } from './utils'
 
 const wpStore = store( {
 	title: null,
@@ -8,6 +8,8 @@ const wpStore = store( {
 	targetId: null,
 	pointerPosition: null,
 	data: null,
+	media: null,
+	mediaInfo: {},
 	expanded: false,
 	colorScheme: 'detect'
 }, {
@@ -38,7 +40,13 @@ const wpStore = store( {
 	},
 
 	receiveMedia( state, media ) {
+		// media is [ { caption, thumb, title } ]
 		state.media = media
+	},
+
+	receiveMediaInfo( state, mediaInfo ) {
+		// mediaInfo is { title, author, bestFitImageUrl, description, filePage, license }
+		state.mediaInfo[ mediaInfo.title ] = mediaInfo
 	},
 
 	close( state, e ) {
@@ -55,6 +63,7 @@ const wpStore = store( {
 
 	clickThumbnail( state, e ) {
 		state.selectedGalleryItem = e.target.getAttribute( 'key' )
+		wpStore.loadCurrentMediaInfo()
 	},
 
 	previousGalleryImage( state ) {
@@ -62,12 +71,21 @@ const wpStore = store( {
 		if ( currentIndex > 0 ) {
 			state.selectedGalleryItem = state.media[ currentIndex - 1 ].thumb
 		}
+		wpStore.loadCurrentMediaInfo()
 	},
 
 	nextGalleryImage( state ) {
 		const currentIndex = getSelectedImageIndex( state.media, state.selectedGalleryItem )
 		if ( currentIndex < ( state.media.length - 1 ) ) {
 			state.selectedGalleryItem = state.media[ currentIndex + 1 ].thumb
+		}
+		wpStore.loadCurrentMediaInfo()
+	},
+
+	loadCurrentMediaInfo( state ) {
+		const title = getSelectedImageTitle( state.media, state.selectedGalleryItem )
+		if ( !state.mediaInfo[ title ] ) {
+			requestPageMediaInfo( state.lang, title, wpStore.receiveMediaInfo )
 		}
 	},
 
