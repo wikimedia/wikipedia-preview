@@ -54,7 +54,9 @@ function init( {
 				clickThumbnail: store.clickThumbnail,
 				closeGallery: store.closeGallery,
 				previousGalleryImage: store.previousGalleryImage,
-				nextGalleryImage: store.nextGalleryImage
+				nextGalleryImage: store.nextGalleryImage,
+				toggleGalleryCaption: store.toggleGalleryCaption,
+				toggleGalleryFocusMode: store.toggleGalleryFocusMode
 			}
 		}
 	)

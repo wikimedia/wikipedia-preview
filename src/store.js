@@ -1,6 +1,6 @@
 import { store } from 'reefjs'
 import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from './api'
-import { getSelectedImageIndex, getSelectedImageTitle } from './utils'
+import { getSelectedImageIndex } from './utils'
 
 const wpStore = store( {
 	title: null,
@@ -47,6 +47,16 @@ const wpStore = store( {
 	receiveMediaInfo( state, mediaInfo ) {
 		// mediaInfo is { title, author, bestFitImageUrl, description, filePage, license }
 		state.mediaInfo[ mediaInfo.title ] = mediaInfo
+
+		// preload image
+		const img = document.createElement( 'img' )
+		img.onload = () => {
+			wpStore.galleryImageLoaded( mediaInfo.title )
+		}
+		img.onerror = () => {
+			wpStore.galleryImageError( mediaInfo.title )
+		}
+		img.src = mediaInfo.bestFitImageUrl
 	},
 
 	close( state, e ) {
@@ -63,34 +73,60 @@ const wpStore = store( {
 
 	clickThumbnail( state, e ) {
 		state.selectedGalleryItem = e.target.getAttribute( 'key' )
-		wpStore.loadCurrentMediaInfo()
+		state.galleryFocusMode = false
+		wpStore.loadMediaInfo()
 	},
 
-	previousGalleryImage( state ) {
+	previousGalleryImage( state, e ) {
+		e.preventDefault()
+		e.stopPropagation()
 		const currentIndex = getSelectedImageIndex( state.media, state.selectedGalleryItem )
 		if ( currentIndex > 0 ) {
 			state.selectedGalleryItem = state.media[ currentIndex - 1 ].thumb
 		}
-		wpStore.loadCurrentMediaInfo()
 	},
 
-	nextGalleryImage( state ) {
+	nextGalleryImage( state, e ) {
+		e.preventDefault()
+		e.stopPropagation()
 		const currentIndex = getSelectedImageIndex( state.media, state.selectedGalleryItem )
 		if ( currentIndex < ( state.media.length - 1 ) ) {
 			state.selectedGalleryItem = state.media[ currentIndex + 1 ].thumb
 		}
-		wpStore.loadCurrentMediaInfo()
 	},
 
-	loadCurrentMediaInfo( state ) {
-		const title = getSelectedImageTitle( state.media, state.selectedGalleryItem )
-		if ( !state.mediaInfo[ title ] ) {
-			requestPageMediaInfo( state.lang, title, wpStore.receiveMediaInfo )
-		}
+	loadMediaInfo( state ) {
+		state.media.forEach( ( image ) => {
+			if ( !state.mediaInfo[ image.title ] ) {
+				requestPageMediaInfo( state.lang, image.title, wpStore.receiveMediaInfo )
+			}
+		} )
 	},
 
 	closeGallery( state ) {
 		state.selectedGalleryItem = null
+		state.galleryFocusMode = false
+		state.galleryCaptionExpanded = false
+	},
+
+	toggleGalleryCaption( state ) {
+		state.galleryCaptionExpanded = !state.galleryCaptionExpanded
+	},
+
+	toggleGalleryFocusMode( state ) {
+		state.galleryFocusMode = !state.galleryFocusMode
+	},
+
+	galleryImageLoaded( state, title ) {
+		if ( state.mediaInfo[ title ] ) {
+			state.mediaInfo[ title ].loaded = true
+		}
+	},
+
+	galleryImageError( state, title ) {
+		if ( state.mediaInfo[ title ] ) {
+			state.mediaInfo[ title ].error = true
+		}
 	}
 } )
 
