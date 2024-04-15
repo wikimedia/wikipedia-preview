@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Atzerritik"
+		]
+	},
+	"continue-reading": "Jarraitu irakurtzen",
+	"gallery-loading-error": "Errore bat gertatu da irudi hau kargatzean",
+	"gallery-loading-error-offline": "Ez dago Interneteko konexiorik eskuragarri.",
+	"gallery-loading-error-refresh": "Eguneratu",
+	"gallery-loading-still": "Oraindik kargatzen",
+	"gallery-unknown-author": "Egile ezezaguna.",
+	"preview-error-message": "Arazo bat izan zen aurreikuspen hau erakutsi bitartean.",
+	"preview-console-error-message": "Aurrebista ez dago erabilgarri \" $1 \" artikuluaren (Hizkuntza: $2 )",
+	"read-on-wiki": "Wikipedian irakurri",
+	"read-more": "Wikipedian gehiago irakurri",
+	"preview-offline-message": "Ez dago Interneteko konexiorik eskuragarri.",
+	"preview-offline-cta": "Saiatu berriro"
+}
