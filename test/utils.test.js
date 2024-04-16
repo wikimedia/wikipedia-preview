@@ -5,6 +5,8 @@ describe( 'utils', () => {
 	describe( 'getWikipediaAttrFromUrl', () => {
 
 		const tests = [
+			{ url: 'https://wikipedia.org/wiki/Cat', expected: { lang: 'en', mobile: false, title: 'Cat' } },
+			{ url: 'https://m.wikipedia.org/wiki/Cat', expected: { lang: 'en', mobile: true, title: 'Cat' } },
 			{ url: 'https://en.wikipedia.org/wiki/Cat', expected: { lang: 'en', mobile: false, title: 'Cat' } },
 			{ url: 'https://en.m.wikipedia.org/wiki/Cat', expected: { lang: 'en', mobile: true, title: 'Cat' } },
 			{ url: 'https://he.wikipedia.org/wiki/ירח', expected: { lang: 'he', mobile: false, title: 'ירח' } },
@@ -26,7 +28,8 @@ describe( 'utils', () => {
 			{ url: 'https://wikimediafoundation.org/', expected: null },
 			{ url: 'https://en.wikipedia.org/wiki/Wikipedia:About', expected: { lang: 'en', mobile: false, title: 'Wikipedia:About' } },
 			{ url: 'https://cs.wikipedia.org/wiki/Wikipedie:Studenti_p%25C3%25AD%25C5%25A1%25C3%25AD_Wikipedii', expected: { lang: 'cs', mobile: false, title: 'Wikipedie:Studenti_píší_Wikipedii' } },
-			{ url: 'https://cs.wikipedia.org/wiki/Wikipedie:Studenti_p%C3%AD%C5%A1%C3%AD_Wikipedii', expected: { lang: 'cs', mobile: false, title: 'Wikipedie:Studenti_píší_Wikipedii' } }
+			{ url: 'https://cs.wikipedia.org/wiki/Wikipedie:Studenti_p%C3%AD%C5%A1%C3%AD_Wikipedii', expected: { lang: 'cs', mobile: false, title: 'Wikipedie:Studenti_píší_Wikipedii' } },
+			{ url: 'https://be-tarask.wikipedia.org/wiki/Фрыдрых Шылер', expected: { lang: 'be-tarask', mobile: false, title: 'Фрыдрых Шылер' } }
 		]
 
 		const testFn = ( t ) => {
