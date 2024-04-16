@@ -21,17 +21,17 @@ const getWikipediaAttrFromUrl = ( url ) => {
 	const regexList = [
 		// https://zh.wikipedia.org/wiki/前岐镇"
 		// https://en.wikipedia.org/wiki/Cat#Section
-		/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/wiki\/([^#?]+)/,
+		/^https?:\/\/([\w-]{2,}\.)?(m\.)?wikipedia\.org\/wiki\/([^#?]+)/,
 		// https://en.wikipedia.org/w/index.php?title=Cat
 		// https://zh.wikipedia.org/w/index.php?title=太阳帆&action=purge
-		/^https?:\/\/(\w+)(\.m)?\.wikipedia\.org\/w\/index.php\?title=([^#&]+)/
+		/^https?:\/\/([\w-]{2,}\.)?(m\.)?wikipedia\.org\/w\/index.php\?title=([^#&]+)/
 	]
 
 	for ( let i = 0; i < regexList.length; i++ ) {
 		const matches = regexList[ i ].exec( url )
 		if ( matches ) {
 			return {
-				lang: matches[ 1 ],
+				lang: matches[ 1 ] ? matches[ 1 ].slice( 0, -1 ) : 'en',
 				mobile: !!matches[ 2 ],
 				title: decodeUri( matches[ 3 ] )
 			}
