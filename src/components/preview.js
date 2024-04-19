@@ -147,8 +147,8 @@ const bodyWithIssue = ( message, cta ) => {
 	`
 }
 
-const bodyDisambiguation = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyDisambiguation = ( state ) => {
+	return bodyWithIssue( msg( state.lang, 'preview-disambiguation-message', state.data.title ) )
 }
 
 const bodyError = () => {

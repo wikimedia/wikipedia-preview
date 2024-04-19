@@ -1,4 +1,4 @@
-import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from '../preview'
+import { preview, renderPreview, renderLoading, renderError, renderOffline } from '../components/preview'
 import { getGalleryRow } from '../gallery'
 
 export default {
@@ -52,8 +52,15 @@ export default {
 	}
 }
 
-export const StandardWithImage = ( { lang, title, extractHtml, dir, pageUrl, imgUrl, touch, prefersColorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, dir, pageUrl, imgUrl }, touch, prefersColorScheme )
+export const StandardWithImage = ( {
+	lang, title, extractHtml, dir, pageUrl, imgUrl, touch, prefersColorScheme
+} ) => {
+	return preview( {
+		lang,
+		data: { type: 'standard', title, extractHtml, dir, pageUrl, imgUrl },
+		isTouch: touch,
+		colorScheme: prefersColorScheme
+	} )
 }
 
 export const Standard = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
@@ -63,7 +70,7 @@ export const Standard = ( { lang, title, extractHtml, dir, pageUrl, touch, prefe
 export const Expanded = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
 	const template = document.createElement( 'template' )
 	template.innerHTML = renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme )
-	const preview = template.content.firstChild
+	const preview2 = template.content.firstChild
 	preview.classList.add( 'expanded' )
 	const mediaData = [
 		{
@@ -79,7 +86,7 @@ export const Expanded = ( { lang, title, extractHtml, dir, pageUrl, touch, prefe
 		}
 	]
 	preview.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
-	return preview
+	return preview2
 }
 
 export const Loading = ( { touch, lang, dir, prefersColorScheme } ) => {
@@ -95,7 +102,12 @@ export const Disambiguation = ( { lang, title, extractHtml, dir, pageUrl, touch,
 }
 
 export const DisambiguationWithNoExtract = ( { touch, lang, title, dir, prefersColorScheme } ) => {
-	return renderDisambiguation( touch, lang, title, dir, prefersColorScheme )
+	return preview( {
+		lang,
+		data: { type: 'disambiguation', title, dir },
+		isTouch: touch,
+		colorScheme: prefersColorScheme
+	} )
 }
 
 export const Offline = ( { touch, lang, dir, prefersColorScheme } ) => {
