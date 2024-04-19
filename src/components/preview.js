@@ -150,16 +150,22 @@ const bodyWithIssue = ( message, cta ) => {
 const bodyDisambiguation = ( state ) => {
 	return bodyWithIssue(
 		msg( state.lang, 'preview-disambiguation-message', state.data.title ),
-		msg( state.lang, 'read-on-wiki' )
+		getReadOnWikiCta( state.lang, state.title, state.isTouch )
 	)
 }
 
-const bodyError = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyError = ( state ) => {
+	return bodyWithIssue(
+		msg( state.lang, 'preview-error-message' ),
+		getReadOnWikiCta( state.lang, state.title, state.isTouch )
+	)
 }
 
-const bodyOffline = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyOffline = ( state ) => {
+	return bodyWithIssue(
+		msg( state.lang, 'preview-offline-message' ),
+		msg( state.lang, 'preview-offline-cta' )
+	)
 }
 
 const getBodyFunction = ( type ) => {
@@ -210,7 +216,7 @@ const footer = ( { lang, expanded, title, isTouch, data }, type ) => {
 
 	const isLoading = type === 'loading'
 	let footerContent = ''
-	if ( type === 'disambiguation' ) {
+	if ( type === 'disambiguation' || type === 'offline' || type === 'error' ) {
 		return ''
 	} else if ( !isLoading ) {
 		footerContent = expanded ?

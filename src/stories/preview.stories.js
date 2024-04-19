@@ -1,5 +1,5 @@
-import { preview, renderPreview, renderLoading, renderError, renderOffline } from '../components/preview'
-import { getGalleryRow } from '../gallery'
+import { preview } from '../components/preview'
+// import { getGalleryRow } from '../gallery' @todo fix gallery row
 
 export default {
 	title: 'Wikipedia Preview',
@@ -58,42 +58,55 @@ export const StandardWithImage = ( {
 }
 
 export const Standard = ( { lang, title, extractHtml, pageUrl, touch, colorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, pageUrl }, touch, colorScheme )
+	return preview( {
+		lang,
+		data: { type: 'standard', title, extractHtml, pageUrl },
+		isTouch: touch,
+		colorScheme
+	} )
 }
 
-export const Expanded = ( { lang, title, extractHtml, pageUrl, touch, colorScheme } ) => {
+export const Expanded = ( { lang, title, extractHtml, pageUrl, imgUrl, touch, colorScheme } ) => {
 	const template = document.createElement( 'template' )
-	template.innerHTML = renderPreview( lang, { title, extractHtml, pageUrl }, touch, colorScheme )
-	const preview2 = template.content.firstChild
-	preview.classList.add( 'expanded' )
-	const mediaData = [
+	const media = [
 		{
-			caption: 'caption1',
-			source: 'source1',
-			thumb: 'thumb1',
-			title: 'title1'
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Moons_of_solar_system-he.svg/langhe-320px-Moons_of_solar_system-he.svg.png'
 		}, {
-			caption: 'caption2',
-			source: 'source2',
-			thumb: 'thumb2',
-			title: 'title2'
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Moons_of_solar_system-he.svg/langhe-320px-Moons_of_solar_system-he.svg.png'
 		}
 	]
-	preview.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
-	return preview2
+	template.innerHTML = preview( {
+		lang,
+		data: { type: 'standard', title, extractHtml, pageUrl, imgUrl },
+		media,
+		isTouch: touch,
+		colorScheme
+	} )
+	const popup = template.content.firstChild
+	popup.classList.add( 'expanded' )
+	// popup.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
+	return popup
 }
 
-export const Loading = ( { touch, lang, colorScheme } ) => {
-	return renderLoading( touch, lang, colorScheme )
+export const Loading = ( { touch, lang, colorScheme } ) => { // @todo add loading state ui
+	return preview( {
+		lang,
+		data: { type: 'loading' },
+		isTouch: touch,
+		colorScheme
+	} )
 }
 
-export const Error = ( { touch, lang, title, colorScheme } ) => {
-	return renderError( touch, lang, title, colorScheme )
+export const Error = ( { touch, lang, colorScheme } ) => {
+	return preview( { // @todo mock utils.isOnline()
+		lang,
+		data: { type: 'error' },
+		isTouch: touch,
+		colorScheme
+	} )
 }
 
-export const Disambiguation = ( { lang, title, extractHtml, pageUrl, touch, colorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, pageUrl }, touch, colorScheme )
-}
+export const Disambiguation = Standard
 
 export const DisambiguationWithNoExtract = ( { touch, lang, title, colorScheme } ) => {
 	return preview( {
@@ -105,5 +118,10 @@ export const DisambiguationWithNoExtract = ( { touch, lang, title, colorScheme }
 }
 
 export const Offline = ( { touch, lang, colorScheme } ) => {
-	return renderOffline( touch, lang, colorScheme )
+	return preview( { // @todo mock utils.isOnline()
+		lang,
+		data: { type: 'offline' },
+		isTouch: touch,
+		colorScheme
+	} )
 }
