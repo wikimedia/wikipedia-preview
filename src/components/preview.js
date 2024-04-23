@@ -164,7 +164,7 @@ const bodyError = ( state ) => {
 const bodyOffline = ( state ) => {
 	return bodyWithIssue(
 		msg( state.lang, 'preview-offline-message' ),
-		msg( state.lang, 'preview-offline-cta' )
+		`<a>${ msg( state.lang, 'preview-offline-cta' ) }</a>`
 	)
 }
 
@@ -179,24 +179,38 @@ const getBodyFunction = ( type ) => {
 }
 
 const getPreviewType = ( state ) => {
-	if ( !state.data ) {
+	const type = state.data && state.data.type
+
+	// loading
+	if ( !state.data || type === 'loading' ) {
 		return 'loading'
 	}
 
-	if ( state.data.type === 'standard' ) {
+	// standard
+	if ( type === 'standard' || type === 'disambiguation' && state.data.extractHtml ) {
 		return 'standard'
-	} else if ( state.data.type === 'disambiguation' ) {
-		if ( state.data.extractHtml ) {
-			return 'standard'
-		} else {
-			return 'disambiguation'
-		}
+	}
+
+	// disambiguation
+	if ( type === 'disambiguation' ) {
+		return 'disambiguation'
+	}
+
+	// offline
+	if ( type === 'offline' ) {
+		return 'offline'
+	}
+
+	// error
+	if ( type === 'error' ) {
+		return 'error'
+	}
+
+	// online
+	if ( isOnline() ) {
+		return 'error'
 	} else {
-		if ( isOnline() ) {
-			return 'error'
-		} else {
-			return 'offline'
-		}
+		return 'offline'
 	}
 }
 
@@ -246,7 +260,7 @@ const preview = ( state ) => {
 		'wikipediapreview-light-theme': state.colorScheme === 'light'
 	}
 	return `
-		<div class="${ classesToString( classes ) }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">
+		<div class="${ classesToString( classes ) } ${ state.expanded ? 'expanded' : '' }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">
 			${ header( state ) }
 			${ body( state, type ) }
 			${ footer( state, type ) }

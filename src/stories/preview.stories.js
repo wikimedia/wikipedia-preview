@@ -1,5 +1,4 @@
 import { preview } from '../components/preview'
-// import { getGalleryRow } from '../gallery' @todo fix gallery row
 
 export default {
 	title: 'Wikipedia Preview',
@@ -67,28 +66,25 @@ export const Standard = ( { lang, title, extractHtml, pageUrl, touch, colorSchem
 }
 
 export const Expanded = ( { lang, title, extractHtml, pageUrl, imgUrl, touch, colorScheme } ) => {
-	const template = document.createElement( 'template' )
 	const media = [
 		{
-			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Moons_of_solar_system-he.svg/langhe-320px-Moons_of_solar_system-he.svg.png'
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/225px-Wikipedia-logo-v2.svg.png'
 		}, {
-			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Moons_of_solar_system-he.svg/langhe-320px-Moons_of_solar_system-he.svg.png'
+			thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Wikipedia_Main_Page.png/960px-Wikipedia_Main_Page.png'
 		}
 	]
-	template.innerHTML = preview( {
+	const template = preview( {
 		lang,
 		data: { type: 'standard', title, extractHtml, pageUrl, imgUrl },
+		expanded: true,
 		media,
 		isTouch: touch,
 		colorScheme
 	} )
-	const popup = template.content.firstChild
-	popup.classList.add( 'expanded' )
-	// popup.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
-	return popup
+	return template
 }
 
-export const Loading = ( { touch, lang, colorScheme } ) => { // @todo add loading state ui
+export const Loading = ( { touch, lang, colorScheme } ) => {
 	return preview( {
 		lang,
 		data: { type: 'loading' },
@@ -98,7 +94,7 @@ export const Loading = ( { touch, lang, colorScheme } ) => { // @todo add loadin
 }
 
 export const Error = ( { touch, lang, colorScheme } ) => {
-	return preview( { // @todo mock utils.isOnline()
+	return preview( {
 		lang,
 		data: { type: 'error' },
 		isTouch: touch,
@@ -118,7 +114,7 @@ export const DisambiguationWithNoExtract = ( { touch, lang, title, colorScheme }
 }
 
 export const Offline = ( { touch, lang, colorScheme } ) => {
-	return preview( { // @todo mock utils.isOnline()
+	return preview( {
 		lang,
 		data: { type: 'offline' },
 		isTouch: touch,
