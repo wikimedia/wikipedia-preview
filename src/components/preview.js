@@ -139,7 +139,7 @@ const bodyWithIssue = ( message, cta ) => {
 	return `
 		<div class="wikipediapreview-body-message">
 			<div class="wikipediapreview-body-icon"></div>
-			${ message }
+			<span>${ message }</span>
 		</div>
 		<div class="wikipediapreview-body-action">
 			${ cta }
@@ -147,16 +147,25 @@ const bodyWithIssue = ( message, cta ) => {
 	`
 }
 
-const bodyDisambiguation = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyDisambiguation = ( state ) => {
+	return bodyWithIssue(
+		msg( state.lang, 'preview-disambiguation-message', state.data.title ),
+		getReadOnWikiCta( state.lang, state.title, state.isTouch )
+	)
 }
 
-const bodyError = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyError = ( state ) => {
+	return bodyWithIssue(
+		msg( state.lang, 'preview-error-message' ),
+		getReadOnWikiCta( state.lang, state.title, state.isTouch )
+	)
 }
 
-const bodyOffline = () => {
-	return bodyWithIssue( 'msg', 'cta' )
+const bodyOffline = ( state ) => {
+	return bodyWithIssue(
+		msg( state.lang, 'preview-offline-message' ),
+		`<a>${ msg( state.lang, 'preview-offline-cta' ) }</a>`
+	)
 }
 
 const getBodyFunction = ( type ) => {
@@ -170,24 +179,38 @@ const getBodyFunction = ( type ) => {
 }
 
 const getPreviewType = ( state ) => {
-	if ( !state.data ) {
+	const type = state.data && state.data.type
+
+	// loading
+	if ( !state.data || type === 'loading' ) {
 		return 'loading'
 	}
 
-	if ( state.data.type === 'standard' ) {
+	// standard
+	if ( type === 'standard' || type === 'disambiguation' && state.data.extractHtml ) {
 		return 'standard'
-	} else if ( state.data.type === 'disambiguation' ) {
-		if ( state.data.extractHtml ) {
-			return 'standard'
-		} else {
-			return 'disambiguation'
-		}
+	}
+
+	// disambiguation
+	if ( type === 'disambiguation' ) {
+		return 'disambiguation'
+	}
+
+	// offline
+	if ( type === 'offline' ) {
+		return 'offline'
+	}
+
+	// error
+	if ( type === 'error' ) {
+		return 'error'
+	}
+
+	// online
+	if ( isOnline() ) {
+		return 'error'
 	} else {
-		if ( isOnline() ) {
-			return 'error'
-		} else {
-			return 'offline'
-		}
+		return 'offline'
 	}
 }
 
@@ -207,7 +230,9 @@ const footer = ( { lang, expanded, title, isTouch, data }, type ) => {
 
 	const isLoading = type === 'loading'
 	let footerContent = ''
-	if ( !isLoading ) {
+	if ( type === 'disambiguation' || type === 'offline' || type === 'error' ) {
+		return ''
+	} else if ( !isLoading ) {
 		footerContent = expanded ?
 			`<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${ msg( lang, 'read-more' ) }</a>` :
 			`<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore" onclick="expand">${ msg( lang, 'continue-reading' ) }</span>`
@@ -235,7 +260,7 @@ const preview = ( state ) => {
 		'wikipediapreview-light-theme': state.colorScheme === 'light'
 	}
 	return `
-		<div class="${ classesToString( classes ) }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">
+		<div class="${ classesToString( classes ) } ${ state.expanded ? 'expanded' : '' }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">
 			${ header( state ) }
 			${ body( state, type ) }
 			${ footer( state, type ) }
