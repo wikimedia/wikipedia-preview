@@ -40,8 +40,12 @@ function init( {
 		container = document.createElement( 'div' )
 		container.classList.add( 'wp-popup-container' )
 		popupContainer.appendChild( container )
-		// todo: consider putting the 'dark' class
-		// at this level
+		
+		if ( prefersColorScheme === 'dark' ) {
+			container.classList.add( 'wikipediapreview-dark-theme' )
+		} else if ( prefersColorScheme === 'light' ) {
+			container.classList.add( 'wikipediapreview-light-theme' )
+		}
 	}
 
 	component(
