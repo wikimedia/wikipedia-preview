@@ -64,6 +64,7 @@ function init( {
 				close: store.close,
 				expand: store.expand,
 				clickThumbnail: store.clickThumbnail,
+				refreshPreview: store.refreshPreview,
 				closeGallery: store.closeGallery,
 				previousGalleryImage: store.previousGalleryImage,
 				nextGalleryImage: store.nextGalleryImage,

@@ -161,7 +161,7 @@ const bodyError = ( state ) => {
 const bodyOffline = ( state ) => {
 	return bodyWithIssue(
 		msg( state.lang, 'preview-offline-message' ),
-		`<a>${ msg( state.lang, 'preview-offline-cta' ) }</a>`
+		`<a onclick="refreshPreview">${ msg( state.lang, 'preview-offline-cta' ) }</a>`
 	)
 }
 
@@ -178,8 +178,11 @@ const getBodyFunction = ( type ) => {
 const getPreviewType = ( state ) => {
 	const type = state.data && state.data.type
 
-	// loading
-	if ( !state.data || type === 'loading' ) {
+	// loading and offline
+	if ( !state.data ) {
+		if ( !isOnline() ) {
+			return 'offline'
+		}
 		return 'loading'
 	}
 

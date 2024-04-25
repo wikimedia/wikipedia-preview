@@ -90,6 +90,12 @@ const wpStore = store( {
 		}
 	},
 
+	refreshPreview( state ) {
+		const { lang, title } = state
+		requestPagePreview( lang, title, wpStore.receiveContent )
+		requestPageMedia( lang, title, wpStore.receiveMedia )
+	},
+
 	loadMediaInfo( state ) {
 		state.media.forEach( ( image ) => {
 			if ( !state.mediaInfo[ image.title ] ) {
