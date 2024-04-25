@@ -181,8 +181,11 @@ const getBodyFunction = ( type ) => {
 const getPreviewType = ( state ) => {
 	const type = state.data && state.data.type
 
-	// loading
-	if ( !state.data || type === 'loading' ) {
+	// loading and offline
+	if ( !state.data ) {
+		if ( !isOnline() ) {
+			return 'offline'
+		}
 		return 'loading'
 	}
 

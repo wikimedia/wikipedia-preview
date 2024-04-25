@@ -95,8 +95,10 @@ const wpStore = store( {
 		}
 	},
 
-	refreshPreview( state, e ) {
-		console.log( 'refresh', state, e ) // eslint-disable-line
+	refreshPreview( state ) {
+		const { lang, title } = state
+		requestPagePreview( lang, title, wpStore.receiveContent )
+		requestPageMedia( lang, title, wpStore.receiveMedia )
 	},
 
 	loadMediaInfo( state ) {

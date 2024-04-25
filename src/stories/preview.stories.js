@@ -87,7 +87,6 @@ export const Expanded = ( { lang, title, extractHtml, pageUrl, imgUrl, touch, co
 export const Loading = ( { touch, lang, colorScheme } ) => {
 	return preview( {
 		lang,
-		data: { type: 'loading' },
 		isTouch: touch,
 		colorScheme
 	} )
