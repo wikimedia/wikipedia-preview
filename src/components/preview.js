@@ -33,12 +33,10 @@ const getReadOnWikiCta = ( lang, title, isTouch ) => {
 	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-cta-readonwiki">${ msg( lang, 'read-on-wiki' ) }</a>`
 }
 
-const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme ) => {
+const render = ( lang, isTouch, dir, headerContent, bodyContent ) => {
 	const classes = {
 		wikipediapreview: true,
-		mobile: isTouch,
-		'wikipediapreview-dark-theme': prefersColorScheme === 'dark',
-		'wikipediapreview-light-theme': prefersColorScheme === 'light'
+		mobile: isTouch
 	}
 	return `
 		<div class="${ classesToString( classes ) }" lang="${ lang }" dir="${ dir }" onmouseleave="close">
@@ -48,7 +46,7 @@ const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorSch
 	`.trim()
 }
 
-const renderPreview = ( lang, data, media, expanded, isTouch, prefersColorScheme ) => {
+const renderPreview = ( lang, data, media, expanded, isTouch ) => {
 	const imageUrl = data.imgUrl,
 		gallery = galleryrow( media, lang ),
 		footerContent = expanded ?
@@ -69,12 +67,11 @@ const renderPreview = ( lang, data, media, expanded, isTouch, prefersColorScheme
 		isTouch,
 		data.dir,
 		header( lang, imageUrl ),
-		bodyContent,
-		prefersColorScheme
+		bodyContent
 	)
 }
 
-const renderLoading = ( isTouch, lang, dir, prefersColorScheme ) => {
+const renderLoading = ( isTouch, lang, dir ) => {
 	const bodyContent = `
 		<div class="wikipediapreview-body wikipediapreview-body-loading">
 			<div class="wikipediapreview-body-loading-line larger"></div>
@@ -91,28 +88,28 @@ const renderLoading = ( isTouch, lang, dir, prefersColorScheme ) => {
 		<div class="wikipediapreview-footer-loading"></div>
 	`.trim()
 
-	return render( lang, isTouch, dir, header( lang ), bodyContent, prefersColorScheme )
+	return render( lang, isTouch, dir, header( lang ), bodyContent )
 }
 
-const renderError = ( isTouch, lang, title, dir, prefersColorScheme ) => {
+const renderError = ( isTouch, lang, title, dir ) => {
 	const message = `<span>${ msg( lang, 'preview-error-message' ) }</span>`
 	const cta = getReadOnWikiCta( lang, title, isTouch )
 
-	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'error', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'error', message, cta ) )
 }
 
-const renderDisambiguation = ( isTouch, lang, title, dir, prefersColorScheme ) => {
+const renderDisambiguation = ( isTouch, lang, title, dir ) => {
 	const message = `<span>${ msg( lang, 'preview-disambiguation-message', title ) }</span>`
 	const cta = getReadOnWikiCta( lang, title, isTouch )
 
-	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'disambiguation', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'disambiguation', message, cta ) )
 }
 
-const renderOffline = ( isTouch, lang, dir, prefersColorScheme ) => {
+const renderOffline = ( isTouch, lang, dir ) => {
 	const message = `<span>${ msg( lang, 'preview-offline-message' ) }</span>`
 	const cta = `<a>${ msg( lang, 'preview-offline-cta' ) }</a>`
 
-	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'offline', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, header( lang ), getPreviewBody( 'offline', message, cta ) )
 }
 
 const bodyLoading = () => {
@@ -258,9 +255,7 @@ const preview = ( state ) => {
 	const type = getPreviewType( state )
 	const classes = {
 		wikipediapreview: true,
-		mobile: state.isTouch,
-		'wikipediapreview-dark-theme': state.colorScheme === 'dark',
-		'wikipediapreview-light-theme': state.colorScheme === 'light'
+		mobile: state.isTouch
 	}
 	return `
 		<div class="${ classesToString( classes ) } ${ state.expanded ? 'expanded' : '' }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">

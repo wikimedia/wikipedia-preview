@@ -10,13 +10,8 @@ const wpStore = store( {
 	data: null,
 	media: null,
 	mediaInfo: {},
-	expanded: false,
-	colorScheme: 'detect'
+	expanded: false
 }, {
-	setColorScheme( state, colorScheme ) {
-		state.colorScheme = colorScheme
-	},
-
 	trigger( state, targetId, pointerPosition, title, lang ) {
 		// reset
 		state.data = null
