@@ -35,12 +35,12 @@ function init( {
 	}
 	store.setColorScheme( prefersColorScheme )
 
-	let container = document.querySelector( '.wp-popup-containerner' )
+	let container = document.querySelector( '.wp-popup-container' )
 	if ( !container ) {
 		container = document.createElement( 'div' )
 		container.classList.add( 'wp-popup-container' )
 		popupContainer.appendChild( container )
-		
+
 		if ( prefersColorScheme === 'dark' ) {
 			container.classList.add( 'wikipediapreview-dark-theme' )
 		} else if ( prefersColorScheme === 'light' ) {
