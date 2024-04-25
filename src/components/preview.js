@@ -164,7 +164,7 @@ const bodyError = ( state ) => {
 const bodyOffline = ( state ) => {
 	return bodyWithIssue(
 		msg( state.lang, 'preview-offline-message' ),
-		`<a>${ msg( state.lang, 'preview-offline-cta' ) }</a>`
+		`<a onclick="refreshPreview">${ msg( state.lang, 'preview-offline-cta' ) }</a>`
 	)
 }
 

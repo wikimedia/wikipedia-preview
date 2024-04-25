@@ -95,6 +95,10 @@ const wpStore = store( {
 		}
 	},
 
+	refreshPreview( state, e ) {
+		console.log( 'refresh', state, e ) // eslint-disable-line
+	},
+
 	loadMediaInfo( state ) {
 		state.media.forEach( ( image ) => {
 			if ( !state.mediaInfo[ image.title ] ) {
