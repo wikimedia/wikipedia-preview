@@ -10,13 +10,8 @@ const wpStore = store( {
 	data: null,
 	media: null,
 	mediaInfo: {},
-	expanded: false,
-	colorScheme: 'detect'
+	expanded: false
 }, {
-	setColorScheme( state, colorScheme ) {
-		state.colorScheme = colorScheme
-	},
-
 	trigger( state, targetId, pointerPosition, title, lang ) {
 		// reset
 		state.data = null
@@ -93,6 +88,12 @@ const wpStore = store( {
 		if ( currentIndex < ( state.media.length - 1 ) ) {
 			state.selectedGalleryItem = state.media[ currentIndex + 1 ].thumb
 		}
+	},
+
+	refreshPreview( state ) {
+		const { lang, title } = state
+		requestPagePreview( lang, title, wpStore.receiveContent )
+		requestPageMedia( lang, title, wpStore.receiveMedia )
 	},
 
 	loadMediaInfo( state ) {

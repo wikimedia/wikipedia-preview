@@ -17,6 +17,19 @@ const getPreviewHtml = ( title, lang, callback ) => {
 	} )
 }
 
+const setColorScheme = ( container, prefersColorScheme ) => {
+	if ( prefersColorScheme === 'dark' ) {
+		container.classList.add( 'wikipediapreview-dark-theme' )
+		container.classList.remove( 'wikipediapreview-light-theme' )
+	} else if ( prefersColorScheme === 'light' ) {
+		container.classList.add( 'wikipediapreview-light-theme' )
+		container.classList.remove( 'wikipediapreview-dark-theme' )
+	} else {
+		container.classList.remove( 'wikipediapreview-light-theme' )
+		container.classList.remove( 'wikipediapreview-dark-theme' )
+	}
+}
+
 function init( {
 	root = document,
 	selector = '[data-wikipedia-preview]',
@@ -33,16 +46,15 @@ function init( {
 	if ( events === 1 ) {
 		return
 	}
-	store.setColorScheme( prefersColorScheme )
 
-	let container = document.querySelector( '.wp-popup-containerner' )
+	let container = document.querySelector( '.wp-popup-container' )
 	if ( !container ) {
 		container = document.createElement( 'div' )
 		container.classList.add( 'wp-popup-container' )
 		popupContainer.appendChild( container )
-		// todo: consider putting the 'dark' class
-		// at this level
 	}
+
+	setColorScheme( container, prefersColorScheme )
 
 	component(
 		container,
@@ -52,6 +64,7 @@ function init( {
 				close: store.close,
 				expand: store.expand,
 				clickThumbnail: store.clickThumbnail,
+				refreshPreview: store.refreshPreview,
 				closeGallery: store.closeGallery,
 				previousGalleryImage: store.previousGalleryImage,
 				nextGalleryImage: store.nextGalleryImage,
