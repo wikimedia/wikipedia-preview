@@ -69,7 +69,10 @@ function init( {
 				previousGalleryImage: store.previousGalleryImage,
 				nextGalleryImage: store.nextGalleryImage,
 				toggleGalleryCaption: store.toggleGalleryCaption,
-				toggleGalleryFocusMode: store.toggleGalleryFocusMode
+				toggleGalleryFocusMode: store.toggleGalleryFocusMode,
+				touchStart: store.touchStart,
+				touchMove: store.touchMove,
+				touchEnd: store.touchEnd
 			}
 		}
 	)
