@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+}
+a {
+  text-decoration     : none;
+}
+div {
+  -webkit-text-size-adjust: none;
+}
+.container {
+  max-width           : 786px;
+  position            : relative;
+  overflow            : hidden;
+  margin              : 0 auto;
+}
+.container .listview {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.container .listview .item {
+  position: relative;
+  padding: 20px;
+  border-bottom: 0.5px solid #C8CCD1;
+}
+.container .listview .item.last {
+  border-bottom: 0px;
+}
+.container .listview .item .title {
+  position : relative;
+  width    : 75%;
+  margin              : 0;
+  font-weight         : bold;
+  font-style          : normal;
+  font-size           : 16.0px;
+  line-height         : 21.6px;
+  color: rgba(32,33,34,1.0);
+}
+@media screen and (min-width: 650px) {
+  .container .listview .item .title {
+    font-size : 18px;
+  }
+}
+.container .listview .item .image {
+  width: 20%;
+  position: absolute;
+  right: 20px;
+  top: 27px;
+}
+.container .listview .item[dir="rtl"] .image {
+  left: 20px;
+  right: auto;
+}
+.container .listview .item .image .cover {
+  height: 80px;
+  width: 100%;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center center;
+}
+.container .listview .item .subtitle {
+  position : relative;
+  width    : 75%;
+  padding   : 8px 0;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.7);
+}
+.container .listview .item .content {
+  position : relative;
+  width    : 75%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  color: rgba(32,33,34,1.0);
+}
