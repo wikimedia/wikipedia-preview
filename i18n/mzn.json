@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"محک"
+		]
+	},
+	"continue-reading": "بخوندستن دمباله",
+	"gallery-loading-error": "عکس ره خاسته جورهکشه، خطا ور بخرده",
+	"gallery-loading-error-offline": "اینترنت قطع بیه.",
+	"gallery-loading-error-refresh": "نو هاکردن",
+	"gallery-loading-still": "هنتا در لؤد وونه",
+	"gallery-unknown-author": "بنویشته‌کس میّن نی‌یه",
+	"preview-error-message": "خاسته پیش-پیش سراق هاده که خطا ور بخرده",
+	"preview-console-error-message": "این '$1' مقاله وسه ننشنه پیش-پیش سراق هایرین (زوون: $2)",
+	"read-on-wiki": "ویکی‌پدیا دله بخوندین",
+	"read-more": "ویکی‌پدیا دله ویشته‌ته بخوندین",
+	"preview-disambiguation-message": "ویکی‌پدیا  دله<strong>$1</strong> نومی چنتا مقاله کته.",
+	"preview-offline-message": "اینترنت قطع بیه.",
+	"preview-offline-cta": "أی هتج"
+}
