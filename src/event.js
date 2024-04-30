@@ -193,7 +193,10 @@ export const customEvents = ( popup ) => {
 			}
 		}
 
-		addEventListener( element.component.closeBtn, 'click', popup.hide )
+		if ( isTouch ) {
+			addEventListener( element.component.closeBtn, 'click', popup.hide )
+		}
+
 		if ( element.component.readMore ) {
 			addEventListener( element.component.readMore, 'click', onExpand )
 		}

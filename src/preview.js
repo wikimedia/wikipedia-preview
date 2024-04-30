@@ -2,12 +2,12 @@ import { msg } from './i18n'
 import { buildWikipediaUrl } from './utils'
 import '../style/preview.less'
 
-const getPreviewHeader = ( lang, imageUrl = '' ) => {
+const getPreviewHeader = ( lang, isTouch, imageUrl = '' ) => {
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
 			<div class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
-			<div class="wikipediapreview-header-closebtn"></div>
+			${ isTouch ? '<div class="wikipediapreview-header-closebtn"></div>' : '' }
 		</div>
 `.trim()
 }
@@ -58,7 +58,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 		lang,
 		isTouch,
 		data.dir,
-		getPreviewHeader( lang, imageUrl ),
+		getPreviewHeader( lang, isTouch, imageUrl ),
 		bodyContent,
 		prefersColorScheme
 	)
@@ -81,28 +81,28 @@ const renderLoading = ( isTouch, lang, dir, prefersColorScheme ) => {
 		<div class="wikipediapreview-footer-loading"></div>
 	`.trim()
 
-	return render( lang, isTouch, dir, getPreviewHeader( lang ), bodyContent, prefersColorScheme )
+	return render( lang, isTouch, dir, getPreviewHeader( lang, isTouch ), bodyContent, prefersColorScheme )
 }
 
 const renderError = ( isTouch, lang, title, dir, prefersColorScheme ) => {
 	const message = `<span>${ msg( lang, 'preview-error-message' ) }</span>`
 	const cta = getReadOnWikiCta( lang, title, isTouch )
 
-	return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'error', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, getPreviewHeader( lang, isTouch ), getPreviewBody( 'error', message, cta ), prefersColorScheme )
 }
 
 const renderDisambiguation = ( isTouch, lang, title, dir, prefersColorScheme ) => {
 	const message = `<span>${ msg( lang, 'preview-disambiguation-message', title ) }</span>`
 	const cta = getReadOnWikiCta( lang, title, isTouch )
 
-	return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'disambiguation', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, getPreviewHeader( lang, isTouch ), getPreviewBody( 'disambiguation', message, cta ), prefersColorScheme )
 }
 
 const renderOffline = ( isTouch, lang, dir, prefersColorScheme ) => {
 	const message = `<span>${ msg( lang, 'preview-offline-message' ) }</span>`
 	const cta = `<a>${ msg( lang, 'preview-offline-cta' ) }</a>`
 
-	return render( lang, isTouch, dir, getPreviewHeader( lang ), getPreviewBody( 'offline', message, cta ), prefersColorScheme )
+	return render( lang, isTouch, dir, getPreviewHeader( lang, isTouch ), getPreviewBody( 'offline', message, cta ), prefersColorScheme )
 }
 
 export { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline }
