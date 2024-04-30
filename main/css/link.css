@@ -1,14 +1,11 @@
 .wmf-wp-with-preview {
   position: relative;
   cursor: pointer;
-}
-
-.wmf-wp-with-preview::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  opacity: 0.5;
-  border-bottom: 2px dashed;
+  text-decoration: dashed underline 2px;
+  text-decoration-color: rgba(0, 0, 0, 0.5);
+  text-underline-offset: 4px;
+  /* -webkit for Safari support */
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-style: dashed;
+  -webkit-text-decoration-color: rgba(0, 0, 0, 0.5);
 }
