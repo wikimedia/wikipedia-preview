@@ -8,14 +8,13 @@ describe( 'Check the Hover and Click Event', () => {
 		cy.navigateToEnglishPage()
 	} )
 
-	it( 'Check the Preview by hovering over the Span and click Close', () => {
+	it( 'Check the Preview by hovering over the Span and then leaving', () => {
 
 		preview.getPreviewSpan().first().trigger( 'mouseenter', 'right' )
 
 		preview.checkPreview()
 
-		preview.getHeaderClosebtn().click()
-
+		preview.getPreviewSpan().first().trigger( 'mouseleave', 'right' )
 	} )
 
 	it( 'Check the Preview by Clicking over the Span and click Close', () => {
@@ -24,8 +23,7 @@ describe( 'Check the Hover and Click Event', () => {
 		cy.wait( 1000 )
 		preview.checkPreview()
 
-		preview.getHeaderClosebtn().click()
-
+		preview.getPreviewSpan().first().trigger( 'mouseleave', 'right' )
 	} )
 
 } )
