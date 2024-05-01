@@ -9,7 +9,6 @@ describe( 'Check Page Movement ', () => {
 	} )
 
 	it( 'Check the Read More link in Wikipedia Preview', () => {
-
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		// Continue Reading is available
@@ -35,12 +34,9 @@ describe( 'Check Page Movement ', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 		cy.wait( 1000 )
 		preview.checkPreview()
-		preview.getHeaderClosebtn().click()
-
 	} )
 
 	it( 'Check the Reloading of the page', () => {
-
 		// Check for the Preview
 		preview.getPreviewSpan().eq( 0 ).click()
 		preview.checkPreview()
@@ -51,7 +47,5 @@ describe( 'Check Page Movement ', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 		cy.wait( 1000 )
 		preview.checkPreview()
-		preview.getHeaderClosebtn().click()
-
 	} )
 } )

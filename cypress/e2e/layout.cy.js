@@ -14,8 +14,6 @@ describe( 'Check the layout', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		preview.checkPreviewStandard()
-
-		preview.getHeaderClosebtn().click()
 	} )
 
 	it.skip( 'Check the Wikipedia Preview in Offline Layout', () => {
@@ -24,24 +22,18 @@ describe( 'Check the layout', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
 		preview.checkPreviewOffline()
-
-		preview.getHeaderClosebtn().click()
 	} )
 
 	it.skip( 'Check the Wikipedia Preview in Error Layout', () => {
 		preview.getPreviewSpan().eq( 1 ).click()
 
 		preview.checkPreviewError()
-
-		preview.getHeaderClosebtn().click()
 	} )
 
 	it.skip( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
 		preview.getPreviewSpan().eq( 2 ).click()
 
 		preview.checkPreviewDisambiguation()
-
-		preview.getHeaderClosebtn().click()
 	} )
 
 } )

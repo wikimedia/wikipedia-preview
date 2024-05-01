@@ -15,9 +15,6 @@ describe( 'Check the Expanded Layout', () => {
 		preview.getFooterContinueReading().click()
 		// Check the Expanded Mode preview
 		preview.checkPreviewExpanded()
-		// Closes the Preview
-		preview.getHeaderClosebtn().click()
-
 	} )
 
 } )
