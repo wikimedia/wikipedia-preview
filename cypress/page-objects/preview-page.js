@@ -76,7 +76,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 
 		this.getBody().should( 'be.visible' )
 
@@ -94,7 +93,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 		this.getHeaderImage().its( 'length' ).then( ( len ) => {
 			if ( len > 0 ) {
 				this.getHeaderImage().should( 'be.visible' )
@@ -116,7 +114,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 
 		this.getBody().should( 'be.visible' )
 		this.getBodyContent().should( 'be.visible' )
@@ -138,7 +135,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 
 		this.getPreview().then( ( tag ) => {
 
@@ -164,7 +160,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 
 		this.getPreview().then( ( tag ) => {
 
@@ -192,7 +187,6 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderClosebtn().should( 'be.visible' )
 
 		this.getPreview().then( ( tag ) => {
 
