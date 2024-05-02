@@ -10,7 +10,7 @@ const header = ( state ) => {
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
 			<div id="wikipediapreview-header-wordmark" class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
-			<div id="wikipediapreview-header-closebtn" class="wikipediapreview-header-closebtn" onclick="close"></div>
+			${ state.isTouch ? '<div id="wikipediapreview-header-closebtn" class="wikipediapreview-header-closebtn" onclick="close"></div>' : '' }
 		</div>
 	`.trim()
 }
