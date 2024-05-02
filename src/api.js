@@ -69,6 +69,36 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 
 }
 
+const simplify = ( node ) => {
+	// remove a bunch of things
+	const selector = [
+		'script',
+		'figure',
+		'table',
+		'sup.mw-ref',
+		'.pcs-collapse-table-container',
+		'.thumb',
+		'.hatnote',
+		"[ role='navigation' ]",
+		'#pcs-edit-section-add-title-description'
+	].join( ',' )
+	for ( const n of node.querySelectorAll( selector ) ) {
+		n.remove()
+	}
+
+	// unwrap links
+	for ( const a of node.querySelectorAll( 'a' ) ) {
+		a.outerHTML = a.innerHTML
+	}
+
+	// remove phonetic notations
+	for ( const p of node.querySelectorAll( 'p' ) ) {
+		p.innerHTML = p.innerHTML.replace( /\s\(.*?class=".*?(ext-phonos|IPA).*?".*?\)/g, '' )
+	}
+
+	return node
+}
+
 const extractSectionSummary = ( lang, title, section, callback, request ) => {
 	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/mobile-html/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
 	request( url, ( data, err ) => {
@@ -84,12 +114,11 @@ const extractSectionSummary = ( lang, title, section, callback, request ) => {
 		if ( imgElement ) {
 			img = imgElement.getAttribute( 'data-src' )
 		}
-		console.log( 'get mobile html', img ) // eslint-disable-line
 		return {
 			title,
-			extractHtml: sectionElement.querySelector( 'p' ).outerHTML,
+			extractHtml: simplify( sectionElement.querySelector( 'p' ) ).outerHTML,
 			imgUrl: img,
-			dir: 'ltr', // todo
+			dir: doc.body.getAttribute( 'dir' ),
 			type: 'standard'
 		}
 	}, callback, false )
