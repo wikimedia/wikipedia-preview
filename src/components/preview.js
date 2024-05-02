@@ -6,7 +6,6 @@ import '../../style/preview.less'
 const header = ( state ) => {
 	const { lang } = state
 	const imageUrl = state.data && state.data.imgUrl
-	console.log( 'mobile state', state.isTouch ) // eslint-disable-line
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
