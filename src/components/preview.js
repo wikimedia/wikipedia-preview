@@ -6,11 +6,12 @@ import '../../style/preview.less'
 const header = ( state ) => {
 	const { lang } = state
 	const imageUrl = state.data && state.data.imgUrl
+	console.log( 'mobile state', state.isTouch ) // eslint-disable-line
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
 			<div id="wikipediapreview-header-wordmark" class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
-			<div id="wikipediapreview-header-closebtn" class="wikipediapreview-header-closebtn" onclick="close"></div>
+			${ state.isTouch ? '<div id="wikipediapreview-header-closebtn" class="wikipediapreview-header-closebtn" onclick="close"></div>' : '' }
 		</div>
 	`.trim()
 }
