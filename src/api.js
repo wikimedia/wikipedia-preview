@@ -6,6 +6,10 @@ import {
 } from './utils'
 import { msg } from './i18n'
 
+const titleWithoutSection = ( title ) => {
+	return title.split( '#' )[ 0 ]
+}
+
 const requestMwExtract = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
 		action: 'query',
@@ -65,13 +69,45 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 
 }
 
+const extractSectionSummary = ( lang, title, section, callback, request ) => {
+	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/mobile-html/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
+	request( url, ( data, err ) => {
+		if ( !data ) {
+			logError( msg( lang, 'preview-console-error-message', title, lang ), err )
+			return false
+		}
+		const doc = new DOMParser().parseFromString( data, 'text/html' )
+		const sectionTitleElement = doc.querySelector( '.pcs-edit-section-title#' + section )
+		const sectionElement = sectionTitleElement.closest( 'section' )
+		let img = null
+		const imgElement = sectionElement.querySelector( 'figure span.mw-file-element' )
+		if ( imgElement ) {
+			img = imgElement.getAttribute( 'data-src' )
+		}
+		console.log( 'get mobile html', img ) // eslint-disable-line
+		return {
+			title,
+			extractHtml: sectionElement.querySelector( 'p' ).outerHTML,
+			imgUrl: img,
+			dir: 'ltr', // todo
+			type: 'standard'
+		}
+	}, callback, false )
+}
+
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
-	return title.indexOf( ':' ) === -1 ?
-		requestPcsSummary( lang, title, callback, request ) :
-		requestMwExtract( lang, title, callback, request )
+	if ( title.indexOf( '#' ) === -1 ) {
+		return title.indexOf( ':' ) === -1 ?
+			requestPcsSummary( lang, title, callback, request ) :
+			requestMwExtract( lang, title, callback, request )
+	} else {
+		const [ t, s ] = title.split( '#' )
+		return extractSectionSummary( lang, t, s, callback, request )
+	}
 }
 
 const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
+	title = titleWithoutSection( title )
 	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/media-list/${ encodeURIComponent( title ) }`
 	request( url, ( mediaListData ) => {
 		const items = mediaListData.items || []
