@@ -70,6 +70,9 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 }
 
 const simplify = ( node ) => {
+	if ( !node ) {
+		return '<p></p>'
+	}
 	// remove a bunch of things
 	const selector = [
 		'script',
@@ -96,10 +99,10 @@ const simplify = ( node ) => {
 		p.innerHTML = p.innerHTML.replace( /\s\(.*?class=".*?(ext-phonos|IPA).*?".*?\)/g, '' )
 	}
 
-	return node
+	return node.outerHTML
 }
 
-const extractSectionSummary = ( lang, title, section, callback, request ) => {
+const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/mobile-html/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
 	request( url, ( data, err ) => {
 		if ( !data ) {
@@ -107,21 +110,42 @@ const extractSectionSummary = ( lang, title, section, callback, request ) => {
 			return false
 		}
 		const doc = new DOMParser().parseFromString( data, 'text/html' )
-		const sectionTitleElement = doc.querySelector( '.pcs-edit-section-title#' + section )
-		const sectionElement = sectionTitleElement.closest( 'section' )
-		let img = null
-		const imgElement = sectionElement.querySelector( 'figure span.mw-file-element' )
-		if ( imgElement ) {
-			img = imgElement.getAttribute( 'data-src' )
-		}
+		const sections = Array.from( doc.querySelectorAll( 'section' ) ).map( ( sectionElement ) => {
+			const sectionTitleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
+
+			const imageElement = sectionElement.querySelector( 'figure span.mw-file-element' )
+			const imgUrl = imageElement ?
+				imageElement.getAttribute( 'data-src' ) : null
+
+			const extractHtml = simplify(
+				sectionElement.querySelector( 'p' )
+			)
+
+			return {
+				id: sectionTitleElement ? sectionTitleElement.id : 'Summary',
+				imgUrl,
+				extractHtml
+			}
+		} )
+
 		return {
-			title,
-			extractHtml: simplify( sectionElement.querySelector( 'p' ) ).outerHTML,
-			imgUrl: img,
-			dir: doc.body.getAttribute( 'dir' ),
-			type: 'standard'
+			sections,
+			dir: doc.body.getAttribute( 'dir' )
 		}
-	}, callback, false )
+	}, ( info ) => {
+		for ( const section of info.sections ) {
+			if ( section.id === sectionId ) {
+				callback( {
+					title,
+					extractHtml: section.extractHtml,
+					imgUrl: section.imgUrl,
+					dir: info.dir,
+					type: 'standard'
+				} )
+			}
+		}
+		callback( false )
+	}, false )
 }
 
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
