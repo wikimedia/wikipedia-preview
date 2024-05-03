@@ -101,7 +101,6 @@ const simplify = ( node ) => {
 		p.innerHTML = p.innerHTML.replace( /\s\(.*?class=".*?(ext-phonos|IPA).*?".*?\)/g, '' )
 	}
 
-	console.log( node.innerText ) // eslint-disable-line
 	if ( node.innerText.trim() === '' ) {
 		return null
 	}
