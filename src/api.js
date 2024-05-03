@@ -71,11 +71,13 @@ const requestPcsSummary = ( lang, title, callback, request = cachedRequest ) => 
 
 const simplify = ( node ) => {
 	if ( !node ) {
-		return '<p></p>'
+		return null
 	}
 	// remove a bunch of things
 	const selector = [
 		'script',
+		'meta',
+		'style',
 		'figure',
 		'table',
 		'sup.mw-ref',
@@ -99,6 +101,11 @@ const simplify = ( node ) => {
 		p.innerHTML = p.innerHTML.replace( /\s\(.*?class=".*?(ext-phonos|IPA).*?".*?\)/g, '' )
 	}
 
+	console.log( node.innerText ) // eslint-disable-line
+	if ( node.innerText.trim() === '' ) {
+		return null
+	}
+
 	return node.outerHTML
 }
 
@@ -110,24 +117,27 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			return false
 		}
 		const doc = new DOMParser().parseFromString( data, 'text/html' )
+		const leadImageElement = doc.querySelector( 'meta[property="mw:leadImage"]' )
+		const leadImageUrl = leadImageElement ? leadImageElement.getAttribute( 'content' ) : null
 		const sections = Array.from( doc.querySelectorAll( 'section' ) ).map( ( sectionElement ) => {
 			const sectionTitleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
+			const id = sectionTitleElement ? sectionTitleElement.id : 'summary'
 
 			const imageElement = sectionElement.querySelector( 'figure span.mw-file-element' )
 			const imgUrl = imageElement ?
-				imageElement.getAttribute( 'data-src' ) : null
+				imageElement.getAttribute( 'data-src' ) :
+				leadImageUrl
 
 			const extractHtml = simplify(
 				sectionElement.querySelector( 'p' )
 			)
 
-			return {
-				id: sectionTitleElement ? sectionTitleElement.id : 'Summary',
+			return extractHtml ? {
+				id,
 				imgUrl,
 				extractHtml
-			}
-		} )
-
+			} : null
+		} ).filter( ( s ) => s )
 		return {
 			sections,
 			dir: doc.body.getAttribute( 'dir' )
@@ -144,7 +154,13 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 				} )
 			}
 		}
-		callback( false )
+		callback( {
+			title,
+			extractHtml: '<p>No preview available for this section</p>',
+			imgUrl: null,
+			dir: info.dir,
+			type: 'standard'
+		} )
 	}, false )
 }
 
