@@ -120,7 +120,9 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 		const leadImageUrl = leadImageElement ? leadImageElement.getAttribute( 'content' ) : null
 		const sections = Array.from( doc.querySelectorAll( 'section' ) ).map( ( sectionElement ) => {
 			const sectionTitleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
-			const id = sectionTitleElement ? sectionTitleElement.id : 'summary'
+			if ( !sectionTitleElement ) {
+				return null
+			}
 
 			const imageElement = sectionElement.querySelector( 'figure span.mw-file-element' )
 			const imgUrl = imageElement ?
@@ -132,7 +134,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			)
 
 			return extractHtml ? {
-				id,
+				id: sectionTitleElement.id,
 				imgUrl,
 				extractHtml
 			} : null
@@ -164,13 +166,13 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 }
 
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
-	if ( title.indexOf( '#' ) === -1 ) {
+	const [ titlePart, sectionPart ] = title.split( '#' )
+	if ( !sectionPart ) {
 		return title.indexOf( ':' ) === -1 ?
 			requestPcsSummary( lang, title, callback, request ) :
 			requestMwExtract( lang, title, callback, request )
 	} else {
-		const [ t, s ] = title.split( '#' )
-		return extractSectionSummary( lang, t, s, callback, request )
+		return extractSectionSummary( lang, titlePart, sectionPart, callback, request )
 	}
 }
 

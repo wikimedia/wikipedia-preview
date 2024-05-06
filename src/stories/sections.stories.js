@@ -33,7 +33,6 @@ export const Sections = ( { lang, title }, { loaded: { articleText } } ) => {
 		let titleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
 		if ( !titleElement ) {
 			titleElement = doc.createElement( 'h2' )
-			titleElement.id = 'summary'
 			titleElement.textContent = 'Summary'
 		}
 		titleElement.setAttribute( 'data-wikipedia-preview', '' )
