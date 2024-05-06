@@ -81,6 +81,7 @@ const simplify = ( node ) => {
 		'figure',
 		'table',
 		'sup.mw-ref',
+		'sup.reference',
 		'.pcs-collapse-table-container',
 		'.thumb',
 		'.hatnote',
