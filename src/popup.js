@@ -1,6 +1,7 @@
+import { computePosition, autoPlacement, arrow } from '@floating-ui/dom'
 import '../style/popup.less'
 
-let popup
+let popup, arrowEl
 
 const computePopupPosition = (
 	targetRect,
@@ -34,6 +35,7 @@ const withPx = ( value ) => {
 // Strangely, mouseenter often fires with the pointer slightly
 // outside any element rect. Making the rects bigger by a few pixel
 // ensures the pointer will be inside one of them.
+/*
 const expandRect = ( rect ) => {
 	const delta = 3
 	return {
@@ -56,6 +58,7 @@ const getTargetRect = ( element, { x, y } ) => {
 	// fallback for unit tests
 	return rects[ 0 ] || element.getBoundingClientRect()
 }
+*/
 
 const createPopup = ( container, win = window ) => {
 	if ( !popup ) {
@@ -63,6 +66,11 @@ const createPopup = ( container, win = window ) => {
 		popup.classList.add( 'wp-popup' )
 		popup.style.visibility = 'hidden'
 		container.appendChild( popup )
+
+		// arrow
+		arrowEl = win.document.createElement( 'div' )
+		arrowEl.classList.add( 'wp-arrow' )
+		container.appendChild( arrowEl )
 	}
 
 	const popupEvents = {/* onShow, onHide */}
@@ -75,27 +83,28 @@ const createPopup = ( container, win = window ) => {
 		popup.currentTargetElement = null
 	}
 
-	const show = ( content, nextTo, pointerPosition ) => {
+	const show = ( content, nextTo ) => {
 		popup.innerHTML = content
 
-		const position = computePopupPosition(
-			getTargetRect( nextTo, pointerPosition ),
-			popup.offsetWidth,
-			popup.offsetHeight,
-			win.innerWidth,
-			win.innerHeight
-		)
-
-		popup.style.left = withPx( position.left )
-		popup.style.top = withPx( position.top )
-		popup.style.bottom = withPx( position.bottom )
-
-		popup.currentTargetElement = nextTo
-		popup.style.visibility = 'visible'
-
-		if ( popupEvents.onShow ) {
-			popupEvents.onShow( popup )
+		computePosition( nextTo, popup, {
+			middleware: [ autoPlacement(), arrow( { element: arrowEl } ) ]
 		}
+		).then( ( { x, y, middlewareData } ) => {
+			const { x: arrowX, y: arrowY } = middlewareData.arrow
+
+			popup.style.left = withPx( x )
+			popup.style.top = withPx( y )
+			// popup.style.bottom = withPx( position.bottom )
+			arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
+			arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
+
+			popup.currentTargetElement = nextTo
+			popup.style.visibility = 'visible'
+
+			if ( popupEvents.onShow ) {
+				popupEvents.onShow( popup )
+			}
+		} )
 	}
 
 	const subscribe = ( events = {} ) => {
