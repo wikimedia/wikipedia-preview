@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Atzerritik"
+			"Atzerritik",
+			"Theklan"
 		]
 	},
 	"continue-reading": "Jarraitu irakurtzen",
@@ -14,6 +15,7 @@
 	"preview-console-error-message": "Aurrebista ez dago erabilgarri \" $1 \" artikuluaren (Hizkuntza: $2 )",
 	"read-on-wiki": "Wikipedian irakurri",
 	"read-more": "Wikipedian gehiago irakurri",
+	"preview-disambiguation-message": "<strong>$1</strong> izenburuarekin Wikipediako artikulu bat baino gehiago daude.",
 	"preview-offline-message": "Ez dago Interneteko konexiorik eskuragarri.",
 	"preview-offline-cta": "Saiatu berriro"
 }
