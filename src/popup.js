@@ -1,7 +1,7 @@
-import { computePosition, autoPlacement, arrow } from '@floating-ui/dom'
+import { computePosition, autoPlacement, arrow, offset } from '@floating-ui/dom'
 import '../style/popup.less'
 
-let popup, arrowEl
+let popup
 
 const computePopupPosition = (
 	targetRect,
@@ -66,11 +66,6 @@ const createPopup = ( container, win = window ) => {
 		popup.classList.add( 'wp-popup' )
 		popup.style.visibility = 'hidden'
 		container.appendChild( popup )
-
-		// arrow
-		arrowEl = win.document.createElement( 'div' )
-		arrowEl.classList.add( 'wp-arrow' )
-		container.appendChild( arrowEl )
 	}
 
 	const popupEvents = {/* onShow, onHide */}
@@ -84,20 +79,37 @@ const createPopup = ( container, win = window ) => {
 	}
 
 	const show = ( content, nextTo ) => {
+		let arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 		popup.innerHTML = content
 
 		computePosition( nextTo, popup, {
-			middleware: [ autoPlacement(), arrow( { element: arrowEl } ) ]
-		}
-		).then( ( { x, y, middlewareData } ) => {
+			middleware: [
+				autoPlacement(),
+				offset( 10 ),
+				arrow( { element: arrowEl } )
+			]
+		} ).then( ( { x, y, middlewareData, placement } ) => {
 			const { x: arrowX, y: arrowY } = middlewareData.arrow
+			arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 
-			popup.style.left = withPx( x )
+			// popup
 			popup.style.top = withPx( y )
-			// popup.style.bottom = withPx( position.bottom )
+			popup.style.left = withPx( x )
+
+			// arrow
 			arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
 			arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
 
+			// @todo
+			if ( placement === 'left' ) {
+				arrowEl.style.right = '-10px'
+			} else if ( placement === 'right' ) {
+				arrowEl.style.left = '-10px'
+			} else if ( placement === 'top' ) {
+				arrowEl.style.bottom = '-10px'
+			} else if ( placement === 'bottom' ) {
+				arrowEl.style.top = '-10px'
+			}
 			popup.currentTargetElement = nextTo
 			popup.style.visibility = 'visible'
 
