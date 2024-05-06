@@ -109,6 +109,29 @@ const simplify = ( node ) => {
 	return node.outerHTML
 }
 
+const findLeadImageThumbnail = ( doc ) => {
+	const leadImageElement = doc.querySelector( 'meta[property="mw:leadImage"]' )
+	if ( !leadImageElement ) {
+		return null
+	}
+	const parts = leadImageElement.getAttribute( 'content' ).split( '/' )
+	const filename = decodeURIComponent( parts[ parts.length - 1 ] )
+	const a = doc.querySelector( 'a[href*="' + filename + '"]' )
+	if ( !a ) {
+		return null
+	}
+	const span = a.querySelector( 'span[data-src]' )
+	if ( span ) {
+		return span.getAttribute( 'data-src' )
+	}
+	const img = a.querySelector( 'img[src]' )
+	if ( img ) {
+		return img.getAttribute( 'src' )
+	}
+	return null
+
+}
+
 const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/mobile-html/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
 	request( url, ( data, err ) => {
@@ -117,8 +140,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			return false
 		}
 		const doc = new DOMParser().parseFromString( data, 'text/html' )
-		const leadImageElement = doc.querySelector( 'meta[property="mw:leadImage"]' )
-		const leadImageUrl = leadImageElement ? leadImageElement.getAttribute( 'content' ) : null
+		const leadImageUrl = findLeadImageThumbnail( doc )
 		const sections = Array.from( doc.querySelectorAll( 'section' ) ).map( ( sectionElement ) => {
 			const sectionTitleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
 			if ( !sectionTitleElement ) {
