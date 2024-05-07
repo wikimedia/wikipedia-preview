@@ -1,4 +1,4 @@
-import { computePosition, autoPlacement, arrow, offset } from '@floating-ui/dom'
+import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 import '../style/popup.less'
 
 let popup
@@ -78,12 +78,14 @@ const createPopup = ( container, win = window ) => {
 		popup.currentTargetElement = null
 	}
 
-	const show = ( content, nextTo ) => {
+	const show = ( content, nextTo, { x: mouseX, y: mouseY } ) => {
 		let arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 		popup.innerHTML = content
 
 		computePosition( nextTo, popup, {
 			middleware: [
+				inline( { x: mouseX, y: mouseY } ),
+				shift(),
 				autoPlacement(),
 				offset( 10 ),
 				arrow( { element: arrowEl } )
