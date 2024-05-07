@@ -55,10 +55,9 @@ const wpStore = store( {
 	},
 
 	close( state, e ) {
-		console.log('close', state, e )// eslint-disable-line
-		// e.preventDefault()
-		// e.stopPropagation()
-		// state.targetId = null
+		e.preventDefault()
+		e.stopPropagation()
+		state.targetId = null
 	},
 
 	expand( state, e ) {
@@ -129,18 +128,6 @@ const wpStore = store( {
 		if ( state.mediaInfo[ title ] ) {
 			state.mediaInfo[ title ].error = true
 		}
-	},
-
-	touchStart( state ) {
-		console.log( 'touchStart', state ) // eslint-disable-line
-	},
-
-	touchMove( state ) {
-		console.log( 'touchMove', state ) // eslint-disable-line
-	},
-
-	touchEnd( state ) {
-		console.log( 'touchEnd', state ) // eslint-disable-line
 	}
 } )
 

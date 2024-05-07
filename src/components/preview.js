@@ -217,7 +217,7 @@ const getPreviewType = ( state ) => {
 const body = ( state, type ) => {
 	const bodyFunction = getBodyFunction( type )
 	return `
-		<div class="wikipediapreview-body wikipediapreview-body-${ type }" ontouchstart="touchStart" ontouchmove="touchMove" ontouchend="touchEnd">
+		<div class="wikipediapreview-body wikipediapreview-body-${ type }">
 			${ bodyFunction( state ) }
 		</div>
 	`
