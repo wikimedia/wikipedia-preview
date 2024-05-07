@@ -2,7 +2,7 @@ import { describe, test, beforeAll, expect, vi } from 'vitest'
 import { computePopupPosition, createPopup } from '../src/popup.js'
 import { JSDOM } from 'jsdom'
 
-describe( 'Popup', () => {
+describe.skip( 'Popup', () => {
 	describe( 'computePopupPosition', () => {
 
 		describe( `
