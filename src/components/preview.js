@@ -9,8 +9,8 @@ const header = ( state ) => {
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
-			<div class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
-			<div class="wikipediapreview-header-closebtn" onclick="close"></div>
+			<div id="wikipediapreview-header-wordmark" class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
+			<div id="wikipediapreview-header-closebtn" class="wikipediapreview-header-closebtn" onclick="close"></div>
 		</div>
 	`.trim()
 }
