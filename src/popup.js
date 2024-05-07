@@ -102,13 +102,13 @@ const createPopup = ( container, win = window ) => {
 
 			// @todo
 			if ( placement === 'left' ) {
-				arrowEl.style.right = '-10px'
+				arrowEl.style.right = '-5px'
 			} else if ( placement === 'right' ) {
-				arrowEl.style.left = '-10px'
+				arrowEl.style.left = '-5px'
 			} else if ( placement === 'top' ) {
-				arrowEl.style.bottom = '-10px'
+				arrowEl.style.bottom = '-5px'
 			} else if ( placement === 'bottom' ) {
-				arrowEl.style.top = '-10px'
+				arrowEl.style.top = '-5px'
 			}
 			popup.currentTargetElement = nextTo
 			popup.style.visibility = 'visible'

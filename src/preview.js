@@ -34,9 +34,9 @@ const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorSch
 	const colorScheme = prefersColorScheme === 'detect' ? '' : `wikipediapreview-${ prefersColorScheme }-theme`
 	return `
 		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }">
-			<div class="wikipediapreview-arrow"></div>
 			${ headerContent }
 			${ bodyContent }
+			${ !isTouch ? '<div class="wikipediapreview-arrow"></div>' : '' }
 		</div>
 	`.trim()
 }
