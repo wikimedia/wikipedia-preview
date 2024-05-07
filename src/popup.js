@@ -89,27 +89,29 @@ const createPopup = ( container, win = window ) => {
 				arrow( { element: arrowEl } )
 			]
 		} ).then( ( { x, y, middlewareData, placement } ) => {
-			const { x: arrowX, y: arrowY } = middlewareData.arrow
-			arrowEl = document.querySelector( '.wikipediapreview-arrow' )
-
 			// popup
 			popup.style.top = withPx( y )
 			popup.style.left = withPx( x )
 
 			// arrow
-			arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
-			arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
+			if ( middlewareData.arrow ) {
+				const { x: arrowX, y: arrowY } = middlewareData.arrow
+				arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 
-			// @todo
-			if ( placement === 'left' ) {
-				arrowEl.style.right = '-5px'
-			} else if ( placement === 'right' ) {
-				arrowEl.style.left = '-5px'
-			} else if ( placement === 'top' ) {
-				arrowEl.style.bottom = '-5px'
-			} else if ( placement === 'bottom' ) {
-				arrowEl.style.top = '-5px'
+				arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
+				arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
+
+				if ( placement === 'left' ) {
+					arrowEl.style.right = '-5px'
+				} else if ( placement === 'right' ) {
+					arrowEl.style.left = '-5px'
+				} else if ( placement === 'top' ) {
+					arrowEl.style.bottom = '-5px'
+				} else if ( placement === 'bottom' ) {
+					arrowEl.style.top = '-5px'
+				}
 			}
+
 			popup.currentTargetElement = nextTo
 			popup.style.visibility = 'visible'
 
