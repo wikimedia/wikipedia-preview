@@ -43,7 +43,7 @@ const createPopup = ( container, win = window ) => {
 			popup.style.left = withPx( x )
 
 			// arrow
-			if ( middlewareData.arrow ) {
+			if ( middlewareData.arrow && arrowEl ) {
 				const { x: arrowX, y: arrowY } = middlewareData.arrow
 
 				arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
