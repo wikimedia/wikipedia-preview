@@ -79,8 +79,8 @@ const createPopup = ( container, win = window ) => {
 	}
 
 	const show = ( content, nextTo, { x: mouseX, y: mouseY } ) => {
-		let arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 		popup.innerHTML = content
+		const arrowEl = popup.querySelector( '.wikipediapreview-arrow' )
 
 		computePosition( nextTo, popup, {
 			middleware: [
@@ -98,19 +98,21 @@ const createPopup = ( container, win = window ) => {
 			// arrow
 			if ( middlewareData.arrow ) {
 				const { x: arrowX, y: arrowY } = middlewareData.arrow
-				arrowEl = document.querySelector( '.wikipediapreview-arrow' )
 
 				arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
 				arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
 
 				if ( placement === 'left' ) {
-					arrowEl.style.right = '-5px'
+					arrowEl.style.right = '-8px'
+					arrowEl.style.transform = 'rotate(90deg)'
 				} else if ( placement === 'right' ) {
-					arrowEl.style.left = '-5px'
+					arrowEl.style.left = '-8px'
+					arrowEl.style.transform = 'rotate(-90deg)'
 				} else if ( placement === 'top' ) {
-					arrowEl.style.bottom = '-5px'
+					arrowEl.style.bottom = '-8px'
+					arrowEl.style.transform = 'rotate(180deg)'
 				} else if ( placement === 'bottom' ) {
-					arrowEl.style.top = '-5px'
+					arrowEl.style.top = '-8px'
 				}
 			}
 
