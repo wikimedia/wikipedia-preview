@@ -170,7 +170,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 		for ( const section of info.sections ) {
 			if ( section.id === sectionId ) {
 				callback( {
-					title,
+					title: title + '#' + sectionId,
 					extractHtml: section.extractHtml,
 					imgUrl: section.imgUrl,
 					dir: info.dir,
