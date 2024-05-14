@@ -236,13 +236,13 @@ function init( {
 		console.group( 'Wikipedia Preview [debug mode]' )
 		console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
 		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `${ link.text } -> ${ buildWikipediaUrl( link.lang, link.title, isTouch, false ) }` )
+			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
 		} )
 		console.groupEnd()
 		if ( detectLinks ) {
 			console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
 			foundDetectLinks.forEach( ( link, index ) => {
-				console.log( index + 1, `${ link.text } -> ${ buildWikipediaUrl( link.lang, link.title, isTouch, false ) }` )
+				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
 			} )
 			console.groupEnd()
 		}
