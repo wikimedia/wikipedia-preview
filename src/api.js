@@ -176,6 +176,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 					dir: info.dir,
 					type: 'standard'
 				} )
+				return
 			}
 		}
 		callback( {
