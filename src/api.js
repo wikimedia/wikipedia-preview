@@ -132,7 +132,7 @@ const findLeadImageThumbnail = ( doc ) => {
 
 }
 
-const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
+const getSections = ( lang, title, callback, request = cachedRequest ) => {
 	const url = `https://${ lang }.wikipedia.org/api/rest_v1/page/mobile-html/${ encodeURIComponent( title ) }?${ getAnalyticsQueryParam() }`
 	request( url, ( data, err ) => {
 		if ( !data ) {
@@ -143,9 +143,8 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 		const leadImageUrl = findLeadImageThumbnail( doc )
 		const sections = Array.from( doc.querySelectorAll( 'section' ) ).map( ( sectionElement ) => {
 			const sectionTitleElement = sectionElement.querySelector( 'h2, h3, h4, h5, h6' )
-			if ( !sectionTitleElement ) {
-				return null
-			}
+			const sectionId = sectionTitleElement ? sectionTitleElement.id : title
+			const level = sectionTitleElement ? sectionTitleElement.tagName.toLowerCase() : 'h2'
 
 			const imageElement = sectionElement.querySelector( 'figure span.mw-file-element' )
 			const imgUrl = imageElement ?
@@ -157,7 +156,8 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			)
 
 			return extractHtml ? {
-				id: sectionTitleElement.id,
+				id: sectionId,
+				level,
 				imgUrl,
 				extractHtml
 			} : null
@@ -166,7 +166,11 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			sections,
 			dir: doc.body.getAttribute( 'dir' )
 		}
-	}, ( info ) => {
+	}, callback, false )
+}
+
+const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
+	getSections( lang, title, ( info ) => {
 		for ( const section of info.sections ) {
 			if ( section.id === sectionId ) {
 				callback( {
@@ -186,7 +190,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 			dir: info.dir,
 			type: 'standard'
 		} )
-	}, false )
+	}, request )
 }
 
 const requestPagePreview = ( lang, title, callback, request = cachedRequest ) => {
@@ -266,4 +270,4 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 	}, callback )
 }
 
-export { requestPagePreview, requestPageMedia, requestPageMediaInfo }
+export { requestPagePreview, requestPageMedia, requestPageMediaInfo, getSections }

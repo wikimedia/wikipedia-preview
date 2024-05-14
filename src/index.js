@@ -1,4 +1,4 @@
-import { requestPagePreview } from './api'
+import { requestPagePreview, getSections } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
@@ -254,4 +254,4 @@ function init( {
 
 version()
 
-export default { init, version, getPreviewHtml }
+export default { init, version, getPreviewHtml, getSections }
