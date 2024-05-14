@@ -110,7 +110,9 @@ const wpStore = store( {
 		state.galleryCaptionExpanded = false
 	},
 
-	toggleGalleryCaption( state ) {
+	toggleGalleryCaption( state, e ) {
+		e.preventDefault()
+		e.stopPropagation()
 		state.galleryCaptionExpanded = !state.galleryCaptionExpanded
 	},
 

@@ -87,16 +87,18 @@
 				line-height: 1.56;
 				color: #f8f9fa;
 				max-height: 80px;
+				transition: max-height 0.25s ease-in-out;
 
 				&.expanded {
-					max-height: 241px;
+					max-height: 41.2%;
+				}
 
+				&.expanded & {
 					&-expand-cue {
 						background-image: url( '../images/caption-cue-expanded.svg' );
 						height: 8px;
 					}
 				}
-
 				&-expand-cue {
 					width: 37px;
 					height: 3px;
@@ -106,14 +108,12 @@
 					margin: auto;
 					margin-top: 10px;
 					padding-bottom: 4px;
-					transition: height 0.25s ease-in-out;
 				}
 
 				&-text {
 					padding-left: 13px;
 					padding-right: 13px;
 					margin-top: 6px;
-					max-height: 80px;
 					overflow-y: scroll;
 					transition: max-height 0.25s ease-in-out;
 					touch-action: none;
