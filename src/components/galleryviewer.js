@@ -127,8 +127,16 @@ const galleryviewer = ( {
 			<div class="${ prefixClassname }-close" onclick="closeGallery"></div>
 			<div class="${ prefixClassname }-main">
 				<div class="${ prefixClassname }-slider" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ current * getClientWidth() }px">
-					<div class="${ sliderPrefix }-button previous" onclick="previousGalleryImage"></div>
-					<div class="${ sliderPrefix }-button next" onclick="nextGalleryImage"></div>
+					<div
+						class="${ sliderPrefix }-button previous"
+						style="${ current === 0 ? 'opacity:0.5;' : 'opacity:1;' }"
+						onclick="previousGalleryImage"
+					></div>
+					<div
+						class="${ sliderPrefix }-button next"
+						style="${ current === media.length - 1 ? 'opacity:0.5;' : 'opacity:1;' }"
+						onclick="nextGalleryImage"
+					></div>
 					${ imageListHtml }
 				</div>
 			</div>
