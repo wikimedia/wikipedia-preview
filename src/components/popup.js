@@ -72,7 +72,7 @@ const popup = ( { target, pointerPosition, content, expanded } ) => {
 		expanded: expanded
 	}
 	return `
-		<div class="${ classesToString( classes ) }" style="${ style }">
+		<div class="${ classesToString( classes ) }" style="${ style }" onmouseleave="close">
 			${ content }
 		</div>
 	`
