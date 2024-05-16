@@ -1,5 +1,3 @@
-@popup-z-index: 1100;
-
 .wikipediapreview {
 	&-gallery {
 		display: flex;
@@ -28,7 +26,6 @@
 
 .wp-gallery-fullscreen {
 	background-color: #202122;
-	z-index: @popup-z-index;
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -46,7 +43,6 @@
 		top: 16px;
 		right: 16px;
 		height: 44px;
-		z-index: @popup-z-index + 20;
 	}
 
 	&-main {
@@ -192,7 +188,6 @@
 					background-repeat: no-repeat;
 					background-position: center;
 					padding-right: 20px;
-					z-index: @popup-z-index + 20;
 
 					&-link {
 						display: block;
@@ -334,7 +329,6 @@
 				top: 0;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
-				z-index: @popup-z-index;
 			}
 
 			&.next {
@@ -342,7 +336,6 @@
 				right: 16px;
 				height: 100%;
 				-webkit-tap-highlight-color: transparent;
-				z-index: @popup-z-index;
 			}
 		}
 	}
