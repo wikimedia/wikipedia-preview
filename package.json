@@ -20,7 +20,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:fix-lint": "eslint . --fix --ext .js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --fix --ext .js",
     "coverage": "vitest run --coverage",
     "build": "vite build",
     "build:watch": "vite build --watch",
