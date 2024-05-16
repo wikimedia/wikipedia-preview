@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "dompurify": "^3.0.6",
-    "reefjs": "^13.0.2",
+    "reefjs": "13.0.4",
     "storybook": "^7.5.3"
   },
   "browserslist": [
