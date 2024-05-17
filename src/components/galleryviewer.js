@@ -99,7 +99,7 @@ const galleryviewer = ( {
 					style="${ captionStyle }"
 					onclick="toggleGalleryCaption"
 				>
-					${ isCaptionExpandable() ? `<div class="${ sliderPrefix }-item-caption-expand-cue"></div>` : '' }
+					${ isCaptionExpandable( description ) ? `<div class="${ sliderPrefix }-item-caption-expand-cue"></div>` : '' }
 					${ description ? `<div class="${ sliderPrefix }-item-caption-text"><bdi>${ description }</bdi></div>` : '' }
 				</div>
 
