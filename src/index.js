@@ -153,6 +153,19 @@ function init( {
 		}
 	} )
 
+	// key events for gallery
+	window.addEventListener( 'keydown', ( e ) => {
+		if ( store.value.selectedGalleryItem ) {
+			if ( e.key === 'ArrowLeft' ) {
+				store.previousGalleryImage( e )
+			} else if ( e.key === 'ArrowRight' ) {
+				store.nextGalleryImage( e )
+			} else if ( e.key === 'Escape' || e.key === 'Esc' ) {
+				store.closeGallery( e )
+			}
+		}
+	} )
+
 	if ( debug ) {
 		/* eslint-disable no-console */
 		console.group( 'Wikipedia Preview [debug mode]' )
