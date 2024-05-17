@@ -154,12 +154,17 @@ function init( {
 	} )
 
 	// key events for gallery
+	const imageNavigationFunctions = {
+		ltr: [ store.previousGalleryImage, store.nextGalleryImage ],
+		rtl: [ store.nextGalleryImage, store.previousGalleryImage ]
+	}
 	window.addEventListener( 'keydown', ( e ) => {
 		if ( store.value.selectedGalleryIndex !== null ) {
-			if ( e.key === 'ArrowLeft' ) {
-				store.previousGalleryImage( e )
-			} else if ( e.key === 'ArrowRight' ) {
-				store.nextGalleryImage( e )
+			const [ left, right ] = imageNavigationFunctions[ store.value.data.dir ]
+			if ( e.key === 'ArrowLeft' || e.key === 'Left' ) {
+				left( e )
+			} else if ( e.key === 'ArrowRight' || e.key === 'Right' ) {
+				right( e )
 			} else if ( e.key === 'Escape' || e.key === 'Esc' ) {
 				store.closeGallery( e )
 			}

@@ -31,6 +31,7 @@ const wpStore = store( {
 	},
 
 	receiveContent( state, data ) {
+		// data is { title, extractHtml, imgUrl, dir, type }
 		state.data = data
 	},
 
