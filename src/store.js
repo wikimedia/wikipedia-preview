@@ -1,6 +1,5 @@
 import { store } from 'reefjs'
 import { requestPagePreview, requestPageMedia, requestPageMediaInfo } from './api'
-import { getSelectedImageIndex } from './utils'
 
 const wpStore = store( {
 	title: null,
@@ -10,6 +9,7 @@ const wpStore = store( {
 	data: null,
 	media: null,
 	mediaInfo: {},
+	selectedGalleryIndex: null,
 	expanded: false
 }, {
 	trigger( state, targetId, pointerPosition, title, lang ) {
@@ -17,7 +17,7 @@ const wpStore = store( {
 		state.data = null
 		state.media = null
 		state.expanded = false
-		state.selectedGalleryItem = null
+		state.selectedGalleryIndex = null
 
 		// new preview
 		state.title = title
@@ -41,6 +41,9 @@ const wpStore = store( {
 
 	receiveMediaInfo( state, mediaInfo ) {
 		// mediaInfo is { title, author, bestFitImageUrl, description, filePage, license }
+		if ( state.mediaInfo[ mediaInfo.title ] ) {
+			return // already loaded
+		}
 		state.mediaInfo[ mediaInfo.title ] = mediaInfo
 
 		// preload image
@@ -67,26 +70,29 @@ const wpStore = store( {
 	},
 
 	clickThumbnail( state, e ) {
-		state.selectedGalleryItem = e.target.getAttribute( 'key' )
+		state.selectedGalleryIndex = parseInt( e.target.getAttribute( 'data-index' ) )
 		state.galleryFocusMode = false
-		wpStore.loadMediaInfo()
+		// Load media info for the selected image and the surrounding images
+		wpStore.loadMediaInfo( state.selectedGalleryIndex )
+		wpStore.loadMediaInfo( state.selectedGalleryIndex + 1 )
+		wpStore.loadMediaInfo( state.selectedGalleryIndex - 1 )
 	},
 
 	previousGalleryImage( state, e ) {
 		e.preventDefault()
 		e.stopPropagation()
-		const currentIndex = getSelectedImageIndex( state.media, state.selectedGalleryItem )
-		if ( currentIndex > 0 ) {
-			state.selectedGalleryItem = state.media[ currentIndex - 1 ].thumb
+		if ( state.selectedGalleryIndex > 0 ) {
+			state.selectedGalleryIndex--
+			wpStore.loadMediaInfo( state.selectedGalleryIndex - 1 )
 		}
 	},
 
 	nextGalleryImage( state, e ) {
 		e.preventDefault()
 		e.stopPropagation()
-		const currentIndex = getSelectedImageIndex( state.media, state.selectedGalleryItem )
-		if ( currentIndex < ( state.media.length - 1 ) ) {
-			state.selectedGalleryItem = state.media[ currentIndex + 1 ].thumb
+		if ( state.selectedGalleryIndex < ( state.media.length - 1 ) ) {
+			state.selectedGalleryIndex++
+			wpStore.loadMediaInfo( state.selectedGalleryIndex + 1 )
 		}
 	},
 
@@ -96,16 +102,19 @@ const wpStore = store( {
 		requestPageMedia( lang, title, wpStore.receiveMedia )
 	},
 
-	loadMediaInfo( state ) {
-		state.media.forEach( ( image ) => {
-			if ( !state.mediaInfo[ image.title ] ) {
-				requestPageMediaInfo( state.lang, image.title, wpStore.receiveMediaInfo )
-			}
-		} )
+	loadMediaInfo( state, index ) {
+		// out of bounds
+		if ( index < 0 || index >= state.media.length ) {
+			return
+		}
+		const title = state.media[ index ].title
+		if ( !state.mediaInfo[ title ] ) {
+			requestPageMediaInfo( state.lang, title, wpStore.receiveMediaInfo )
+		}
 	},
 
 	closeGallery( state ) {
-		state.selectedGalleryItem = null
+		state.selectedGalleryIndex = null
 		state.galleryFocusMode = false
 		state.galleryCaptionExpanded = false
 	},

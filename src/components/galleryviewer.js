@@ -1,7 +1,6 @@
 import { msg } from '../i18n'
 import {
-	getClientWidth, getSelectedImageIndex,
-	classesToString, getDir
+	getClientWidth, classesToString, getDir
 } from '../utils'
 
 const prefixClassname = 'wp-gallery-fullscreen'
@@ -46,14 +45,13 @@ const isCaptionExpandable = ( description ) => {
 }
 
 const galleryviewer = ( {
-	media, mediaInfo, selectedGalleryItem, lang,
+	media, mediaInfo, selectedGalleryIndex, lang,
 	galleryCaptionExpanded, galleryFocusMode
 } ) => {
-	if ( !media || !selectedGalleryItem ) {
+	if ( !media || selectedGalleryIndex === null ) {
 		return ''
 	}
 	const dir = getDir( lang )
-	const current = getSelectedImageIndex( media, selectedGalleryItem )
 
 	const imageListHtml = media.map( ( image ) => {
 		const info = mediaInfo[ image.title ]
@@ -124,16 +122,16 @@ const galleryviewer = ( {
 	return `
 		<div class="${ classesToString( galleryClasses ) }" lang="${ lang }" dir="${ dir }" onclick="toggleGalleryFocusMode">
 			<div class="${ prefixClassname }-main">
-				<div class="${ prefixClassname }-slider" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ current * getClientWidth() }px">
+				<div class="${ prefixClassname }-slider" style="${ dir === 'ltr' ? 'margin-left' : 'margin-right' }:-${ selectedGalleryIndex * getClientWidth() }px">
 					${ imageListHtml }
 					<div
 						class="${ sliderPrefix }-button previous"
-						style="${ current === 0 ? 'opacity:0.5;' : 'opacity:1;' }"
+						style="${ selectedGalleryIndex === 0 ? 'opacity:0.5;' : 'opacity:1;' }"
 						onclick="previousGalleryImage"
 					></div>
 					<div
 						class="${ sliderPrefix }-button next"
-						style="${ current === media.length - 1 ? 'opacity:0.5;' : 'opacity:1;' }"
+						style="${ selectedGalleryIndex === media.length - 1 ? 'opacity:0.5;' : 'opacity:1;' }"
 						onclick="nextGalleryImage"
 					></div>
 					<div class="${ prefixClassname }-close" onclick="closeGallery"></div>

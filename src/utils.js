@@ -153,15 +153,6 @@ const invokeCallback = ( events, name, params ) => {
 
 const getClientWidth = () => window.innerWidth
 
-const getSelectedImageIndex = ( media, selectedImageUrl ) => {
-	for ( let i = 0; i < media.length; i++ ) {
-		if ( media[ i ].thumb === selectedImageUrl ) {
-			return i
-		}
-	}
-	return 0
-}
-
 const classesToString = ( classes ) => {
 	return Object.keys( classes )
 		.filter( ( k ) => classes[ k ] )
@@ -172,5 +163,5 @@ export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
 	buildWikipediaUrl, version, logError, forEachRoot, invokeCallback,
-	getClientWidth, getSelectedImageIndex, classesToString
+	getClientWidth, classesToString
 }

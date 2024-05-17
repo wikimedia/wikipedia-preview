@@ -1,12 +1,12 @@
 import '../../style/gallery.less'
 
-const galleryitem = ( item ) => {
+const galleryitem = ( item, index ) => {
 	const style = 'background-image: url(' + item.thumb + ');'
 	return `
 		<div
 			class="wikipediapreview-gallery-row-image"
 			style="${ style }" onclick="clickThumbnail"
-			key="${ item.thumb }"
+			key="${ item.title }" data-index="${ index }"
 		>
 		</div>
 	`

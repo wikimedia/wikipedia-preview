@@ -155,7 +155,7 @@ function init( {
 
 	// key events for gallery
 	window.addEventListener( 'keydown', ( e ) => {
-		if ( store.value.selectedGalleryItem ) {
+		if ( store.value.selectedGalleryIndex !== null ) {
 			if ( e.key === 'ArrowLeft' ) {
 				store.previousGalleryImage( e )
 			} else if ( e.key === 'ArrowRight' ) {
