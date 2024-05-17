@@ -57,7 +57,6 @@ const galleryviewer = ( {
 
 	const imageListHtml = media.map( ( image ) => {
 		const info = mediaInfo[ image.title ]
-		console.log( 'image', image.title, info ) // eslint-disable-line
 		const loadingStyle = !( info && info.loaded ) ? '' : 'visibility: hidden;'
 		const errorStyle = info && info.error ? '' : 'visibility: hidden;'
 		const imgStyle = info && info.loaded ? '' : 'visibility: hidden;'

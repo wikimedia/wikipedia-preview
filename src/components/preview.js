@@ -255,10 +255,14 @@ const preview = ( state ) => {
 	const type = getPreviewType( state )
 	const classes = {
 		wikipediapreview: true,
-		mobile: state.isTouch
+		mobile: state.isTouch,
+		expanded: state.expanded
 	}
 	return `
-		<div class="${ classesToString( classes ) } ${ state.expanded ? 'expanded' : '' }" lang="${ state.lang }" dir="${ getDir( state.lang ) }" onmouseleave="close">
+		<div
+			class="${ classesToString( classes ) }"
+			lang="${ state.lang }" dir="${ getDir( state.lang ) }"
+		>
 			${ header( state ) }
 			${ body( state, type ) }
 			${ footer( state, type ) }
