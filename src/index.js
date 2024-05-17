@@ -56,7 +56,7 @@ function init( {
 
 	setColorScheme( container, prefersColorScheme )
 
-	component(
+	const mountedApp = component(
 		container,
 		() => app( store.value ),
 		{
@@ -164,6 +164,21 @@ function init( {
 				store.closeGallery( e )
 			}
 		}
+	} )
+
+	// resize event for gallery
+	let windowResizeTimeout // used for debounced
+	window.addEventListener( 'resize', () => {
+		if ( store.value.selectedGalleryIndex === null ) {
+			return
+		}
+		container.classList.add( 'wikipediapreview-resize' )
+		mountedApp.render()
+
+		clearTimeout( windowResizeTimeout )
+		windowResizeTimeout = setTimeout( () => {
+			container.classList.remove( 'wikipediapreview-resize' )
+		}, 100 )
 	} )
 
 	if ( debug ) {
