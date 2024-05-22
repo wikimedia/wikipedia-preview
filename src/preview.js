@@ -31,19 +31,18 @@ const getReadOnWikiCta = ( lang, title, isTouch ) => {
 }
 
 const render = (
-	lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme, withArrow = true
+	lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme
 ) => {
 	const colorScheme = prefersColorScheme === 'detect' ? '' : `wikipediapreview-${ prefersColorScheme }-theme`
 	return `
 		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }">
 			${ headerContent }
 			${ bodyContent }
-			${ ( !isTouch && withArrow ) ? '<div class="wikipediapreview-arrow"></div>' : '' }
 		</div>
 	`.trim()
 }
 
-const renderPreview = ( lang, data, isTouch, prefersColorScheme, withArrow ) => {
+const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 	const imageUrl = data.imgUrl,
 		bodyContent = `
 			<div class="wikipediapreview-body">
@@ -63,8 +62,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme, withArrow ) => 
 		data.dir,
 		getPreviewHeader( lang, isTouch, imageUrl ),
 		bodyContent,
-		prefersColorScheme,
-		withArrow
+		prefersColorScheme
 	)
 }
 
