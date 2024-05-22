@@ -1,7 +1,7 @@
 import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 import '../style/popup.less'
 
-let popup
+let popup, arrowElement
 
 const withPx = ( value ) => {
 	return value ? ( value + 'px' ) : value
@@ -13,6 +13,10 @@ const createPopup = ( container, win = window ) => {
 		popup.classList.add( 'wp-popup' )
 		popup.style.visibility = 'hidden'
 		container.appendChild( popup )
+
+		arrowElement = win.document.createElement( 'div' )
+		arrowElement.classList.add( 'wikipediapreview-arrow' )
+		arrowElement.style.visibility = 'hidden'
 	}
 
 	const popupEvents = {/* onShow, onHide */}
@@ -26,7 +30,9 @@ const createPopup = ( container, win = window ) => {
 	}
 
 	const show = ( content, nextTo, { x: mouseX, y: mouseY } ) => {
-		popup.innerHTML = content
+		popup.innerHTML = content + arrowElement.outerHTML
+
+		// capture the arrow element
 		const arrowEl = popup.querySelector( '.wikipediapreview-arrow' )
 
 		computePosition( nextTo, popup, {
