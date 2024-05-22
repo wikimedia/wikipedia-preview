@@ -15,8 +15,7 @@ const createPopup = ( container, win = window ) => {
 		container.appendChild( popup )
 
 		arrowElement = win.document.createElement( 'div' )
-		arrowElement.classList.add( 'wikipediapreview-arrow' )
-		arrowElement.style.visibility = 'hidden'
+		arrowElement.classList.add( 'wp-popup-arrow' )
 	}
 
 	const popupEvents = {/* onShow, onHide */}
@@ -33,7 +32,7 @@ const createPopup = ( container, win = window ) => {
 		popup.innerHTML = content + arrowElement.outerHTML
 
 		// capture the arrow element
-		const arrowEl = popup.querySelector( '.wikipediapreview-arrow' )
+		const arrowEl = popup.querySelector( '.wp-popup-arrow' )
 
 		computePosition( nextTo, popup, {
 			middleware: [
