@@ -209,6 +209,14 @@ export const customEvents = ( popup ) => {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
 		}
+
+		addEventListener( element.component.body, 'scroll', ( e ) => {
+			if ( e.target.scrollTop > 0 ) {
+				element.component.body.classList.add( 'scrolled' )
+			} else {
+				element.component.body.classList.remove( 'scrolled' )
+			}
+		} )
 	}
 
 	return { onHide, onShow, onExpand }

@@ -82,7 +82,21 @@
 
 	&-body {
 		max-height: 248px;
-		overflow: hidden;
+		overflow: scroll;
+
+		&:after {
+			content: ' ';
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			left: 0;
+			right: 200px;
+			top: 235px;
+			background: -moz-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: -webkit-linear-gradient( top, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			background: linear-gradient( to bottom, rgba( 255, 255, 255, 0 ) 0%, #fff 100% );
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
+		}
 
 		p {
 			margin: 0;
@@ -234,6 +248,12 @@
 				}
 			}
 		}
+
+		&.scrolled {
+			&:after {
+				content: none;
+			}
+		}
 	}
 
 	&-footer {
@@ -254,7 +274,7 @@
 			}
 
 			&-readonwiki {
-				display: none;
+				display: block;
 			}
 		}
 
@@ -272,16 +292,6 @@
 
 			&:after {
 				content: none;
-			}
-		}
-
-		.wikipediapreview-footer-cta {
-			&-readmore {
-				display: none;
-			}
-
-			&-readonwiki {
-				display: block;
 			}
 		}
 	}

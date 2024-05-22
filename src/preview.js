@@ -45,12 +45,11 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 		bodyContent = `
 			<div class="wikipediapreview-body">
 				${ data.extractHtml }
+				<div class="wikipediapreview-footer">
+					<a href="${ buildWikipediaUrl( lang, data.title, isTouch ) }" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${ msg( lang, 'read-more' ) }</a>
+				</div>
 				<div class="wikipediapreview-gallery">
 				</div>
-			</div>
-			<div class="wikipediapreview-footer">
-				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${ msg( lang, 'continue-reading' ) }</span>
-				<a href="${ buildWikipediaUrl( lang, data.title, isTouch ) }" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${ msg( lang, 'read-more' ) }</a>
 			</div>
 		`.trim()
 
