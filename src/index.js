@@ -3,7 +3,10 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
-import { getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline, version, getAnalyticsQueryParam } from './utils'
+import {
+	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline,
+	version, getAnalyticsQueryParam, getElement
+} from './utils'
 
 const invokeCallback = ( events, name, params ) => {
 	const callback = events && events[ name ]
@@ -69,6 +72,7 @@ function init( {
 	debug = false,
 	prefersColorScheme = 'detect'
 } ) {
+	popupContainer = getElement( popupContainer ) || document.body
 	const globalLang = lang
 	const popup = isTouch ?
 		createTouchPopup( popupContainer ) :
