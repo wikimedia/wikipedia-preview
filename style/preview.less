@@ -258,29 +258,31 @@
 
 	&-footer {
 		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 40px;
 
-		&-cta {
-			width: 100%;
-			height: 50px;
-			text-decoration: none;
-			text-align: center;
-			padding: 16px;
-			font-size: 18px;
-			color: #36c;
+		&-link {
+			margin-right: 5px;
 
-			&-readmore {
-				cursor: pointer;
-				display: block;
-			}
-
-			&-readonwiki {
-				display: block;
+			&-cta {
+				text-decoration: none;
+				font-size: 18px;
+				color: #36c;
 			}
 		}
 
 		&-loading {
 			height: 30px;
 			background-color: var( --wikipediapreview-secondary-background-color );
+		}
+
+		&-icon {
+			width: 11px;
+			height: 11px;
+			background-image: url( '../images/link-external-ltr.svg' );
+			background-repeat: no-repeat;
 		}
 	}
 
@@ -339,6 +341,15 @@
 			&-author {
 				left: 14px;
 				right: auto;
+			}
+
+			&-link {
+				margin-left: 5px;
+				margin-right: 0;
+			}
+
+			&-icon {
+				background-image: url( '../images/link-external-rtl.svg' );
 			}
 		}
 	}
