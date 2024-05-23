@@ -159,9 +159,16 @@ const classesToString = ( classes ) => {
 		.join( ' ' )
 }
 
+const getElement = ( nodeOrSelector ) => {
+	if ( typeof nodeOrSelector === 'string' ) {
+		return document.querySelector( nodeOrSelector )
+	}
+	return nodeOrSelector
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
 	buildWikipediaUrl, version, logError, forEachRoot, invokeCallback,
-	getClientWidth, classesToString
+	getClientWidth, classesToString, getElement
 }

@@ -3,7 +3,7 @@ import { renderPreview } from './components/preview'
 import app from './components/app'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch,
-	version, getAnalyticsQueryParam, forEachRoot
+	version, getAnalyticsQueryParam, forEachRoot, getElement
 } from './utils'
 
 import { component } from 'reefjs'
@@ -51,6 +51,7 @@ function init( {
 	if ( !container ) {
 		container = document.createElement( 'div' )
 		container.classList.add( 'wp-popup-container' )
+		popupContainer = getElement( popupContainer ) || document.body
 		popupContainer.appendChild( container )
 	}
 
