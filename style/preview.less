@@ -286,27 +286,9 @@
 		}
 	}
 
-	&.expanded {
-		.wikipediapreview-body {
-			// calculate the max height in onExpand()
-			// max-height: 496px;
-			overflow: scroll;
-
-			&:after {
-				content: none;
-			}
-		}
-	}
-
 	&.mobile {
 		width: 100%;
-	}
-
-	&.mobile.expanded {
-		.wikipediapreview-body {
-			max-height: calc( 70vh );
-			overflow: scroll;
-		}
+		height: 55vh;
 	}
 
 	&[ dir='rtl' ] {
