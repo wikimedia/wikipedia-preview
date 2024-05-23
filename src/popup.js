@@ -38,7 +38,9 @@ const createPopup = ( container, win = window ) => {
 			middleware: [
 				inline( { x: mouseX, y: mouseY } ),
 				shift(),
-				autoPlacement(),
+				autoPlacement( {
+					allowedPlacements: [ 'top', 'bottom' ]
+				} ),
 				offset( 10 ),
 				arrow( { element: arrowEl } )
 			]
