@@ -183,13 +183,7 @@ const extractSectionSummary = ( lang, title, sectionId, callback, request ) => {
 				return
 			}
 		}
-		callback( {
-			title,
-			extractHtml: '<p>No preview available for this section</p>',
-			imgUrl: null,
-			dir: info.dir,
-			type: 'standard'
-		} )
+		callback( false )
 	}, request )
 }
 
