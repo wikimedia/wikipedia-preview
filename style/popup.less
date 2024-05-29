@@ -6,12 +6,20 @@
 	border-radius: 8px 8px 0 0;
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
 	z-index: @popup-z-index;
-	overflow: hidden;
-	position: fixed;
+	position: absolute;
+
+	&-arrow {
+		width: 1rem;
+		height: 1rem;
+		position: absolute;
+		clip-path: polygon(50% 0%, 50% 0%, 100% 50%, 0% 50%);
+		// background-color set in preview.less
+	}
 }
 
 .wp-touch-popup {
 	&:extend( .wp-popup );
+	position: fixed;
 	left: 0;
 	right: 0;
 	bottom: 0;

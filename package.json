@@ -65,6 +65,7 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
+    "@floating-ui/dom": "1.6.5",
     "dompurify": "^3.0.6",
     "storybook": "^7.5.3"
   },
