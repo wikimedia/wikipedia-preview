@@ -1,4 +1,4 @@
-import { isTouch } from './utils'
+import { isTouch, isVerticallyScrollable } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
@@ -97,13 +97,16 @@ export const customEvents = ( popup ) => {
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
 		}
 
-		addEventListener( element.component.body, 'scroll', ( e ) => {
-			if ( e.target.scrollTop > 0 ) {
-				element.component.body.classList.add( 'scrolled' )
-			} else {
-				element.component.body.classList.remove( 'scrolled' )
-			}
-		} )
+		if ( isVerticallyScrollable( element.component.body ) ) {
+			element.component.body.classList.add( 'scroll-cue' )
+			addEventListener( element.component.body, 'scroll', ( e ) => {
+				if ( e.target.scrollTop > 0 ) {
+					element.component.body.classList.remove( 'scroll-cue' )
+				} else {
+					element.component.body.classList.add( 'scroll-cue' )
+				}
+			} )
+		}
 	}
 
 	return { onHide, onShow }

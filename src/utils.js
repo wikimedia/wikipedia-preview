@@ -102,8 +102,12 @@ const logError = ( ...err ) => {
 	console.error.apply( console, err ) // eslint-disable-line no-console
 }
 
+const isVerticallyScrollable = ( element ) => {
+	return element.scrollHeight > element.clientHeight
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError
+	buildWikipediaUrl, version, logError, isVerticallyScrollable
 }
