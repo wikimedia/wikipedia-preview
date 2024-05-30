@@ -62,12 +62,8 @@ export class Preview {
 		return cy.get( 'div.wikipediapreview-footer' )
 	}
 
-	getFooterContinueReading() {
-		return cy.get( 'span[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore"]' )
-	}
-
 	getFooterReadMore() {
-		return cy.get( 'a[class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki"]' )
+		return cy.get( 'a[class="wikipediapreview-footer-link-cta"]' )
 	}
 
 	// Custom Command to check the existence of Preview
@@ -101,9 +97,6 @@ export class Preview {
 
 		this.getBody().should( 'be.visible' )
 		this.getBodyContent().should( 'have.css', 'font-size' ).and( 'equal', '18px' )
-
-		this.getFooter().should( 'be.visible' )
-		this.getFooterContinueReading().should( 'be.visible' )
 
 	}
 

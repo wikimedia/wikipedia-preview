@@ -27,7 +27,7 @@ const getPreviewBody = ( type, message, cta ) => {
 }
 
 const getReadOnWikiCta = ( lang, title, isTouch ) => {
-	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-cta-readonwiki">${ msg( lang, 'read-on-wiki' ) }</a>`
+	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-footer-link-cta">${ msg( lang, 'read-on-wiki' ) }</a>`
 }
 
 const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme ) => {

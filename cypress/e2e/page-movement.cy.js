@@ -11,13 +11,6 @@ describe( 'Check Page Movement ', () => {
 	it( 'Check the Read More link in Wikipedia Preview', () => {
 		preview.getPreviewSpan().eq( 0 ).click()
 
-		// Continue Reading is available
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
-
 		// Open the Wikipedia Page in the same window
 		preview.getFooterReadMore().should( ( $a ) => {
 			expect( $a.attr( 'target' ), 'target' ).to.equal( '_blank' )
