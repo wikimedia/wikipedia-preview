@@ -1,6 +1,6 @@
 import { isTouch } from './utils'
-// import { getGalleryRow } from './gallery' // Temporary until T360753
-// import { requestPageMedia } from './api' // Temporary until T360753
+import { getGalleryRow } from './gallery'
+import { requestPageMedia } from './api'
 
 export const customEvents = ( popup ) => {
 
@@ -31,6 +31,21 @@ export const customEvents = ( popup ) => {
 			target.removeEventListener( type, listener, options )
 		} )
 		eventListenerStack = []
+	}
+
+	const appendGalleryRow = () => {
+		const { lang, title } = popup
+
+		if ( !popup.loading && lang && title ) {
+			requestPageMedia( lang, title, ( mediaData ) => {
+				const galleryContainer = popup.element.component.wikipediapreviewGallery
+				if ( mediaData && mediaData.length > 0 ) {
+					galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
+				} else {
+					popup.element.component.body.removeChild( galleryContainer )
+				}
+			} )
+		}
 	}
 
 	const onMouseLeave = ( e ) => {
@@ -67,6 +82,8 @@ export const customEvents = ( popup ) => {
 			closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
 			content: element.querySelector( '.wikipediapreview-body > p' )
 		}
+
+		appendGalleryRow()
 
 		if ( isTouch ) {
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
