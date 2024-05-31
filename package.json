@@ -20,7 +20,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "test:fix-lint": "eslint . --fix --ext .js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --fix --ext .js",
     "coverage": "vitest run --coverage",
     "build": "vite build",
     "build:watch": "vite build --watch",
@@ -64,6 +65,7 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
+    "@floating-ui/dom": "1.6.5",
     "dompurify": "^3.0.6",
     "storybook": "^7.5.3"
   },

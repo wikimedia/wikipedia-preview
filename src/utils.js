@@ -102,8 +102,15 @@ const logError = ( ...err ) => {
 	console.error.apply( console, err ) // eslint-disable-line no-console
 }
 
+const getElement = ( nodeOrSelector ) => {
+	if ( typeof nodeOrSelector === 'string' ) {
+		return document.querySelector( nodeOrSelector )
+	}
+	return nodeOrSelector
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError
+	buildWikipediaUrl, version, logError, getElement
 }
