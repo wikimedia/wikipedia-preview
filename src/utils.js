@@ -1,4 +1,5 @@
 import DOMPurify from 'dompurify'
+import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 
 const decodeUri = ( uri ) => {
 	// Attempt to decode links that have been encoded multiple times
@@ -42,7 +43,7 @@ const getWikipediaAttrFromUrl = ( url ) => {
 }
 
 const isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
-	( navigator.msMaxTouchPoints > 0 )
+    ( navigator.msMaxTouchPoints > 0 )
 
 const isOnline = () => window.navigator.onLine
 
@@ -107,7 +108,7 @@ const forEachRoot = ( rootConfig, selector, callback ) => {
 	// rootConfig can be a selector (String)
 	if (
 		typeof rootConfig === 'string' ||
-		rootConfig instanceof String
+        rootConfig instanceof String
 	) {
 		Array.prototype.forEach.call(
 			document.querySelectorAll( rootConfig ),
@@ -166,9 +167,55 @@ const getElement = ( nodeOrSelector ) => {
 	return nodeOrSelector
 }
 
+const withPx = ( value ) => {
+	return value ? ( value + 'px' ) : value
+}
+
+const positionPopup = ( target, popup, pointerPosition ) => {
+	const arrowEl = popup.querySelector( '.wp-popup-arrow' )
+	computePosition( target, popup, {
+		middleware: [
+			inline( pointerPosition ),
+			shift(),
+			autoPlacement( {
+				allowedPlacements: [ 'top', 'bottom' ]
+			} ),
+			offset( 10 ),
+			arrow( { element: arrowEl } )
+		]
+	} ).then( ( { x, y, middlewareData, placement } ) => {
+		// popup
+		popup.style.top = withPx( y )
+		popup.style.left = withPx( x )
+
+		// arrow
+		if ( middlewareData.arrow && arrowEl ) {
+			const { x: arrowX, y: arrowY } = middlewareData.arrow
+
+			arrowEl.style.left = arrowX !== null ? withPx( arrowX ) : ''
+			arrowEl.style.top = arrowY !== null ? withPx( arrowY ) : ''
+
+			if ( placement === 'left' ) {
+				arrowEl.style.right = '-8px'
+				arrowEl.style.transform = 'rotate(90deg)'
+			} else if ( placement === 'right' ) {
+				arrowEl.style.left = '-8px'
+				arrowEl.style.transform = 'rotate(-90deg)'
+			} else if ( placement === 'top' ) {
+				arrowEl.style.bottom = '-8px'
+				arrowEl.style.transform = 'rotate(180deg)'
+			} else if ( placement === 'bottom' ) {
+				arrowEl.style.top = '-8px'
+			}
+		}
+
+		popup.style.display = 'block'
+	} )
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
 	buildWikipediaUrl, version, logError, forEachRoot, invokeCallback,
-	getClientWidth, classesToString, getElement
+	getClientWidth, classesToString, getElement, positionPopup
 }

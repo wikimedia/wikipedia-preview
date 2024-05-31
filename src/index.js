@@ -3,7 +3,8 @@ import { renderPreview } from './components/preview'
 import app from './components/app'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch,
-	version, getAnalyticsQueryParam, forEachRoot, getElement
+	version, getAnalyticsQueryParam, forEachRoot, getElement,
+	positionPopup
 } from './utils'
 
 import { component } from 'reefjs'
@@ -185,6 +186,20 @@ function init( {
 		windowResizeTimeout = setTimeout( () => {
 			container.classList.remove( 'wikipediapreview-resize' )
 		}, 100 )
+	} )
+
+	// on render, recompute popup position
+	document.addEventListener( 'reef:render', function ( e ) {
+		const popup = e.target.querySelector( '.wp-popup' )
+		if ( !popup ) {
+			return
+		}
+		const target = document.getElementById( store.value.targetId )
+		if ( target ) {
+			positionPopup( target, popup, store.value.pointerPosition )
+		} else {
+			popup.style.display = 'none'
+		}
 	} )
 
 	if ( debug ) {
