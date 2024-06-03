@@ -11,6 +11,7 @@
 		padding: 0;
 		box-sizing: border-box;
 		-ms-overflow-style: none;
+		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -268,7 +269,7 @@
 		.wikipediapreview-body {
 			// calculate the max height in onExpand()
 			// max-height: 496px;
-			overflow: scroll;
+			overflow: auto;
 
 			&:after {
 				content: none;
@@ -293,7 +294,7 @@
 	&.mobile.expanded {
 		.wikipediapreview-body {
 			max-height: calc( 70vh );
-			overflow: scroll;
+			overflow: auto;
 		}
 	}
 
