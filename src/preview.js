@@ -30,7 +30,9 @@ const getReadOnWikiCta = ( lang, title, isTouch ) => {
 	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-footer-link-cta">${ msg( lang, 'read-on-wiki' ) }</a>`
 }
 
-const render = ( lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme ) => {
+const render = (
+	lang, isTouch, dir, headerContent, bodyContent, prefersColorScheme
+) => {
 	const colorScheme = prefersColorScheme === 'detect' ? '' : `wikipediapreview-${ prefersColorScheme }-theme`
 	return `
 		<div class="wikipediapreview ${ isTouch ? 'mobile' : '' } ${ colorScheme }" lang="${ lang }" dir="${ dir }">

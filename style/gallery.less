@@ -11,7 +11,7 @@
 
 		&-row {
 			display: flex;
-			overflow: scroll;
+			overflow: auto;
 		}
 
 		&-image {
@@ -111,7 +111,7 @@
 					padding-right: 13px;
 					margin-top: 6px;
 					max-height: 80px;
-					overflow-y: scroll;
+					overflow-y: auto;
 					transition: max-height 0.25s ease-in-out;
 					touch-action: none;
 				}
@@ -119,6 +119,8 @@
 				&::-webkit-scrollbar {
 					display: none;
 				}
+
+				scrollbar-width: none;
 			}
 
 			&-attribution {
@@ -135,6 +137,7 @@
 				justify-content: space-between;
 				padding-bottom: 15px;
 				padding-left: 12px;
+				scrollbar-width: none;
 
 				&::-webkit-scrollbar {
 					display: none;

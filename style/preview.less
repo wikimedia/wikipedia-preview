@@ -11,6 +11,7 @@
 		padding: 0;
 		box-sizing: border-box;
 		-ms-overflow-style: none;
+		scrollbar-width: none;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -345,23 +346,27 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	.wikipediapreview {
+	.wikipediapreview,
+	.wp-popup-arrow {
 		.mixin-wikipediapreview-dark-theme();
 	}
 }
 
 @media (prefers-color-scheme: light) {
-	.wikipediapreview {
+	.wikipediapreview,
+	.wp-popup-arrow {
 		.mixin-wikipediapreview-light-theme();
 	}
 }
 
-.wikipediapreview.wikipediapreview-dark-theme {
+.wikipediapreview.wikipediapreview-dark-theme,
+.wikipediapreview.wikipediapreview-dark-theme + .wp-popup-arrow {
 	.mixin-wikipediapreview-dark-theme();
 	
 }
 
-.wikipediapreview.wikipediapreview-light-theme {
+.wikipediapreview.wikipediapreview-light-theme,
+.wikipediapreview.wikipediapreview-light-theme + .wp-popup-arrow {
 	.mixin-wikipediapreview-light-theme();
 }
 
@@ -378,4 +383,8 @@
 	--wikipediapreview-secondary-background-color: #eaecf0;
 	--wikipediapreview-primary-color: #202122;
 	--wikipediapreview-filter-setting: unset;
+}
+
+.wikipediapreview + .wp-popup-arrow {
+	background-color: var( --wikipediapreview-primary-background-color );
 }

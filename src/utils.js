@@ -106,8 +106,15 @@ const isVerticallyScrollable = ( element ) => {
 	return element.scrollHeight > element.clientHeight
 }
 
+const getElement = ( nodeOrSelector ) => {
+	if ( typeof nodeOrSelector === 'string' ) {
+		return document.querySelector( nodeOrSelector )
+	}
+	return nodeOrSelector
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError, isVerticallyScrollable
+	buildWikipediaUrl, version, logError, isVerticallyScrollable, getElement
 }
