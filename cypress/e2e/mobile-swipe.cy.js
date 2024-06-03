@@ -32,6 +32,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
 			// Open the Gallery
+			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
 			preview.getBodyGalleryImages().eq( 1 ).click()
 			// Check the Gallery Page
 			gallery.checkGalleryPage( i )
