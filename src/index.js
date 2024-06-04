@@ -198,7 +198,7 @@ function init( {
 		if ( target ) {
 			positionPopup( target, popup, store.value.pointerPosition )
 		} else {
-			popup.style.display = 'none'
+			popup.style.visibility = 'hidden'
 		}
 	} )
 

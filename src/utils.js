@@ -209,7 +209,7 @@ const positionPopup = ( target, popup, pointerPosition ) => {
 			}
 		}
 
-		popup.style.display = 'block'
+		popup.style.visibility = 'visible'
 	} )
 }
 
