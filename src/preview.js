@@ -55,6 +55,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 				</div>
 				<div class="wikipediapreview-gallery">
 				</div>
+				<div class="wikipediapreview-scroll-cue"></div>
 			</div>
 		`.trim()
 

@@ -102,10 +102,6 @@ const logError = ( ...err ) => {
 	console.error.apply( console, err ) // eslint-disable-line no-console
 }
 
-const isVerticallyScrollable = ( element ) => {
-	return element.scrollHeight > element.clientHeight
-}
-
 const getElement = ( nodeOrSelector ) => {
 	if ( typeof nodeOrSelector === 'string' ) {
 		return document.querySelector( nodeOrSelector )
@@ -116,5 +112,5 @@ const getElement = ( nodeOrSelector ) => {
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError, isVerticallyScrollable, getElement
+	buildWikipediaUrl, version, logError, getElement
 }

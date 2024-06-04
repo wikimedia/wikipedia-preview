@@ -1,4 +1,4 @@
-import { isTouch, isVerticallyScrollable } from './utils'
+import { isTouch } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
@@ -43,9 +43,6 @@ export const customEvents = ( popup ) => {
 					galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
 				} else {
 					popup.element.component.body.removeChild( galleryContainer )
-					if ( !isVerticallyScrollable( popup.element.component.body ) ) {
-						popup.element.component.body.classList.remove( 'scroll-cue' )
-					}
 				}
 			} )
 		}
@@ -101,17 +98,6 @@ export const customEvents = ( popup ) => {
 		} else {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
-		}
-
-		if ( isVerticallyScrollable( element.component.body ) ) {
-			element.component.body.classList.add( 'scroll-cue' )
-			addEventListener( element.component.body, 'scroll', ( e ) => {
-				if ( e.target.scrollTop > 0 ) {
-					element.component.body.classList.remove( 'scroll-cue' )
-				} else {
-					element.component.body.classList.add( 'scroll-cue' )
-				}
-			} )
 		}
 	}
 
