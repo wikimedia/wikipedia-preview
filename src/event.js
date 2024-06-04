@@ -83,7 +83,10 @@ export const customEvents = ( popup ) => {
 			content: element.querySelector( '.wikipediapreview-body > p' )
 		}
 
-		appendGalleryRow()
+		if ( element.component.wikipediapreviewGallery &&
+			element.component.wikipediapreviewGallery.children.length === 0 ) {
+			appendGalleryRow()
+		}
 
 		if ( isTouch ) {
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
