@@ -43,6 +43,9 @@ export const customEvents = ( popup ) => {
 					galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
 				} else {
 					popup.element.component.body.removeChild( galleryContainer )
+					if ( !isVerticallyScrollable( popup.element.component.body ) ) {
+						popup.element.component.body.classList.remove( 'scroll-cue' )
+					}
 				}
 			} )
 		}
