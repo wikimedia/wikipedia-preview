@@ -132,6 +132,8 @@ To indicate that a word or expression should bring up the article preview popup,
 
 When the article title is not the same as the node's `textContent` property, use the `data-wp-title` attribute to specify the article title.
 
+Note that the article title can include a section id. For example: `Europe#Classical_antiquity`
+
 #### data-wp-lang
 
 To use a language different than the language specified in the options, use the `data-wp-lang` attribute.
