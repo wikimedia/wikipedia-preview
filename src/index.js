@@ -131,7 +131,6 @@ function init( {
 				if ( momentaryLapseTimeout ) {
 					clearTimeout( momentaryLapseTimeout )
 					momentaryLapseTimeout = null
-					return
 				}
 				const target = e.currentTarget
 				store.trigger(
@@ -150,6 +149,10 @@ function init( {
 						store.close( e )
 						momentaryLapseTimeout = null
 					}, 300 )
+
+					popup.addEventListener( 'mouseenter', () => {
+						clearTimeout( momentaryLapseTimeout )
+					} )
 				}
 			} )
 		}
