@@ -41,8 +41,7 @@ const getWikipediaAttrFromUrl = ( url ) => {
 	return null
 }
 
-const isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
-	( navigator.msMaxTouchPoints > 0 )
+const isTouch = !!window.matchMedia( '( max-width: 768px )' ).matches
 
 const isOnline = () => window.navigator.onLine
 

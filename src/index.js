@@ -194,12 +194,8 @@ function init( {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				if ( isTouch ) {
-					node.addEventListener( 'click', showPopup )
-				} else {
-					node.addEventListener( 'mouseenter', showPopup )
-				}
-
+				node.addEventListener( 'touch', showPopup )
+				node.addEventListener( 'mouseenter', showPopup )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
