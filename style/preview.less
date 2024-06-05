@@ -84,6 +84,7 @@
 	&-body {
 		max-height: 248px;
 		overflow: scroll;
+		margin-bottom: 16px;
 
 		p {
 			margin: 0;
@@ -249,8 +250,20 @@
 
 			&-cta {
 				text-decoration: none;
-				font-size: 18px;
+				font-size: 14px;
 				color: #36c;
+				margin-right: 4px;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&:visited {
+					color: #6B4BA1;
+					svg path {
+						fill: #6B4BA1;
+					}
+				}
 			}
 		}
 
@@ -258,19 +271,12 @@
 			height: 30px;
 			background-color: var( --wikipediapreview-secondary-background-color );
 		}
-
-		&-icon {
-			width: 11px;
-			height: 11px;
-			background-image: url( '../images/link-external-ltr.svg' );
-			background-repeat: no-repeat;
-		}
 	}
 
 	&-scroll-cue {
-		position: sticky;
-		width: 100%;
-		height: 20px;
+		position: absolute;
+		width: 350px;
+		height: 70px;
 		bottom: 0;
 		background: -moz-linear-gradient( top, transparent 0%, var( --wikipediapreview-primary-background-color ) 100% );
 		background: -webkit-linear-gradient( top, transparent 0%, var( --wikipediapreview-primary-background-color ) 100% );
@@ -284,6 +290,9 @@
 
 		.wikipediapreview-body {
 			max-height: 55vh;
+		}
+		.wikipediapreview-scroll-cue {
+			width: 100%;
 		}
 	}
 
@@ -324,10 +333,6 @@
 			&-link {
 				margin-left: 5px;
 				margin-right: 0;
-			}
-
-			&-icon {
-				background-image: url( '../images/link-external-rtl.svg' );
 			}
 		}
 	}
