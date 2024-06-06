@@ -7,6 +7,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	return `
 		<div class="${ prefixClassname }" lang="${ lang }" dir="${ dir }">
 			<div class="${ prefixClassname }-close"></div>
+			<div class="${ prefixClassname }-counter">1/10</div>
 			<div class="${ prefixClassname }-main"></div>
 		</div>
 	`.trim()

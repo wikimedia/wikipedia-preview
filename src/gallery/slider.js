@@ -244,8 +244,8 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	if ( item ) {
 		handleCaptionExpansion( items[ current ], true )
 		current += offset
-		nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
-		previousButton.style.opacity = current === 0 ? '0.5' : '1'
+		nextButton.style.visibility = current === items.length - 1 ? 'hidden' : 'visible'
+		previousButton.style.visibility = current === 0 ? 'hidden' : 'visible'
 		clearZoom( currentImage )
 
 		// render image attribution element - current, next, previous

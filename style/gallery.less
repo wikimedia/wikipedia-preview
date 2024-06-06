@@ -42,17 +42,24 @@
 		background-image: url( '../images/close-white.svg' );
 		background-repeat: no-repeat;
 		background-position: center;
-		width: 44px;
+		width: 48px;
 		top: 16px;
-		right: 16px;
-		height: 44px;
+		right: 24px;
+		height: 48px;
 		z-index: @popup-z-index + 20;
 	}
 
 	&-main {
 		display: flex;
 		max-width: 100%;
-		height: 100%;
+		height: calc( 100% - 74px );
+	}
+
+	&-counter {
+		margin-top: 31px;
+		margin-bottom: 24px;
+		text-align: center;
+		color: #f8f9fa;
 	}
 
 	&-slider {
@@ -74,8 +81,8 @@
 			img {
 				background-color: #fff;
 				transition: transform 0.35s ease-in-out;
-				max-width: 100%;
-				max-height: 100%;
+				max-width: calc( 100% - 24px );
+				max-height: calc( 100% - 24px );
 			}
 
 			&-caption {
@@ -323,25 +330,20 @@
 			background-repeat: no-repeat;
 			background-position: center;
 			cursor: pointer;
-			width: 24px;
+			width: 48px;
+			height: calc( 100% - 74px );
 			color: #72777d;
 			position: absolute;
+			z-index: @popup-z-index;
 
 			&.previous {
 				background-image: url( '../images/arrow-left.svg' );
 				left: 16px;
-				top: 0;
-				height: 100%;
-				-webkit-tap-highlight-color: transparent;
-				z-index: @popup-z-index;
 			}
 
 			&.next {
 				background-image: url( '../images/arrow-right.svg' );
 				right: 16px;
-				height: 100%;
-				-webkit-tap-highlight-color: transparent;
-				z-index: @popup-z-index;
 			}
 		}
 	}
