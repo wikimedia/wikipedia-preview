@@ -69,17 +69,6 @@ const renderImageInfo = ( mediaInfo, image ) => {
 		}
 	}
 
-	const getLicenseInfo = ( license ) => {
-		const licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
-		let licenses = ''
-		licenseTypes.forEach( ( type ) => {
-			if ( license && license.indexOf( type ) !== -1 ) {
-				licenses += `<div class="${ prefixClassname }-item-attribution-info-${ type.toLowerCase() }"></div>`
-			}
-		} )
-		return licenses
-	}
-
 	const author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' )
 	const link = mediaInfo.filePage
 	const description = getImageDescription()
@@ -102,12 +91,10 @@ const renderImageInfo = ( mediaInfo, image ) => {
 		</div>
 		<div class="${ prefixClassname }-item-attribution">
 			<div class="${ prefixClassname }-item-attribution-info">
-				${ getLicenseInfo( mediaInfo.license ) }
-				${ author ? `<bdi class="${ prefixClassname }-item-attribution-info-author">${ author }</bdi>` : '' }
+				<bdi>${ author } (${ mediaInfo.license })</bdi>
+				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">Learn more</a>
 			</div>
-			${ link ? `<div class="${ prefixClassname }-item-attribution-more-info">
-				<a href="${ link }" class="${ prefixClassname }-item-attribution-more-info-link" target="_blank"></a>
-			</div>` : '' }
+			
 		</div>
 	`.trim()
 }
