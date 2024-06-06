@@ -40,7 +40,6 @@ const grabTranslateFromTransform = ( transform ) => {
 const isInvalidEvent = ( e, prefixClassname ) => {
 	const invalidClasses = [
 		`${ prefixClassname }-item-caption`,
-		`${ prefixClassname }-item-caption-expand-cue`,
 		`${ prefixClassname }-item-caption-text`,
 		`${ prefixClassname }-item-attribution`,
 		`${ prefixClassname }-button`

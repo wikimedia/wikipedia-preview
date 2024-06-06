@@ -73,20 +73,9 @@ const renderImageInfo = ( mediaInfo, image ) => {
 	const link = mediaInfo.filePage
 	const description = getImageDescription()
 
-	const isCaptionExpandable = () => {
-		if ( getClientWidth() < 400 && description.length > 128 ) {
-			return true
-		} else if ( getClientWidth() > 400 && description.length > 142 ) {
-			return true
-		} else {
-			return false
-		}
-	}
-
 	// @todo consider a wrapper container for all the image info?
 	return `
 		<div class="${ prefixClassname }-item-caption">
-			${ isCaptionExpandable() ? `<div class="${ prefixClassname }-item-caption-expand-cue"></div>` : '' }
 			${ description ? `<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>` : '' }
 		</div>
 		<div class="${ prefixClassname }-item-attribution">
@@ -167,20 +156,6 @@ const bindImageEvent = ( container, refresh = false ) => {
 	}
 }
 
-const handleCaptionExpansion = ( item, forceClose = false ) => {
-	const captionText = item.querySelector( `.${ prefixClassname }-item-caption-text` )
-	const expandCue = item.querySelector( `.${ prefixClassname }-item-caption-expand-cue` )
-	const expanded = item.querySelector( '.expanded' )
-
-	if ( expandCue && expanded || forceClose && expandCue ) {
-		expandCue.classList.remove( 'expanded' )
-		captionText.style.maxHeight = '80px'
-	} else if ( expandCue ) {
-		expandCue.classList.add( 'expanded' )
-		captionText.style.maxHeight = '241px'
-	}
-}
-
 const showImageAndInfo = ( index, refreshImage = false ) => {
 	const slider = parentContainer.querySelector( `.${ prefixClassname }` )
 	const items = slider.querySelectorAll( `.${ prefixClassname }-item` )
@@ -208,12 +183,6 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 						'beforeend',
 						renderImageInfo( mediaInfo, gallery[ index ] )
 					)
-
-					const insertedCaption = item.querySelector( `.${ prefixClassname }-item-caption` )
-
-					insertedCaption.addEventListener( 'click', () => {
-						handleCaptionExpansion( item )
-					} )
 				}
 			} )
 	}
@@ -229,7 +198,6 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	const currentImage = items[ current ].querySelector( 'img' )
 
 	if ( item ) {
-		handleCaptionExpansion( items[ current ], true )
 		current += offset
 		nextButton.style.visibility = current === items.length - 1 ? 'hidden' : 'visible'
 		previousButton.style.visibility = current === 0 ? 'hidden' : 'visible'
