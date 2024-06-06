@@ -65,8 +65,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 				${ data.extractHtml }
 				<div class="wikipediapreview-footer">
 					<div class="wikipediapreview-footer-link">
-						<a
-							href="${ buildWikipediaUrl( lang, data.title, isTouch ) }"
+						<a href="${ buildWikipediaUrl( lang, data.title, isTouch ) }"
 							class="wikipediapreview-footer-link-cta" target="_blank"
 							>
 							${ msg( lang, 'read-more' ) }
