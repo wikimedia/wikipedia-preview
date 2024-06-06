@@ -52,11 +52,11 @@ export default {
 }
 
 export const StandardWithImage = ( { lang, title, extractHtml, dir, pageUrl, imgUrl, touch, prefersColorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, dir, pageUrl, imgUrl }, touch, prefersColorScheme )
+	return `<div style="position: absolute;">${ renderPreview( lang, { title, extractHtml, dir, pageUrl, imgUrl }, touch, prefersColorScheme ) }</div>`
 }
 
 export const Standard = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme )
+	return `<div style="position: absolute;">${ renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme ) }</div>`
 }
 
 export const Loading = ( { touch, lang, dir, prefersColorScheme } ) => {
