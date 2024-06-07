@@ -88,7 +88,7 @@
 					background-color: #fff;
 					position: relative;
 					max-width: 100%;
-					max-height: 100%;
+					max-height: 65vh;
 				}
 			}
 
@@ -105,6 +105,14 @@
 
 				&::-webkit-scrollbar {
 					display: none;
+				}
+
+				@media screen and (max-width: 1120px) {
+					position: absolute;
+					left: 29px;
+					text-align: left;
+					max-width: calc( 100% - 48px );
+					bottom: 58px;
 				}
 			}
 
@@ -279,6 +287,10 @@
 			color: #72777d;
 			position: absolute;
 			z-index: @popup-z-index;
+
+			@media screen and (max-width: 1120px) {
+				display: none;
+			}
 
 			&.previous {
 				background-image: url( '../images/arrow-left.svg' );
