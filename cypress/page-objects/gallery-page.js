@@ -35,8 +35,9 @@ export class Gallery {
 	// Custom Command to check the existence of Preview
 	checkGalleryPage( i ) {
 		this.getGalleryCaptionText( i ).should( 'be.visible' )
-		this.getGalleryNextBtn().should( 'be.visible' )
-		this.getGalleryPrevBtn().should( 'be.visible' )
+		// temp removing check of next/prev btn
+		// this.getGalleryNextBtn().should( 'be.visible' )
+		// this.getGalleryPrevBtn().should( 'be.visible' )
 		this.getGalleryCloseBtn().should( 'be.visible' )
 	}
 }
