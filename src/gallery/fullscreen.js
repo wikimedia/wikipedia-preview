@@ -45,10 +45,6 @@ const showFullscreenGallery = (
 
 	// onShow event for slider component
 	sliderOnShowFn()
-
-	// show counter
-	const counterContainer = container.querySelector( `.${ prefixClassname }-counter` )
-	counterContainer.textContent = mediaItems.findIndex( ( item ) => item.thumb === selectedThumb ) + 1 + '/' + mediaItems.length
 }
 
 export { showFullscreenGallery }

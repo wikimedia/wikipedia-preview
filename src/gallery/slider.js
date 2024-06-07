@@ -202,6 +202,10 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	}
 
 	slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -getClientWidth() * current + 'px'
+
+	// render counter
+	const counterContainer = parentContainer.querySelector( '.wp-gallery-fullscreen-counter' )
+	counterContainer.textContent = current + 1 + '/' + items.length
 }
 
 const renderPrevious = () => {
