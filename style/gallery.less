@@ -35,6 +35,7 @@
 	left: 0;
 	top: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
+	scrollbar-width: none;
 
 	&-close {
 		position: absolute;
@@ -78,38 +79,33 @@
 			justify-content: center;
 			overflow: hidden;
 
-			img {
-				background-color: #fff;
+			&-img {
 				transition: transform 0.35s ease-in-out;
 				max-width: calc( 100% - 48px );
-				max-height: calc( 100% - 48px );
+				text-align: center;
+
+				img {
+					background-color: #fff;
+					position: relative;
+					max-width: 100%;
+					max-height: 100%;
+				}
 			}
 
 			&-caption {
-				position: absolute;
-				background-color: rgba( 32, 33, 34, 0.6 );
-				bottom: 59px;
-				width: calc( 100vw + 1px );
+				text-align: center;
+				width: 100%;
 				font-size: 16px;
 				line-height: 1.56;
 				color: #f8f9fa;
-				max-height: 41.2%;
-
-				&-text {
-					padding-left: 13px;
-					padding-right: 13px;
-					margin-top: 6px;
-					max-height: 80px;
-					overflow-y: auto;
-					transition: max-height 0.25s ease-in-out;
-					touch-action: none;
-				}
+				max-height: 120px;
+				overflow-y: auto;
+				touch-action: none;
+				scrollbar-width: none;
 
 				&::-webkit-scrollbar {
 					display: none;
 				}
-
-				scrollbar-width: none;
 			}
 
 			&-attribution {

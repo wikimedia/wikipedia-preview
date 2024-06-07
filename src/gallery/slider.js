@@ -54,36 +54,16 @@ const renderImageSlider = ( givenLang, givenDir, container, images = [], selecte
 		`.trim()
 }
 
-const renderImageInfo = ( mediaInfo, image ) => {
-	const getImageDescription = () => {
-		// description list order
-		// (1) commons caption - Not found
-		// (2) commons description
-		// (3) media-list caption
-		if ( mediaInfo.description ) {
-			return mediaInfo.description
-		} else if ( image.caption ) {
-			return image.caption
-		} else {
-			return ''
-		}
-	}
-
+const renderImageAttribution = ( mediaInfo ) => {
 	const author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' )
 	const link = mediaInfo.filePage
-	const description = getImageDescription()
 
-	// @todo consider a wrapper container for all the image info?
 	return `
-		<div class="${ prefixClassname }-item-caption">
-			${ description ? `<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>` : '' }
-		</div>
 		<div class="${ prefixClassname }-item-attribution">
 			<div class="${ prefixClassname }-item-attribution-info">
 				<bdi>${ author } (${ mediaInfo.license })</bdi>
 				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">Learn more</a>
 			</div>
-			
 		</div>
 	`.trim()
 }
@@ -167,21 +147,33 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 			gallery[ index ].title,
 			( mediaInfo ) => {
 				const imageElement = item.querySelector( 'img' )
-				const captionElement = item.querySelector( `.${ prefixClassname }-item-caption` )
+				const atrributionElement = item.querySelector( `.${ prefixClassname }-item-attribution` )
 
 				if ( !imageElement ) {
-					if ( !refreshImage ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }"/>` )
-					} else {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }?timestamp=${ Date.now() }"/>` )
+					const getImageDescription = () => {
+						// description list order
+						// (1) commons caption - Not found
+						// (2) commons description
+						// (3) media-list caption
+						if ( mediaInfo.description ) {
+							return mediaInfo.description
+						} else if ( gallery[ index ].caption ) {
+							return gallery[ index ].caption
+						} else {
+							return ''
+						}
 					}
+					const caption = `<div class="${ prefixClassname }-item-caption">
+						<div class="${ prefixClassname }-item-caption-text"><bdi>${ getImageDescription() }</bdi></div>
+					</div>`
+					item.insertAdjacentHTML( 'beforeend', `<div class="${ prefixClassname }-item-img"><img src="${ mediaInfo.bestFitImageUrl } ${ refreshImage ? '?timestamp=' + Date.now() : '' }"/>${ caption }</div>` )
 					bindImageEvent( item )
 				}
 
-				if ( !captionElement ) {
+				if ( !atrributionElement ) {
 					item.insertAdjacentHTML(
 						'beforeend',
-						renderImageInfo( mediaInfo, gallery[ index ] )
+						renderImageAttribution( mediaInfo )
 					)
 				}
 			} )

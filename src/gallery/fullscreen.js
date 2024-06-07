@@ -7,7 +7,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	return `
 		<div class="${ prefixClassname }" lang="${ lang }" dir="${ dir }">
 			<div class="${ prefixClassname }-close"></div>
-			<div class="${ prefixClassname }-counter">1/10</div>
+			<div class="${ prefixClassname }-counter"></div>
 			<div class="${ prefixClassname }-main"></div>
 		</div>
 	`.trim()
@@ -45,6 +45,10 @@ const showFullscreenGallery = (
 
 	// onShow event for slider component
 	sliderOnShowFn()
+
+	// show counter
+	const counterContainer = container.querySelector( `.${ prefixClassname }-counter` )
+	counterContainer.textContent = mediaItems.findIndex( ( item ) => item.thumb === selectedThumb ) + 1 + '/' + mediaItems.length
 }
 
 export { showFullscreenGallery }
