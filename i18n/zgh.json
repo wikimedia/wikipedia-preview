@@ -2,13 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Hakim1bal",
+			"Lhoussine AIT TAYFST",
 			"Ya2sine"
 		]
 	},
 	"continue-reading": "ⵙⵎⴷ ⵙⵓⵍ ⵜⵉⵖⵔⵉ",
+	"gallery-loading-error": "ⵉⵍⵍⴰ ⴽⵔⴰ ⵏ ⵓⵣⴳⴰⵍ ⴳ ⵓⵣⴷⴰⵎ ⵏ ⵜⵙⵏⴰ ⴰⴷ",
+	"gallery-loading-error-offline": "ⵓⵔ ⵉⵍⵍⵉ ⵓⵣⴷⴰⵢ ⵙ ⵡⴰⵏⵜⵉⵔⵏⵉⵜ ⵉⵕⵥⵎⵏ",
 	"gallery-loading-error-refresh": "ⵙⵎⴰⵢⵏⵓ",
 	"gallery-loading-still": "ⵉⵙⵓⵍ ⵓⵣⴷⴰⵎ",
 	"gallery-unknown-author": "ⴰⵎⴳⴰⵢ ⴰⵔⵉⵙⵎ",
+	"preview-error-message": "ⵉⵍⵍⴰ ⵛⴰ ⵏ ⵓⵎⵓⴽⵔⵉⵙ ⵉⵣⴷⵉⵏ ⵙ ⵓⵙⴽⴰⵏ ⴰⵎⵣⵡⴰⵔⵓ.",
+	"preview-console-error-message": "ⴰⵙⴽⴰⵏ ⴰⵎⵣⵡⴰⵔⵓ ⵓⵔ ⵉⵍⵍⵉ ⵉ ⵓⵎⵏⵏⵉ '$1' (Language: $2)",
 	"read-on-wiki": "ⵖⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
-	"read-more": "ⵖⵔ ⵓⴳⴳⴰⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ"
+	"read-more": "ⵖⵔ ⵓⴳⴳⴰⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
+	"preview-disambiguation-message": "ⴰⵣⵡⵍ <strong>$1</strong> ⵉⵣⴷⵉ ⵙ ⵓⴳⴳⴰⵔ ⵏ ⵢⴰⵏ ⵓⵎⵏⵏⵉ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ.",
+	"preview-offline-message": "ⵓⵔ ⵉⵍⵍⵉ ⵓⵣⴷⴰⵢ ⵙ ⵡⴰⵏⵜⵉⵔⵏⵉⵜ",
+	"preview-offline-cta": "ⴰⵔⵎ ⴷⴰⵖ"
 }
