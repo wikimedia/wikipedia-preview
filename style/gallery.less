@@ -40,7 +40,7 @@
 	&-close {
 		position: absolute;
 		cursor: pointer;
-		background-image: url( '../images/close-white.svg' );
+		background-image: url( '../images/close.svg' );
 		background-repeat: no-repeat;
 		background-position: center;
 		width: 48px;
@@ -482,6 +482,10 @@
 @media (prefers-color-scheme: dark) {
 	.wp-gallery-fullscreen {
 		.mixin-gallery-dark-theme();
+
+		&-close {
+			background-image: url( '../images/close-white.svg' );
+		}
 	}
 }
 
