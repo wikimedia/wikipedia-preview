@@ -1,6 +1,6 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
-import { isOnline } from '../utils'
+import { isOnline, getLinkIconSvg } from '../utils'
 import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, clearZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 import { addEventListener } from './event'
 
@@ -62,7 +62,7 @@ const renderImageAttribution = ( mediaInfo ) => {
 		<div class="${ prefixClassname }-item-attribution">
 			<div class="${ prefixClassname }-item-attribution-info">
 				<bdi>${ author } (${ mediaInfo.license })</bdi>
-				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">Learn more</a>
+				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">Learn more ${ getLinkIconSvg() }</a>
 			</div>
 		</div>
 	`.trim()
