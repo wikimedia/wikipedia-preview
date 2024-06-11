@@ -1,4 +1,4 @@
-import { isTouch } from './utils'
+import { isTouch, isVerticallyScrollable } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
@@ -43,6 +43,9 @@ export const customEvents = ( popup ) => {
 					galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
 				} else {
 					popup.element.component.body.removeChild( galleryContainer )
+					if ( !isVerticallyScrollable( popup.element.component.body ) ) {
+						popup.element.component.scrollCue.remove()
+					}
 				}
 			} )
 		}
@@ -80,7 +83,8 @@ export const customEvents = ( popup ) => {
 			wikipediapreview: element.querySelector( '.wikipediapreview' ),
 			wikipediapreviewGallery: element.querySelector( '.wikipediapreview-gallery' ),
 			closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
-			content: element.querySelector( '.wikipediapreview-body > p' )
+			content: element.querySelector( '.wikipediapreview-body > p' ),
+			scrollCue: element.querySelector( '.wikipediapreview-scroll-cue' )
 		}
 
 		if ( element.component.wikipediapreviewGallery &&
@@ -98,6 +102,18 @@ export const customEvents = ( popup ) => {
 		} else {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
+		}
+
+		if ( element.component.scrollCue ) {
+			if ( isVerticallyScrollable( element.component.body ) ) {
+				addEventListener( element.component.body, 'scroll', ( e ) => {
+					if ( e.target.scrollTop > 0 ) {
+						element.component.scrollCue.remove()
+					}
+				} )
+			} else {
+				element.component.scrollCue.remove()
+			}
 		}
 	}
 

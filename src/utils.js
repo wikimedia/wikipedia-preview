@@ -125,8 +125,12 @@ const getLinkIconSvg = ( dir = 'ltr' ) => {
 	`.trim()
 }
 
+const isVerticallyScrollable = ( element ) => {
+	return element.scrollHeight > element.clientHeight
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg
+	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg, isVerticallyScrollable
 }
