@@ -1,4 +1,4 @@
-import { isTouch } from './utils'
+import { isMobile } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
@@ -82,7 +82,7 @@ export const customEvents = ( popup ) => {
 
 		popup.element.component.wikipediapreview.classList.add( 'expanded' )
 
-		if ( !isTouch ) {
+		if ( !isMobile ) {
 			setPreviewMaxHeight( maxHeight )
 		}
 
@@ -188,12 +188,12 @@ export const customEvents = ( popup ) => {
 			element.component.content.getBoundingClientRect().height < 248 ) {
 			onExpand( element )
 		} else {
-			if ( !isTouch ) {
+			if ( !isMobile ) {
 				setPreviewMaxHeight( 248 )
 			}
 		}
 
-		if ( isTouch ) {
+		if ( isMobile ) {
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
 		}
 
@@ -201,7 +201,7 @@ export const customEvents = ( popup ) => {
 			addEventListener( element.component.readMore, 'click', onExpand )
 		}
 
-		if ( isTouch ) {
+		if ( isMobile ) {
 			const darkScreen = document.querySelector( '.wp-dark-screen' )
 			addEventListener( darkScreen, 'touch', popup.hide, true )
 			applyDragEvent( element )

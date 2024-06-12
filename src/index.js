@@ -4,7 +4,7 @@ import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import {
-	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline,
+	getWikipediaAttrFromUrl, buildWikipediaUrl, getDir, isOnline,
 	version, getAnalyticsQueryParam, getElement, isMobile
 } from './utils'
 
@@ -23,7 +23,7 @@ const invokeCallback = ( events, name, params ) => {
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
 	requestPagePreview( lang, title, ( data ) => {
-		callback( renderPreview( lang, data, isTouch ) )
+		callback( renderPreview( lang, data, isMobile ) )
 	} )
 }
 
@@ -108,7 +108,7 @@ function init( {
 		popup.loading = true
 		popup.dir = dir
 		popup.show(
-			renderLoading( isTouch, localLang, dir, currentColorScheme ),
+			renderLoading( isMobile, localLang, dir, currentColorScheme ),
 			currentTarget,
 			pointerPosition
 		)
@@ -124,17 +124,17 @@ function init( {
 					popup.title = title
 					if ( data.type === 'standard' ) {
 						popup.show(
-							renderPreview( localLang, data, isTouch, currentColorScheme ),
+							renderPreview( localLang, data, isMobile, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?
-							renderPreview( localLang, data, isTouch, currentColorScheme ) :
+							renderPreview( localLang, data, isMobile, currentColorScheme ) :
 							// fallback message when no extract is found on disambiguation page
 							renderDisambiguation(
-								isTouch,
+								isMobile,
 								localLang,
 								data.title,
 								data.dir,
@@ -150,14 +150,14 @@ function init( {
 				} else {
 					if ( isOnline() ) {
 						popup.show(
-							renderError( isTouch, localLang, title, dir, currentColorScheme ),
+							renderError( isMobile, localLang, title, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
-							renderOffline( isTouch, localLang, dir, currentColorScheme ),
+							renderOffline( isMobile, localLang, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
@@ -234,13 +234,13 @@ function init( {
 		console.group( 'Wikipedia Preview [debug mode]' )
 		console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
 		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
+			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
 		} )
 		console.groupEnd()
 		if ( detectLinks ) {
 			console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
 			foundDetectLinks.forEach( ( link, index ) => {
-				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
+				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
 			} )
 			console.groupEnd()
 		}
