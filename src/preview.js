@@ -6,7 +6,7 @@ const getPreviewHeader = ( lang, isTouch, imageUrl = '' ) => {
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
-			<div class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
+			<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${ lang }"></div>
 			${ isTouch ? '<div class="wikipediapreview-header-closebtn"></div>' : '' }
 		</div>
 `.trim()
