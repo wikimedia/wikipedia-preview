@@ -13,16 +13,11 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Gallery Pages Movement by Clicking on Image', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
 			// Open the Gallery
+			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
 			preview.getBodyGalleryImages().first().click()
 			// Check the Gallery Page
 			gallery.checkGalleryPage( i )
@@ -40,12 +35,6 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Gallery Pages Movement by Swiping', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
@@ -63,12 +52,6 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Gallery Image Caption by Clicking on Caption Bar', () => {
 		// Open the Preview
 		preview.getPreviewSpan().eq( 4 ).click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 1
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {

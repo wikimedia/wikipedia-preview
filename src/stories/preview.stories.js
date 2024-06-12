@@ -1,5 +1,4 @@
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from '../preview'
-import { getGalleryRow } from '../gallery'
 
 export default {
 	title: 'Wikipedia Preview',
@@ -58,28 +57,6 @@ export const StandardWithImage = ( { lang, title, extractHtml, dir, pageUrl, img
 
 export const Standard = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
 	return renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme )
-}
-
-export const Expanded = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
-	const template = document.createElement( 'template' )
-	template.innerHTML = renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme )
-	const preview = template.content.firstChild
-	preview.classList.add( 'expanded' )
-	const mediaData = [
-		{
-			caption: 'caption1',
-			source: 'source1',
-			thumb: 'thumb1',
-			title: 'title1'
-		}, {
-			caption: 'caption2',
-			source: 'source2',
-			thumb: 'thumb2',
-			title: 'title2'
-		}
-	]
-	preview.querySelector( '.wikipediapreview-gallery' ).appendChild( getGalleryRow( mediaData, null ) )
-	return preview
 }
 
 export const Loading = ( { touch, lang, dir, prefersColorScheme } ) => {

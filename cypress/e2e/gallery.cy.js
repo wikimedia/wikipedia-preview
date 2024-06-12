@@ -13,12 +13,6 @@ describe( 'Check the Gallery Pages ', () => {
 	it( 'Check the Gallery Pages', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
@@ -34,12 +28,6 @@ describe( 'Check the Gallery Pages ', () => {
 	it( 'Check the Gallery Pages Movement', () => {
 		// Open the Preview
 		preview.getPreviewSpan().first().click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 0
 		// Check if the Image exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
