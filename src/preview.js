@@ -83,7 +83,9 @@ const renderLoading = ( isTouch, lang, dir, prefersColorScheme ) => {
 		<div class="wikipediapreview-footer-loading"></div>
 	`.trim()
 
-	return render( lang, isTouch, dir, getPreviewHeader( lang, isTouch ), bodyContent, prefersColorScheme )
+	return render(
+		lang, isTouch, dir, getPreviewHeader( lang, isTouch ), bodyContent, prefersColorScheme
+	)
 }
 
 const renderError = ( isTouch, lang, title, dir, prefersColorScheme ) => {

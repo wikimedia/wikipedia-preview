@@ -1,24 +1,15 @@
 import { requestPagePreview, getSections } from './api'
-import { customEvents } from './event'
-import { createPopup } from './popup'
-import { createTouchPopup } from './touchPopup'
-import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
+import { renderPreview } from './preview'
+import app from './components/app'
 import {
-	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline,
-	version, getAnalyticsQueryParam, getElement
+	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch,
+	version, getAnalyticsQueryParam, forEachRoot, getElement,
+	positionPopup
 } from './utils'
 
-const invokeCallback = ( events, name, params ) => {
-	const callback = events && events[ name ]
-	if ( callback instanceof Function ) {
-		try {
-			callback.apply( null, params )
-		} catch ( e ) {
-			// eslint-disable-next-line no-console
-			console.log( 'Error invoking Wikipedia Preview custom callback', e )
-		}
-	}
-}
+import { component } from 'reefjs'
+
+import store from './store'
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
@@ -27,40 +18,18 @@ const getPreviewHtml = ( title, lang, callback ) => {
 	} )
 }
 
-const forEachRoot = ( rootConfig, callback ) => {
-	const roots = []
-	// rootConfig can be a selector (String)
-	if (
-		typeof rootConfig === 'string' ||
-		rootConfig instanceof String
-	) {
-		Array.prototype.forEach.call(
-			document.querySelectorAll( rootConfig ),
-			( node ) => {
-				roots.push( node )
-			}
-		)
+const setColorScheme = ( container, prefersColorScheme ) => {
+	if ( prefersColorScheme === 'dark' ) {
+		container.classList.add( 'wikipediapreview-dark-theme' )
+		container.classList.remove( 'wikipediapreview-light-theme' )
+	} else if ( prefersColorScheme === 'light' ) {
+		container.classList.add( 'wikipediapreview-light-theme' )
+		container.classList.remove( 'wikipediapreview-dark-theme' )
+	} else {
+		container.classList.remove( 'wikipediapreview-light-theme' )
+		container.classList.remove( 'wikipediapreview-dark-theme' )
 	}
-
-	// rootConfig can be a node (Document or Element)
-	if ( rootConfig instanceof Document || rootConfig instanceof Element ) {
-		roots.push( rootConfig )
-	}
-
-	// rootConfig can be a list of nodes (Element[])
-	if ( Array.isArray( rootConfig ) ) {
-		rootConfig.forEach( ( r ) => {
-			if ( r instanceof Element ) {
-				roots.push( r )
-			}
-		} )
-	}
-
-	roots.forEach( ( root ) => callback( root ) )
 }
-
-let currentPopupId
-let currentColorScheme
 
 function init( {
 	root = document,
@@ -72,168 +41,169 @@ function init( {
 	debug = false,
 	prefersColorScheme = 'detect'
 } ) {
-	popupContainer = getElement( popupContainer ) || document.body
-	const globalLang = lang
-	const popup = isTouch ?
-		createTouchPopup( popupContainer ) :
-		createPopup( popupContainer )
-	const popupEvents = customEvents( popup )
-	const last = {}
 	const foundSelectorLinks = []
 	const foundDetectLinks = []
-	currentColorScheme = prefersColorScheme
 
-	const showPopup = ( e, refresh = false ) => {
-		e.preventDefault()
-
-		const popupId = Date.now()
-		const { currentTarget } = refresh ? last : e
-		const title = refresh ? last.title : decodeURIComponent( currentTarget.getAttribute( 'data-wp-title' ) || currentTarget.textContent )
-		const localLang = refresh ? last.lang : currentTarget.getAttribute( 'data-wp-lang' ) || globalLang
-		const pointerPosition = refresh ? last.pointerPosition : { x: e.clientX, y: e.clientY }
-		const dir = getDir( localLang )
-
-		if ( popup.element.currentTargetElement === currentTarget && !refresh ) {
-			// Hovering over the same link and the popup is already open
-			return
-		}
-
-		currentPopupId = popupId
-
-		if ( popup.element.style.visibility === 'visible' ) {
-			popup.hide()
-		}
-
-		popup.loading = true
-		popup.dir = dir
-		popup.show(
-			renderLoading( isTouch, localLang, dir, currentColorScheme ),
-			currentTarget,
-			pointerPosition
-		)
-
-		requestPagePreview( localLang, title, ( data ) => {
-			if ( popupId !== currentPopupId ) {
-				return
-			}
-			if ( popup.loading ) {
-				popup.loading = false
-				if ( data ) {
-					popup.lang = localLang
-					popup.title = title
-					if ( data.type === 'standard' ) {
-						popup.show(
-							renderPreview( localLang, data, isTouch, currentColorScheme ),
-							currentTarget,
-							pointerPosition
-						)
-						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
-					} else if ( data.type === 'disambiguation' ) {
-						const content = data.extractHtml ?
-							renderPreview( localLang, data, isTouch, currentColorScheme ) :
-							// fallback message when no extract is found on disambiguation page
-							renderDisambiguation(
-								isTouch,
-								localLang,
-								data.title,
-								data.dir,
-								currentColorScheme
-							)
-						popup.show(
-							content,
-							currentTarget,
-							pointerPosition
-						)
-						invokeCallback( events, 'onShow', [ title, localLang, 'disambiguation' ] )
-					}
-				} else {
-					if ( isOnline() ) {
-						popup.show(
-							renderError( isTouch, localLang, title, dir, currentColorScheme ),
-							currentTarget,
-							pointerPosition
-						)
-						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
-					} else {
-						popup.show(
-							renderOffline( isTouch, localLang, dir, currentColorScheme ),
-							currentTarget,
-							pointerPosition
-						)
-						invokeCallback( events, 'onShow', [ title, localLang, 'offline' ] )
-						const again = document.querySelector( '.wikipediapreview-body-action' )
-						last.lang = localLang
-						last.title = title
-						last.pointerPosition = pointerPosition
-						last.target = currentTarget
-						again.addEventListener( 'click', ( event ) => {
-							showPopup( event, true )
-						} )
-					}
-				}
-				const readOnWikiCta = popup.element.querySelector( '.wikipediapreview-footer-cta-readonwiki, .wikipediapreview-cta-readonwiki' )
-				if ( readOnWikiCta ) {
-					readOnWikiCta.addEventListener( 'click', () => {
-						invokeCallback( events, 'onWikiRead', [ title, localLang ] )
-					} )
-				}
-				// add wprov to target's href
-				if ( currentTarget.tagName === 'A' ) {
-					const param = getAnalyticsQueryParam().split( '=' )
-					const url = new URL( currentTarget.href )
-					url.searchParams.set( param[ 0 ], param[ 1 ] )
-					currentTarget.href = url.href
-				}
-			}
-		} )
+	if ( events === 1 ) {
+		return
 	}
 
-	popup.subscribe( popupEvents )
+	let container = document.querySelector( '.wp-popup-container' )
+	if ( !container ) {
+		container = document.createElement( 'div' )
+		container.classList.add( 'wp-popup-container' )
+		popupContainer = getElement( popupContainer ) || document.body
+		popupContainer.appendChild( container )
+	}
 
-	forEachRoot( root, ( localRoot ) => {
-		Array.prototype.forEach.call(
-			localRoot.querySelectorAll( selector ),
-			( node ) => {
-				if ( isTouch ) {
-					node.addEventListener( 'click', showPopup )
-				} else {
-					node.addEventListener( 'mouseenter', showPopup )
-				}
+	setColorScheme( container, prefersColorScheme )
 
-				foundSelectorLinks.push( {
-					text: node.textContent,
-					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
-					lang: node.getAttribute( 'data-wp-lang' ) || globalLang
-				} )
+	const mountedApp = component(
+		container,
+		() => app( store.value ),
+		{
+			events: {
+				close: store.close,
+				expand: store.expand,
+				clickThumbnail: store.clickThumbnail,
+				refreshPreview: store.refreshPreview,
+				closeGallery: store.closeGallery,
+				previousGalleryImage: store.previousGalleryImage,
+				nextGalleryImage: store.nextGalleryImage,
+				toggleGalleryCaption: store.toggleGalleryCaption,
+				toggleGalleryFocusMode: store.toggleGalleryFocusMode
 			}
-		)
+		}
+	)
+
+	forEachRoot( root, selector, ( node ) => {
+		foundSelectorLinks.push( {
+			node,
+			text: node.textContent,
+			title: node.getAttribute( 'data-wp-title' ) || node.textContent,
+			lang: node.getAttribute( 'data-wp-lang' ) || lang
+		} )
 	} )
 
 	if ( detectLinks ) {
-		forEachRoot( root, ( localRoot ) => {
-			Array.prototype.forEach.call(
-				localRoot.querySelectorAll( 'a' ),
-				( node ) => {
-					const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
-					if ( matches ) {
-						node.setAttribute( 'data-wp-title', matches.title )
-						node.setAttribute( 'data-wp-lang', matches.lang )
-						if ( isTouch ) {
-							node.addEventListener( 'click', showPopup )
-						} else {
-							node.addEventListener( 'mouseenter', showPopup )
-						}
+		forEachRoot( root, 'a', ( node ) => {
+			const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
+			if ( matches ) {
+				node.setAttribute( 'data-wp-title', matches.title )
+				node.setAttribute( 'data-wp-lang', matches.lang )
 
-						foundDetectLinks.push( {
-							text: node.textContent,
-							title: matches.title,
-							lang: matches.lang
-						} )
-					}
-				}
-			)
+				foundDetectLinks.push( {
+					node,
+					text: node.textContent,
+					title: matches.title,
+					lang: matches.lang
+				} )
+
+				// set wprov on href to track engagement on links with preview
+				const param = getAnalyticsQueryParam().split( '=' )
+				const url = new URL( node.href )
+				url.searchParams.set( param[ 0 ], param[ 1 ] )
+				node.href = url.href
+			}
 		} )
 	}
+
+	// const eventName = isTouch ? 'click' : 'mouseenter'
+	foundSelectorLinks.concat( foundDetectLinks ).forEach( ( { node } ) => {
+		if ( !node.getAttribute( 'id' ) ) {
+			node.setAttribute( 'id', 'wp-' + crypto.randomUUID().replace( /-/g, '' ) )
+		}
+
+		if ( isTouch ) {
+			node.addEventListener( 'click', ( e ) => {
+				e.preventDefault()
+				const target = e.currentTarget
+				store.trigger(
+					target.getAttribute( 'id' ),
+					{ x: e.clientX, y: e.clientY },
+					target.getAttribute( 'data-wp-title' ) || target.textContent,
+					target.getAttribute( 'data-wp-lang' ) || lang
+				)
+			} )
+		} else {
+			let momentaryLapseTimeout
+			node.addEventListener( 'mouseenter', ( e ) => {
+				if ( momentaryLapseTimeout ) {
+					clearTimeout( momentaryLapseTimeout )
+					momentaryLapseTimeout = null
+				}
+				const target = e.currentTarget
+				store.trigger(
+					target.getAttribute( 'id' ),
+					{ x: e.clientX, y: e.clientY },
+					target.getAttribute( 'data-wp-title' ) || target.textContent,
+					target.getAttribute( 'data-wp-lang' ) || lang
+				)
+			} )
+			node.addEventListener( 'mouseleave', ( e ) => {
+				const toElement = e.toElement || e.relatedTarget || e.target
+				const currentTarget = document.getElementById( store.value.targetId )
+				const popup = document.querySelector( '.wp-popup' )
+				if ( toElement !== currentTarget && popup && !popup.contains( toElement ) ) {
+					momentaryLapseTimeout = setTimeout( () => {
+						store.close( e )
+						momentaryLapseTimeout = null
+					}, 300 )
+
+					popup.addEventListener( 'mouseenter', () => {
+						clearTimeout( momentaryLapseTimeout )
+					} )
+				}
+			} )
+		}
+	} )
+
+	// key events for gallery
+	const imageNavigationFunctions = {
+		ltr: [ store.previousGalleryImage, store.nextGalleryImage ],
+		rtl: [ store.nextGalleryImage, store.previousGalleryImage ]
+	}
+	window.addEventListener( 'keydown', ( e ) => {
+		if ( store.value.selectedGalleryIndex !== null ) {
+			const [ left, right ] = imageNavigationFunctions[ store.value.data.dir ]
+			if ( e.key === 'ArrowLeft' || e.key === 'Left' ) {
+				left( e )
+			} else if ( e.key === 'ArrowRight' || e.key === 'Right' ) {
+				right( e )
+			} else if ( e.key === 'Escape' || e.key === 'Esc' ) {
+				store.closeGallery( e )
+			}
+		}
+	} )
+
+	// resize event for gallery
+	let windowResizeTimeout // used for debounced
+	window.addEventListener( 'resize', () => {
+		if ( store.value.selectedGalleryIndex === null ) {
+			return
+		}
+		container.classList.add( 'wikipediapreview-resize' )
+		mountedApp.render()
+
+		clearTimeout( windowResizeTimeout )
+		windowResizeTimeout = setTimeout( () => {
+			container.classList.remove( 'wikipediapreview-resize' )
+		}, 100 )
+	} )
+
+	// on render, recompute popup position
+	document.addEventListener( 'reef:render', function ( e ) {
+		const popup = e.target.querySelector( '.wp-popup' )
+		if ( !popup ) {
+			return
+		}
+		const target = document.getElementById( store.value.targetId )
+		if ( target ) {
+			positionPopup( target, popup, store.value.pointerPosition )
+		} else {
+			popup.style.visibility = 'hidden'
+		}
+	} )
 
 	if ( debug ) {
 		/* eslint-disable no-console */

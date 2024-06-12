@@ -255,6 +255,7 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 		const imageUrl = imageInfo[ 0 ].thumburl
 
 		return {
+			title,
 			author,
 			description,
 			license: LicenseShortName && LicenseShortName.value,

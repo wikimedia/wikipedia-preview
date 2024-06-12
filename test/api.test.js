@@ -307,7 +307,8 @@ describe( 'API', () => {
 				description: 'Olifant. Ivory, southern Italy, late 11th century.',
 				filePage: 'https://commons.m.wikimedia.org/w/index.php?curid=916963',
 				bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Horn_Louvre_OA4069.jpg/375px-Horn_Louvre_OA4069.jpg',
-				license: 'Public domain'
+				license: 'Public domain',
+				title: 'title'
 			}
 			requestPageMediaInfo( 'en', 'title', ( data ) => {
 				expect( data ).toEqual( transformedOutput )
@@ -354,7 +355,8 @@ describe( 'API', () => {
 				description: undefined,
 				filePage: 'https://sw.m.wikipedia.org/w/index.php?curid=5145',
 				bestFitImageUrl: 'https://upload.wikimedia.org/wikipedia/sw/thumb/d/d7/Dunia_muundo.png',
-				license: undefined
+				license: undefined,
+				title: 'title'
 			}
 			requestPageMediaInfo( 'en', 'title', ( data ) => {
 				expect( data ).toEqual( transformedOutput )

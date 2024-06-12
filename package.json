@@ -67,6 +67,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.5",
     "dompurify": "^3.0.6",
+    "reefjs": "13.0.2",
     "storybook": "^7.5.3"
   },
   "browserslist": [
