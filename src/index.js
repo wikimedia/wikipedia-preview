@@ -5,7 +5,7 @@ import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, getDir, isOnline,
-	version, getAnalyticsQueryParam, getElement, isMobile
+	version, getAnalyticsQueryParam, getElement, isMobile, isTouch
 } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
@@ -191,12 +191,12 @@ function init( {
 
 	popup.subscribe( popupEvents )
 
+	const eventName = isTouch ? 'click' : 'mouseenter'
 	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				node.addEventListener( 'touch', showPopup )
-				node.addEventListener( 'mouseenter', showPopup )
+				node.addEventListener( eventName, showPopup )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
@@ -215,8 +215,7 @@ function init( {
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
-						node.addEventListener( 'touch', showPopup )
-						node.addEventListener( 'mouseenter', showPopup )
+						node.addEventListener( eventName, showPopup )
 
 						foundDetectLinks.push( {
 							text: node.textContent,

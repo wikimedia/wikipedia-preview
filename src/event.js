@@ -92,13 +92,13 @@ export const customEvents = ( popup ) => {
 			appendGalleryRow()
 		}
 
-		if ( isMobile ) {
+		if ( element.component.closeBtn ) {
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
 		}
 
 		if ( isMobile ) {
 			const darkScreen = document.querySelector( '.wp-dark-screen' )
-			addEventListener( darkScreen, 'touch', popup.hide, true )
+			addEventListener( darkScreen, 'click', popup.hide, true )
 		} else {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )
