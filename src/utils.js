@@ -109,7 +109,7 @@ const getElement = ( nodeOrSelector ) => {
 	return nodeOrSelector
 }
 
-const getLinkIconSvg = ( color = 'unset', dir = 'ltr' ) => {
+const getLinkIconSvg = ( dir = 'ltr', color = 'unset' ) => {
 	if ( dir === 'ltr' ) {
 		return `
 			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
@@ -125,8 +125,12 @@ const getLinkIconSvg = ( color = 'unset', dir = 'ltr' ) => {
 	`.trim()
 }
 
+const isVerticallyScrollable = ( element ) => {
+	return element.scrollHeight > element.clientHeight
+}
+
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg
+	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg, isVerticallyScrollable
 }

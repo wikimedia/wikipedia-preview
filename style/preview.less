@@ -4,7 +4,7 @@
 	width: 350px;
 	background-color: var( --wikipediapreview-primary-background-color );
 	box-shadow: 0 30px 90px -20px rgba( 0, 0, 0, 0.3 ), 0 0 1px 1px rgba( 0, 0, 0, 0.05 );
-	border-radius: 8px 8px 0 0;
+	border-radius: 2px;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
 
 	* {
@@ -20,20 +20,21 @@
 
 	&-header {
 		display: flex;
-		height: 72px;
+		height: 78px;
 		line-height: 62px;
+		margin-top: 12px;
+		margin-bottom: 12px;
 
 		&-image {
 			background-size: auto;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: #eaecf0;
-			height: 56px;
-			width: 56px;
+			height: 78px;
+			width: 78px;
 			border-radius: 4px;
 			border: solid 1px #eaecf0;
 			margin-left: 16px;
-			margin-top: 16px;
 		}
 
 		&-wordmark {
@@ -46,9 +47,6 @@
 			margin-right: 16px;
 			filter: var( --wikipediapreview-filter-setting );
 
-			&-with-image {
-				margin-top: 16px;
-			}
 
 			@wordmark-languages: ar, atj, bn, ca, cs, cy, et, fa, fr, he, hi, ja, la, ps, ru, sd, sr, szl, tr, ur, uz, zh;
 			each(@wordmark-languages, {
@@ -58,7 +56,8 @@
 				}
 			});
 
-			&-sr {
+			&-sr,
+			&-fr {
 				background-size: 160px;
 			}
 
@@ -83,13 +82,15 @@
 
 	&-body {
 		max-height: 248px;
-		overflow: hidden;
+		overflow: scroll;
+		margin-bottom: 16px;
+		position: relative;
 
 		p {
 			margin: 0;
-			line-height: 1.6;
+			line-height: 1.7;
 			font-size: 18px;
-			padding: 10px 20px;
+			padding: 0 20px;
 			color: var( --wikipediapreview-primary-color );
 		}
 
@@ -239,23 +240,31 @@
 
 	&-footer {
 		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 40px;
+		z-index: 5;
 
-		&-cta {
-			width: 100%;
-			height: 50px;
-			text-decoration: none;
-			text-align: center;
-			padding: 16px;
-			font-size: 18px;
-			color: #36c;
+		&-link {
+			margin-right: 5px;
 
-			&-readmore {
-				cursor: pointer;
-				display: block;
-			}
+			&-cta {
+				text-decoration: none;
+				font-size: 14px;
+				color: #36c;
+				margin-right: 4px;
 
-			&-readonwiki {
-				display: none;
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&:visited {
+					color: #6B4BA1;
+					svg path {
+						fill: #6B4BA1;
+					}
+				}
 			}
 		}
 
@@ -265,45 +274,33 @@
 		}
 	}
 
-	&.expanded {
-		.wikipediapreview-body {
-			// calculate the max height in onExpand()
-			// max-height: 496px;
-			overflow: auto;
-
-			&:after {
-				content: none;
-			}
-		}
-
-		.wikipediapreview-footer-cta {
-			&-readmore {
-				display: none;
-			}
-
-			&-readonwiki {
-				display: block;
-			}
-		}
+	&-scroll-cue {
+		position: absolute;
+		width: 350px;
+		height: 70px;
+		bottom: 0;
+		pointer-events: none;
+		background: -moz-linear-gradient( top, transparent 0%, var( --wikipediapreview-primary-background-color ) 100% );
+		background: -webkit-linear-gradient( top, transparent 0%, var( --wikipediapreview-primary-background-color ) 100% );
+		background: linear-gradient( to bottom, transparent 0%, var( --wikipediapreview-primary-background-color ) 100% );
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0 );
 	}
 
 	&.mobile {
 		width: 100%;
-	}
+		max-height: 55vh;
 
-	&.mobile.expanded {
 		.wikipediapreview-body {
-			max-height: calc( 70vh );
-			overflow: auto;
+			max-height: 55vh;
+		}
+		.wikipediapreview-scroll-cue {
+			width: 100%;
 		}
 	}
 
 	&[ dir='rtl' ] {
-		.wikipediapreview-header-wordmark,
-		.wikipediapreview-header-wordmark-with-image {
+		.wikipediapreview-header-wordmark {
 			background-position: right;
-			margin-right: 16px;
-			margin-left: 0;
 		}
 
 		.wikipediapreview-header-image {
@@ -330,6 +327,11 @@
 			&-author {
 				left: 14px;
 				right: auto;
+			}
+
+			&-link {
+				margin-left: 5px;
+				margin-right: 0;
 			}
 		}
 	}

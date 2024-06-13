@@ -48,12 +48,6 @@ const createTouchPopup = ( container, win = window ) => {
 		removeBackgroundScreen( win.document )
 	}
 
-	const expand = () => {
-		if ( popupEvents.onExpand ) {
-			popupEvents.onExpand()
-		}
-	}
-
 	const subscribe = ( events = {} ) => {
 		if ( events.onShow ) {
 			popupEvents.onShow = events.onShow
@@ -61,12 +55,9 @@ const createTouchPopup = ( container, win = window ) => {
 		if ( events.onHide ) {
 			popupEvents.onHide = events.onHide
 		}
-		if ( events.onExpand ) {
-			popupEvents.onExpand = events.onExpand
-		}
 	}
 
-	return { show, hide, expand, subscribe, element: popup }
+	return { show, hide, subscribe, element: popup }
 }
 
 export { createTouchPopup }

@@ -1,12 +1,12 @@
 import { msg } from './i18n'
-import { buildWikipediaUrl } from './utils'
+import { buildWikipediaUrl, getLinkIconSvg } from './utils'
 import '../style/preview.less'
 
 const getPreviewHeader = ( lang, isTouch, imageUrl = '' ) => {
 	return `
 		<div class="wikipediapreview-header">
 			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
-			<div class="wikipediapreview-header-wordmark${ imageUrl ? ' wikipediapreview-header-wordmark-with-image' : '' } wikipediapreview-header-wordmark-${ lang }"></div>
+			<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${ lang }"></div>
 			${ isTouch ? '<div class="wikipediapreview-header-closebtn"></div>' : '' }
 		</div>
 `.trim()
@@ -27,7 +27,7 @@ const getPreviewBody = ( type, message, cta ) => {
 }
 
 const getReadOnWikiCta = ( lang, title, isTouch ) => {
-	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-cta-readonwiki">${ msg( lang, 'read-on-wiki' ) }</a>`
+	return `<a href="${ buildWikipediaUrl( lang, title, isTouch ) }" target="_blank" class="wikipediapreview-footer-link-cta">${ msg( lang, 'read-on-wiki' ) }</a>`
 }
 
 const render = (
@@ -47,12 +47,18 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 		bodyContent = `
 			<div class="wikipediapreview-body">
 				${ data.extractHtml }
-				<div class="wikipediapreview-gallery">
+				<div class="wikipediapreview-footer">
+					<div class="wikipediapreview-footer-link">
+						<a href="${ buildWikipediaUrl( lang, data.title, isTouch ) }"
+							class="wikipediapreview-footer-link-cta" target="_blank"
+							>
+							${ msg( lang, 'read-more' ) }
+							${ getLinkIconSvg( data.dir, '#36C' ) }
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="wikipediapreview-footer">
-				<span class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readmore">${ msg( lang, 'continue-reading' ) }</span>
-				<a href="${ buildWikipediaUrl( lang, data.title, isTouch ) }" class="wikipediapreview-footer-cta wikipediapreview-footer-cta-readonwiki" target="_blank">${ msg( lang, 'read-more' ) }</a>
+				<div class="wikipediapreview-gallery"></div>
+				<div class="wikipediapreview-scroll-cue"></div>
 			</div>
 		`.trim()
 

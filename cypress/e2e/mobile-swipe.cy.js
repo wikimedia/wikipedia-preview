@@ -13,12 +13,6 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Scrollable of Gallery in Expanded Mode', () => {
 		// Open the Preview
 		preview.getPreviewSpan().eq( 4 ).click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		preview.getHeaderImage().its( 'length' ).then( () => {
 			// Get the Images in View
 			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
@@ -34,16 +28,11 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Gallery Image Caption Scrollable', () => {
 		// Open the Preview
 		preview.getPreviewSpan().eq( 4 ).click()
-		// Check for the Continue Reading exist
-		preview.getFooterContinueReading().then( ( res ) => {
-			if ( res.css( 'display' ) !== 'none' ) {
-				preview.getFooterContinueReading().click()
-			}
-		} )
 		const i = 1
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
 			// Open the Gallery
+			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
 			preview.getBodyGalleryImages().eq( 1 ).click()
 			// Check the Gallery Page
 			gallery.checkMobileGalleryPage( i )
