@@ -72,6 +72,17 @@ const bindImageEvent = ( container, refresh = false ) => {
 	const imageElement = container.querySelector( 'img' )
 	const loading = container.querySelector( `.${ prefixClassname }-item-loading` )
 	const errorElement = container.querySelector( `.${ prefixClassname }-item-loading-error` )
+	const captionElement = container.querySelector( `.${ prefixClassname }-item-caption` )
+
+	// Check if image has started loading and rendering
+	function checkImageRender() {
+		if ( imageElement.naturalWidth > 0 && imageElement.naturalHeight > 0 ) {
+			captionElement.style.visibility = 'visible'
+		} else {
+			requestAnimationFrame( checkImageRender )
+		}
+	}
+	checkImageRender()
 
 	if ( refresh ) {
 		const slider = parentContainer.querySelector( `.${ prefixClassname }` )
