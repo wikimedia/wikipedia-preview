@@ -190,24 +190,11 @@ function init( {
 		} )
 	}
 
-	const onMouseEnter = ( e ) => {
-		console.log( 'target mouseenter', e ) // eslint-disable-line no-console
-		showPopup( e )
-	}
-
-	const onClick = ( e ) => { // eslint-disable-line no-unused-vars
-		console.log( 'target click', e ) // eslint-disable-line no-console
-		if ( e.pointerType === 'touch' ) {
-			showPopup( e )
-		}
-	}
-
 	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				node.addEventListener( 'mouseenter', onMouseEnter )
-				// node.addEventListener( 'click', onClick, true )
+				node.addEventListener( 'mouseenter', showPopup )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
@@ -226,8 +213,7 @@ function init( {
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
-						node.addEventListener( 'mouseenter', onMouseEnter )
-						// node.addEventListener( 'click', onClick, true )
+						node.addEventListener( 'mouseenter', showPopup )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
