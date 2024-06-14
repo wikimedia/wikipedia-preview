@@ -84,6 +84,7 @@ function init( {
 	currentColorScheme = prefersColorScheme
 
 	const showPopup = ( e, refresh = false ) => {
+		console.log( 'showPopup', e ) // eslint-disable-line no-console
 		e.preventDefault()
 		e.stopPropagation()
 
@@ -189,20 +190,24 @@ function init( {
 		} )
 	}
 
-	const onClick = ( e ) => {
+	const onMouseEnter = ( e ) => {
+		console.log( 'target mouseenter', e ) // eslint-disable-line no-console
+		showPopup( e )
+	}
+
+	const onClick = ( e ) => { // eslint-disable-line no-unused-vars
+		console.log( 'target click', e ) // eslint-disable-line no-console
 		if ( e.pointerType === 'touch' ) {
 			showPopup( e )
 		}
 	}
 
-	popup.subscribe( popupEvents )
-
 	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				node.addEventListener( 'mouseenter', showPopup )
-				node.addEventListener( 'click', onClick )
+				node.addEventListener( 'mouseenter', onMouseEnter )
+				// node.addEventListener( 'click', onClick, true )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
@@ -221,8 +226,8 @@ function init( {
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
-						node.addEventListener( 'mouseenter', showPopup )
-						node.addEventListener( 'click', onClick )
+						node.addEventListener( 'mouseenter', onMouseEnter )
+						// node.addEventListener( 'click', onClick, true )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
@@ -234,6 +239,8 @@ function init( {
 			)
 		} )
 	}
+
+	popup.subscribe( popupEvents )
 
 	if ( debug ) {
 		/* eslint-disable no-console */

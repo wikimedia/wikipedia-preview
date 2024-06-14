@@ -98,7 +98,10 @@ export const customEvents = ( popup ) => {
 
 		if ( isMobile ) {
 			const darkScreen = document.querySelector( '.wp-dark-screen' )
-			addEventListener( darkScreen, 'click', popup.hide, true )
+			addEventListener( darkScreen, 'mouseenter', ( e ) => {
+				console.log( 'darkScreen', e ) // eslint-disable-line no-console
+				popup.hide()
+			}, true )
 		} else {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )

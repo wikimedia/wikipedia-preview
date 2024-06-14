@@ -12,7 +12,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	it( 'Check the Scrollable of Gallery in Expanded Mode', () => {
 		// Open the Preview
-		preview.getPreviewSpan().eq( 4 ).click()
+		preview.getPreviewSpan().eq( 4 ).trigger( 'mouseenter' )
 		preview.getHeaderImage().its( 'length' ).then( () => {
 			// Get the Images in View
 			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
@@ -27,7 +27,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	it( 'Check the Gallery Image Caption Scrollable', () => {
 		// Open the Preview
-		preview.getPreviewSpan().eq( 4 ).click()
+		preview.getPreviewSpan().eq( 4 ).trigger( 'mouseenter' )
 		const i = 1
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
