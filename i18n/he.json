@@ -13,7 +13,7 @@
 	"preview-error-message": "הייתה בעיה עם הצגת התצוגה המקדימה הזאת.",
 	"preview-console-error-message": "אין תצוגה מקדימה זמינה לערך ‚$1’ (שפה: $2)",
 	"read-on-wiki": "לקרוא בוויקיפדיה",
-	"read-more": "לקרוא עוד בוויקיפדיה",
+	"read-more": "לקרוא את הערך המלא בוויקיפדיה",
 	"preview-disambiguation-message": "הכותרת <strong>$1</strong> קשורה ליותר מערך אחד בוויקיפדיה.",
 	"preview-offline-message": "אין חיבור זמין לאינטרנט.",
 	"preview-offline-cta": "לנסות שוב"

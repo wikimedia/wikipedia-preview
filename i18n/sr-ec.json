@@ -13,7 +13,7 @@
 	"preview-error-message": "Дошло је до грешке при приказивању овог прегледа.",
 	"preview-console-error-message": "Преглед није доступан за чланак „$1” (језик: $2)",
 	"read-on-wiki": "Види на Википедији",
-	"read-more": "Види више на Википедији",
+	"read-more": "Види цео чланак на Википедији",
 	"preview-disambiguation-message": "Наслов <strong>$1</strong> се односи на више од једног чланка на Википедији.",
 	"preview-offline-message": "Нема доступне интернет конекције.",
 	"preview-offline-cta": "Покушај поново"
