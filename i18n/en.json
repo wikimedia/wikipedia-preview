@@ -4,6 +4,7 @@
 	"gallery-loading-error-refresh": "Refresh",
 	"gallery-loading-still": "Still loading",
 	"gallery-unknown-author": "Author unknown",
+	"gallery-attribution-learnmore": "Learn more",
 	"preview-error-message": "There was an issue while displaying this preview.",
 	"preview-console-error-message": "Preview unavailable for article '$1' (Language: $2)",
 	"read-on-wiki": "Read on Wikipedia",
