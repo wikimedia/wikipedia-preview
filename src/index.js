@@ -84,7 +84,6 @@ function init( {
 	currentColorScheme = prefersColorScheme
 
 	const showPopup = ( e, refresh = false ) => {
-		console.log( 'showPopup', e ) // eslint-disable-line no-console
 		e.preventDefault()
 		e.stopPropagation()
 
@@ -214,6 +213,12 @@ function init( {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
 						node.addEventListener( 'mouseenter', showPopup )
+
+						node.addEventListener( 'click', ( e ) => {
+							if ( e.pointerType === 'touch' ) {
+								e.preventDefault()
+							}
+						} )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
