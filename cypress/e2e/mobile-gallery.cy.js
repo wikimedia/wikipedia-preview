@@ -12,7 +12,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	it( 'Check the Gallery Pages Movement by Clicking on Image', () => {
 		// Open the Preview
-		preview.getPreviewSpan().first().trigger( 'mouseenter' )
+		preview.getPreviewSpan().first().trigger( 'click', { pointerType: 'touch' } )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
@@ -34,7 +34,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	it( 'Check the Gallery Pages Movement by Swiping', () => {
 		// Open the Preview
-		preview.getPreviewSpan().first().trigger( 'mouseenter' )
+		preview.getPreviewSpan().first().trigger( 'click', { pointerType: 'touch' } )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {

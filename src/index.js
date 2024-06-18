@@ -189,11 +189,30 @@ function init( {
 		} )
 	}
 
+	const onClick = ( pointerEvent ) => {
+		if ( pointerEvent.pointerType === 'touch' ) {
+			// This click event was triggered on a touch screen
+			showPopup( pointerEvent )
+		}
+	}
+
+	const onPointerEnter = ( pointerEvent ) => {
+		if ( pointerEvent.pointerType === 'mouse' ) {
+			// This hover event was triggered by a mouse
+			showPopup( pointerEvent )
+		}
+	}
+
+	const registerPreviewEvents = ( node ) => {
+		node.addEventListener( 'click', onClick )
+		node.addEventListener( 'pointerenter', onPointerEnter )
+	}
+
 	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				node.addEventListener( 'mouseenter', showPopup )
+				registerPreviewEvents( node )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
@@ -212,13 +231,7 @@ function init( {
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
-						node.addEventListener( 'mouseenter', showPopup )
-
-						node.addEventListener( 'click', ( e ) => {
-							if ( e.pointerType === 'touch' ) {
-								e.preventDefault()
-							}
-						} )
+						registerPreviewEvents( node )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
