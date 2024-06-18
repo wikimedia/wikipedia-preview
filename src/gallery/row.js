@@ -15,5 +15,9 @@ const getGalleryRow = ( mediaItems ) => {
 }
 
 export const getGallery = ( mediaItems ) => {
+	console.log( 'getGallery', mediaItems )
+	if ( mediaItems.length < 3 ) {
+		return ''
+	}
 	return `<div class="wikipediapreview-gallery">${ getGalleryRow( mediaItems ) }</div>`
 }

@@ -3,10 +3,11 @@ import { buildWikipediaUrl, getLinkIconSvg } from './utils'
 import { getGallery } from './gallery'
 import '../style/preview.less'
 
-const getPreviewHeader = ( lang, isTouch, imageUrl = '' ) => {
+const getPreviewHeader = ( lang, isTouch, imageUrl = '', media = [] ) => {
+	const showThumbnail = imageUrl !== '' && media.length < 3
 	return `
 		<div class="wikipediapreview-header">
-			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
+			${ showThumbnail ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
 			<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${ lang }"></div>
 			${ isTouch ? '<div class="wikipediapreview-header-closebtn"></div>' : '' }
 		</div>
@@ -67,7 +68,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 		lang,
 		isTouch,
 		data.dir,
-		getPreviewHeader( lang, isTouch, imageUrl ),
+		getPreviewHeader( lang, isTouch, imageUrl, data.media ),
 		bodyContent,
 		prefersColorScheme
 	)
