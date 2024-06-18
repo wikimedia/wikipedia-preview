@@ -1,6 +1,4 @@
-import { showFullscreenGallery } from './fullscreen'
-
-export const getGalleryRow = ( mediaItems, popup ) => {
+const getGalleryRow = ( mediaItems ) => {
 	const galleryRow = document.createElement( 'div' )
 	galleryRow.classList.add( 'wikipediapreview-gallery-row' )
 
@@ -9,13 +7,13 @@ export const getGalleryRow = ( mediaItems, popup ) => {
 
 		image.classList.add( 'wikipediapreview-gallery-image' )
 		image.style.backgroundImage = `url(${ item.thumb })`
-		image.addEventListener( 'click', ( e ) => {
-			const selected = e.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
-			showFullscreenGallery( mediaItems, selected, popup.lang, popup.dir )
-		} )
 
 		galleryRow.appendChild( image )
 	} )
 
-	return galleryRow
+	return galleryRow.outerHTML
+}
+
+export const getGallery = ( mediaItems ) => {
+	return `<div class="wikipediapreview-gallery">${ getGalleryRow( mediaItems ) }</div>`
 }

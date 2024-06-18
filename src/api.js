@@ -222,6 +222,22 @@ const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 	}, callback )
 }
 
+const requestPagePreviewWithMedia = ( lang, title, callback ) => {
+	let results = {}
+	requestPagePreview( lang, title, ( previewData ) => {
+		results = { ...results, ...previewData }
+		if ( results.media ) {
+			callback( results )
+		}
+	} )
+	requestPageMedia( lang, title, ( mediaData ) => {
+		results = { ...results, media: mediaData }
+		if ( results.extractHtml ) {
+			callback( results )
+		}
+	} )
+}
+
 const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
 		action: 'query',
@@ -264,4 +280,4 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 	}, callback )
 }
 
-export { requestPagePreview, requestPageMedia, requestPageMediaInfo, getSections }
+export { requestPagePreview, requestPageMedia, requestPageMediaInfo, getSections, requestPagePreviewWithMedia }

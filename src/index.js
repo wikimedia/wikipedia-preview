@@ -1,4 +1,4 @@
-import { requestPagePreview, getSections } from './api'
+import { requestPagePreview, getSections, requestPagePreviewWithMedia } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
@@ -112,7 +112,7 @@ function init( {
 			pointerPosition
 		)
 
-		requestPagePreview( localLang, title, ( data ) => {
+		requestPagePreviewWithMedia( localLang, title, ( data ) => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}
@@ -127,6 +127,7 @@ function init( {
 							currentTarget,
 							pointerPosition
 						)
+						popup.media = data.media
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?

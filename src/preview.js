@@ -1,5 +1,6 @@
 import { msg } from './i18n'
 import { buildWikipediaUrl, getLinkIconSvg } from './utils'
+import { getGallery } from './gallery'
 import '../style/preview.less'
 
 const getPreviewHeader = ( lang, isTouch, imageUrl = '' ) => {
@@ -45,6 +46,7 @@ const render = (
 const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 	const imageUrl = data.imgUrl,
 		bodyContent = `
+			${ getGallery( data.media ) }
 			<div class="wikipediapreview-body">
 				${ data.extractHtml }
 				<div class="wikipediapreview-footer">
@@ -57,7 +59,6 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 						</a>
 					</div>
 				</div>
-				<div class="wikipediapreview-gallery"></div>
 				<div class="wikipediapreview-scroll-cue"></div>
 			</div>
 		`.trim()

@@ -1,6 +1,5 @@
 import { isTouch, isVerticallyScrollable } from './utils'
-import { getGalleryRow } from './gallery'
-import { requestPageMedia } from './api'
+import { showFullscreenGallery } from './gallery/fullscreen'
 
 export const customEvents = ( popup ) => {
 
@@ -33,24 +32,6 @@ export const customEvents = ( popup ) => {
 		eventListenerStack = []
 	}
 
-	const appendGalleryRow = () => {
-		const { lang, title } = popup
-
-		if ( !popup.loading && lang && title ) {
-			requestPageMedia( lang, title, ( mediaData ) => {
-				const galleryContainer = popup.element.component.wikipediapreviewGallery
-				if ( mediaData && mediaData.length > 0 ) {
-					galleryContainer.appendChild( getGalleryRow( mediaData, popup ) )
-				} else {
-					popup.element.component.body.removeChild( galleryContainer )
-					if ( !isVerticallyScrollable( popup.element.component.body ) ) {
-						popup.element.component.scrollCue.remove()
-					}
-				}
-			} )
-		}
-	}
-
 	const onMouseLeave = ( e ) => {
 		const toElement = e.toElement || e.relatedTarget || e.target
 		const previewElement = popup.element.currentTargetElement
@@ -81,15 +62,19 @@ export const customEvents = ( popup ) => {
 		element.component = {
 			body: element.querySelector( '.wikipediapreview-body' ),
 			wikipediapreview: element.querySelector( '.wikipediapreview' ),
-			wikipediapreviewGallery: element.querySelector( '.wikipediapreview-gallery' ),
+			wikipediapreviewGalleryImages: element.querySelectorAll( '.wikipediapreview-gallery-image' ),
 			closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
 			content: element.querySelector( '.wikipediapreview-body > p' ),
 			scrollCue: element.querySelector( '.wikipediapreview-scroll-cue' )
 		}
 
-		if ( element.component.wikipediapreviewGallery &&
-			element.component.wikipediapreviewGallery.children.length === 0 ) {
-			appendGalleryRow()
+		if ( element.component.wikipediapreviewGalleryImages ) {
+			element.component.wikipediapreviewGalleryImages.forEach( ( image ) => {
+				addEventListener( image, 'click', ( e ) => {
+					const selected = e.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
+					showFullscreenGallery( popup.media, selected, popup.lang, popup.dir )
+				} )
+			} )
 		}
 
 		if ( isTouch ) {
