@@ -62,6 +62,7 @@ export const customEvents = ( popup ) => {
 		element.component = {
 			body: element.querySelector( '.wikipediapreview-body' ),
 			wikipediapreview: element.querySelector( '.wikipediapreview' ),
+			wikipediapreviewHeaderImage: element.querySelector( '.wikipediapreview-header-image' ),
 			wikipediapreviewGalleryImages: element.querySelectorAll( '.wikipediapreview-gallery-image' ),
 			closeBtn: element.querySelector( '.wikipediapreview-header-closebtn' ),
 			content: element.querySelector( '.wikipediapreview-body > p' ),
@@ -74,6 +75,12 @@ export const customEvents = ( popup ) => {
 					const selected = e.target.style.backgroundImage.slice( 4, -1 ).replace( /"/g, '' )
 					showFullscreenGallery( popup.media, selected, popup.lang, popup.dir )
 				} )
+			} )
+		}
+
+		if ( element.component.wikipediapreviewHeaderImage ) {
+			addEventListener( element.component.wikipediapreviewHeaderImage, 'click', () => {
+				showFullscreenGallery( popup.media, popup.media[ 0 ].thumb, popup.lang, popup.dir )
 			} )
 		}
 

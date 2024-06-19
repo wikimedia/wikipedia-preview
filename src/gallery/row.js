@@ -15,7 +15,6 @@ const getGalleryRow = ( mediaItems ) => {
 }
 
 export const getGallery = ( mediaItems ) => {
-	console.log( 'getGallery', mediaItems )
 	if ( mediaItems.length < 3 ) {
 		return ''
 	}
