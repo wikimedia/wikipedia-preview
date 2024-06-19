@@ -89,36 +89,11 @@ export class Preview {
 
 		this.getHeader().should( 'be.visible' )
 		this.getHeaderWatermark().should( 'be.visible' )
-		this.getHeaderImage().its( 'length' ).then( ( len ) => {
-			if ( len > 0 ) {
-				this.getHeaderImage().should( 'be.visible' )
-			}
-		} )
+		this.getBodyGallery().should( 'be.visible' )
+		this.getBodyGalleryImages().should( 'be.visible' )
 
 		this.getBody().should( 'be.visible' )
 		this.getBodyContent().should( 'have.css', 'font-size' ).and( 'equal', '18px' )
-
-	}
-
-	// Custom Command to check the Preview in Expanded Mode
-	checkPreviewExpanded() {
-		this.getPreview().should( 'be.visible' )
-			.and( 'have.class', 'expanded' )
-
-		this.getHeader().should( 'be.visible' )
-		this.getHeaderWatermark().should( 'be.visible' )
-
-		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'be.visible' )
-			.and( 'have.css', 'font-size' ).and( 'equal', '18px' )
-		this.getHeaderImage().its( 'length' ).then( ( len ) => {
-			if ( len > 0 ) {
-				this.getBodyGallery().scrollIntoView().should( 'be.visible' )
-				this.getBodyGalleryImages().should( 'be.visible' )
-			}
-		} )
-		this.getFooter().should( 'be.visible' )
-		this.getFooterReadMore().should( 'be.visible' )
 
 	}
 

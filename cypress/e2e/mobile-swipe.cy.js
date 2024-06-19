@@ -13,13 +13,12 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 	it( 'Check the Scrollable of Gallery in Expanded Mode', () => {
 		// Open the Preview
 		preview.getPreviewSpan().eq( 4 ).click()
-		preview.getHeaderImage().its( 'length' ).then( () => {
-			// Get the Images in View
-			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
-			// Scrolling the images within Gallery in Expanded Mode
-			// preview.getBodyGallery().swipe({delay: 2000,draw:true},'bottom-right','bottom-left')
-			preview.getBodyGallery().scrollTo( 'right', { duration: 3000 } )
-		} )
+
+		// Get the Images in View
+		preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
+		// Scrolling the images within Gallery in Expanded Mode
+		// preview.getBodyGallery().swipe({delay: 2000,draw:true},'bottom-right','bottom-left')
+		preview.getBodyGallery().scrollTo( 'right', { duration: 3000 } )
 
 		// Closes the Mobile Preview
 		preview.getHeaderClosebtn().click()
