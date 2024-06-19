@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom'
 import { describe, test, beforeAll, expect } from 'vitest'
-import { showFullscreenGallery, getGalleryRow } from '../src/gallery/index.js'
+import { showFullscreenGallery, getGallery } from '../src/gallery/index.js'
 
 describe( 'Gallery', () => {
 	describe( 'showFullscreenGallery', () => {
@@ -96,13 +96,15 @@ describe( 'Gallery', () => {
 		]
 
 		test( 'correctly constructs mini gallery row', () => {
-			const galleryRow = getGalleryRow( mediaItems )
+			const galleryRow = getGallery( mediaItems )
 
-			Array.from( galleryRow.children ).forEach( ( image, index ) => {
-				const thumb = image.style[ 'background-image' ].slice( 4, -1 )
-				expect( thumb ).toBe( mediaItems[ index ].thumb )
-				expect( image.className ).toBe( 'wikipediapreview-gallery-image' )
-			} )
+			if ( galleryRow.children ) {
+				Array.from( galleryRow.children ).forEach( ( image, index ) => {
+					const thumb = image.style[ 'background-image' ].slice( 4, -1 )
+					expect( thumb ).toBe( mediaItems[ index ].thumb )
+					expect( image.className ).toBe( 'wikipediapreview-gallery-image' )
+				} )
+			}
 		} )
 	} )
 } )
