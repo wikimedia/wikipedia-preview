@@ -118,7 +118,7 @@ function init( {
 			}
 			if ( popup.loading ) {
 				popup.loading = false
-				if ( data ) {
+				if ( data.extractHtml ) {
 					popup.lang = localLang
 					popup.title = title
 					if ( data.type === 'standard' ) {
