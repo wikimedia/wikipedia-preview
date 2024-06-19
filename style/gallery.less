@@ -97,17 +97,22 @@
 				transition: transform 0.35s ease-in-out;
 				max-width: calc( 100% - 48px );
 				text-align: center;
-
-				@media screen and (max-width: 1120px) {
-					max-width: 100%;
-				}
-
+				
 				img {
 					background-color: #fff;
 					position: relative;
 					max-width: 100%;
-					max-height: 65vh;
+					max-height: 80vh;
 				}
+
+				@media screen and (max-width: 1120px) {
+					max-width: 100%;
+
+					img {
+						top: -15px;
+					}
+				}
+
 			}
 
 			&-caption {
