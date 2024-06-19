@@ -225,14 +225,19 @@ const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 const requestPagePreviewWithMedia = ( lang, title, callback ) => {
 	let results = {}
 	requestPagePreview( lang, title, ( previewData ) => {
-		results = { ...results, ...previewData }
+		if ( previewData === false ) {
+			results = { ...results, extractHtml: false }
+		} else {
+			results = { ...results, ...previewData }
+		}
+
 		if ( results.media ) {
 			callback( results )
 		}
 	} )
 	requestPageMedia( lang, title, ( mediaData ) => {
 		results = { ...results, media: mediaData }
-		if ( results.extractHtml ) {
+		if ( results.extractHtml !== undefined ) {
 			callback( results )
 		}
 	} )
