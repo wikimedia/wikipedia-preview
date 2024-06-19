@@ -48,9 +48,12 @@
 		background-position: center;
 		width: 48px;
 		top: 16px;
-		right: 24px;
 		height: 48px;
 		z-index: @popup-z-index + 20;
+
+		@media screen and (max-width: 1120px) {
+			right: 4px;
+		}
 	}
 
 	&-main {
@@ -61,10 +64,17 @@
 	}
 
 	&-counter {
-		margin-top: 31px;
+		margin-top: 32px;
 		margin-bottom: 24px;
 		text-align: center;
 		color: var( --gallery-primary-text-color );
+		font-size: 16px;
+		letter-spacing: 0.105em;
+		font-weight: 600;
+
+		@media screen and (max-width: 1120px) {
+			font-size: 14px;
+		}
 	}
 
 	&-slider {
@@ -87,6 +97,10 @@
 				transition: transform 0.35s ease-in-out;
 				max-width: calc( 100% - 48px );
 				text-align: center;
+
+				@media screen and (max-width: 1120px) {
+					max-width: 100%;
+				}
 
 				img {
 					background-color: #fff;
@@ -128,7 +142,7 @@
 				bottom: 0;
 				left: 0;
 				width: 100%;
-				font-size: 16px;
+				font-size: 12px;
 				color: var( --gallery-primary-background-color );
 				border: var( --gallery-primary-background-color );
 				height: 44px;
@@ -136,7 +150,6 @@
 				justify-content: space-between;
 				padding-bottom: 15px;
 				padding-left: 12px;
-				scrollbar-width: none;
 
 				&::-webkit-scrollbar {
 					display: none;
@@ -148,9 +161,14 @@
 					margin: 16px;
 					font-size: 12px;
 					color: var( --gallery-primary-text-color );
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+					
+					bdi {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						scrollbar-width: none;		
+						max-width: 15vw;
+					}
 
 					&-link {
 						color: inherit;
