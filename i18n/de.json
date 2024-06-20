@@ -4,18 +4,19 @@
 			"BPX-web",
 			"DraconicDark",
 			"Elliot",
+			"Justman10000",
 			"ManuelFranz"
 		]
 	},
-	"gallery-loading-error": "Beim Laden dieses Bildes gab es einen Fehler.",
+	"gallery-loading-error": "Beim Laden dieses Bildes ist ein Fehler aufgetreten",
 	"gallery-loading-error-offline": "Es ist keine Internetverbindung vorhanden.",
 	"gallery-loading-error-refresh": "Aktualisieren",
 	"gallery-loading-still": "Wird noch geladen",
-	"gallery-unknown-author": "Urheber unbekannt.",
-	"preview-error-message": "Es gab ein Problem bei der Anzeige dieser Vorschau.",
+	"gallery-unknown-author": "Autor unbekannt.",
+	"preview-error-message": "Es existierte ein Problem bei der Anzeige dieser Vorschau.",
 	"preview-console-error-message": "Vorschau für Artikel „$1“ nicht verfügbar (Sprache: $2)",
 	"read-on-wiki": "Auf Wikipedia lesen",
-	"read-more": "Mehr bei Wikipedia",
+	"read-more": "Vollständigen Artikel auf Wikipedia lesen",
 	"preview-disambiguation-message": "Titel <strong>$1</strong> bezieht sich auf mehr als einen Artikel auf Wikipedia.",
 	"preview-offline-message": "Es ist keine Internetverbindung vorhanden.",
 	"preview-offline-cta": "Erneut versuchen"
