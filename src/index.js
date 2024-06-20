@@ -189,7 +189,7 @@ function init( {
 		} )
 	}
 
-	const onClick = ( pointerEvent ) => {
+	const onPointerUp = ( pointerEvent ) => {
 		if ( pointerEvent.pointerType === 'touch' ) {
 			// This click event was triggered on a touch screen
 			showPopup( pointerEvent )
@@ -204,7 +204,7 @@ function init( {
 	}
 
 	const registerPreviewEvents = ( node ) => {
-		node.addEventListener( 'click', onClick )
+		node.addEventListener( 'pointerup', onPointerUp )
 		node.addEventListener( 'pointerenter', onPointerEnter )
 	}
 
