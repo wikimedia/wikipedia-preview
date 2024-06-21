@@ -61,7 +61,7 @@ const renderImageAttribution = ( mediaInfo ) => {
 	return `
 		<div class="${ prefixClassname }-item-attribution">
 			<div class="${ prefixClassname }-item-attribution-info">
-				<bdi>${ author } (${ mediaInfo.license })</bdi>
+				<bdi class="${ prefixClassname }-item-attribution-info-author">${ author } (${ mediaInfo.license })</bdi>
 				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">${ msg( lang, 'gallery-attribution-learnmore' ) } ${ getLinkIconSvg() }</a>
 			</div>
 		</div>
