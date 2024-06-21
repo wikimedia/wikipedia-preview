@@ -47,7 +47,7 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		width: 48px;
-		right: 0px;
+		right: 24px;
 		top: 16px;
 		height: 48px;
 		z-index: @popup-z-index + 20;
@@ -71,7 +71,7 @@
 		color: var( --gallery-primary-text-color );
 		font-size: 16px;
 		letter-spacing: 0.105em;
-		font-weight: 600;
+		font-weight: 400;
 
 		@media screen and (max-width: 1120px) {
 			font-size: 14px;
@@ -96,14 +96,14 @@
 
 			&-img {
 				transition: transform 0.35s ease-in-out;
-				max-width: calc( 100% - 48px );
+				max-width: calc( 100% - 176px );
 				text-align: center;
 				
 				img {
 					background-color: #fff;
 					position: relative;
 					max-width: 100%;
-					max-height: 80vh;
+					max-height: 75vh;
 				}
 
 				@media screen and (max-width: 1120px) {
@@ -139,7 +139,7 @@
 					max-width: calc(100% - 32px);
 					left: 0;
 					margin: 0 16px;
-					bottom: 58px;
+					bottom: 40px;
 				}
 			}
 
@@ -319,19 +319,21 @@
 			color: #72777d;
 			position: absolute;
 			z-index: @popup-z-index;
-
+			top: 50%;
+			transform: translateY(-50%);
+		
 			@media screen and (max-width: 1120px) {
 				display: none;
 			}
 
 			&.previous {
 				background-image: url( '../images/arrow-left.svg' );
-				left: 16px;
+				left: 24px;
 			}
 
 			&.next {
 				background-image: url( '../images/arrow-right.svg' );
-				right: 16px;
+				right: 24px;
 			}
 		}
 	}
@@ -465,7 +467,7 @@
 		.wp-gallery-fullscreen {
 			&-close {
 				right: auto;
-				left: 16px;
+				left: 24px;
 			}
 
 			&-slider {
@@ -475,12 +477,12 @@
 					&.previous {
 						background-image: url( '../images/arrow-right.svg' );
 						left: auto;
-						right: 16px;
+						right: 24px;
 					}
 
 					&.next {
 						background-image: url( '../images/arrow-left.svg' );
-						left: 16px;
+						left: 24px;
 						right: auto;
 					}
 				}
