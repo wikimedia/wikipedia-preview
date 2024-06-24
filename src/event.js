@@ -1,4 +1,4 @@
-import { isTouch, isVerticallyScrollable } from './utils'
+import { isMobile, isVerticallyScrollable } from './utils'
 import { getGalleryRow } from './gallery'
 import { requestPageMedia } from './api'
 
@@ -92,13 +92,13 @@ export const customEvents = ( popup ) => {
 			appendGalleryRow()
 		}
 
-		if ( isTouch ) {
+		if ( element.component.closeBtn ) {
 			addEventListener( element.component.closeBtn, 'click', popup.hide )
 		}
 
-		if ( isTouch ) {
+		if ( isMobile ) {
 			const darkScreen = document.querySelector( '.wp-dark-screen' )
-			addEventListener( darkScreen, 'click', popup.hide, true )
+			addEventListener( darkScreen, 'pointerup', popup.hide, true )
 		} else {
 			addEventListener( element, 'mouseleave', onMouseLeave )
 			addEventListener( element.currentTargetElement, 'mouseleave', onMouseLeave )

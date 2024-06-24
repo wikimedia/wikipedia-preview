@@ -10,7 +10,10 @@ describe( 'Check the Hover and Click Event', () => {
 
 	it( 'Check the Preview by hovering over the Span and then leaving', () => {
 
-		preview.getPreviewSpan().first().trigger( 'mouseenter', 'right' )
+		preview.getPreviewSpan().first().trigger( 'pointerenter', {
+			position: 'right',
+			pointerType: 'mouse'
+		} )
 
 		preview.checkPreview()
 
