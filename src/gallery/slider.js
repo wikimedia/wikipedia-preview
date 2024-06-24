@@ -68,6 +68,20 @@ const renderImageAttribution = ( mediaInfo ) => {
 	`.trim()
 }
 
+const handleCaptionExpansion = ( item, forceClose = false ) => {
+	const caption = item.querySelector( `.${ prefixClassname }-item-caption` )
+	const expandCue = item.querySelector( `.${ prefixClassname }-item-caption-expand-cue` )
+	const expanded = item.querySelector( '.expanded' )
+
+	if ( expandCue && expanded || forceClose && expandCue ) {
+		expandCue.classList.remove( 'expanded' )
+		caption.style.maxHeight = '95px'
+	} else if ( expandCue ) {
+		expandCue.classList.add( 'expanded' )
+		caption.style.maxHeight = '241px'
+	}
+}
+
 const bindImageEvent = ( container, refresh = false ) => {
 	const imageElement = container.querySelector( 'img' )
 	const loading = container.querySelector( `.${ prefixClassname }-item-loading` )
@@ -145,6 +159,10 @@ const bindImageEvent = ( container, refresh = false ) => {
 			} )
 		} )
 	}
+
+	captionElement.addEventListener( 'click', () => {
+		handleCaptionExpansion( container )
+	} )
 }
 
 const showImageAndInfo = ( index, refreshImage = false ) => {
@@ -161,7 +179,7 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 				const atrributionElement = item.querySelector( `.${ prefixClassname }-item-attribution` )
 
 				if ( !imageElement ) {
-					const getImageDescription = () => {
+					const getDescription = () => {
 						// description list order
 						// (1) commons caption - Not found
 						// (2) commons description
@@ -174,9 +192,22 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 							return ''
 						}
 					}
+					const description = getDescription()
+					const isCaptionExpandable = () => {
+						if ( getClientWidth() < 400 && description.length > 128 ) {
+							return true
+						} else if ( getClientWidth() > 400 && description.length > 142 ) {
+							return true
+						} else {
+							return false
+						}
+					}
+
 					const caption = `<div class="${ prefixClassname }-item-caption">
-						<div class="${ prefixClassname }-item-caption-text"><bdi>${ getImageDescription() }</bdi></div>
+						${ isCaptionExpandable() ? `<div class="${ prefixClassname }-item-caption-expand-cue"></div>` : '' }
+						<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>
 					</div>`
+
 					item.insertAdjacentHTML( 'beforeend', `<div class="${ prefixClassname }-item-img"><img src="${ mediaInfo.bestFitImageUrl } ${ refreshImage ? '?timestamp=' + Date.now() : '' }"/>${ caption }</div>` )
 					bindImageEvent( item )
 				}
@@ -201,6 +232,7 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	const currentImage = items[ current ].querySelector( 'img' )
 
 	if ( item ) {
+		handleCaptionExpansion( items[ current ], true )
 		current += offset
 		nextButton.style.visibility = current === items.length - 1 ? 'hidden' : 'visible'
 		previousButton.style.visibility = current === 0 ? 'hidden' : 'visible'

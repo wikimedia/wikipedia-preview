@@ -132,14 +132,41 @@
 					display: none;
 				}
 
+				&-expand-cue {
+					visibility: hidden;
+				}
+
 				@media screen and (max-width: 1120px) {
 					position: absolute;
 					visibility: unset;
 					text-align: left;
 					max-width: calc(100% - 32px);
+					background-color: rgba( 32, 33, 34, 0.6 );
 					left: 0;
-					margin: 0 16px;
+					padding: 0 16px;
 					bottom: 40px;
+
+					& {
+						overflow-y: hidden;
+					}
+
+					&-expand-cue {
+						width: 37px;
+						height: 3px;
+						visibility: unset;
+						background-image: url( '../images/caption-cue.svg' );
+						background-repeat: no-repeat;
+						background-color: transparent;
+						margin: auto;
+						margin-top: 10px;
+						padding-bottom: 4px;
+						transition: height 0.25s ease-in-out;
+	
+						&.expanded {
+							background-image: url( '../images/caption-cue-expanded.svg' );
+							height: 8px;
+						}
+					}
 				}
 			}
 
