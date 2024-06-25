@@ -34,13 +34,13 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 			preview.getBodyGallery().scrollIntoView().should( 'be.visible' )
 			preview.getBodyGalleryImages().eq( 1 ).click()
 			// Check the Gallery Page
-			gallery.checkGalleryPage( i )
-			// Check if the Caption Bar exist
-			gallery.getGalleryCaptionBar( i ).its( 'length' ).then( ( len ) => {
+			gallery.checkMobileGalleryPage( i )
+			// Check if the Caption Text exist
+			gallery.getGalleryCaption( i ).its( 'length' ).then( ( len ) => {
 				if ( len > 0 ) {
 					// Scroll the Caption Text
 					// gallery.getGalleryCaption( i ).swipe( 'bottom', 'center' )
-					gallery.getGalleryCaptionText( i ).scrollTo( 'bottom', { duration: 3000 } )
+					gallery.getGalleryCaption( i ).scrollTo( 'bottom', { duration: 3000 } )
 				}
 			} )
 		} )

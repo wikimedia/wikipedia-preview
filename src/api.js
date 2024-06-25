@@ -247,7 +247,7 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 	const params = {
 		action: 'query',
 		prop: 'imageinfo',
-		iiextmetadatafilter: 'License|LicenseShortName|ImageDescription|Artist',
+		iiextmetadatafilter: 'LicenseShortName|ImageDescription|Artist',
 		iiextmetadatalanguage: lang,
 		iiextmetadatamultilang: 1,
 		iiurlwidth: getDeviceSize().width,

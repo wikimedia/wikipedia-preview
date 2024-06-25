@@ -12,10 +12,6 @@ export class Gallery {
 		return this.getGalleryImageBody( i ).find( 'div.wp-gallery-fullscreen-slider-item-caption' )
 	}
 
-	getGalleryCaptionBar( i ) {
-		return this.getGalleryImageBody( i ).find( 'div.wp-gallery-fullscreen-slider-item-caption-expand-cue' )
-	}
-
 	getGalleryCaptionText( i ) {
 		return this.getGalleryImageBody( i ).find( 'div.wp-gallery-fullscreen-slider-item-caption-text' )
 	}
@@ -35,8 +31,23 @@ export class Gallery {
 	// Custom Command to check the existence of Preview
 	checkGalleryPage( i ) {
 		this.getGalleryCaptionText( i ).should( 'be.visible' )
-		this.getGalleryNextBtn().should( 'be.visible' )
-		this.getGalleryPrevBtn().should( 'be.visible' )
+		if ( i === 0 ) {
+			this.getGalleryNextBtn().should( 'be.visible' )
+			this.getGalleryPrevBtn().should( 'be.not.visible' )
+		} else if ( i === cy.get( 'div.wp-gallery-fullscreen-slider-item' ).length - 1 ) {
+			this.getGalleryNextBtn().should( 'be.not.visible' )
+			this.getGalleryPrevBtn().should( 'be.visible' )
+		} else {
+			this.getGalleryNextBtn().should( 'be.visible' )
+			this.getGalleryPrevBtn().should( 'be.visible' )
+		}
+		this.getGalleryCloseBtn().should( 'be.visible' )
+	}
+
+	checkMobileGalleryPage( i ) {
+		this.getGalleryCaption( i ).should( 'be.visible' )
+		this.getGalleryNextBtn().should( 'be.not.visible' )
+		this.getGalleryPrevBtn().should( 'be.not.visible' )
 		this.getGalleryCloseBtn().should( 'be.visible' )
 	}
 }

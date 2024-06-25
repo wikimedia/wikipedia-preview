@@ -57,7 +57,7 @@ const renderPreview = ( lang, data, isTouch, prefersColorScheme ) => {
 							class="wikipediapreview-footer-link-cta" target="_blank"
 							>
 							${ msg( lang, 'read-more' ) }
-							${ getLinkIconSvg( data.dir ) }
+							${ getLinkIconSvg( data.dir, '#36C' ) }
 						</a>
 					</div>
 				</div>
