@@ -3,11 +3,10 @@
 .wikipediapreview {
 	&-gallery {
 		display: flex;
-		height: 80px;
-		margin-top: 5px;
+		min-height: 100px;
 		margin-right: 20px;
 		margin-left: 20px;
-		margin-bottom: 5px;
+		margin-bottom: 8px;
 		z-index: 5;
 		position: relative;
 
@@ -23,8 +22,23 @@
 			background-position: center;
 			background-color: #eaecf0;
 			border-radius: 2px;
-			margin: 0 2px 0 2px;
+			margin: 0 4px 0 4px;
 			cursor: pointer;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+
+	&[ dir='rtl' ] {
+		.wikipediapreview-gallery {
+			&-image {
+				&:first-child {
+					margin-right: 0;
+					margin-left: 4px;
+				}
+			}
 		}
 	}
 }
