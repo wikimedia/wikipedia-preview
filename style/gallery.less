@@ -24,6 +24,21 @@
 			border-radius: 2px;
 			margin: 0 4px 0 4px;
 			cursor: pointer;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+
+	&[ dir='rtl' ] {
+		.wikipediapreview-gallery {
+			&-image {
+				&:first-child {
+					margin-right: 0;
+					margin-left: 4px;
+				}
+			}
 		}
 	}
 }
