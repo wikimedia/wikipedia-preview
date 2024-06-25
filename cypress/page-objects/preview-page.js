@@ -93,7 +93,7 @@ export class Preview {
 		this.getBodyGalleryImages().should( 'be.visible' )
 
 		this.getBody().should( 'be.visible' )
-		this.getBodyContent().should( 'have.css', 'font-size' ).and( 'equal', '18px' )
+		this.getBodyContent().should( 'have.css', 'font-size' ).and( 'equal', '16px' )
 
 	}
 
