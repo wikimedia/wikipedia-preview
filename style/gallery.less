@@ -136,19 +136,21 @@
 					visibility: hidden;
 				}
 
+				&-text {
+					overflow-y: auto;
+					transition: max-height 0.25s ease-in-out;
+					touch-action: none;
+				}
+
 				@media screen and (max-width: 1120px) {
 					position: absolute;
 					visibility: unset;
 					text-align: left;
 					max-width: calc(100% - 32px);
-					background-color: rgba( 32, 33, 34, 0.6 );
+					background-color: rgba(248, 249, 250, 0.6);;
 					left: 0;
 					padding: 0 16px;
 					bottom: 40px;
-
-					& {
-						overflow-y: hidden;
-					}
 
 					&-expand-cue {
 						width: 37px;
@@ -544,6 +546,12 @@
 		}
 
 		&-slider {
+			&-item {
+				&-caption {
+					background-color: rgba( 32, 33, 34, 0.6 );
+				}
+			}
+
 			&-button {
 				&.previous {
 					background-image: url( '../images/arrow-left-dark.svg' );

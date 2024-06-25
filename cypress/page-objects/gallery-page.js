@@ -45,7 +45,7 @@ export class Gallery {
 	}
 
 	checkMobileGalleryPage( i ) {
-		this.getGalleryCaptionText( i ).should( 'be.visible' )
+		this.getGalleryCaption( i ).should( 'be.visible' )
 		this.getGalleryNextBtn().should( 'be.not.visible' )
 		this.getGalleryPrevBtn().should( 'be.not.visible' )
 		this.getGalleryCloseBtn().should( 'be.visible' )
