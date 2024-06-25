@@ -7,7 +7,7 @@ const getPreviewHeader = ( lang, isTouch, imageUrl = '', media = [] ) => {
 	const showThumbnail = imageUrl !== '' && media.length > 0 && media.length < 3
 	const thumbnail = imageUrl || media[ 0 ] && media[ 0 ].thumb
 	return `
-		<div class="wikipediapreview-header">
+		<div class= "wikipediapreview-header ${ showThumbnail ? '' : 'wikipediapreview-header-no-thumb' }">
 			${ showThumbnail ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ thumbnail }');background-size:cover;` }"></div>` : '' }
 			<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${ lang }"></div>
 			${ isTouch ? '<div class="wikipediapreview-header-closebtn"></div>' : '' }

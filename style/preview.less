@@ -20,21 +20,21 @@
 
 	&-header {
 		display: flex;
-		height: 52px;
+		min-height: 64px;
 		line-height: 62px;
-		margin-top: 8px;
-		margin-bottom: 8px;
+		margin-top: 12px;
+		margin-bottom: 12px;
 
 		&-image {
 			background-size: auto;
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: #eaecf0;
-			height: 52px;
-			width: 52px;
+			height: 64px;
+			width: 64px;
 			border-radius: 4px;
 			border: solid 1px #eaecf0;
-			margin-left: 16px;
+			margin-left: 20px;
 		}
 
 		&-wordmark {
@@ -44,7 +44,6 @@
 			background-size: 160px;
 			flex-grow: 1;
 			margin-left: 16px;
-			margin-right: 16px;
 			filter: var( --wikipediapreview-filter-setting );
 
 
@@ -78,10 +77,16 @@
 			width: 50px;
 			filter: var( --wikipediapreview-filter-setting );
 		}
+
+		&-no-thumb {
+			min-height: 52px;
+			margin-top: 8px;
+			margin-bottom: 8px;
+		}
 	}
 
 	&-body {
-		max-height: 200px;
+		max-height: 220px;
 		overflow: scroll;
 		margin-bottom: 16px;
 		position: relative;
@@ -301,10 +306,12 @@
 	&[ dir='rtl' ] {
 		.wikipediapreview-header-wordmark {
 			background-position: right;
+			margin-right: 16px;
+			margin-left: 0;
 		}
 
 		.wikipediapreview-header-image {
-			margin-right: 16px;
+			margin-right: 20px;
 			margin-left: 0;
 		}
 
