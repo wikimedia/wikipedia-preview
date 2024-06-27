@@ -6,9 +6,9 @@ Wikipedia Preview is a JavaScript component that allows you to provide context f
 
 Tasks and issues are tracked on [Phabricator](https://phabricator.wikimedia.org/project/profile/4393/).
 
-Desktop | Mobile
---- | ---
-<img src="./screenshot-hover.png" height="200" alt="Chat"/> | <img src="./screenshot-touch.png" height="200" alt="Chat"/>
+Desktop | Mobile | Dark mode | Fullscreen gallery
+--- | --- | --- | ---
+<img src="./screenshot-hover.png" height="200" alt="Desktop"/> | <img src="./screenshot-touch.png" height="200" alt="Mobile"/> | <img src="./screenshot-darkmode.png" height="200" alt="Dark"/> | <img src="./screenshot-gallery.png" height="200" alt="Gallery"/>
 
 Storybook: https://wikimedia.github.io/wikipedia-preview/main/storybook
 
