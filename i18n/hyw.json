@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Azniv Stepanian",
+			"Kareyac",
 			"Շահէն"
 		]
 	},
@@ -10,6 +11,7 @@
 	"gallery-loading-error-refresh": "Թարմացնել",
 	"gallery-loading-still": "Տակաւին կը բացուի",
 	"gallery-unknown-author": "Հեղինակը անյայտ է",
+	"gallery-attribution-learnmore": "Աւելին գիտնալ",
 	"preview-error-message": "Հարց մը կայ այս բաժինը բանալու:",
 	"preview-console-error-message": "Այս բաժինը գոյութիւն չունի «$1» յօդուածին համար: (Լեզու՝ $2)",
 	"read-on-wiki": "Կարդալ Ուիքիփետիայի վրայ",

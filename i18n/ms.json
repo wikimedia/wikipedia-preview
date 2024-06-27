@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Zahirulnukman"
 		]
 	},
 	"gallery-loading-error": "Terdapat ralat memuatkan imej ini",
@@ -11,8 +12,8 @@
 	"gallery-unknown-author": "Pengarang tidak diketahui",
 	"preview-error-message": "Terdapat masalah ketika memaparkan pralihat ini.",
 	"preview-console-error-message": "Pralihat tidak tersedia untuk rencana '$1' (Bahasa: $2)",
-	"read-on-wiki": "Baca tentang Wikipedia",
-	"read-more": "Baca lebih lanjut di Wikipedia",
+	"read-on-wiki": "Baca di Wikipedia",
+	"read-more": "Baca rencana penuh di Wikipedia",
 	"preview-disambiguation-message": "Tajuk <strong>$1</strong> berkaitan dengan lebih daripada satu rencana di Wikipedia.",
 	"preview-offline-message": "Tiada sambungan Internet.",
 	"preview-offline-cta": "Cuba lagi"
