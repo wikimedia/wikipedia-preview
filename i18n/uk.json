@@ -3,6 +3,7 @@
 		"authors": [
 			"DDPAT",
 			"Ice bulldog",
+			"Ignatgg",
 			"Piramidion"
 		]
 	},
@@ -11,10 +12,11 @@
 	"gallery-loading-error-refresh": "Оновити",
 	"gallery-loading-still": "Все ще завантажується",
 	"gallery-unknown-author": "Автор невідомий",
+	"gallery-attribution-learnmore": "Дізнатися більше",
 	"preview-error-message": "Сталася якась проблема під час показу цього попереднього перегляду.",
 	"preview-console-error-message": "Попередній перегляд статті «$1» недоступний (мова: $2)",
 	"read-on-wiki": "Читати у Вікіпедії",
-	"read-more": "Читати більше у Вікіпедії",
+	"read-more": "Прочитайте повну статтю у Вікіпедії",
 	"preview-disambiguation-message": "Назва <strong>$1</strong> стосується більш ніж одної статті у Вікіпедії.",
 	"preview-offline-message": "Немає підключення до Інтернету.",
 	"preview-offline-cta": "Спробуйте ще раз"
