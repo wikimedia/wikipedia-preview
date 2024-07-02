@@ -115,7 +115,8 @@ export const Error = ( { touch, lang, title, dir, prefersColorScheme } ) => {
 }
 
 export const Disambiguation = ( { lang, title, extractHtml, dir, pageUrl, touch, prefersColorScheme } ) => {
-	return renderPreview( lang, { title, extractHtml, dir, pageUrl }, touch, prefersColorScheme )
+	const media = [] // disambiguation doesn't show gallery row
+	return renderPreview( lang, { title, extractHtml, dir, pageUrl, media }, touch, prefersColorScheme )
 }
 
 export const DisambiguationWithNoExtract = ( { touch, lang, title, dir, prefersColorScheme } ) => {
