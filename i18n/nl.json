@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"HanV",
 			"Mainframe98",
 			"McDutchie",
 			"Nickthijssen1994",
@@ -12,6 +13,7 @@
 	"gallery-loading-error-refresh": "Vernieuwen",
 	"gallery-loading-still": "Nog steeds aan het laden",
 	"gallery-unknown-author": "Auteur onbekend",
+	"gallery-attribution-learnmore": "Meer lezen",
 	"preview-error-message": "Er is een probleem opgetreden bij het weergeven van deze voorvertoning",
 	"preview-console-error-message": "Voorvertoning niet beschikbaar voor artikel ‘$1’ (taal: $2)",
 	"read-on-wiki": "Op Wikipedia lezen",

@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"gallery-loading-error": "Došlo do pogrěšky pri včityvanju tutogo obrazka",
+	"gallery-loading-error-offline": "Nemaje dostupnogo podključenja do interneta.",
+	"gallery-loading-error-refresh": "Osvěžiti",
+	"gallery-loading-still": "Včityvanje trvaje",
+	"gallery-unknown-author": "Avtor neznajemy",
+	"gallery-attribution-learnmore": "Daljše informacije",
+	"preview-error-message": "Vozniknul problem pri izobražanju tutogo prědgleda.",
+	"preview-console-error-message": "Prědgled nedstupny za članok «$1» (jezyk: $2)",
+	"read-on-wiki": "Čitati v Vikipediji",
+	"read-more": "Pročitajte polny članok v Vikipediji",
+	"preview-disambiguation-message": "Nazva <strong>$1</strong> jest svezana s veče neželi jednym člankom v Vikipediji.",
+	"preview-offline-message": "Nemaje dostupnogo podključenja do interneta.",
+	"preview-offline-cta": "Poprobujte ponovno"
+}
