@@ -9,10 +9,11 @@
 	"gallery-loading-error-refresh": "Карлайаккха",
 	"gallery-loading-still": "Чуйаккхар дӀадоьдуш ду",
 	"gallery-unknown-author": "Ца вевза автор.",
+	"gallery-attribution-learnmore": "Цул совнаха хаа",
 	"preview-error-message": "Хьалхе хьожуш гӀалат даьлла.",
 	"preview-console-error-message": "Хьалхе хьажар '$1' йаззаман дац (мотт: $2)",
 	"read-on-wiki": "Йеша Википедехь",
-	"read-more": "Кхин сов йеша Википедехь",
+	"read-more": "Буьззина йаззам беша Википедехь",
 	"preview-disambiguation-message": "<strong>$1</strong> цӀе йолуш цхьаналла а сов йаззам бу Википедехь.",
 	"preview-offline-message": "Интернет йац.",
 	"preview-offline-cta": "Кхин цӀа гӀорта"

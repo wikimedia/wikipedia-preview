@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"FunnyYellowDog",
 			"Keo010122",
 			"Nguyễn Mạnh An"
 		]
@@ -10,10 +11,11 @@
 	"gallery-loading-error-refresh": "Làm mới",
 	"gallery-loading-still": "Đang tải",
 	"gallery-unknown-author": "Tác giả không rõ",
+	"gallery-attribution-learnmore": "Tìm hiểu thêm",
 	"preview-error-message": "Đã xảy ra sự cố khi hiển thị bản xem trước này.",
 	"preview-console-error-message": "Không có bản xem trước cho bài viết '$1' (Ngôn ngữ: $2)",
 	"read-on-wiki": "Đọc trên Wikipedia",
-	"read-more": "Đọc thêm trên Wikipedia",
+	"read-more": "Đọc toàn bộ bài viết trên Wikipedia",
 	"preview-disambiguation-message": "Tiêu đề <strong>$1</strong> có liên quan đến nhiều bài viết trên Wikipedia.",
 	"preview-offline-message": "Không có kết nối internet.",
 	"preview-offline-cta": "Thử lại"
