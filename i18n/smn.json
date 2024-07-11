@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Seipinne"
+			"Seipinne",
+			"Yupik"
 		]
 	},
 	"gallery-loading-error": "Kove luođđim ij luhostum",
-	"gallery-loading-error-offline": "Ij internet-ohtâvuođâ",
+	"gallery-loading-error-offline": "Ij internet-ohtâvuotâ",
 	"gallery-loading-error-refresh": "Peivid",
 	"gallery-loading-still": "Luođiimin vala-uv",
 	"gallery-unknown-author": "Tubdâmettum tahhee",

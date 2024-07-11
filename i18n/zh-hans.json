@@ -3,6 +3,7 @@
 		"authors": [
 			"Gerongfenh",
 			"GuoPC",
+			"Huajing",
 			"Shizhao",
 			"SkEy",
 			"沈澄心"
@@ -13,6 +14,7 @@
 	"gallery-loading-error-refresh": "刷新",
 	"gallery-loading-still": "仍在读取",
 	"gallery-unknown-author": "作者不明",
+	"gallery-attribution-learnmore": "了解更多",
 	"preview-error-message": "显示此预览时出现问题",
 	"preview-console-error-message": "条目“$1”无法预览（语言：$2）",
 	"read-on-wiki": "在维基百科上阅读",

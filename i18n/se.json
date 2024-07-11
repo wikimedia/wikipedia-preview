@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yupik"
+		]
+	},
+	"gallery-loading-error-offline": "Ii interneahttaoktavuohta.",
+	"gallery-loading-error-refresh": "Ođasmahte",
+	"gallery-unknown-author": "Dovdameahttun dahkki",
+	"gallery-attribution-learnmore": "Lassedieđut",
+	"preview-error-message": "Ovdačájáhusa čájeheapmi ii lihkostuvvan.",
+	"preview-console-error-message": "Ovdačájáhus ii leat olámuttos artihkkalii '$1' (gillii: $2)",
+	"read-on-wiki": "Loga Wikipedias",
+	"read-more": "Loga eambbo Wikipedias",
+	"preview-offline-message": "Ii interneahttaoktavuohta.",
+	"preview-offline-cta": "Geahččal fas"
+}

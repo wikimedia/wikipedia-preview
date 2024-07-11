@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ростислав Мельников"
+		]
+	},
+	"gallery-loading-error": "Tegihe viga avaites nece kuva",
+	"gallery-loading-error-offline": "Ei ole ühtenzoitust Internetha.",
+	"gallery-loading-error-refresh": "Udišta",
+	"gallery-loading-still": "Völ avaidase",
+	"gallery-unknown-author": "Tegii tundmatoi",
+	"gallery-attribution-learnmore": "Tedišta enamba",
+	"preview-error-message": "Tegihe problem ezikacundan ozutades.",
+	"preview-console-error-message": "Ezikacund voimatoi '$1' (Kel’: $2) kirjutusen täht",
+	"read-on-wiki": "Luge Vikipedijas",
+	"read-more": "Luge täuz’ kirjutuz Vikipedijas",
+	"preview-disambiguation-message": "Nimi <strong>$1</strong> koskeb enamba mi üht Vikipedijan kirjutest.",
+	"preview-offline-message": "Ei ole ühtenzoitust Internetha.",
+	"preview-offline-cta": "Ladi udes"
+}
