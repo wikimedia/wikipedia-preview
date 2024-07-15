@@ -4,6 +4,7 @@
 			"BPX-web",
 			"DraconicDark",
 			"Elliot",
+			"Ignatgg",
 			"Justman10000",
 			"ManuelFranz"
 		]
@@ -13,6 +14,7 @@
 	"gallery-loading-error-refresh": "Aktualisieren",
 	"gallery-loading-still": "Wird noch geladen",
 	"gallery-unknown-author": "Autor unbekannt.",
+	"gallery-attribution-learnmore": "Mehr erfahren",
 	"preview-error-message": "Es existierte ein Problem bei der Anzeige dieser Vorschau.",
 	"preview-console-error-message": "Vorschau für Artikel „$1“ nicht verfügbar (Sprache: $2)",
 	"read-on-wiki": "Auf Wikipedia lesen",
