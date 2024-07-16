@@ -222,11 +222,32 @@ const requestPageMedia = ( lang, title, callback, request = cachedRequest ) => {
 	}, callback )
 }
 
+const requestPagePreviewWithMedia = ( lang, title, callback ) => {
+	let results = {}
+	requestPagePreview( lang, title, ( previewData ) => {
+		if ( previewData === false ) {
+			results = { ...results, extractHtml: false }
+		} else {
+			results = { ...results, ...previewData }
+		}
+
+		if ( results.media ) {
+			callback( results )
+		}
+	} )
+	requestPageMedia( lang, title, ( mediaData ) => {
+		results = { ...results, media: mediaData }
+		if ( results.extractHtml !== undefined ) {
+			callback( results )
+		}
+	} )
+}
+
 const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) => {
 	const params = {
 		action: 'query',
 		prop: 'imageinfo',
-		iiextmetadatafilter: 'License|LicenseShortName|ImageDescription|Artist',
+		iiextmetadatafilter: 'LicenseShortName|ImageDescription|Artist',
 		iiextmetadatalanguage: lang,
 		iiextmetadatamultilang: 1,
 		iiurlwidth: getDeviceSize().width,
@@ -264,4 +285,4 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 	}, callback )
 }
 
-export { requestPagePreview, requestPageMedia, requestPageMediaInfo, getSections }
+export { requestPagePreview, requestPageMedia, requestPageMediaInfo, getSections, requestPagePreviewWithMedia }

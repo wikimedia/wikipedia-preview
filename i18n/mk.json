@@ -4,16 +4,16 @@
 			"Bjankuloski06"
 		]
 	},
-	"continue-reading": "Продолжете со читање",
 	"gallery-loading-error": "Се јави грешка при вчитувањето на сликава.",
 	"gallery-loading-error-offline": "Нема врска со семрежјето.",
 	"gallery-loading-error-refresh": "Превчитај",
 	"gallery-loading-still": "Сè уште се вчитува",
 	"gallery-unknown-author": "Непознат автор",
+	"gallery-attribution-learnmore": "Дознајте повеќе",
 	"preview-error-message": "Се јави проблем при приказот на прегледот.",
 	"preview-console-error-message": "Прегледот е недостапен за статијата „$1“ (Јазик: $2)",
 	"read-on-wiki": "Прочитајте на Википедија",
-	"read-more": "Прочитајте повеќе на Википедија",
+	"read-more": "Прочитајте ја целата статија на Википедија",
 	"preview-disambiguation-message": "Насловот <strong>$1</strong> е поврзансо повеќе од една статија на Википедија.",
 	"preview-offline-message": "Нема врска со семрежјето.",
 	"preview-offline-cta": "Обиди се пак"

@@ -7,6 +7,7 @@ const renderFullScreenGallery = ( lang, dir ) => {
 	return `
 		<div class="${ prefixClassname }" lang="${ lang }" dir="${ dir }">
 			<div class="${ prefixClassname }-close"></div>
+			<div class="${ prefixClassname }-counter"></div>
 			<div class="${ prefixClassname }-main"></div>
 		</div>
 	`.trim()
@@ -25,6 +26,11 @@ const showFullscreenGallery = (
 	dir,
 	container = document.body
 ) => {
+
+	if ( container.querySelector( `.${ prefixClassname }` ) ) {
+		// Fullscreen gallery already present in DOM
+		return
+	}
 	// render utils for fullscreen then slider component
 	container.insertAdjacentHTML( 'beforeend', renderFullScreenGallery( lang, dir ) )
 	container.querySelector( `.${ prefixClassname }-main` )

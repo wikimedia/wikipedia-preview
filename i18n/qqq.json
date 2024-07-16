@@ -9,6 +9,7 @@
 	"gallery-loading-error-refresh": "Message shown with fullscreen gallery loading error",
 	"gallery-loading-still": "Message shown 5 seconds after a fullscreen gallery image starts loading",
 	"gallery-unknown-author": "Message shown if image author is unknown",
+	"gallery-attribution-learnmore": "Message shown on the gallery item's attribution info",
 	"preview-error-message": "Message shown with a preview loading error",
 	"preview-console-error-message": "Message shown in the JavaScript console when a preview cannot be shown due to an error. Params: \n* $1 - Title of the article.\n* $2 - Language code of the article.",
 	"read-on-wiki": "Message shown in the Call to Action (CTA) of a preview loading error or disambiguation page",

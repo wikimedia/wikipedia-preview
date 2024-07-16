@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
+			"Oujon",
 			"PhilW",
 			"Verdy p",
 			"Wladek92"
 		]
 	},
-	"continue-reading": "Continuer à lire",
 	"gallery-loading-error": "Une erreur s’est produite durant le chargement de cette image.",
 	"gallery-loading-error-offline": "Aucune connexion Internet disponible.",
 	"gallery-loading-error-refresh": "Rafraîchir",
 	"gallery-loading-still": "Chargement encore en cours",
 	"gallery-unknown-author": "Auteur inconnu",
+	"gallery-attribution-learnmore": "En savoir plus",
 	"preview-error-message": "Un problème est survenu en affichant cet aperçu.",
 	"preview-console-error-message": "Aperçu non disponible pour l’article « $1 » (langue : $2)",
 	"read-on-wiki": "Lire sur Wikipédia",

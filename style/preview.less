@@ -20,7 +20,7 @@
 
 	&-header {
 		display: flex;
-		height: 78px;
+		min-height: 64px;
 		line-height: 62px;
 		margin-top: 12px;
 		margin-bottom: 12px;
@@ -30,11 +30,12 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			background-color: #eaecf0;
-			height: 78px;
-			width: 78px;
+			height: 64px;
+			width: 64px;
 			border-radius: 4px;
 			border: solid 1px #eaecf0;
-			margin-left: 16px;
+			margin-left: 20px;
+			cursor: pointer;
 		}
 
 		&-wordmark {
@@ -44,7 +45,6 @@
 			background-size: 160px;
 			flex-grow: 1;
 			margin-left: 16px;
-			margin-right: 16px;
 			filter: var( --wikipediapreview-filter-setting );
 
 
@@ -74,23 +74,29 @@
 			background-repeat: no-repeat;
 			background-position: center;
 			cursor: pointer;
-			height: 100%;
-			text-align: center;
+			align-self: center;
+			height: 50px;
 			width: 50px;
 			filter: var( --wikipediapreview-filter-setting );
+		}
+
+		&-no-thumb {
+			min-height: 52px;
+			margin-top: 8px;
+			margin-bottom: 8px;
 		}
 	}
 
 	&-body {
-		max-height: 248px;
+		max-height: 220px;
 		overflow: scroll;
 		margin-bottom: 16px;
 		position: relative;
 
 		p {
 			margin: 0;
-			line-height: 1.7;
-			font-size: 18px;
+			line-height: 1.6;
+			font-size: 16px;
 			padding: 0 20px;
 			color: var( --wikipediapreview-primary-color );
 		}
@@ -253,18 +259,19 @@
 			&-cta {
 				text-decoration: none;
 				font-size: 14px;
-				color: #36c;
+				color: var( --wikipediapreview-cta-color );
 				margin-right: 4px;
 
 				&:hover {
 					text-decoration: underline;
 				}
 
+				svg path {
+					fill: currentColor;
+				}
+
 				&:visited {
-					color: #6B4BA1;
-					svg path {
-						fill: #6B4BA1;
-					}
+					color: var( --wikipediapreview-cta-visited-color );
 				}
 			}
 		}
@@ -306,10 +313,12 @@
 	&[ dir='rtl' ] {
 		.wikipediapreview-header-wordmark {
 			background-position: right;
+			margin-right: 16px;
+			margin-left: 0;
 		}
 
 		.wikipediapreview-header-image {
-			margin-right: 16px;
+			margin-right: 20px;
 			margin-left: 0;
 		}
 
@@ -344,6 +353,7 @@
 
 .wikipediapreview-body-non-regular {
 	height: 240px;
+	max-height: unset;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -380,6 +390,8 @@
 	--wikipediapreview-secondary-background-color: #202122;
 	--wikipediapreview-primary-color: #eaecf0;
 	--wikipediapreview-filter-setting: invert(1);
+	--wikipediapreview-cta-color: #6D8AF2;
+	--wikipediapreview-cta-visited-color: #977DBD;
 }
 
 .mixin-wikipediapreview-light-theme () {
@@ -387,6 +399,8 @@
 	--wikipediapreview-secondary-background-color: #eaecf0;
 	--wikipediapreview-primary-color: #202122;
 	--wikipediapreview-filter-setting: unset;
+	--wikipediapreview-cta-color: #36c;
+	--wikipediapreview-cta-visited-color: #6B4BA1;
 }
 
 .wikipediapreview + .wp-popup-arrow {

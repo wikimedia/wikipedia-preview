@@ -1,6 +1,6 @@
 {
   "name": "wikipedia-preview",
-  "version": "1.11.0",
+  "version": "1.12.2",
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.umd.cjs",
   "type": "module",
@@ -32,7 +32,8 @@
     "build-storybook": "storybook build",
     "vba": "npx vite-bundle-visualizer",
     "cypress:run": "eslint cypress --fix && cypress run",
-    "cypress:test:fix-lint": "eslint cypress --fix"
+    "cypress:test:fix-lint": "eslint cypress --fix",
+    "prepack": "./scripts/prepack.sh"
   },
   "author": "Wikimedia Foundation",
   "license": "MIT",

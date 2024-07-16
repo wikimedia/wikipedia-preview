@@ -4,16 +4,16 @@
 			"Kly"
 		]
 	},
-	"continue-reading": "繼續閱讀",
 	"gallery-loading-error": "載入此圖片時發生錯誤",
 	"gallery-loading-error-offline": "沒有可用的網路連線。",
 	"gallery-loading-error-refresh": "重新整理",
 	"gallery-loading-still": "繼續載入",
 	"gallery-unknown-author": "作者未知",
+	"gallery-attribution-learnmore": "了解更多",
 	"preview-error-message": "在顯示此預覽時出現問題。",
 	"preview-console-error-message": "條目「$1」無法預覽（語言：$2）",
 	"read-on-wiki": "在維基百科上閱讀",
-	"read-more": "在維基百科閱讀更多條目",
+	"read-more": "在維基百科閱讀完整條目",
 	"preview-disambiguation-message": "標題<strong>$1</strong>與維基百科裡一個以上條目相關。",
 	"preview-offline-message": "沒有可用的網路連線。",
 	"preview-offline-cta": "再試一次"

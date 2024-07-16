@@ -9,7 +9,15 @@ describe( 'renderPreview', () => {
 				title: 'Cat',
 				extractHtml: '<p>A small domesticated feline</p>',
 				pageUrl: 'https://en.wikipedia.org/wiki/Cat',
-				imgUrl: 'https://en.wikipedia.org/cat.png'
+				imgUrl: 'https://en.wikipedia.org/cat.png',
+				media: [
+					{
+						caption: 'Cylindrical ivory casket, Siculo-Arabic, Hunt Museum',
+						thumb: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cylindrical_Ivory_Casket.jpg/640px-Cylindrical_Ivory_Casket.jpg',
+						src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cylindrical_Ivory_Casket.jpg/640px-Cylindrical_Ivory_Casket.jpg',
+						title: 'File:Cylindrical_Ivory_Casket.jpg'
+					}
+				]
 			}, false )
 		} )
 		test( 'renders something', () => expect( output ).toBeTruthy() )

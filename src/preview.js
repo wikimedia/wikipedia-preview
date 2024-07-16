@@ -1,11 +1,14 @@
 import { msg } from './i18n'
 import { buildWikipediaUrl, getLinkIconSvg } from './utils'
+import { getGallery } from './gallery'
 import '../style/preview.less'
 
-const getPreviewHeader = ( lang, imageUrl = '' ) => {
+const getPreviewHeader = ( lang, imageUrl = '', media = [] ) => {
+	const showThumbnail = imageUrl !== '' && media.length > 0 && media.length < 3
+	const thumbnail = imageUrl || media[ 0 ] && media[ 0 ].thumb
 	return `
-		<div class="wikipediapreview-header">
-			${ imageUrl ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ imageUrl }');background-size:cover;` }"></div>` : '' }
+		<div class= "wikipediapreview-header ${ showThumbnail ? '' : 'wikipediapreview-header-no-thumb' }">
+			${ showThumbnail ? `<div class="wikipediapreview-header-image" style="${ `background-image:url('${ thumbnail }');background-size:cover;` }"></div>` : '' }
 			<div class="wikipediapreview-header-wordmark wikipediapreview-header-wordmark-${ lang }"></div>
 			<div class="wikipediapreview-header-closebtn"></div>
 		</div>
@@ -45,6 +48,7 @@ const render = (
 const renderPreview = ( lang, data, isMobile, prefersColorScheme ) => {
 	const imageUrl = data.imgUrl,
 		bodyContent = `
+			${ getGallery( data.media ) }
 			<div class="wikipediapreview-body">
 				${ data.extractHtml }
 				<div class="wikipediapreview-footer">
@@ -53,11 +57,10 @@ const renderPreview = ( lang, data, isMobile, prefersColorScheme ) => {
 							class="wikipediapreview-footer-link-cta" target="_blank"
 							>
 							${ msg( lang, 'read-more' ) }
-							${ getLinkIconSvg( data.dir ) }
+							${ getLinkIconSvg( data.dir, '#36C' ) }
 						</a>
 					</div>
 				</div>
-				<div class="wikipediapreview-gallery"></div>
 				<div class="wikipediapreview-scroll-cue"></div>
 			</div>
 		`.trim()
@@ -66,7 +69,7 @@ const renderPreview = ( lang, data, isMobile, prefersColorScheme ) => {
 		lang,
 		isMobile,
 		data.dir,
-		getPreviewHeader( lang, imageUrl ),
+		getPreviewHeader( lang, imageUrl, data.media ),
 		bodyContent,
 		prefersColorScheme
 	)

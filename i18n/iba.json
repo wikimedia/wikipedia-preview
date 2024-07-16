@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Song GK"
+		]
+	},
+	"gallery-loading-error": "Bisi penyalah maya muat gambar tu",
+	"gallery-loading-error-offline": "Nadai sambung internet.",
+	"gallery-loading-error-refresh": "Segarka",
+	"gallery-loading-still": "Agi muat",
+	"gallery-unknown-author": "Pengarang enda dikelala",
+	"gallery-attribution-learnmore": "Belajar agi",
+	"preview-error-message": "Bisi penanggul lebuh mandangka pre-peda tu.",
+	"preview-console-error-message": "Pra-peda enda ulih dipeda ungkup artikel '$1' (Jaku: $2)",
+	"read-on-wiki": "Bacha ba Wikipedia",
+	"read-more": "Bacha artikel penuh ba Wikipedia",
+	"preview-disambiguation-message": "Tajuk <strong>$1</strong> bekaul enggau lebih ari siti artikel ba Wikipedia.",
+	"preview-offline-message": "Nadai sambung internet.",
+	"preview-offline-cta": "Uji baru"
+}

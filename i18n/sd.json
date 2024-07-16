@@ -1,19 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Charoo",
 			"Mehtab ahmed"
 		]
 	},
-	"continue-reading": "پڙھڻ جاري رکو",
 	"gallery-loading-error": "ھن عڪس کي لاھڻ ۾ ڪا چُڪَ ٿي.",
-	"gallery-loading-error-offline": "ڪوبہ انٽرنيٽ ڪنيڪشن موجود ناهي.",
+	"gallery-loading-error-offline": "انٽرنيٽ ڪنيڪشن موجود ناهي.",
 	"gallery-loading-error-refresh": "تازو ڪريو",
 	"gallery-loading-still": "اڃا لوڊ ٿي رهيو آهي",
-	"gallery-unknown-author": "مصنف اڻڄاتل",
+	"gallery-unknown-author": "اڻڄاتل مصنف",
 	"preview-error-message": "ھي پيش-نگاھ ڏيکارڻ ۾ ڪو مسئلو ھيو.",
 	"preview-console-error-message": "مضمون '$1' (ٻولي: $2) لاءِ پيش-نگاھ دستياب ناهي",
 	"read-on-wiki": "وڪيپيڊيا تي پڙهو",
-	"read-more": "وڪيپيڊيا تي وڌيڪ پڙھو",
+	"read-more": "مڪمل مضمون وڪيپيڊيا تي پڙهو",
 	"preview-disambiguation-message": "عنوان <strong>$1</strong> وڪيپيڊيا تي هڪ کان وڌيڪ مضمونن سان لاڳاپيل آهي.",
 	"preview-offline-message": "ڪوبہ انٽرنيٽ ڪنيڪشن موجود ناهي.",
 	"preview-offline-cta": "ٻيھر ڪوشش ڪريو"

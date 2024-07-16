@@ -7,16 +7,16 @@
 			"Orbot707"
 		]
 	},
-	"continue-reading": "Wanayışi dewam kerê",
 	"gallery-loading-error": "No asange bar kerdış de xeta veciye",
 	"gallery-loading-error-offline": "Gıreniyeyi interneti çıniyo",
 	"gallery-loading-error-refresh": "Anewe kerê",
 	"gallery-loading-still": "Hewna beno bar",
 	"gallery-unknown-author": "Nuştekarê nêzanıyeni",
+	"gallery-attribution-learnmore": "Tayêna bımuse",
 	"preview-error-message": "Mocnayışê nê verqayti de xırabiye esta.",
 	"preview-console-error-message": "Verasayış serba pela '$1' nêguriyeno (Zıwan: $2)",
 	"read-on-wiki": "Wikipediya de bıwanê",
-	"read-more": "Wikipedia sero tayna bıwanê",
+	"read-more": "Wikipedia meqaleyi pero bıwanê",
 	"preview-disambiguation-message": "Serey <strong>$1</strong> yew ra zêde meqaleyê Wikipedia ya eleqeyıno.",
 	"preview-offline-message": "Gıreniyeyi interneti çıniyo",
 	"preview-offline-cta": "Anciya bıcerebne"

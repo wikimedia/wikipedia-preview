@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": []
 	},
-	"continue-reading": "Nastavi čitanje",
 	"gallery-loading-error": "Došlo je do greške pri učitavanju ove slike",
 	"gallery-loading-error-offline": "Nema interneta.",
 	"gallery-loading-error-refresh": "Osveži",

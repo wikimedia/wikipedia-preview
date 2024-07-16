@@ -1,19 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajiniyaz Nurniyazov"
+			"Ajiniyaz Nurniyazov",
+			"Inabat Allanova"
 		]
 	},
-	"continue-reading": "Oqıwdı dawam etiw",
 	"gallery-loading-error": "Bul súwretti júklewde qátelik júz berdi",
 	"gallery-loading-error-offline": "Internet baylanısı joq.",
 	"gallery-loading-error-refresh": "Jańalaw",
 	"gallery-loading-still": "Ele júklenip atır",
 	"gallery-unknown-author": "Avtor belgisiz",
+	"gallery-attribution-learnmore": "Tolıq maǵlıwmat",
 	"preview-error-message": "Aldınnan kóriwdi kórsetiwde mashqala júz berdi.",
 	"preview-console-error-message": "\"$1\" (Til: $2) maqalası ushın aldınnan kóriw ilajsız",
 	"read-on-wiki": "Wikipediada oqıw",
-	"read-more": "Wikipediada kóbirek oqıw",
+	"read-more": "Tolıq maqala Wikipediada",
 	"preview-disambiguation-message": "Atama <strong>$1</strong> Wikipediadaǵı birneshe maqalaǵa tiyisli.",
 	"preview-offline-message": "Internet baylanısı joq.",
 	"preview-offline-cta": "Qayta urınıp kóriw"

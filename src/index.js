@@ -1,4 +1,4 @@
-import { requestPagePreview, getSections } from './api'
+import { getSections, requestPagePreviewWithMedia } from './api'
 import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
@@ -22,7 +22,7 @@ const invokeCallback = ( events, name, params ) => {
 
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
-	requestPagePreview( lang, title, ( data ) => {
+	requestPagePreviewWithMedia( lang, title, ( data ) => {
 		callback( renderPreview( lang, data, isMobile ) )
 	} )
 }
@@ -113,13 +113,13 @@ function init( {
 			pointerPosition
 		)
 
-		requestPagePreview( localLang, title, ( data ) => {
+		requestPagePreviewWithMedia( localLang, title, ( data ) => {
 			if ( popupId !== currentPopupId ) {
 				return
 			}
 			if ( popup.loading ) {
 				popup.loading = false
-				if ( data ) {
+				if ( data.extractHtml ) {
 					popup.lang = localLang
 					popup.title = title
 					if ( data.type === 'standard' ) {
@@ -128,6 +128,7 @@ function init( {
 							currentTarget,
 							pointerPosition
 						)
+						popup.media = data.media
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?

@@ -1,6 +1,6 @@
 import { msg } from '../i18n'
 import { requestPageMediaInfo } from '../api'
-import { isOnline } from '../utils'
+import { isOnline, getLinkIconSvg } from '../utils'
 import { temp, isInvalidEvent, isImgZoomedIn, getFingerAmount, toggleZoom, clearZoom, zoomStart, zoomMove, zoomScroll, zoomEnd, slideStart, slideMove, slideEnd } from './gestures'
 import { addEventListener } from './event'
 
@@ -54,68 +54,49 @@ const renderImageSlider = ( givenLang, givenDir, container, images = [], selecte
 		`.trim()
 }
 
-const renderImageInfo = ( mediaInfo, image ) => {
-	const getImageDescription = () => {
-		// description list order
-		// (1) commons caption - Not found
-		// (2) commons description
-		// (3) media-list caption
-		if ( mediaInfo.description ) {
-			return mediaInfo.description
-		} else if ( image.caption ) {
-			return image.caption
-		} else {
-			return ''
-		}
-	}
-
-	const getLicenseInfo = ( license ) => {
-		const licenseTypes = [ 'CC', 'BY', 'SA', 'Fair', 'Public' ]
-		let licenses = ''
-		licenseTypes.forEach( ( type ) => {
-			if ( license && license.indexOf( type ) !== -1 ) {
-				licenses += `<div class="${ prefixClassname }-item-attribution-info-${ type.toLowerCase() }"></div>`
-			}
-		} )
-		return licenses
-	}
-
+const renderImageAttribution = ( mediaInfo ) => {
 	const author = mediaInfo.author ? mediaInfo.author : msg( lang, 'gallery-unknown-author' )
 	const link = mediaInfo.filePage
-	const description = getImageDescription()
 
-	const isCaptionExpandable = () => {
-		if ( getClientWidth() < 400 && description.length > 128 ) {
-			return true
-		} else if ( getClientWidth() > 400 && description.length > 142 ) {
-			return true
-		} else {
-			return false
-		}
-	}
-
-	// @todo consider a wrapper container for all the image info?
 	return `
-		<div class="${ prefixClassname }-item-caption">
-			${ isCaptionExpandable() ? `<div class="${ prefixClassname }-item-caption-expand-cue"></div>` : '' }
-			${ description ? `<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>` : '' }
-		</div>
 		<div class="${ prefixClassname }-item-attribution">
 			<div class="${ prefixClassname }-item-attribution-info">
-				${ getLicenseInfo( mediaInfo.license ) }
-				${ author ? `<bdi class="${ prefixClassname }-item-attribution-info-author">${ author }</bdi>` : '' }
+				<bdi class="${ prefixClassname }-item-attribution-info-author">${ author } (${ mediaInfo.license })</bdi>
+				<a href="${ link }" class="${ prefixClassname }-item-attribution-info-link" target="_blank">${ msg( lang, 'gallery-attribution-learnmore' ) } ${ getLinkIconSvg() }</a>
 			</div>
-			${ link ? `<div class="${ prefixClassname }-item-attribution-more-info">
-				<a href="${ link }" class="${ prefixClassname }-item-attribution-more-info-link" target="_blank"></a>
-			</div>` : '' }
 		</div>
 	`.trim()
+}
+
+const handleCaptionExpansion = ( item, forceClose = false ) => {
+	const caption = item.querySelector( `.${ prefixClassname }-item-caption` )
+	const expandCue = item.querySelector( `.${ prefixClassname }-item-caption-expand-cue` )
+	const expanded = item.querySelector( '.expanded' )
+
+	if ( expandCue && expanded || forceClose && expandCue ) {
+		expandCue.classList.remove( 'expanded' )
+		caption.style.maxHeight = '95px'
+	} else if ( expandCue ) {
+		expandCue.classList.add( 'expanded' )
+		caption.style.maxHeight = '241px'
+	}
 }
 
 const bindImageEvent = ( container, refresh = false ) => {
 	const imageElement = container.querySelector( 'img' )
 	const loading = container.querySelector( `.${ prefixClassname }-item-loading` )
 	const errorElement = container.querySelector( `.${ prefixClassname }-item-loading-error` )
+	const captionElement = container.querySelector( `.${ prefixClassname }-item-caption` )
+
+	// Check if image has started loading and rendering
+	function checkImageRender() {
+		if ( imageElement.naturalWidth > 0 && imageElement.naturalHeight > 0 ) {
+			captionElement.style.visibility = 'visible'
+		} else {
+			requestAnimationFrame( checkImageRender )
+		}
+	}
+	checkImageRender()
 
 	if ( refresh ) {
 		const slider = parentContainer.querySelector( `.${ prefixClassname }` )
@@ -178,20 +159,10 @@ const bindImageEvent = ( container, refresh = false ) => {
 			} )
 		} )
 	}
-}
 
-const handleCaptionExpansion = ( item, forceClose = false ) => {
-	const captionText = item.querySelector( `.${ prefixClassname }-item-caption-text` )
-	const expandCue = item.querySelector( `.${ prefixClassname }-item-caption-expand-cue` )
-	const expanded = item.querySelector( '.expanded' )
-
-	if ( expandCue && expanded || forceClose && expandCue ) {
-		expandCue.classList.remove( 'expanded' )
-		captionText.style.maxHeight = '80px'
-	} else if ( expandCue ) {
-		expandCue.classList.add( 'expanded' )
-		captionText.style.maxHeight = '241px'
-	}
+	captionElement.addEventListener( 'click', () => {
+		handleCaptionExpansion( container )
+	} )
 }
 
 const showImageAndInfo = ( index, refreshImage = false ) => {
@@ -205,28 +176,47 @@ const showImageAndInfo = ( index, refreshImage = false ) => {
 			gallery[ index ].title,
 			( mediaInfo ) => {
 				const imageElement = item.querySelector( 'img' )
-				const captionElement = item.querySelector( `.${ prefixClassname }-item-caption` )
+				const atrributionElement = item.querySelector( `.${ prefixClassname }-item-attribution` )
 
 				if ( !imageElement ) {
-					if ( !refreshImage ) {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }"/>` )
-					} else {
-						item.insertAdjacentHTML( 'beforeend', `<img src="${ mediaInfo.bestFitImageUrl }?timestamp=${ Date.now() }"/>` )
+					const getDescription = () => {
+						// description list order
+						// (1) commons caption - Not found
+						// (2) commons description
+						// (3) media-list caption
+						if ( mediaInfo.description ) {
+							return mediaInfo.description
+						} else if ( gallery[ index ].caption ) {
+							return gallery[ index ].caption
+						} else {
+							return ''
+						}
 					}
+					const description = getDescription()
+					const isCaptionExpandable = () => {
+						if ( getClientWidth() < 400 && description.length > 128 ) {
+							return true
+						} else if ( getClientWidth() > 400 && description.length > 142 ) {
+							return true
+						} else {
+							return false
+						}
+					}
+
+					const caption = `<div class="${ prefixClassname }-item-caption">
+						${ isCaptionExpandable() ? `<div class="${ prefixClassname }-item-caption-expand-cue"></div>` : '' }
+						<div class="${ prefixClassname }-item-caption-text"><bdi>${ description }</bdi></div>
+					</div>`
+
+					item.insertAdjacentHTML( 'beforeend', `<div class="${ prefixClassname }-item-img"><img src="${ mediaInfo.bestFitImageUrl } ${ refreshImage ? '?timestamp=' + Date.now() : '' }"/>${ caption }</div>` )
 					bindImageEvent( item )
 				}
 
-				if ( !captionElement ) {
+				if ( !atrributionElement ) {
 					item.insertAdjacentHTML(
 						'beforeend',
-						renderImageInfo( mediaInfo, gallery[ index ] )
+						renderImageAttribution( mediaInfo )
 					)
-
-					const insertedCaption = item.querySelector( `.${ prefixClassname }-item-caption` )
-
-					insertedCaption.addEventListener( 'click', () => {
-						handleCaptionExpansion( item )
-					} )
 				}
 			} )
 	}
@@ -244,8 +234,8 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	if ( item ) {
 		handleCaptionExpansion( items[ current ], true )
 		current += offset
-		nextButton.style.opacity = current === items.length - 1 ? '0.5' : '1'
-		previousButton.style.opacity = current === 0 ? '0.5' : '1'
+		nextButton.style.visibility = current === items.length - 1 ? 'hidden' : 'visible'
+		previousButton.style.visibility = current === 0 ? 'hidden' : 'visible'
 		clearZoom( currentImage )
 
 		// render image attribution element - current, next, previous
@@ -255,6 +245,10 @@ const renderNext = ( offset = 1, refresh = false ) => {
 	}
 
 	slider.style[ dir === 'ltr' ? 'marginLeft' : 'marginRight' ] = -getClientWidth() * current + 'px'
+
+	// render counter
+	const counterContainer = parentContainer.querySelector( '.wp-gallery-fullscreen-counter' )
+	counterContainer.textContent = current + 1 + '/' + items.length
 }
 
 const renderPrevious = () => {

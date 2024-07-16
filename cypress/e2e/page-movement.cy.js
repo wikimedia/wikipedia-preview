@@ -25,7 +25,6 @@ describe( 'Check Page Movement ', () => {
 
 		// Check for the Preview
 		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait( 1000 )
 		preview.checkPreview()
 	} )
 
@@ -38,7 +37,6 @@ describe( 'Check Page Movement ', () => {
 
 		// Check for the Preview
 		preview.getPreviewSpan().eq( 0 ).click()
-		cy.wait( 1000 )
 		preview.checkPreview()
 	} )
 } )

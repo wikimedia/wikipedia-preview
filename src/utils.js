@@ -116,18 +116,18 @@ const getElement = ( nodeOrSelector ) => {
 	return nodeOrSelector
 }
 
-const getLinkIconSvg = ( dir = 'ltr' ) => {
+const getLinkIconSvg = ( dir = 'ltr', color = 'unset' ) => {
 	if ( dir === 'ltr' ) {
 		return `
 			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-				<path fill="#36C" fill-rule="evenodd" d="M11 1H6l2.148 2.144-4.15 4.15.707.708 4.15-4.15L11 6V1ZM4 3H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V8H8v2H2V4h2V3Z" clip-rule="evenodd"/>
+				<path fill="${ color }" fill-rule="evenodd" d="M11 1H6l2.148 2.144-4.15 4.15.707.708 4.15-4.15L11 6V1ZM4 3H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V8H8v2H2V4h2V3Z" clip-rule="evenodd"/>
 			</svg>
 		`.trim()
 	}
 
 	return `
 		<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-			<path fill="#36C" fill-rule="evenodd" d="M1 1h5L3.852 3.144l4.15 4.15-.707.708-4.15-4.15L1 6V1Zm7 2h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8h1v2h6V4H8V3Z" clip-rule="evenodd"/>
+			<path fill="${ color }" fill-rule="evenodd" d="M1 1h5L3.852 3.144l4.15 4.15-.707.708-4.15-4.15L1 6V1Zm7 2h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8h1v2h6V4H8V3Z" clip-rule="evenodd"/>
 		</svg>
 	`.trim()
 }

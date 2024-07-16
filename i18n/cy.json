@@ -5,7 +5,6 @@
 			"Robin Owain"
 		]
 	},
-	"continue-reading": "Parhau i Ddarllen",
 	"gallery-loading-error": "Cafwyd nam yn llwytho'r ddelwedd hon",
 	"gallery-loading-error-offline": "Dim cysylltiad rhyngrwyd.",
 	"gallery-loading-error-refresh": "Adfywio",
@@ -14,7 +13,7 @@
 	"preview-error-message": "Gafwyd gwall tra'n ceisio arddangos y rhagolwg",
 	"preview-console-error-message": "Nid yw'r rhagolwg ar gael am erthygl '$1' (Iaith: $2)",
 	"read-on-wiki": "Darllen ar Wicipedia",
-	"read-more": "Darllen rhagor ar Wicipedia",
+	"read-more": "Darllenwch yr erthygl lawn ar Wicipedia",
 	"preview-disambiguation-message": "Mae'r teitl <strong>$1</strong> yn berthnasol i fwy nag un erthygl ar Wicipedia.",
 	"preview-offline-message": "Dim cysylltiad rhyngrwyd.",
 	"preview-offline-cta": "Ceisiwch eto"
