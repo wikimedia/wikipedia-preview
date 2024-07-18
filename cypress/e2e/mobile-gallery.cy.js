@@ -12,7 +12,7 @@ describe( 'Check the Gallery Pages in Mobile View', () => {
 
 	it( 'Check the Gallery Pages Movement by Swiping', () => {
 		// Open the Preview
-		preview.getPreviewSpan().first().trigger( 'pointerup', { pointerType: 'touch' } )
+		preview.getPreviewSpan().first().trigger( 'pointerenter', { pointerType: 'touch' } )
 		const i = 0
 		// Check if the Images exist
 		preview.getBodyGalleryImages().its( 'length' ).then( () => {
