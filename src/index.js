@@ -190,23 +190,27 @@ function init( {
 		} )
 	}
 
-	const onPointerUp = ( pointerEvent ) => {
-		if ( pointerEvent.pointerType === 'touch' ) {
-			// This click event was triggered on a touch screen
-			showPopup( pointerEvent )
-		}
-	}
-
 	const onPointerEnter = ( pointerEvent ) => {
-		if ( pointerEvent.pointerType === 'mouse' ) {
-			// This hover event was triggered by a mouse
-			showPopup( pointerEvent )
-		}
+		showPopup( pointerEvent )
 	}
 
 	const registerPreviewEvents = ( node ) => {
-		node.addEventListener( 'pointerup', onPointerUp )
 		node.addEventListener( 'pointerenter', onPointerEnter )
+	}
+
+	const preventTapFromNavigatingLink = ( node ) => {
+		// The click event still receives a MouseEvent instead of the newer PointerEvent
+		// in some browsers so we have to grab the pointerType from the preceding pointerdown event.
+		let currentPointerType = null
+		node.addEventListener( 'pointerdown', ( e ) => {
+			currentPointerType = e.pointerType
+		} )
+		node.addEventListener( 'click', ( e ) => {
+			if ( currentPointerType === 'touch' ) {
+				e.preventDefault()
+				e.stopPropagation()
+			}
+		} )
 	}
 
 	forEachRoot( root, ( localRoot ) => {
@@ -233,6 +237,7 @@ function init( {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
 						registerPreviewEvents( node )
+						preventTapFromNavigatingLink( node )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
