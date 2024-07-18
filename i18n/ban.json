@@ -10,10 +10,11 @@
 	"gallery-loading-error-refresh": "Segerang",
 	"gallery-loading-still": "Tasih ngantosin",
 	"gallery-unknown-author": "$1 Panyurat nénten kauningin",
+	"gallery-attribution-learnmore": "Pelajahin malih",
 	"preview-error-message": "Wénten pikobet rikala ngédengang pratayang puniki.",
 	"preview-console-error-message": "Pracingak tqn kasedia antuk suratan '$1' (Basa: $2)",
 	"read-on-wiki": "Wacén ring Wikipédia",
-	"read-more": "Lanturang wacén ring Wikipédia",
+	"read-more": "Wacén jangkep suratan ring Wikipédia",
 	"preview-disambiguation-message": "Murda <strong>$1</strong> kakait langkung saking satunggal suratan ring Wikipédia.",
 	"preview-offline-message": "Nénten wénten konéksi internét.",
 	"preview-offline-cta": "Coba malih"
