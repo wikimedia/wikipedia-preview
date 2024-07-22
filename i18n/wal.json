@@ -1,19 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ella Lachow"
+			"Ella Lachow",
+			"Malaalaa"
 		]
 	},
-	"gallery-loading-error": "Ha misiliyaa ehiishin balay de'ees",
-	"gallery-loading-error-offline": "Interneetee gaytotettay baawa.",
+	"gallery-loading-error": "Ha misiliyaa ehiishin balay merettiis",
+	"gallery-loading-error-offline": "Interneetiya gaytotettay baawa.",
 	"gallery-loading-error-refresh": "Ooraxissa",
 	"gallery-loading-still": "Hanno gaakkanawu ehiidi de'ees",
 	"gallery-unknown-author": "Xaafidaagee erettenna",
+	"gallery-attribution-learnmore": "Aaruwa be'a",
 	"preview-error-message": "Ha zari be'uwaa bessishin metoy merettiis.",
-	"preview-console-error-message": "Xuufiya $1 (Doonaa:$2) zaari be'oy baawa",
-	"read-on-wiki": "Wikkiimiidiyaan nabbaba",
+	"preview-console-error-message": "'$1' giyagee (language:$2)n baawa",
+	"read-on-wiki": "Wikkiipeediyaan nabbaba",
 	"read-more": "Daruwaa Wikkiipeediyaan nabbaba",
-	"preview-disambiguation-message": "Huuphe yohoy <strong>$1</strong> Wikkiipeediyaan issuwaappe dariyaa xaafotuura gayttees.",
-	"preview-offline-message": "Interneetee gaytotettay baawa.",
+	"preview-disambiguation-message": "<strong>$1</strong>y Wikkiipeediyaan issuwaappe dariyaa xuufetuura gayttees.",
+	"preview-offline-message": "Interneetiya gaytotettay baawa.",
 	"preview-offline-cta": "Zaara mala"
 }

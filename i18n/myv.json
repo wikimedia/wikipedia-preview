@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rueter"
+		]
+	},
+	"gallery-loading-error-offline": "Инеалтымань сюлмавкс арась.",
+	"gallery-loading-error-refresh": "Одкстомтомс",
+	"gallery-loading-still": "Зярс путомазо моли",
+	"gallery-unknown-author": "Авторось апак сода",
+	"gallery-attribution-learnmore": "Содамс седе ламо",
+	"preview-error-message": "Васнянь невтевксэсь а невтеви.",
+	"read-on-wiki": "Ловномс Википедиясто",
+	"read-more": "Ловномс пешксе статиянть Википедиясто",
+	"preview-disambiguation-message": "«<strong>$1</strong>» коняксось сюлмазь Википедиянь вейкеде ламо статия марто.",
+	"preview-offline-message": "Инеалтымань сюлмавкс арась.",
+	"preview-offline-cta": "Варчамс одов"
+}
