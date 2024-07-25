@@ -9,10 +9,11 @@
 	"gallery-loading-error-refresh": "Nû bike",
 	"gallery-loading-still": "Hê jî tê barkirin",
 	"gallery-unknown-author": "Nivîskar nenas e",
+	"gallery-attribution-learnmore": "Zêdetir hîn bibe",
 	"preview-error-message": "Çewtiyeke derket holê gava pêşdîtin dihate nîşandin.",
 	"preview-console-error-message": "Pêşdîtin ne berdest e ji bo gotara '$1' (Ziman: $2)",
 	"read-on-wiki": "Li ser Wîkîpediyayê bixwîne",
-	"read-more": "Zêdetir bixwîne li ser Wîkîpediyayê",
+	"read-more": "Temamê gotarê bixwîne li ser Wîkîpediyayê",
 	"preview-disambiguation-message": "Sernavê <strong>$1</strong> eleqedarê ji yekî zêdetir gotaran e li ser Wîkîpediyayê.",
 	"preview-offline-message": "Girêdaneke înternetê yê berdest nîne.",
 	"preview-offline-cta": "Cardin biceribîne"

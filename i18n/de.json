@@ -6,11 +6,12 @@
 			"Elliot",
 			"Ignatgg",
 			"Justman10000",
-			"ManuelFranz"
+			"ManuelFranz",
+			"RucolaSpacecat"
 		]
 	},
 	"gallery-loading-error": "Beim Laden dieses Bildes ist ein Fehler aufgetreten",
-	"gallery-loading-error-offline": "Es ist keine Internetverbindung vorhanden.",
+	"gallery-loading-error-offline": "Keine Internetverbindung verfügbar.",
 	"gallery-loading-error-refresh": "Aktualisieren",
 	"gallery-loading-still": "Wird noch geladen",
 	"gallery-unknown-author": "Autor unbekannt.",
@@ -20,6 +21,6 @@
 	"read-on-wiki": "Auf Wikipedia lesen",
 	"read-more": "Vollständigen Artikel auf Wikipedia lesen",
 	"preview-disambiguation-message": "Titel <strong>$1</strong> bezieht sich auf mehr als einen Artikel auf Wikipedia.",
-	"preview-offline-message": "Es ist keine Internetverbindung vorhanden.",
+	"preview-offline-message": "Keine Internetverbindung verfügbar.",
 	"preview-offline-cta": "Erneut versuchen"
 }
