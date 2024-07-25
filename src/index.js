@@ -4,8 +4,8 @@ import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
 import {
-	getWikipediaAttrFromUrl, buildWikipediaUrl, isTouch, getDir, isOnline,
-	version, getAnalyticsQueryParam, getElement
+	getWikipediaAttrFromUrl, buildWikipediaUrl, getDir, isOnline,
+	version, getAnalyticsQueryParam, getElement, isMobile
 } from './utils'
 
 const invokeCallback = ( events, name, params ) => {
@@ -23,7 +23,7 @@ const invokeCallback = ( events, name, params ) => {
 // getPreviewHtml is meant to be used by the Wordpress plugin only
 const getPreviewHtml = ( title, lang, callback ) => {
 	requestPagePreviewWithMedia( lang, title, ( data ) => {
-		callback( renderPreview( lang, data, isTouch ) )
+		callback( renderPreview( lang, data, isMobile ) )
 	} )
 }
 
@@ -74,7 +74,7 @@ function init( {
 } ) {
 	popupContainer = getElement( popupContainer ) || document.body
 	const globalLang = lang
-	const popup = isTouch ?
+	const popup = isMobile ?
 		createTouchPopup( popupContainer ) :
 		createPopup( popupContainer )
 	const popupEvents = customEvents( popup )
@@ -85,6 +85,7 @@ function init( {
 
 	const showPopup = ( e, refresh = false ) => {
 		e.preventDefault()
+		e.stopPropagation()
 
 		const popupId = Date.now()
 		const { currentTarget } = refresh ? last : e
@@ -107,7 +108,7 @@ function init( {
 		popup.loading = true
 		popup.dir = dir
 		popup.show(
-			renderLoading( isTouch, localLang, dir, currentColorScheme ),
+			renderLoading( isMobile, localLang, dir, currentColorScheme ),
 			currentTarget,
 			pointerPosition
 		)
@@ -123,7 +124,7 @@ function init( {
 					popup.title = title
 					if ( data.type === 'standard' ) {
 						popup.show(
-							renderPreview( localLang, data, isTouch, currentColorScheme ),
+							renderPreview( localLang, data, isMobile, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
@@ -131,10 +132,10 @@ function init( {
 						invokeCallback( events, 'onShow', [ title, localLang, 'standard' ] )
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?
-							renderPreview( localLang, data, isTouch, currentColorScheme ) :
+							renderPreview( localLang, data, isMobile, currentColorScheme ) :
 							// fallback message when no extract is found on disambiguation page
 							renderDisambiguation(
-								isTouch,
+								isMobile,
 								localLang,
 								data.title,
 								data.dir,
@@ -150,14 +151,14 @@ function init( {
 				} else {
 					if ( isOnline() ) {
 						popup.show(
-							renderError( isTouch, localLang, title, dir, currentColorScheme ),
+							renderError( isMobile, localLang, title, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
 						invokeCallback( events, 'onShow', [ title, localLang, 'error' ] )
 					} else {
 						popup.show(
-							renderOffline( isTouch, localLang, dir, currentColorScheme ),
+							renderOffline( isMobile, localLang, dir, currentColorScheme ),
 							currentTarget,
 							pointerPosition
 						)
@@ -189,18 +190,34 @@ function init( {
 		} )
 	}
 
-	popup.subscribe( popupEvents )
+	const onPointerEnter = ( pointerEvent ) => {
+		showPopup( pointerEvent )
+	}
+
+	const registerPreviewEvents = ( node ) => {
+		node.addEventListener( 'pointerenter', onPointerEnter )
+	}
+
+	const preventTapFromNavigatingLink = ( node ) => {
+		// The click event still receives a MouseEvent instead of the newer PointerEvent
+		// in some browsers so we have to grab the pointerType from the preceding pointerdown event.
+		let currentPointerType = null
+		node.addEventListener( 'pointerdown', ( e ) => {
+			currentPointerType = e.pointerType
+		} )
+		node.addEventListener( 'click', ( e ) => {
+			if ( currentPointerType === 'touch' ) {
+				e.preventDefault()
+				e.stopPropagation()
+			}
+		} )
+	}
 
 	forEachRoot( root, ( localRoot ) => {
 		Array.prototype.forEach.call(
 			localRoot.querySelectorAll( selector ),
 			( node ) => {
-				if ( isTouch ) {
-					node.addEventListener( 'click', showPopup )
-				} else {
-					node.addEventListener( 'mouseenter', showPopup )
-				}
-
+				registerPreviewEvents( node )
 				foundSelectorLinks.push( {
 					text: node.textContent,
 					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
@@ -219,11 +236,8 @@ function init( {
 					if ( matches ) {
 						node.setAttribute( 'data-wp-title', matches.title )
 						node.setAttribute( 'data-wp-lang', matches.lang )
-						if ( isTouch ) {
-							node.addEventListener( 'click', showPopup )
-						} else {
-							node.addEventListener( 'mouseenter', showPopup )
-						}
+						registerPreviewEvents( node )
+						preventTapFromNavigatingLink( node )
 
 						foundDetectLinks.push( {
 							text: node.textContent,
@@ -236,18 +250,20 @@ function init( {
 		} )
 	}
 
+	popup.subscribe( popupEvents )
+
 	if ( debug ) {
 		/* eslint-disable no-console */
 		console.group( 'Wikipedia Preview [debug mode]' )
 		console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
 		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
+			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
 		} )
 		console.groupEnd()
 		if ( detectLinks ) {
 			console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
 			foundDetectLinks.forEach( ( link, index ) => {
-				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isTouch, false ) ) }` )
+				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
 			} )
 			console.groupEnd()
 		}

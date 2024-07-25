@@ -41,8 +41,15 @@ const getWikipediaAttrFromUrl = ( url ) => {
 	return null
 }
 
-const isTouch = 'ontouchstart' in window || ( navigator.maxTouchPoints > 0 ) ||
-	( navigator.msMaxTouchPoints > 0 )
+/**
+ * Check if the device is a mobile device
+ */
+const isMobile = !!window.matchMedia( '( max-width: 768px )' ).matches
+
+/**
+ * Check if the device is a touch device
+ */
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0
 
 const isOnline = () => window.navigator.onLine
 
@@ -132,5 +139,5 @@ const isVerticallyScrollable = ( element ) => {
 export {
 	getWikipediaAttrFromUrl, isTouch, isOnline, getDir, buildMwApiUrl,
 	convertUrlToMobile, strip, sanitizeHTML, getDeviceSize, getAnalyticsQueryParam,
-	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg, isVerticallyScrollable
+	buildWikipediaUrl, version, logError, getElement, getLinkIconSvg, isVerticallyScrollable, isMobile
 }

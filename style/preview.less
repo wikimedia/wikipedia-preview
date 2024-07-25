@@ -69,6 +69,7 @@
 		}
 
 		&-closebtn {
+			display: none;
 			background-image: url( '../images/close.svg' );
 			background-repeat: no-repeat;
 			background-position: center;
@@ -295,6 +296,10 @@
 
 	&.mobile {
 		width: 100%;
+
+		.wikipediapreview-header-closebtn {
+			display: block;
+		}
 		max-height: 55vh;
 
 		.wikipediapreview-body {

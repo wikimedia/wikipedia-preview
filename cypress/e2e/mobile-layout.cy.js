@@ -11,7 +11,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 
 	it( 'Check the Wikipedia Preview in Standard Layout', () => {
 		// Opens Mobile Preview
-		preview.getPreviewSpan().eq( 0 ).click()
+		preview.getPreviewSpan().eq( 0 ).trigger( 'pointerenter', { pointerType: 'touch' } )
 		// Checks the preview
 		preview.checkMobilePreview()
 		preview.checkPreview()
@@ -23,7 +23,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 	it.skip( 'Check the Wikipedia Preview in Offline Layout', () => {
 		goOffline()
 		// Opens Mobile Preview
-		preview.getPreviewSpan().first().click()
+		preview.getPreviewSpan().first().trigger( 'pointerenter', { pointerType: 'touch' } )
 		// Checks the preview
 		preview.checkMobilePreview()
 		preview.checkPreviewOffline()
@@ -35,7 +35,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 
 	it( 'Check the Wikipedia Preview in Error Layout', () => {
 		// Opens Mobile Preview
-		preview.getPreviewSpan().eq( 1 ).click()
+		preview.getPreviewSpan().eq( 1 ).trigger( 'pointerenter', { pointerType: 'touch' } )
 		// Checks the preview
 		preview.checkMobilePreview()
 		preview.checkPreviewError()
@@ -46,7 +46,7 @@ describe( 'Check the different Layout in Mobile Wikipedia Preview ', () => {
 
 	it( 'Check the Wikipedia Preview in Disambiguation Layout', () => {
 		// Opens Mobile Preview
-		preview.getPreviewSpan().eq( 2 ).click()
+		preview.getPreviewSpan().eq( 2 ).trigger( 'pointerenter', { pointerType: 'touch' } )
 		// Checks the preview
 		preview.checkMobilePreview()
 		preview.checkPreview()
