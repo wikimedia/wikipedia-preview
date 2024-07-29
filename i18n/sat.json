@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Durga Soren"
+			"Durga Soren",
+			"ᱤᱧ ᱢᱟᱛᱟᱞ"
 		]
 	},
 	"gallery-loading-error": "ᱪᱤᱛᱟ.ᱨ ᱞᱟᱫᱮᱜ ᱨᱮ ᱦᱩᱲᱟ.ᱜ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ",
-	"gallery-loading-still": "ᱱᱤᱛ ᱦᱚᱸ ᱞᱟᱫᱮᱜ ᱠᱟᱱ ᱜᱮᱭᱟ"
+	"gallery-loading-still": "ᱱᱤᱛ ᱦᱚᱸ ᱞᱟᱫᱮᱜ ᱠᱟᱱ ᱜᱮᱭᱟ",
+	"read-on-wiki": "ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱯᱟᱲᱦᱟᱣ ᱢᱮ",
+	"read-more": "ᱯᱩᱨᱟᱹ ᱚᱱᱚᱞ ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱯᱟᱰᱦᱟᱣ ᱢᱮ"
 }

@@ -11,10 +11,11 @@
 	"gallery-loading-error-refresh": "ЦӀигьабизе",
 	"gallery-loading-still": "ГъоркьцӀай унеб буго",
 	"gallery-unknown-author": "Автор лъларо",
+	"gallery-attribution-learnmore": "ЦӀикӀкӀун лъазе",
 	"preview-error-message": "Цебеккун хал гьабулеб мехалъ гъалатӀ лъугӀана",
 	"preview-console-error-message": "'$1' макъалаялъул цебеккун хал гьабун бажаруларо (мацӀ: $2)",
 	"read-on-wiki": "Википедиялда цӀализе",
-	"read-more": "ЦӀикӀкӀун цӀале Википедиялда",
+	"read-more": "ТӀобараб макъала цӀале Википедиялда",
 	"preview-disambiguation-message": "Гьаб <strong>$1</strong> абураб цӀар Википедиялда бугеб чанго гьумералъе данде ккола.",
 	"preview-offline-message": "Интернеталде рухь гьечӀо.",
 	"preview-offline-cta": "Цоги нухалъ хӀалбихье"
