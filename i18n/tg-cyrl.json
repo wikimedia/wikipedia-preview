@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Farorud"
+		]
+	},
+	"gallery-loading-error": "Ҳангоми боркунии акс хатогӣ рӯй дод",
+	"gallery-loading-error-offline": "Пайвастагӣ ба интернет нест.",
+	"gallery-loading-error-refresh": "Азнавкунӣ",
+	"gallery-loading-still": "Ҳоло дар ҳоли боргирӣ",
+	"gallery-unknown-author": "Муаллифи номаълум",
+	"gallery-attribution-learnmore": "Бештар",
+	"preview-error-message": "Мушкилӣ ҳангоми намоиши пешнаммоиш ба вуҷуд омад.",
+	"preview-console-error-message": "Пешнамоиш барои мақолаи '$1' дар дастрас нест (забон: $2)",
+	"read-on-wiki": "Дар Википедиа бихонед",
+	"read-more": "Мақолаи пурраро дар Википедия хонед",
+	"preview-disambiguation-message": "Номи <strong>$1</strong> яку якбора ба чанд мақолаи Википедия тааллуқ дорад.",
+	"preview-offline-message": "Пайвастагӣ ба интернет нест.",
+	"preview-offline-cta": "Бори дигар кушиш кунед"
+}
