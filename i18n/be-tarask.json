@@ -10,10 +10,11 @@
 	"gallery-loading-error-refresh": "Абнавіць",
 	"gallery-loading-still": "Дагэтуль пампуецца",
 	"gallery-unknown-author": "Творца невядомы(-ая)",
+	"gallery-attribution-learnmore": "Даведацца болей",
 	"preview-error-message": "Падчас адлюстраваньня гэтага перадпрагляду ўзьнікла складанасьць.",
 	"preview-console-error-message": "Прагляд для артыкулу '$1' немагчымы (мова: $2)",
 	"read-on-wiki": "Чытаць у Вікіпэдыі",
-	"read-more": "Чытаць больш у Вікіпэдыі",
+	"read-more": "Чытаць артыкул цалкам у Вікіпэдыі",
 	"preview-disambiguation-message": "Загаловак <strong>$1</strong> тычыцца больш як аднаго артыкула ў Вікіпэдыі.",
 	"preview-offline-message": "Няма даступнага злучэньня зь Сецівам.",
 	"preview-offline-cta": "Спрабаваць зноў"

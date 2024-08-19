@@ -6,7 +6,16 @@
 		]
 	},
 	"gallery-loading-error": "ᱪᱤᱛᱟ.ᱨ ᱞᱟᱫᱮᱜ ᱨᱮ ᱦᱩᱲᱟ.ᱜ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ",
+	"gallery-loading-error-offline": "ᱤᱱᱴᱟᱨᱱᱮᱴ ᱨᱮᱭᱟᱜ ᱡᱳᱜᱟᱡᱳᱜ ᱵᱟᱝ ᱧᱟᱢᱚᱜᱼᱟ ᱾",
+	"gallery-loading-error-refresh": "ᱨᱤᱯᱷᱨᱮᱥ ᱢᱮ",
 	"gallery-loading-still": "ᱱᱤᱛ ᱦᱚᱸ ᱞᱟᱫᱮᱜ ᱠᱟᱱ ᱜᱮᱭᱟ",
+	"gallery-unknown-author": "ᱚᱞᱤᱡ ᱵᱟᱝ ᱩᱯᱨᱩᱢ ᱟᱠᱟᱱᱟ ᱾",
+	"gallery-attribution-learnmore": "ᱟᱨᱦᱚᱸ ᱪᱤᱫᱢᱮ",
+	"preview-error-message": "ᱱᱚᱶᱟ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱩᱫᱩᱜ ᱚᱠᱛᱚ ᱢᱤᱫᱴᱟᱝ ᱟᱱᱟᱴ ᱛᱟᱦᱮᱸ ᱠᱟᱱᱟ ᱾",
+	"preview-console-error-message": "'$1' ᱚᱞ ᱞᱟᱹᱜᱤᱫ ᱢᱟᱲᱟᱝ ᱧᱮᱞ ᱵᱟᱝ ᱧᱟᱢᱚᱜᱼᱟ ᱾ (ᱯᱟᱹᱨᱥᱤ: $2)",
 	"read-on-wiki": "ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱯᱟᱲᱦᱟᱣ ᱢᱮ",
-	"read-more": "ᱯᱩᱨᱟᱹ ᱚᱱᱚᱞ ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱯᱟᱰᱦᱟᱣ ᱢᱮ"
+	"read-more": "ᱯᱩᱨᱟᱹ ᱚᱱᱚᱞ ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱯᱟᱰᱦᱟᱣ ᱢᱮ",
+	"preview-disambiguation-message": "ᱧᱩᱛᱩᱢ <strong>$1</strong> ᱣᱤᱠᱤᱯᱤᱰᱤᱭᱟ ᱨᱮ ᱢᱤᱫ ᱠᱷᱚᱱ ᱦᱚᱸ ᱡᱟᱹᱥᱛᱤ ᱚᱱᱚᱞ ᱥᱟᱞᱟᱜ ᱥᱮᱞᱮᱫ ᱢᱮᱱᱟᱜᱼᱟ ᱾",
+	"preview-offline-message": "ᱤᱱᱴᱟᱨᱱᱮᱴ ᱨᱮᱭᱟᱜ ᱡᱳᱜᱟᱡᱳᱜ ᱵᱟᱝ ᱧᱟᱢᱚᱜᱼᱟ ᱾",
+	"preview-offline-cta": "ᱫᱚᱦᱲᱟ ᱪᱮᱥᱴᱟᱭ ᱢᱮ"
 }
