@@ -1,2 +1,0 @@
-const __vite__fileDeps=["./DocsRenderer-NNNQARDV-BClQ01DO.js","./iframe-SydT9vKD.js","./index-CoojMvHD.js","./index-D2DNihGs.js","./index-DrFu-skq.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import{_ as t}from"./iframe-SydT9vKD.js";import"../sb-preview/runtime.js";var _={docs:{renderer:async()=>{let{DocsRenderer:r}=await t(()=>import("./DocsRenderer-NNNQARDV-BClQ01DO.js").then(e=>e.D),__vite__mapDeps([0,1,2,3,4]),import.meta.url);return new r}}};export{_ as parameters};
