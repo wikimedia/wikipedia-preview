@@ -51,7 +51,7 @@ A WordPress plugin providing a thin wrapper around Wikipedia Preview to simplify
   wikipediaPreview.init()
 </script>
 ```
-You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@latest/dist/wikipedia-preview.umd.cjs) (The library version 1.9.0 and later cannot be loaded from Unpkg due to a [MIME type mismatch issue](https://github.com/mjackson/unpkg/issues/355)).
+You can serve the file yourself or include it from [unpkg](https://unpkg.com/browse/wikipedia-preview@latest/dist/wikipedia-preview.umd.cjs) (The library version 1.9.0 and later cannot be loaded from Unpkg due to a [MIME type mismatch issue](https://github.com/mjackson/unpkg/issues/355), the current [workaround solution](https://github.com/mjackson/unpkg/issues/355#issuecomment-1541524887) is adding the `?module` parameter to get the correct content-type).
 
 ### NPM
 ```bash
