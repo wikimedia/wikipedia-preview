@@ -5,7 +5,8 @@
 			"Alluk.",
 			"Nike",
 			"Pyscowicz",
-			"SMAUG"
+			"SMAUG",
+			"Samoasambia"
 		]
 	},
 	"gallery-loading-error": "Kuvan lataaminen epäonnistui",
@@ -13,10 +14,11 @@
 	"gallery-loading-error-refresh": "Päivitä",
 	"gallery-loading-still": "Ladataan edelleen",
 	"gallery-unknown-author": "Tuntematon tekijä",
+	"gallery-attribution-learnmore": "Lisätietoja",
 	"preview-error-message": "Esikatselua ei voida näyttää",
 	"preview-console-error-message": "Esikatselu ei ole saatavilla artikkelille ”$1” (kieli: $2)",
 	"read-on-wiki": "Lue Wikipediassa",
-	"read-more": "Lue lisää Wikipediassa",
+	"read-more": "Lue koko artikkeli Wikipediassa",
 	"preview-disambiguation-message": "Otsikko <strong>$1</strong> liittyy useampaan Wikipedia-artikkeliin.",
 	"preview-offline-message": "Ei internet-yhteyttä.",
 	"preview-offline-cta": "Yritä uudelleen"
