@@ -1,21 +1,24 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brahim-essaidi",
 			"Hakim1bal",
 			"Lhoussine AIT TAYFST",
+			"Reda Tris",
 			"Ya2sine"
 		]
 	},
-	"gallery-loading-error": "ⵉⵍⵍⴰ ⴽⵔⴰ ⵏ ⵓⵣⴳⴰⵍ ⴳ ⵓⵣⴷⴰⵎ ⵏ ⵜⵙⵏⴰ ⴰⴷ",
-	"gallery-loading-error-offline": "ⵓⵔ ⵉⵍⵍⵉ ⵓⵣⴷⴰⵢ ⵙ ⵡⴰⵏⵜⵉⵔⵏⵉⵜ ⵉⵕⵥⵎⵏ",
+	"gallery-loading-error": "ⵉⵍⵍⴰ ⴽⵔⴰ ⵏ ⵓⵣⴳⴰⵍ ⴳ ⵓⵣⴷⴰⵎ ⵏ ⵜⵡⵍⴰⴼⵜ ⴰⴷ",
+	"gallery-loading-error-offline": "ⵓⵔ ⵉⵍⵍⵉ ⵓⵣⴷⴰⵢ ⵙ ⵡⴰⵏⵜⵉⵔⵏⵉⵜ",
 	"gallery-loading-error-refresh": "ⵙⵎⴰⵢⵏⵓ",
 	"gallery-loading-still": "ⵉⵙⵓⵍ ⵓⵣⴷⴰⵎ",
-	"gallery-unknown-author": "ⴰⵎⴳⴰⵢ ⴰⵔⵉⵙⵎ",
+	"gallery-unknown-author": "ⴰⵎⴳⴰⵢ ⴰⵔⵓⵙⵙⵉⵏ",
+	"gallery-attribution-learnmore": "ⵍⵎⴷ ⵓⴳⴳⴰⵔ",
 	"preview-error-message": "ⵉⵍⵍⴰ ⵛⴰ ⵏ ⵓⵎⵓⴽⵔⵉⵙ ⵉⵣⴷⵉⵏ ⵙ ⵓⵙⴽⴰⵏ ⴰⵎⵣⵡⴰⵔⵓ.",
-	"preview-console-error-message": "ⴰⵙⴽⴰⵏ ⴰⵎⵣⵡⴰⵔⵓ ⵓⵔ ⵉⵍⵍⵉ ⵉ ⵓⵎⵏⵏⵉ '$1' (Language: $2)",
+	"preview-console-error-message": "ⵓⵔ ⵉⵙⴰⴳⴰ ⵓⵙⴽⴰⵏ ⵉ ⵓⵎⵏⵏⵉ '$1' (ⵜⵓⵜⵍⴰⵢⵜ: $2)",
 	"read-on-wiki": "ⵖⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
-	"read-more": "ⵖⵔ ⵓⴳⴳⴰⵔ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
-	"preview-disambiguation-message": "ⴰⵣⵡⵍ <strong>$1</strong> ⵉⵣⴷⵉ ⵙ ⵓⴳⴳⴰⵔ ⵏ ⵢⴰⵏ ⵓⵎⵏⵏⵉ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ.",
+	"read-more": "ⵖⵔ ⴰⵎⴳⵔⴰⴷ ⴰⵏⵎⴷⵓ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ",
+	"preview-disambiguation-message": "ⵉⵇⵇⵏ ⵓⵣⵡⵍ <strong>$1</strong> ⵖⵔ ⵓⴳⴳⴰⵔ ⵏ ⵢⴰⵏ ⵓⵎⵏⵏⵉ ⴳ ⵡⵉⴽⵉⴱⵉⴷⵢⴰ.",
 	"preview-offline-message": "ⵓⵔ ⵉⵍⵍⵉ ⵓⵣⴷⴰⵢ ⵙ ⵡⴰⵏⵜⵉⵔⵏⵉⵜ",
 	"preview-offline-cta": "ⴰⵔⵎ ⴷⴰⵖ"
 }
