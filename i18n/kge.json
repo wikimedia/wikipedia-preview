@@ -4,16 +4,17 @@
 			"Es Krim 5 Juta Rasa"
 		]
 	},
-	"gallery-loading-error": "Uwat kasalahan harak mbukak gambar sija",
+	"gallery-loading-error": "Uwat kasalahan harak ambukak gambar sija",
 	"gallery-loading-error-offline": "Makka koneksi internet",
-	"gallery-loading-error-refresh": "Muat ulang",
-	"gallery-loading-still": "Lokok mbukak",
-	"gallery-unknown-author": "Panulis mak tikapandai",
-	"preview-error-message": "Uwat masalah harak nampilko pratayang sija.",
-	"preview-console-error-message": "Pratinjau makka untuk artikel '$1' (Basa: $2)",
+	"gallery-loading-error-refresh": "Sorgongko",
+	"gallery-loading-still": "Lokok ambukak",
+	"gallery-unknown-author": "Panulis mak tikapanday",
+	"gallery-attribution-learnmore": "Palajari lobih lanjut",
+	"preview-error-message": "Uwat masalah harak nyajakko gambaran sija.",
+	"preview-console-error-message": "Gambaran makka untuk artikol '$1' (Basa: $2)",
 	"read-on-wiki": "Baca di Wikipedia",
-	"read-more": "Baca lobih lanjut di Wikipedia",
-	"preview-disambiguation-message": "Judul<strong>$1</strong> tikahik rik liyu jak osai artikel di Wikipedia.",
+	"read-more": "Baca unyin artikol di Wikipedia",
+	"preview-disambiguation-message": "Judul<strong>$1</strong> tikahik rik liyu jak osay artikol di Wikipedia.",
 	"preview-offline-message": "Makka koneksi internet",
-	"preview-offline-cta": "Cuba lagi"
+	"preview-offline-cta": "Cuba luwot"
 }

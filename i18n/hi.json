@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cabal"
+		]
+	},
+	"gallery-loading-error": "इस छवि को लोड करने में त्रुटि हुई",
+	"gallery-loading-error-offline": "इंटरनेट कनेक्शन उपलब्ध नहीं है।",
+	"gallery-loading-error-refresh": "ताजा करें",
+	"gallery-loading-still": "अभी भी लोड हो रहा है",
+	"gallery-unknown-author": "अज्ञात लेखक",
+	"gallery-attribution-learnmore": "अधिक जानें",
+	"preview-error-message": "इस पूर्वावलोकन को प्रदर्शित करते समय एक त्रुटि आई",
+	"preview-console-error-message": "लेख ' $1 ' के लिए पूर्वावलोकन उपलब्ध नहीं है (भाषा: $2 )",
+	"read-on-wiki": "विकिपीडिया पर पढ़ें",
+	"read-more": "विकिपीडिया पर पूरा लेख पढ़ें",
+	"preview-disambiguation-message": "शीर्षक <strong>$1</strong> विकिपीडिया पर एक से अधिक लेखों से संबंधित है।",
+	"preview-offline-message": "इंटरनेट कनेक्शन उपलब्ध नहीं है।",
+	"preview-offline-cta": "पुनः प्रयास करें"
+}

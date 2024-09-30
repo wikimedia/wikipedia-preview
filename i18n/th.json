@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cabal",
 			"Just Sayori",
 			"Lookruk",
 			"Patsagorn Y.",
@@ -12,6 +13,7 @@
 	"gallery-loading-error-refresh": "รีเฟรช",
 	"gallery-loading-still": "กำลังโหลดอยู่",
 	"gallery-unknown-author": "ไม่รู้จักผู้เขียน",
+	"gallery-attribution-learnmore": "เรียนรู้เพิ่มเติม",
 	"preview-error-message": "มีปัญหาในการแสดงผลตัวอย่างนี้",
 	"preview-console-error-message": "ไม่มีตัวอย่างสำหรับบทความ \"$1\" (ภาษา: $2)",
 	"read-on-wiki": "อ่านบนวิกิพีเดีย",
