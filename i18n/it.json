@@ -3,15 +3,22 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Beta16",
+			"Egidio24",
 			"GpieroMW",
 			"Luca.favorido"
 		]
 	},
 	"gallery-loading-error": "Si è verificato un errore durante il caricamento di questa immagine",
 	"gallery-loading-error-offline": "Nessuna connessione internet disponibile.",
+	"gallery-loading-error-refresh": "Aggiorna",
+	"gallery-loading-still": "Caricamento ancora in corso",
 	"gallery-unknown-author": "Autore sconosciuto",
+	"gallery-attribution-learnmore": "Ulteriori informazioni",
+	"preview-error-message": "Si è verificato un problema durante la visualizzazione di questa anteprima.",
+	"preview-console-error-message": "Anteprima non disponibile per la voce '$1' (Lingua: $2)",
 	"read-on-wiki": "Leggi su Wikipedia",
 	"read-more": "Leggi la voce completa su Wikipedia",
+	"preview-disambiguation-message": "Il titolo <strong>$1</strong> è correlato a più di una voce su Wikipedia.",
 	"preview-offline-message": "Nessuna connessione internet disponibile.",
 	"preview-offline-cta": "Riprova"
 }
