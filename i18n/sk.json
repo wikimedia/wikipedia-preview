@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jaroslav.micek",
+			"Oujon",
 			"Yardom78"
 		]
 	},
@@ -10,10 +11,11 @@
 	"gallery-loading-error-refresh": "Obnoviť",
 	"gallery-loading-still": "Stále načítava",
 	"gallery-unknown-author": "Autor neznámy",
+	"gallery-attribution-learnmore": "Prečítajte si viac",
 	"preview-error-message": "Pri zobrazovaní tohto náhľadu sa objavil problém.",
 	"preview-console-error-message": "Pre článok '$1' nie je dostupný náhľad (jazyk: $2)",
 	"read-on-wiki": "Čítať na Wikipédii",
-	"read-more": "Čítať viac na Wikipédii",
+	"read-more": "Čítajte celý článok na Wikipédii",
 	"preview-disambiguation-message": "Názov  <strong>$1</strong> súvisí s viac než jedným artiklom na Wikipédii.",
 	"preview-offline-message": "Nieje dostupné internetové pripojenie.",
 	"preview-offline-cta": "Skúsiť znova"

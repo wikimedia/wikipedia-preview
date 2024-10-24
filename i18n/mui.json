@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jawadywn"
+		]
+	},
+	"gallery-loading-error": "Ado ngarut pangko gambar ni dijejelke",
+	"gallery-loading-error-offline": "Da' kati' sambungan internét",
+	"gallery-loading-error-refresh": "Jejel balén",
+	"gallery-loading-still": "Masî dijejelke",
+	"gallery-unknown-author": "Yang ngawé' da' keluruan",
+	"gallery-attribution-learnmore": "Jingo' laénnyo",
+	"preview-error-message": "Ado bala' pangko na' nyingo'ke terawangan ni.",
+	"preview-console-error-message": "Terawangan da' kati' buat makala '$1' (Baso: $2)",
+	"read-on-wiki": "Baco di Wikipédi",
+	"read-more": "Baco makala lengkepnyo di Wikipédi",
+	"preview-disambiguation-message": "Aranan <strong>$1</strong> tesambung ke lebi dari siko' makala di Wikipédi ni.",
+	"preview-offline-message": "Da' kati' sambungan internét.",
+	"preview-offline-cta": "Cubo balén"
+}

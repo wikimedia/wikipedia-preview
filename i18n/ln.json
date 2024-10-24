@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eruedin"
+		]
+	},
+	"gallery-loading-error-offline": "Boyókani ya ɛntɛnɛ́tɛ ezalí tɛ́.",
+	"gallery-loading-error-refresh": "Kozóngisa sika",
+	"gallery-loading-still": "Bazalí kaka kokɔngi",
+	"gallery-unknown-author": "Mokomi ayébání tɛ́",
+	"gallery-attribution-learnmore": "Boyékola mosúsu",
+	"read-on-wiki": "Kotanga na Wikipedia",
+	"read-more": "Tángá lisoló mobimba na Wikipedia",
+	"preview-offline-message": "Boyókani ya ɛntɛnɛ́tɛ ezalí tɛ́.",
+	"preview-offline-cta": "Komeka lisúsu"
+}
