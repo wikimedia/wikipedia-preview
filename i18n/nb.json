@@ -11,10 +11,11 @@
 	"gallery-loading-error-refresh": "Gjeoppfrisk",
 	"gallery-loading-still": "Laster fremdeles …",
 	"gallery-unknown-author": "Ukjent forfatter",
+	"gallery-attribution-learnmore": "Lær mer",
 	"preview-error-message": "Kunne ikke forhåndsvise.",
 	"preview-console-error-message": "Forhåndsvisning er ikke tilgjengelig for artikkelen «$1» (Språk: $2)",
 	"read-on-wiki": "Les på Wikipedia",
-	"read-more": "Les mer på Wikipedia",
+	"read-more": "Les hele artikkelen på Wikipedia",
 	"preview-disambiguation-message": "Tittelen <strong>$1</strong> er tilknyttet mer enn én artikkel på Wikipedia.",
 	"preview-offline-message": "Ingen tilgjengelige tilkoblinger til Internett.",
 	"preview-offline-cta": "Prøv igjen"
