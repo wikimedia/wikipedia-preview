@@ -10,10 +10,11 @@
 	"gallery-loading-error-refresh": "Fuli halö",
 	"gallery-loading-still": "Muhalö na sa",
 	"gallery-unknown-author": "Lö töi zamazökhi",
+	"gallery-attribution-learnmore": "Faigi gonönötania na",
 	"preview-error-message": "So zifasala götö wangoroma'ö khala-khala andre.",
 	"preview-console-error-message": "Lö fangoroma'ö sura '$1' (Li: $2)",
 	"read-on-wiki": "Baso yaŵa ba Wikipedia",
-	"read-more": "Baso na sa yaŵa ba Wikipedia",
+	"read-more": "Baso ma'asagörö zura yaŵa ba Wikipedia",
 	"preview-disambiguation-message": "Högö <strong>$1</strong> no fakhai ba ha'uga ngawua zura ba Wikipedia",
 	"preview-offline-message": "Lö hadöi jaringan internet.",
 	"preview-offline-cta": "Fuli tesi"
