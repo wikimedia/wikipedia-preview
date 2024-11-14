@@ -1,18 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Boesenbergia"
+			"Boesenbergia",
+			"Munajad.MH"
 		]
 	},
-	"gallery-loading-error": "Bâḍâ sè sala bâkto mowa' ghâmbhâr sè arèya",
-	"gallery-loading-error-offline": "Taḍâ' sambhungan internèt.",
+	"gallery-loading-error": "Taksè kaklèroan nalèka mowa' ghâmbhâr panèka",
+	"gallery-loading-error-offline": "Sobung sobhâl internèt.",
 	"gallery-loading-error-refresh": "Pa'anyar",
-	"gallery-loading-still": "Ghi' mowa'",
-	"gallery-unknown-author": "Sè meccè' ta' èkataowè",
-	"preview-error-message": "Bâḍâ masalah bâkto ngangglaghi tangas arèya.",
-	"read-on-wiki": "Bâca è Wikipèḍia",
-	"read-more": "Bâca terrosana è Wikipèḍia",
-	"preview-disambiguation-message": "Bhul-ombhul <strong>$1</strong> akaè' ka lebbi ḍâri sèttong serradhân è Wikipèḍia.",
-	"preview-offline-message": "Taḍâ' sambhungan internèt.",
-	"preview-offline-cta": "Jhâjhâl polè"
+	"gallery-loading-still": "Ghi' amowa'",
+	"gallery-unknown-author": "Sè meccè' korang èkaonèngè",
+	"gallery-attribution-learnmore": "Ladru abibârân",
+	"preview-error-message": "Taksè mas'alah nalèka ngangglaghi preview panèka.",
+	"preview-console-error-message": "Sobung preview ka'angghuy artikel '$1' (Bhâsa: $2)",
+	"read-on-wiki": "Maos neng Wikipèḍia",
+	"read-more": "Maos artikel praghih neng Wikipèḍia",
+	"preview-disambiguation-message": "Bul-ombul <strong>$1</strong> taghâut dâ' langkong ḍâri sèttong serradhân neng Wikipèḍia.",
+	"preview-offline-message": "Sobung sobhâl internèt.",
+	"preview-offline-cta": "Oddhi polè"
 }
