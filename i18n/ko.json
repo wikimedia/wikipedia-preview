@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Songhee",
+			"Suleiman the Magnificent Television",
 			"Ykhwong",
 			"그냥기여자"
 		]
@@ -11,10 +12,11 @@
 	"gallery-loading-error-refresh": "새로 고침",
 	"gallery-loading-still": "계속 로딩 중",
 	"gallery-unknown-author": "작자 미상",
+	"gallery-attribution-learnmore": "더 알아보기",
 	"preview-error-message": "이 미리보기를 표시하는 중 오류가 있었습니다.",
 	"preview-console-error-message": "'$1' 문서를 미리 볼 수 없습니다 (언어: $2)",
 	"read-on-wiki": "위키백과에서 보기",
-	"read-more": "위키백과에서 추가 내용 읽기",
+	"read-more": "위키백과에서 전체 문서 읽기",
 	"preview-disambiguation-message": "<strong>$1</strong> 항목은 위키백과 내 둘 이상의 문서와 연관되어 있습니다.",
 	"preview-offline-message": "인터넷이 연결되어 있지 않습니다.",
 	"preview-offline-cta": "다시 시도"
