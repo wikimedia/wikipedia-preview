@@ -1,6 +1,6 @@
 {
   "name": "wikipedia-preview",
-  "version": "1.12.3",
+  "version": "1.12.4",
   "description": "Shows Wikipedia article preview in a popup",
   "main": "dist/wikipedia-preview.umd.cjs",
   "type": "module",
