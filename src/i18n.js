@@ -4,14 +4,22 @@ const messages = {
 	en
 }
 
-const msg = ( lang, key, ...params ) => {
+const loadMessagesForLang = ( lang ) => {
 	if ( !messages[ lang ] ) {
-		try {
-			messages[ lang ] = require( `./../i18n/${ lang }.json` ).default
-		} catch ( error ) {
-			messages[ lang ] = {}
-		}
+		// eslint-disable-next-line es-x/no-dynamic-import
+		return import( `./../i18n/${ lang }.json` )
+			.then( ( module ) => {
+				messages[ lang ] = module.default
+			} )
+			.catch( () => {
+				messages[ lang ] = {}
+			} )
 	}
+
+	return Promise.resolve()
+}
+
+const msg = ( lang, key, ...params ) => {
 	let message = messages[ lang ] && messages[ lang ][ key ] || messages.en[ key ] || key
 	params.forEach( ( param, i ) => {
 		message = message.replace( new RegExp( `\\$${ i + 1 }`, 'g' ), param )
@@ -19,4 +27,4 @@ const msg = ( lang, key, ...params ) => {
 	return message
 }
 
-export { msg }
+export { loadMessagesForLang, msg }
