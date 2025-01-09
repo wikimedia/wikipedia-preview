@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"GilPe",
 			"Les Meloures",
 			"Robby",
 			"Volvox"
 		]
 	},
-	"gallery-loading-error": "Feeler beim eropluede vum Bild",
+	"gallery-loading-error": "Feeler beim Eropluede vum Bild",
 	"gallery-loading-error-offline": "Et gëtt keng Internetverbindung",
 	"gallery-loading-error-refresh": "Aktualiséieren",
 	"gallery-loading-still": "Gëtt nach gelueden",
