@@ -3,19 +3,21 @@
 		"authors": [
 			"Chrumps",
 			"Krzyz23",
+			"PanWor",
 			"Rail"
 		]
 	},
-	"gallery-loading-error": "Podczas ładowania tego obrazu wystąpił błąd",
-	"gallery-loading-error-offline": "Nie ma dostępnego połączenia internetowego.",
+	"gallery-loading-error": "Wystąpił błąd podczas ładowania tego obrazu",
+	"gallery-loading-error-offline": "Brak połączenia z Internetem.",
 	"gallery-loading-error-refresh": "Odśwież",
 	"gallery-loading-still": "Wciąż wczytuję",
 	"gallery-unknown-author": "Autor nieznany",
+	"gallery-attribution-learnmore": "Dowiedz się więcej",
 	"preview-error-message": "Wystąpił problem podczas wyświetlania podglądu.",
 	"preview-console-error-message": "Podgląd niedostępny dla artykułu „$1” (język: $2)",
 	"read-on-wiki": "Przeczytaj na Wikipedii",
 	"read-more": "Przeczytaj pełen artykuł na Wikipedii",
 	"preview-disambiguation-message": "Tytuł <strong>$1</strong> jest związany z więcej niż jednym artykułem na Wikipedii.",
-	"preview-offline-message": "Nie ma dostępnego połączenia internetowego.",
+	"preview-offline-message": "Brak połączenia z Internetem.",
 	"preview-offline-cta": "Spróbuj ponownie"
 }
