@@ -1,0 +1,1 @@
+import{S as e,c as s,s as c}from"./DocsRenderer-NNNQARDV-CCcQx_8_.js";import"./iframe-DAUD-UJW.js";import"../sb-preview/runtime.js";import"./doctrine-h9SWtg8o.js";import"./index-D2DNihGs.js";import"./index-DrFu-skq.js";export{e as SyntaxHighlighter,s as createCopyToClipboardFunction,c as default};
