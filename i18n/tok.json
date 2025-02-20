@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Eic17H",
 			"Juwan",
 			"SpanishSnake"
 		]
 	},
-	"gallery-loading-error": "sitelen ni li kama la, pakala li kama.",
+	"gallery-loading-error": "sitelen ni li kama la pakala li kama",
 	"gallery-loading-error-offline": "ilo sina li ken ala toki tawa ilo mi.",
-	"gallery-loading-error-refresh": "o kama sin",
+	"gallery-loading-error-refresh": "o sin e sona",
 	"gallery-loading-still": "ijo li awen kama",
-	"gallery-unknown-author": "mi sona ala e jan pali.",
+	"gallery-unknown-author": "mi sona ala e jan pali",
 	"gallery-attribution-learnmore": "o sona",
 	"preview-error-message": "lukin li kama la, pakala li kama.",
 	"preview-console-error-message": "$2 la lukin pi lipu '$1' li lon ala",
