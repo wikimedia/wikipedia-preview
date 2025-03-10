@@ -4,7 +4,8 @@
 			"Omotecho",
 			"RYOUMA1117",
 			"そらたこ",
-			"バレロン"
+			"バレロン",
+			"春春眠眠"
 		]
 	},
 	"gallery-loading-error": "画像の読み込み中にエラーが発生しました。",
@@ -12,10 +13,11 @@
 	"gallery-loading-error-refresh": "更新",
 	"gallery-loading-still": "読み込み中",
 	"gallery-unknown-author": "作者不明",
+	"gallery-attribution-learnmore": "詳細",
 	"preview-error-message": "プレビューを表示する際にエラーが発生しました。",
 	"preview-console-error-message": "現在$1のプレビューは利用できません。（言語：$2）",
 	"read-on-wiki": "ウィキペディアで読む",
-	"read-more": "ウィキペディアでさらに読む",
+	"read-more": "ウィキペディアで記事全文を読む",
 	"preview-disambiguation-message": "標題<strong>$1</strong>はウィキペディアに複数の関連項目があります。",
 	"preview-offline-message": "インターネット接続が見つかりません。",
 	"preview-offline-cta": "もう一度お試しください"
