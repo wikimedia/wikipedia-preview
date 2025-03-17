@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Musindi250"
+		]
+	},
+	"gallery-loading-error": "Habayeho ikibazo mu gihe cyo gufungura iri shusho",
+	"gallery-loading-error-offline": "Nta muyoboro wa murandasi uhari.",
+	"gallery-loading-still": "Biracyari gufungura",
+	"gallery-unknown-author": "Umwanditsi ntazwi",
+	"gallery-attribution-learnmore": "Menya byinshi",
+	"read-on-wiki": "Soma kuri Wikipediya",
+	"preview-offline-message": "Nta muyoboro wa murandasi uhari.",
+	"preview-offline-cta": "Ongera ugerageze"
+}
