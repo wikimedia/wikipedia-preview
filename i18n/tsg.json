@@ -8,13 +8,13 @@
 	"gallery-loading-error-offline": "Way bandungan pa intirnit.",
 	"gallery-loading-error-refresh": "Refresh'un",
 	"gallery-loading-still": "Naglu'load pa",
-	"gallery-unknown-author": "Di' kakilāan in panulat",
+	"gallery-unknown-author": "Di' kakilāan in magsusulat",
 	"gallery-attribution-learnmore": "Hindu' pa",
 	"preview-error-message": "Awn isu na bang piyapakita' in pasīb ini.",
 	"preview-console-error-message": "Way pasīb ha artikal '$1' (Bahasa: $2)",
-	"read-on-wiki": "Bachaa ha Wikipidya",
-	"read-more": "Bachaa in artikal hipu' ha Wikipidya",
-	"preview-disambiguation-message": "Nahajarat in pamagat <strong>$1</strong> ha labi dayn hambuuk artikal ha Wikipidya",
+	"read-on-wiki": "Bassaha ha Wikipidya",
+	"read-more": "Bassaha in artikal hipu' ha Wikipidya",
+	"preview-disambiguation-message": "Nahajarat in pangān <strong>$1</strong> ha labi dayn hambuuk artikal ha Wikipidya",
 	"preview-offline-message": "Way bandungan pa intirnit.",
 	"preview-offline-cta": "Sulaya balik"
 }
