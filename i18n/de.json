@@ -7,6 +7,7 @@
 			"Ignatgg",
 			"Justman10000",
 			"ManuelFranz",
+			"Nieke",
 			"RucolaSpacecat"
 		]
 	},
@@ -15,7 +16,7 @@
 	"gallery-loading-error-refresh": "Aktualisieren",
 	"gallery-loading-still": "Wird noch geladen",
 	"gallery-unknown-author": "Autor unbekannt.",
-	"preview-error-message": "Es existierte ein Problem bei der Anzeige dieser Vorschau.",
+	"preview-error-message": "Beim Anzeigen dieser Vorschau ist ein Problem aufgetreten.",
 	"preview-console-error-message": "Vorschau für Artikel „$1“ nicht verfügbar (Sprache: $2)",
 	"read-on-wiki": "Auf Wikipedia lesen",
 	"read-more": "Vollständigen Artikel auf Wikipedia lesen",

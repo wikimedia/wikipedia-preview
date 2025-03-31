@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Don Alessandro",
 			"TayfunEt.",
 			"Zolgoyo"
 		]
@@ -10,10 +11,11 @@
 	"gallery-loading-error-refresh": "Yañart",
 	"gallery-loading-still": "Daa yüklene",
 	"gallery-unknown-author": "Yaratıcı bilinmey",
+	"gallery-attribution-learnmore": "Daa ziyade bilgi",
 	"preview-error-message": "Bu önizlemeni körünti ettirken sorun çıqtı.",
 	"preview-console-error-message": "'$1' maqalesi içün önizleme mümkün degil (Til: $2)",
 	"read-on-wiki": "Vikipediyada oqu",
-	"read-more": "Vikipediyada daa oqumağa mevcut",
+	"read-more": "Maqaleniñ tolusını Vikipediyada oquñız",
 	"preview-disambiguation-message": "<strong>$1</strong> Vikipediyada birden fazla maqalenen ilgili.",
 	"preview-offline-message": "İnternet bağlantısı qısıtlı.",
 	"preview-offline-cta": "Tekrar deneñiz"
