@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amankel'dy",
 			"Darzz"
 		]
 	},
@@ -9,6 +10,7 @@
 	"gallery-loading-error-refresh": "Жаңарту",
 	"gallery-loading-still": "Әлі жүктелуде",
 	"gallery-unknown-author": "Автор белгісіз",
+	"gallery-attribution-learnmore": "Көбірек білу",
 	"preview-error-message": "Бұл алдын ала көру көрсетілгенде, қате орын алды.",
 	"preview-console-error-message": "\"$1\" (тіл: $2) мақаласын алдын ала көру қолжетімсіз",
 	"read-on-wiki": "Уикипедиядан оқу",
