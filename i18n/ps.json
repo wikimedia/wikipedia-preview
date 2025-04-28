@@ -8,14 +8,14 @@
 	"gallery-loading-error": "د دې انځور په برسېرولو کې یوه تېروتنه وه",
 	"gallery-loading-error-offline": "اينټرنېټي اړيکه نشته.",
 	"gallery-loading-error-refresh": "بياتاندول",
-	"gallery-loading-still": "لا هم باریږي",
+	"gallery-loading-still": "لا هم بارېږي",
 	"gallery-unknown-author": "ناڅرگنده ليکوال",
 	"gallery-attribution-learnmore": "نور مالومات",
 	"preview-error-message": "د دې مخکتنې ښودلو پر مهال یوه ستونزه پېښه شوه.",
 	"preview-console-error-message": "د '$1' ليکنې لپاره کومه مخکتنه نشته (ژبه: $2)",
 	"read-on-wiki": "په ويکيپېډيا کې ولولئ",
-	"read-more": "په ویکیپیډیا کې بشپړه لیکنه ولولئ",
+	"read-more": "په ويکيپېډیا کې بشپړه ليکنه ولولئ",
 	"preview-disambiguation-message": "په ويکيپېډيا کې د <strong>$1</strong> سرليک له يوې ليکنې څخه ډېرو ليکنو اړوند دی.",
-	"preview-offline-message": "انټرنټي اړيکه نشته.",
+	"preview-offline-message": "اينټرنېټي اړيکه د لاسرسي وړ نه ده.",
 	"preview-offline-cta": "بیا هڅه وکړئ"
 }
