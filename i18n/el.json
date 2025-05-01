@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
+			"Jimkats",
 			"Norhorn"
 		]
 	},
@@ -10,10 +11,11 @@
 	"gallery-loading-error-refresh": "Ανανέωση",
 	"gallery-loading-still": "Ακόμα φορτώνει",
 	"gallery-unknown-author": "Άγνωστος συγγραφέας",
+	"gallery-attribution-learnmore": "Μάθετε περισσότερα",
 	"preview-error-message": "Υπήρξε κάποιο πρόβλημα κατά την εμφάνιση αυτής της προεπισκοπήσης.",
 	"preview-console-error-message": "Η προεπισκόπηση δεν είναι διαθέσιμη για το λήμμα «$1» (Γλώσσα: $2)",
 	"read-on-wiki": "Διαβάστε στη Βικιπαίδεια",
-	"read-more": "Διαβάστε περισσότερα στη Βικιπαίδεια",
+	"read-more": "Διαβάστε το πλήρες άρθρο στη Βικιπαίδεια",
 	"preview-disambiguation-message": "Ο τίτλος <strong>$1</strong> σχετίζεται με περισσότερα από ένα λήμματα στη Βικιπαίδεια.",
 	"preview-offline-message": "Δεν υπάρχει διαθέσιμη σύνδεση στο διαδίκτυο.",
 	"preview-offline-cta": "Δοκιμάστε ξανά"
