@@ -10,10 +10,11 @@
 	"gallery-loading-error-refresh": "تازه‌سازی",
 	"gallery-loading-still": "همچنان در حال بارگیری",
 	"gallery-unknown-author": "مؤلف ناشناخته",
+	"gallery-attribution-learnmore": "اطلاعات بیشتر",
 	"preview-error-message": "مشکلی هنگام نمایش این پیش‌نمایش پیش آمد.",
 	"preview-console-error-message": "پیش‌نمایش برای مقالهٔ '$1' در دسترس نیست (زبان: $2)",
 	"read-on-wiki": "در ویکی‌پدیا بخوانید",
-	"read-more": "مطالعهٔ بیشتر در ویکی‌پدیا",
+	"read-more": "متن کامل را در ویکی‌پدیا بخوانید",
 	"preview-disambiguation-message": "عنوان <strong>$1</strong> در ویکی‌پدیا با بیش از یک مقاله مرتبط است.",
 	"preview-offline-message": "اتصال به اینترنت مقدور نیست.",
 	"preview-offline-cta": "تلاش مجدد"
