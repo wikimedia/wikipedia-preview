@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Foomin10",
 			"Omotecho",
 			"RYOUMA1117",
 			"そらたこ",
@@ -18,7 +19,7 @@
 	"preview-console-error-message": "現在$1のプレビューは利用できません。（言語：$2）",
 	"read-on-wiki": "ウィキペディアで読む",
 	"read-more": "ウィキペディアで記事全文を読む",
-	"preview-disambiguation-message": "標題<strong>$1</strong>はウィキペディアに複数の関連項目があります。",
+	"preview-disambiguation-message": "ページ名 <strong>$1</strong> はウィキペディアに複数の関連項目があります。",
 	"preview-offline-message": "インターネット接続が見つかりません。",
 	"preview-offline-cta": "もう一度お試しください"
 }
