@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sahran"
+		]
+	},
+	"gallery-loading-error": "بۇ سۈرەتنى يۈكلەشتە خاتالىق كۆرۈلدى",
+	"gallery-loading-error-offline": "ھېچقانداق ئىنتېرنېت باغلىنىشى يوق.",
+	"gallery-loading-error-refresh": "يېڭىلا",
+	"gallery-loading-still": "تېخىچە يۈكلەۋاتىدۇ",
+	"gallery-unknown-author": "يازغۇچى نامەلۇم",
+	"gallery-attribution-learnmore": "مول بىلىم",
+	"preview-error-message": "بۇ ئالدىن كۆزىتىشنى كۆرسىتىشتە مەسىلە كۆرۈلگەن.",
+	"preview-console-error-message": "«$1» ماقالىنى ئالدىن كۆزىتەلمەيدۇ (تىل: $2)",
+	"read-on-wiki": "سىكىپېدىيەدە ئوقۇڭ",
+	"read-more": "تولۇق ماقالىنى ۋىكىپېدىيەدە ئوقۇڭ",
+	"preview-disambiguation-message": "ۋىكىپېدىيەدە <strong>$1</strong> ماۋزۇ كۆپ ماقالىگە مۇناسىۋەتلىك.",
+	"preview-offline-message": "ھېچقانداق ئىنتېرنېت باغلىنىشى يوق.",
+	"preview-offline-cta": "قايتا سىناڭ"
+}
