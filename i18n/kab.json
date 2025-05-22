@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"ButterflyOfFire"
+		]
+	},
+	"gallery-loading-error": "Teḍra-d tuccḍa deg usali n tugna-agi",
+	"gallery-loading-error-offline": "Ulac tuqqna Internet.",
+	"gallery-loading-error-refresh": "Smiren",
+	"gallery-loading-still": "Mazal yettɛebbi",
+	"gallery-unknown-author": "Ameskar ur yettwassen ara",
+	"gallery-attribution-learnmore": "Issin ugar",
+	"read-on-wiki": "Ɣeṛ deg Wikipidya",
+	"read-more": "Ɣeṛ amagrad ummid deg Wikipedia",
+	"preview-offline-message": "Ulac tuqqna Internet.",
+	"preview-offline-cta": "Ɛreḍ tikkelt nniḍen"
+}

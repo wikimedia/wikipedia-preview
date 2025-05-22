@@ -1,20 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mainculprit",
 			"Zafar Shamsiddinov",
 			"Шоҳидахоним"
 		]
 	},
-	"gallery-loading-error": "Rasmni yuklashda xatolik",
+	"gallery-loading-error": "Ushbu rasmni yuklashda xatolik yuz berdi.",
 	"gallery-loading-error-offline": "Tarmoqqa ulanish mavjud emas",
 	"gallery-loading-error-refresh": "Yangilash",
 	"gallery-loading-still": "Hali ham yuklanmoqda",
 	"gallery-unknown-author": "Muallif nomaʼlum",
+	"gallery-attribution-learnmore": "Batafsil",
 	"preview-error-message": "Oldindan koʻrishni namoyish qilishda xatolik yuz berdi.",
 	"preview-console-error-message": "'$1' maqolasini oldindan koʻrib boʻlmaydi (Tili: $2)",
-	"read-on-wiki": "Vikipediyada oʻqing",
-	"read-more": "Vikipediada batafsil oʻqing",
+	"read-on-wiki": "Vikipediyada oʻqish",
+	"read-more": "Vikipediada batafsil oʻqish",
 	"preview-disambiguation-message": "<strong>$1</strong> sarlavhasi Vikipediyadagi bir nechta maqolalarga tegishlidir.",
 	"preview-offline-message": "Internetga ulanilmagan.",
-	"preview-offline-cta": "Qaytadan"
+	"preview-offline-cta": "Qaytadan urinish"
 }
