@@ -3,6 +3,7 @@
 		"authors": [
 			"Dvpita",
 			"Hamilton Abreu",
+			"O andras",
 			"RodrigoMoreira2008"
 		]
 	},
@@ -13,7 +14,7 @@
 	"gallery-unknown-author": "Autor desconhecido",
 	"gallery-attribution-learnmore": "Saiba mais",
 	"preview-error-message": "Ocorreu um erro durante a apresentação desta antevisão.",
-	"preview-console-error-message": "Antevisão indisponível para o artigo '$1' (língua: $2)",
+	"preview-console-error-message": "Antevisão indisponível para o artigo '$1' (Língua: $2)",
 	"read-on-wiki": "Ler na Wikipédia",
 	"read-more": "Ler o artigo completo na Wikipédia",
 	"preview-disambiguation-message": "O título <strong>$1</strong> está relacionado com mais do que um artigo na Wikipédia.",
