@@ -6,8 +6,7 @@ module.exports = {
   ],
 
   "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    // add your addons here
   ],
 
   framework: {
