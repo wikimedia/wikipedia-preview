@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dnshitobu"
+		]
+	},
+	"gallery-loading-error": "Yalimuɣisirili gbaai la anfooni ŋɔ yoobu",
+	"gallery-loading-error-offline": "Di bi tooi ga somihi maa saha ŋɔ.",
+	"gallery-loading-error-refresh": "labi niŋ yaha",
+	"gallery-loading-still": "Di na yoori mi",
+	"gallery-unknown-author": "Ti bi mi ŋun suli maa",
+	"gallery-attribution-learnmore": "Bɔhimmi pahi",
+	"preview-error-message": "Yalimuɣisirili di gbaai la di biɛla lihimi maa yoobu",
+	"preview-console-error-message": "'$1' (Language: $2) ka lihim mi biɛla",
+	"read-on-wiki": "Karim mili Wikipedia zuɣu",
+	"read-more": "Karim mi lahabali muni maa Wikipedia zuɣu",
+	"preview-disambiguation-message": "<strong>$1</strong> lahabali zuɣu ŋɔ maa mali di ŋmaya Wikipedia zuɣu",
+	"preview-offline-message": "Di bi tooi ga somihi maa saha ŋɔ.",
+	"preview-offline-cta": "Labi niŋ yaha"
+}
