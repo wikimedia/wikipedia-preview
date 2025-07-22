@@ -1,7 +1,19 @@
 import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 import '../style/popup.less'
+import { clearAllEventListener } from './event'
 
 let popup, arrowElement
+
+const dispose = () => {
+	if (popup) {
+		clearAllEventListener();
+		if (popup.parentNode) {
+			popup.parentNode.removeChild(popup);
+		}
+		popup = null;
+		arrowElement = null;
+	}
+};
 
 const withPx = ( value ) => {
 	return value ? ( value + 'px' ) : value
@@ -88,7 +100,7 @@ const createPopup = ( container, win = window ) => {
 		}
 	}
 
-	return { show, hide, subscribe, element: popup }
+	return { show, hide, subscribe, element: popup, dispose }
 }
 
 export { createPopup }

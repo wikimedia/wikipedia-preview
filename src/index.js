@@ -61,6 +61,7 @@ const forEachRoot = ( rootConfig, callback ) => {
 
 let currentPopupId
 let currentColorScheme
+let popupInstance = null;
 
 function init( {
 	root = document,
@@ -74,9 +75,16 @@ function init( {
 } ) {
 	popupContainer = getElement( popupContainer ) || document.body
 	const globalLang = lang
-	const popup = isMobile ?
+
+	// Dispose previous popup instance if exists
+	if (popupInstance && typeof popupInstance.dispose === 'function') {
+		popupInstance.dispose();
+	}
+
+	popupInstance = isMobile ?
 		createTouchPopup( popupContainer ) :
 		createPopup( popupContainer )
+	const popup = popupInstance;
 	const popupEvents = customEvents( popup )
 	const last = {}
 	const foundSelectorLinks = []
