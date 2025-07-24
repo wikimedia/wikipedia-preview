@@ -6,16 +6,17 @@
 			"Гусейн"
 		]
 	},
-	"gallery-loading-error": "Шикили әловә кардејәдә хәто беше",
-	"gallery-loading-error-offline": "İnterneti əloğə ni.",
-	"gallery-loading-error-refresh": "Nukardə",
-	"gallery-loading-still": "Hələn bo",
-	"gallery-unknown-author": "Noməlumə mıəllif",
-	"preview-error-message": "Бә нав дијә карде хәто беше.",
-	"preview-console-error-message": "Preview unavailable for article '$1' (Language: $2)",
+	"gallery-loading-error": "Šikili əlovə kardejədə xəto beše",
+	"gallery-loading-error-offline": "Interneti əloğə ni.",
+	"gallery-loading-error-refresh": "Tožə karde",
+	"gallery-loading-still": "Hələ əlovə kardejdə",
+	"gallery-unknown-author": "Noməlumə myəllif",
+	"gallery-attribution-learnmore": "Ve omute",
+	"preview-error-message": "Syftənə dijə kardejədə xəto beše.",
+	"preview-console-error-message": "'$1' məǧolə syftəjnə dijə karde mymkun ni (Language: $2)",
 	"read-on-wiki": "Byhand Vikipedijədə",
-	"read-more": "Ve byhand Vikipedijədə",
-	"preview-disambiguation-message": "Ном <strong>$1</strong> ујғуне бә и гыләјсә ве Википедиа мәғолә.",
+	"read-more": "Təmomə məǧolə Vikipedijədə bahand",
+	"preview-disambiguation-message": "<strong>$1</strong> nom Vikidijədə ujǧune bə i gyləjsə ve məǧolə.",
 	"preview-offline-message": "Interneti əloğə ni.",
 	"preview-offline-cta": "Nubəsəton čəhd bykə"
 }
