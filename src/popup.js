@@ -5,15 +5,15 @@ import { clearAllEventListener } from './event'
 let popup, arrowElement
 
 const dispose = () => {
-	if (popup) {
-		clearAllEventListener();
-		if (popup.parentNode) {
-			popup.parentNode.removeChild(popup);
+	if ( popup ) {
+		clearAllEventListener()
+		if ( popup.parentNode ) {
+			popup.parentNode.removeChild( popup )
 		}
-		popup = null;
-		arrowElement = null;
+		popup = null
+		arrowElement = null
 	}
-};
+}
 
 const withPx = ( value ) => {
 	return value ? ( value + 'px' ) : value

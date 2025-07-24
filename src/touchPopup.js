@@ -5,15 +5,15 @@ let popup
 let originalOverflow
 
 const dispose = () => {
-	if (popup) {
-		clearAllEventListener();
-		if (popup.parentNode) {
-			popup.parentNode.removeChild(popup);
+	if ( popup ) {
+		clearAllEventListener()
+		if ( popup.parentNode ) {
+			popup.parentNode.removeChild( popup )
 		}
-		popup = null;
-		originalOverflow = null;
+		popup = null
+		originalOverflow = null
 	}
-};
+}
 
 const addBackgroundScreen = ( document ) => {
 	if ( !document.querySelector( '.wp-dark-screen' ) ) {
