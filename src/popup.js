@@ -1,14 +1,17 @@
 import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 import '../style/popup.less'
 
+let popup
+let arrowElement
+
 const dispose = () => {
-  if (popup) {
-    if (popup.parentNode) {
-      popup.parentNode.removeChild(popup)
-    }
-    popup = null
-    arrowElement = null
-  }
+	if ( popup ) {
+		if ( popup.parentNode ) {
+			popup.parentNode.removeChild( popup )
+		}
+		popup = null
+		arrowElement = null
+	}
 }
 
 const withPx = ( value ) => {
