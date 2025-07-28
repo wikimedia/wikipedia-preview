@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lookruk"
+			"Lookruk",
+			"RenKtv"
 		]
 	},
 	"gallery-loading-error": "ເກີດຂໍ້ຜິດພາດຂະນະໂຫຼດຮູບນີ້",
@@ -11,8 +12,8 @@
 	"gallery-unknown-author": "ບໍ່ຮູ້ຈັກຜູ້ຂຽນ",
 	"preview-error-message": "ມີບັນຫາໃນຂະນະທີ່ສະແດງຕົວຢ່າງນີ້",
 	"preview-console-error-message": "ບໍ່ມີຕົວຢ່າງສໍາລັບບົດຄວາມ '$1' (ພາສາ: $2)",
-	"read-on-wiki": "ອ່ານບົນວິກິພີເດຍ",
-	"read-more": "ອ່ານເພີ່ມເຕີມບົນວິກິພີເດຍ",
+	"read-on-wiki": "ອ່ານເທິງວິກິພີເດຍ",
+	"read-more": "ອ່ານບົດຄວາມເຕັມໃນວິກິພີເດຍ",
 	"preview-disambiguation-message": "ຫົວຂໍ້ <strong>$1</strong> ແມ່ນກ່ຽວຂ້ອງກັບບົດຄວມຫຼາຍກວ່າໜຶ່ງບົດຄວາມໃນວິກິພີເດຍ",
 	"preview-offline-message": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ",
 	"preview-offline-cta": "ລອງ​ອີກ​ຄັ້ງ"
