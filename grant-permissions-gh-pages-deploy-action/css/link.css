@@ -1,0 +1,9 @@
+.wmf-wp-with-preview {
+  position: relative;
+  cursor: pointer;
+  text-decoration: dashed underline 2px;
+  text-underline-offset: 4px;
+  /* -webkit for Safari support */
+  -webkit-text-decoration-line: underline;
+  -webkit-text-decoration-style: dashed;
+}
