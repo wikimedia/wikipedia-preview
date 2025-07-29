@@ -3,20 +3,6 @@ import '../style/popup.less'
 let popup
 let originalOverflow
 
-const dispose = () => {
-	if ( popup ) {
-		if ( popupEvents.onHide ) {
-			popupEvents.onHide( popup )
-		}
-		if ( popup.parentNode ) {
-			popup.parentNode.removeChild( popup )
-		}
-		popup = null
-		originalOverflow = null
-	}
-}
-
-
 const addBackgroundScreen = ( document ) => {
 	if ( !document.querySelector( '.wp-dark-screen' ) ) {
 		const screen = document.createElement( 'div' )
@@ -29,7 +15,9 @@ const addBackgroundScreen = ( document ) => {
 
 const removeBackgroundScreen = ( document ) => {
 	const screen = document.getElementsByClassName( 'wp-dark-screen' )
-	document.body.removeChild( screen[ 0 ] )
+	if ( screen.length > 0 ) {
+		document.body.removeChild( screen[ 0 ] )
+	}
 	document.body.style.overflow = originalOverflow
 }
 
@@ -41,7 +29,21 @@ const createTouchPopup = ( container, win = window ) => {
 		container.appendChild( popup )
 	}
 
-	const popupEvents = {/* onShow, onHide */}
+	const popupEvents = { /* onShow, onHide */ }
+
+	// dispose 
+	const dispose = () => {
+		if ( popup ) {
+			if ( popupEvents.onHide ) {
+				popupEvents.onHide( popup )
+			}
+			if ( popup.parentNode ) {
+				popup.parentNode.removeChild( popup )
+			}
+			popup = null
+			originalOverflow = null
+		}
+	}
 
 	const show = ( content ) => {
 		popup.innerHTML = content
