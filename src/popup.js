@@ -6,6 +6,9 @@ let arrowElement
 
 const dispose = () => {
 	if ( popup ) {
+		if ( popupEvents.onHide ) {
+			popupEvents.onHide( popup )
+		}
 		if ( popup.parentNode ) {
 			popup.parentNode.removeChild( popup )
 		}

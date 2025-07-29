@@ -5,6 +5,9 @@ let originalOverflow
 
 const dispose = () => {
 	if ( popup ) {
+		if ( popupEvents.onHide ) {
+			popupEvents.onHide( popup )
+		}
 		if ( popup.parentNode ) {
 			popup.parentNode.removeChild( popup )
 		}
@@ -12,6 +15,7 @@ const dispose = () => {
 		originalOverflow = null
 	}
 }
+
 
 const addBackgroundScreen = ( document ) => {
 	if ( !document.querySelector( '.wp-dark-screen' ) ) {
