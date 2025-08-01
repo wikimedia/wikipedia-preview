@@ -1,7 +1,8 @@
 import { computePosition, autoPlacement, arrow, offset, inline, shift } from '@floating-ui/dom'
 import '../style/popup.less'
 
-let popup, arrowElement
+let popup
+let arrowElement
 
 const withPx = ( value ) => {
 	return value ? ( value + 'px' ) : value
@@ -18,7 +19,20 @@ const createPopup = ( container, win = window ) => {
 		arrowElement.classList.add( 'wp-popup-arrow' )
 	}
 
-	const popupEvents = {/* onShow, onHide */}
+	const popupEvents = {}
+
+	const dispose = () => {
+		if ( popup ) {
+			if ( popupEvents.onHide ) {
+				popupEvents.onHide( popup )
+			}
+			if ( popup.parentNode ) {
+				popup.parentNode.removeChild( popup )
+			}
+			popup = null
+			arrowElement = null
+		}
+	}
 
 	const hide = () => {
 		if ( popupEvents.onHide ) {
@@ -31,7 +45,6 @@ const createPopup = ( container, win = window ) => {
 	const show = ( content, nextTo, { x: mouseX, y: mouseY } ) => {
 		popup.innerHTML = content + arrowElement.outerHTML
 
-		// capture the arrow element
 		const arrowEl = popup.querySelector( '.wp-popup-arrow' )
 
 		computePosition( nextTo, popup, {
@@ -45,11 +58,9 @@ const createPopup = ( container, win = window ) => {
 				arrow( { element: arrowEl } )
 			]
 		} ).then( ( { x, y, middlewareData, placement } ) => {
-			// popup
 			popup.style.top = withPx( y )
 			popup.style.left = withPx( x )
 
-			// arrow
 			if ( middlewareData.arrow && arrowEl ) {
 				const { x: arrowX, y: arrowY } = middlewareData.arrow
 
@@ -88,7 +99,7 @@ const createPopup = ( container, win = window ) => {
 		}
 	}
 
-	return { show, hide, subscribe, element: popup }
+	return { show, hide, subscribe, element: popup, dispose }
 }
 
 export { createPopup }
