@@ -31,7 +31,7 @@ const createTouchPopup = ( container, win = window ) => {
 
 	const popupEvents = { /* onShow, onHide */ }
 
-	// dispose 
+	// dispose
 	const dispose = () => {
 		if ( popup ) {
 			if ( popupEvents.onHide ) {
