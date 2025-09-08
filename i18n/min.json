@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adhmi"
+		]
+	},
+	"gallery-loading-error": "Ado kasalahan mamuek gambar ko",
+	"gallery-loading-error-offline": "Internet indak tahubuang.",
+	"gallery-loading-error-refresh": "Muek ulang",
+	"gallery-loading-still": "Masih mamuek",
+	"gallery-unknown-author": "Panulis indak dikatahui",
+	"gallery-attribution-learnmore": "Labiah lanjuik",
+	"preview-error-message": "Ado masalah katiko manampilan pratinjau ko.",
+	"preview-console-error-message": "Pratinjau indak tasadio untuak artikel ' $1 ' (Bahaso: $2 )",
+	"read-on-wiki": "Baco di Wikipedia",
+	"read-more": "Baco artikel langkoknyo di Wikipedia .",
+	"preview-disambiguation-message": "Judul <strong>$1</strong> bahubuangan jo labiah dari ciek artikel di Wikipedia.",
+	"preview-offline-message": "Internet indak tahubuang.",
+	"preview-offline-cta": "Cubo baliak"
+}
