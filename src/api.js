@@ -270,8 +270,8 @@ const requestPageMediaInfo = ( lang, title, callback, request = cachedRequest ) 
 		const author = Artist && strip( Artist.value )
 		const description = ImageDescription && strip(
 			( typeof ImageDescription.value === 'string' && ImageDescription.value ) ||
-			( ImageDescription.value[ lang ] ||
-				ImageDescription.value[ Object.keys( ImageDescription.value )[ 0 ] ] )
+            ( ImageDescription.value[ lang ] ||
+                ImageDescription.value[ Object.keys( ImageDescription.value )[ 0 ] ] )
 		)
 		const imageUrl = imageInfo[ 0 ].thumburl
 
