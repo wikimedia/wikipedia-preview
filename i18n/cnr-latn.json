@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"ITZQing"
+		]
+	},
+	"gallery-loading-error": "Greška pri učitavanju slike.",
+	"gallery-loading-error-offline": "Nema interneta.",
+	"gallery-loading-error-refresh": "Osvježi",
+	"gallery-loading-still": "Još uvijek se učitava",
+	"gallery-unknown-author": "Nepoznat autor",
+	"gallery-attribution-learnmore": "Saznajte više",
+	"preview-error-message": "Greška pri prikazivanju pregleda.",
+	"preview-console-error-message": "Pregled nije dostupan za članak '$1' (Jezik: $2)",
+	"read-on-wiki": "Pročitajte na Vikipediji",
+	"read-more": "Pročitajte cijeli članak na Vikipediji",
+	"preview-disambiguation-message": "Naslov <strong>$1</strong> je povezan sa više od jednog članka na Vikipediji.",
+	"preview-offline-message": "Nema dostupne internet konekcije.",
+	"preview-offline-cta": "Pokušajte ponovo"
+}
