@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"IND-ANP",
 			"Proabscorp!"
 		]
 	},
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "टटका करौ",
 	"gallery-loading-still": "अभीयो लोड होय रहलौ छौं",
 	"gallery-unknown-author": "लेखक अज्ञात छौं",
+	"gallery-attribution-learnmore": "आरू अधिक जानौ",
 	"preview-error-message": "हैय पूर्वावलोकन क प्रदर्शित करै घड़ियाँ एगो समस्या होलौं।",
 	"preview-console-error-message": "लेख '$1' लेली पूर्वावलोकन अनुपलब्ध (भाषा: $2)",
 	"read-on-wiki": "विकिपीडिया प पढ़ौ",
-	"read-more": "विकिपीडिया प आरू पढ़ौ",
+	"read-more": "विकिपीडिया प पूरा लेख पढ़ौ",
 	"preview-disambiguation-message": "शीर्षक <strong>$1</strong> विकिपीडिया प एगो सँ अधिक लेख सँ संबंधित छै।",
 	"preview-offline-message": "कोय इंटरनेट कनेक्शन उपलब्ध नाय छौं।",
 	"preview-offline-cta": "फेनु प्रयास करौ"
