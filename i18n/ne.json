@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nirajan pant"
+			"Nirajan pant",
+			"बडा काजी"
 		]
 	},
 	"gallery-loading-error": "यस छबिलाई खोल्दा यहाँ केही त्रुटि हुन गएको छ",
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "पुन:ताजा",
 	"gallery-loading-still": "अझै खुलिरहेको छ",
 	"gallery-unknown-author": "अज्ञात लेखक",
+	"gallery-attribution-learnmore": "थप जान्नुहोस्",
 	"preview-error-message": "यस पूर्वावलोकनलाई प्रदर्शन गर्दा यहाँ केही उलझन भइरहेको छ।",
 	"preview-console-error-message": "लेख '$1' (भाषा: $2) का लागि पूर्वावलोकन उपलब्ध छैन्",
 	"read-on-wiki": "विकिपिडियामा पढ्नुहोस्",
-	"read-more": "थप विकिपिडियामा पढ्नुहोस्",
+	"read-more": "विकिपिडियामा पूरा लेख पढ्नुहोस्",
 	"preview-disambiguation-message": "<strong>$1</strong> शीर्षक विकिपिडियामा रहेका एकभन्दा बढी लेखहरूसँग सम्बन्धित छ।",
 	"preview-offline-message": "इन्टरनेट जडान उपलब्ध छैन्।",
 	"preview-offline-cta": "पुन: प्रयास गर्नुहोस्"
