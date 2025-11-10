@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin"
+		]
+	},
+	"gallery-loading-error": "ꦒꦭꦠ꧀ꦥꦱ꧀ꦩꦺꦃ​ꦔꦩꦺꦴꦠ꧀ꦒꦩ꧀ꦧꦂ​ꦲꦶꦏꦶ",
+	"gallery-loading-error-offline": "ꦲꦺꦴꦫ​ꦲꦤ​ꦏꦺꦴꦤꦺꦏ꧀ꦱꦶ​ꦆꦤ꧀ꦠꦼꦂꦤꦺꦠ꧀꧈",
+	"gallery-loading-error-refresh": "ꦲꦚꦂꦫꦤ",
+	"gallery-loading-still": "ꦲꦶꦱꦶ​ꦔꦩꦺꦴꦠ꧀",
+	"gallery-unknown-author": "ꦗꦸꦫꦸ​ꦥꦔꦫꦁ​ꦲꦺꦴꦫ​ꦢꦶꦔꦼꦂꦠꦺꦤ꧀ꦤꦶ",
+	"gallery-attribution-learnmore": "ꦱꦶꦤꦲꦸ​ꦭꦸꦮꦶꦃ​ꦲꦏꦺꦃ",
+	"preview-error-message": "ꦒꦭꦠ꧀ꦥꦱ꧀ꦩꦺꦃ​ꦔꦩꦺꦴꦠ꧀ꦥꦿꦠꦪꦁ​ꦲꦶꦏꦶ꧉",
+	"preview-console-error-message": "ꦥꦿꦠꦪꦔꦺꦴꦫ​ꦲꦤ​ꦢꦶꦁꦒꦺꦴ​ꦏꦕ'$1'(ꦧꦱ$2)",
+	"read-on-wiki": "ꦮꦕ​ꦲꦶꦁ​ꦮꦶꦏꦶꦥꦺꦢꦶꦪꦃ",
+	"read-more": "ꦮꦕ​ꦲꦂꦠꦶꦏꦼꦭ꧀ꦥꦼꦥꦏ꧀ꦲꦶꦁ​ꦮꦶꦏꦶꦥꦺꦢꦶꦪꦃ",
+	"preview-disambiguation-message": "ꦱꦼꦱꦶꦫꦃ​<strong>$1</strong>ꦲꦶꦱꦶꦃ​ꦏꦒꦪꦸꦠ꧀ꦏꦫꦺꦴ​ꦭꦸꦮꦶꦃ​ꦱꦏ​ꦱꦶꦗꦶ​ꦲꦂꦠꦶꦏꦼꦭ꧀ꦲꦶꦁ​ꦮꦶꦏꦶꦥꦺꦢꦶꦪꦃ꧉",
+	"preview-offline-message": "ꦲꦺꦴꦫ​ꦲꦤ​ꦏꦺꦴꦤꦺꦏ꧀ꦱꦶ​ꦆꦤ꧀ꦠꦼꦂꦤꦺꦠ꧀꧈",
+	"preview-offline-cta": "ꦕꦺꦴꦧ​ꦩꦤꦺꦃ"
+}
