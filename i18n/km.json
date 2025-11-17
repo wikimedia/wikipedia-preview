@@ -1,20 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
+			"MeahNunh",
 			"Pokno Royal",
 			"គីមស៊្រុន"
 		]
 	},
 	"gallery-loading-error": "មានបញ្ហាក្នុងការផ្ទុករូបភាពនេះ",
-	"gallery-loading-error-offline": "គ្មានបណ្ដាញអ៊ីនធើណិតទេ។",
+	"gallery-loading-error-offline": "គ្មានបណ្ដាញអ៊ីនធឺណិតទេ។",
 	"gallery-loading-error-refresh": "ផ្ទុកឡើងវិញ",
 	"gallery-loading-still": "កំពុងផ្ទុក",
 	"gallery-unknown-author": "អ្នកនិពន្ធមិនស្គាល់",
-	"preview-error-message": "មានបញ្ហាពេលបង្ហាញការមើលមុននេះ។",
-	"preview-console-error-message": "គ្មានការមើលមុនសម្រាប់អត្ថបទ $1 (ភាសា៖ $2) ទេ",
+	"gallery-attribution-learnmore": "ស្វែងយល់បន្ថែម",
+	"preview-error-message": "មានបញ្ហាខណៈពេលដែលកំពុងបង្ហាញមើលមុននេះ។",
+	"preview-console-error-message": "ការមើលមុនមិនទាន់មាន សម្រាប់អត្ថបទ '$1' (ជាភាសា៖ $2)",
 	"read-on-wiki": "អាននៅលើវិគីភីឌា",
-	"read-more": "អានបន្ថែមនៅលើវិគីភីឌា",
+	"read-more": "អានអត្ថបទទាំងស្រុងនៅលើវិគីភីឌា",
 	"preview-disambiguation-message": "ចំណងជើង <strong>$1</strong> បានជាប់ទាក់ទងជាមួយអត្ថបទច្រើនជាងមួយនៅក្នុងវិគីភីឌា។",
-	"preview-offline-message": "គ្មានបណ្ដាញអ៊ីនធើណិតទេ។",
+	"preview-offline-message": "គ្មានបណ្ដាញអ៊ីនធឺណិតទេ។",
 	"preview-offline-cta": "ព្យាយាមម្ដងទៀត"
 }
