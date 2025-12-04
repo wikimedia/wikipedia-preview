@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Farorud"
+			"Farorud",
+			"ZulfiqorF"
 		]
 	},
 	"gallery-loading-error": "Ҳангоми боркунии акс хатогӣ рӯй дод",
@@ -16,5 +17,5 @@
 	"read-more": "Мақолаи пурраро дар Википедия хонед",
 	"preview-disambiguation-message": "Номи <strong>$1</strong> яку якбора ба чанд мақолаи Википедия тааллуқ дорад.",
 	"preview-offline-message": "Пайвастагӣ ба интернет нест.",
-	"preview-offline-cta": "Бори дигар кӯшиш кунед"
+	"preview-offline-cta": "Дубора кӯшиш кунед"
 }
