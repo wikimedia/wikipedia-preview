@@ -4,16 +4,17 @@
 			"MacTire02"
 		]
 	},
-	"gallery-loading-error": "Va marranys ayn tra va'n jalloo laadey",
-	"gallery-loading-error-offline": "Cha nel kiangley eddyr-voggyl ry-gheddyn.",
+	"gallery-loading-error": "Va marranys ayn tra va’n jalloo laadey",
+	"gallery-loading-error-offline": "Cha nel kiangley eddyr-vvoggyl ry-gheddyn.",
 	"gallery-loading-error-refresh": "Ooree",
 	"gallery-loading-still": "Foast laadey",
 	"gallery-unknown-author": "Ughtar gyn fys",
-	"preview-error-message": "Va marranys ayn taishbyney yn roie-haishbynys",
-	"preview-console-error-message": "Cha nel roie-haishbynys ayn da'n art '$1' (Çhengey: $2)",
+	"gallery-attribution-learnmore": "Ynsee tooilley",
+	"preview-error-message": "Va marranys ayn ayns taishbyney yn roie-haishbynys shoh.",
+	"preview-console-error-message": "Cha nel roie-haishbynys ayn da’n art '$1' (Çhengey: $2)",
 	"read-on-wiki": "Lhaih er Wikipedia",
 	"read-more": "Lhaih tooilley er Wikipedia",
-	"preview-disambiguation-message": "Ta'n enmys <strong>$1</strong> kianglt rish ny smoo na un art er Wikipedia.",
+	"preview-disambiguation-message": "Ta’n enmys <strong>$1</strong> kianglt rish ny smoo na un art er Wikipedia.",
 	"preview-offline-message": "Cha nel kiangley eddyr-voggyl ry-gheddyn.",
-	"preview-offline-cta": "Jean reesht eh"
+	"preview-offline-cta": "Jean eh reesht"
 }
