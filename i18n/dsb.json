@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"gallery-loading-error": "Pśi zacytanju toś togo wobraza jo zmólka nastała",
+	"gallery-loading-error-offline": "Žeden internetny zwisk k dispoziciji.",
+	"gallery-loading-error-refresh": "Aktualizěrowaś",
+	"gallery-loading-still": "Zacytujo se hyšći",
+	"gallery-unknown-author": "Awtor njeznaty",
+	"gallery-attribution-learnmore": "Dalšne informacije",
+	"preview-error-message": "Pśi pokazowanju toś togo pśeglěda jo zmólka nastała.",
+	"preview-console-error-message": "Pśeglěd za nastawk ‚$1‘ njejo k dispoziciji (rěc: $2)",
+	"read-on-wiki": "Na Wikipediji cytaś",
+	"read-more": "Dopołny nastawk na Wikipediji cytaś",
+	"preview-disambiguation-message": "Titel <strong>$1</strong> se na wěcej ako jaden nastawk we Wikipediji póśěgujo.",
+	"preview-offline-message": "Žeden internetny zwisk k dispoziciji.",
+	"preview-offline-cta": "Hyšći raz wopytaś"
+}

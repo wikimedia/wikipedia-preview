@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"gallery-loading-error": "Při začitanju tutoho wobraza je zmylk wustupił.",
+	"gallery-loading-error-offline": "Žadyn internetny zwisk k dispoziciji.",
+	"gallery-loading-error-refresh": "Aktualizować",
+	"gallery-loading-still": "Začituje so hišće",
+	"gallery-unknown-author": "Awtor njeznaty",
+	"gallery-attribution-learnmore": "Dalše informacije",
+	"preview-error-message": "Při pokazowanju tutoho přehlada je zmylk wustupił.",
+	"preview-console-error-message": "Přehlad za nastawk ‚$1‘ k dispoziciji njeje (rěč: $2)",
+	"read-on-wiki": "Na Wikipediji čitać",
+	"read-more": "Dospołny nastawk na Wikipediji čitać",
+	"preview-disambiguation-message": "Titul <strong>$1</strong> so na wjace hač jedyn nastawk we Wikipediji poćahuje.",
+	"preview-offline-message": "Žadyn internetny zwisk k dispoziciji.",
+	"preview-offline-cta": "Hišće raz spytać"
+}
