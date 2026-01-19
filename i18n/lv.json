@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass",
+			"Rusjanis"
+		]
+	},
+	"gallery-loading-error": "Ielādējot šo attēlu, radās kļūda.",
+	"gallery-loading-error-offline": "Nav pieejams interneta savienojums.",
+	"gallery-loading-error-refresh": "Atjaunināt",
+	"gallery-loading-still": "Joprojām notiek ielāde",
+	"gallery-unknown-author": "Autors nezināms",
+	"gallery-attribution-learnmore": "Uzzināt vairāk",
+	"preview-error-message": "Radās problēma, attēlojot šo priekšskatījumu.",
+	"preview-console-error-message": "Priekšskatījums nav pieejams rakstam '$1' (Valoda: $2)",
+	"read-on-wiki": "Lasīt Vikipēdijā",
+	"read-more": "Lasīt pilnu rakstu Vikipēdijā",
+	"preview-disambiguation-message": "Virsraksts <strong>$1</strong> ir saistīts ar vairāk nekā vienu rakstu Vikipēdijā.",
+	"preview-offline-message": "Nav pieejams interneta savienojums.",
+	"preview-offline-cta": "Mēģināt vēlreiz"
+}
