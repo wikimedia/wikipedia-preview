@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aindriu80"
+		]
+	},
+	"gallery-loading-error": "Tharla earráid agus an íomhá seo á luchtú",
+	"gallery-loading-error-offline": "Níl aon nasc idirlín ar fáil.",
+	"gallery-loading-error-refresh": "Athnuachan",
+	"gallery-loading-still": "Ag luchtú fós",
+	"gallery-unknown-author": "Údar anaithnid",
+	"gallery-attribution-learnmore": "Foghlaim níos mó",
+	"preview-error-message": "Bhí fadhb ann agus an réamhamharc seo á thaispeáint.",
+	"preview-console-error-message": "Réamhamharc ar fáil don alt '$1' (Teanga: $2)",
+	"read-on-wiki": "Léigh ar Vicipéid",
+	"read-more": "Léigh an t-alt iomlán ar Vicipéid",
+	"preview-disambiguation-message": "Tá baint ag an teideal <strong>$1</strong> le níos mó ná alt amháin ar Vicipéid.",
+	"preview-offline-message": "Níl aon nasc idirlín ar fáil.",
+	"preview-offline-cta": "Bain triail eile as"
+}
