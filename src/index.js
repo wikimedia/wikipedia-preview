@@ -3,6 +3,7 @@ import { customEvents } from './event'
 import { createPopup } from './popup'
 import { createTouchPopup } from './touchPopup'
 import { renderPreview, renderLoading, renderError, renderDisambiguation, renderOffline } from './preview'
+import { loadMessagesForLang } from './i18n'
 import {
 	getWikipediaAttrFromUrl, buildWikipediaUrl, getDir, isOnline,
 	version, getAnalyticsQueryParam, getElement, isMobile
@@ -14,7 +15,7 @@ const invokeCallback = ( events, name, params ) => {
 		try {
 			callback.apply( null, params )
 		} catch ( e ) {
-			// eslint-disable-next-line no-console
+		// eslint-disable-next-line no-console
 			console.log( 'Error invoking Wikipedia Preview custom callback', e )
 		}
 	}
@@ -95,7 +96,7 @@ function init( {
 		const dir = getDir( localLang )
 
 		if ( popup.element.currentTargetElement === currentTarget && !refresh ) {
-			// Hovering over the same link and the popup is already open
+		// Hovering over the same link and the popup is already open
 			return
 		}
 
@@ -133,7 +134,7 @@ function init( {
 					} else if ( data.type === 'disambiguation' ) {
 						const content = data.extractHtml ?
 							renderPreview( localLang, data, isMobile, currentColorScheme ) :
-							// fallback message when no extract is found on disambiguation page
+						// fallback message when no extract is found on disambiguation page
 							renderDisambiguation(
 								isMobile,
 								localLang,
@@ -199,8 +200,8 @@ function init( {
 	}
 
 	const preventTapFromNavigatingLink = ( node ) => {
-		// The click event still receives a MouseEvent instead of the newer PointerEvent
-		// in some browsers so we have to grab the pointerType from the preceding pointerdown event.
+	// The click event still receives a MouseEvent instead of the newer PointerEvent
+	// in some browsers so we have to grab the pointerType from the preceding pointerdown event.
 		let currentPointerType = null
 		node.addEventListener( 'pointerdown', ( e ) => {
 			currentPointerType = e.pointerType
@@ -213,64 +214,82 @@ function init( {
 		} )
 	}
 
-	forEachRoot( root, ( localRoot ) => {
-		Array.prototype.forEach.call(
-			localRoot.querySelectorAll( selector ),
-			( node ) => {
-				registerPreviewEvents( node )
-				foundSelectorLinks.push( {
-					text: node.textContent,
-					title: node.getAttribute( 'data-wp-title' ) || node.textContent,
-					lang: node.getAttribute( 'data-wp-lang' ) || globalLang
-				} )
-			}
-		)
-	} )
-
-	if ( detectLinks ) {
+	const doInitializePreviews = () => {
+		const promises = []
 		forEachRoot( root, ( localRoot ) => {
 			Array.prototype.forEach.call(
-				localRoot.querySelectorAll( 'a' ),
+				localRoot.querySelectorAll( selector ),
 				( node ) => {
-					const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
-					if ( matches ) {
-						node.setAttribute( 'data-wp-title', matches.title )
-						node.setAttribute( 'data-wp-lang', matches.lang )
+					// const previewLang = node.getAttribute( 'data-wp-lang' ) || globalLang
+					const previewLang = node.getAttribute( 'data-wp-lang' ) || globalLang
+					const promise = loadMessagesForLang( previewLang ).then( () => {
 						registerPreviewEvents( node )
-						preventTapFromNavigatingLink( node )
-
-						foundDetectLinks.push( {
+						foundSelectorLinks.push( {
 							text: node.textContent,
-							title: matches.title,
-							lang: matches.lang
+							title: node.getAttribute( 'data-wp-title' ) || node.textContent,
+							lang: previewLang
 						} )
-					}
+					} )
+
+					promises.push( promise )
 				}
 			)
 		} )
+
+		if ( detectLinks ) {
+			forEachRoot( root, ( localRoot ) => {
+				Array.prototype.forEach.call(
+					localRoot.querySelectorAll( 'a' ),
+					( node ) => {
+						const matches = getWikipediaAttrFromUrl( node.getAttribute( 'href' ) )
+						if ( matches ) {
+							node.setAttribute( 'data-wp-title', matches.title )
+							const matchesLang = matches.lang
+							node.setAttribute( 'data-wp-lang', matchesLang )
+
+							const promise = loadMessagesForLang( matchesLang ).then( () => {
+								registerPreviewEvents( node )
+								preventTapFromNavigatingLink( node )
+
+								foundDetectLinks.push( {
+									text: node.textContent,
+									title: matches.title,
+									lang: matchesLang
+								} )
+							} )
+
+							promises.push( promise )
+						}
+					}
+				)
+			} )
+		}
+
+		return Promise.all( promises )
 	}
 
-	popup.subscribe( popupEvents )
+	doInitializePreviews().then( () => {
+		popup.subscribe( popupEvents )
 
-	if ( debug ) {
+		if ( debug ) {
 		/* eslint-disable no-console */
-		console.group( 'Wikipedia Preview [debug mode]' )
-		console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
-		foundSelectorLinks.forEach( ( link, index ) => {
-			console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
-		} )
-		console.groupEnd()
-		if ( detectLinks ) {
-			console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
-			foundDetectLinks.forEach( ( link, index ) => {
+			console.group( 'Wikipedia Preview [debug mode]' )
+			console.group( `Searching for "${ selector }" inside ${ root }, Total links found: ${ foundSelectorLinks.length }` )
+			foundSelectorLinks.forEach( ( link, index ) => {
 				console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
 			} )
 			console.groupEnd()
-		}
-		console.groupEnd()
+			if ( detectLinks ) {
+				console.group( `Searching for links to Wikipedia, Total links found: ${ foundDetectLinks.length }` )
+				foundDetectLinks.forEach( ( link, index ) => {
+					console.log( index + 1, `${ link.text } -> ${ decodeURI( buildWikipediaUrl( link.lang, link.title, isMobile, false ) ) }` )
+				} )
+				console.groupEnd()
+			}
+			console.groupEnd()
 		/* eslint-enable no-console */
-	}
-
+		}
+	} )
 }
 
 version()
