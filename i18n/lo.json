@@ -5,14 +5,15 @@
 			"RenKtv"
 		]
 	},
-	"gallery-loading-error": "ເກີດຂໍ້ຜິດພາດຂະນະໂຫຼດຮູບນີ້",
+	"gallery-loading-error": "ເກີດຂໍ້ຜິດພາດໃນການໂຫຼດຮູບນີ້",
 	"gallery-loading-error-offline": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ",
 	"gallery-loading-error-refresh": "ໂຫຼດໃໝ່",
 	"gallery-loading-still": "ກຳລັງໂຫຼດຢູ່",
 	"gallery-unknown-author": "ບໍ່ຮູ້ຈັກຜູ້ຂຽນ",
-	"preview-error-message": "ມີບັນຫາໃນຂະນະທີ່ສະແດງຕົວຢ່າງນີ້",
+	"gallery-attribution-learnmore": "ຮຽນຮູ້ເພີ່ມເຕີມ",
+	"preview-error-message": "ເກີດບັນຫາໃນຂະນະທີ່ສະແດງຕົວຢ່າງນີ້",
 	"preview-console-error-message": "ບໍ່ມີຕົວຢ່າງສໍາລັບບົດຄວາມ '$1' (ພາສາ: $2)",
-	"read-on-wiki": "ອ່ານເທິງວິກິພີເດຍ",
+	"read-on-wiki": "ອ່ານໃນວິກິພີເດຍ",
 	"read-more": "ອ່ານບົດຄວາມເຕັມໃນວິກິພີເດຍ",
 	"preview-disambiguation-message": "ຫົວຂໍ້ <strong>$1</strong> ແມ່ນກ່ຽວຂ້ອງກັບບົດຄວມຫຼາຍກວ່າໜຶ່ງບົດຄວາມໃນວິກິພີເດຍ",
 	"preview-offline-message": "ບໍ່ມີການເຊື່ອມຕໍ່ອິນເຕີເນັດ",
