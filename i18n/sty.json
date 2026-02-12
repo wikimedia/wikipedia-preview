@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Арбыуын"
+		]
+	},
+	"gallery-loading-error": "Сүрәт тейәгәнтә ҡата килеп цыҡты",
+	"gallery-loading-error-offline": "Интернетҡа тоташыу йоҡ.",
+	"gallery-loading-error-refresh": "Йаңартҡалы",
+	"gallery-loading-still": "Тейәлеү ҡушланаты",
+	"gallery-unknown-author": "Авторы пилгесес.",
+	"gallery-attribution-learnmore": "Кәнерәк пелешкәле",
+	"preview-error-message": "Алттан ҡарап цығыу уаҡытынта әчәп килеп цыҡты.",
+	"preview-console-error-message": "'$1' мәҡәләсе өцөн алттан ҡарап цыҡҡылыҡ түгел (тел: $2)",
+	"read-on-wiki": "Википедията уғығалы",
+	"read-more": "Мәҡәләнең тулысын Википедията уғың",
+	"preview-disambiguation-message": "Википедията <strong>$1</strong> исеме пертән артыҡ мәҡәләгә ҡарайты.",
+	"preview-offline-message": "Интернетҡа тоташыу йоҡ.",
+	"preview-offline-cta": "Йаңатан итеп пағың"
+}
