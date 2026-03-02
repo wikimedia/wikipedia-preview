@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jurgitar",
 			"Nokeoo"
 		]
 	},
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "Atnaujinti",
 	"gallery-loading-still": "Vis dar kraunasi",
 	"gallery-unknown-author": "Autorius nežinomas",
+	"gallery-attribution-learnmore": "Sužinoti daugiau",
 	"preview-error-message": "Rodant šią peržiūrą kilo problema.",
 	"preview-console-error-message": "Straipsnio „$1“ peržiūra neprieinama (kalba: $2)",
 	"read-on-wiki": "Skaitykite Vikipedijoje",
-	"read-more": "Daugiau skaitykite Vikipedijoje",
+	"read-more": "Visą straipsnį skaityti Vikipedijoje",
 	"preview-disambiguation-message": "Pavadinimas <strong>$1</strong> susijęs su daugiau nei vienu straipsniu Vikipedijoje.",
 	"preview-offline-message": "Nėra interneto ryšio.",
 	"preview-offline-cta": "Bandykite dar kartą"
