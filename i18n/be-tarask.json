@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Renessaince",
+			"Ucukor",
 			"W"
 		]
 	},
 	"gallery-loading-error": "Пры запампоўцы гэтага відарысу здарылася памылка.",
 	"gallery-loading-error-offline": "Няма даступнага злучэньня зь Сецівам.",
 	"gallery-loading-error-refresh": "Абнавіць",
-	"gallery-loading-still": "Дагэтуль пампуецца",
+	"gallery-loading-still": "Дагэтуль ладуецца",
 	"gallery-unknown-author": "Творца невядомы(-ая)",
 	"gallery-attribution-learnmore": "Даведацца болей",
 	"preview-error-message": "Падчас адлюстраваньня гэтага перадпрагляду ўзьнікла складанасьць.",
