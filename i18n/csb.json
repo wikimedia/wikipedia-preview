@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Orbitminis"
+		]
+	},
+	"gallery-loading-error": "Wëstãpiła fela òbczôs ladowaniô tégò òbrôzka",
+	"gallery-loading-error-offline": "Felënk sparłãczenia z jinterneta.",
+	"gallery-loading-error-refresh": "Òdswierzë",
+	"gallery-loading-still": "Dërch wczëtëjã",
+	"gallery-unknown-author": "Nieznóny aùtór",
+	"gallery-attribution-learnmore": "Òwiedzë sã wiãcy",
+	"preview-error-message": "Wëstãpiła probléma òbczôs wëskrzëniwaniô pòdzérkù.",
+	"preview-console-error-message": "Pòdzérk nieprzistãpny dlô artiklu „$1” (jãzëk: $2)",
+	"read-on-wiki": "Przeczëtôj na Wikipedie",
+	"read-more": "Przeczëtôj pôłny artikel na Wikipedie",
+	"preview-disambiguation-message": "Titel \"$1\" je sparłãczony z wicy jak jednym artiklã na Wikipedii.",
+	"preview-offline-message": "Felënk sparłãczenia z jinterneta.",
+	"preview-offline-cta": "Spróbùjë znowa"
+}
