@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Anand.orkhon"
+			"Anand.orkhon",
+			"ChocolateLemon"
 		]
 	},
 	"gallery-loading-error": "Зургийг уншихад алдаа гарлаа",
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "Дахин ачааллах",
 	"gallery-loading-still": "Ачаалсаар байна",
 	"gallery-unknown-author": "Зохиогч тодорхойгүй",
+	"gallery-attribution-learnmore": "Дэлгэрэнгүй",
 	"preview-error-message": "Урьдчилж харах явцад асуудал гарлаа.",
 	"preview-console-error-message": "' $1 ' нийтлэлийг урьдчилан харах боломжгүй (Хэл: $2 )",
 	"read-on-wiki": "Википедиа-аас уншаарай",
-	"read-more": "Википедиа-аас дэлгэрэнгүй уншаарай",
+	"read-more": "Википедиа дээр өгүүллийг бүтнээр нь уншаарай",
 	"preview-disambiguation-message": "<strong>$1</strong> гарчиг нь Википедиа дээрх нэгээс олон нийтлэлтэй холбоотой байна.",
 	"preview-offline-message": "Интернэт холболт байхгүй байна.",
 	"preview-offline-cta": "Дахин оролдоно уу"
