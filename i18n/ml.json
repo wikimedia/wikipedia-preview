@@ -1,9 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kiran Gopi"
+			"Kiran Gopi",
+			"Shem.iz"
 		]
 	},
 	"gallery-loading-error": "ഈ ചിത്രം എടുക്കുന്നതിൽ പിഴവുണ്ടായി.",
-	"gallery-loading-error-refresh": "പുതുക്കുക"
+	"gallery-loading-error-offline": "ഇന്റർനെറ്റ് കണക്ഷൻ ലഭ്യമല്ല.",
+	"gallery-loading-error-refresh": "പുതുക്കുക",
+	"gallery-loading-still": "ഇപ്പോഴും ലോഡ് ചെയ്യുന്നു",
+	"gallery-unknown-author": "രചയിതാവ് അജ്ഞാതം",
+	"gallery-attribution-learnmore": "കൂടുതൽ അറിയുക",
+	"preview-error-message": "ഈ പ്രിവ്യൂ പ്രദർശിപ്പിക്കുന്നതിൽ ഒരു പ്രശ്നമുണ്ടായി",
+	"preview-console-error-message": "' $1 ' എന്ന ലേഖനത്തിന്റെ പ്രിവ്യൂ ലഭ്യമല്ല (ഭാഷ: $2 )",
+	"read-on-wiki": "വിക്കിപീഡിയയിൽ വായിക്കുക",
+	"read-more": "വിക്കിപീഡിയയിലെ പൂർണ്ണ ലേഖനം വായിക്കുക",
+	"preview-disambiguation-message": "<strong>$1</strong> എന്ന തലക്കെട്ട് വിക്കിപീഡിയയിലെ ഒന്നിലധികം ലേഖനങ്ങളുമായി ബന്ധപ്പെട്ടിരിക്കുന്നു.",
+	"preview-offline-message": "ഇന്റർനെറ്റ് കണക്ഷൻ ലഭ്യമല്ല.",
+	"preview-offline-cta": "വീണ്ടും ശ്രമിക്കുക"
 }
