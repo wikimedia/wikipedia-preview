@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kallmemel",
 			"ObaTango"
 		]
 	},
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "Aktualisá",
 	"gallery-loading-still": "Ainda ta karga",
 	"gallery-unknown-author": "Outor deskonosí",
+	"gallery-attribution-learnmore": "Mas informashon",
 	"preview-error-message": "Tabatin un problema ora di mustra e bista previo akí.",
 	"preview-console-error-message": "No tin bista previo pa artíkulo '$1' (Idioma: $2)",
 	"read-on-wiki": "Lesa riba Wikipedia",
-	"read-more": "Lesa mas riba Wikipedia",
+	"read-more": "Lesa artíkulo kompleto riba Wikipedia",
 	"preview-disambiguation-message": "E título <strong>$1</strong>ta relashoná ku mas di un artíkulo riba Wikipedia.",
 	"preview-offline-message": "No tin konekshon di internèt disponibel.",
 	"preview-offline-cta": "Purba di nobo"
