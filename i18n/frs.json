@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"VanModers"
+		]
+	},
+	"gallery-loading-error": "Bii dat lóóden fan dit bild gaf dat 'n feeler",
+	"gallery-loading-error-offline": "Kiin internetferbinnen beskikbor.",
+	"gallery-loading-error-refresh": "Aktuóólisäären",
+	"gallery-loading-still": "Word't noch lóóden",
+	"gallery-unknown-author": "Aautoor unbekent",
+	"gallery-attribution-learnmore": "Meer leesen",
+	"preview-error-message": "Bii 't anwiisen fan disser föörskaau gaf dat 'n probleem.",
+	"preview-console-error-message": "Föörskaau föör artikkel \"$1\" näit beskikbor (Tóól: $2)",
+	"read-on-wiki": "Up Wikipedia leesen",
+	"read-more": "Däi häiel artikkel up Wikipedia leesen",
+	"preview-disambiguation-message": "Tittel <strong>$1</strong> betrekt sük up meer as äin artikkel up Wikipedia.",
+	"preview-offline-message": "Kiin internetferbinnen beskikbor.",
+	"preview-offline-cta": "Näjs fersöyken"
+}
