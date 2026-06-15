@@ -1,20 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Orbitminis"
+			"Orbitminis",
+			"Terrus38"
 		]
 	},
-	"gallery-loading-error": "Wëstãpiła fela òbczôs ladowaniô tégò òbrôzka",
-	"gallery-loading-error-offline": "Felënk sparłãczenia z jinterneta.",
-	"gallery-loading-error-refresh": "Òdswierzë",
-	"gallery-loading-still": "Dërch wczëtëjã",
+	"gallery-loading-error": "To dało felã òb czas ladowaniégò te òbrôzka",
+	"gallery-loading-error-offline": "Felënk sparłãczeniégò z internetã.",
+	"gallery-loading-error-refresh": "Òdswiéżë",
+	"gallery-loading-still": "Dërch ladëjã",
 	"gallery-unknown-author": "Nieznóny aùtór",
-	"gallery-attribution-learnmore": "Òwiedzë sã wiãcy",
-	"preview-error-message": "Wëstãpiła probléma òbczôs wëskrzëniwaniô pòdzérkù.",
-	"preview-console-error-message": "Pòdzérk nieprzistãpny dlô artiklu „$1” (jãzëk: $2)",
+	"gallery-attribution-learnmore": "Doznôj sã wicy",
+	"preview-error-message": "To dało tôczel òb czas wëwidnianiégò pòdzérkù.",
+	"preview-console-error-message": "Pòdzérk nieprzëstãpny dlô artikla „$1” (jãzëk: $2)",
 	"read-on-wiki": "Przeczëtôj na Wikipedie",
-	"read-more": "Przeczëtôj pôłny artikel na Wikipedie",
+	"read-more": "Przeczëtôj fùl articzel na Wikipedie",
 	"preview-disambiguation-message": "Titel \"$1\" je sparłãczony z wicy jak jednym artiklã na Wikipedii.",
-	"preview-offline-message": "Felënk sparłãczenia z jinterneta.",
-	"preview-offline-cta": "Spróbùjë znowa"
+	"preview-offline-message": "Felënk sparłãczeniégò z internetã.",
+	"preview-offline-cta": "Spróbùj znowa"
 }
