@@ -11,7 +11,7 @@ module.exports = {
     module: true
   },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     sourceType: 'module'
   },
   ignorePatterns: ["storybook-static", "dist", "vite.config.js"],
