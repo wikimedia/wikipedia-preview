@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Narazeni"
+		]
+	},
+	"gallery-loading-error": "თე სურათიშ ინოხარგუაშის ჩილათაქ მოხვადუ",
+	"gallery-loading-error-offline": "ვა რე ინტერნეტ რსხუშა ჭირინაფა.",
+	"gallery-loading-error-refresh": "მოახალება",
+	"gallery-loading-still": "დიო ხოლო იხარგუ",
+	"gallery-unknown-author": "ავტორ უჩინებუ რე",
+	"gallery-attribution-learnmore": "უმოსიშ გაგება",
+	"preview-error-message": "თე გიწოთოლორაფაშ ძირაფაშის პრობლემაქ მოხვადუ.",
+	"preview-console-error-message": "სტატიაშო „ $1 “ (ნინა: $2 ) გიწოთოლორაფა ვა რე ხემიოჭირინუს",
+	"read-on-wiki": "წეკითხით ვიკიპედიას",
+	"read-more": "წეკითხით ედომუშამ სტატია ვიკიპედიას",
+	"preview-disambiguation-message": "დუდჯოხო <strong>$1</strong> მერსხილ რე ვიკიპედიაშ ართშე უმოს სტატიაწკჷმა.",
+	"preview-offline-message": "ვა რე ინტერნეტ რსხუშა ჭირინაფა.",
+	"preview-offline-cta": "ხოლო ქოცადით"
+}
