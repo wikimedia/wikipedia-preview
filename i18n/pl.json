@@ -15,9 +15,9 @@
 	"gallery-attribution-learnmore": "Dowiedz się więcej",
 	"preview-error-message": "Wystąpił problem podczas wyświetlania podglądu.",
 	"preview-console-error-message": "Podgląd niedostępny dla artykułu „$1” (język: $2)",
-	"read-on-wiki": "Przeczytaj na Wikipedii",
-	"read-more": "Przeczytaj pełen artykuł na Wikipedii",
-	"preview-disambiguation-message": "Tytuł <strong>$1</strong> jest związany z więcej niż jednym artykułem na Wikipedii.",
+	"read-on-wiki": "Przeczytaj w Wikipedii",
+	"read-more": "Przeczytaj cały artykuł w Wikipedii",
+	"preview-disambiguation-message": "Tytuł <strong>$1</strong> jest związany z więcej niż jednym artykułem w Wikipedii.",
 	"preview-offline-message": "Brak połączenia z Internetem.",
 	"preview-offline-cta": "Spróbuj ponownie"
 }
