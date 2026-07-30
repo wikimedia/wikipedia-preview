@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Albinfo",
+			"Bild-Sprache"
+		]
+	},
+	"gallery-loading-error": "Cun chargiar quest maletg è capità in sbagl",
+	"gallery-loading-error-offline": "Nagina colliaziun d'internet.",
+	"gallery-loading-error-refresh": "Actualisar",
+	"gallery-loading-still": "Vegn anc chargià",
+	"gallery-unknown-author": "Autur nunenconuschent",
+	"gallery-attribution-learnmore": "Savair dapli",
+	"preview-error-message": "Cun mussar questa prevista è capità in problem.",
+	"preview-console-error-message": "Prevista per artitgel \"$1\" betg disponibel (lingua: $2)",
+	"read-on-wiki": "Leger en la Vichipedia",
+	"read-more": "Leger l'artitgel cumplet sin Vichipedia",
+	"preview-disambiguation-message": "Titel <strong>$1</strong> sa referescha a dapli ch'in artitgel sin Vichipedia.",
+	"preview-offline-message": "Nagina colliaziun d'internet.",
+	"preview-offline-cta": "Empruvar anc ina giada"
+}
