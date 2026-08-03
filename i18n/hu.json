@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dj",
-			"Hanna Tardos"
+			"Hanna Tardos",
+			"Koko1998"
 		]
 	},
 	"gallery-loading-error": "Hiba történt a kép betöltésekor",
@@ -10,10 +11,11 @@
 	"gallery-loading-error-refresh": "Frissítés",
 	"gallery-loading-still": "Még mindig tölt",
 	"gallery-unknown-author": "Ismeretlen szerző",
+	"gallery-attribution-learnmore": "Tudj meg többet",
 	"preview-error-message": "Hiba történt az előnézet megjelenítésekor.",
 	"preview-console-error-message": "A(z) \"$1\" szócikk előnézete nem érhető el (nyelv: $2)",
 	"read-on-wiki": "Olvass a Wikipédián",
-	"read-more": "Olvass tovább a Wikipédián",
+	"read-more": "Olvasd el a teljes szócikket a Wikipédián",
 	"preview-disambiguation-message": "<strong>$1</strong> cím egynél több cikkhez kapcsolódik a Wikipédián.",
 	"preview-offline-message": "Nincs internetkapcsolat",
 	"preview-offline-cta": "Próbáld újra"
