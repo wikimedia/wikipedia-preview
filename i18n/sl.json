@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"JanezPavelZebovec"
 		]
 	},
 	"gallery-loading-error": "Pri nalaganju te slike je prišlo do napake",
@@ -9,10 +10,11 @@
 	"gallery-loading-error-refresh": "Osveži",
 	"gallery-loading-still": "Še vedno nalagam",
 	"gallery-unknown-author": "Avtor neznan",
+	"gallery-attribution-learnmore": "Izvedi več",
 	"preview-error-message": "Pri prikazovanju tega predogleda je prišlo do napake.",
 	"preview-console-error-message": "Predogled za članek »$1« (jezik: $2) ni na voljo",
 	"read-on-wiki": "Berite v Wikipediji",
-	"read-more": "Več o tem v Wikipediji",
+	"read-more": "Preberite celoten članek na Wikipediji",
 	"preview-disambiguation-message": "Naslov <strong>$1<&strong> se povezuje z več kot enim člankom v Wikipediji.",
 	"preview-offline-message": "Internetna povezava ni na voljo.",
 	"preview-offline-cta": "Poskusite znova"
