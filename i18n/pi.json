@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"咽頭べさ"
+		]
+	},
+	"gallery-loading-error": "इमस्स चित्तस्स आरोपने दोसो उप्पन्नो",
+	"gallery-loading-error-offline": "इंटरनेट सम्बन्धो न अत्थि॥",
+	"gallery-loading-error-refresh": "अञ्ञत्रनेतब्बो",
+	"gallery-loading-still": "एत्थ आरोपनं तिट्ठति",
+	"gallery-unknown-author": "अञ्ञतो कत्ता",
+	"gallery-attribution-learnmore": "अधिकं जानितुं",
+	"preview-error-message": "इमस्स पुब्बदस्सनस्स दस्सने दोसो उप्पन्नो॥",
+	"preview-console-error-message": " '$1' लेखस्स (भासा: $2) पुब्बदस्सनं न लब्भति",
+	"read-on-wiki": "वीकीपीदीया पिट्ठे पठथ",
+	"read-more": "वीकीपीदीया पिट्ठे सकलं लेखं पठथ",
+	"preview-disambiguation-message": "<strong>$1</strong> नामं वीकीपीदीया पिट्ठे अधिक एक लेखेन सद्धिं सम्बन्धियति॥",
+	"preview-offline-message": "इंटरनेट सम्बन्धो न अत्थि॥",
+	"preview-offline-cta": "पुनो करोथ"
+}
