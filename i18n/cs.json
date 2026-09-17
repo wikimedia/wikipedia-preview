@@ -2,14 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Matěj Suchánek",
+			"Polda18",
 			"Robins7"
 		]
 	},
 	"gallery-loading-error": "Při načítání tohoto obrázku došlo k chybě",
 	"gallery-loading-error-offline": "Není dostupné internetové připojení.",
 	"gallery-loading-error-refresh": "Obnovit",
+	"gallery-loading-still": "Stále se načítá",
 	"gallery-unknown-author": "Autor neznámý",
+	"gallery-attribution-learnmore": "Zjistěte více",
 	"preview-error-message": "Při zobrazování tohoto náhledu se objevil problém.",
+	"preview-console-error-message": "Náhled článku '$1' (jazyk: $2) není k dispozici.",
 	"read-on-wiki": "Přečíst na Wikipedii",
 	"read-more": "Přečíst celý článek na Wikipedii",
 	"preview-disambiguation-message": "Název <strong>$1</strong> souvisí s více než jedním článkem na Wikipedii.",
