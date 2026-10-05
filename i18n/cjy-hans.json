@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Villager-bloc-h"
+		]
+	},
+	"gallery-loading-error": "加载这个图片个时候出错啦。",
+	"gallery-loading-error-offline": "没有能用个Internet连接",
+	"gallery-loading-error-refresh": "刷新",
+	"gallery-loading-still": "还读取着呢",
+	"gallery-unknown-author": "不清楚作者",
+	"gallery-attribution-learnmore": "了解更多",
+	"preview-error-message": "显示这个预览个时候出问题啦。",
+	"preview-console-error-message": "条目“$1”没法预览啦（语言：$2）",
+	"read-on-wiki": "在维基百科上读",
+	"read-more": "在维基百科上读整个条目",
+	"preview-disambiguation-message": "标题 <strong>$1</strong> 跟维基百科上不止一篇文章有关。",
+	"preview-offline-message": "没有能用个Internet连接",
+	"preview-offline-cta": "重试"
+}
