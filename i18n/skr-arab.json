@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saraiki",
+			"Tauqeerkhansurani"
+		]
+	},
+	"gallery-loading-error": "ایندا تصویر لوڈ کرݨ وچ غلطی تھئی۔",
+	"gallery-loading-error-offline": "انٹرنیٹ کنکشن دستیاب کائنی۔",
+	"gallery-loading-error-refresh": "تازہ کرو",
+	"gallery-loading-still": "ہݨے لوڈ تھیندا پیا ہے",
+	"gallery-unknown-author": "نامعلوم مصنف",
+	"gallery-attribution-learnmore": "بیا سکھو",
+	"preview-error-message": "ایندا پیش نظارہ ݙکھاوݨ وچ مسئلہ تھیا۔",
+	"preview-console-error-message": "مضمون '$1' کیتے پیش نظارہ دستیاب کائنی (زبان: $2)",
+	"read-on-wiki": "Wikipedia تے پڑھو",
+	"read-more": "پورا مضمون وکی پیڈیا تے پڑھو",
+	"preview-disambiguation-message": "سرخی <strong>$1</strong> Wikipedia تے ہک توں ودھ مضموناں نال متعلق ہے۔",
+	"preview-offline-message": "انٹرنیٹ کنکشن دستیاب کائنی۔",
+	"preview-offline-cta": "ولدا کوشش کرو"
+}
