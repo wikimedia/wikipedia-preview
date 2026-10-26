@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Darafsh",
-			"Jeeputer"
+			"Jeeputer",
+			"LProfo"
 		]
 	},
 	"gallery-loading-error": "در هنگام بارگذاری این تصویر خطایی رخ داد",
@@ -17,5 +18,5 @@
 	"read-more": "متن کامل را در ویکی‌پدیا بخوانید",
 	"preview-disambiguation-message": "عنوان <strong>$1</strong> در ویکی‌پدیا با بیش از یک مقاله مرتبط است.",
 	"preview-offline-message": "اتصال به اینترنت مقدور نیست.",
-	"preview-offline-cta": "تلاش مجدد"
+	"preview-offline-cta": "تلاش دوباره"
 }
