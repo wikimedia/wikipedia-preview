@@ -6,6 +6,7 @@
 			"Herryz",
 			"Joseagush",
 			"Penyuwangi",
+			"Rafka Aditia",
 			"Sonic Speedy"
 		]
 	},
@@ -16,7 +17,7 @@
 	"gallery-unknown-author": "$1 Penulis tidak diketahui",
 	"gallery-attribution-learnmore": "Pelajari lebih lanjut",
 	"preview-error-message": "Ada masalah ketika menampilkan pratayang ini.",
-	"preview-console-error-message": "Pratinjau tidak ada untuk artikel '$1' (Bahasa: $2)",
+	"preview-console-error-message": "Tidak ada pratayang untuk artikel '$1' (Bahasa: $2)",
 	"read-on-wiki": "Baca di Wikipedia",
 	"read-more": "Baca artikel lengkap di Wikipedia",
 	"preview-disambiguation-message": "Judul <strong>$1</strong> terkait dengan lebih dari satu artikel di Wikipedia.",

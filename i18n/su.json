@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rafka Aditia"
+		]
+	},
+	"gallery-loading-error": "Aya kasalahan dina ngamuat gambar ieu",
+	"gallery-loading-error-offline": "Euweuh sambungan internét.",
+	"gallery-loading-error-refresh": "Segerkeun",
+	"gallery-loading-still": "Keur dimuat",
+	"gallery-unknown-author": "Pangarang teu dipikanyaho",
+	"gallery-attribution-learnmore": "Paluruh deui",
+	"preview-error-message": "Aya masalah dina némbongkeun sawangan ieu.",
+	"preview-console-error-message": "Euweuh sawangan pikeun artikel '$1' (Basa: $2)",
+	"read-on-wiki": "Baca di Wikipédia",
+	"read-more": "Baca artikel lengkepna di Wikipédia",
+	"preview-disambiguation-message": "Judul <strong>$1</strong> aya patalina jeung leuwih ti hiji artikel di Wikipédia.",
+	"preview-offline-message": "Euweuh sambungan internét.",
+	"preview-offline-cta": "Cobaan deui"
+}
